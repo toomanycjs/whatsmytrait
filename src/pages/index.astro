@@ -1,0 +1,201 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const [testing, evidence, nhs] = await Promise.all([
+	getCollection('testing', p => !p.data.draft),
+	getCollection('evidence', p => !p.data.draft),
+	getCollection('nhs', p => !p.data.draft),
+]);
+
+type PostItem = {
+	id: string;
+	data: { title: string; description: string; pubDate: Date };
+	section: 'testing' | 'evidence' | 'nhs';
+	label: string;
+	href: string;
+};
+
+const allPosts: PostItem[] = [
+	...testing.map(p => ({ ...p, section: 'testing' as const, label: 'Testing', href: `/testing/${p.id}/` })),
+	...evidence.map(p => ({ ...p, section: 'evidence' as const, label: 'Evidence', href: `/evidence/${p.id}/` })),
+	...nhs.map(p => ({ ...p, section: 'nhs' as const, label: 'NHS', href: `/nhs/${p.id}/` })),
+].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const recentPosts = allPosts.slice(0, 6);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="intro">
+				<h1>Headaches &amp; Heartbeats</h1>
+				<p class="lede">
+					A documented account of living with post-viral syndrome — tracking interventions with data, reading the evidence honestly, and navigating the NHS. No miracle cures. No emotional overreach. Just one person's careful record of what's happening and what (if anything) helps.
+				</p>
+				<p>
+					The site is organised into four areas: <a href="/testing">Testing</a> covers interventions I'm trying with data where I have it; <a href="/evidence">Evidence</a> is my reading of the research; <a href="/tools">Tools</a> includes free trackers and interactive questionnaires; <a href="/nhs">NHS</a> is practical guidance on getting care.
+				</p>
+			</section>
+
+			<section class="pillars">
+				<a href="/testing" class="pillar testing">
+					<span class="pillar-label">Testing</span>
+					<h3>Intervention logs</h3>
+					<p>Structured write-ups of specific things I'm trying — Nurosym, diaphragmatic breathing, recumbent exercise, medications, supplements — with HRV and RHR data where available.</p>
+				</a>
+				<a href="/evidence" class="pillar evidence">
+					<span class="pillar-label">Evidence</span>
+					<h3>Evidence reviews</h3>
+					<p>Accessible readings of the research behind interventions and diagnostic concepts — written from an educated-amateur standpoint with appropriate caveats.</p>
+				</a>
+				<a href="/tools" class="pillar tools">
+					<span class="pillar-label">Tools</span>
+					<h3>Trackers &amp; questionnaires</h3>
+					<p>Free Google Sheets for tracking HRV, symptoms, and stand test results, plus interactive versions of validated clinical questionnaires including COMPASS-31 and the Nijmegen questionnaire.</p>
+				</a>
+				<a href="/nhs" class="pillar nhs">
+					<span class="pillar-label">NHS</span>
+					<h3>Navigating the system</h3>
+					<p>Practical, experience-based guidance on getting appropriate care for post-viral conditions through the NHS — what to ask for, how to frame it, and how to advocate for yourself.</p>
+				</a>
+			</section>
+
+			{recentPosts.length > 0 && (
+				<section class="recent">
+					<h2>Recent posts</h2>
+					<ul class="post-list">
+						{recentPosts.map(post => (
+							<li>
+								<a href={post.href} class="post-item">
+									<div class="post-meta">
+										<span class={`section-label ${post.section}`}>{post.label}</span>
+										<time class="post-date"><FormattedDate date={post.data.pubDate} /></time>
+									</div>
+									<h4>{post.data.title}</h4>
+									<p>{post.data.description}</p>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.intro {
+		padding-bottom: 2em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	h1 {
+		font-size: 2.2em;
+		margin-bottom: 0.5em;
+	}
+	.lede {
+		font-size: 1.1em;
+		color: rgb(var(--gray-dark));
+		line-height: 1.65;
+		margin-bottom: 1em;
+	}
+
+	/* Pillars grid */
+	.pillars {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1em;
+		margin-bottom: 3em;
+	}
+	.pillar {
+		display: block;
+		padding: 1.25em 1.4em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 6px;
+		text-decoration: none;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.pillar:hover {
+		box-shadow: var(--box-shadow);
+		border-color: transparent;
+	}
+	.pillar h3 {
+		margin: 0.3em 0 0.4em;
+		font-size: 1.05em;
+		color: rgb(var(--black));
+	}
+	.pillar p {
+		margin: 0;
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+		line-height: 1.55;
+	}
+	.pillar-label {
+		font-size: 0.7em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		padding: 0.2em 0.6em;
+		border-radius: 3px;
+	}
+	.pillar.testing  .pillar-label { color: var(--testing);  background: var(--testing-bg); }
+	.pillar.evidence .pillar-label { color: var(--evidence); background: var(--evidence-bg); }
+	.pillar.tools    .pillar-label { color: var(--tools);    background: var(--tools-bg); }
+	.pillar.nhs      .pillar-label { color: var(--nhs);      background: var(--nhs-bg); }
+
+	/* Recent posts */
+	.recent h2 { margin-bottom: 1em; }
+	.post-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+	.post-item {
+		display: block;
+		padding: 1.1em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		text-decoration: none;
+		transition: color 0.15s;
+	}
+	.post-item:hover h4 { color: var(--accent); }
+	.post-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
+		margin-bottom: 0.3em;
+	}
+	.post-date {
+		font-size: 0.82em;
+		color: rgb(var(--gray));
+	}
+	.post-item h4 {
+		margin: 0 0 0.25em;
+		font-size: 1em;
+		color: rgb(var(--black));
+		line-height: 1.3;
+	}
+	.post-item p {
+		margin: 0;
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+		line-height: 1.5;
+	}
+
+	@media (max-width: 600px) {
+		.pillars { grid-template-columns: 1fr; }
+	}
+</style>

@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import SectionIndex from '../../components/SectionIndex.astro';
+
+const posts = (await getCollection('evidence', p => !p.data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.map(p => ({ ...p, href: `/evidence/${p.id}/` }));
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Evidence — Headaches & Heartbeats"
+			description="Accessible summaries of the research behind specific interventions and diagnostic concepts in post-viral syndrome and dysautonomia."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<SectionIndex
+				title="Evidence"
+				description="Evidence reviews"
+				section="evidence"
+				posts={posts}
+				intro="Accessible readings of the research behind interventions and diagnostic concepts — written from an educated-amateur standpoint with appropriate caveats. These pieces always weave in my own data and experience rather than just summarising literature."
+			/>
+		</main>
+		<Footer />
+	</body>
+</html>

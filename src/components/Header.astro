@@ -1,0 +1,127 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav>
+		<a href="/" class="site-title">{SITE_TITLE}</a>
+		<div class="nav-links">
+			<HeaderLink href="/testing">Testing</HeaderLink>
+			<HeaderLink href="/evidence">Evidence</HeaderLink>
+			<HeaderLink href="/tools">Tools</HeaderLink>
+			<HeaderLink href="/nhs">NHS</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+		</div>
+		<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+			<span></span><span></span><span></span>
+		</button>
+	</nav>
+	<div class="mobile-menu" id="mobile-menu" hidden>
+		<a href="/testing">Testing</a>
+		<a href="/evidence">Evidence</a>
+		<a href="/tools">Tools</a>
+		<a href="/nhs">NHS</a>
+		<a href="/about">About</a>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector('.menu-toggle') as HTMLButtonElement;
+	const menu = document.getElementById('mobile-menu');
+	toggle?.addEventListener('click', () => {
+		const open = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!open));
+		if (menu) menu.hidden = open;
+	});
+</script>
+
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: #fff;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	nav {
+		width: 740px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 0 1em;
+		height: 56px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+	}
+	.site-title {
+		font-weight: 700;
+		font-size: 1em;
+		color: rgb(var(--black));
+		text-decoration: none;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+	.site-title:hover { color: var(--accent); }
+	.nav-links {
+		display: flex;
+		gap: 0.1em;
+		align-items: center;
+	}
+	.nav-links :global(a) {
+		padding: 0.4em 0.7em;
+		color: rgb(var(--gray));
+		text-decoration: none;
+		font-size: 0.9em;
+		border-radius: 4px;
+		transition: color 0.15s, background 0.15s;
+	}
+	.nav-links :global(a:hover) {
+		color: rgb(var(--black));
+		background: rgb(var(--gray-light));
+	}
+	.nav-links :global(a.active) {
+		color: var(--accent);
+		font-weight: 700;
+		background: var(--accent-light);
+	}
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 4px;
+	}
+	.menu-toggle span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background: rgb(var(--gray-dark));
+		border-radius: 2px;
+	}
+	.mobile-menu {
+		border-top: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1em;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+	}
+	.mobile-menu a {
+		padding: 0.5em 0.75em;
+		color: rgb(var(--gray-dark));
+		text-decoration: none;
+		border-radius: 4px;
+		font-size: 0.95em;
+	}
+	.mobile-menu a:hover {
+		background: rgb(var(--gray-light));
+	}
+	@media (max-width: 600px) {
+		.nav-links { display: none; }
+		.menu-toggle { display: flex; }
+	}
+</style>

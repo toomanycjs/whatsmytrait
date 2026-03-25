@@ -1,0 +1,65 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<div class="footer-inner">
+		<p class="tagline">One person's documented experience of post-viral syndrome.</p>
+		<p class="disclaimer-note">
+			Nothing here is medical advice. I'm not a clinician — I'm a patient trying to make sense of my own condition. Always discuss any intervention with your doctor.
+		</p>
+		<nav class="footer-links">
+			<a href="/testing">Testing</a>
+			<a href="/evidence">Evidence</a>
+			<a href="/tools">Tools</a>
+			<a href="/nhs">NHS</a>
+			<a href="/about">About</a>
+		</nav>
+		<p class="copyright">&copy; {today.getFullYear()} Headaches &amp; Heartbeats</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		border-top: 1px solid rgb(var(--gray-light));
+		margin-top: 4em;
+		padding: 2.5em 1em;
+		color: rgb(var(--gray));
+		font-size: 0.88em;
+	}
+	.footer-inner {
+		width: 740px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+	}
+	.tagline {
+		font-weight: 700;
+		color: rgb(var(--gray-dark));
+		margin: 0;
+	}
+	.disclaimer-note {
+		margin: 0;
+		line-height: 1.5;
+	}
+	.footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25em 1em;
+		margin: 0.5em 0 0;
+	}
+	.footer-links a {
+		color: rgb(var(--gray));
+		text-decoration: none;
+	}
+	.footer-links a:hover {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+	.copyright {
+		margin: 0.25em 0 0;
+		font-size: 0.9em;
+	}
+</style>

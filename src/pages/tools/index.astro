@@ -1,0 +1,210 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const questionnaires = [
+	{
+		title: 'COMPASS-31',
+		description: 'Composite Autonomic Symptom Score — 31-item autonomic symptom questionnaire covering six domains. The standard screening tool for dysautonomia symptoms.',
+		href: '/tools/compass-31',
+		badge: 'Questionnaire',
+	},
+	{
+		title: 'Nijmegen Questionnaire',
+		description: '16-item breathing pattern disorder screening tool. Used to identify hyperventilation syndrome and disordered breathing patterns.',
+		href: '/tools/nijmegen',
+		badge: 'Questionnaire',
+	},
+	{
+		title: 'Fatigue Severity Scale (FSS)',
+		description: '9-item fatigue questionnaire widely used in post-viral and chronic illness research. Simple and quick to complete.',
+		href: '/tools/fss',
+		badge: 'Questionnaire',
+	},
+	{
+		title: 'Epworth Sleepiness Scale',
+		description: '8-item daytime sleepiness questionnaire. Simple, widely used, and commonly searched by people with fatigue-related conditions.',
+		href: '/tools/epworth',
+		badge: 'Questionnaire',
+	},
+	{
+		title: 'Bell CFIDS Disability Scale',
+		description: 'Functional capacity scale from 0–100, widely referenced in ME/CFS and post-viral communities. Quick self-check for functional status.',
+		href: '/tools/bell-scale',
+		badge: 'Questionnaire',
+	},
+	{
+		title: 'NASA Lean Test Guide',
+		description: 'Interactive guide and timer for performing a poor man\'s tilt table test at home, with fields to log your HR readings at each stage.',
+		href: '/tools/nasa-lean-test',
+		badge: 'Interactive guide',
+	},
+];
+
+const sheets = [
+	{
+		title: 'HRV & Resting Heart Rate Tracker',
+		description: 'Daily logging with automatic weekly/monthly medians and trend charts. Compatible with Garmin, Apple Watch, Polar, and manual entry.',
+		href: 'https://docs.google.com/spreadsheets/d/placeholder-hrv-tracker',
+		badge: 'Google Sheet',
+	},
+	{
+		title: 'Symptom Diary',
+		description: 'Daily scores for fatigue, breathlessness, head pain, and cognitive function with rolling averages. Useful for identifying patterns and tracking trends.',
+		href: 'https://docs.google.com/spreadsheets/d/placeholder-symptom-diary',
+		badge: 'Google Sheet',
+	},
+	{
+		title: 'Stand Test Logger',
+		description: 'Record and track orthostatic heart rate responses over time. Log HR at baseline, 2 min, 5 min, and 10 min standing.',
+		href: 'https://docs.google.com/spreadsheets/d/placeholder-stand-test',
+		badge: 'Google Sheet',
+	},
+	{
+		title: 'Medication & Supplement Log',
+		description: 'Track what you\'re taking, doses, start/stop dates, and notes. Useful for GP appointments and for spotting correlations with symptom changes.',
+		href: 'https://docs.google.com/spreadsheets/d/placeholder-med-log',
+		badge: 'Google Sheet',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Tools — Headaches & Heartbeats"
+			description="Free tracking spreadsheets and interactive clinical questionnaires for post-viral syndrome and dysautonomia, including COMPASS-31 and the Nijmegen questionnaire."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="section-header">
+				<span class="section-label tools">Tools</span>
+				<h1>Tools</h1>
+				<p class="section-intro">
+					Free Google Sheets trackers and interactive versions of validated clinical questionnaires. The questionnaires let you complete them online and get a score with an explanation — something that's surprisingly hard to find for many of these instruments.
+				</p>
+				<div class="disclaimer">
+					<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
+				</div>
+			</div>
+
+			<section>
+				<h2>Interactive questionnaires</h2>
+				<ul class="tool-list">
+					{questionnaires.map(tool => (
+						<li>
+							<a href={tool.href} class="tool-card">
+								<div class="tool-meta">
+									<span class="tool-badge">{tool.badge}</span>
+								</div>
+								<h3>{tool.title}</h3>
+								<p>{tool.description}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section>
+				<h2>Google Sheets trackers</h2>
+				<p class="section-note">Open in Google Sheets and use File → Make a copy to get your own editable version.</p>
+				<ul class="tool-list">
+					{sheets.map(tool => (
+						<li>
+							<a href={tool.href} class="tool-card" target="_blank" rel="noopener noreferrer">
+								<div class="tool-meta">
+									<span class="tool-badge sheet">{tool.badge}</span>
+									<span class="external-icon" aria-hidden="true">↗</span>
+								</div>
+								<h3>{tool.title}</h3>
+								<p>{tool.description}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.section-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.section-header h1 { margin: 0.3em 0 0.3em; }
+	.section-intro { color: rgb(var(--gray)); margin: 0 0 1em; }
+
+	section { margin-bottom: 3em; }
+	h2 { margin-bottom: 0.25em; }
+	.section-note { color: rgb(var(--gray)); font-size: 0.9em; margin-bottom: 1.25em; }
+
+	.tool-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75em;
+	}
+	.tool-card {
+		display: block;
+		padding: 1.1em 1.25em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 6px;
+		text-decoration: none;
+		height: 100%;
+		box-sizing: border-box;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.tool-card:hover {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 3px var(--accent-light);
+	}
+	.tool-meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 0.4em;
+	}
+	.tool-badge {
+		font-size: 0.72em;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--tools);
+		background: var(--tools-bg);
+		padding: 0.15em 0.5em;
+		border-radius: 3px;
+	}
+	.tool-badge.sheet {
+		color: var(--testing);
+		background: var(--testing-bg);
+	}
+	.external-icon {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+	}
+	.tool-card h3 {
+		margin: 0 0 0.3em;
+		font-size: 0.98em;
+		color: rgb(var(--black));
+		line-height: 1.3;
+	}
+	.tool-card p {
+		margin: 0;
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		line-height: 1.5;
+	}
+
+	@media (max-width: 580px) {
+		.tool-list { grid-template-columns: 1fr; }
+	}
+</style>

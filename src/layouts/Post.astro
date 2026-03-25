@@ -1,0 +1,92 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	section: 'testing' | 'evidence' | 'tools' | 'nhs';
+	sectionLabel: string;
+	sectionHref: string;
+	series?: string;
+}
+
+const { title, description, pubDate, updatedDate, section, sectionLabel, sectionHref, series } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<header class="post-header">
+					<div class="meta">
+						<a href={sectionHref} class={`section-label ${section}`}>{sectionLabel}</a>
+						{series && <span class="series-tag">{series}</span>}
+					</div>
+					<h1>{title}</h1>
+					<p class="post-description">{description}</p>
+					<div class="dates">
+						<FormattedDate date={pubDate} />
+						{updatedDate && (
+							<span class="updated">· Updated <FormattedDate date={updatedDate} /></span>
+						)}
+					</div>
+					<hr />
+				</header>
+				<div class="prose">
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.post-header {
+		margin-bottom: 2em;
+	}
+	.meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		margin-bottom: 0.75em;
+	}
+	.series-tag {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+		background: rgb(var(--gray-light));
+		padding: 0.15em 0.5em;
+		border-radius: 3px;
+	}
+	h1 {
+		margin: 0 0 0.4em;
+		line-height: 1.2;
+	}
+	.post-description {
+		color: rgb(var(--gray));
+		font-size: 1.05em;
+		margin: 0 0 0.75em;
+		line-height: 1.5;
+	}
+	.dates {
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+	}
+	.updated {
+		opacity: 0.8;
+	}
+	.prose {
+		max-width: 100%;
+	}
+	.prose :global(h2) { margin-top: 2em; }
+	.prose :global(h3) { margin-top: 1.5em; }
+</style>
