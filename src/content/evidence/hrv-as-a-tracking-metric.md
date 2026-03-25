@@ -48,7 +48,7 @@ I don't use it to micromanage my daily activity, and I don't make decisions abou
 
 **HRV reflects autonomic state, not symptom severity.** Your RMSSD might be low and improving while your fatigue remains high, or vice versa. It's one data point among several, not a proxy for how you feel on any given day.
 
-**"HRV training" products are largely unsupported.** There is an entire industry of apps and devices claiming to "train" or "improve" your HRV. Most have limited or no rigorous evidence behind them. HRV as a readiness metric (used in elite sport) has reasonably good evidence; HRV as a training target for dysautonomia is much less established. I'll write separately about vagal nerve stimulation, which has a stronger (though still limited) evidence base.
+**"HRV training" products are largely unsupported.** There is an entire industry of apps and devices claiming to "train" or "improve" your HRV. Most have limited or no rigorous evidence behind them. HRV as a readiness metric (used in elite sport) has reasonably good evidence; HRV as a training target for dysautonomia is much less established. I've written separately about [vagal nerve stimulation with the Nurosym](/testing/nurosym-week-1/), which has a stronger (though still limited) evidence base.
 
 ## Summary
 
