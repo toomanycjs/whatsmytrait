@@ -1,75 +1,57 @@
 ---
-title: "Nurosym: Week 1 log"
-description: "Baseline measurements and first week of vagal nerve stimulation with the Nurosym device. HRV, RHR, and initial impressions."
+title: "Starting Nurosym: why I'm trying vagal nerve stimulation and what I'll be looking for"
+description: "I've started using a Nurosym transcutaneous vagal nerve stimulation (taVNS) device. This post explains what the device does, why I'm trying it, what the evidence says, and how I'll be tracking the results. Data posts will follow."
 pubDate: 2026-03-25
 series: "Nurosym VNS"
 ---
 
-This is the first in a series of structured logs tracking my experience with the [Nurosym](https://nurosym.com) transcutaneous auricular vagal nerve stimulation (taVNS) device. Each entry will report measurements against my pre-Nurosym baseline, and I'll write catch-up posts at 3 and 6 months.
+I've started using a Nurosym transcutaneous vagal nerve stimulation (taVNS) device. This post explains what the device does, why I'm trying it, what the evidence says, and how I'll be tracking the results. Data posts will follow.
 
-## What I'm measuring and why
+## What the device is
 
-The primary metrics I'm tracking are:
+The Nurosym is a small, battery-powered device that delivers mild electrical stimulation to the auricular branch of the vagus nerve via a clip that attaches to the ear. The vagus nerve is the main nerve of the parasympathetic nervous system, running from the brainstem to the abdomen and influencing heart rate, inflammation, digestion, and autonomic regulation. A small branch of it is accessible through the skin of the ear, which is what makes non-invasive stimulation possible.
 
-- **RMSSD** (root mean square of successive differences) — my main HRV metric, captured each morning before getting out of bed using a Polar H10 chest strap and the Elite HRV app. RMSSD reflects parasympathetic activity and is the most reproducible HRV metric for day-to-day tracking.
-- **Resting heart rate** — captured at the same time as RMSSD, supine, after 5 minutes of rest.
-- **Symptom scores** — a daily log using a simple 0–10 scale for fatigue, head pain, and breathlessness, averaged weekly.
+The idea behind taVNS is that by electrically stimulating this branch, you can increase parasympathetic (vagal) tone, which in dysautonomia patients is typically suppressed. If it works, you'd expect to see reduced resting heart rate, improved heart rate variability, and potentially reduced orthostatic tachycardia and inflammation.
 
-I'm not tracking every possible biomarker. More measurement doesn't mean better measurement, and introducing multiple devices at once would make it impossible to attribute any change to any single cause.
+The Nurosym costs £500, which is a significant amount of money for something with a limited evidence base. I bought it myself and have no relationship with the manufacturer.
 
-## Baseline (4 weeks pre-device)
+## What the evidence says
 
-Before starting Nurosym, I logged four weeks of morning HRV and RHR to establish a stable baseline. The results:
+The strongest evidence I've found for taVNS in dysautonomia comes from a 2024 randomised controlled trial by Stavrakis et al., published in *JACC Clinical Electrophysiology*. It was a sham-controlled, double-blind study of 26 POTS patients. The active group received tragus stimulation for 1 hour daily over 2 months; the sham group received stimulation to the ear lobe (which doesn't have vagal nerve innervation).
 
-| Metric | 4-week median | SD |
-|--------|--------------|-----|
-| RMSSD (ms) | 18.4 | 4.2 |
-| Resting HR (bpm) | 74 | 5.1 |
-| Fatigue (0–10) | 6.2 | 1.4 |
-| Head pain (0–10) | 4.1 | 2.0 |
+The results were encouraging. After 2 months, the active group had a significantly smaller heart rate increase on standing (mean increase of about 18 bpm vs 32 bpm in the sham group). HRV improved. Inflammatory cytokines and anti-adrenergic autoantibodies — which are thought to play a role in the autoimmune pathophysiology of POTS — were lower in the active group. No device-related side effects were reported. Adherence was good in both arms (83% and 86%).
 
-My RMSSD of 18.4 ms is low for my age and sex — the population norm for people in my demographic is closer to 35–45 ms. This is consistent with reduced parasympathetic tone, which is what I'd expect given my autonomic dysfunction diagnosis.
+There are important caveats. This is one trial with 26 participants, all female. The improvement was statistically significant but the sample is small, and the 2-month timeframe is short. I'm a man with suspected rather than formally diagnosed dysautonomia, so I'm extrapolating. And the study used a research-grade TENS device with ear clip, not a Nurosym specifically, though the principle and stimulation site are the same. There are other small studies and case reports on taVNS for various autonomic and inflammatory conditions, but this Stavrakis trial is the one most directly relevant to my situation.
 
-## Protocol
+I decided it was worth trying based on the biological plausibility, the positive (if preliminary) RCT results, the absence of reported side effects, and the fact that I've run out of easy things to try. £500 is a lot, but if it produces even a modest sustained improvement in my autonomic metrics over 2–3 months, that's useful information.
 
-I'm following the Nurosym protocol of 30 minutes of stimulation per day, targeting the cymba conchae (the upper part of the ear's bowl), which is where the auricular branch of the vagus nerve is most accessible. I'm using the medium intensity setting — enough to feel a mild buzzing, not enough to be uncomfortable.
+## My protocol
 
-I started on [date]. I'm using it first thing in the morning, before I get up, which also means my post-stimulation HRV reading reflects any acute effect of the session.
+I'm following the protocol from the Stavrakis trial as closely as I can:
 
-## Week 1 data
+- I stimulate for **1 hour daily**, in the evening while watching television. The study used 1 hour, and I've seen no evidence that more is better.
+- I clip the device to my **right tragus** (the small flap of cartilage at the front of the ear canal). The tragus is where the auricular branch of the vagus nerve is most accessible. The study used tragus stimulation specifically, with sham stimulation delivered to the ear lobe.
+- I set the intensity to produce a **gentle tingling without discomfort**, which for me is somewhere between 15 and 25 on the device's scale. This varies day to day. The study protocol was 20 Hz at 1 mA below the discomfort threshold, which is roughly what I'm doing.
+- I started in **mid-March 2026**.
 
-| Day | RMSSD (ms) | RHR (bpm) | Notes |
-|-----|-----------|-----------|-------|
-| 1 | 19.2 | 73 | First session. No adverse effects. |
-| 2 | 17.8 | 76 | Poor sleep night before. |
-| 3 | 20.1 | 72 | |
-| 4 | 18.6 | 74 | |
-| 5 | 22.4 | 71 | Best RMSSD this week. |
-| 6 | 19.8 | 72 | |
-| 7 | 18.9 | 73 | |
+## Early impressions
 
-**Week 1 median RMSSD: 19.2 ms** (vs. baseline 18.4 ms, +4%)
+I'm a few days in, so there's nothing meaningful to report in terms of data or symptoms. What I can say is practical: the clip is a bit fiddly to position correctly, and the sensation is mildly odd (a gentle buzzing/tingling in the ear), but neither of these is a barrier. I clip it on, set the intensity, and forget about it for an hour. No adverse effects so far: no pain, no skin irritation, no headache, no tinnitus.
 
-**Week 1 median RHR: 73 bpm** (vs. baseline 74 bpm, –1 bpm)
+I don't feel anything happening in a broader sense. No wave of calm, no acute change in heart rate that I've noticed. I didn't expect to. If this works, the effects would be cumulative over weeks, not immediate.
 
-## Observations
+## What I'll be tracking
 
-It's one week. I'm not going to draw any conclusions. A 4% increase in RMSSD is within normal week-to-week variability — my standard deviation is 4.2 ms, so this is well within noise.
+My primary metrics are:
 
-What I can say is that I've had no adverse effects. The stimulation feels like a mild, slightly ticklish buzzing. No skin irritation, no headache, no tinnitus or ear discomfort. The device is easy to use. I'm not finding the 30 minutes an inconvenience because I'm lying in bed doing it anyway.
+- **RMSSD (heart rate variability):** measured overnight by my Fitbit. My current baseline median is around 16ms, which is severely reduced for my age. If taVNS is improving my parasympathetic tone, I'd expect to see this rise.
+- **Resting heart rate:** also from the Fitbit. My current baseline is around 82 bpm, up from the low 60s before I became ill. I'd expect this to drop if vagal tone improves.
+- **Symptom scores:** daily fatigue/breathlessness and head pain, logged on a 0–10 scale.
 
-I'm also not experiencing any acute subjective response — no feeling of calm, no sense that something is happening. I didn't expect to, particularly in week 1.
-
-## What I'm watching for
-
-Before claiming any effect, I'd want to see:
-
-1. A sustained RMSSD increase of >10% above baseline, maintained for at least 4 weeks
-2. A corresponding RHR reduction
-3. Some improvement in fatigue or symptom scores
-
-I'll report back at week 2 and week 4.
+I'll report back with data at regular intervals. The first meaningful comparison will be at around 4 weeks, and the key milestone will be at 2 months (matching the trial duration). I'll report the numbers whether they show improvement or not.
 
 ---
+
+Stavrakis S, Chakraborty P, Farhat K, et al. Noninvasive vagus nerve stimulation in postural tachycardia syndrome: a randomized clinical trial. *JACC Clin Electrophysiol.* 2024;10(2):346–355.
 
 *The Nurosym device was purchased at my own expense. I have no affiliation with the manufacturer.*
