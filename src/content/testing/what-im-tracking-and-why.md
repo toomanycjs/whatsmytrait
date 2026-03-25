@@ -1,64 +1,35 @@
 ---
 title: "What I'm tracking and why"
-description: "My data tracking approach for post-viral dysautonomia — what I measure, how I measure it, and the reasoning behind the choices."
+description: "My data tracking approach for post-viral dysautonomia: what I measure, how I measure it, and the reasoning behind the choices."
 pubDate: 2026-03-18
 ---
 
-Before writing about any specific intervention, it's worth explaining how I'm approaching measurement. The goal is to have a reasonably objective record of what's happening — good enough to detect real changes over time, without becoming so elaborate that it creates its own burden or introduces noise.
-
-## The core problem
-
-Post-viral conditions are particularly hard to track because:
-
-1. **Symptoms fluctuate naturally** — day-to-day and week-to-week variability is high even without any intervention. A good day doesn't mean you're improving; a bad day doesn't mean you're getting worse.
-2. **Placebo and regression to the mean** — if you start a new treatment when you're at your worst (which is when most people start anything), you'll naturally tend to improve a bit over the following weeks regardless of whether the treatment is doing anything. This is why controlled trials exist; it's also why single-person tracking needs to be careful about attribution.
-3. **Multiple variables changing at once** — most people with post-viral conditions are trying multiple things simultaneously, making it very difficult to isolate causes.
-
-My response to this is not to try to run a perfect experiment — I can't, and the attempt would be exhausting. Instead, I aim to track consistently, introduce changes one at a time where possible, and be honest about what I can and can't conclude from the data.
+Before writing about any specific intervention, it's worth explaining how I'm approaching measurement. I want a reasonably objective record of what's happening, good enough to detect real changes over time without becoming so elaborate that it creates its own burden or introduces noise. I aim to track consistently, introduce changes one at a time where possible, and be honest about what I can and can't conclude from the data.
 
 ## What I measure
 
 ### Heart rate variability (HRV)
 
-Specifically, RMSSD — the root mean square of successive differences in inter-beat intervals. This is a measure of the variation in timing between consecutive heartbeats. Higher RMSSD reflects greater parasympathetic (rest-and-digest) nervous system activity; lower RMSSD reflects sympathetic dominance or reduced autonomic flexibility.
+Specifically, RMSSD: the root mean square of successive differences in inter-beat intervals. This is a measure of the variation in timing between consecutive heartbeats, and it primarily reflects parasympathetic (rest-and-digest) nervous system activity. Higher RMSSD generally indicates better autonomic flexibility. Lower RMSSD reflects reduced parasympathetic tone, which in dysautonomia patients is typically very low.
 
-In dysautonomia, RMSSD is typically low. Monitoring it over time gives me a window into my autonomic state that's more sensitive than resting heart rate alone.
+I use a Fitbit, which measures HRV automatically each night during my longest sleep period (it only considers sleep periods of more than three hours). Fitbit uses RMSSD as its calculation method, so I'm getting the right metric without needing to do a separate morning reading. The number appears in the Fitbit app each morning and I log it in a spreadsheet.
 
-**How:** Polar H10 chest strap, Elite HRV app, 5-minute morning recording taken supine before getting out of bed. This is the most consistent protocol I can maintain. I record the natural log of RMSSD (lnRMSSD) for statistical analysis but report raw RMSSD in posts for readability.
+A Fitbit uses an optical (PPG) wrist sensor, which is less accurate for HRV measurement than a chest strap ECG like the Polar H10. Wrist-based readings introduce more motion artefact and have wider measurement error. I bought my Fitbit second-hand for relatively little money, and for my purposes — tracking trends over weeks and months rather than interpreting individual readings — it's good enough. The same device, the same measurement protocol, every night. If I see a sustained shift in my weekly or monthly median, that's real, even if any individual night's reading is noisy.
 
-**Limitations:** HRV is noisy. Alcohol, poor sleep, illness, and emotional stress all reduce it. A single day's reading means little; trends over weeks matter.
+My current median RMSSD is around 16ms. For context, a typical value for someone my age would be somewhere in the range of 40–60ms. Mine is severely reduced, consistent with significant autonomic dysfunction.
 
-### Resting heart rate
+### Resting heart rate (RHR)
 
-Captured at the same time as HRV, also supine. Less sensitive than RMSSD but more interpretable, and a useful cross-check.
-
-### Orthostatic heart rate response
-
-Periodically (not daily) I do a stand test: HR supine after 5 minutes, then standing at 2, 5, and 10 minutes. I'm looking at the orthostatic increment — the difference between supine HR and peak standing HR. A sustained increment of >30 bpm over 10 minutes meets the HR criterion for POTS.
+Also captured by the Fitbit overnight. Before I became ill, my resting heart rate was in the low to mid 60s. It now sits in the low 80s. Like HRV, individual days bounce around, but the monthly median has been remarkably stable since October 2025: 81–83 bpm, every month.
 
 ### Symptom scores
 
-Daily, on a simple 0–10 scale for: fatigue, head pain, breathlessness, and cognitive function (ability to concentrate and think clearly). I log these in the evening. I report weekly medians rather than daily scores in my posts because day-to-day noise makes daily data hard to interpret.
+I log two scores daily in a Google Sheet, each on a simple 0–10 scale: fatigue and breathlessness (which I track as a combined score because they're so intertwined for me) and head pain. I fill these in at the end of the day. In posts, I report weekly or monthly medians rather than daily scores, because day-to-day noise makes individual readings hard to interpret.
 
-## What I don't measure (and why)
+### Orthostatic heart rate response
 
-**Cortisol, inflammatory markers, microbiome** — these would require blood or stool tests, which I can't do conveniently and repeatedly at home. They'd also require interpretation I'm not qualified to provide.
-
-**Activity and steps** — I've tried tracking steps and found it doesn't correlate well with how I feel in the way HRV does. It also encourages me to push harder on good days, which is counterproductive.
-
-**Sleep stages** — I use a Garmin for sleep tracking but don't include it in formal analysis because consumer sleep staging is unreliable. I note subjectively whether sleep was good or poor in my daily log.
-
-## How I'm reporting results
-
-For each intervention I try, I'll report:
-
-- My pre-intervention baseline for each metric (at least 3–4 weeks)
-- Weekly medians during the intervention period
-- Any notable correlations or confounds
-- What I conclude and how confident I am in that conclusion
-
-I won't claim something works unless I can see a sustained, meaningful change that's unlikely to be noise. "Meaningful" for me means an RMSSD change of >2 ms (roughly half a standard deviation in my baseline data) maintained for at least 4 weeks.
+I've had one formal stand test conducted by a clinician in my post-COVID rehabilitation service (November 2025): resting heart rate 95 bpm, standing heart rate 120 bpm after 10 minutes. The 25 bpm rise was just below the formal POTS threshold of 30 bpm, though the absolute standing rate of 120 bpm meets an alternative diagnostic criterion. I don't do stand tests routinely at home, but I may start incorporating them periodically if I want to track the orthostatic response over time.
 
 ---
 
-The [HRV and RHR Tracker spreadsheet](/tools) is available for free if you want to use the same approach.
+I'm working on a free Google Sheet version of my tracking setup that anyone can copy and use. When it's ready, I'll link to it from the [tools page](/tools).
