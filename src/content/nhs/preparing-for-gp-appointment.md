@@ -1,73 +1,72 @@
 ---
-title: "How to prepare for a GP appointment about post-viral symptoms"
-description: "Practical, experience-based guidance on getting the most out of a GP appointment when you suspect post-viral dysautonomia or a related condition — what to say, what to bring, and what to ask for."
+title: "How to prepare for health appointments about post-viral symptoms"
+description: "Practical advice on getting the most out of GP, specialist, and rehabilitation appointments when you have a complex post-viral condition."
 pubDate: 2026-03-22
 ---
 
-Getting a GP to take post-viral symptoms seriously is harder than it should be, but it's not impossible. This is what I've found useful, written as practical experience rather than complaint.
+Post-viral conditions are difficult to explain quickly. The symptoms overlap, the timeline is long, the investigations are often normal, and the whole picture only makes sense when you step back and look at it together. That's hard to do in a 10-minute GP slot or a 30-minute outpatient appointment with someone who has never met you before.
 
-## The challenge
+Over the past three years, I've had dozens of appointments across primary care, a specialist headache service, a post-COVID rehabilitation service, and NHS respiratory medicine. The single most useful thing I've done is learn how to present my situation clearly and concisely on paper, so that whoever I'm seeing can understand the full picture in under a minute.
 
-GPs have 10 minutes. Post-viral dysautonomia is not in the core training curriculum for most of the doctors currently practising. Your symptoms — fatigue, brain fog, breathlessness, palpitations, dizziness on standing — are all individually explainable by common conditions, and the combination that points to dysautonomia requires a clinical framework most GPs won't immediately have.
+## The one-pager
 
-None of this is a reason to despair. GPs can refer, investigate, and listen. The goal of your first appointment isn't to get a diagnosis — it's to get taken seriously enough that the right investigations and referrals happen.
+Before every appointment, I prepare a single-page summary. One side of A4, no more. The aim is that the clinician can read it in 30 seconds and immediately have a working understanding of who you are, what's happened, what's been tried, and what you want to discuss.
 
-## Before the appointment
+Mine typically includes:
 
-**Write down your symptoms in a structured way.** A wall of text is hard to process in 10 minutes. A short bullet list is much better. Focus on:
-- When symptoms started (and whether there was a triggering illness)
-- What the main symptoms are
-- What makes them worse or better (particularly: are any symptoms worse on standing?)
-- How they affect your daily life and function
+- A brief summary of my presentation in two or three sentences: when the illness started, what the main symptoms are now, and how they affect my function.
+- A short table of current objective data: my average resting heart rate, heart rate variability, and symptom scores over the past month. Nothing elaborate. Just enough to show there's something measurable going on and that you're tracking it.
+- A list of current medications and supplements, with doses.
+- A list of key previous medications and whether they helped.
+- A list of investigations completed and their results, one line each.
+- Two or three specific questions I want to discuss.
 
-**Bring data if you have it.** If you've been tracking your resting heart rate or HRV, bring a summary — even a printed phone screenshot with your weekly averages. If you've done informal stand tests and noticed your HR rising significantly when you stand, bring those readings. GPs respond well to objective data.
+That's it. The questions at the end are important. Clinicians are used to patients arriving with a vague sense that something is wrong and hoping the doctor will work out what to do. Arriving with specific, clear questions signals that you've thought about your situation and have a concrete reason for being there. It also helps the clinician structure the appointment, which they'll appreciate when time is short.
 
-**Don't bring 40 pages of printouts.** It signals that you've gone deep into a self-diagnosis rabbit hole, which raises red flags regardless of whether you're right. Bring one page if anything. Let the GP lead.
+## Why this matters more than you'd think
 
-## In the appointment
+The biggest practical challenge I've faced is continuity of care. Post-viral conditions involve multiple specialties, long waiting lists, and frequent changes of clinician. In three years, I have rarely seen the same doctor twice. Every appointment risks becoming a fresh explanation of a complex history to someone who is encountering it for the first time, often over the phone, and who is very reasonably left a bit overwhelmed.
 
-**Lead with symptoms, not a diagnosis.** Don't open with "I think I have POTS." Open with: "Since my [viral illness/COVID/etc] I've had persistent fatigue, I get palpitations when I stand up, and my heart rate seems to rise significantly when I go from lying to standing." Let the GP ask the questions.
+The one-pager solves this. It means you're not relying on the clinician having read your notes (they often haven't, or the notes don't capture the full picture). It means you're not spending the first seven minutes of a ten-minute appointment on backstory. And it means the clinician has something to refer to during and after the appointment, which can improve the quality of whatever gets written in your record.
 
-**Mention the orthostatic component explicitly.** A lot of people with dysautonomia spend years being investigated for heart conditions, anxiety, or deconditioning before anyone thinks to check what happens to their heart rate when they stand. If you say early and clearly that your symptoms are worse on standing and improve when you lie down, a good GP will hear that as a flag.
+I've found that appointments where I brought a one-pager were significantly more productive than those where I didn't. The conversations were more focused, the clinician asked better questions, and I left with clearer next steps.
 
-**Ask for a heart rate check lying and standing.** If your GP has a pulse oximeter or a BP machine with a pulse display, they can do a basic orthostatic HR test in the room. Ask: "Would it be possible to check my pulse sitting or lying, and then standing after a minute or two?" This takes three minutes and is very revealing if you have significant orthostatic tachycardia.
+## Presenting your symptoms
 
-**Use the language of function, not suffering.** "I can't do X anymore" is more actionable than "I feel terrible." GPs can document functional impairment; they find it harder to document subjective distress in a way that triggers investigation.
+Lead with symptoms, not a diagnosis. Even if you're fairly sure what's going on, opening with "I think I have POTS" or "I think this is ME/CFS" can put a clinician on the back foot. Opening with a factual description of what's actually happening to you ("my resting heart rate has risen from the low 60s to the low 80s since a viral illness, I get breathless getting dressed, and my symptoms worsen 6–8 hours after exertion") gives the clinician something concrete to engage with.
+
+If your symptoms are worse on standing and improve when you lie down, say this explicitly and early. The orthostatic pattern is the thing that points towards autonomic dysfunction, and it's easy to miss if the conversation focuses on fatigue or breathlessness in general.
 
 ## What to ask for
 
-**Investigations to request:**
+This depends on where you are in the process, but some broadly useful things:
 
-- Lying and standing blood pressure and pulse (ideally 10 minutes standing — ask specifically)
-- Resting ECG
-- Blood tests: full blood count, CRP/ESR, thyroid function, cortisol, glucose, ferritin, B12/folate, renal function, liver function, autoimmune screen (ANA, ENA) if available
-- 24-hour ECG (Holter monitor) if you're having palpitations
+**If you haven't had basic bloods done**, ask for them. A full blood count, thyroid function, inflammatory markers (CRP, ESR), ferritin, B12, folate, vitamin D, renal function, liver function, and HbA1c will rule out common treatable causes of fatigue and are reasonable to request.
 
-These are all reasonable investigations for unexplained fatigue and palpitations. You don't need to frame them as "I want to rule out POTS" — you can frame them as "I'd like to make sure there isn't a straightforward treatable cause for these symptoms."
+**If you suspect an orthostatic heart rate problem**, ask for a lying and standing heart rate check. This takes a few minutes in the room and is very informative if you have a significant orthostatic rise. Ask specifically for a 10-minute standing measurement if possible, as shorter tests can miss a gradual rise.
 
-**Referrals to consider:**
+**If initial investigations are normal but your symptoms are significantly affecting your life**, ask for referral to a relevant specialist. Framing this as "my symptoms are significantly affecting my ability to work and I'd like a specialist opinion" is a reasonable request that's hard to decline.
 
-- Cardiology — if your resting ECG is abnormal, or if your orthostatic HR rise is very significant, a cardiology referral is appropriate and likely to be accepted. Cardiologists see POTS; some have specific dysautonomia clinics.
-- Neurology — autonomic function testing (tilt table test, sweat testing, QSART) is done in neurology departments. If you want formal autonomic function testing, a neurology referral is the route.
-- Long Covid/post-viral clinic — if your symptoms followed Covid, many areas now have dedicated post-Covid clinics that will be familiar with dysautonomia presentations. Ask whether one exists in your area.
+**If you're already under a specialist service**, ask what the plan is, what happens next, and what you should do if things deteriorate before your next appointment. Clarity on the plan is worth more than additional tests.
 
-## Managing the anxiety piece
+## Working with the system rather than against it
 
-Many GPs will raise anxiety as an alternative explanation, particularly if your investigations come back normal. This is worth addressing directly and calmly rather than pushing back against.
+The NHS is under enormous pressure. Waiting lists are long. Appointments are short. Clinicians are often managing dozens of patients in a session. None of this is your fault, and none of it means your symptoms are less valid, but acknowledging the reality of it can help you work within the constraints rather than against them.
 
-The honest answer is: anxiety and dysautonomia can coexist, and anxiety about your health is a reasonable response to having an unexplained medical condition. Treating them as mutually exclusive is a mistake. If your GP suggests anxiety as a possible contributor, agree that it may be a factor while also asking to continue with appropriate investigation to rule out autonomic causes.
+Being concise and prepared isn't about performing for the doctor. It's about making the most of limited time. A clinician who has to spend the whole appointment piecing together your history has no time left to think about what to do next. A clinician who understands your situation in the first two minutes has eight minutes to actually help.
 
-What you're trying to avoid is a situation where "anxiety" becomes the final answer that closes off investigation, rather than being investigated alongside other possibilities. If you push back too hard against the anxiety explanation, you risk being labelled as "difficult" or "health anxious," which makes everything harder.
+If you feel your concerns aren't being addressed, asking to be referred elsewhere or asking to see a different clinician within the same service is within your rights. A written follow-up message through your GP's online system (Patient Access, the NHS App, or similar) creates a record of what you've asked for, which is more durable than a verbal conversation.
 
-## If you're not getting anywhere
+If NHS waiting times are very long and you have the means, a single private consultation with a relevant specialist can sometimes accelerate things. Not for ongoing treatment, but for a diagnosis letter or opinion that you can bring back to your NHS team. A letter from a cardiologist or neurologist saying "this patient has X and would benefit from Y" carries weight.
 
-If you feel your symptoms are being dismissed:
+## Useful organisations
 
-1. **Ask to be referred to a specialist even if investigations are normal.** "My symptoms are significantly affecting my daily function and I'd like a specialist opinion to make sure I'm not missing something treatable" is a reasonable request.
-2. **Write a follow-up letter or message through Patient Access.** A written record of what you've asked for and what's been discussed is more durable than a verbal conversation.
-3. **Ask to see a different GP.** Practices vary; individuals vary. Some GPs are much more familiar with post-viral presentations than others. Asking to see a specific doctor, or asking for a longer appointment, is within your rights.
-4. **Consider a private consultation** — not to pay for treatment, but to get a diagnosis letter from a cardiologist or neurologist that you can bring back to your NHS GP. A letter from a specialist saying "this patient has POTS and would benefit from X investigation and referral" carries significantly more weight than your own presentation.
+[PoTS UK](https://www.potsuk.org) is the main UK charity for postural tachycardia syndrome. Their website has good information on the condition, management, and a clinic finder listing NHS clinicians with an interest in PoTS. If you're trying to work out who to ask your GP to refer you to, start here.
+
+[Action for ME](https://www.actionforme.org.uk) provides information, support, and advocacy for people with ME/CFS across the UK. They offer free services including a telephone information line, an adults' advocacy service, and family support. Useful if your presentation has significant fatigue and post-exertional malaise features.
+
+[National Migraine Centre](https://www.nationalmigrainecentre.org.uk) is a charity-run specialist headache service. If you have post-viral head pain that your GP isn't sure how to manage, they're worth contacting. They offer free appointments (expect to wait a few weeks, and they'll gently ask for a donation after your consultation) or you can pay to be seen more quickly. I've found them knowledgeable and practical.
 
 ---
 
-*Everything here is based on my own experience and conversations. NHS practice varies significantly by region, and referral pathways change. What works in one area may not work in another.*
+*Everything here is based on my own experience. NHS practice varies by region, and what works in one area may not work in another. This isn't medical advice: it's practical guidance from someone who has spent three years learning how to get the most out of a system that wasn't designed for conditions like ours.*
