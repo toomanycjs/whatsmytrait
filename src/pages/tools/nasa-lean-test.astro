@@ -1,0 +1,1258 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="NASA Lean Test — Headaches & Heartbeats"
+			description="Interactive NASA Lean Test protocol guide for detecting orthostatic intolerance at home. Timed phases, guided readings, and a results summary you can take to your doctor."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- ─── SETUP SCREEN ─────────────────────────────────────────── -->
+			<div id="screen-setup" class="screen">
+				<div class="tool-header">
+					<a href="/tools" class="section-label tools">Tools</a>
+					<h1>NASA Lean Test</h1>
+					<p class="subtitle">Orthostatic Intolerance Protocol</p>
+					<div class="disclaimer">
+						<strong>This is not a diagnostic tool.</strong> The NASA Lean Test can provide useful information to discuss with your doctor, but it cannot diagnose POTS, orthostatic hypotension, or any other condition. Stop the test immediately if you feel faint, unwell, or develop worsening symptoms. All results should be discussed with a clinician.
+					</div>
+				</div>
+
+				<div class="setup-content">
+					<h2>What this test does</h2>
+					<p>The NASA Lean Test is a simplified orthostatic stress test used as an accessible alternative to a formal tilt table test. You lie flat for 10 minutes to establish a resting baseline, then stand and lean against a wall for 10 minutes. Heart rate — and optionally blood pressure — are recorded at regular intervals. The pattern of readings can help identify orthostatic intolerance consistent with POTS or orthostatic hypotension.</p>
+					<p>This tool guides you through the protocol in real time, prompts you when to record each reading with an audio chime, and generates a summary you can share with your doctor.</p>
+
+					<h2>What you need</h2>
+					<ul>
+						<li><strong>Heart rate monitor</strong> — a pulse oximeter, smartwatch, or heart rate monitor. You need to be able to read your heart rate quickly at the prompt.</li>
+						<li><strong>Blood pressure cuff</strong> (optional but useful) — a standard upper-arm cuff. If you don't have one, simply leave the BP fields blank.</li>
+						<li><strong>A smooth wall to lean against.</strong></li>
+						<li><strong>Somewhere comfortable to lie flat</strong> — a bed, sofa, or mat.</li>
+						<li><strong>Your device propped up</strong> so you can see the screen while lying down and while standing.</li>
+					</ul>
+
+					<h2>How to position yourself</h2>
+					<div class="position-guide">
+						<div class="position-item">
+							<div class="position-icon" aria-hidden="true">—</div>
+							<div>
+								<strong>Supine phase</strong><br>
+								Lie flat on your back. Arms at your sides or resting gently on your abdomen. Stay still and as relaxed as possible. Avoid a pillow if you can manage without one.
+							</div>
+						</div>
+						<div class="position-item">
+							<div class="position-icon" aria-hidden="true">|</div>
+							<div>
+								<strong>Standing/leaning phase</strong><br>
+								Stand with your back flat against a smooth wall. Move your feet forward until they are approximately <strong>15–20 cm (6–8 inches)</strong> from the wall. Your legs should be straight and your weight through your heels. Keep your arms loose at your sides. This removes active leg-muscle use from the test, making it a closer approximation to passive tilt.
+							</div>
+						</div>
+					</div>
+
+					<h2>Before you start</h2>
+					<ul>
+						<li>Avoid a large meal, caffeine, or exercise for at least 2 hours beforehand.</li>
+						<li>Make sure someone is nearby or can check on you if you have a history of fainting.</li>
+						<li>Have water to hand.</li>
+						<li>You will be prompted for readings at <strong>1, 3, 5, and 10 minutes</strong> in each phase. An audio chime and visual cue will alert you — you do not need to watch the screen continuously.</li>
+						<li>A <strong>Stop test</strong> button is always visible. Use it if you feel unwell, then sit or lie down immediately.</li>
+					</ul>
+
+					<button id="start-btn" class="btn-primary btn-large">Begin test</button>
+				</div>
+			</div>
+
+			<!-- ─── TIMER SCREEN (shared for both phases) ────────────────── -->
+			<div id="screen-timer" class="screen" hidden>
+				<div class="phase-header">
+					<span id="phase-label" class="phase-badge">Supine phase</span>
+					<button id="stop-btn" class="btn-stop">Stop test</button>
+				</div>
+
+				<div id="timer-display" class="timer-display">
+					<div id="timer-value" class="timer-value">10:00</div>
+					<div class="timer-label">remaining</div>
+				</div>
+
+				<div class="phase-status">
+					<div id="next-reading-wrapper" class="next-reading">
+						Next reading in <strong id="next-reading-time">1:00</strong>
+					</div>
+					<div class="readings-count"><span id="readings-done">0</span>/4 readings recorded</div>
+				</div>
+
+				<div class="live-table-wrapper">
+					<table class="live-table">
+						<thead>
+							<tr><th>Time</th><th>HR (bpm)</th><th>Systolic</th><th>Diastolic</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>1 min</td><td id="live-hr-1" class="reading-cell">—</td><td id="live-sys-1" class="reading-cell">—</td><td id="live-dia-1" class="reading-cell">—</td></tr>
+							<tr><td>3 min</td><td id="live-hr-3" class="reading-cell">—</td><td id="live-sys-3" class="reading-cell">—</td><td id="live-dia-3" class="reading-cell">—</td></tr>
+							<tr><td>5 min</td><td id="live-hr-5" class="reading-cell">—</td><td id="live-sys-5" class="reading-cell">—</td><td id="live-dia-5" class="reading-cell">—</td></tr>
+							<tr><td>10 min</td><td id="live-hr-10" class="reading-cell">—</td><td id="live-sys-10" class="reading-cell">—</td><td id="live-dia-10" class="reading-cell">—</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- ─── READING PROMPT OVERLAY ───────────────────────────────── -->
+			<div id="prompt-overlay" class="overlay" hidden aria-modal="true" role="dialog">
+				<div class="overlay-card">
+					<div class="overlay-heading">
+						<div class="overlay-badge">Reading time</div>
+						<h2 id="prompt-time-label" class="overlay-title">1 minute</h2>
+					</div>
+					<p class="overlay-instruction">Take your reading now and enter it below. The timer is still running.</p>
+
+					<div class="input-group">
+						<label for="input-hr">Heart rate <span class="unit">bpm</span> <span class="required">required</span></label>
+						<input type="number" id="input-hr" min="20" max="300" placeholder="e.g. 72" inputmode="numeric" autocomplete="off" />
+					</div>
+
+					<div class="input-group">
+						<label>Blood pressure <span class="unit">mmHg</span> <span class="optional">optional</span></label>
+						<div class="bp-row">
+							<input type="number" id="input-sys" min="40" max="260" placeholder="Systolic" inputmode="numeric" autocomplete="off" aria-label="Systolic blood pressure" />
+							<span class="bp-sep" aria-hidden="true">/</span>
+							<input type="number" id="input-dia" min="20" max="160" placeholder="Diastolic" inputmode="numeric" autocomplete="off" aria-label="Diastolic blood pressure" />
+						</div>
+					</div>
+
+					<p id="input-error" class="input-error" hidden>Please enter your heart rate before saving.</p>
+
+					<div class="overlay-actions">
+						<button id="save-reading-btn" class="btn-primary">Save reading</button>
+						<button id="skip-reading-btn" class="btn-skip">Skip this reading</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- ─── SUPINE SYMPTOMS SCREEN ───────────────────────────────── -->
+			<div id="screen-supine-symptoms" class="screen" hidden>
+				<div class="screen-content">
+					<h2>Supine phase complete</h2>
+					<p>Before you stand up, note any symptoms you experienced during the lying phase. Then press continue.</p>
+
+					<div class="input-group">
+						<label for="supine-symptoms-text">Symptoms during lying phase <span class="optional">optional</span></label>
+						<textarea id="supine-symptoms-text" rows="3" placeholder="e.g. No symptoms, or: mild headache, heart pounding, breathlessness"></textarea>
+					</div>
+
+					<div class="input-group">
+						<label for="supine-severity">Overall symptom severity <span class="unit">0 = none, 10 = severe</span></label>
+						<div class="severity-row">
+							<input type="range" id="supine-severity" min="0" max="10" value="0" />
+							<span id="supine-severity-value" class="severity-number">0</span>
+						</div>
+					</div>
+
+					<button id="go-transition-btn" class="btn-primary btn-large">Continue to standing phase</button>
+				</div>
+			</div>
+
+			<!-- ─── TRANSITION SCREEN ────────────────────────────────────── -->
+			<div id="screen-transition" class="screen" hidden>
+				<div class="screen-content">
+					<h2>Now stand up and lean</h2>
+
+					<div class="steps">
+						<div class="step">
+							<span class="step-num">1</span>
+							<p>Move to a smooth wall. Stand with your back flat against it.</p>
+						</div>
+						<div class="step">
+							<span class="step-num">2</span>
+							<p>Slide your feet forward until they are approximately <strong>15–20 cm (6–8 inches)</strong> from the wall. Keep your legs straight and your weight through your heels.</p>
+						</div>
+						<div class="step">
+							<span class="step-num">3</span>
+							<p>Rest your arms loosely at your sides. Try to stay relaxed — avoid tensing your leg muscles.</p>
+						</div>
+						<div class="step">
+							<span class="step-num">4</span>
+							<p>If you feel faint or significantly worse at any point, press <strong>Stop test</strong> and sit or lie down immediately.</p>
+						</div>
+					</div>
+
+					<p class="transition-note">When you are in position, press the button below. The 10-minute standing timer will start immediately.</p>
+
+					<button id="ready-standing-btn" class="btn-primary btn-large">I'm in position — start standing phase</button>
+				</div>
+			</div>
+
+			<!-- ─── STANDING SYMPTOMS SCREEN ─────────────────────────────── -->
+			<div id="screen-standing-symptoms" class="screen" hidden>
+				<div class="screen-content">
+					<h2>Standing phase complete</h2>
+					<p>You can sit or lie down now. Note any symptoms you experienced during the standing phase.</p>
+
+					<div class="input-group">
+						<label for="standing-symptoms-text">Symptoms during standing phase <span class="optional">optional</span></label>
+						<textarea id="standing-symptoms-text" rows="3" placeholder="e.g. Dizziness, palpitations, breathlessness, nausea, chest tightness"></textarea>
+					</div>
+
+					<div class="input-group">
+						<label for="standing-severity">Overall symptom severity <span class="unit">0 = none, 10 = severe</span></label>
+						<div class="severity-row">
+							<input type="range" id="standing-severity" min="0" max="10" value="0" />
+							<span id="standing-severity-value" class="severity-number">0</span>
+						</div>
+					</div>
+
+					<button id="go-results-btn" class="btn-primary btn-large">View results</button>
+				</div>
+			</div>
+
+			<!-- ─── RESULTS SCREEN ───────────────────────────────────────── -->
+			<div id="screen-results" class="screen" hidden>
+				<div class="results-content">
+					<h2>Your results</h2>
+					<p id="stopped-note" class="stopped-note" hidden>Note: test was stopped before completion. Results are based on data collected up to that point.</p>
+
+					<div id="summary-cards" class="summary-cards"></div>
+
+					<div class="results-tables">
+						<div class="results-table-block">
+							<h3>Supine (lying) phase</h3>
+							<table class="results-table">
+								<thead><tr><th>Time</th><th>HR (bpm)</th><th>BP (sys/dia)</th></tr></thead>
+								<tbody id="results-supine-body"></tbody>
+							</table>
+							<p id="results-supine-symptoms" class="symptom-note"></p>
+						</div>
+						<div class="results-table-block">
+							<h3>Standing (leaning) phase</h3>
+							<table class="results-table">
+								<thead><tr><th>Time</th><th>HR (bpm)</th><th>BP (sys/dia)</th></tr></thead>
+								<tbody id="results-standing-body"></tbody>
+							</table>
+							<p id="results-standing-symptoms" class="symptom-note"></p>
+						</div>
+					</div>
+
+					<h3>Interpretation</h3>
+					<div id="results-interpretation" class="interpretation-box"></div>
+
+					<div class="threshold-box">
+						<h4>Reference thresholds</h4>
+						<ul>
+							<li><strong>POTS (adults):</strong> A sustained heart rate increase of ≥30 bpm within 10 minutes of standing, or an absolute standing heart rate above 120 bpm, without significant orthostatic hypotension, with symptoms present for at least 3 months.</li>
+							<li><strong>Orthostatic hypotension:</strong> A drop in systolic BP of ≥20 mmHg, or diastolic BP of ≥10 mmHg, within 3 minutes of standing.</li>
+							<li><strong>Note on this test:</strong> The NASA Lean Test uses a wall lean rather than formal passive tilt. This can produce slightly different results. Heart rate rises from a lean may be modestly smaller than those from a tilt table. Results should always be interpreted alongside symptoms and clinical context.</li>
+						</ul>
+					</div>
+
+					<div class="results-disclaimer">
+						<strong>This is not a diagnostic tool.</strong> These results are intended to help you have a more informed conversation with your doctor. A single test does not establish or rule out any diagnosis. Discuss all results with a clinician.
+					</div>
+
+					<div class="export-buttons">
+						<button id="copy-btn" class="btn-secondary">Copy results as text</button>
+						<button id="print-btn" class="btn-secondary">Print / save as PDF</button>
+						<button id="restart-btn" class="btn-outline">Start a new test</button>
+					</div>
+					<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
+				</div>
+			</div>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const PROMPT_SECONDS = [60, 180, 300, 600];
+const PHASE_DURATION = 600;
+
+const testData = {
+	supine:   { readings: {}, symptoms: '', severity: 0 },
+	standing: { readings: {}, symptoms: '', severity: 0 },
+	stoppedEarly: false,
+};
+
+let currentPhase = 'supine';
+let elapsed = 0;
+let timerInterval = null;
+let activePromptSec = null;
+let pendingPrompts = [];
+let handledPrompts = new Set();
+let audioCtx = null;
+
+// ── Audio ─────────────────────────────────────────────────────────────────────
+function playChime() {
+	try {
+		if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+		[[523.25, 0], [659.25, 0.18]].forEach(([freq, delay]) => {
+			const osc = audioCtx.createOscillator();
+			const gain = audioCtx.createGain();
+			osc.connect(gain); gain.connect(audioCtx.destination);
+			osc.type = 'sine';
+			osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+			gain.gain.setValueAtTime(0.35, audioCtx.currentTime + delay);
+			gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + 0.7);
+			osc.start(audioCtx.currentTime + delay);
+			osc.stop(audioCtx.currentTime + delay + 0.7);
+		});
+	} catch (_) { /* silently skip if audio blocked */ }
+	const d = document.getElementById('timer-display');
+	d?.classList.add('flash');
+	setTimeout(() => d?.classList.remove('flash'), 700);
+}
+
+// ── Utilities ─────────────────────────────────────────────────────────────────
+function fmt(s) {
+	return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
+function show(id) {
+	document.querySelectorAll('.screen').forEach(el => el.hidden = true);
+	document.getElementById(id).hidden = false;
+	window.scrollTo(0, 0);
+}
+
+function minuteKey(sec) {
+	return sec === 60 ? 1 : sec === 180 ? 3 : sec === 300 ? 5 : 10;
+}
+
+function minuteLabel(sec) {
+	return sec === 60 ? '1 minute' : sec === 180 ? '3 minutes' : sec === 300 ? '5 minutes' : '10 minutes';
+}
+
+// ── Timer ─────────────────────────────────────────────────────────────────────
+function startTimer() {
+	elapsed = 0;
+	handledPrompts.clear();
+	pendingPrompts = [];
+	activePromptSec = null;
+	updateTimer();
+	timerInterval = setInterval(tick, 1000);
+}
+
+function tick() {
+	elapsed = Math.min(elapsed + 1, PHASE_DURATION);
+	updateTimer();
+	checkPrompts();
+	if (elapsed >= PHASE_DURATION && activePromptSec === null && handledPrompts.has(600)) {
+		clearInterval(timerInterval);
+		endPhase();
+	}
+}
+
+function stopTimer() {
+	clearInterval(timerInterval);
+	timerInterval = null;
+}
+
+function updateTimer() {
+	const remaining = Math.max(0, PHASE_DURATION - elapsed);
+	document.getElementById('timer-value').textContent = fmt(remaining);
+
+	const next = PROMPT_SECONDS.find(t => !handledPrompts.has(t));
+	const wrapper = document.getElementById('next-reading-wrapper');
+	if (next && next > elapsed) {
+		wrapper.hidden = false;
+		document.getElementById('next-reading-time').textContent = fmt(next - elapsed);
+	} else {
+		wrapper.hidden = true;
+	}
+
+	document.getElementById('readings-done').textContent = String(handledPrompts.size);
+}
+
+function checkPrompts() {
+	for (const t of PROMPT_SECONDS) {
+		if (elapsed >= t && !handledPrompts.has(t)) {
+			if (activePromptSec === null) {
+				showPrompt(t);
+			} else if (!pendingPrompts.includes(t)) {
+				pendingPrompts.push(t);
+			}
+		}
+	}
+}
+
+// ── Prompt overlay ────────────────────────────────────────────────────────────
+function showPrompt(sec) {
+	activePromptSec = sec;
+	playChime();
+	document.getElementById('prompt-time-label').textContent = minuteLabel(sec);
+	document.getElementById('input-hr').value = '';
+	document.getElementById('input-sys').value = '';
+	document.getElementById('input-dia').value = '';
+	document.getElementById('input-error').hidden = true;
+	document.getElementById('prompt-overlay').hidden = false;
+	setTimeout(() => document.getElementById('input-hr').focus(), 80);
+}
+
+function closePrompt() {
+	document.getElementById('prompt-overlay').hidden = true;
+	const next = pendingPrompts.shift();
+	if (next !== undefined) {
+		showPrompt(next);
+	} else {
+		activePromptSec = null;
+		if (elapsed >= PHASE_DURATION) {
+			stopTimer();
+			endPhase();
+		}
+	}
+}
+
+function saveReading() {
+	const hrEl = document.getElementById('input-hr');
+	const sysEl = document.getElementById('input-sys');
+	const diaEl = document.getElementById('input-dia');
+	const hr = parseInt(hrEl.value);
+
+	if (!hrEl.value || isNaN(hr) || hr < 20 || hr > 300) {
+		document.getElementById('input-error').hidden = false;
+		hrEl.focus();
+		return;
+	}
+
+	const sys = sysEl.value ? parseInt(sysEl.value) : null;
+	const dia = diaEl.value ? parseInt(diaEl.value) : null;
+	const mk = minuteKey(activePromptSec);
+
+	testData[currentPhase].readings[mk] = { hr, sys, dia };
+	handledPrompts.add(activePromptSec);
+
+	// Update live table cells
+	document.getElementById(`live-hr-${mk}`).textContent = String(hr);
+	document.getElementById(`live-sys-${mk}`).textContent = sys != null ? String(sys) : '—';
+	document.getElementById(`live-dia-${mk}`).textContent = dia != null ? String(dia) : '—';
+
+	closePrompt();
+}
+
+function skipReading() {
+	handledPrompts.add(activePromptSec);
+	closePrompt();
+}
+
+// ── Phase flow ─────────────────────────────────────────────────────────────────
+function endPhase() {
+	show(currentPhase === 'supine' ? 'screen-supine-symptoms' : 'screen-standing-symptoms');
+}
+
+function stopEarly() {
+	stopTimer();
+	document.getElementById('prompt-overlay').hidden = true;
+	testData.stoppedEarly = true;
+	endPhase();
+}
+
+function startPhase(phase) {
+	currentPhase = phase;
+	document.getElementById('phase-label').textContent =
+		phase === 'supine' ? 'Supine phase (lying)' : 'Standing phase (leaning)';
+	['1','3','5','10'].forEach(t => {
+		['hr','sys','dia'].forEach(k => {
+			document.getElementById(`live-${k}-${t}`).textContent = '—';
+		});
+	});
+	show('screen-timer');
+	startTimer();
+}
+
+// ── Results ───────────────────────────────────────────────────────────────────
+function getLastHR(phase) {
+	const r = testData[phase].readings;
+	return r[10]?.hr ?? r[5]?.hr ?? r[3]?.hr ?? r[1]?.hr ?? null;
+}
+
+function getPeakStandingHR() {
+	let peak = null, peakMin = null;
+	for (const t of [1,3,5,10]) {
+		const hr = testData.standing.readings[t]?.hr;
+		if (hr != null && (peak === null || hr > peak)) { peak = hr; peakMin = t; }
+	}
+	return { hr: peak, min: peakMin };
+}
+
+function getMinStandingBP() {
+	let sys = null, dia = null;
+	for (const t of [1,3,5,10]) {
+		const r = testData.standing.readings[t];
+		if (r?.sys != null && (sys === null || r.sys < sys)) sys = r.sys;
+		if (r?.dia != null && (dia === null || r.dia < dia)) dia = r.dia;
+	}
+	return { sys, dia };
+}
+
+function fillResultsTable(phase) {
+	const tbody = document.getElementById(`results-${phase}-body`);
+	tbody.innerHTML = '';
+	for (const t of [1,3,5,10]) {
+		const r = testData[phase].readings[t];
+		const hr = r?.hr != null ? r.hr : '—';
+		const bp = (r?.sys != null && r?.dia != null) ? `${r.sys}/${r.dia}`
+		         : r?.sys != null ? `${r.sys}/—` : '—';
+		tbody.innerHTML += `<tr><td>${t} min</td><td>${hr}</td><td>${bp}</td></tr>`;
+	}
+}
+
+function showResults() {
+	show('screen-results');
+
+	if (testData.stoppedEarly) {
+		document.getElementById('stopped-note').hidden = false;
+	}
+
+	fillResultsTable('supine');
+	fillResultsTable('standing');
+
+	const ssEl = document.getElementById('results-supine-symptoms');
+	const d = testData.supine;
+	ssEl.textContent = `Symptom severity (supine): ${d.severity}/10${d.symptoms ? ' — ' + d.symptoms : ''}`;
+
+	const stEl = document.getElementById('results-standing-symptoms');
+	const ds = testData.standing;
+	stEl.textContent = `Symptom severity (standing): ${ds.severity}/10${ds.symptoms ? ' — ' + ds.symptoms : ''}`;
+
+	const finalSupineHR = getLastHR('supine');
+	const { hr: peakHR, min: peakMin } = getPeakStandingHR();
+	const hrIncrease = (finalSupineHR != null && peakHR != null) ? peakHR - finalSupineHR : null;
+	const finalSupineSys = testData.supine.readings[10]?.sys ?? testData.supine.readings[5]?.sys
+	                     ?? testData.supine.readings[3]?.sys ?? testData.supine.readings[1]?.sys ?? null;
+	const finalSupineDia = testData.supine.readings[10]?.dia ?? testData.supine.readings[5]?.dia
+	                     ?? testData.supine.readings[3]?.dia ?? testData.supine.readings[1]?.dia ?? null;
+	const { sys: minStandSys, dia: minStandDia } = getMinStandingBP();
+	const sysDrop = (finalSupineSys != null && minStandSys != null) ? finalSupineSys - minStandSys : null;
+	const diaDrop = (finalSupineDia != null && minStandDia != null) ? finalSupineDia - minStandDia : null;
+
+	// Summary cards
+	const cards = document.getElementById('summary-cards');
+	cards.innerHTML = '';
+
+	if (hrIncrease != null) {
+		const flagged = hrIncrease >= 30;
+		cards.innerHTML += `
+			<div class="summary-card${flagged ? ' card-flagged' : ''}">
+				<div class="card-value">${hrIncrease >= 0 ? '+' : ''}${hrIncrease} bpm</div>
+				<div class="card-label">Heart rate increase on standing</div>
+				<div class="card-detail">From ${finalSupineHR} bpm (final supine) to ${peakHR} bpm peak at ${peakMin} min standing</div>
+			</div>`;
+	}
+	if (peakHR != null) {
+		const flagged = peakHR > 120;
+		cards.innerHTML += `
+			<div class="summary-card${flagged ? ' card-flagged' : ''}">
+				<div class="card-value">${peakHR} bpm</div>
+				<div class="card-label">Peak standing heart rate</div>
+				<div class="card-detail">Recorded at ${peakMin} minute${peakMin !== 1 ? 's' : ''} of standing</div>
+			</div>`;
+	}
+	if (sysDrop != null) {
+		const flagged = sysDrop >= 20;
+		cards.innerHTML += `
+			<div class="summary-card${flagged ? ' card-flagged' : ''}">
+				<div class="card-value">${sysDrop > 0 ? '−' : '+'}${Math.abs(sysDrop)} mmHg</div>
+				<div class="card-label">Systolic BP change on standing</div>
+				<div class="card-detail">From ${finalSupineSys} mmHg (supine) to ${minStandSys} mmHg (lowest standing)</div>
+			</div>`;
+	}
+
+	// Interpretation
+	const interp = document.getElementById('results-interpretation');
+	const hasOH = (sysDrop != null && sysDrop >= 20) || (diaDrop != null && diaDrop >= 10);
+	const hasPOTS = hrIncrease != null && (hrIncrease >= 30 || (peakHR != null && peakHR > 120));
+	const hasData = peakHR != null;
+
+	let html = '';
+	if (!hasData) {
+		html = '<p>No standing readings were recorded, so no interpretation is possible.</p>';
+	} else if (hasOH) {
+		html = `<p><strong>Blood pressure pattern:</strong> Your results show a drop in blood pressure on standing that meets the threshold for orthostatic hypotension (systolic drop ≥20 mmHg or diastolic drop ≥10 mmHg). Orthostatic hypotension is a distinct condition from POTS and is managed differently. Discuss these results with your doctor.</p>`;
+		if (hasPOTS) {
+			html += `<p><strong>Heart rate pattern:</strong> Your results also show a heart rate increase consistent with POTS criteria. When orthostatic hypotension and tachycardia co-occur, the clinical picture requires careful interpretation by a specialist.</p>`;
+		}
+	} else if (hasPOTS) {
+		html = `<p><strong>Heart rate pattern:</strong> `;
+		if (hrIncrease != null && hrIncrease >= 30) html += `Your heart rate increased by ${hrIncrease} bpm on standing. `;
+		if (peakHR > 120) html += `Your peak standing heart rate was ${peakHR} bpm. `;
+		html += `This is consistent with the heart rate criteria for POTS in adults. This test alone cannot diagnose POTS — results need to be confirmed with clinical assessment, the threshold must be met on a formal test, and symptoms must have been present for at least 3 months. Discuss these results with your doctor.</p>`;
+		if (sysDrop != null) {
+			html += `<p><strong>Blood pressure:</strong> No orthostatic hypotension was identified (systolic drop was ${sysDrop} mmHg, below the 20 mmHg threshold).</p>`;
+		}
+	} else {
+		html = `<p><strong>Heart rate pattern:</strong> `;
+		if (hrIncrease != null) html += `Your heart rate increased by ${hrIncrease} bpm on standing. This does not meet the 30 bpm threshold commonly used for POTS. `;
+		if (peakHR != null) html += `Your peak standing heart rate was ${peakHR} bpm. `;
+		html += `If you have significant symptoms of orthostatic intolerance, discuss them with your doctor regardless of this result. A sub-threshold rise can still cause symptoms and may warrant further investigation.</p>`;
+		if (sysDrop != null) {
+			html += `<p><strong>Blood pressure:</strong> No orthostatic hypotension was identified (systolic drop was ${sysDrop} mmHg).</p>`;
+		}
+	}
+	interp.innerHTML = html;
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+function buildText() {
+	const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+	const lines = [
+		'NASA LEAN TEST RESULTS',
+		`Date: ${date}`,
+		'Source: Headaches & Heartbeats — postviralrecovery.com',
+		'═'.repeat(45),
+		'',
+		'SUPINE PHASE (lying)',
+		'─'.repeat(25),
+	];
+	for (const t of [1,3,5,10]) {
+		const r = testData.supine.readings[t];
+		if (r) {
+			const bp = (r.sys && r.dia) ? `  BP: ${r.sys}/${r.dia} mmHg` : '';
+			lines.push(`${t} min:  HR: ${r.hr} bpm${bp}`);
+		} else {
+			lines.push(`${t} min:  Not recorded`);
+		}
+	}
+	lines.push(`Symptoms: ${testData.supine.symptoms || 'None noted'}`);
+	lines.push(`Severity: ${testData.supine.severity}/10`);
+	lines.push('');
+	lines.push('STANDING PHASE (leaning against wall)');
+	lines.push('─'.repeat(25));
+	for (const t of [1,3,5,10]) {
+		const r = testData.standing.readings[t];
+		if (r) {
+			const bp = (r.sys && r.dia) ? `  BP: ${r.sys}/${r.dia} mmHg` : '';
+			lines.push(`${t} min:  HR: ${r.hr} bpm${bp}`);
+		} else {
+			lines.push(`${t} min:  Not recorded`);
+		}
+	}
+	lines.push(`Symptoms: ${testData.standing.symptoms || 'None noted'}`);
+	lines.push(`Severity: ${testData.standing.severity}/10`);
+	lines.push('');
+
+	const finalSupineHR = getLastHR('supine');
+	const { hr: peakHR, min: peakMin } = getPeakStandingHR();
+	lines.push('KEY FIGURES');
+	lines.push('─'.repeat(25));
+	if (finalSupineHR != null) lines.push(`Final supine HR:     ${finalSupineHR} bpm`);
+	if (peakHR != null)        lines.push(`Peak standing HR:    ${peakHR} bpm (at ${peakMin} min)`);
+	if (finalSupineHR != null && peakHR != null) {
+		lines.push(`HR increase:         ${peakHR - finalSupineHR} bpm`);
+	}
+	lines.push('');
+	lines.push('═'.repeat(45));
+	lines.push('This is an informational tool only. Results should be discussed with a clinician.');
+	lines.push('POTS threshold: ≥30 bpm increase on standing, or standing HR >120 bpm (with symptoms ≥3 months)');
+	lines.push('Orthostatic hypotension threshold: systolic drop ≥20 mmHg or diastolic drop ≥10 mmHg');
+	return lines.join('\n');
+}
+
+// ── Event wiring ──────────────────────────────────────────────────────────────
+document.getElementById('start-btn').addEventListener('click', () => {
+	// Initialise AudioContext on first user interaction (iOS requirement)
+	if (!audioCtx) {
+		try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) {}
+	}
+	startPhase('supine');
+});
+
+document.getElementById('stop-btn').addEventListener('click', stopEarly);
+document.getElementById('save-reading-btn').addEventListener('click', saveReading);
+document.getElementById('skip-reading-btn').addEventListener('click', skipReading);
+
+document.getElementById('input-hr').addEventListener('keydown', e => {
+	if (e.key === 'Enter') saveReading();
+});
+
+document.getElementById('go-transition-btn').addEventListener('click', () => {
+	testData.supine.symptoms = document.getElementById('supine-symptoms-text').value.trim();
+	testData.supine.severity = parseInt(document.getElementById('supine-severity').value);
+	show('screen-transition');
+});
+
+document.getElementById('ready-standing-btn').addEventListener('click', () => {
+	startPhase('standing');
+});
+
+document.getElementById('go-results-btn').addEventListener('click', () => {
+	testData.standing.symptoms = document.getElementById('standing-symptoms-text').value.trim();
+	testData.standing.severity = parseInt(document.getElementById('standing-severity').value);
+	showResults();
+});
+
+document.getElementById('supine-severity').addEventListener('input', function() {
+	document.getElementById('supine-severity-value').textContent = this.value;
+});
+document.getElementById('standing-severity').addEventListener('input', function() {
+	document.getElementById('standing-severity-value').textContent = this.value;
+});
+
+document.getElementById('copy-btn').addEventListener('click', () => {
+	navigator.clipboard.writeText(buildText()).then(() => {
+		const el = document.getElementById('copy-confirm');
+		el.hidden = false;
+		setTimeout(() => el.hidden = true, 3000);
+	});
+});
+
+document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+	testData.supine   = { readings: {}, symptoms: '', severity: 0 };
+	testData.standing = { readings: {}, symptoms: '', severity: 0 };
+	testData.stoppedEarly = false;
+	document.getElementById('stopped-note').hidden = true;
+	document.getElementById('supine-symptoms-text').value = '';
+	document.getElementById('standing-symptoms-text').value = '';
+	document.getElementById('supine-severity').value = '0';
+	document.getElementById('standing-severity').value = '0';
+	document.getElementById('supine-severity-value').textContent = '0';
+	document.getElementById('standing-severity-value').textContent = '0';
+	show('screen-setup');
+});
+</script>
+
+<style>
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+main {
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 2rem 1.25rem 4rem;
+}
+
+.screen { display: block; }
+.screen[hidden] { display: none; }
+
+/* ── Tool header (setup screen) ───────────────────────────────────────────── */
+.tool-header { margin-bottom: 2.5rem; }
+
+.section-label {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #6b7280;
+	text-decoration: none;
+	margin-bottom: 0.75rem;
+}
+.section-label:hover { color: #374151; }
+
+h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 1.2; }
+.subtitle { color: #6b7280; font-size: 1rem; margin: 0 0 1.25rem; }
+
+.disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: #78350f;
+}
+
+/* ── Setup content ────────────────────────────────────────────────────────── */
+.setup-content h2 { font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+.setup-content p, .setup-content li { line-height: 1.7; color: #374151; }
+.setup-content ul { padding-left: 1.5rem; }
+.setup-content li { margin-bottom: 0.4rem; }
+
+.position-guide { display: grid; gap: 1rem; margin: 1rem 0 1.5rem; }
+.position-item {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+.position-icon {
+	font-size: 1.5rem;
+	flex-shrink: 0;
+	width: 2rem;
+	text-align: center;
+	color: #9ca3af;
+	font-weight: 700;
+	padding-top: 2px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn-primary {
+	display: inline-block;
+	background: #1d4ed8;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.75rem 1.75rem;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-primary:hover { background: #1e40af; }
+.btn-primary:active { background: #1e3a8a; }
+
+.btn-large { padding: 1rem 2.5rem; font-size: 1.1rem; margin-top: 1.5rem; }
+
+.btn-secondary {
+	display: inline-block;
+	background: #fff;
+	color: #1d4ed8;
+	border: 2px solid #1d4ed8;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-secondary:hover { background: #eff6ff; }
+
+.btn-outline {
+	display: inline-block;
+	background: transparent;
+	color: #6b7280;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-outline:hover { background: #f9fafb; }
+
+.btn-stop {
+	background: #fff;
+	color: #991b1b;
+	border: 2px solid #fca5a5;
+	border-radius: 8px;
+	padding: 0.5rem 1.1rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-stop:hover { background: #fef2f2; }
+
+.btn-skip {
+	background: none;
+	border: none;
+	color: #6b7280;
+	font-size: 0.875rem;
+	cursor: pointer;
+	padding: 0.4rem 0;
+	text-decoration: underline;
+}
+.btn-skip:hover { color: #374151; }
+
+/* ── Timer screen ─────────────────────────────────────────────────────────── */
+.phase-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+}
+
+.phase-badge {
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: #1d4ed8;
+	background: #eff6ff;
+	border: 1px solid #bfdbfe;
+	border-radius: 999px;
+	padding: 0.3rem 0.9rem;
+}
+
+.timer-display {
+	text-align: center;
+	padding: 2rem 0 1.5rem;
+	transition: background 0.15s;
+	border-radius: 16px;
+}
+.timer-display.flash {
+	background: #fef9c3;
+}
+
+.timer-value {
+	font-size: 5.5rem;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1;
+	color: #111827;
+	font-variant-numeric: tabular-nums;
+}
+@media (max-width: 480px) {
+	.timer-value { font-size: 4rem; }
+}
+
+.timer-label {
+	font-size: 1rem;
+	color: #6b7280;
+	margin-top: 0.25rem;
+}
+
+.phase-status {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.9rem;
+	color: #6b7280;
+	margin: 0.75rem 0 1.5rem;
+}
+
+.next-reading { color: #374151; }
+.next-reading[hidden] { display: none; }
+
+/* ── Live readings table ──────────────────────────────────────────────────── */
+.live-table-wrapper { overflow-x: auto; }
+.live-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+.live-table th {
+	text-align: left;
+	font-weight: 600;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid #e5e7eb;
+	color: #374151;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+.live-table td {
+	padding: 0.6rem 0.75rem;
+	border-bottom: 1px solid #f3f4f6;
+	color: #374151;
+}
+.reading-cell { color: #9ca3af; }
+.reading-cell:not(:empty):not([data-empty]) { color: #111827; font-weight: 500; }
+
+/* ── Prompt overlay ───────────────────────────────────────────────────────── */
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	z-index: 100;
+}
+.overlay[hidden] { display: none; }
+
+.overlay-card {
+	background: #fff;
+	border-radius: 16px;
+	padding: 1.75rem 1.5rem 1.5rem;
+	max-width: 420px;
+	width: 100%;
+	box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.overlay-badge {
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	background: #dcfce7;
+	color: #166534;
+	border-radius: 999px;
+	padding: 0.2rem 0.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.overlay-title {
+	font-size: 1.75rem;
+	font-weight: 700;
+	margin: 0 0 0.75rem;
+	color: #111827;
+}
+
+.overlay-instruction {
+	font-size: 0.9rem;
+	color: #6b7280;
+	margin: 0 0 1.25rem;
+}
+
+.overlay-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 1.25rem;
+}
+
+/* ── Input groups ─────────────────────────────────────────────────────────── */
+.input-group { margin-bottom: 1rem; }
+.input-group label {
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: #374151;
+	margin-bottom: 0.4rem;
+}
+.unit { font-weight: 400; color: #6b7280; font-size: 0.8rem; }
+.required { color: #dc2626; font-size: 0.75rem; font-weight: 400; }
+.optional { color: #9ca3af; font-size: 0.75rem; font-weight: 400; }
+
+.input-group input[type="number"],
+.input-group textarea {
+	width: 100%;
+	box-sizing: border-box;
+	border: 1.5px solid #d1d5db;
+	border-radius: 8px;
+	padding: 0.7rem 0.9rem;
+	font-size: 1.1rem;
+	color: #111827;
+	background: #fff;
+	transition: border-color 0.15s;
+	-moz-appearance: textfield;
+}
+.input-group input[type="number"]::-webkit-outer-spin-button,
+.input-group input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+.input-group input:focus,
+.input-group textarea:focus {
+	outline: none;
+	border-color: #1d4ed8;
+	box-shadow: 0 0 0 3px #bfdbfe55;
+}
+.input-group textarea { font-size: 0.95rem; resize: vertical; }
+
+.bp-row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.bp-row input { flex: 1; }
+.bp-sep { font-size: 1.5rem; color: #9ca3af; flex-shrink: 0; }
+
+.input-error {
+	color: #dc2626;
+	font-size: 0.85rem;
+	margin-top: 0.4rem;
+}
+.input-error[hidden] { display: none; }
+
+/* ── Severity slider ──────────────────────────────────────────────────────── */
+.severity-row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+.severity-row input[type="range"] { flex: 1; }
+.severity-number {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #111827;
+	min-width: 1.5rem;
+	text-align: right;
+}
+
+/* ── Step screens ─────────────────────────────────────────────────────────── */
+.screen-content { max-width: 580px; }
+.screen-content h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
+.screen-content p { color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+
+.steps { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.25rem 0; }
+.step {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+}
+.step-num {
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	background: #1d4ed8;
+	color: #fff;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 0.875rem;
+}
+.step p { margin: 0; line-height: 1.6; color: #374151; padding-top: 0.25rem; }
+
+.transition-note {
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+	border-radius: 8px;
+	padding: 0.9rem 1.1rem;
+	font-size: 0.925rem;
+	color: #166534;
+	margin-top: 1.5rem;
+}
+
+/* ── Results ──────────────────────────────────────────────────────────────── */
+.results-content h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+.results-content h3 { font-size: 1.1rem; margin: 2rem 0 0.75rem; }
+
+.stopped-note {
+	background: #fef3c7;
+	border: 1px solid #fcd34d;
+	border-radius: 8px;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
+	color: #92400e;
+	margin-bottom: 1.25rem;
+}
+.stopped-note[hidden] { display: none; }
+
+.summary-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 0.75rem;
+	margin-bottom: 2rem;
+}
+.summary-card {
+	border: 1.5px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 1rem 1.1rem;
+	background: #f9fafb;
+}
+.summary-card.card-flagged {
+	background: #fff1f2;
+	border-color: #fecdd3;
+}
+.card-value {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #111827;
+	line-height: 1;
+	margin-bottom: 0.3rem;
+}
+.card-flagged .card-value { color: #9f1239; }
+.card-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #6b7280;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.35rem;
+}
+.card-detail { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+
+.results-tables { display: grid; gap: 1.5rem; }
+@media (min-width: 560px) {
+	.results-tables { grid-template-columns: 1fr 1fr; }
+}
+.results-table-block h3 { font-size: 0.9rem; margin: 0 0 0.5rem; color: #374151; }
+
+.results-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+.results-table th {
+	text-align: left;
+	padding: 0.4rem 0.6rem;
+	border-bottom: 2px solid #e5e7eb;
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #6b7280;
+	font-weight: 600;
+}
+.results-table td {
+	padding: 0.5rem 0.6rem;
+	border-bottom: 1px solid #f3f4f6;
+	color: #374151;
+}
+
+.symptom-note {
+	margin-top: 0.5rem;
+	font-size: 0.825rem;
+	color: #6b7280;
+	line-height: 1.5;
+}
+
+.interpretation-box {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: #1e293b;
+}
+.interpretation-box p { margin: 0 0 0.75rem; }
+.interpretation-box p:last-child { margin-bottom: 0; }
+
+.threshold-box {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	margin-top: 1.5rem;
+}
+.threshold-box h4 {
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #6b7280;
+	margin: 0 0 0.75rem;
+}
+.threshold-box ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+.threshold-box li {
+	font-size: 0.875rem;
+	color: #374151;
+	line-height: 1.6;
+	margin-bottom: 0.5rem;
+}
+.threshold-box li:last-child { margin-bottom: 0; }
+
+.results-disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 0.9rem 1.1rem;
+	font-size: 0.875rem;
+	color: #78350f;
+	line-height: 1.6;
+	margin-top: 1.5rem;
+}
+
+.export-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1.75rem;
+}
+
+.copy-confirm {
+	font-size: 0.875rem;
+	color: #166534;
+	margin-top: 0.5rem;
+}
+.copy-confirm[hidden] { display: none; }
+
+/* ── Print styles ─────────────────────────────────────────────────────────── */
+@media print {
+	header, footer, .export-buttons, #restart-btn, .btn-stop { display: none !important; }
+	.screen[hidden] { display: none !important; }
+	#screen-results { display: block !important; }
+	.overlay { display: none !important; }
+	main { padding: 0; max-width: 100%; }
+	.summary-card.card-flagged { border: 2px solid #000; }
+	body { font-size: 12pt; }
+	.timer-value { font-size: 2rem; }
+}
+</style>
