@@ -446,8 +446,8 @@ import Header from '../../components/Header.astro';
 				</table>
 
 				<div class="results-disclaimer">
-					<p><strong>How to interpret this score:</strong> The COMPASS-31 is a continuous scale from 0 to 100. Higher scores indicate greater autonomic symptom burden. In the validation study (Sletten 2012), healthy controls scored a mean of approximately 5–7, while patients with confirmed autonomic disorders scored between 20–50+ depending on the condition and severity. A score above 16 is commonly used as a threshold suggesting significant autonomic symptoms warranting clinical evaluation.</p>
-					<p>This tool is for self-monitoring and informational purposes only. It is not a substitute for clinical assessment. If your score suggests significant autonomic symptoms, discuss this with your GP or request a referral to a neurologist or autonomic specialist.</p>
+					<p><strong>How to interpret this score:</strong> The COMPASS-31 is a continuous scale from 0 to 100. Higher scores reflect greater self-reported autonomic symptom burden. In the validation study (Sletten 2012), healthy controls scored a mean of approximately 5–7. A score above 16 is a commonly cited reference point in the published literature. This score reflects what you have reported about your symptoms — it is not a clinical measurement and does not constitute a diagnosis.</p>
+					<p>This tool is for self-monitoring and informational purposes only. It is not a substitute for clinical assessment. Discuss your score with your doctor.</p>
 				</div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
@@ -549,11 +549,11 @@ function computeScore(): { domainScores: { name: string; score: number; max: num
 }
 
 function interpret(score: number): string {
-	if (score < 5) return 'Your score is within the range typically seen in healthy individuals with no significant autonomic symptoms.';
-	if (score < 16) return 'Your score is mildly elevated. Some autonomic symptoms are present but at a level that may not warrant immediate clinical investigation. Monitor for changes.';
-	if (score < 30) return 'Your score suggests moderate autonomic symptom burden. This level is consistent with clinically significant dysautonomia in research settings. Consider discussing with your GP or requesting a specialist referral.';
-	if (score < 50) return 'Your score indicates significant autonomic symptoms across multiple domains. This is consistent with moderate to severe dysautonomia. Clinical evaluation is recommended.';
-	return 'Your score indicates very significant autonomic symptom burden. This level is associated with severe autonomic dysfunction in the published literature. Clinical evaluation is strongly recommended.';
+	if (score < 5) return `Your score of ${score} is in the range typically seen in people without significant autonomic symptoms in the validation study.`;
+	if (score < 16) return `Your score of ${score} is mildly elevated above the range seen in healthy controls in the validation study. Discuss any symptoms with your doctor.`;
+	if (score < 30) return `Your score of ${score} is above the threshold of 16 that is commonly cited in the published literature. Discuss your score and symptoms with your doctor.`;
+	if (score < 50) return `Your score of ${score} indicates autonomic symptoms across multiple domains. Discuss your score and symptoms with your doctor.`;
+	return `Your score of ${score} indicates autonomic symptoms across multiple domains. Discuss your score and symptoms with your doctor.`;
 }
 
 const form = document.getElementById('compass-form') as HTMLFormElement;

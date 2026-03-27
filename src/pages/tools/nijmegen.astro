@@ -47,7 +47,7 @@ const frequencies = [
 				<h1>Nijmegen Questionnaire</h1>
 				<p class="subtitle">Breathing Pattern Disorder Screening</p>
 				<p class="description">
-					The Nijmegen Questionnaire is a 16-item validated screening tool for breathing pattern disorder (BPD), also called hyperventilation syndrome. It is widely used in respiratory physiotherapy and primary care. A score of 23 or above suggests BPD is likely.
+					The Nijmegen Questionnaire is a 16-item validated screening tool for breathing pattern disorder (BPD), also called hyperventilation syndrome. It is widely used in respiratory physiotherapy and primary care. A score of 23 or above is the published threshold used in the original validation study.
 				</p>
 				<div class="disclaimer">
 					<strong>This is not a diagnostic tool.</strong> A high score suggests breathing pattern disorder may be present, but this needs to be assessed clinically. Breathing symptoms can have multiple causes, including autonomic dysfunction, which can present similarly to BPD. Discuss results with your doctor. Based on: van Dixhoorn J, Duivenvoorden HJ. <em>Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome.</em> J Psychosom Res. 1985;29(2):199–206.
@@ -108,9 +108,9 @@ const frequencies = [
 
 				<div class="results-disclaimer">
 					<h3>About the Nijmegen Questionnaire</h3>
-					<p><strong>Scoring:</strong> Each of the 16 items is scored 0–4 (never to very often). Maximum possible score is 64. A score of <strong>23 or above</strong> is the validated threshold suggesting breathing pattern disorder is likely present.</p>
-					<p><strong>Context for post-viral patients:</strong> There is significant symptom overlap between breathing pattern disorder and autonomic dysfunction. Both can cause breathlessness, dizziness, chest tightness, and palpitations. A high Nijmegen score does not rule out an autonomic cause for your symptoms — it means disordered breathing is also likely present, which may itself be secondary to autonomic dysfunction. The two conditions can coexist and may reinforce each other.</p>
-					<p><strong>What to do with a high score:</strong> Discuss with your GP. Respiratory physiotherapy (specifically breathing retraining) is the primary treatment for BPD. Even if your breathlessness has an autonomic root cause, breathing retraining is often helpful and low risk.</p>
+					<p><strong>Scoring:</strong> Each of the 16 items is scored 0–4 (never to very often). Maximum possible score is 64. A score of <strong>23 or above</strong> is the published threshold used in the original validation study.</p>
+					<p><strong>Context for post-viral patients:</strong> There is significant symptom overlap between breathing pattern disorder and autonomic dysfunction. Both can cause breathlessness, dizziness, chest tightness, and palpitations. A high Nijmegen score does not rule out an autonomic cause for your symptoms. The two presentations can coexist.</p>
+					<p><strong>This is a screening tool only.</strong> It cannot establish a diagnosis. Discuss your score and any breathing symptoms with your doctor.</p>
 				</div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
@@ -146,9 +146,9 @@ const frequencies = [
 
 	function interpret(score: number): string {
 		if (score < 23) {
-			return `Your score of ${score} is below the threshold of 23. Breathing pattern disorder is unlikely to be a significant factor based on this screening. If you have ongoing breathlessness, other causes should be explored.`;
+			return `Your score of ${score} is below the published threshold of 23. If you have ongoing breathlessness or other respiratory symptoms, discuss them with your doctor.`;
 		}
-		return `Your score of ${score} meets or exceeds the threshold of 23, suggesting breathing pattern disorder (hyperventilation syndrome) is likely present. This is a common finding in post-viral patients and is very treatable with breathing retraining. Discuss with your GP or ask for a referral to a respiratory physiotherapist.`;
+		return `Your score of ${score} is at or above the published threshold of 23. The questionnaire was designed to identify people who may benefit from clinical assessment of their breathing pattern. Discuss this score with your doctor.`;
 	}
 
 	form.addEventListener('submit', (e) => {

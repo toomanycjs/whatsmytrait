@@ -576,13 +576,13 @@ function showResults() {
 	} else if (hasOH) {
 		html = `<p><strong>Blood pressure pattern:</strong> Your results show a drop in blood pressure on standing that meets the threshold for orthostatic hypotension (systolic drop ≥20 mmHg or diastolic drop ≥10 mmHg). Orthostatic hypotension is a distinct condition from POTS and is managed differently. Discuss these results with your doctor.</p>`;
 		if (hasPOTS) {
-			html += `<p><strong>Heart rate pattern:</strong> Your results also show a heart rate increase consistent with POTS criteria. When orthostatic hypotension and tachycardia co-occur, the clinical picture requires careful interpretation by a specialist.</p>`;
+			html += `<p><strong>Heart rate pattern:</strong> Your results also show a heart rate increase that meets one of the commonly referenced thresholds. When orthostatic hypotension and tachycardia co-occur, clinical assessment is needed to interpret the picture.</p>`;
 		}
 	} else if (hasPOTS) {
 		html = `<p><strong>Heart rate pattern:</strong> `;
 		if (hrIncrease != null && hrIncrease >= 30) html += `Your heart rate increased by ${hrIncrease} bpm on standing. `;
 		if (peakHR > 120) html += `Your peak standing heart rate was ${peakHR} bpm. `;
-		html += `This is consistent with the heart rate criteria for POTS in adults. This test alone cannot diagnose POTS — results need to be confirmed with clinical assessment, the threshold must be met on a formal test, and symptoms must have been present for at least 3 months. Discuss these results with your doctor.</p>`;
+		html += `Your readings show a pattern that meets one or more of the heart rate thresholds commonly referenced in the POTS literature. This test alone cannot establish a diagnosis — results need to be confirmed with clinical assessment, and symptoms must have been present for at least 3 months. Discuss these results with your doctor.</p>`;
 		if (sysDrop != null) {
 			html += `<p><strong>Blood pressure:</strong> No orthostatic hypotension was identified (systolic drop was ${sysDrop} mmHg, below the 20 mmHg threshold).</p>`;
 		}
