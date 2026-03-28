@@ -8,9 +8,39 @@ import Header from '../../components/Header.astro';
 <html lang="en">
 	<head>
 		<BaseHead
-			title="NASA Lean Test — Headaches & Heartbeats"
-			description="Interactive NASA Lean Test protocol guide for detecting orthostatic intolerance at home. Timed phases, guided readings, and a results summary you can take to your doctor."
-		/>
+		title="NASA lean test — how to do a poor man's tilt table test at home, with timer and logging"
+		description="Step-by-step guide to the NASA lean test with an interactive timer and fields to log your heart rate at each stage. A practical at-home screening method for POTS and orthostatic intolerance."
+	/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "NASA Lean Test", "item": "https://www.postviralrecovery.com/tools/nasa-lean-test/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the NASA lean test?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The NASA lean test is a simplified orthostatic stress test used as an at-home screening method for POTS and orthostatic intolerance. The patient lies flat for 10 minutes, then stands and leans against a wall for 10 minutes, with heart rate recorded at intervals."}
+        },
+        {
+          "@type": "Question",
+          "name": "What heart rate increase suggests POTS on the NASA lean test?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A sustained heart rate increase of 30 bpm or more within 10 minutes of standing, or a standing heart rate exceeding 120 bpm, meets the commonly referenced threshold. This test alone cannot diagnose POTS — results should be discussed with a clinician."}
+        }
+      ]
+    }
+  ]
+}
+</script>
 	</head>
 	<body>
 		<Header />
@@ -29,8 +59,10 @@ import Header from '../../components/Header.astro';
 
 				<div class="setup-content">
 					<h2>What this test does</h2>
-					<p>The NASA Lean Test is a simplified orthostatic stress test used as an accessible alternative to a formal tilt table test. You lie flat for 10 minutes to establish a resting baseline, then stand and lean against a wall for 10 minutes. Heart rate — and optionally blood pressure — are recorded at regular intervals. The pattern of readings can help identify orthostatic intolerance consistent with POTS or orthostatic hypotension.</p>
-					<p>This tool guides you through the protocol in real time, prompts you when to record each reading with an audio chime, and generates a summary you can share with your doctor.</p>
+					<p>The NASA lean test is a simplified version of a tilt table test that you can perform at home with just a heart rate monitor or a finger on your pulse. It is sometimes called the “poor man’s tilt table test” and is widely used in POTS and dysautonomia communities as a practical screening method for orthostatic intolerance.</p>
+<p>The test involves lying flat for a period, then standing up and leaning against a wall with your heels a few inches from the wall and your back supported. Your heart rate is recorded at intervals while lying and while standing. The pattern of heart rate change — specifically whether it rises by 30 or more beats per minute within 10 minutes of standing (or exceeds 120 bpm) without a significant drop in blood pressure — is the key finding that suggests POTS.</p>
+<p>A formal tilt table test involves being strapped to a motorised table in a clinical setting, which can be difficult to access, especially through the NHS where waiting times for autonomic testing are often long. The NASA lean test is not a replacement for formal testing, but it gives you a structured way to gather objective data at home that you can bring to appointments. Many patients find that presenting lean test results helps move conversations forward with clinicians who may not otherwise consider autonomic testing.</p>
+<p>This guide walks you through the test step by step, with an interactive timer for each stage and fields to log your heart rate readings. You can repeat it on different days to build up a picture of your orthostatic heart rate response.</p>
 
 					<h2>What you need</h2>
 					<ul>

@@ -1,0 +1,371 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const situations = [
+	'Sitting and reading',
+	'Watching television',
+	'Sitting inactive in a public place (e.g. a theatre or a meeting)',
+	'As a passenger in a car for an hour without a break',
+	'Lying down to rest in the afternoon when circumstances permit',
+	'Sitting and talking to someone',
+	'Sitting quietly after lunch (without alcohol)',
+	'In a car, while stopped for a few minutes in the traffic',
+];
+
+const ratings = [
+	{ value: 0, label: 'Would never doze' },
+	{ value: 1, label: 'Slight chance' },
+	{ value: 2, label: 'Moderate chance' },
+	{ value: 3, label: 'High chance' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Epworth Sleepiness Scale — free online questionnaire with scoring"
+			description="Complete the Epworth Sleepiness Scale online for free. An 8-item validated questionnaire measuring daytime sleepiness. Instant scoring with interpretation. No sign-up required."
+		/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Epworth Sleepiness Scale", "item": "https://www.postviralrecovery.com/tools/epworth/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a normal Epworth Sleepiness Scale score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score of 0–10 is considered normal daytime sleepiness. A score of 11 or above is the standard threshold for excessive daytime sleepiness."}
+        },
+        {
+          "@type": "Question",
+          "name": "What does an Epworth score above 10 mean?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score of 11 or above suggests excessive daytime sleepiness and may warrant discussion with your doctor, particularly if you have other symptoms such as loud snoring or unrefreshing sleep."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Epworth Sleepiness Scale</h1>
+				<p class="subtitle">ESS — Daytime Sleepiness Questionnaire</p>
+				<p class="description">
+  The Epworth Sleepiness Scale (ESS) is an 8-item questionnaire that measures your general level of daytime sleepiness. It was developed by Dr Murray Johns in 1991 and is one of the most widely used instruments in sleep medicine. Each item describes a situation in which you might doze off, and you rate the likelihood on a scale from 0 (would never doze) to 3 (high chance of dozing). Your total score ranges from 0 to 24.
+</p>
+<p class="description">
+  The ESS is relevant to post-viral conditions because excessive daytime sleepiness and unrefreshing sleep are common features of ME/CFS, long COVID, and post-viral fatigue. However, the relationship between fatigue and sleepiness is not straightforward. Many people with post-viral fatigue feel profoundly exhausted but are not actually sleepy in the way the ESS measures. A low ESS score alongside severe fatigue can itself be informative, as it suggests the fatigue is not driven by excessive sleep propensity and may point toward other mechanisms.
+</p>
+<p class="description">
+  The ESS is used in research on long COVID and post-viral conditions and is commonly used by GPs and sleep specialists as a first-line screening tool for sleep disorders.
+</p>
+<p class="description">
+  This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
+</p>
+<div class="disclaimer">
+  <strong>This is not a diagnostic tool.</strong> Your score reflects self-reported likelihood of dozing and does not constitute a diagnosis. Discuss results with your doctor. Based on: Johns MW. A new method for measuring daytime sleepiness: the Epworth Sleepiness Scale. Sleep. 1991;14(6):540–545.
+</div>
+			</div>
+
+			<form id="epworth-form" novalidate>
+				<p class="form-instructions">How likely are you to doze off or fall asleep in the following situations, in contrast to feeling just tired? Even if you have not done some of these things recently, try to work out how they would have affected you. Rate your likelihood of dozing: 0 = would never doze, 1 = slight chance, 2 = moderate chance, 3 = high chance.</p>
+
+				<div class="question-grid">
+					{situations.map((q, i) => (
+						<div class="question" data-index={i}>
+							<p class="q-text"><span class="q-num">{i + 1}.</span> {q}</p>
+							<div class="options">
+								{ratings.map(r => (
+									<label>
+										<input type="radio" name={`q${i}`} value={r.value} required />
+										<span>{r.label}</span>
+									</label>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+
+				<div class="form-footer">
+					<button type="submit">Calculate score</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your Epworth Sleepiness Scale score</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">out of 24</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Item breakdown</h3>
+				<table class="breakdown-table">
+					<thead>
+						<tr>
+							<th>Situation</th>
+							<th>Your response</th>
+							<th>Score</th>
+						</tr>
+					</thead>
+					<tbody id="breakdown-rows"></tbody>
+					<tfoot>
+						<tr>
+							<td><strong>Total</strong></td>
+							<td></td>
+							<td><strong id="breakdown-total"></strong></td>
+						</tr>
+					</tfoot>
+				</table>
+
+				<div class="results-disclaimer">
+  <h3>Understanding your score</h3>
+  <p>The Epworth Sleepiness Scale produces a total score between 0 and 24. A score of 11 or above is the standard threshold for excessive daytime sleepiness.</p>
+  <p><strong>0–5:</strong> lower normal daytime sleepiness.</p>
+  <p><strong>6–10:</strong> higher normal daytime sleepiness.</p>
+  <p><strong>11–12:</strong> mild excessive daytime sleepiness.</p>
+  <p><strong>13–15:</strong> moderate excessive daytime sleepiness.</p>
+  <p><strong>16–24:</strong> severe excessive daytime sleepiness.</p>
+  <p>In post-viral conditions, the ESS result is often most useful alongside other measures. A high ESS score may point toward a sleep disorder (such as obstructive sleep apnoea) contributing to the overall picture. A low ESS score alongside significant fatigue is also meaningful — it suggests the fatigue has a different character from sleepiness, which is more consistent with ME/CFS-type fatigue or autonomic dysfunction. If that's your situation, the <a href="/tools/fss/">Fatigue Severity Scale</a> may be a more relevant measure.</p>
+  <p>This is a screening tool only. Discuss your score with your doctor.</p>
+</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+	const SITUATIONS = [
+		'Sitting and reading',
+		'Watching television',
+		'Sitting inactive in a public place (e.g. a theatre or a meeting)',
+		'As a passenger in a car for an hour without a break',
+		'Lying down to rest in the afternoon when circumstances permit',
+		'Sitting and talking to someone',
+		'Sitting quietly after lunch (without alcohol)',
+		'In a car, while stopped for a few minutes in the traffic',
+	];
+
+	const CHANCE_LABELS = ['Would never doze', 'Slight chance', 'Moderate chance', 'High chance'];
+
+	const form = document.getElementById('epworth-form') as HTMLFormElement;
+	const results = document.getElementById('results') as HTMLElement;
+	const totalEl = document.getElementById('total-score-value') as HTMLElement;
+	const interpEl = document.getElementById('score-interpretation') as HTMLElement;
+	const rowsEl = document.getElementById('breakdown-rows') as HTMLElement;
+	const breakdownTotalEl = document.getElementById('breakdown-total') as HTMLElement;
+
+	function getVal(i: number): number | null {
+		const checked = document.querySelector<HTMLInputElement>(`input[name="q${i}"]:checked`);
+		return checked ? parseInt(checked.value) : null;
+	}
+
+	function interpret(score: number): string {
+		if (score <= 5) {
+			return `Your score of ${score} is in the lower normal range for daytime sleepiness.`;
+		} else if (score <= 10) {
+			return `Your score of ${score} is in the higher normal range for daytime sleepiness.`;
+		} else if (score <= 12) {
+			return `Your score of ${score} suggests mild excessive daytime sleepiness. This may be worth discussing with your doctor.`;
+		} else if (score <= 15) {
+			return `Your score of ${score} suggests moderate excessive daytime sleepiness. Discuss this with your doctor.`;
+		}
+		return `Your score of ${score} suggests severe excessive daytime sleepiness. Discuss this with your doctor.`;
+	}
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+		let total = 0;
+		const answers: number[] = [];
+
+		for (let i = 0; i < 8; i++) {
+			const v = getVal(i);
+			if (v === null) {
+				alert('Please answer all 8 questions before calculating your score.');
+				const firstUnanswered = document.querySelector<HTMLElement>(`.question[data-index="${i}"]`);
+				firstUnanswered?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				return;
+			}
+			answers.push(v);
+			total += v;
+		}
+
+		totalEl.textContent = String(total);
+		interpEl.textContent = interpret(total);
+		breakdownTotalEl.textContent = String(total);
+
+		rowsEl.innerHTML = answers.map((val, i) => `
+			<tr>
+				<td>${SITUATIONS[i]}</td>
+				<td>${CHANCE_LABELS[val]}</td>
+				<td>${val}</td>
+			</tr>
+		`).join('');
+
+		form.hidden = true;
+		results.hidden = false;
+		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+
+	document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+
+	document.getElementById('back-btn')?.addEventListener('click', () => {
+		results.hidden = true;
+		form.hidden = false;
+		form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+
+	.form-instructions {
+		color: rgb(var(--gray));
+		font-style: italic;
+		margin-bottom: 1.5em;
+		font-size: 0.95em;
+	}
+
+	.question-grid { display: flex; flex-direction: column; gap: 0; }
+	.question {
+		padding: 1.1em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.q-text { margin: 0 0 0.6em; font-size: 0.95em; }
+	.q-num { font-weight: 700; margin-right: 0.25em; }
+	.options {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4em;
+	}
+	.options label {
+		display: flex;
+		align-items: center;
+		gap: 0.4em;
+		cursor: pointer;
+		font-size: 0.88em;
+		padding: 0.35em 0.65em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 20px;
+		transition: background 0.1s, border-color 0.1s;
+		white-space: nowrap;
+	}
+	.options label:hover { border-color: var(--accent); color: var(--accent); }
+	.options label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+	.options input[type="radio"] { display: none; }
+
+	.form-footer {
+		display: flex;
+		gap: 1em;
+		padding: 2em 0 1em;
+	}
+	button[type="submit"] {
+		background: var(--accent);
+		color: #fff;
+		border: none;
+		padding: 0.75em 2em;
+		border-radius: 5px;
+		font-size: 1em;
+		font-weight: 700;
+		cursor: pointer;
+		font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+	}
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2, .results h3 { margin-bottom: 0.5em; }
+	.total-score {
+		display: flex;
+		align-items: baseline;
+		gap: 0.5em;
+		margin: 1em 0;
+	}
+	#total-score-value {
+		font-size: 3.5em;
+		font-weight: 700;
+		color: var(--accent);
+		line-height: 1;
+	}
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp {
+		font-size: 1em;
+		line-height: 1.6;
+		margin: 0 0 2em;
+		padding: 1em 1.25em;
+		background: var(--accent-light);
+		border-left: 4px solid var(--accent);
+		border-radius: 4px;
+	}
+	.breakdown-table { margin: 1em 0 2em; font-size: 0.9em; }
+	.breakdown-table tfoot td { border-bottom: none; border-top: 2px solid rgb(var(--gray-light)); }
+	.results-disclaimer {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light));
+		padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+		margin-top: 1em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.options { flex-direction: column; }
+		.form-footer { flex-direction: column; }
+	}
+</style>

@@ -8,9 +8,44 @@ import Header from '../../components/Header.astro';
 <html lang="en">
 	<head>
 		<BaseHead
-			title="COMPASS-31 Questionnaire — Headaches & Heartbeats"
-			description="Interactive COMPASS-31 (Composite Autonomic Symptom Score) questionnaire. Complete the 31 items online and get an automatic score across six autonomic domains."
+			title="COMPASS-31 questionnaire — free online version with automatic scoring"
+			description="Complete the COMPASS-31 autonomic symptom questionnaire online for free. Get your weighted score immediately with a domain breakdown and interpretation guide. No sign-up required."
 		/>
+	<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "COMPASS-31", "item": "https://www.postviralrecovery.com/tools/compass-31/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a normal COMPASS-31 score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls scored a mean of approximately 5–7. A score above 16 is commonly cited as suggesting a meaningful autonomic symptom burden."}
+        },
+        {
+          "@type": "Question",
+          "name": "What does a high COMPASS-31 score mean?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A high score reflects a greater self-reported burden of autonomic symptoms across the six domains measured. It is not a diagnosis of any condition. Scores should be discussed with your doctor or specialist."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is the COMPASS-31 used for POTS?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. The COMPASS-31 is widely used in POTS research and clinical practice to measure autonomic symptom burden. It has also been used in long COVID and ME/CFS research."}
+        }
+      ]
+    }
+  ]
+}
+</script>
 	</head>
 	<body>
 		<Header />
@@ -20,11 +55,23 @@ import Header from '../../components/Header.astro';
 				<h1>COMPASS-31</h1>
 				<p class="subtitle">Composite Autonomic Symptom Score</p>
 				<p class="description">
-					The COMPASS-31 is a 31-item questionnaire that measures the severity of autonomic symptoms across six domains. It is widely used in research and clinical practice to assess dysautonomia, POTS, and related conditions.
-				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> Your score reflects self-reported symptom severity and does not constitute a diagnosis. Discuss results with your doctor or neurologist. Based on: Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. <em>COMPASS 31: a refined and abbreviated composite autonomic symptom score.</em> Mayo Clin Proc. 2012;87(12):1196–1201.
-				</div>
+  The COMPASS-31 (Composite Autonomic Symptom Score) is a 31-item self-report questionnaire that measures the severity of autonomic symptoms across six domains: orthostatic intolerance, vasomotor function, secretomotor function, gastrointestinal symptoms, bladder function, and pupillomotor function. It was developed at the Mayo Clinic and published by Sletten and colleagues in 2012 as a shorter, more practical version of the original 169-item Autonomic Symptom Profile.
+</p>
+<p class="description">
+  It is widely used in both clinical practice and research to screen for dysautonomia and to track autonomic symptom burden over time. It has been validated in multiple languages and is referenced in studies on POTS, diabetic neuropathy, and post-viral autonomic dysfunction including long COVID.
+</p>
+<p class="description">
+  The questionnaire generates a weighted total score from 0 to 100, with higher scores indicating greater symptom severity. Each domain is scored separately and then weighted according to the original validation, so the total reflects the relative clinical importance of different symptom areas rather than simply adding up raw answers.
+</p>
+<p class="description">
+  If you have a post-viral condition, POTS, ME/CFS, or suspected dysautonomia, the COMPASS-31 can help you quantify your symptom burden in a structured way. It is particularly useful for tracking changes over time and for bringing a concrete, standardised summary to clinical appointments.
+</p>
+<p class="description">
+  This is a free, interactive version. Complete it below and receive your weighted score immediately, broken down by domain. No sign-up or email is required.
+</p>
+<div class="disclaimer">
+  <strong>This is not a diagnostic tool.</strong> Your score reflects self-reported symptom severity and does not constitute a diagnosis of any condition. Scores should be discussed with your doctor or specialist. Based on: Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. <em>COMPASS 31: a refined and abbreviated composite autonomic symptom score.</em> Mayo Clin Proc. 2012;87(12):1196–1201.
+</div>
 			</div>
 
 			<form id="compass-form" novalidate>
@@ -446,9 +493,14 @@ import Header from '../../components/Header.astro';
 				</table>
 
 				<div class="results-disclaimer">
-					<p><strong>How to interpret this score:</strong> The COMPASS-31 is a continuous scale from 0 to 100. Higher scores reflect greater self-reported autonomic symptom burden. In the validation study (Sletten 2012), healthy controls scored a mean of approximately 5–7. A score above 16 is a commonly cited reference point in the published literature. This score reflects what you have reported about your symptoms — it is not a clinical measurement and does not constitute a diagnosis.</p>
-					<p>This tool is for self-monitoring and informational purposes only. It is not a substitute for clinical assessment. Discuss your score with your doctor.</p>
-				</div>
+  <h3>Understanding your score</h3>
+  <p>The COMPASS-31 produces a total weighted score between 0 and 100 and individual scores for each of the six domains. Higher scores reflect a greater self-reported burden of autonomic symptoms.</p>
+  <p>In the original validation study, healthy controls scored a mean of approximately 5–7. There is no single universally agreed clinical threshold, but a total score above 16 is commonly cited in the published literature. In a large survey of over 2,300 people with post-acute COVID-19, a score of 20 or above was used to indicate moderate to severe autonomic dysfunction, and 66% of participants met that threshold.</p>
+  <p>As a rough guide: <strong>0–10</strong> is within the range seen in healthy individuals in the validation study. <strong>11–20</strong> is mildly elevated above that range. <strong>21–40</strong> represents a moderate symptom burden consistent with clinically significant autonomic involvement in most published studies. <strong>Above 40</strong> represents a high symptom burden.</p>
+  <p>The domain breakdown is often as informative as the total score. A high score driven mainly by gastrointestinal symptoms tells a different story from one driven by orthostatic intolerance. When discussing your results with a clinician, the domain scores can help focus the conversation.</p>
+  <p>If you use the COMPASS-31 to track your symptoms over time, complete it under similar conditions each time and at consistent intervals (such as monthly).</p>
+  <p><strong>This score is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss your results with your doctor or specialist.</p>
+</div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>

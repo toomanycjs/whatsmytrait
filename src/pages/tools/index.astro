@@ -19,26 +19,32 @@ const questionnaires = [
 	{
 		title: 'Fatigue Severity Scale (FSS)',
 		description: '9-item fatigue questionnaire widely used in post-viral and chronic illness research. Simple and quick to complete.',
-		href: '/tools/fss',
+		href: '/tools/fss/',
 		badge: 'Questionnaire',
 	},
 	{
 		title: 'Epworth Sleepiness Scale',
 		description: '8-item daytime sleepiness questionnaire. Simple, widely used, and commonly searched by people with fatigue-related conditions.',
-		href: '/tools/epworth',
+		href: '/tools/epworth/',
 		badge: 'Questionnaire',
 	},
 	{
 		title: 'Bell CFIDS Disability Scale',
 		description: 'Functional capacity scale from 0–100, widely referenced in ME/CFS and post-viral communities. Quick self-check for functional status.',
-		href: '/tools/bell-scale',
+		href: '/tools/bell-scale/',
 		badge: 'Questionnaire',
 	},
 	{
 		title: 'NASA Lean Test Guide',
 		description: 'Interactive guide and timer for performing a poor man\'s tilt table test at home, with fields to log your HR readings at each stage.',
-		href: '/tools/nasa-lean-test',
+		href: '/tools/nasa-lean-test/',
 		badge: 'Interactive guide',
+	},
+	{
+		title: 'Which questionnaire should I take?',
+		description: 'Not sure where to start? A plain-language guide to choosing the right post-viral self-assessment tool for your situation.',
+		href: '/tools/which-questionnaire/',
+		badge: 'Guide',
 	},
 ];
 
@@ -46,25 +52,25 @@ const sheets = [
 	{
 		title: 'HRV & Resting Heart Rate Tracker',
 		description: 'Daily logging with automatic weekly/monthly medians and trend charts. Compatible with Garmin, Apple Watch, Polar, and manual entry.',
-		href: 'https://docs.google.com/spreadsheets/d/placeholder-hrv-tracker',
+		href: '/tools/trackers/hrv-tracker/',
 		badge: 'Google Sheet',
 	},
 	{
 		title: 'Symptom Diary',
 		description: 'Daily scores for fatigue, breathlessness, head pain, and cognitive function with rolling averages. Useful for identifying patterns and tracking trends.',
-		href: 'https://docs.google.com/spreadsheets/d/placeholder-symptom-diary',
+		href: '/tools/trackers/symptom-diary/',
 		badge: 'Google Sheet',
 	},
 	{
 		title: 'Stand Test Logger',
 		description: 'Record and track orthostatic heart rate responses over time. Log HR at baseline, 2 min, 5 min, and 10 min standing.',
-		href: 'https://docs.google.com/spreadsheets/d/placeholder-stand-test',
+		href: '/tools/trackers/stand-test-logger/',
 		badge: 'Google Sheet',
 	},
 	{
 		title: 'Medication & Supplement Log',
 		description: 'Track what you\'re taking, doses, start/stop dates, and notes. Useful for GP appointments and for spotting correlations with symptom changes.',
-		href: 'https://docs.google.com/spreadsheets/d/placeholder-med-log',
+		href: '/tools/trackers/medication-log/',
 		badge: 'Google Sheet',
 	},
 ];
@@ -74,9 +80,19 @@ const sheets = [
 <html lang="en">
 	<head>
 		<BaseHead
-			title="Tools — Headaches & Heartbeats"
-			description="Free tracking spreadsheets and interactive clinical questionnaires for post-viral syndrome and dysautonomia, including COMPASS-31 and the Nijmegen questionnaire."
+			title="Free post-viral symptom tools — questionnaires, trackers, and self-assessments"
+			description="Free interactive questionnaires (COMPASS-31, Nijmegen, FSS, Epworth, Bell scale), a NASA lean test guide, and Google Sheets trackers for HRV, symptoms, and medications. Designed for people with post-viral conditions, POTS, and ME/CFS."
 		/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"}
+  ]
+}
+</script>
 	</head>
 	<body>
 		<Header />
@@ -111,14 +127,13 @@ const sheets = [
 
 			<section>
 				<h2>Google Sheets trackers</h2>
-				<p class="section-note">Open in Google Sheets and use File → Make a copy to get your own editable version.</p>
+				<p class="section-note">Each tracker links to a page with more information and a link to the Google Sheet. Use File → Make a copy to get your own editable version.</p>
 				<ul class="tool-list">
 					{sheets.map(tool => (
 						<li>
-							<a href={tool.href} class="tool-card" target="_blank" rel="noopener noreferrer">
+							<a href={tool.href} class="tool-card">
 								<div class="tool-meta">
 									<span class="tool-badge sheet">{tool.badge}</span>
-									<span class="external-icon" aria-hidden="true">↗</span>
 								</div>
 								<h3>{tool.title}</h3>
 								<p>{tool.description}</p>

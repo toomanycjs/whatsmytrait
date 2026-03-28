@@ -56,7 +56,7 @@ Pacing involves identifying an "energy envelope" — the level of daily activity
 
 In practice:
 
-**Activity monitoring**: Tracking daily activity, symptoms, and heart rate to identify patterns. [Wearable devices and symptom diaries](/testing/recumbent-exercise/) help identify where the threshold lies.
+**Activity monitoring**: Tracking daily activity, symptoms, and heart rate to identify patterns. [Wearable devices and symptom diaries](/testing/recumbent-exercise/) help identify where the threshold lies. The [Fatigue Severity Scale](/tools/fss/) is a free interactive tool for measuring the functional impact of fatigue.
 
 **Heart rate limits**: Some specialists recommend a heart rate ceiling based on the anaerobic threshold from CPET, or a proxy calculated from age (formula: 0.5 × (220 − age)). Staying below this ceiling during all activity reduces the risk of triggering PEM.
 

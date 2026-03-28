@@ -1,0 +1,71 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import Header from '../../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Free stand test logger — track orthostatic heart rate over time"
+			description="A free Google Sheets template for logging NASA lean test and active stand test results over time. Record heart rate at baseline, 2, 5, and 10 minutes standing. Track your orthostatic response."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Stand test logger</h1>
+				<p class="subtitle">Free Google Sheets template for tracking orthostatic heart rate over time</p>
+			</div>
+
+			<div class="content">
+				<p>If you are using the NASA lean test or a similar active stand test to monitor your orthostatic heart rate response, this Google Sheets logger gives you a structured way to record and track your results over time.</p>
+
+				<p>The logger includes fields for heart rate at baseline (lying), then at 2, 5, and 10 minutes of standing, along with a date, any notes (such as hydration status, time of day, or how you felt), and automatic calculation of the heart rate rise at each interval.</p>
+
+				<p>A single stand test result is useful but limited. Repeating the test over days and weeks gives you a much more reliable picture of your orthostatic response, and makes it easier to see whether an intervention — such as increased salt and fluid intake, compression, or medication — is making a measurable difference.</p>
+
+				<p>This pairs well with the <a href="/tools/nasa-lean-test/">NASA lean test guide</a>, which walks you through the test step by step with an interactive timer.</p>
+
+				<p>To use it, open the link below and go to <strong>File → Make a copy</strong>.</p>
+
+				<a href="#" class="cta-button">Open the stand test logger in Google Sheets →</a>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.page-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0; }
+
+	.content {
+		max-width: 100%;
+		line-height: 1.7;
+	}
+	.content p { margin-bottom: 1.25em; }
+	.content a { color: var(--accent); }
+
+	.cta-button {
+		display: inline-block;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		padding: 0.75em 1.75em;
+		border-radius: 5px;
+		font-weight: 700;
+		font-size: 1em;
+		margin: 0.5em 0 1.75em;
+		transition: background 0.15s;
+	}
+	.cta-button:hover { background: var(--accent-dark); }
+</style>

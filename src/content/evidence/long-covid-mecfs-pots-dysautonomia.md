@@ -85,7 +85,7 @@ If you've been given one of these diagnoses and you're trying to understand what
 
 The diagnosis you receive depends significantly on which specialist you saw, what investigations they did, and what their particular framing is. A cardiologist who tilts you and finds 30+ bpm rise will call it POTS. A general physician who sees fatigue and post-exertional worsening may say ME/CFS or post-viral fatigue. A neurologist may say dysautonomia. These can all be describing the same underlying biology.
 
-For [tracking and monitoring purposes](/testing/what-im-tracking-and-why/), the specific label matters less than knowing your key metrics: resting heart rate, orthostatic heart rate change, heart rate variability, and functional capacity. These are the things to track and manage, whatever the diagnosis says at the top of the letter.
+For [tracking and monitoring purposes](/testing/what-im-tracking-and-why/), the specific label matters less than knowing your key metrics: resting heart rate, orthostatic heart rate change, heart rate variability, and functional capacity. These are the things to track and manage, whatever the diagnosis says at the top of the letter. The [COMPASS-31](/tools/compass-31/) is a free online questionnaire that measures autonomic symptom burden across six domains and is widely used in dysautonomia research.
 
 The [evidence on HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) is worth reading regardless of which specific label you have — it's relevant across the full range of post-viral autonomic dysfunction.
 

@@ -1,0 +1,78 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import Header from '../../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Free post-viral symptom diary — Google Sheets template with rolling averages"
+			description="A free Google Sheets symptom diary for tracking fatigue, breathlessness, head pain, and cognitive function daily. Automatic rolling averages and trend charts. Designed for post-viral and chronic illness tracking."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Post-viral symptom diary</h1>
+				<p class="subtitle">Free Google Sheets template with rolling averages</p>
+			</div>
+
+			<div class="content">
+				<p>Symptom tracking is one of the most useful things you can do when living with a post-viral condition, and also one of the hardest to sustain. This Google Sheets symptom diary is designed to be simple enough to fill in daily, while generating the kind of structured record that is useful for spotting patterns and for clinical appointments.</p>
+
+				<p>The diary covers four symptom domains — fatigue, breathlessness, head pain, and cognitive function — each scored daily on a simple scale. It automatically calculates rolling averages so that gradual trends become visible even when day-to-day scores fluctuate.</p>
+
+				<p>This kind of structured record is particularly useful when testing a new intervention. A subjective sense that things might be a bit better is hard to evaluate; a diary that shows a consistent shift in your rolling average over three weeks is much more informative. It is also useful for appointments, giving your clinician a concrete summary rather than a verbal account from memory.</p>
+
+				<p>To use it, open the link below and go to <strong>File → Make a copy</strong>.</p>
+
+				<a href="#" class="cta-button">Open the symptom diary in Google Sheets →</a>
+
+				<p class="note">If you are also tracking HRV and resting heart rate, the <a href="/tools/trackers/hrv-tracker/">HRV tracker</a> pairs well with this diary for looking at correlations between objective markers and how you feel.</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.page-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0; }
+
+	.content {
+		max-width: 100%;
+		line-height: 1.7;
+	}
+	.content p { margin-bottom: 1.25em; }
+
+	.cta-button {
+		display: inline-block;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		padding: 0.75em 1.75em;
+		border-radius: 5px;
+		font-weight: 700;
+		font-size: 1em;
+		margin: 0.5em 0 1.75em;
+		transition: background 0.15s;
+	}
+	.cta-button:hover { background: var(--accent-dark); }
+
+	.note {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+		border-left: 3px solid rgb(var(--gray-light));
+		padding-left: 1em;
+	}
+	.note a { color: var(--accent); }
+</style>

@@ -1,0 +1,69 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import Header from '../../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Free medication and supplement log — Google Sheets template for tracking treatments"
+			description="A free Google Sheets template for logging medications and supplements with doses, start and stop dates, and notes. Useful for GP appointments and spotting correlations with symptom changes."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Medication and supplement log</h1>
+				<p class="subtitle">Free Google Sheets template for tracking treatments</p>
+			</div>
+
+			<div class="content">
+				<p>When you are trying multiple things over months or years, it is easy to lose track of what you have taken, when you started and stopped, and at what dose. This becomes a real problem at clinical appointments, where a clear medication and supplement history can make the difference between a productive conversation and a vague one.</p>
+
+				<p>This Google Sheets log gives you a simple, structured place to record everything you are taking or have taken: name, dose, start date, stop date, and notes. It is particularly useful for tracking the kind of incremental supplement and medication changes that are common in post-viral management, where you might be adjusting magnesium, adding CoQ10, titrating ivabradine, and trying LDN across overlapping time periods.</p>
+
+				<p>If you are also using the <a href="/tools/trackers/symptom-diary/">symptom diary</a>, having a clear medication timeline alongside your symptom data makes it much easier to evaluate whether a change coincided with improvement or worsening.</p>
+
+				<p>To use it, open the link below and go to <strong>File → Make a copy</strong>.</p>
+
+				<a href="#" class="cta-button">Open the medication log in Google Sheets →</a>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.page-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0; }
+
+	.content {
+		max-width: 100%;
+		line-height: 1.7;
+	}
+	.content p { margin-bottom: 1.25em; }
+	.content a { color: var(--accent); }
+
+	.cta-button {
+		display: inline-block;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		padding: 0.75em 1.75em;
+		border-radius: 5px;
+		font-weight: 700;
+		font-size: 1em;
+		margin: 0.5em 0 1.75em;
+		transition: background 0.15s;
+	}
+	.cta-button:hover { background: var(--accent-dark); }
+</style>

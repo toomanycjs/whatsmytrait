@@ -1,0 +1,78 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import Header from '../../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Free HRV and resting heart rate tracker — Google Sheets template for daily logging"
+			description="A free Google Sheets template for tracking daily HRV and resting heart rate. Automatic weekly and monthly medians with trend charts. Works with Garmin, Apple Watch, Polar, or manual entry."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>HRV and resting heart rate tracker</h1>
+				<p class="subtitle">Free Google Sheets template for daily logging</p>
+			</div>
+
+			<div class="content">
+				<p>Heart rate variability (HRV) and resting heart rate (RHR) are two of the most accessible objective markers for people with post-viral conditions, POTS, and ME/CFS. They can be measured daily with a consumer wearable or chest strap and, when tracked over time, reveal patterns that are difficult to spot day to day.</p>
+
+				<p>This is a free Google Sheets template for logging daily HRV and RHR readings. It is designed for people tracking their autonomic health over weeks and months rather than for single-session analysis.</p>
+
+				<p>The tracker includes space for daily entries, automatic calculation of weekly and monthly medians (medians are more appropriate than averages for HRV data, which tends to be skewed), and built-in trend charts so you can see your trajectory at a glance. It is compatible with data from Garmin, Apple Watch, Polar, Oura, or manual entry from any device.</p>
+
+				<p>To use it, open the link below and go to <strong>File → Make a copy</strong>. This gives you your own editable version that only you can see.</p>
+
+				<a href="#" class="cta-button">Open the tracker in Google Sheets →</a>
+
+				<p class="note">If you're tracking HRV in the context of an intervention, consider pairing this with the <a href="/tools/trackers/symptom-diary/">symptom diary</a> to look for correlations between autonomic markers and how you feel. For more on HRV as a tracking metric, see the <a href="/evidence/hrv-as-a-tracking-metric/">HRV as a tracking metric</a> evidence post.</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.page-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0; }
+
+	.content {
+		max-width: 100%;
+		line-height: 1.7;
+	}
+	.content p { margin-bottom: 1.25em; }
+
+	.cta-button {
+		display: inline-block;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		padding: 0.75em 1.75em;
+		border-radius: 5px;
+		font-weight: 700;
+		font-size: 1em;
+		margin: 0.5em 0 1.75em;
+		transition: background 0.15s;
+	}
+	.cta-button:hover { background: var(--accent-dark); }
+
+	.note {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+		border-left: 3px solid rgb(var(--gray-light));
+		padding-left: 1em;
+	}
+	.note a { color: var(--accent); }
+</style>

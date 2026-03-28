@@ -35,9 +35,39 @@ const frequencies = [
 <html lang="en">
 	<head>
 		<BaseHead
-			title="Nijmegen Questionnaire — Headaches & Heartbeats"
-			description="Interactive Nijmegen Questionnaire for breathing pattern disorder screening. Complete the 16 items and get an automatic score with interpretation."
-		/>
+		title="Nijmegen questionnaire — free online breathing pattern disorder screening tool"
+		description="Complete the Nijmegen questionnaire online for free. Screen for hyperventilation syndrome and breathing pattern disorder with instant scoring and interpretation. No sign-up required."
+	/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Nijmegen Questionnaire", "item": "https://www.postviralrecovery.com/tools/nijmegen/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a normal Nijmegen questionnaire score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score below 23 is below the clinical threshold for hyperventilation syndrome. A score of 23 or above is the standard positive screen threshold."}
+        },
+        {
+          "@type": "Question",
+          "name": "What does a Nijmegen score above 23 mean?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score of 23 or above is a positive screen for hyperventilation syndrome or breathing pattern disorder. It suggests that further clinical assessment of breathing pattern may be helpful. Discuss your score with your doctor."}
+        }
+      ]
+    }
+  ]
+}
+</script>
 	</head>
 	<body>
 		<Header />
@@ -47,11 +77,20 @@ const frequencies = [
 				<h1>Nijmegen Questionnaire</h1>
 				<p class="subtitle">Breathing Pattern Disorder Screening</p>
 				<p class="description">
-					The Nijmegen Questionnaire is a 16-item validated screening tool for breathing pattern disorder (BPD), also called hyperventilation syndrome. It is widely used in respiratory physiotherapy and primary care. A score of 23 or above is the published threshold used in the original validation study.
-				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A high score suggests breathing pattern disorder may be present, but this needs to be assessed clinically. Breathing symptoms can have multiple causes, including autonomic dysfunction, which can present similarly to BPD. Discuss results with your doctor. Based on: van Dixhoorn J, Duivenvoorden HJ. <em>Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome.</em> J Psychosom Res. 1985;29(2):199–206.
-				</div>
+  The Nijmegen questionnaire is a 16-item self-report screening tool for hyperventilation syndrome and breathing pattern disorder. It was originally developed by van Dixhoorn and Duivenvoorden and has been widely used in respiratory and physiotherapy settings since the 1980s. Each item asks how often you experience a particular symptom on a scale from 0 (never) to 4 (very often), producing a total score between 0 and 64.
+</p>
+<p class="description">
+  Breathing pattern disorder is common in post-viral conditions, POTS, and ME/CFS, and is often underdiagnosed. It can contribute to or worsen symptoms including breathlessness, dizziness, chest tightness, tingling in the hands and face, and brain fog. Because these symptoms overlap significantly with autonomic dysfunction and post-viral fatigue, breathing pattern disorder can be difficult to distinguish from other aspects of a post-viral condition without specific screening.
+</p>
+<p class="description">
+  The Nijmegen questionnaire is not a definitive diagnostic test, but it is a useful first step. A score above 23 is the standard threshold for suspected hyperventilation syndrome, and it is commonly used by respiratory physiotherapists and in specialist post-viral clinics to decide whether further assessment of breathing pattern is warranted.
+</p>
+<p class="description">
+  This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
+</p>
+<div class="disclaimer">
+  <strong>This is not a diagnostic tool.</strong> A score above the threshold suggests that further clinical assessment of breathing pattern may be worthwhile — it does not establish a diagnosis. Breathing symptoms can have multiple causes. Discuss results with your doctor. Based on: van Dixhoorn J, Duivenvoorden HJ. <em>Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome.</em> J Psychosom Res. 1985;29(2):199–206.
+</div>
 			</div>
 
 			<form id="nijmegen-form" novalidate>
@@ -107,11 +146,15 @@ const frequencies = [
 				</table>
 
 				<div class="results-disclaimer">
-					<h3>About the Nijmegen Questionnaire</h3>
-					<p><strong>Scoring:</strong> Each of the 16 items is scored 0–4 (never to very often). Maximum possible score is 64. A score of <strong>23 or above</strong> is the published threshold used in the original validation study.</p>
-					<p><strong>Context for post-viral patients:</strong> There is significant symptom overlap between breathing pattern disorder and autonomic dysfunction. Both can cause breathlessness, dizziness, chest tightness, and palpitations. A high Nijmegen score does not rule out an autonomic cause for your symptoms. The two presentations can coexist.</p>
-					<p><strong>This is a screening tool only.</strong> It cannot establish a diagnosis. Discuss your score and any breathing symptoms with your doctor.</p>
-				</div>
+  <h3>Understanding your score</h3>
+  <p>The Nijmegen questionnaire produces a total score between 0 and 64. Higher scores indicate a greater number and frequency of symptoms associated with hyperventilation and disordered breathing.</p>
+  <p>The established clinical threshold is a score of <strong>23 or above</strong>, which is considered a positive screen for hyperventilation syndrome or breathing pattern disorder.</p>
+  <p><strong>0–22:</strong> below the clinical threshold. Your pattern of symptoms is not strongly suggestive of hyperventilation syndrome based on this screening, though individual symptoms may still be worth discussing with a clinician.</p>
+  <p><strong>23 and above:</strong> positive screen. This score suggests that further assessment of breathing pattern may be helpful. Discuss your score with your doctor.</p>
+  <p>A positive score does not mean you definitely have breathing pattern disorder. Similarly, a score below 23 does not rule it out, particularly if you have symptoms that come and go or are triggered by specific situations.</p>
+  <p>In post-viral conditions, breathing pattern disorder often coexists with autonomic dysfunction, deconditioning, and anxiety. The two presentations can reinforce each other.</p>
+  <p><strong>This is a screening tool only.</strong> It cannot establish a diagnosis. Discuss your score and any breathing symptoms with your doctor.</p>
+</div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
