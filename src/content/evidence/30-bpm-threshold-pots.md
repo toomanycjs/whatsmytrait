@@ -77,13 +77,13 @@ None of these labels has the same clinical weight as POTS, but they're more accu
 
 If your standing heart rate rise consistently falls in the 20–29 bpm range with typical POTS symptoms, the most useful approaches are:
 
-**Request a formal tilt table test** if you've only had an active stand test. Passive head-up tilt, held for 10 minutes, may reveal a larger or more sustained HR rise than an active stand.
+**Request a formal tilt table test** if you've only had an [active stand test](/tools/nasa-lean-test/). Passive head-up tilt, held for 10 minutes, may reveal a larger or more sustained HR rise than an active stand.
 
-**Try standard first-line POTS management** — increased salt and fluid, compression garments, head-of-bed elevation — regardless of diagnostic label. These are safe, evidence-based, and shouldn't require a specific diagnosis.
+**Try standard first-line POTS management** — [increased salt and fluid, compression garments](/evidence/salt-water-compression-electrolytes/), head-of-bed elevation — regardless of diagnostic label. These are safe, evidence-based, and shouldn't require a specific diagnosis.
 
 **Document with home monitoring**. [Wearable devices](/testing/what-im-tracking-and-why/) that track heart rate throughout the day can build a longitudinal picture. A resting heart rate consistently above 90 bpm and clear HR elevation on movement, documented over weeks, is useful clinical information.
 
-**Request specialist review** framed around orthostatic intolerance and post-viral dysautonomia rather than POTS specifically. A cardiologist or autonomic specialist who understands the spectrum of disease will be more useful than one applying strict diagnostic criteria as a gate.
+**[Request specialist review](/nhs/preparing-for-gp-appointment/)** framed around orthostatic intolerance and post-viral dysautonomia rather than POTS specifically. A cardiologist or autonomic specialist who understands the spectrum of disease will be more useful than one applying strict diagnostic criteria as a gate.
 
 ## The bottom line
 
@@ -100,3 +100,12 @@ Freeman R, Wieling W, Axelrod FB, et al. Consensus statement on the definition o
 Fedorowski A, Burrows D, Hamrefors V, et al. Orthostatic intolerance: multiple diseases with the same symptoms but different underlying mechanisms. Ann Med. 2021;53(1):2110–2122.
 
 Raj SR. Postural tachycardia syndrome (POTS). Circulation. 2013;127(23):2336–2342.
+
+---
+
+## Further reading
+
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
+- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)

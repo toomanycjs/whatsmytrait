@@ -33,3 +33,11 @@ I've had one formal stand test conducted by a clinician in my post-COVID rehabil
 ---
 
 I'm working on a free Google Sheet version of my tracking setup that anyone can copy and use. When it's ready, I'll link to it from the [tools page](/tools).
+
+---
+
+## Further reading
+
+- [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
+- [Symptom diary (Google Sheet)](/tools/trackers/symptom-diary/)

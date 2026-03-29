@@ -98,3 +98,11 @@ I track sodium in Cronometer about once every month or two to check I'm still on
 On a typical day this gets me to around 10–11g without significant effort once the habit is established. The morning salt water is the hardest part to maintain because it's unpleasant — the electrolyte sachet approach is more sustainable for most people.
 
 The key is consistency over days and weeks, not heroic doses on bad days.
+
+---
+
+## Further reading
+
+- [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)

@@ -20,7 +20,7 @@ Salt and water address volume. Compression addresses pooling. Electrolytes addre
 
 **The mechanism**: Sodium is the primary determinant of extracellular fluid volume. Higher sodium intake causes increased sodium retention, which osmotically draws more fluid into the vascular compartment. The net effect is expansion of blood plasma volume, reducing the proportional impact of the orthostatic blood shift.
 
-**The evidence**: The most important study is by el-Sayed et al. (2010), which found that increasing sodium intake to approximately 400–500 mEq/day (roughly 9–10g of sodium chloride) significantly increased plasma volume and reduced orthostatic tachycardia in POTS patients compared to normal sodium intake. This was a well-controlled crossover study with clear physiological endpoints.
+**The evidence**: The most important study is by el-Sayed et al. (2010), which found that increasing sodium intake to approximately 400–500 mEq/day (roughly 9–10g of sodium chloride) significantly increased plasma volume and reduced orthostatic tachycardia in POTS patients compared to normal sodium intake. Tracking your standing heart rate with a structured test like the [NASA lean test](/tools/nasa-lean-test/) can help assess whether these interventions are working for you. This was a well-controlled crossover study with clear physiological endpoints.
 
 Multiple observational and retrospective studies support the clinical benefit of high sodium intake in POTS. There are no large RCTs, and the studies differ in measured outcomes. But the mechanistic evidence is strong and the clinical evidence consistent.
 
@@ -42,7 +42,7 @@ The recommended daily fluid target is 2–2.5 litres for most adults with POTS. 
 
 **The mechanism**: External compression of the legs and abdomen reduces the volume available for blood to pool. Abdominal compression is more important than leg compression alone, because the splanchnic (abdominal) circulation is a major reservoir for pooled blood in orthostatic conditions. Abdominal binders and high-waist compression garments are often more effective than calf-length compression stockings for this reason.
 
-**The evidence**: More limited than for salt and water. Several small studies have documented reduction in orthostatic tachycardia with compression garments. A 2014 study by Protheroe et al. found that abdominal compression significantly reduced orthostatic tachycardia compared to no compression in POTS patients, with a mean reduction of approximately 7–10 bpm.
+**The evidence**: More limited than for salt and water. Several small studies have documented reduction in orthostatic tachycardia with compression garments. A 2014 study by Protheroe et al. found that abdominal compression significantly reduced [orthostatic tachycardia](/evidence/30-bpm-threshold-pots/) compared to no compression in POTS patients, with a mean reduction of approximately 7–10 bpm.
 
 The evidence base is small and the studies heterogeneous in terms of garment type and compression level. But the physiological mechanism is clear and the clinical experience of specialists and patients is consistent: compression helps most people, with more benefit at higher compression levels and with abdominal coverage.
 
@@ -74,7 +74,7 @@ What the evidence does support:
 - They are recommended universally because they work for enough people and have no significant downsides for most
 - Adherence is the main limiting factor — hitting 10g of salt daily and wearing compression all day requires effort and habit change
 
-For mild-to-moderate POTS, first-line management with these four interventions plus physical reconditioning (recumbent exercise) produces meaningful improvement in a significant proportion of patients. For moderate-to-severe POTS, they're usually insufficient alone and medication is needed in addition.
+For mild-to-moderate POTS, first-line management with these four interventions plus [physical reconditioning](/testing/recumbent-exercise/) produces meaningful improvement in a significant proportion of patients. For moderate-to-severe POTS, they're usually insufficient alone and [medication](/evidence/ivabradine-post-viral/) is needed in addition.
 
 ## References
 
@@ -87,3 +87,11 @@ Protheroe CL, Dikareva A, Menon C, Claydon VE. Are compression stockings an effe
 Raj SR. Postural tachycardia syndrome (POTS). Circulation. 2013;127(23):2336–2342.
 
 Boris JR, Bernadzikowski T. Demographics and comorbidities of patients with postural tachycardia syndrome in a large academic centre. Auton Neurosci. 2018;214:31–36.
+
+---
+
+## Further reading
+
+- [How to increase salt intake: a practical guide](/testing/how-to-increase-salt-intake/)
+- [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)

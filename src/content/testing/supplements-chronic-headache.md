@@ -4,7 +4,7 @@ description: "The evidence behind the four supplements most commonly recommended
 pubDate: 2026-03-27
 ---
 
-When I was referred to a headache clinic, the neurologist listed four supplements alongside the discussion of preventive medication: riboflavin (vitamin B2), magnesium, CoQ10, and vitamin D. These are widely recommended by headache specialist services in the UK and elsewhere, typically as first-line options to try before or alongside prescription preventives.
+When I was referred to a [headache clinic](/nhs/preparing-for-gp-appointment/), the neurologist listed four supplements alongside the discussion of preventive medication: riboflavin (vitamin B2), magnesium, CoQ10, and vitamin D. These are widely recommended by headache specialist services in the UK and elsewhere, typically as first-line options to try before or alongside prescription preventives.
 
 This post covers what the evidence actually says about each, what doses the trials used, and the significant caveat that most of the trial evidence comes from episodic migraine rather than the new daily persistent headache pattern I have.
 
@@ -72,11 +72,11 @@ These four supplements are often recommended as a package rather than individual
 
 The downside is that if you take all four simultaneously, you can't isolate which one is helping if things improve. My approach has been to start them sequentially and give each at least 8 weeks before adding the next, while accepting that the evidence for all four is relatively modest and none is going to transform the situation on its own.
 
-The supplements are not a substitute for prescription preventive medication where that's indicated. For moderate-to-severe headache burden, the evidence for medications like amitriptyline, topiramate, and propranolol is substantially stronger than for any supplement. But supplements are useful as first-line options because of the safety profile, and some people find they provide enough benefit that they don't need to move to prescription preventives.
+The supplements are not a substitute for prescription preventive medication where that's indicated. For moderate-to-severe headache burden, the evidence for medications like [amitriptyline, topiramate, and propranolol](/evidence/amitriptyline-propranolol-candesartan/) is substantially stronger than for any supplement. But supplements are useful as first-line options because of the safety profile, and some people find they provide enough benefit that they don't need to move to prescription preventives.
 
 ## The honest bottom line
 
-After 18 months taking these four supplements consistently, I genuinely don't know how much they're helping. My NDPH hasn't remitted, the daily background headache continues, and the severity has varied in ways that correlate more obviously with other factors (viral illnesses, autonomic state, sleep) than with anything I've changed about supplements.
+After 18 months taking these four supplements consistently, I genuinely don't know how much they're helping. My NDPH hasn't remitted, the daily background headache continues, and the severity has varied in ways that correlate more obviously with other factors (viral illnesses, [autonomic state](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/), sleep) than with anything I've changed about supplements.
 
 What I can say is that I've had no side effects, the cost is manageable, and the evidence base — while modest — is sufficient that I'm not convinced I should stop. They may be providing a floor that limits severity without changing the pattern. Or they may be doing nothing and I'm maintaining them out of inertia. That's an honest appraisal.
 
@@ -91,3 +91,11 @@ Sándor PS, Di Clemente L, Coppola G, et al. Efficacy of coenzyme Q10 in migrain
 Ghorbani Z, Togha M, Rafiee P, et al. Vitamin D in migraine headache: a comprehensive review on literature. Neurol Sci. 2019;40(12):2459–2477.
 
 Liampas I, Siokas V, Brotis A, Vikelis M, Dardiotis E. Endogenous melatonin levels and therapeutic use of exogenous melatonin in migraine: Systematic review and meta-analysis. Headache. 2020;60(7):1273–1299.
+
+---
+
+## Further reading
+
+- [Amitriptyline, propranolol, and candesartan for chronic headache](/evidence/amitriptyline-propranolol-candesartan/)
+- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)

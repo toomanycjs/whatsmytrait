@@ -100,11 +100,13 @@ The things most associated with better outcomes: shorter illness duration before
 
 The things most associated with worse outcomes: repeated over-exertion (boom-bust cycling), delayed or incorrect diagnosis, being given management advice (graded exercise) that treats the condition as deconditioning when the problem is more specific.
 
-## Further reading on this site
-
-- [What I'm tracking and why](/testing/what-im-tracking-and-why/) — the specific metrics and approach I use to monitor my own autonomic function
-- [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) — what heart rate variability measures and how to use it
-- [Tools](/tools/) — interactive questionnaires including the COMPASS-31 and Nijmegen Questionnaire
-- [Preparing for a GP appointment](/nhs/preparing-for-gp-appointment/) — practical guidance on navigating the NHS with these conditions
-
 I'm not a clinician. This is my reading of the evidence as someone living with these conditions, not medical advice. Please discuss any treatment options with a qualified healthcare professional.
+
+---
+
+## Further reading
+
+- [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
+- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)

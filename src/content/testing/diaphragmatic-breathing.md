@@ -4,7 +4,7 @@ description: "Slow, paced diaphragmatic breathing is widely recommended for auto
 pubDate: 2026-03-25
 ---
 
-Slow diaphragmatic breathing is probably the most commonly recommended self-management technique for autonomic dysfunction. It appears on virtually every POTS leaflet, gets discussed at clinic, and has a reasonable body of research behind it. It is also one of the most misunderstood interventions: what it's doing, why it works when it works, and how to tell whether it's helping.
+Slow diaphragmatic breathing is probably the most commonly recommended self-management technique for [autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/). It appears on virtually every POTS leaflet, gets discussed at clinic, and has a reasonable body of research behind it. It is also one of the most misunderstood interventions: what it's doing, why it works when it works, and how to tell whether it's helping.
 
 This is my attempt to disentangle the evidence from the hype, describe the protocol I've settled on, and give an honest account of what it has and hasn't changed in my own metrics.
 
@@ -48,7 +48,7 @@ The correct technique:
 Common mistakes:
 
 - Breathing from the chest rather than the belly (the chest should barely move)
-- Breathing too fast and becoming hypocapnic (light-headed, tingling hands — this is hyperventilation, not therapeutic)
+- Breathing too fast and becoming hypocapnic (light-headed, tingling hands — this is [hyperventilation](/evidence/breathing-pattern-disorder-vs-autonomic-breathlessness/), not therapeutic)
 - Breathing too hard/deeply (volume matters less than rate; normal tidal volume is fine)
 - Tensing the abdomen rather than letting it expand passively
 
@@ -91,7 +91,7 @@ I've found this pairs well with other vagal stimulation approaches — see [Nuro
 
 ## The limits
 
-Diaphragmatic breathing is not a treatment for the underlying problem. If your autonomic dysfunction is driven by peripheral neuropathy, autoimmunity, or structural cardiac changes, no amount of breathing will reverse that. It's a daily input that nudges the system in the right direction — the same way salt and compression do — rather than addressing the root cause.
+Diaphragmatic breathing is not a treatment for the underlying problem. If your autonomic dysfunction is driven by peripheral neuropathy, autoimmunity, or structural cardiac changes, no amount of breathing will reverse that. It's a daily input that nudges the system in the right direction — the same way [salt and compression](/evidence/salt-water-compression-electrolytes/) do — rather than addressing the root cause.
 
 It also requires consistency to maintain effect. The benefits appear to attenuate with cessation of practice. This is not a course of treatment with a defined endpoint; it's a habit to maintain indefinitely.
 
@@ -106,3 +106,11 @@ Bernardi L, Porta C, Gabutti A, Spicuzza L, Sleight P. Modulatory effects of res
 Lehrer PM, Gevirtz R. Heart rate variability biofeedback: how and why does it work? Front Psychol. 2014;5:756.
 
 Pinna GD, Maestri R, Mortara A, La Rovere MT, Tavazzi L, Sleight P. Effect of paced breathing on ventilatory and cardiovascular variability parameters during short-term investigations of autonomic function. Am J Physiol Heart Circ Physiol. 2006;290(1):H424–433.
+
+---
+
+## Further reading
+
+- [Breathing pattern disorder vs autonomic breathlessness](/evidence/breathing-pattern-disorder-vs-autonomic-breathlessness/)
+- [Nurosym: starting vagal nerve stimulation](/testing/nurosym-week-1/)
+- [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/)

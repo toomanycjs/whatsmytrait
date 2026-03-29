@@ -10,7 +10,7 @@ Recumbent exercise addresses the first problem directly. It doesn't solve the se
 
 ## Why recumbent specifically
 
-In POTS and other orthostatic conditions, a significant part of the exercise intolerance comes from the position, not just the effort. When you stand, blood pools in the lower body. The heart compensates by beating faster. Combine this with the cardiovascular demands of exercise and you get a heart rate that climbs very fast, very quickly — not because your fitness is terrible, but because your system is fighting two battles at once.
+In [POTS](/evidence/30-bpm-threshold-pots/) and other orthostatic conditions, a significant part of the exercise intolerance comes from the position, not just the effort. When you stand, blood pools in the lower body. The heart compensates by beating faster. Combine this with the cardiovascular demands of exercise and you get a heart rate that climbs very fast, very quickly — not because your fitness is terrible, but because your system is fighting two battles at once.
 
 Recumbent exercise removes the orthostatic component. When you're lying down or reclined, blood pooling isn't a factor, and your heart can direct its work entirely at meeting the exercise demand. The same effort that produces a 160 bpm response on a treadmill might only produce 120 bpm on a recumbent cycle.
 
@@ -55,7 +55,7 @@ Current routine (on days when baseline is stable):
 - Followed by 5 minutes lying still before getting up
 - No escalation if symptoms are elevated that day
 
-I track resting heart rate and HRV on waking. If my resting HR is more than 5 bpm above my rolling average, or HRV is significantly suppressed, I skip or reduce. These are the most reliable indicators I have of whether my system is coping.
+I track [resting heart rate and HRV](/evidence/hrv-as-a-tracking-metric/) on waking — see [what I'm tracking and why](/testing/what-im-tracking-and-why/) for the full approach. If my resting HR is more than 5 bpm above my rolling average, or HRV is significantly suppressed, I skip or reduce. These are the most reliable indicators I have of whether my system is coping.
 
 I don't escalate week on week the way the Levine protocol suggests. I've found that stable tolerance at a given level is worth more than progressive increases that lead to crashes. Progress is slow — I'm not going to regain normal fitness on this timeline. The goal is to maintain what I have and avoid deconditioning, not to improve performance.
 
@@ -71,7 +71,7 @@ I don't escalate week on week the way the Levine protocol suggests. I've found t
 
 ## Managing expectations
 
-Recumbent exercise helps but it is not a cure. I have good weeks and bad weeks. The exercise is part of a management strategy that includes salt, fluid, compression, and symptom monitoring — not a standalone intervention.
+Recumbent exercise helps but it is not a cure. I have good weeks and bad weeks. The exercise is part of a management strategy that includes [salt, fluid, compression](/evidence/salt-water-compression-electrolytes/), and symptom monitoring — not a standalone intervention.
 
 The goal is to maintain cardiovascular fitness and muscle tone, reduce deconditioning, and give the autonomic nervous system regular low-level stimulation in a context where it's not being overtaxed. Over time, many people with POTS see genuine improvements from consistent recumbent exercise. For those with significant post-viral fatigue, the goals are more modest: functional maintenance and avoiding the spiral of inactivity that can make everything worse.
 
@@ -82,3 +82,11 @@ Levine BD, Bhella PS, Hastings JL, et al. Effect of endurance exercise training 
 Fu Q, VanGundy TB, Galbreath MM, et al. Cardiac origins of the postural orthostatic tachycardia syndrome. J Am Coll Cardiol. 2010;55(25):2858–2868.
 
 Davenport TE, Stevens SR, VanNess MJ, et al. Conceptual model for physical therapist management of chronic fatigue syndrome/myalgic encephalomyelitis. Phys Ther. 2010;90(4):602–614.
+
+---
+
+## Further reading
+
+- [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
+- [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)
+- [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)

@@ -26,13 +26,13 @@ The key features of PEM:
 
 The biology of PEM is increasingly well understood, though not yet fully explained:
 
-**Anaerobic threshold and metabolic failure**: CPET studies in ME/CFS patients show that the anaerobic threshold — the exercise intensity at which aerobic energy production is exceeded and anaerobic glycolysis begins — is abnormally low. More importantly, in serial CPET (the same test performed on two consecutive days), ME/CFS patients show significant declines in VO2max and anaerobic threshold on the second day. This doesn't happen in healthy people or in most other chronic diseases. It suggests that exertion physically impairs the body's subsequent ability to generate energy aerobically.
+**Anaerobic threshold and metabolic failure**: CPET studies in ME/CFS patients show that the anaerobic threshold — the exercise intensity at which aerobic energy production is exceeded and anaerobic glycolysis begins — is abnormally low. More importantly, in [serial CPET](/evidence/what-a-cpet-shows/) (the same test performed on two consecutive days), ME/CFS patients show significant declines in VO2max and anaerobic threshold on the second day. This doesn't happen in healthy people or in most other chronic diseases. It suggests that exertion physically impairs the body's subsequent ability to generate energy aerobically.
 
 **Mitochondrial dysfunction**: Multiple studies have found impaired mitochondrial oxidative phosphorylation in ME/CFS. The energy-generating capacity of cells appears impaired, and exertion may temporarily worsen this impairment through mechanisms that include oxidative stress and calcium signalling disruption.
 
 **Immune activation**: Exertion triggers activation of the immune system in ME/CFS patients in ways that don't occur in healthy controls. Natural killer cell function, cytokine profiles, and inflammatory markers all show abnormal post-exercise responses. This likely explains the flu-like quality of PEM — the symptoms pattern matches immune activation.
 
-**Autonomic instability**: Exertion worsens autonomic dysfunction acutely and in the day(s) following. Heart rate variability drops, orthostatic tachycardia worsens, and the autonomic regulation that was already fragile becomes more impaired.
+**Autonomic instability**: Exertion worsens autonomic dysfunction acutely and in the day(s) following. [Heart rate variability](/evidence/hrv-as-a-tracking-metric/) drops, orthostatic tachycardia worsens, and the autonomic regulation that was already fragile becomes more impaired.
 
 The common thread: whatever is broken in ME/CFS and long COVID is worsened by pushing it, in a way that has measurable physiological correlates.
 
@@ -44,7 +44,7 @@ This approach has been comprehensively rejected by ME/CFS patient organisations,
 
 The problem is that GET was designed for a condition that doesn't exist in the way the model assumed. Deconditioning does occur as a secondary consequence of ME/CFS, but it is not the primary mechanism. Pushing through PEM doesn't restore function — it damages it. Multiple large patient surveys found that GET was the most commonly reported harmful intervention in ME/CFS, with significant minorities reporting severe and lasting deterioration following courses of GET.
 
-The 2021 NICE guideline update removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
+The [2021 NICE guideline update](/nhs/what-i-wish-id-known-earlier/) removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
 
 This does not mean exercise is contraindicated. It means that the type, intensity, and management of activity must account for PEM in a way that standard rehabilitation frameworks do not.
 
@@ -56,9 +56,9 @@ Pacing involves identifying an "energy envelope" — the level of daily activity
 
 In practice:
 
-**Activity monitoring**: Tracking daily activity, symptoms, and heart rate to identify patterns. [Wearable devices and symptom diaries](/testing/recumbent-exercise/) help identify where the threshold lies. The [Fatigue Severity Scale](/tools/fss/) is a free interactive tool for measuring the functional impact of fatigue.
+**Activity monitoring**: Tracking daily activity, symptoms, and heart rate to identify patterns. [Wearable devices and symptom diaries](/testing/recumbent-exercise/) help identify where the threshold lies. A structured approach to [what to track and why](/testing/what-im-tracking-and-why/) can help make this manageable. The [Fatigue Severity Scale](/tools/fss/) is a free interactive tool for measuring the functional impact of fatigue.
 
-**Heart rate limits**: Some specialists recommend a heart rate ceiling based on the anaerobic threshold from CPET, or a proxy calculated from age (formula: 0.5 × (220 − age)). Staying below this ceiling during all activity reduces the risk of triggering PEM.
+**Heart rate limits**: Some specialists recommend a heart rate ceiling based on the anaerobic threshold from CPET, or a proxy calculated from age (formula: 0.5 × (220 − age)). Staying below this ceiling during all activity reduces the risk of triggering PEM. The [30 bpm threshold and orthostatic tachycardia](/evidence/30-bpm-threshold-pots/) article discusses how heart rate measurement is used in autonomic conditions.
 
 **Cognitive rest as well as physical rest**: PEM can be triggered by cognitive exertion — screen time, phone calls, concentrated reading — not just physical activity. Pacing requires managing cognitive load as well.
 
@@ -95,3 +95,12 @@ NICE. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: di
 Keller BA, Pryor JL, Giloteaux L. Inability of myalgic encephalomyelitis/chronic fatigue syndrome patients to reproduce VO2peak indicates functional impairment. J Transl Med. 2014;12:104.
 
 Komaroff AL, Bateman L. Will COVID-19 lead to myalgic encephalomyelitis/chronic fatigue syndrome? Front Med (Lausanne). 2021;7:606824.
+
+---
+
+## Further reading
+
+- [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
+- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [Fatigue Severity Scale (interactive questionnaire)](/tools/fss/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)

@@ -24,13 +24,13 @@ The answers to these questions drive management — and you can track them and a
 
 ## Measure things early
 
-I wish I'd started tracking heart rate, HRV, and standing-to-lying heart rate difference much earlier. The data I would have collected in year one would have been useful in year two and three for understanding whether things were changing, and for giving clinicians objective information.
+I wish I'd started [tracking heart rate, HRV, and standing-to-lying heart rate difference](/testing/what-im-tracking-and-why/) much earlier. The data I would have collected in year one would have been useful in year two and three for understanding whether things were changing, and for giving clinicians objective information.
 
-"I feel worse when I stand up" is much less convincing than "my heart rate rises by an average of 35 bpm on standing, as documented in 60 days of wearable data." If you have a wearable device that tracks heart rate and HRV, start using that data now.
+"I feel worse when I stand up" is much less convincing than "my heart rate rises by an average of 35 bpm on standing, as documented in 60 days of wearable data." If you have a [wearable device](/evidence/hrv-as-a-tracking-metric/) that tracks heart rate and HRV, start using that data now.
 
 ## Pacing is real and important — and harder than it sounds
 
-Before I understood post-exertional malaise properly, I managed my energy the way I had before I was ill — push through on bad days, rest afterwards, assume it would balance out. It didn't balance out. The pattern was: effort, crash, repeat, with each crash potentially worse than the one before.
+Before I understood [post-exertional malaise](/evidence/post-exertional-malaise/) properly, I managed my energy the way I had before I was ill — push through on bad days, rest afterwards, assume it would balance out. It didn't balance out. The pattern was: effort, crash, repeat, with each crash potentially worse than the one before.
 
 Pacing — staying within an activity envelope that doesn't trigger crashes — is the single management approach most consistently supported by patient experience and emerging research. It's not about doing nothing; it's about doing things in a way that doesn't make you systematically worse.
 
@@ -62,7 +62,7 @@ Most clinicians — GPs, general physicians, even many cardiologists and neurolo
 
 What this means practically:
 - Long COVID clinics exist in many NHS trusts and have more familiarity with this presentation than general medicine
-- POTS clinics and autonomic specialist centres (most are in tertiary hospital settings) are the right destination for formal autonomic investigation
+- [POTS clinics and autonomic specialist centres](/evidence/30-bpm-threshold-pots/) (most are in tertiary hospital settings) are the right destination for formal autonomic investigation
 - There are patient organisations (Dysautonomia International, ME Association, Long COVID Support) that have distilled a large amount of practical knowledge and maintain lists of knowledgeable clinicians
 
 Getting to the right specialist can take a long time in the NHS. Knowing that you're looking for someone with specific expertise, rather than waiting for any doctor to figure it out, shortens the timeline.
@@ -77,7 +77,7 @@ The skill is in knowing how to distinguish between them. I've found it useful to
 - Sceptical voices within communities as well as positive ones
 - The difference between "this helped me" (useful signal) and "this will cure you" (unreliable)
 
-The evidence reviews on this site are my attempt to apply this kind of reading to specific interventions — not to tell you what to do, but to give you the basis for a more informed conversation with a clinician.
+The [evidence reviews on this site](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/) are my attempt to apply this kind of reading to specific interventions — not to tell you what to do, but to give you the basis for a more informed conversation with a clinician.
 
 ## It doesn't have to be all-consuming
 
@@ -90,3 +90,12 @@ I haven't fully solved this, but I'm more aware of the difference than I used to
 ---
 
 I'm not a clinician. Everything here is my own experience and reading. For the conditions described on this site, see the posts I've written on the evidence — starting with [Long COVID, ME/CFS, POTS, dysautonomia, post-viral syndrome: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/) — and discuss any specific decisions with a healthcare professional who knows your situation.
+
+---
+
+## Further reading
+
+- [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
+- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)

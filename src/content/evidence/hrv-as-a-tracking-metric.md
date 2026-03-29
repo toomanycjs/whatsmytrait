@@ -55,3 +55,11 @@ I don't use it to micromanage my daily activity, and I don't make decisions abou
 ## Summary
 
 HRV — specifically RMSSD — is a genuinely useful metric for people with post-viral autonomic dysfunction. It gives you a reproducible, sensitive proxy for parasympathetic tone that you can track at home with a consumer device. But it's noisy, it's affected by confounders, and it doesn't directly measure how you feel. Treat it as one input among several, look at trends over weeks rather than individual readings, and don't let the number dictate your day.
+
+---
+
+## Further reading
+
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [Diaphragmatic breathing for autonomic regulation](/testing/diaphragmatic-breathing/)
+- [The 30 bpm threshold: what happens when you almost have POTS](/evidence/30-bpm-threshold-pots/)

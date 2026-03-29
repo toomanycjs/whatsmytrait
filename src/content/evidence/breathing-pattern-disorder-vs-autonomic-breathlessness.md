@@ -12,7 +12,7 @@ Breathing pattern disorder is real. It also gets significantly over-applied to p
 
 Breathing pattern disorder (BPD) refers to a pattern of dysfunctional breathing that perpetuates breathlessness symptoms. The most common form is chronic hyperventilation: breathing at a rate or depth that keeps carbon dioxide (CO2) levels chronically low, sensitising chemoreceptors and perpetuating the sense of breathlessness even in the absence of physiological oxygen insufficiency.
 
-It's maintained by a feedback loop. Anxiety or physical symptoms trigger faster breathing, which lowers CO2, which causes symptoms (light-headedness, tingling, chest tightness, breathlessness), which increase anxiety, which increases breathing rate further. Breaking the loop typically involves breathing retraining — slowing the breath rate, nasal breathing, diaphragmatic technique.
+It's maintained by a feedback loop. Anxiety or physical symptoms trigger faster breathing, which lowers CO2, which causes symptoms (light-headedness, tingling, chest tightness, breathlessness), which increase anxiety, which increases breathing rate further. Breaking the loop typically involves [breathing retraining](/testing/diaphragmatic-breathing/) — slowing the breath rate, nasal breathing, diaphragmatic technique.
 
 BPD is common in the general population, more common in women, and frequently coexists with anxiety disorders. It's also common in long COVID — but so is genuine autonomic breathlessness, and distinguishing between them requires more than noting that the lung function tests are normal.
 
@@ -46,7 +46,7 @@ Ask yourself: if you lie down for 20–30 minutes, does the breathlessness subst
 
 ### Heart rate changes
 
-If your breathlessness is accompanied by a significant heart rate rise on standing (>30 bpm), this points strongly toward an orthostatic/autonomic mechanism. Pure BPD shouldn't cause orthostatic tachycardia.
+If your breathlessness is accompanied by a significant [heart rate rise on standing (>30 bpm)](/evidence/30-bpm-threshold-pots/), this points strongly toward an orthostatic/autonomic mechanism. Pure BPD shouldn't cause orthostatic tachycardia.
 
 ### The Nijmegen Questionnaire
 
@@ -70,7 +70,7 @@ BPD on CPET tends to show normal oxygen uptake kinetics and an erratic breathing
 
 **For breathing pattern disorder**: The effective treatment is breathing physiotherapy — retraining breathing rate, pattern, and nose/mouth ratio, addressing the hyperventilation cycle, and managing the anxiety component. Physiotherapy referral is appropriate and often helpful.
 
-**For autonomic breathlessness**: The effective treatments are orthostatic management (salt, fluid, compression, position) and, in some cases, medications. Breathing physiotherapy may provide some symptomatic relief but doesn't address the underlying problem. More importantly, physiotherapy aimed at BPD often includes increasing activity and reducing avoidance — this is appropriate for pure BPD but potentially harmful for someone with post-viral autonomic dysfunction and post-exertional malaise.
+**For autonomic breathlessness**: The effective treatments are [orthostatic management (salt, fluid, compression, position)](/evidence/salt-water-compression-electrolytes/) and, in some cases, medications. Breathing physiotherapy may provide some symptomatic relief but doesn't address the underlying problem. More importantly, physiotherapy aimed at BPD often includes increasing activity and reducing avoidance — this is appropriate for pure BPD but potentially harmful for someone with post-viral autonomic dysfunction and [post-exertional malaise](/evidence/post-exertional-malaise/).
 
 Getting a POTS or dysautonomia diagnosis and managing the orthostatic component can produce dramatic improvement in breathlessness that no amount of breathing retraining would achieve.
 
@@ -91,3 +91,12 @@ van Dixhoorn J, Duivenvoorden HJ. Efficacy of Nijmegen Questionnaire in recognit
 Heaton RK. Neuropsychological aspects of breathing disorders. Arch Gen Psychiatry. 1981;38(7):815.
 
 Kanjwal K, Karabin B, Kanjwal Y, Grubb BP. Differentiation of convulsive syncope from epilepsy with an implantable loop recorder. Int J Med Sci. 2009;6(6):296–300.
+
+---
+
+## Further reading
+
+- [Diaphragmatic breathing for autonomic regulation](/testing/diaphragmatic-breathing/)
+- [Nijmegen questionnaire (interactive)](/tools/nijmegen/)
+- [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)
+- [The 30 bpm threshold: what happens when you almost have POTS](/evidence/30-bpm-threshold-pots/)

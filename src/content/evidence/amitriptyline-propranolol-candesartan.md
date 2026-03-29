@@ -127,3 +127,11 @@ Stovner LJ, Linde M, Gravdahl GB, et al. A comparative study of candesartan vers
 Raj SR, Black BK, Biaggioni I, et al. Propranolol decreases tachycardia and improves symptoms in the postural tachycardia syndrome. Circulation. 2009;120(9):725–734.
 
 Amitriptyline versus placebo in the prophylactic treatment of migraine without aura. Cochrane Database Syst Rev. 2015;7:CD010236.
+
+---
+
+## Further reading
+
+- [Supplements for chronic headache prevention](/testing/supplements-chronic-headache/)
+- [Ivabradine for post-viral autonomic dysfunction](/evidence/ivabradine-post-viral/)
+- [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)

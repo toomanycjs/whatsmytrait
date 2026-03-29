@@ -43,7 +43,7 @@ The consistent finding across the available evidence: ivabradine reduces orthost
 
 ### vs Beta-blockers (propranolol, bisoprolol)
 
-Beta-blockers reduce heart rate by blocking sympathetic stimulation. They also lower blood pressure and impair the heart rate response to exercise. In post-viral conditions with impaired exercise capacity, the exercise limitation effect of beta-blockers can be significant — by preventing appropriate heart rate rise, they may reduce the already-limited cardiac output augmentation during exertion.
+[Beta-blockers](/evidence/amitriptyline-propranolol-candesartan/) reduce heart rate by blocking sympathetic stimulation. They also lower blood pressure and impair the heart rate response to exercise. In post-viral conditions with impaired exercise capacity, the exercise limitation effect of beta-blockers can be significant — by preventing appropriate heart rate rise, they may reduce the already-limited cardiac output augmentation during exertion.
 
 Ivabradine has no exercise capacity impairment effect in most contexts. In POTS specifically, however, there's a nuance: the heart rate ceiling effect of ivabradine during exercise means the heart can't increase rate as much in response to demand — and in a condition where stroke volume is already impaired, this may limit rather than help exercise capacity. The data on this is mixed.
 
@@ -53,15 +53,15 @@ For patients who cannot tolerate beta-blockers (because of low blood pressure, s
 
 [Pyridostigmine](/evidence/pyridostigmine-pots-mecfs/) enhances cholinergic tone throughout the autonomic nervous system. Its mechanism is fundamentally different from ivabradine's sinoatrial-specific effect. The comparison:
 
-- Pyridostigmine appears to improve exercise capacity (CPET data) in the ME/CFS overlap population; ivabradine's exercise capacity effects are uncertain
+- Pyridostigmine appears to improve exercise capacity ([CPET data](/evidence/what-a-cpet-shows/)) in the ME/CFS overlap population; ivabradine's exercise capacity effects are uncertain
 - Ivabradine has a cleaner side effect profile (primarily visual phosphenes); pyridostigmine has cholinergic GI effects
 - Ivabradine is a purer heart rate medication; pyridostigmine has broader autonomic effects that may be beneficial or additional
 
-For POTS without significant ME/CFS overlap, ivabradine is probably the simpler and better-tolerated choice. For the ME/CFS overlap patient, pyridostigmine's potential exercise capacity benefit makes it an interesting alternative.
+For POTS without significant [ME/CFS overlap](/evidence/long-covid-mecfs-pots-dysautonomia/), ivabradine is probably the simpler and better-tolerated choice. For the ME/CFS overlap patient, pyridostigmine's potential exercise capacity benefit makes it an interesting alternative.
 
 ### vs Fludrocortisone
 
-Fludrocortisone is a mineralocorticoid that increases sodium reabsorption, thereby expanding plasma volume. It addresses a different aspect of POTS physiology — volume depletion — rather than heart rate directly. Many patients use it alongside a rate-limiting medication rather than instead of one. Some patients find it helpful; others find the blood pressure and fluid retention side effects limit it.
+Fludrocortisone is a mineralocorticoid that increases sodium reabsorption, thereby expanding plasma volume — an approach that overlaps with the [salt and fluid management evidence](/evidence/salt-water-compression-electrolytes/). It addresses a different aspect of POTS physiology — volume depletion — rather than heart rate directly. Many patients use it alongside a rate-limiting medication rather than instead of one. Some patients find it helpful; others find the blood pressure and fluid retention side effects limit it.
 
 ## Side effects
 
@@ -81,7 +81,7 @@ In POTS, most patients use 2.5–5mg twice daily. The goal is sufficient heart r
 
 ## Access in the UK
 
-Ivabradine is available on NHS prescription but its use in POTS is off-label. Specialist cardiologists and autonomic physicians are increasingly familiar with it in this context. Getting it prescribed from a GP without specialist input is unlikely, though not impossible with appropriate supporting documentation from a specialist.
+Ivabradine is available on NHS prescription but its use in POTS is off-label. Specialist cardiologists and autonomic physicians are increasingly familiar with it in this context. Getting it prescribed from a GP without specialist input is unlikely, though not impossible with appropriate supporting documentation from a specialist. [Preparing for that appointment](/nhs/preparing-for-gp-appointment/) with clear documentation of your heart rate data and symptom burden helps.
 
 ## What RECOVER-AUTONOMIC may change
 
@@ -106,3 +106,11 @@ Carbone F, Proietti M, Romiti GF, et al. Ivabradine versus propranolol in postur
 Raj SR, Guzman JC, Harvey P, et al. Canadian Cardiovascular Society position statement on postural orthostatic tachycardia syndrome (POTS) and related disorders of chronic orthostatic intolerance. Can J Cardiol. 2020;36(3):357–372.
 
 Sheldon RS, Grubb BP, Olshansky B, et al. 2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope. Heart Rhythm. 2015;12(6):e41–63.
+
+---
+
+## Further reading
+
+- [Pyridostigmine for POTS and ME/CFS](/evidence/pyridostigmine-pots-mecfs/)
+- [Amitriptyline, propranolol, and candesartan for chronic headache](/evidence/amitriptyline-propranolol-candesartan/)
+- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)

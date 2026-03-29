@@ -100,3 +100,11 @@ Singer W, Opfer-Gehrking TL, McPhee BR, Hilz MJ, Bharucha AE, Low PA. Acetylchol
 Arnold AC, Peltier A, Raj SR. Pyridostigmine treatment trial in myalgic encephalomyelitis/chronic fatigue syndrome and postural tachycardia syndrome. Clin Auton Res. 2021;31(1):83–92.
 
 Thieben MJ, Sandroni P, Sletten DM, et al. Postural orthostatic tachycardia syndrome: the Mayo clinic experience. Mayo Clin Proc. 2007;82(3):308–313.
+
+---
+
+## Further reading
+
+- [Ivabradine for post-viral autonomic dysfunction](/evidence/ivabradine-post-viral/)
+- [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)
+- [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)

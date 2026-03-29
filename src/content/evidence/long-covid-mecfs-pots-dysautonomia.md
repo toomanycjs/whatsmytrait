@@ -110,3 +110,11 @@ Raj SR, Guzman JC, Harvey P, et al. Canadian Cardiovascular Society position sta
 Davis HE, McCorkell L, Vogel JM, Topol EJ. Long COVID: major findings, mechanisms and recommendations. Nat Rev Microbiol. 2023;21(3):133–146.
 
 Komaroff AL, Bateman L. Will COVID-19 lead to myalgic encephalomyelitis/chronic fatigue syndrome? Front Med (Lausanne). 2021;7:606824.
+
+---
+
+## Further reading
+
+- [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
+- [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
+- [What happened to me: a timeline](/testing/what-happened-to-me/)

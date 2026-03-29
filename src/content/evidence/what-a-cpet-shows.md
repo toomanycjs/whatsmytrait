@@ -88,3 +88,11 @@ Systrom DM, Malhotra R, Mikkelsen ME. Unexplained exertional dyspnea caused by l
 Vermeulen RCW, Vermeulen van Eck IWM. Decreased oxygen extraction during cardiopulmonary exercise test in patients with chronic fatigue syndrome. J Transl Med. 2014;12:20.
 
 Mancini DM, Brunjes DL, Lala A, et al. Use of cardiopulmonary stress testing for patients with unexplained dyspnea post-coronavirus disease. JACC Heart Fail. 2021;9(12):927–937.
+
+---
+
+## Further reading
+
+- [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
+- [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
+- [Breathing pattern disorder vs autonomic breathlessness](/evidence/breathing-pattern-disorder-vs-autonomic-breathlessness/)

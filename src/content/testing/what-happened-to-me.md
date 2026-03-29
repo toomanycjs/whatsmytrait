@@ -74,3 +74,11 @@ Partly because the information I needed in the early months — about what was a
 The other posts on this site are evidence reviews and practical guides. This one is context. If you've arrived here from [the plain-language guide to what's going on](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/), this is where the personal experience behind that comes from.
 
 I'm not a clinician. Nothing here is medical advice. I'm someone three years into a post-viral condition, trying to understand it well enough to manage it better.
+
+---
+
+## Further reading
+
+- [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
+- [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
+- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)

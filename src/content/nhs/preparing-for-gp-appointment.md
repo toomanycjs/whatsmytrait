@@ -70,3 +70,11 @@ If NHS waiting times are very long and you have the means, a single private cons
 ---
 
 *Everything here is based on my own experience. NHS practice varies by region, and what works in one area may not work in another. This isn't medical advice: it's practical guidance from someone who has spent three years learning how to get the most out of a system that wasn't designed for conditions like ours.*
+
+---
+
+## Further reading
+
+- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)

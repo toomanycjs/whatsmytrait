@@ -55,3 +55,11 @@ I'll report back with data at regular intervals. The first meaningful comparison
 Stavrakis S, Chakraborty P, Farhat K, et al. Noninvasive vagus nerve stimulation in postural tachycardia syndrome: a randomized clinical trial. *JACC Clin Electrophysiol.* 2024;10(2):346–355.
 
 *The Nurosym device was purchased at my own expense. I have no affiliation with the manufacturer.*
+
+---
+
+## Further reading
+
+- [Diaphragmatic breathing for autonomic regulation](/testing/diaphragmatic-breathing/)
+- [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/)
+- [What I'm tracking and why](/testing/what-im-tracking-and-why/)

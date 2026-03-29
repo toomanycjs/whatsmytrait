@@ -97,3 +97,11 @@ Polo O, Leinonen L, Simonsen U, et al. Low-dose naltrexone in ME/CFS: a multicen
 Smith JP, Stock H, Bhatt D, et al. Low-dose naltrexone therapy improves active Crohn's disease. Am J Gastroenterol. 2011;106(12):2125–2134.
 
 Bolton MJ, Chapman BP, Van Marwijk H. Low-dose naltrexone as a treatment for chronic fatigue syndrome. BMJ Case Rep. 2020;13(1):e232502.
+
+---
+
+## Further reading
+
+- [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
+- [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
+- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
