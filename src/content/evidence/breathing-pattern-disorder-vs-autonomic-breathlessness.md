@@ -12,17 +12,17 @@ Breathing pattern disorder is real. It also gets significantly over-applied to p
 
 Breathing pattern disorder (BPD) refers to a pattern of dysfunctional breathing that perpetuates breathlessness symptoms. The most common form is chronic hyperventilation: breathing at a rate or depth that keeps carbon dioxide (CO2) levels chronically low, sensitising chemoreceptors and perpetuating the sense of breathlessness even in the absence of physiological oxygen insufficiency.
 
-It's maintained by a feedback loop. Anxiety or physical symptoms trigger faster breathing, which lowers CO2, which causes symptoms (light-headedness, tingling, chest tightness, breathlessness), which increase anxiety, which increases breathing rate further. Breaking the loop typically involves [breathing retraining](/testing/diaphragmatic-breathing/) — slowing the breath rate, nasal breathing, diaphragmatic technique.
+It's maintained by a feedback loop. Anxiety or physical symptoms trigger faster breathing, which lowers CO2, which causes symptoms (light-headedness, tingling, chest tightness, breathlessness), which increase anxiety, which increases breathing rate further. Breaking the loop typically involves [breathing retraining](/testing/diaphragmatic-breathing/): slowing the breath rate, nasal breathing, diaphragmatic technique.
 
-BPD is common in the general population, more common in women, and frequently coexists with anxiety disorders. It's also common in long COVID — but so is genuine autonomic breathlessness, and distinguishing between them requires more than noting that the lung function tests are normal.
+BPD is common in the general population, more common in women, and frequently coexists with anxiety disorders. It's also common in long COVID; but so is genuine autonomic breathlessness, and distinguishing between them requires more than noting that the lung function tests are normal.
 
 ## What autonomic breathlessness is
 
-In post-viral dysautonomia and POTS, breathlessness is often positional and exertional in a specific way: it's worst on standing, worsens with mild activity, and improves significantly when lying down. The mechanism is not pulmonary — the lungs are working normally — but cardiovascular and autonomic.
+In post-viral dysautonomia and POTS, breathlessness is often positional and exertional in a specific way: it's worst on standing, worsens with mild activity, and improves significantly when lying down. The mechanism is not pulmonary, the lungs are working normally, but cardiovascular and autonomic.
 
 When blood pools in the lower body on standing (the central problem in orthostatic intolerance), cardiac output drops. The heart compensates by beating faster, but in impaired cardiovascular reserve, this isn't always sufficient to maintain adequate cerebral and pulmonary perfusion. The respiratory rate increases not because of hyperventilation in the functional sense, but because the system is genuinely under-perfused.
 
-Additionally, small fibre neuropathy — damage to the fine nerve fibres that regulate peripheral blood vessels and the autonomic nervous system — causes dysfunctional signalling that can manifest as breathlessness and air hunger even at rest, via a different mechanism than either pulmonary disease or classic hyperventilation.
+Additionally, small fibre neuropathy, damage to the fine nerve fibres that regulate peripheral blood vessels and the autonomic nervous system, causes dysfunctional signalling that can manifest as breathlessness and air hunger even at rest, via a different mechanism than either pulmonary disease or classic hyperventilation.
 
 ## Why it's commonly confused
 
@@ -34,7 +34,7 @@ Several features make BPD and autonomic breathlessness look superficially simila
 - Both can coexist with anxiety (which is itself both a symptom and a trigger)
 - Both may respond partially to breathing retraining (since reduced sympathetic activation from slower breathing can help both conditions)
 
-The partial response to breathing physiotherapy is perhaps the most misleading feature. Some people with autonomic breathlessness find breathing retraining helpful because it reduces the sympathetic drive and anxiety component — but this doesn't mean BPD was the underlying cause.
+The partial response to breathing physiotherapy is perhaps the most misleading feature. Some people with autonomic breathlessness find breathing retraining helpful because it reduces the sympathetic drive and anxiety component; but this doesn't mean BPD was the underlying cause.
 
 ## How to distinguish them
 
@@ -54,7 +54,7 @@ The [Nijmegen questionnaire](/tools/nijmegen/) is a validated 16-item screening 
 
 ### Spirometry and gas transfer
 
-Both conditions typically show normal spirometry. However, a reduced DLCO (carbon monoxide transfer factor) on pulmonary function testing suggests pulmonary pathology — ruling this in or out is worth doing.
+Both conditions typically show normal spirometry. However, a reduced DLCO (carbon monoxide transfer factor) on pulmonary function testing suggests pulmonary pathology; ruling this in or out is worth doing.
 
 ### End-tidal CO2
 
@@ -68,15 +68,15 @@ BPD on CPET tends to show normal oxygen uptake kinetics and an erratic breathing
 
 ## Why the distinction matters for treatment
 
-**For breathing pattern disorder**: The effective treatment is breathing physiotherapy — retraining breathing rate, pattern, and nose/mouth ratio, addressing the hyperventilation cycle, and managing the anxiety component. Physiotherapy referral is appropriate and often helpful.
+**For breathing pattern disorder**: The effective treatment is breathing physiotherapy: retraining breathing rate, pattern, and nose/mouth ratio, addressing the hyperventilation cycle, and managing the anxiety component. Physiotherapy referral is appropriate and often helpful.
 
-**For autonomic breathlessness**: The effective treatments are [orthostatic management (salt, fluid, compression, position)](/evidence/salt-water-compression-electrolytes/) and, in some cases, medications. Breathing physiotherapy may provide some symptomatic relief but doesn't address the underlying problem. More importantly, physiotherapy aimed at BPD often includes increasing activity and reducing avoidance — this is appropriate for pure BPD but potentially harmful for someone with post-viral autonomic dysfunction and [post-exertional malaise](/evidence/post-exertional-malaise/).
+**For autonomic breathlessness**: The effective treatments are [orthostatic management (salt, fluid, compression, position)](/evidence/salt-water-compression-electrolytes/) and, in some cases, medications. Breathing physiotherapy may provide some symptomatic relief but doesn't address the underlying problem. More importantly, physiotherapy aimed at BPD often includes increasing activity and reducing avoidance; this is appropriate for pure BPD but potentially harmful for someone with post-viral autonomic dysfunction and [post-exertional malaise](/evidence/post-exertional-malaise/).
 
 Getting a POTS or dysautonomia diagnosis and managing the orthostatic component can produce dramatic improvement in breathlessness that no amount of breathing retraining would achieve.
 
 ## The coexistence problem
 
-Both conditions can coexist, and in long COVID they frequently do. Someone with POTS may also have developed dysfunctional breathing as a secondary response to their symptoms, producing a mixed picture. Treatment in this case should address both components — but it's important to identify the autonomic contribution so that management isn't entirely focused on the breathing pattern while missing the primary mechanism.
+Both conditions can coexist, and in long COVID they frequently do. Someone with POTS may also have developed dysfunctional breathing as a secondary response to their symptoms, producing a mixed picture. Treatment in this case should address both components; but it's important to identify the autonomic contribution so that management isn't entirely focused on the breathing pattern while missing the primary mechanism.
 
 If you've been told it's BPD but your breathlessness is consistently postural, associated with heart rate rise, and has not responded adequately to breathing retraining over several months, pushing for orthostatic assessment and ideally a CPET is reasonable.
 

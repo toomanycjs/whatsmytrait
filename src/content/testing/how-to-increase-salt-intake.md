@@ -4,7 +4,7 @@ description: "Practical guidance on reaching the 10-12g daily salt intake recomm
 pubDate: 2026-03-23
 ---
 
-Most people with POTS or suspected autonomic dysfunction are told at some point to increase their salt intake. The recommended target is typically 10–12g of sodium chloride per day — roughly double what most people eat. Getting there is harder than it sounds, and nobody tells you how to actually do it.
+Most people with POTS or suspected autonomic dysfunction are told at some point to increase their salt intake. The recommended target is typically 10–12g of sodium chloride per day, roughly double what most people eat. Getting there is harder than it sounds, and nobody tells you how to actually do it.
 
 This post is about the practical mechanics: what to use, how to measure it, when to take it, and how to build it into a daily routine without living on processed food or feeling constantly nauseous.
 
@@ -12,7 +12,7 @@ This post is about the practical mechanics: what to use, how to measure it, when
 
 The evidence is covered in detail in [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/).
 
-The short version: in orthostatic conditions, extra sodium and fluid help expand blood plasma volume, which reduces the degree of pooling when you stand. This doesn't cure the underlying dysfunction, but it can meaningfully reduce symptoms for many people. The effect is dose-dependent — a small amount of extra salt helps a little; hitting the full target helps more.
+The short version: in orthostatic conditions, extra sodium and fluid help expand blood plasma volume, which reduces the degree of pooling when you stand. This doesn't cure the underlying dysfunction, but it can meaningfully reduce symptoms for many people. The effect is dose-dependent: a small amount of extra salt helps a little; hitting the full target helps more.
 
 ## The target and why it matters
 
@@ -32,7 +32,7 @@ There is no meaningful evidence that one form of salt is better than another for
 
 **Salt tablets** (sodium chloride capsules) are a clean, measurable way to top up intake without affecting the flavour of everything you eat. They're sold as electrolyte or sodium supplements, typically in 500mg or 1g sodium equivalent doses. They can cause nausea if taken without food or water.
 
-**Electrolyte sachets and drinks** (such as Dioralyte, SOS Hydration, LMNT) contain sodium alongside other electrolytes. These can be useful for people who find drinking plain water difficult or who want to spread sodium intake throughout the day. They vary significantly in sodium content — check the label.
+**Electrolyte sachets and drinks** (such as Dioralyte, SOS Hydration, LMNT) contain sodium alongside other electrolytes. These can be useful for people who find drinking plain water difficult or who want to spread sodium intake throughout the day. They vary significantly in sodium content; check the label.
 
 **Soy sauce, miso, and similar condiments** are very high in sodium and can contribute meaningfully to intake. 1 tablespoon of soy sauce contains around 1g of sodium (2.5g salt equivalent). Useful for people who cook a lot of Asian-style food; less useful as a standalone strategy.
 
@@ -56,11 +56,11 @@ The most useful times to take extra salt are:
 
 **With meals**, particularly if meals contain fluid. This is the most natural way to increase intake and easiest to sustain long-term.
 
-Avoid large amounts of salt in the evening if you have sleep problems — the water retention can sometimes increase night-time urination.
+Avoid large amounts of salt in the evening if you have sleep problems; the water retention can sometimes increase night-time urination.
 
 ## Practical strategies for reaching the target
 
-**Add salt to everything you cook.** This is the single most effective change. Pasta water, soups, stews, vegetables, eggs — all of these can carry significantly more salt than most people add without tasting unpleasantly salty. Taste is not a reliable guide to sodium content.
+**Add salt to everything you cook.** This is the single most effective change. Pasta water, soups, stews, vegetables, eggs: all of these can carry significantly more salt than most people add without tasting unpleasantly salty. Taste is not a reliable guide to sodium content.
 
 **Use stock or broth.** A mug of homemade or good-quality stock contains 500mg–1g of sodium. It's easy to drink, hydrating, and filling without adding many calories.
 
@@ -82,7 +82,7 @@ Avoid large amounts of salt in the evening if you have sleep problems — the wa
 
 The most common issue is nausea, particularly from salt tablets or concentrated salt drinks on an empty stomach. Taking salt with food almost entirely solves this.
 
-Some people notice their ankles swell slightly when sodium intake is high. If this is significant, mention it to your doctor — it can occasionally indicate a need to reassess fluid management. Mild ankle oedema in isolation is common and not dangerous.
+Some people notice their ankles swell slightly when sodium intake is high. If this is significant, mention it to your doctor; it can occasionally indicate a need to reassess fluid management. Mild ankle oedema in isolation is common and not dangerous.
 
 People with kidney disease, heart failure, or hypertension should not increase salt intake without medical supervision. For most people with POTS or dysautonomia, the concern runs in the opposite direction: they need more, not less, sodium.
 
@@ -95,7 +95,7 @@ I track sodium in Cronometer about once every month or two to check I'm still on
 - One electrolyte sachet (LMNT, the unflavoured version) dissolved in a water bottle during the morning
 - Salt tablets (500mg x2) if I know I have a demanding afternoon
 
-On a typical day this gets me to around 10–11g without significant effort once the habit is established. The morning salt water is the hardest part to maintain because it's unpleasant — the electrolyte sachet approach is more sustainable for most people.
+On a typical day this gets me to around 10–11g without significant effort once the habit is established. The morning salt water is the hardest part to maintain because it's unpleasant; the electrolyte sachet approach is more sustainable for most people.
 
 The key is consistency over days and weeks, not heroic doses on bad days.
 

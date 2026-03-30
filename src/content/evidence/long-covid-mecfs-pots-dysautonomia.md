@@ -6,13 +6,13 @@ pubDate: 2026-03-17
 
 When you're trying to understand what's happened to you after a viral illness, the terminology is confusing. Long COVID. ME/CFS. POTS. Dysautonomia. Post-viral syndrome. Post-viral fatigue. These terms appear in different contexts, are used by different specialists, and sometimes seem to refer to the same thing and sometimes to different things.
 
-This post attempts to clarify what these terms mean, how they relate to each other, and — most importantly — why the labels matter less than the specific features of what's happening to an individual patient.
+This post attempts to clarify what these terms mean, how they relate to each other, and, most importantly, why the labels matter less than the specific features of what's happening to an individual patient.
 
 ## The terms and what they mean
 
 ### Long COVID
 
-Long COVID (also called post-acute sequelae of COVID-19, or PASC) refers to symptoms persisting or developing after acute COVID-19 infection, typically defined as symptoms continuing beyond 12 weeks from onset. It's an umbrella term that encompasses an enormous range of presentations — respiratory, cardiovascular, neurological, immunological, and more.
+Long COVID (also called post-acute sequelae of COVID-19, or PASC) refers to symptoms persisting or developing after acute COVID-19 infection, typically defined as symptoms continuing beyond 12 weeks from onset. It's an umbrella term that encompasses an enormous range of presentations: respiratory, cardiovascular, neurological, immunological, and more.
 
 Long COVID is not a diagnosis of a specific mechanism or pathology. It's a time-based definition: you had COVID, and you still have symptoms. The heterogeneity of long COVID is part of what makes it difficult to study and treat.
 
@@ -25,7 +25,7 @@ Within the long COVID umbrella, certain patterns appear repeatedly:
 
 ### ME/CFS
 
-Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a specific clinical syndrome defined by a characteristic symptom pattern, the most diagnostically specific of which is post-exertional malaise (PEM). ME/CFS is not a long COVID term — it pre-dates COVID by decades — but a significant proportion of people with severe long COVID meet ME/CFS diagnostic criteria.
+Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a specific clinical syndrome defined by a characteristic symptom pattern, the most diagnostically specific of which is post-exertional malaise (PEM). ME/CFS is not a long COVID term; it pre-dates COVID by decades, but a significant proportion of people with severe long COVID meet ME/CFS diagnostic criteria.
 
 The formal diagnostic criteria for ME/CFS (the 2015 Institute of Medicine criteria are the most widely used) require:
 - Substantial reduction in activity from pre-illness baseline
@@ -51,7 +51,7 @@ Many people use "dysautonomia" as a general label for post-viral autonomic dysfu
 
 "Post-viral syndrome" or "post-viral fatigue syndrome" is the term for fatigue and symptoms persisting after a viral illness, where the syndrome doesn't meet criteria for a more specific diagnosis. It's often used before a full diagnostic workup has been done, or when the presentation is early and evolving.
 
-It's a useful label for "something happened after that virus and it hasn't resolved" — but it doesn't specify whether the mechanism is autonomic, immunological, neurological, or some combination.
+It's a useful label for "something happened after that virus and it hasn't resolved", but it doesn't specify whether the mechanism is autonomic, immunological, neurological, or some combination.
 
 ## How these overlap
 
@@ -69,7 +69,7 @@ The overlaps are extensive:
 
 Given this overlap, the practical approach for individual patients is to focus on what is actually happening rather than which label fits best:
 
-**What are the symptoms?** Fatigue, orthostatic intolerance, cognitive impairment, breathlessness, pain, sleep problems — identifying which of these is present and dominant matters for treatment.
+**What are the symptoms?** Fatigue, orthostatic intolerance, cognitive impairment, breathlessness, pain, sleep problems. Identifying which of these is present and dominant matters for treatment.
 
 **Is there post-exertional malaise?** This single feature most determines how exercise and activity should be managed. Graded exercise rehabilitation is appropriate for some post-viral conditions; for those with PEM, it can cause harm. Establishing whether PEM is present should be one of the first questions.
 
@@ -87,7 +87,7 @@ The diagnosis you receive depends significantly on which specialist you saw, wha
 
 For [tracking and monitoring purposes](/testing/what-im-tracking-and-why/), the specific label matters less than knowing your key metrics: resting heart rate, orthostatic heart rate change, heart rate variability, and functional capacity. These are the things to track and manage, whatever the diagnosis says at the top of the letter. The [COMPASS-31](/tools/compass-31/) is a free online questionnaire that measures autonomic symptom burden across six domains and is widely used in dysautonomia research.
 
-The [evidence on HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) is worth reading regardless of which specific label you have — it's relevant across the full range of post-viral autonomic dysfunction.
+The [evidence on HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) is worth reading regardless of which specific label you have; it's relevant across the full range of post-viral autonomic dysfunction.
 
 ## The prognosis question
 
@@ -95,7 +95,7 @@ The [evidence on HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) 
 
 What the evidence does show:
 - Many people with POTS improve over time, particularly with appropriate treatment
-- ME/CFS is more variable — a significant proportion improve, especially those with shorter illness duration; some reach a stable plateau; some deteriorate
+- ME/CFS is more variable; a significant proportion improve, especially those with shorter illness duration; some reach a stable plateau; some deteriorate
 - Long COVID is too recent for long-term outcome data, but early cohort studies suggest gradual improvement in many patients over 1–2 years, with a subset remaining substantially affected
 - The post-viral conditions as a group are more likely to improve with appropriate management (including pacing and autonomic treatment) than without it
 

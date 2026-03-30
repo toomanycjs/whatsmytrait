@@ -4,18 +4,18 @@ description: "Ivabradine is increasingly used for POTS and post-viral tachycardi
 pubDate: 2026-03-27
 ---
 
-Ivabradine has moved from relative obscurity in autonomic medicine to one of the more commonly discussed pharmacological options for POTS and post-viral tachycardia. The shift is partly driven by a specific clinical need — patients with normal or low blood pressure who need heart rate reduction but can't tolerate beta-blockers — and partly by a growing evidence base.
+Ivabradine has moved from relative obscurity in autonomic medicine to one of the more commonly discussed pharmacological options for POTS and post-viral tachycardia. The shift is partly driven by a specific clinical need, patients with normal or low blood pressure who need heart rate reduction but can't tolerate beta-blockers, and partly by a growing evidence base.
 
 ## What ivabradine is and how it works
 
-Ivabradine (Procoralan, Coralan) is a selective inhibitor of the funny current (If) in the sinoatrial node — the pacemaker region of the heart. The funny current controls the spontaneous depolarisation rate that determines resting heart rate. Blocking it slows the rate of spontaneous depolarisation, which reduces heart rate.
+Ivabradine (Procoralan, Coralan) is a selective inhibitor of the funny current (If) in the sinoatrial node, the pacemaker region of the heart. The funny current controls the spontaneous depolarisation rate that determines resting heart rate. Blocking it slows the rate of spontaneous depolarisation, which reduces heart rate.
 
 The key feature of this mechanism is that it's specific to rate, with minimal effects on other cardiac parameters:
 
 - No effect on myocardial contractility (unlike beta-blockers)
 - No significant blood pressure effect (unlike beta-blockers and alpha-blockers)
 - No effect on cardiac conduction below the sinoatrial node
-- No effect on autonomic regulation — it doesn't increase or decrease vagal or sympathetic tone
+- No effect on autonomic regulation; it doesn't increase or decrease vagal or sympathetic tone
 
 This specificity is why ivabradine is attractive for POTS: in a condition where patients already have low or normal blood pressure, a rate-lowering medication that doesn't also lower blood pressure is significantly more suitable than a beta-blocker.
 
@@ -25,7 +25,7 @@ Ivabradine is licensed for:
 - Chronic heart failure (in patients with reduced ejection fraction and elevated resting heart rate)
 - Stable angina (in patients where beta-blockers are contraindicated)
 
-Its use in POTS and post-viral autonomic dysfunction is off-label. This is relevant for prescribing discussions — it requires a prescriber who knows the evidence and is willing to use it off-label — but it doesn't affect the pharmacological rationale.
+Its use in POTS and post-viral autonomic dysfunction is off-label. This is relevant for prescribing discussions; it requires a prescriber who knows the evidence and is willing to use it off-label, but it doesn't affect the pharmacological rationale.
 
 ## The evidence in POTS
 
@@ -43,9 +43,9 @@ The consistent finding across the available evidence: ivabradine reduces orthost
 
 ### vs Beta-blockers (propranolol, bisoprolol)
 
-[Beta-blockers](/evidence/amitriptyline-propranolol-candesartan/) reduce heart rate by blocking sympathetic stimulation. They also lower blood pressure and impair the heart rate response to exercise. In post-viral conditions with impaired exercise capacity, the exercise limitation effect of beta-blockers can be significant — by preventing appropriate heart rate rise, they may reduce the already-limited cardiac output augmentation during exertion.
+[Beta-blockers](/evidence/amitriptyline-propranolol-candesartan/) reduce heart rate by blocking sympathetic stimulation. They also lower blood pressure and impair the heart rate response to exercise. In post-viral conditions with impaired exercise capacity, the exercise limitation effect of beta-blockers can be significant; by preventing appropriate heart rate rise, they may reduce the already-limited cardiac output augmentation during exertion.
 
-Ivabradine has no exercise capacity impairment effect in most contexts. In POTS specifically, however, there's a nuance: the heart rate ceiling effect of ivabradine during exercise means the heart can't increase rate as much in response to demand — and in a condition where stroke volume is already impaired, this may limit rather than help exercise capacity. The data on this is mixed.
+Ivabradine has no exercise capacity impairment effect in most contexts. In POTS specifically, however, there's a nuance: the heart rate ceiling effect of ivabradine during exercise means the heart can't increase rate as much in response to demand; and in a condition where stroke volume is already impaired, this may limit rather than help exercise capacity. The data on this is mixed.
 
 For patients who cannot tolerate beta-blockers (because of low blood pressure, significant fatigue, asthma, or exercise intolerance), ivabradine is a better-tolerated alternative with comparable heart rate efficacy.
 
@@ -61,17 +61,17 @@ For POTS without significant [ME/CFS overlap](/evidence/long-covid-mecfs-pots-dy
 
 ### vs Fludrocortisone
 
-Fludrocortisone is a mineralocorticoid that increases sodium reabsorption, thereby expanding plasma volume — an approach that overlaps with the [salt and fluid management evidence](/evidence/salt-water-compression-electrolytes/). It addresses a different aspect of POTS physiology — volume depletion — rather than heart rate directly. Many patients use it alongside a rate-limiting medication rather than instead of one. Some patients find it helpful; others find the blood pressure and fluid retention side effects limit it.
+Fludrocortisone is a mineralocorticoid that increases sodium reabsorption, thereby expanding plasma volume, an approach that overlaps with the [salt and fluid management evidence](/evidence/salt-water-compression-electrolytes/). It addresses a different aspect of POTS physiology, volume depletion, rather than heart rate directly. Many patients use it alongside a rate-limiting medication rather than instead of one. Some patients find it helpful; others find the blood pressure and fluid retention side effects limit it.
 
 ## Side effects
 
-**Visual phosphenes** — the most specific side effect of ivabradine. Transient luminous phenomena in the visual field, typically appearing as flickering lights in bright environments or at night. Caused by If blockade in retinal photoreceptor cells. They occur in 10–18% of patients, are reversible, and don't cause permanent visual damage. They often diminish over time or with dose reduction.
+**Visual phosphenes**: the most specific side effect of ivabradine. Transient luminous phenomena in the visual field, typically appearing as flickering lights in bright environments or at night. Caused by If blockade in retinal photoreceptor cells. They occur in 10–18% of patients, are reversible, and don't cause permanent visual damage. They often diminish over time or with dose reduction.
 
-**Bradycardia** — at higher doses or in combination with other rate-limiting medications. Not a concern at standard starting doses in POTS patients with elevated resting heart rate.
+**Bradycardia**: at higher doses or in combination with other rate-limiting medications. Not a concern at standard starting doses in POTS patients with elevated resting heart rate.
 
-**Atrial fibrillation** — ivabradine is contraindicated in atrial fibrillation. If heart rhythm is irregular or there's a history of AF, ivabradine shouldn't be used.
+**Atrial fibrillation**: ivabradine is contraindicated in atrial fibrillation. If heart rhythm is irregular or there's a history of AF, ivabradine shouldn't be used.
 
-**No significant blood pressure effect** — confirmed across trials. This is the main advantage over beta-blockers in POTS.
+**No significant blood pressure effect**: confirmed across trials. This is the main advantage over beta-blockers in POTS.
 
 ## Dosing
 
@@ -87,11 +87,11 @@ Ivabradine is available on NHS prescription but its use in POTS is off-label. Sp
 
 The RECOVER-AUTONOMIC trial is testing ivabradine vs propranolol vs combination at a scale (several hundred participants) that dwarfs existing trials. The primary outcomes include quality of life and functional status, not just heart rate. If the results are positive, ivabradine is likely to move from off-label specialist use toward mainstream guideline inclusion for POTS and post-viral tachycardia.
 
-Even if the results are mixed, the trial will provide the sample size needed to identify which patients respond best — whether that's by symptom subtype, underlying mechanism, or other characteristics.
+Even if the results are mixed, the trial will provide the sample size needed to identify which patients respond best, whether that's by symptom subtype, underlying mechanism, or other characteristics.
 
 ## The honest summary
 
-Ivabradine has better evidence than most pharmacological options for POTS and post-viral tachycardia. The available trial data consistently shows meaningful heart rate reduction and good tolerability. It's not a cure — it manages a symptom without addressing any underlying mechanism — and effect sizes in trials are modest.
+Ivabradine has better evidence than most pharmacological options for POTS and post-viral tachycardia. The available trial data consistently shows meaningful heart rate reduction and good tolerability. It's not a cure; it manages a symptom without addressing any underlying mechanism, and effect sizes in trials are modest.
 
 For someone with POTS or post-viral orthostatic tachycardia where heart rate is a limiting symptom, ivabradine is a reasonable option to discuss with a specialist, particularly if beta-blockers have been poorly tolerated or are contraindicated.
 

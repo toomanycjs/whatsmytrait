@@ -12,7 +12,7 @@ The short version: the evidence for these interventions is generally reasonable 
 
 All four interventions address the same fundamental problem in POTS: inadequate circulating blood volume and impaired venous return to the heart on standing.
 
-When you stand up, gravity causes blood to pool in the legs and abdomen. Normally, the autonomic nervous system compensates by constricting blood vessels and increasing heart rate moderately, maintaining cardiac output and cerebral perfusion. In POTS, this compensatory response is impaired — typically either because there's too little blood volume to begin with, because the peripheral vasoconstriction is inadequate, or both.
+When you stand up, gravity causes blood to pool in the legs and abdomen. Normally, the autonomic nervous system compensates by constricting blood vessels and increasing heart rate moderately, maintaining cardiac output and cerebral perfusion. In POTS, this compensatory response is impaired, typically either because there's too little blood volume to begin with, because the peripheral vasoconstriction is inadequate, or both.
 
 Salt and water address volume. Compression addresses pooling. Electrolytes address the balance of ions needed to retain fluid effectively. Each has a distinct physiological mechanism.
 
@@ -26,15 +26,15 @@ Multiple observational and retrospective studies support the clinical benefit of
 
 **The target**: Most guidelines recommend 10–12g of salt (sodium chloride) per day, equivalent to approximately 4–5g of sodium. This is roughly double average UK adult intake. For practical guidance on reaching this target, see the [how to increase salt intake](/testing/how-to-increase-salt-intake/) post.
 
-**The caveats**: Salt intake needs to be paired with adequate fluid. Sodium without fluid doesn't expand plasma volume effectively — it needs water to stay in the vascular compartment. Salt loading is contraindicated in hypertension, kidney disease, and heart failure. Most POTS patients have none of these, but they should be excluded.
+**The caveats**: Salt intake needs to be paired with adequate fluid. Sodium without fluid doesn't expand plasma volume effectively; it needs water to stay in the vascular compartment. Salt loading is contraindicated in hypertension, kidney disease, and heart failure. Most POTS patients have none of these, but they should be excluded.
 
 ## Water
 
-**The mechanism**: Oral water boluses have an acute pressor effect — they raise blood pressure and reduce orthostatic symptoms within 15–30 minutes of drinking. This isn't simply about volume: a 500ml bolus of water causes a sympathetic reflex (the osmopressor reflex) independent of its volume effects, which transiently increases vascular resistance and blood pressure.
+**The mechanism**: Oral water boluses have an acute pressor effect; they raise blood pressure and reduce orthostatic symptoms within 15–30 minutes of drinking. This isn't simply about volume: a 500ml bolus of water causes a sympathetic reflex (the osmopressor reflex) independent of its volume effects, which transiently increases vascular resistance and blood pressure.
 
 **The evidence**: A randomised crossover study by Shannon et al. (2002) confirmed the acute pressor effect of a 500ml water bolus in healthy subjects and autonomic failure patients. Multiple studies have confirmed this in POTS specifically. The effect is acute (peaks at ~35 minutes) and transient (resolved by 90 minutes), making timing important.
 
-The recommended daily fluid target is 2–2.5 litres for most adults with POTS. This isn't derived from a large trial — it's an expert consensus figure based on physiological reasoning and clinical experience. Individual targets may vary based on body size and climate.
+The recommended daily fluid target is 2–2.5 litres for most adults with POTS. This isn't derived from a large trial; it's an expert consensus figure based on physiological reasoning and clinical experience. Individual targets may vary based on body size and climate.
 
 **The caveats**: Plain water is less effective than water paired with sodium for sustained volume expansion, because sodium is needed to retain the fluid in the vascular compartment. Drinking large amounts of plain water without adequate sodium can actually lower blood sodium (hyponatraemia) in extreme cases. This is the rationale for recommending salt and water together rather than either in isolation.
 
@@ -60,19 +60,19 @@ The evidence base is small and the studies heterogeneous in terms of garment typ
 
 **The evidence**: There are no trials specifically comparing electrolyte formulations in POTS. The evidence for electrolyte drinks is essentially the evidence for sodium and fluid combined. The clinical rationale for preferring electrolyte drinks over sodium alone is that they may improve fluid retention compared to plain water with separate salt supplementation, though this is not well-studied in POTS specifically.
 
-**The caveats**: Not all electrolyte products are equal in sodium content. Some sports drinks and "electrolyte" products contain surprisingly little sodium and are mainly marketing. For POTS, the sodium content is what matters — check the label and look for products with at least 500mg–1g sodium per serving.
+**The caveats**: Not all electrolyte products are equal in sodium content. Some sports drinks and "electrolyte" products contain surprisingly little sodium and are mainly marketing. For POTS, the sodium content is what matters; check the label and look for products with at least 500mg–1g sodium per serving.
 
 ## How effective are these together?
 
 The question that matters clinically is: if a patient implements all four interventions consistently, how much does it help?
 
-The honest answer is that the evidence doesn't give us a precise number. Individual variation is significant — some patients with POTS see near-complete symptom resolution with aggressive salt, fluid, and compression; others see modest improvement and still have significant functional limitation.
+The honest answer is that the evidence doesn't give us a precise number. Individual variation is significant; some patients with POTS see near-complete symptom resolution with aggressive salt, fluid, and compression; others see modest improvement and still have significant functional limitation.
 
 What the evidence does support:
 - These interventions are better than nothing (they reduce orthostatic heart rate and improve symptoms compared to baseline)
 - They are safe for the vast majority of POTS patients
 - They are recommended universally because they work for enough people and have no significant downsides for most
-- Adherence is the main limiting factor — hitting 10g of salt daily and wearing compression all day requires effort and habit change
+- Adherence is the main limiting factor; hitting 10g of salt daily and wearing compression all day requires effort and habit change
 
 For mild-to-moderate POTS, first-line management with these four interventions plus [physical reconditioning](/testing/recumbent-exercise/) produces meaningful improvement in a significant proportion of patients. For moderate-to-severe POTS, they're usually insufficient alone and [medication](/evidence/ivabradine-post-viral/) is needed in addition.
 

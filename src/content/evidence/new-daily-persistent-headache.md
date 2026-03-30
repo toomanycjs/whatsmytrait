@@ -1,6 +1,6 @@
 ---
 title: "New daily persistent headache: the complete patient guide (UK-focus)"
-description: "NDPH is one of the most treatment-resistant headache conditions — daily from the start, often post-viral, and poorly understood by most GPs. A complete UK patient guide covering diagnosis, treatments, NHS navigation, and the connection to post-viral syndrome."
+description: "NDPH is one of the most treatment-resistant headache conditions: daily from the start, often post-viral, and poorly understood by most GPs. A complete UK patient guide covering diagnosis, treatments, NHS navigation, and the connection to post-viral syndrome."
 pubDate: 2026-03-29
 ---
 
@@ -166,7 +166,7 @@ For patients whose NDPH began after a viral illness, the headache may be one com
 
 If you have NDPH alongside symptoms of orthostatic intolerance (racing heart on standing, dizziness, fatigue worse upright), it is worth investigating the autonomic component separately. The management approaches are different, and treating the autonomic dysfunction may indirectly improve the headache, particularly if the headache worsens with standing or exertion. The [30 bpm threshold article](/evidence/30-bpm-threshold-pots/) explains what orthostatic tachycardia is and how it is assessed. The [COMPASS-31](/tools/compass-31/) is a useful screening tool for autonomic symptoms, and the [NASA lean test](/tools/nasa-lean-test/) can give you a preliminary picture of your orthostatic response at home.
 
-If fatigue and [post-exertional malaise](/evidence/post-exertional-malaise/) are part of the picture alongside the headache, pacing principles apply — pushing through to exercise when [post-exertional malaise](/evidence/post-exertional-malaise/) is present can set recovery back.
+If fatigue and [post-exertional malaise](/evidence/post-exertional-malaise/) are part of the picture alongside the headache, pacing principles apply; pushing through to exercise when [post-exertional malaise](/evidence/post-exertional-malaise/) is present can set recovery back.
 
 ## Living with it
 
@@ -174,7 +174,7 @@ NDPH is relentless in a way that episodic conditions are not. There is no pain-f
 
 The psychological impact is compounded by the diagnostic difficulty. Being told repeatedly that tests are normal, that nothing is wrong, or that the problem is anxiety (it is not, though anxiety can certainly develop secondary to chronic pain) is exhausting and demoralising. Understanding that normal tests do not mean the pain is not real, and that the condition has a recognised diagnostic classification even if it is poorly understood, can help with the sense of legitimacy that many NDPH patients lack.
 
-[Tracking symptoms consistently](/testing/what-im-tracking-and-why/) — including headache intensity, triggers, medication use, and autonomic readings like standing heart rate — builds the kind of documented record that is useful both clinically (when advocating for yourself at appointments) and personally (for identifying patterns). The [Fatigue Severity Scale](/tools/fss/) and [COMPASS-31](/tools/compass-31/) are two tools worth completing and bringing to appointments. The NHS navigation guides on this site cover the practical side of [advocating for yourself](/nhs/preparing-for-gp-appointment/) within a system that is not designed for conditions like this.
+[Tracking symptoms consistently](/testing/what-im-tracking-and-why/), including headache intensity, triggers, medication use, and autonomic readings like standing heart rate, builds the kind of documented record that is useful both clinically (when advocating for yourself at appointments) and personally (for identifying patterns). The [Fatigue Severity Scale](/tools/fss/) and [COMPASS-31](/tools/compass-31/) are two tools worth completing and bringing to appointments. The NHS navigation guides on this site cover the practical side of [advocating for yourself](/nhs/preparing-for-gp-appointment/) within a system that is not designed for conditions like this.
 
 ## References
 

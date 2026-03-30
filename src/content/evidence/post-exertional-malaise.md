@@ -12,13 +12,13 @@ Understanding PEM is important for three reasons: it changes how exercise and ac
 
 The key features of PEM:
 
-**Delayed onset**: PEM typically begins 12–48 hours after the triggering exertion, not immediately. This delay is one of the reasons it's poorly understood and frequently missed — the connection between activity and consequences isn't immediate or intuitive.
+**Delayed onset**: PEM typically begins 12–48 hours after the triggering exertion, not immediately. This delay is one of the reasons it's poorly understood and frequently missed; the connection between activity and consequences isn't immediate or intuitive.
 
 **Disproportionate response**: The exertion that triggers PEM is often trivially small by healthy standards. A short walk, a phone call, a shower, emotional stress, or even concentrating on reading for an hour can all trigger PEM in severely affected patients.
 
 **Symptom diversity**: PEM isn't just fatigue. A flare typically involves increased fatigue, cognitive impairment (brain fog), pain (muscle, joint, headache), autonomic symptoms (palpitations, orthostatic intolerance, temperature dysregulation), immune symptoms (sore throat, flu-like feeling), and sometimes mood changes. The full array of the person's baseline symptoms typically worsens.
 
-**Duration variability**: PEM can last hours, days, weeks, or — after major over-exertion — months. In some patients, a single significant over-exertion event triggers a sustained downturn in their baseline level of function.
+**Duration variability**: PEM can last hours, days, weeks, or, after major over-exertion, months. In some patients, a single significant over-exertion event triggers a sustained downturn in their baseline level of function.
 
 **Not normal tiredness**: PEM is categorically different from the fatigue of a hard day's work or even the fatigue of overtraining in a healthy athlete. Rest resolves normal fatigue. Rest only partially resolves PEM, and the timing doesn't follow normal recovery curves.
 
@@ -26,11 +26,11 @@ The key features of PEM:
 
 The biology of PEM is increasingly well understood, though not yet fully explained:
 
-**Anaerobic threshold and metabolic failure**: CPET studies in ME/CFS patients show that the anaerobic threshold — the exercise intensity at which aerobic energy production is exceeded and anaerobic glycolysis begins — is abnormally low. More importantly, in [serial CPET](/evidence/what-a-cpet-shows/) (the same test performed on two consecutive days), ME/CFS patients show significant declines in VO2max and anaerobic threshold on the second day. This doesn't happen in healthy people or in most other chronic diseases. It suggests that exertion physically impairs the body's subsequent ability to generate energy aerobically.
+**Anaerobic threshold and metabolic failure**: CPET studies in ME/CFS patients show that the anaerobic threshold, the exercise intensity at which aerobic energy production is exceeded and anaerobic glycolysis begins, is abnormally low. More importantly, in [serial CPET](/evidence/what-a-cpet-shows/) (the same test performed on two consecutive days), ME/CFS patients show significant declines in VO2max and anaerobic threshold on the second day. This doesn't happen in healthy people or in most other chronic diseases. It suggests that exertion physically impairs the body's subsequent ability to generate energy aerobically.
 
 **Mitochondrial dysfunction**: Multiple studies have found impaired mitochondrial oxidative phosphorylation in ME/CFS. The energy-generating capacity of cells appears impaired, and exertion may temporarily worsen this impairment through mechanisms that include oxidative stress and calcium signalling disruption.
 
-**Immune activation**: Exertion triggers activation of the immune system in ME/CFS patients in ways that don't occur in healthy controls. Natural killer cell function, cytokine profiles, and inflammatory markers all show abnormal post-exercise responses. This likely explains the flu-like quality of PEM — the symptoms pattern matches immune activation.
+**Immune activation**: Exertion triggers activation of the immune system in ME/CFS patients in ways that don't occur in healthy controls. Natural killer cell function, cytokine profiles, and inflammatory markers all show abnormal post-exercise responses. This likely explains the flu-like quality of PEM; the symptoms pattern matches immune activation.
 
 **Autonomic instability**: Exertion worsens autonomic dysfunction acutely and in the day(s) following. [Heart rate variability](/evidence/hrv-as-a-tracking-metric/) drops, orthostatic tachycardia worsens, and the autonomic regulation that was already fragile becomes more impaired.
 
@@ -40,9 +40,9 @@ The common thread: whatever is broken in ME/CFS and long COVID is worsened by pu
 
 Graded exercise therapy (GET) was, for many years, a standard NHS treatment for ME/CFS, based on the cognitive behavioural model that the primary problem was deconditioning maintained by illness beliefs and avoidance behaviour. GET recommended progressive escalation of activity, using cognitive techniques to address fear of exertion.
 
-This approach has been comprehensively rejected by ME/CFS patient organisations, researchers familiar with PEM, and — following the NICE review in 2021 — by NHS guidance itself.
+This approach has been comprehensively rejected by ME/CFS patient organisations, researchers familiar with PEM, and, following the NICE review in 2021, by NHS guidance itself.
 
-The problem is that GET was designed for a condition that doesn't exist in the way the model assumed. Deconditioning does occur as a secondary consequence of ME/CFS, but it is not the primary mechanism. Pushing through PEM doesn't restore function — it damages it. Multiple large patient surveys found that GET was the most commonly reported harmful intervention in ME/CFS, with significant minorities reporting severe and lasting deterioration following courses of GET.
+The problem is that GET was designed for a condition that doesn't exist in the way the model assumed. Deconditioning does occur as a secondary consequence of ME/CFS, but it is not the primary mechanism. Pushing through PEM doesn't restore function; it damages it. Multiple large patient surveys found that GET was the most commonly reported harmful intervention in ME/CFS, with significant minorities reporting severe and lasting deterioration following courses of GET.
 
 The [2021 NICE guideline update](/nhs/what-i-wish-id-known-earlier/) removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
 
@@ -52,7 +52,7 @@ This does not mean exercise is contraindicated. It means that the type, intensit
 
 Pacing is the management approach most consistently supported by the evidence and by patient experience for ME/CFS with PEM. It is frequently mischaracterised as "doing nothing" or "excessive rest." It is neither.
 
-Pacing involves identifying an "energy envelope" — the level of daily activity that can be sustained without triggering PEM — and consistently staying within it. The goal is not gradual escalation but stability: reducing boom-bust cycles where patients over-exert on good days and crash for several following days.
+Pacing involves identifying an "energy envelope", the level of daily activity that can be sustained without triggering PEM, and consistently staying within it. The goal is not gradual escalation but stability: reducing boom-bust cycles where patients over-exert on good days and crash for several following days.
 
 In practice:
 
@@ -60,13 +60,13 @@ In practice:
 
 **Heart rate limits**: Some specialists recommend a heart rate ceiling based on the anaerobic threshold from CPET, or a proxy calculated from age (formula: 0.5 × (220 − age)). Staying below this ceiling during all activity reduces the risk of triggering PEM. The [30 bpm threshold and orthostatic tachycardia](/evidence/30-bpm-threshold-pots/) article discusses how heart rate measurement is used in autonomic conditions.
 
-**Cognitive rest as well as physical rest**: PEM can be triggered by cognitive exertion — screen time, phone calls, concentrated reading — not just physical activity. Pacing requires managing cognitive load as well.
+**Cognitive rest as well as physical rest**: PEM can be triggered by cognitive exertion (screen time, phone calls, concentrated reading), not just physical activity. Pacing requires managing cognitive load as well.
 
 **Rest breaks**: Building rest breaks into activity rather than pushing through tiredness. Lying down before reaching the point of fatigue, not after.
 
 **Reducing baseline**: In patients who are repeatedly crashing, stability often requires reducing baseline activity until a stable floor is established, even if that means short-term functional loss.
 
-Pacing is not passive. It requires active self-management, careful monitoring, and the discipline not to over-exert on good days. It is also not a permanent state — people who achieve stable pacing often see gradual natural improvement over months, whereas those who cycle through boom-bust patterns typically do not.
+Pacing is not passive. It requires active self-management, careful monitoring, and the discipline not to over-exert on good days. It is also not a permanent state; people who achieve stable pacing often see gradual natural improvement over months, whereas those who cycle through boom-bust patterns typically do not.
 
 ## PEM in long COVID
 
@@ -80,9 +80,9 @@ For long COVID patients with PEM, the guidance from most post-viral specialists 
 
 Pacing is not a cure. In the absence of an effective treatment for the underlying pathology, management strategies can reduce the severity of the condition's impact but cannot eliminate it. Some people improve substantially with careful pacing over time; others reach a stable plateau; a smaller proportion continue to deteriorate despite careful management.
 
-What pacing does reliably is prevent the iatrogenic harm that comes from repeatedly triggering PEM through over-exertion. That's not a small thing — many patients have had years of their illness made substantially worse by following standard advice to push through fatigue, before understanding that this made them worse rather than better.
+What pacing does reliably is prevent the iatrogenic harm that comes from repeatedly triggering PEM through over-exertion. That's not a small thing; many patients have had years of their illness made substantially worse by following standard advice to push through fatigue, before understanding that this made them worse rather than better.
 
-Understanding PEM — not as a psychological phenomenon but as a physiological one — is the foundation for managing these conditions appropriately.
+Understanding PEM, not as a psychological phenomenon but as a physiological one, is the foundation for managing these conditions appropriately.
 
 ## References
 

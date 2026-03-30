@@ -6,13 +6,13 @@ pubDate: 2026-03-25
 
 Postural orthostatic tachycardia syndrome (POTS) is diagnosed when heart rate increases by at least 30 beats per minute on standing (or head-up tilt), sustained for at least 10 minutes, without significant orthostatic hypotension, in the context of symptoms. In patients over 65 the criterion is 30 bpm; in patients aged 12–19 it's 40 bpm.
 
-The 30 bpm criterion is a clinical convention. It was arrived at through consensus and validated against population data — it's the threshold that best discriminates between symptomatic patients and healthy controls. But it's a threshold imposed on a continuous biological variable, and the evidence is clear that meaningful pathology exists below it.
+The 30 bpm criterion is a clinical convention. It was arrived at through consensus and validated against population data; it's the threshold that best discriminates between symptomatic patients and healthy controls. But it's a threshold imposed on a continuous biological variable, and the evidence is clear that meaningful pathology exists below it.
 
 ## Where the 30 bpm threshold came from
 
 The criterion was established primarily through work by Schondorf, Low, and colleagues in the 1990s and formalised in the 1999 American Autonomic Society consensus statement. The 30 bpm figure was chosen because it captures most patients with symptomatic orthostatic intolerance while excluding most healthy controls during normal daily variation.
 
-A healthy person standing up will have a heart rate rise of 10–20 bpm. A rise of 25–29 bpm in a symptomatic patient is not physiologically normal — it's just below the diagnostic threshold. A rise of 31 bpm in an asymptomatic person technically meets criteria but may not warrant the same clinical response.
+A healthy person standing up will have a heart rate rise of 10–20 bpm. A rise of 25–29 bpm in a symptomatic patient is not physiologically normal; it's just below the diagnostic threshold. A rise of 31 bpm in an asymptomatic person technically meets criteria but may not warrant the same clinical response.
 
 The threshold does what thresholds are supposed to do: create a clinically workable distinction for the purposes of diagnosis and treatment allocation. It does not reflect a biological boundary between sick and well.
 
@@ -33,11 +33,11 @@ This isn't a niche finding. Multiple groups have replicated the observation that
 
 The consequences of not meeting the 30 bpm threshold, in practice, are significant:
 
-**Diagnostic exclusion** — without a POTS diagnosis, access to specialist autonomic clinics is limited. Many referral criteria specify "confirmed POTS" or use the 30 bpm criterion as a gate. Borderline patients may be discharged from cardiology after a normal tilt test with no follow-up plan.
+**Diagnostic exclusion**: without a POTS diagnosis, access to specialist autonomic clinics is limited. Many referral criteria specify "confirmed POTS" or use the 30 bpm criterion as a gate. Borderline patients may be discharged from cardiology after a normal tilt test with no follow-up plan.
 
-**Treatment access** — medications that have evidence for POTS (ivabradine, pyridostigmine, beta blockers at appropriate doses, fludrocortisone) are prescribed on the basis of diagnosis. Without a POTS label, getting these medications can be significantly harder, even when the clinical picture is essentially identical.
+**Treatment access**: medications that have evidence for POTS (ivabradine, pyridostigmine, beta blockers at appropriate doses, fludrocortisone) are prescribed on the basis of diagnosis. Without a POTS label, getting these medications can be significantly harder, even when the clinical picture is essentially identical.
 
-**Legitimacy** — the diagnostic label carries weight in terms of how patients are treated by healthcare providers, employers, and disability systems. "I have something that looks like POTS but doesn't quite meet criteria" is harder to communicate than "I have POTS."
+**Legitimacy**: the diagnostic label carries weight in terms of how patients are treated by healthcare providers, employers, and disability systems. "I have something that looks like POTS but doesn't quite meet criteria" is harder to communicate than "I have POTS."
 
 ## Why measurement variability matters here
 
@@ -53,7 +53,7 @@ Heart rate during a standing test is not a stable measurement. It varies with:
 
 A patient who has a 28 bpm rise at clinic after good hydration on a cool morning might have a 34 bpm rise at home on a warm afternoon after a bad night. The threshold-based diagnosis depends heavily on the conditions of the single measurement.
 
-[Wearable tracking data](/testing/what-im-tracking-and-why/) — heart rate changes on standing captured across multiple days and conditions — can demonstrate consistent orthostatic tachycardia even when a single clinic measurement falls below threshold. Some specialists will weight longitudinal home data alongside clinic measurements.
+[Wearable tracking data](/testing/what-im-tracking-and-why/), heart rate changes on standing captured across multiple days and conditions, can demonstrate consistent orthostatic tachycardia even when a single clinic measurement falls below threshold. Some specialists will weight longitudinal home data alongside clinic measurements.
 
 ## HRV as a supplementary criterion
 
@@ -67,7 +67,7 @@ If the POTS threshold isn't met but symptoms are consistent with orthostatic int
 
 **Orthostatic intolerance** (OI) is a broader term that covers any symptomatic intolerance of upright posture, regardless of whether a specific heart rate threshold is met. It's acknowledged in specialist literature and can be a reasonable primary diagnosis when the threshold isn't met.
 
-**Dysautonomia** — a broader term for autonomic nervous system dysfunction — can also be applied when the physiological picture supports it even without meeting POTS criteria.
+**Dysautonomia**, a broader term for autonomic nervous system dysfunction, can also be applied when the physiological picture supports it even without meeting POTS criteria.
 
 **Inappropriate sinus tachycardia** (IST) overlaps with POTS in some presentations, particularly where elevated resting heart rate is the dominant feature alongside orthostatic intolerance.
 
@@ -79,7 +79,7 @@ If your standing heart rate rise consistently falls in the 20–29 bpm range wit
 
 **Request a formal tilt table test** if you've only had an [active stand test](/tools/nasa-lean-test/). Passive head-up tilt, held for 10 minutes, may reveal a larger or more sustained HR rise than an active stand.
 
-**Try standard first-line POTS management** — [increased salt and fluid, compression garments](/evidence/salt-water-compression-electrolytes/), head-of-bed elevation — regardless of diagnostic label. These are safe, evidence-based, and shouldn't require a specific diagnosis.
+**Try standard first-line POTS management**: [increased salt and fluid, compression garments](/evidence/salt-water-compression-electrolytes/), head-of-bed elevation, regardless of diagnostic label. These are safe, evidence-based, and shouldn't require a specific diagnosis.
 
 **Document with home monitoring**. [Wearable devices](/testing/what-im-tracking-and-why/) that track heart rate throughout the day can build a longitudinal picture. A resting heart rate consistently above 90 bpm and clear HR elevation on movement, documented over weeks, is useful clinical information.
 

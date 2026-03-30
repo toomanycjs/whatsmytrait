@@ -4,7 +4,7 @@ description: "Pyridostigmine is the only POTS medication with RCT evidence for i
 pubDate: 2026-03-27
 ---
 
-Pyridostigmine occupies a distinctive position among the pharmacological options for POTS and post-viral autonomic dysfunction. It's not primarily a heart rate medication — it works through a different mechanism — and the trial evidence specifically includes improvements in exercise capacity in ME/CFS overlap patients, which most POTS medications don't address.
+Pyridostigmine occupies a distinctive position among the pharmacological options for POTS and post-viral autonomic dysfunction. It's not primarily a heart rate medication; it works through a different mechanism. The trial evidence specifically includes improvements in exercise capacity in ME/CFS overlap patients, which most POTS medications don't address.
 
 ## What pyridostigmine is
 
@@ -25,9 +25,9 @@ The key study is the RandomisEd placebo-Controlled triAl of pyridostigmine for p
 
 The Singer et al. 2006 study was a small (17 patient) open-label study finding that pyridostigmine at 30–60mg three times daily reduced upright heart rate and improved orthostatic symptoms. This initial work was promising but uncontrolled.
 
-The subsequent randomised evidence is more convincing. The most-cited RCT (Kanjwal et al.) found that pyridostigmine significantly reduced orthostatic heart rate in POTS patients compared to placebo. The effect size was modest — a mean reduction of approximately 10–15 bpm in upright heart rate — but statistically significant and clinically meaningful for some patients.
+The subsequent randomised evidence is more convincing. The most-cited RCT (Kanjwal et al.) found that pyridostigmine significantly reduced orthostatic heart rate in POTS patients compared to placebo. The effect size was modest, a mean reduction of approximately 10–15 bpm in upright heart rate, but statistically significant and clinically meaningful for some patients.
 
-More recently, a 2021 study by Arnold et al. examining pyridostigmine specifically in POTS patients with ME/CFS overlap found improvements not just in heart rate but in exercise capacity — increased anaerobic threshold and improved VO2max on CPET. This is the specific finding that distinguishes pyridostigmine from most other POTS medications: it appears to improve the metabolic exercise response, not just the heart rate response.
+More recently, a 2021 study by Arnold et al. examining pyridostigmine specifically in POTS patients with ME/CFS overlap found improvements not just in heart rate but in exercise capacity: increased anaerobic threshold and improved VO2max on CPET. This is the specific finding that distinguishes pyridostigmine from most other POTS medications: it appears to improve the metabolic exercise response, not just the heart rate response.
 
 ## The ME/CFS exercise capacity finding
 
@@ -49,11 +49,11 @@ The comparison with pyridostigmine:
 
 **Heart rate effect**: Both reduce orthostatic heart rate, with broadly similar effect sizes in the available trials.
 
-**Exercise capacity**: Ivabradine's effect on exercise capacity is uncertain and potentially negative in post-viral conditions — by limiting heart rate rise during exercise, it may reduce the already-impaired cardiac output augmentation. Pyridostigmine appears to improve exercise capacity. This is a potentially important distinction.
+**Exercise capacity**: Ivabradine's effect on exercise capacity is uncertain and potentially negative in post-viral conditions; by limiting heart rate rise during exercise, it may reduce the already-impaired cardiac output augmentation. Pyridostigmine appears to improve exercise capacity. This is a potentially important distinction.
 
 **Blood pressure**: Ivabradine has no blood pressure effect, which is an advantage for patients with normal or low blood pressure. Pyridostigmine has mild blood pressure-lowering effects in some patients.
 
-**Side effects**: Ivabradine's main side effect is visual phosphenes (flickering light at the visual periphery, from If blockade in the retinal cells). Pyridostigmine's main side effects are cholinergic — nausea, diarrhoea, increased sweating, increased secretions, abdominal cramping. These can be significant at higher doses.
+**Side effects**: Ivabradine's main side effect is visual phosphenes (flickering light at the visual periphery, from If blockade in the retinal cells). Pyridostigmine's main side effects are cholinergic: nausea, diarrhoea, increased sweating, increased secretions, abdominal cramping. These can be significant at higher doses.
 
 **Starting dose**: Ivabradine at 2.5–5mg twice daily. Pyridostigmine typically at 30mg twice or three times daily, titrating to 60mg if tolerated.
 
@@ -73,7 +73,7 @@ The cholinergic side effects are the main tolerability concern:
 
 **Sweating**: Increased sweating is a recognised effect and can be noticeable.
 
-**Increased secretions**: Some people notice increased salivation or lacrimation — generally mild.
+**Increased secretions**: Some people notice increased salivation or lacrimation, generally mild.
 
 **Bradycardia**: Theoretical risk of excessive heart rate reduction, though at POTS doses this is rarely clinically significant.
 
@@ -83,7 +83,7 @@ These side effects are dose-dependent. Many people tolerate 30mg twice or three 
 
 Pyridostigmine (Mestinon) is available on the NHS, but its use in POTS is off-label. A prescriber familiar with both post-viral conditions and autonomic medicine is needed. Most cardiologists will be unfamiliar with this indication; autonomic specialist centres and some specialist long COVID services are more likely to prescribe it.
 
-The drug is inexpensive — it's an old, off-patent medication. The limiting factor is prescriber familiarity.
+The drug is inexpensive; it's an old, off-patent medication. The limiting factor is prescriber familiarity.
 
 ## The current status
 

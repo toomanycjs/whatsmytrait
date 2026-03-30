@@ -4,19 +4,19 @@ description: "LDN is one of the most discussed interventions in ME/CFS and long 
 pubDate: 2026-03-27
 ---
 
-Low-dose naltrexone (LDN) occupies a distinctive position in the landscape of post-viral treatments: widely used off-label by patients based on community experience, supported by a plausible biological mechanism and some preliminary trial data, but not yet validated by large randomised controlled trials. Understanding what the evidence actually shows — rather than either dismissing it or overstating it — requires separating several distinct claims.
+Low-dose naltrexone (LDN) occupies a distinctive position in the landscape of post-viral treatments: widely used off-label by patients based on community experience, supported by a plausible biological mechanism and some preliminary trial data, but not yet validated by large randomised controlled trials. Understanding what the evidence actually shows, rather than either dismissing it or overstating it, requires separating several distinct claims.
 
 ## What naltrexone is, and what "low dose" means
 
-Naltrexone is an opioid antagonist licensed at 50mg/day for alcohol and opioid use disorder. At this standard dose, it blocks opioid receptors completely. At doses of 1–5mg/day (typically 1.5–4.5mg) — ten to thirty times lower than the standard dose — something different appears to happen.
+Naltrexone is an opioid antagonist licensed at 50mg/day for alcohol and opioid use disorder. At this standard dose, it blocks opioid receptors completely. At doses of 1–5mg/day (typically 1.5–4.5mg), ten to thirty times lower than the standard dose, something different appears to happen.
 
-At low doses, naltrexone is thought to produce a brief (4–6 hour) opioid receptor blockade, after which receptors upregulate. This upregulation is hypothesised to lead to increased endogenous opioid production (endorphin and enkephalin release). Separately, LDN appears to have direct effects on microglial cells — the brain's immune cells — inhibiting their activation and reducing central nervous system inflammation. This latter mechanism, independent of opioid receptors, may be the more important one in conditions like ME/CFS and long COVID.
+At low doses, naltrexone is thought to produce a brief (4–6 hour) opioid receptor blockade, after which receptors upregulate. This upregulation is hypothesised to lead to increased endogenous opioid production (endorphin and enkephalin release). Separately, LDN appears to have direct effects on microglial cells, the brain's immune cells, inhibiting their activation and reducing central nervous system inflammation. This latter mechanism, independent of opioid receptors, may be the more important one in conditions like ME/CFS and long COVID.
 
-The key claim is that LDN reduces central neuroinflammation and modulates microglial activation — a mechanism that is relevant to post-viral conditions where neuroinflammation is thought to be a component.
+The key claim is that LDN reduces central neuroinflammation and modulates microglial activation, a mechanism that is relevant to post-viral conditions where neuroinflammation is thought to be a component.
 
 ## The biological rationale
 
-Neuroinflammation — activated microglia, elevated cytokines, altered central sensitisation — is increasingly recognised as a feature of ME/CFS and long COVID. PET imaging studies have shown microglial activation in ME/CFS brains. CSF studies have found elevated inflammatory markers in some patients. This is an active and not fully settled area, but the broad direction of evidence supports a neuroinflammatory component in at least a subset of post-viral patients.
+Neuroinflammation, activated microglia, elevated cytokines, altered central sensitisation, is increasingly recognised as a feature of ME/CFS and long COVID. PET imaging studies have shown microglial activation in ME/CFS brains. CSF studies have found elevated inflammatory markers in some patients. This is an active and not fully settled area, but the broad direction of evidence supports a neuroinflammatory component in at least a subset of post-viral patients.
 
 If LDN reduces microglial activation and central inflammation, then its potential benefit in these conditions has a mechanistic basis. This is different from, say, supplements that support mitochondrial function (reasonable but less specific) or graded exercise (which operates through a fundamentally different model).
 
@@ -58,7 +58,7 @@ There are reasons to take this seriously and reasons to be cautious. The reasons
 
 The reasons for caution: placebo effect is real in all open-label self-reporting; the patients reporting positive experiences are those who continued LDN long enough to report, excluding those who stopped early; and the specific features patients report improvement in (energy, brain fog) are particularly susceptible to both placebo effects and natural disease variation.
 
-The honest position is that the patient evidence and the mechanistic rationale together create a reasonable prior probability that LDN has genuine effects — but the question of how large those effects are, and for whom, requires better trial data than currently exists.
+The honest position is that the patient evidence and the mechanistic rationale together create a reasonable prior probability that LDN has genuine effects; but the question of how large those effects are, and for whom, requires better trial data than currently exists.
 
 ## Side effects and tolerability
 
@@ -72,15 +72,15 @@ Nausea is occasionally reported, particularly on initiation. It's uncommon and u
 
 ## Access and prescribing
 
-Naltrexone is a licensed medication. LDN is an off-label use, and getting it prescribed on the NHS is difficult — most GPs have not heard of it in this context, and it is not on any standard treatment pathway. Some GPs willing to prescribe it off-label can do so, but it requires an informed discussion.
+Naltrexone is a licensed medication. LDN is an off-label use, and getting it prescribed on the NHS is difficult; most GPs have not heard of it in this context, and it is not on any standard treatment pathway. Some GPs willing to prescribe it off-label can do so, but it requires an informed discussion.
 
-Private prescriptions are available from some online providers and private GPs. The drug itself is inexpensive — naltrexone is off-patent and cheap; the cost is primarily the prescription consultation.
+Private prescriptions are available from some online providers and private GPs. The drug itself is inexpensive; naltrexone is off-patent and cheap, and the cost is primarily the prescription consultation.
 
-Some patients use naltrexone licensed for alcohol use disorder at lower doses than prescribed, which is neither safe nor recommended — dose titration in this context requires medical oversight.
+Some patients use naltrexone licensed for alcohol use disorder at lower doses than prescribed, which is neither safe nor recommended; dose titration in this context requires medical oversight.
 
 ## Where this leaves things
 
-LDN sits in the category of interventions with a plausible mechanism, some preliminary positive trial evidence, a good safety profile, and substantial patient-reported interest — but without the large, well-controlled trial data needed to make confident recommendations.
+LDN sits in the category of interventions with a plausible mechanism, some preliminary positive trial evidence, a good safety profile, and substantial patient-reported interest; but without the large, well-controlled trial data needed to make confident recommendations.
 
 For someone with post-viral ME/CFS or long COVID who has tried standard management, has no contraindications, and is looking for additional options, the risk-benefit analysis appears favourable enough that a trial under medical supervision is reasonable. This is the position of several post-viral specialists in the UK and US who are willing to prescribe it.
 
