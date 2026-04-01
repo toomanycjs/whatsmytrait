@@ -36,7 +36,7 @@ The trial evidence for LDN in post-viral conditions specifically is thin but not
 
 The consistent themes across studies: modest but real effects on fatigue and pain; few and mild side effects; no evidence of harm; effect sizes that don't transform the clinical picture but may be meaningful for patients who have few other options.
 
-## What's missing
+## Gaps in the evidence
 
 The evidence base has significant gaps:
 
@@ -78,7 +78,7 @@ Private prescriptions are available from some online providers and private GPs. 
 
 Some patients use naltrexone licensed for alcohol use disorder at lower doses than prescribed, which is neither safe nor recommended; dose titration in this context requires medical oversight.
 
-## Where this leaves things
+## Summary
 
 LDN sits in the category of interventions with a plausible mechanism, some preliminary positive trial evidence, a good safety profile, and substantial patient-reported interest; but without the large, well-controlled trial data needed to make confident recommendations.
 

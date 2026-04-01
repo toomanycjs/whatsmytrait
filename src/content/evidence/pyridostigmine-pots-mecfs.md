@@ -85,7 +85,7 @@ Pyridostigmine (Mestinon) is available on the NHS, but its use in POTS is off-la
 
 The drug is inexpensive; it's an old, off-patent medication. The limiting factor is prescriber familiarity.
 
-## The current status
+## Current status
 
 Pyridostigmine sits at a position in the evidence hierarchy that is better than many post-viral interventions: multiple small RCTs supporting benefit in POTS, one study suggesting exercise capacity improvement in the ME/CFS overlap population, and a plausible mechanism that addresses known aspects of post-viral autonomic dysfunction.
 

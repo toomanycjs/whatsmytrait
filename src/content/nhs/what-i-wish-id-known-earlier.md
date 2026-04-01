@@ -36,7 +36,7 @@ Pacing, staying within an activity envelope that doesn't trigger crashes, is the
 
 The difficulty is that the safe level of activity is usually lower than it feels in the moment, and you only find out you've exceeded it 12–48 hours later. This makes learning the safe limit slow and the cost of misjudging it high.
 
-## You have to be your own advocate in the NHS, but there are ways to do it well
+## Advocating for yourself in the NHS
 
 The NHS is not set up to efficiently investigate and manage post-viral conditions. Post-viral dysautonomia is not in the standard diagnostic pathway at GP level; most GPs haven't been trained in it; and the referral journey to the right specialist can take years if you're not proactive.
 
@@ -50,13 +50,13 @@ A few principles:
 - Frame things in terms of physical measurements where possible
 - If you're dismissed, try again, ideally with new data, rather than accepting a conclusion you know doesn't fit
 
-## Knowing what not to do is as important as knowing what to do
+## What not to do
 
 I made things significantly worse in the first year by following advice that didn't apply to my condition. Specifically: trying to push through fatigue and build up exercise, which is appropriate for deconditioning after a physical illness but harmful for someone with post-exertional malaise.
 
 Understanding graded exercise therapy (GET), what it is, why it became standard advice, and why it causes harm in ME/CFS and long COVID, is important. The 2021 NICE guideline update removed GET from its recommendations for ME/CFS following evidence of harm. But clinicians trained on older guidelines still sometimes recommend it. Knowing that this isn't appropriate for your situation, and being able to articulate why, matters.
 
-## It's worth seeking out specialist knowledge
+## Seeking specialist knowledge
 
 Most clinicians, including GPs, general physicians, and even many cardiologists and neurologists, are not specialists in post-viral autonomic conditions. This is not a criticism: these are relatively recently characterised conditions and specialist knowledge takes time to disseminate.
 
@@ -79,7 +79,7 @@ The skill is in knowing how to distinguish between them. I've found it useful to
 
 The [evidence reviews on this site](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/) are my attempt to apply this kind of reading to specific interventions, not to tell you what to do, but to give you the basis for a more informed conversation with a clinician.
 
-## It doesn't have to be all-consuming
+## Keeping perspective
 
 For a long time, managing this condition consumed a disproportionate part of my mental energy: researching, tracking, worrying, trying things, reading about things. This is partly necessary, especially in the early phase when you don't yet understand what's happening. But it can become a way of avoiding acceptance of the current situation.
 

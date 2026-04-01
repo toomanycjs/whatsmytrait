@@ -89,7 +89,7 @@ The RECOVER-AUTONOMIC trial is testing ivabradine vs propranolol vs combination 
 
 Even if the results are mixed, the trial will provide the sample size needed to identify which patients respond best, whether that's by symptom subtype, underlying mechanism, or other characteristics.
 
-## The honest summary
+## Summary
 
 Ivabradine has better evidence than most pharmacological options for POTS and post-viral tachycardia. The available trial data consistently shows meaningful heart rate reduction and good tolerability. It's not a cure; it manages a symptom without addressing any underlying mechanism, and effect sizes in trials are modest.
 

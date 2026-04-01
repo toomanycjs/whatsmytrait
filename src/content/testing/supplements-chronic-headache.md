@@ -74,7 +74,7 @@ The downside is that if you take all four simultaneously, you can't isolate whic
 
 The supplements are not a substitute for prescription preventive medication where that's indicated. For moderate-to-severe headache burden, the evidence for medications like [amitriptyline, topiramate, and propranolol](/evidence/amitriptyline-propranolol-candesartan/) is substantially stronger than for any supplement. But supplements are useful as first-line options because of the safety profile, and some people find they provide enough benefit that they don't need to move to prescription preventives.
 
-## The honest bottom line
+## Summary
 
 After 18 months taking these four supplements consistently, I genuinely don't know how much they're helping. My NDPH hasn't remitted, the daily background headache continues, and the severity has varied in ways that correlate more obviously with other factors (viral illnesses, [autonomic state](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/), sleep) than with anything I've changed about supplements.
 

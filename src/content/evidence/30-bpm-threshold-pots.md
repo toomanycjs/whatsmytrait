@@ -85,7 +85,7 @@ If your standing heart rate rise consistently falls in the 20–29 bpm range wit
 
 **[Request specialist review](/nhs/preparing-for-gp-appointment/)** framed around orthostatic intolerance and post-viral dysautonomia rather than POTS specifically. A cardiologist or autonomic specialist who understands the spectrum of disease will be more useful than one applying strict diagnostic criteria as a gate.
 
-## The bottom line
+## Summary
 
 30 bpm is a useful clinical convention that does a reasonable job of identifying most people with significant orthostatic tachycardia. It is not a physiological truth. A person with a 27 bpm rise, daily symptoms of orthostatic intolerance, and abnormal HRV has autonomic dysfunction that deserves clinical attention regardless of whether the threshold is met.
 

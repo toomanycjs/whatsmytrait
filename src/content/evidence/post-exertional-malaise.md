@@ -76,7 +76,7 @@ Long COVID PEM appears qualitatively similar to ME/CFS PEM, with the same delaye
 
 For long COVID patients with PEM, the guidance from most post-viral specialists now mirrors ME/CFS guidance: avoid protocols that expect linear escalation, use heart rate monitoring to guide activity, and prioritise stability over improvement in the short term.
 
-## The honest limits of pacing
+## Limits of pacing
 
 Pacing is not a cure. In the absence of an effective treatment for the underlying pathology, management strategies can reduce the severity of the condition's impact but cannot eliminate it. Some people improve substantially with careful pacing over time; others reach a stable plateau; a smaller proportion continue to deteriorate despite careful management.
 
