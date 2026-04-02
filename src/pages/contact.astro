@@ -33,18 +33,25 @@ import Header from '../components/Header.astro';
 
 				<p>Please do not ask me for medical advice. I am not a clinician and cannot advise on individual symptoms or treatments. For medical questions, please speak to your GP or a relevant specialist.</p>
 
-				<form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+				<div data-fs-success class="form-success" style="display:none">
+					<p>Thanks for getting in touch. I will get back to you within a few days.</p>
+				</div>
+				<div data-fs-error class="form-error" style="display:none"></div>
+
+				<form id="contact-form" class="contact-form">
 					<div class="field">
 						<label for="name">Name</label>
-						<input type="text" id="name" name="name" placeholder="Your name" required />
+						<input type="text" id="name" name="name" placeholder="Your name" required data-fs-field />
+						<span class="field-error" data-fs-error="name"></span>
 					</div>
 					<div class="field">
 						<label for="email">Email address</label>
-						<input type="email" id="email" name="email" placeholder="your@email.com" required />
+						<input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field />
+						<span class="field-error" data-fs-error="email"></span>
 					</div>
 					<div class="field">
 						<label for="subject">Subject</label>
-						<select id="subject" name="subject">
+						<select id="subject" name="subject" data-fs-field>
 							<option value="">Please select</option>
 							<option value="tool-request">Tool or tracker request</option>
 							<option value="content-suggestion">Content suggestion</option>
@@ -52,16 +59,24 @@ import Header from '../components/Header.astro';
 							<option value="general">General question</option>
 							<option value="other">Other</option>
 						</select>
+						<span class="field-error" data-fs-error="subject"></span>
 					</div>
 					<div class="field">
 						<label for="message">Message</label>
-						<textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
+						<textarea id="message" name="message" rows="6" placeholder="Your message..." required data-fs-field></textarea>
+						<span class="field-error" data-fs-error="message"></span>
 					</div>
-					<button type="submit" class="submit-button">Send message</button>
+					<button type="submit" class="submit-button" data-fs-submit-btn>Send message</button>
 				</form>
 			</div>
 		</main>
 		<Footer />
+
+		<script>
+			window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+			formspree('initForm', { formElement: '#contact-form', formId: 'xdapllow' });
+		</script>
+		<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 	</body>
 </html>
 
@@ -84,6 +99,26 @@ import Header from '../components/Header.astro';
 		padding: 0;
 	}
 	.content li { margin-bottom: 0.4em; }
+
+	.form-success {
+		background: #f0faf4;
+		border: 1px solid #b6dfc8;
+		border-radius: 6px;
+		padding: 1em 1.25em;
+		margin-bottom: 1.5em;
+		color: #1a5c35;
+	}
+	.form-success p { margin: 0; }
+
+	.form-error {
+		background: #fff5f5;
+		border: 1px solid #fcc;
+		border-radius: 6px;
+		padding: 1em 1.25em;
+		margin-bottom: 1.5em;
+		color: #c0392b;
+		font-size: 0.9em;
+	}
 
 	.contact-form {
 		margin-top: 2em;
@@ -120,7 +155,16 @@ import Header from '../components/Header.astro';
 		outline: 2px solid var(--accent);
 		border-color: transparent;
 	}
+	.field input[aria-invalid="true"],
+	.field select[aria-invalid="true"],
+	.field textarea[aria-invalid="true"] {
+		border-color: #c0392b;
+	}
 	.field textarea { resize: vertical; }
+	.field-error {
+		font-size: 0.85em;
+		color: #c0392b;
+	}
 
 	.submit-button {
 		align-self: flex-start;
@@ -136,4 +180,8 @@ import Header from '../components/Header.astro';
 		transition: background 0.15s;
 	}
 	.submit-button:hover { background: var(--accent-dark); }
+	.submit-button:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
 </style>
