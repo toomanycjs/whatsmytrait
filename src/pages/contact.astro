@@ -1,0 +1,139 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Contact | Post Viral Recovery"
+			description="Get in touch with questions, feedback, or suggestions for tools and content. Run by a post-viral patient, not a clinician."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<h1>Contact</h1>
+				<p class="subtitle">Questions, feedback, or tool requests</p>
+			</div>
+
+			<div class="content">
+				<p>This site is run by one person: a post-viral patient, not a clinician. I read everything sent to me and try to respond, though it may take a few days.</p>
+
+				<p>Good reasons to get in touch include:</p>
+				<ul>
+					<li>Requests for new tools or tracking templates</li>
+					<li>Suggestions for evidence topics you would find useful</li>
+					<li>Corrections or updates to existing content</li>
+					<li>General questions about the site or the conditions it covers</li>
+				</ul>
+
+				<p>Please do not ask me for medical advice. I am not a clinician and cannot advise on individual symptoms or treatments. For medical questions, please speak to your GP or a relevant specialist.</p>
+
+				<form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" placeholder="Your name" required />
+					</div>
+					<div class="field">
+						<label for="email">Email address</label>
+						<input type="email" id="email" name="email" placeholder="your@email.com" required />
+					</div>
+					<div class="field">
+						<label for="subject">Subject</label>
+						<select id="subject" name="subject">
+							<option value="">Please select</option>
+							<option value="tool-request">Tool or tracker request</option>
+							<option value="content-suggestion">Content suggestion</option>
+							<option value="correction">Correction or update</option>
+							<option value="general">General question</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
+					</div>
+					<button type="submit" class="submit-button">Send message</button>
+				</form>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.page-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0; }
+
+	.content {
+		max-width: 640px;
+		line-height: 1.7;
+	}
+	.content p { margin-bottom: 1.25em; }
+	.content ul {
+		margin: 0 0 1.25em 1.25em;
+		padding: 0;
+	}
+	.content li { margin-bottom: 0.4em; }
+
+	.contact-form {
+		margin-top: 2em;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+	}
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35em;
+	}
+	.field label {
+		font-weight: 600;
+		font-size: 0.95em;
+		color: rgb(var(--gray-dark));
+	}
+	.field input,
+	.field select,
+	.field textarea {
+		padding: 0.55em 0.75em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 4px;
+		font-size: 0.95em;
+		font-family: inherit;
+		color: rgb(var(--gray-dark));
+		background: #fff;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.field input:focus,
+	.field select:focus,
+	.field textarea:focus {
+		outline: 2px solid var(--accent);
+		border-color: transparent;
+	}
+	.field textarea { resize: vertical; }
+
+	.submit-button {
+		align-self: flex-start;
+		padding: 0.6em 1.75em;
+		background: var(--accent);
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		font-size: 1em;
+		font-family: inherit;
+		font-weight: 700;
+		cursor: pointer;
+		transition: background 0.15s;
+	}
+	.submit-button:hover { background: var(--accent-dark); }
+</style>

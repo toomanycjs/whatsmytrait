@@ -3,7 +3,13 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run:*)",
-      "Bash(\"C:/Users/Craig/Documents/Blog site/.gitignore\":*)"
+      "Bash(\"C:/Users/Craig/Documents/Blog site/.gitignore\":*)",
+      "Bash(npx vercel:*)",
+      "Bash(python -c \":*)",
+      "Bash(grep -rn \"—\" \"C:\\\\Users\\\\Craig\\\\Documents\\\\Blog site\\\\src\\\\content\"\" --include=\"*.md\" | grep -v \"^Binary \")",
+      "Bash(pip install:*)",
+      "WebFetch(domain:docs.google.com)",
+      "Bash(del \"C:\\\\Users\\\\Craig\\\\Documents\\\\Blog site\\\\src\\\\pages\\\\tools\\\\trackers\\\\medication-log.astro\")"
     ]
   }
 }
