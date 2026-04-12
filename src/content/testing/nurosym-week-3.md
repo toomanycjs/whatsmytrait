@@ -2,6 +2,7 @@
 title: "Nurosym week 3: early HRV gains, but symptoms unchanged"
 description: "Three weeks into taVNS, my HRV has risen 23% and hit a six-month high. My symptoms haven't shifted. This post covers the numbers, the confounders, and what I think they mean so far."
 pubDate: 2026-04-10
+series: "Nurosym VNS"
 ---
 
 Three weeks into using the Nurosym taVNS device, my [heart rate variability](/evidence/hrv-as-a-tracking-metric/) is showing the clearest sustained improvement I've recorded since becoming ill. But my day-to-day symptoms haven't shifted. This post covers the numbers, the confounders, and what I think they mean so far.
