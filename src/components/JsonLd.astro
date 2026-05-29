@@ -1,0 +1,46 @@
+---
+interface Props {
+	type: 'BlogPosting' | 'MedicalWebPage';
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	url: string;
+	image?: string;
+}
+
+const { type, title, description, pubDate, updatedDate, url, image } = Astro.props;
+
+const schema: Record<string, unknown> = {
+	'@context': 'https://schema.org',
+	'@type': type,
+	headline: title,
+	description,
+	datePublished: pubDate.toISOString(),
+	dateModified: (updatedDate ?? pubDate).toISOString(),
+	mainEntityOfPage: {
+		'@type': 'WebPage',
+		'@id': url,
+	},
+	author: {
+		'@type': 'Person',
+		name: 'Craig Johnson',
+		url: 'https://www.postviralrecovery.com/about/',
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: 'Post Viral Recovery',
+		url: 'https://www.postviralrecovery.com/',
+	},
+};
+
+if (image) {
+	schema.image = image;
+}
+
+if (type === 'MedicalWebPage') {
+	schema.lastReviewed = (updatedDate ?? pubDate).toISOString();
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

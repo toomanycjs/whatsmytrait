@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import JsonLd from '../components/JsonLd.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
@@ -9,18 +10,36 @@ interface Props {
 	description: string;
 	pubDate: Date;
 	updatedDate?: Date;
+	lastModified?: Date;
 	section: 'testing' | 'evidence' | 'tools' | 'nhs';
 	sectionLabel: string;
 	sectionHref: string;
 	series?: string;
+	ogImage?: string;
 }
 
-const { title, description, pubDate, updatedDate, section, sectionLabel, sectionHref, series } = Astro.props;
+const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage } = Astro.props;
+
+const slug = Astro.url.pathname.replace(/^\//, '').replace(/\/$/, '');
+const generatedOgImage = new URL(`/og/${slug}.png`, Astro.site).href;
+const resolvedOgImage = ogImage ?? generatedOgImage;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const schemaType = section === 'evidence' ? 'MedicalWebPage' as const : 'BlogPosting' as const;
+const effectiveModified = lastModified ?? updatedDate;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} ogImage={resolvedOgImage} ogType="article" />
+		<JsonLd
+			type={schemaType}
+			title={title}
+			description={description}
+			pubDate={pubDate}
+			updatedDate={effectiveModified}
+			url={canonicalURL}
+			image={resolvedOgImage}
+		/>
 	</head>
 	<body>
 		<Header />

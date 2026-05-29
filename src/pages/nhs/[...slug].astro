@@ -19,6 +19,8 @@ const { Content } = await render(post);
 	section="nhs"
 	sectionLabel="NHS"
 	sectionHref="/nhs"
+	ogImage={post.data.ogImage}
+	lastModified={post.data.lastModified}
 >
 	<Content />
 </Post>

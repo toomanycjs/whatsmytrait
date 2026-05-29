@@ -7,8 +7,10 @@ const postSchema = z.object({
 	description: z.string(),
 	pubDate: z.coerce.date(),
 	updatedDate: z.coerce.date().optional(),
+	lastModified: z.coerce.date().optional(),
 	series: z.string().optional(),
 	draft: z.boolean().optional().default(false),
+	ogImage: z.string().optional(),
 });
 
 const testing = defineCollection({

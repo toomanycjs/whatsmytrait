@@ -19,6 +19,8 @@ const { Content } = await render(post);
 	section="evidence"
 	sectionLabel="Evidence"
 	sectionHref="/evidence"
+	ogImage={post.data.ogImage}
+	lastModified={post.data.lastModified}
 >
 	<Content />
 </Post>
