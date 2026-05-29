@@ -1,6 +1,6 @@
 ---
-title: "Low-dose naltrexone for post-viral conditions: what the evidence says"
-description: "LDN is one of the most discussed interventions in ME/CFS and long COVID patient communities. This is what the evidence actually shows, what's missing, and what to make of the gap between patient reports and clinical trial data."
+title: "Low-dose naltrexone for long COVID: microglia and the evidence"
+description: "What the evidence says about low-dose naltrexone, microglial activation and neuroinflammation in post-viral illness and long COVID: proposed mechanisms, the human trial data so far, and what remains uncertain."
 pubDate: 2026-03-27
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "The 30 bpm threshold: what happens when you almost have POTS"
-description: "The POTS diagnostic criterion of a 30 bpm heart rate rise on standing is a clinical convention, not a biological cliff edge. This piece examines what sub-threshold orthostatic tachycardia means in practice."
+title: "POTS diagnosis: 30 bpm increase within 10 minutes of standing"
+description: "The criterion for diagnosing POTS in adults is a sustained heart rate increase of 30 bpm (or 40 in adolescents) within 10 minutes of standing, without a drop in blood pressure. What the threshold means, where it comes from, and its limits."
 pubDate: 2026-03-25
 ---
 
