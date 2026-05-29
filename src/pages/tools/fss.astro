@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
 const questions = [
 	'My motivation is lower when I am fatigued.',
 	'Exercise brings on my fatigue.',
@@ -32,6 +34,7 @@ const ratings = [
 		<BaseHead
 			title="Fatigue Severity Scale (FSS): free online questionnaire with scoring"
 			description="Complete the Fatigue Severity Scale online for free. A 9-item validated questionnaire measuring the impact of fatigue on daily life. Instant scoring with interpretation. No sign-up required."
+			ogImage={ogImage}
 		/>
 <script type="application/ld+json">
 {

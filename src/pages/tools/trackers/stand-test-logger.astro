@@ -2,6 +2,8 @@
 import BaseHead from '../../../components/BaseHead.astro';
 import Footer from '../../../components/Footer.astro';
 import Header from '../../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
 <!doctype html>
@@ -10,6 +12,7 @@ import Header from '../../../components/Header.astro';
 		<BaseHead
 			title="Free stand test logger: track orthostatic heart rate over time"
 			description="A free Google Sheets template for logging NASA lean test and active stand test results over time. Record heart rate at baseline, 2, 5, and 10 minutes standing. Track your orthostatic response."
+			ogImage={ogImage}
 		/>
 	</head>
 	<body>

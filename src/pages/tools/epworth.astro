@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
 const situations = [
 	'Sitting and reading',
 	'Watching television',
@@ -28,6 +30,7 @@ const ratings = [
 		<BaseHead
 			title="Epworth Sleepiness Scale: free online questionnaire with scoring"
 			description="Complete the Epworth Sleepiness Scale online for free. An 8-item validated questionnaire measuring daytime sleepiness. Instant scoring with interpretation. No sign-up required."
+			ogImage={ogImage}
 		/>
 <script type="application/ld+json">
 {

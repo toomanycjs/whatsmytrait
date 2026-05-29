@@ -18,6 +18,19 @@ const SECTION_LABELS: Record<string, string> = {
 	tools: 'TOOLS',
 };
 
+const TOOL_PAGES = [
+	{ slug: 'tools/compass-31', title: 'COMPASS-31 questionnaire: free online version with automatic scoring' },
+	{ slug: 'tools/bell-scale', title: 'Bell CFIDS Disability Scale: free online functional capacity assessment' },
+	{ slug: 'tools/epworth', title: 'Epworth Sleepiness Scale: free online questionnaire with scoring' },
+	{ slug: 'tools/fss', title: 'Fatigue Severity Scale (FSS): free online questionnaire with scoring' },
+	{ slug: 'tools/nasa-lean-test', title: 'NASA lean test: how to do a poor man\'s tilt table test at home, with timer and logging' },
+	{ slug: 'tools/nijmegen', title: 'Nijmegen questionnaire: free online breathing pattern disorder screening tool' },
+	{ slug: 'tools/which-questionnaire', title: 'Which questionnaire should I take? A guide to post-viral self-assessment tools' },
+	{ slug: 'tools/trackers/hrv-tracker', title: 'Free HRV and resting heart rate tracker: Google Sheets template for daily logging' },
+	{ slug: 'tools/trackers/stand-test-logger', title: 'Free stand test logger: track orthostatic heart rate over time' },
+	{ slug: 'tools/trackers/symptom-diary', title: 'Free post-viral symptom diary: Google Sheets template with rolling averages' },
+];
+
 export async function getStaticPaths() {
 	const collections = ['testing', 'evidence', 'nhs'] as const;
 	const paths = [];
@@ -30,6 +43,13 @@ export async function getStaticPaths() {
 				props: { title: post.data.title, section: collection },
 			});
 		}
+	}
+
+	for (const tool of TOOL_PAGES) {
+		paths.push({
+			params: { slug: tool.slug },
+			props: { title: tool.title, section: 'tools' },
+		});
 	}
 
 	return paths;

@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
 const questions = [
 	'Chest pain',
 	'Feeling tense',
@@ -37,6 +39,7 @@ const frequencies = [
 		<BaseHead
 		title="Nijmegen questionnaire: free online breathing pattern disorder screening tool"
 		description="Complete the Nijmegen questionnaire online for free. Screen for hyperventilation syndrome and breathing pattern disorder with instant scoring and interpretation. No sign-up required."
+		ogImage={ogImage}
 	/>
 <script type="application/ld+json">
 {

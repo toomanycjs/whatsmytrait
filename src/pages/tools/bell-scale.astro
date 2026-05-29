@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
 const scaleItems = [
 	{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
 	{ value: 90, description: 'No symptoms at rest. Mild symptoms with exercise. Normal activity. Able to work full-time with some difficulty.' },
@@ -24,6 +26,7 @@ const scaleItems = [
 		<BaseHead
 			title="Bell CFIDS Disability Scale: free online functional capacity assessment"
 			description="Complete the Bell CFIDS Disability Scale online for free. A quick functional capacity rating from 0 to 100 used in ME/CFS and post-viral communities. Instant result with interpretation."
+			ogImage={ogImage}
 		/>
 <script type="application/ld+json">
 {
