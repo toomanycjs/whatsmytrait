@@ -26,6 +26,7 @@ const TOOL_PAGES = [
 	{ slug: 'tools/nasa-lean-test', title: 'NASA lean test: how to do a poor man\'s tilt table test at home, with timer and logging' },
 	{ slug: 'tools/nijmegen', title: 'Nijmegen questionnaire: free online breathing pattern disorder screening tool' },
 	{ slug: 'tools/which-questionnaire', title: 'Which questionnaire should I take? A guide to post-viral self-assessment tools' },
+	{ slug: 'tools/fibromyalgia-survey', title: 'Fibromyalgia symptom test: free online 2016 ACR survey with scoring' },
 	{ slug: 'tools/trackers/hrv-tracker', title: 'Free HRV and resting heart rate tracker: Google Sheets template for daily logging' },
 	{ slug: 'tools/trackers/stand-test-logger', title: 'Free stand test logger: track orthostatic heart rate over time' },
 	{ slug: 'tools/trackers/symptom-diary', title: 'Free post-viral symptom diary: Google Sheets template with rolling averages' },

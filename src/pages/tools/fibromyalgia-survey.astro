@@ -1,0 +1,850 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+		title="Fibromyalgia symptom test: free online 2016 ACR survey with scoring"
+		description="A free interactive version of the 2016 ACR fibromyalgia survey. Tick your pain areas and rate your symptoms to get your Widespread Pain Index, Symptom Severity score and total fibromyalgia severity score, with the criteria thresholds explained."
+		ogImage={ogImage}
+	/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Fibromyalgia Survey", "item": "https://www.postviralrecovery.com/tools/fibromyalgia-survey/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the 2016 fibromyalgia survey?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The 2016 ACR fibromyalgia survey is a revised self-report questionnaire that measures two components: a Widespread Pain Index (WPI, 0–19) based on pain locations in the past week, and a Symptom Severity Scale (SSS, 0–12) covering fatigue, unrefreshed sleep, cognitive problems, headaches, abdominal pain, and depression. It is validated for research and screening, not for clinical diagnosis in an individual."}
+        },
+        {
+          "@type": "Question",
+          "name": "What score on the fibromyalgia survey suggests fibromyalgia?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia — it indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- INTRO SCREEN -->
+			<div id="screen-intro" class="screen">
+				<div class="tool-header">
+					<a href="/tools" class="section-label tools">Tools</a>
+					<h1>2016 ACR Fibromyalgia Survey</h1>
+					<p class="subtitle">Self-report screening questionnaire</p>
+					<div class="disclaimer">
+						<strong>This is not a diagnostic tool.</strong> The self-report fibromyalgia survey is validated for research and screening, not for diagnosing an individual. A score that crosses the threshold does not mean you have fibromyalgia, and a score below it does not rule it out. Use this to inform a conversation with your doctor, who can assess you properly and consider other causes.
+					</div>
+				</div>
+
+				<div class="setup-content">
+					<h2>What this survey measures</h2>
+					<p>The 2016 revised ACR fibromyalgia survey questionnaire is a self-report instrument with two components: a <strong>Widespread Pain Index</strong> (WPI) that counts how many body areas you have had pain in during the past week, and a <strong>Symptom Severity Scale</strong> (SSS) that rates the severity of fatigue, unrefreshed sleep, and cognitive symptoms, plus the presence of headaches, abdominal pain, and depression.</p>
+					<p>The combined score (WPI + SSS) gives a <strong>Fibromyalgia Severity score</strong> (also called the Polysymptomatic Distress score), which ranges from 0 to 31. This is a continuous measure of symptom severity that is meaningful regardless of whether the criteria threshold is crossed.</p>
+					<p>The survey also checks whether your pain is widespread enough across body regions and whether symptoms have been present for at least 3 months, both of which are required for the criteria threshold to be met.</p>
+
+					<h2>How to complete it</h2>
+					<ul>
+						<li>The survey takes 2&ndash;3 minutes.</li>
+						<li>Answer based on your symptoms <strong>in the past week</strong> for the pain areas and core symptoms, and <strong>in the past 6 months</strong> for the three additional symptoms.</li>
+						<li>Be honest rather than generous: tick a pain area only if you genuinely had pain there, not stiffness or tingling alone.</li>
+					</ul>
+
+					<button id="start-btn" class="btn-primary btn-large">Begin survey</button>
+				</div>
+			</div>
+
+			<!-- WPI SCREEN -->
+			<div id="screen-wpi" class="screen" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 33%"></div></div>
+					<h2>Widespread Pain Index</h2>
+					<p>Tick each area where you have had <strong>pain in the past week</strong>. Do not include areas where you had only tingling, numbness, or stiffness without pain.</p>
+
+					<div class="wpi-regions">
+						<fieldset class="region-group">
+							<legend>Left upper</legend>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-jaw" data-region="left-upper" /><span>Left jaw</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-shoulder" data-region="left-upper" /><span>Left shoulder girdle</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-upper-arm" data-region="left-upper" /><span>Left upper arm</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-lower-arm" data-region="left-upper" /><span>Left lower arm</span></label>
+						</fieldset>
+
+						<fieldset class="region-group">
+							<legend>Right upper</legend>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-jaw" data-region="right-upper" /><span>Right jaw</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-shoulder" data-region="right-upper" /><span>Right shoulder girdle</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-upper-arm" data-region="right-upper" /><span>Right upper arm</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-lower-arm" data-region="right-upper" /><span>Right lower arm</span></label>
+						</fieldset>
+
+						<fieldset class="region-group">
+							<legend>Left lower</legend>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-hip" data-region="left-lower" /><span>Left hip (buttock/trochanter)</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-upper-leg" data-region="left-lower" /><span>Left upper leg</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-lower-leg" data-region="left-lower" /><span>Left lower leg</span></label>
+						</fieldset>
+
+						<fieldset class="region-group">
+							<legend>Right lower</legend>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-hip" data-region="right-lower" /><span>Right hip (buttock/trochanter)</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-upper-leg" data-region="right-lower" /><span>Right upper leg</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-lower-leg" data-region="right-lower" /><span>Right lower leg</span></label>
+						</fieldset>
+
+						<fieldset class="region-group">
+							<legend>Axial</legend>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="neck" data-region="axial" /><span>Neck</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="upper-back" data-region="axial" /><span>Upper back</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="lower-back" data-region="axial" /><span>Lower back</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="chest" data-region="axial" /><span>Chest</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="abdomen" data-region="axial" /><span>Abdomen</span></label>
+						</fieldset>
+					</div>
+
+					<div class="wpi-count">Areas selected: <strong id="wpi-count-value">0</strong> / 19</div>
+
+					<div class="nav-buttons">
+						<button id="wpi-back-btn" class="btn-outline">Back</button>
+						<button id="wpi-next-btn" class="btn-primary">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- SSS SCREEN -->
+			<div id="screen-sss" class="screen" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 66%"></div></div>
+					<h2>Symptom Severity Scale</h2>
+
+					<h3>Core symptoms <span class="section-note-inline">in the past week</span></h3>
+					<p>For each symptom, select the level that best describes your experience over the past week.</p>
+
+					<div class="severity-group">
+						<h4>Fatigue</h4>
+						<div class="radio-options">
+							<label class="radio-label"><input type="radio" name="fatigue" value="0" checked /><span><strong>0</strong> &mdash; No problem</span></label>
+							<label class="radio-label"><input type="radio" name="fatigue" value="1" /><span><strong>1</strong> &mdash; Slight or mild problems, generally mild or intermittent</span></label>
+							<label class="radio-label"><input type="radio" name="fatigue" value="2" /><span><strong>2</strong> &mdash; Moderate, considerable problems, often present and/or at a moderate level</span></label>
+							<label class="radio-label"><input type="radio" name="fatigue" value="3" /><span><strong>3</strong> &mdash; Severe: pervasive, continuous, life-disturbing problems</span></label>
+						</div>
+					</div>
+
+					<div class="severity-group">
+						<h4>Waking unrefreshed</h4>
+						<div class="radio-options">
+							<label class="radio-label"><input type="radio" name="waking" value="0" checked /><span><strong>0</strong> &mdash; No problem</span></label>
+							<label class="radio-label"><input type="radio" name="waking" value="1" /><span><strong>1</strong> &mdash; Slight or mild problems, generally mild or intermittent</span></label>
+							<label class="radio-label"><input type="radio" name="waking" value="2" /><span><strong>2</strong> &mdash; Moderate, considerable problems, often present and/or at a moderate level</span></label>
+							<label class="radio-label"><input type="radio" name="waking" value="3" /><span><strong>3</strong> &mdash; Severe: pervasive, continuous, life-disturbing problems</span></label>
+						</div>
+					</div>
+
+					<div class="severity-group">
+						<h4>Cognitive symptoms <span class="section-note-inline">(problems with thinking or memory)</span></h4>
+						<div class="radio-options">
+							<label class="radio-label"><input type="radio" name="cognitive" value="0" checked /><span><strong>0</strong> &mdash; No problem</span></label>
+							<label class="radio-label"><input type="radio" name="cognitive" value="1" /><span><strong>1</strong> &mdash; Slight or mild problems, generally mild or intermittent</span></label>
+							<label class="radio-label"><input type="radio" name="cognitive" value="2" /><span><strong>2</strong> &mdash; Moderate, considerable problems, often present and/or at a moderate level</span></label>
+							<label class="radio-label"><input type="radio" name="cognitive" value="3" /><span><strong>3</strong> &mdash; Severe: pervasive, continuous, life-disturbing problems</span></label>
+						</div>
+					</div>
+
+					<h3>Additional symptoms <span class="section-note-inline">in the past 6 months</span></h3>
+					<p>Have you had any of the following symptoms in the past 6 months?</p>
+
+					<div class="somatic-group">
+						<label class="checkbox-label"><input type="checkbox" name="somatic" value="headaches" /><span>Headaches</span></label>
+						<label class="checkbox-label"><input type="checkbox" name="somatic" value="abdominal" /><span>Pain or cramps in lower abdomen</span></label>
+						<label class="checkbox-label"><input type="checkbox" name="somatic" value="depression" /><span>Depression</span></label>
+					</div>
+
+					<div class="nav-buttons">
+						<button id="sss-back-btn" class="btn-outline">Back</button>
+						<button id="sss-next-btn" class="btn-primary">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- DURATION SCREEN -->
+			<div id="screen-duration" class="screen" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+					<h2>Symptom duration</h2>
+					<p>The criteria require that symptoms have been present at a similar level for at least 3 months.</p>
+
+					<div class="duration-question">
+						<p class="duration-prompt"><strong>Have your symptoms (pain, fatigue, sleep problems, cognitive difficulties) been present at a similar level for at least 3 months?</strong></p>
+						<div class="radio-options">
+							<label class="radio-label"><input type="radio" name="duration" value="yes" /><span>Yes &mdash; symptoms have been present at a similar level for 3 months or more</span></label>
+							<label class="radio-label"><input type="radio" name="duration" value="no" /><span>No &mdash; symptoms have been present for less than 3 months, or have changed significantly</span></label>
+						</div>
+					</div>
+
+					<p id="duration-error" class="input-error" hidden>Please select an answer before continuing.</p>
+
+					<div class="nav-buttons">
+						<button id="dur-back-btn" class="btn-outline">Back</button>
+						<button id="dur-next-btn" class="btn-primary">View results</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- RESULTS SCREEN -->
+			<div id="screen-results" class="screen" hidden>
+				<div class="results-content">
+					<h2>Your results</h2>
+
+					<div id="summary-cards" class="summary-cards"></div>
+
+					<div id="criteria-result" class="criteria-result"></div>
+
+					<div id="results-interpretation" class="interpretation-box"></div>
+
+					<div class="threshold-box">
+						<h4>Reference thresholds</h4>
+						<ul>
+							<li>Criteria met when WPI &ge;7 and SSS &ge;5, OR WPI 4&ndash;6 and SSS &ge;9</li>
+							<li>Plus generalized pain in at least 4 of 5 body regions</li>
+							<li>Plus symptoms present at a similar level for at least 3 months</li>
+							<li>The FS score (WPI + SSS, range 0&ndash;31) is a continuous measure of symptom severity and is meaningful regardless of whether the threshold is crossed</li>
+						</ul>
+					</div>
+
+					<div class="results-disclaimer">
+						<strong>This is not a diagnostic tool.</strong> The self-report fibromyalgia survey is validated for research and screening, not for diagnosing an individual. A score that crosses the threshold does not mean you have fibromyalgia, and a score below it does not rule it out. Use this to inform a conversation with your doctor, who can assess you properly and consider other causes.
+					</div>
+
+					<div class="export-buttons">
+						<button id="copy-btn" class="btn-secondary">Copy results as text</button>
+						<button id="print-btn" class="btn-secondary">Print / save as PDF</button>
+						<button id="restart-btn" class="btn-outline">Start again</button>
+					</div>
+					<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
+				</div>
+			</div>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+// ── Pain area definitions with region mappings ───────────────────────────────
+const REGIONS = ['left-upper', 'right-upper', 'left-lower', 'right-lower', 'axial'];
+
+// ── Screen navigation ────────────────────────────────────────────────────────
+function show(id) {
+	document.querySelectorAll('.screen').forEach(el => el.hidden = true);
+	document.getElementById(id).hidden = false;
+	window.scrollTo(0, 0);
+}
+
+// ── WPI count ────────────────────────────────────────────────────────────────
+function updateWpiCount() {
+	const count = document.querySelectorAll('input[name="wpi"]:checked').length;
+	document.getElementById('wpi-count-value').textContent = String(count);
+}
+
+// ── Scoring ──────────────────────────────────────────────────────────────────
+function computeScores() {
+	const checkedWpi = document.querySelectorAll('input[name="wpi"]:checked');
+	const wpi = checkedWpi.length;
+
+	const regionsWithPain = new Set();
+	checkedWpi.forEach(cb => regionsWithPain.add(cb.dataset.region));
+	const regionCount = regionsWithPain.size;
+
+	const fatigue = parseInt(document.querySelector('input[name="fatigue"]:checked').value);
+	const waking = parseInt(document.querySelector('input[name="waking"]:checked').value);
+	const cognitive = parseInt(document.querySelector('input[name="cognitive"]:checked').value);
+	const coreSymptoms = fatigue + waking + cognitive;
+
+	const somaticCount = document.querySelectorAll('input[name="somatic"]:checked').length;
+
+	const sss = coreSymptoms + somaticCount;
+	const fsScore = wpi + sss;
+
+	const durationYes = document.querySelector('input[name="duration"][value="yes"]')?.checked ?? false;
+
+	const painExtent = (wpi >= 7 && sss >= 5) || (wpi >= 4 && wpi <= 6 && sss >= 9);
+	const generalizedPain = regionCount >= 4;
+	const duration = durationYes;
+
+	const criteriaMet = painExtent && generalizedPain && duration;
+
+	return { wpi, sss, fsScore, regionCount, coreSymptoms, somaticCount, fatigue, waking, cognitive, painExtent, generalizedPain, duration, criteriaMet };
+}
+
+// ── Results display ──────────────────────────────────────────────────────────
+function showResults() {
+	const s = computeScores();
+	show('screen-results');
+
+	// Summary cards
+	const cards = document.getElementById('summary-cards');
+	cards.innerHTML = `
+		<div class="summary-card">
+			<div class="card-value">${s.wpi}</div>
+			<div class="card-label">Widespread Pain Index</div>
+			<div class="card-detail">Out of 19 possible pain areas, in ${s.regionCount} of 5 body regions</div>
+		</div>
+		<div class="summary-card">
+			<div class="card-value">${s.sss}</div>
+			<div class="card-label">Symptom Severity Scale</div>
+			<div class="card-detail">Core symptoms: ${s.coreSymptoms}/9. Additional symptoms: ${s.somaticCount}/3</div>
+		</div>
+		<div class="summary-card card-highlight">
+			<div class="card-value">${s.fsScore}<span class="card-value-suffix"> / 31</span></div>
+			<div class="card-label">Fibromyalgia Severity Score</div>
+			<div class="card-detail">WPI (${s.wpi}) + SSS (${s.sss}) = combined symptom burden</div>
+		</div>`;
+
+	// Criteria result
+	const criteriaEl = document.getElementById('criteria-result');
+	if (s.criteriaMet) {
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-met"><strong>Your responses meet the 2016 survey criteria threshold for fibromyalgia.</strong></div>`;
+	} else {
+		let reasons = [];
+		if (!s.painExtent) reasons.push('the pain extent / symptom severity combination did not reach the required threshold');
+		if (!s.generalizedPain) reasons.push(`pain was present in ${s.regionCount} of 5 body regions (at least 4 required)`);
+		if (!s.duration) reasons.push('symptoms have not been present at a similar level for at least 3 months');
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-not-met"><strong>Your responses do not meet the 2016 survey criteria threshold.</strong><br>Reason${reasons.length > 1 ? 's' : ''}: ${reasons.join('; ')}.</div>`;
+	}
+
+	// Interpretation
+	const interp = document.getElementById('results-interpretation');
+	let html = '';
+
+	html += `<p><strong>Pain distribution:</strong> You reported pain in ${s.wpi} of 19 areas, spread across ${s.regionCount} of 5 body regions. `;
+	if (s.regionCount >= 4) {
+		html += `This meets the generalized pain criterion (4 or more regions).`;
+	} else {
+		html += `The generalized pain criterion requires pain in at least 4 regions.`;
+	}
+	html += `</p>`;
+
+	html += `<p><strong>Core symptoms:</strong> Fatigue: ${s.fatigue}/3. Waking unrefreshed: ${s.waking}/3. Cognitive symptoms: ${s.cognitive}/3.</p>`;
+
+	if (s.somaticCount > 0) {
+		const items = [];
+		document.querySelectorAll('input[name="somatic"]:checked').forEach(cb => {
+			if (cb.value === 'headaches') items.push('headaches');
+			if (cb.value === 'abdominal') items.push('abdominal pain/cramps');
+			if (cb.value === 'depression') items.push('depression');
+		});
+		html += `<p><strong>Additional symptoms:</strong> ${items.join(', ')}.</p>`;
+	}
+
+	html += `<p><strong>Severity score:</strong> Your FS score of ${s.fsScore} out of 31 is a continuous measure of your overall symptom burden. `;
+	if (s.fsScore <= 6) {
+		html += `This is in the lower range.`;
+	} else if (s.fsScore <= 12) {
+		html += `This suggests a moderate symptom burden.`;
+	} else if (s.fsScore <= 20) {
+		html += `This suggests a substantial symptom burden.`;
+	} else {
+		html += `This suggests a high symptom burden.`;
+	}
+	html += ` This score is meaningful regardless of whether the criteria threshold is crossed, and can be used to track changes over time.</p>`;
+
+	interp.innerHTML = html;
+}
+
+// ── Text export ──────────────────────────────────────────────────────────────
+function buildText() {
+	const s = computeScores();
+	const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+	const checkedAreas = [];
+	document.querySelectorAll('input[name="wpi"]:checked').forEach(cb => {
+		checkedAreas.push(cb.closest('label').querySelector('span').textContent);
+	});
+
+	const lines = [
+		'2016 ACR FIBROMYALGIA SURVEY RESULTS',
+		`Date: ${date}`,
+		'Source: Post Viral Recovery, postviralrecovery.com',
+		'═'.repeat(45),
+		'',
+		'WIDESPREAD PAIN INDEX (WPI)',
+		'─'.repeat(30),
+		`Score: ${s.wpi} / 19`,
+		`Regions with pain: ${s.regionCount} / 5`,
+		`Areas: ${checkedAreas.length > 0 ? checkedAreas.join(', ') : 'None'}`,
+		'',
+		'SYMPTOM SEVERITY SCALE (SSS)',
+		'─'.repeat(30),
+		`Fatigue: ${s.fatigue} / 3`,
+		`Waking unrefreshed: ${s.waking} / 3`,
+		`Cognitive symptoms: ${s.cognitive} / 3`,
+		`Core symptoms subtotal: ${s.coreSymptoms} / 9`,
+	];
+
+	const somaticItems = [];
+	document.querySelectorAll('input[name="somatic"]:checked').forEach(cb => {
+		if (cb.value === 'headaches') somaticItems.push('Headaches');
+		if (cb.value === 'abdominal') somaticItems.push('Abdominal pain/cramps');
+		if (cb.value === 'depression') somaticItems.push('Depression');
+	});
+	lines.push(`Additional symptoms (past 6 months): ${somaticItems.length > 0 ? somaticItems.join(', ') : 'None'}`);
+	lines.push(`Additional symptoms subtotal: ${s.somaticCount} / 3`);
+	lines.push(`SSS total: ${s.sss} / 12`);
+	lines.push('');
+	lines.push('FIBROMYALGIA SEVERITY (FS) SCORE');
+	lines.push('─'.repeat(30));
+	lines.push(`FS score: ${s.fsScore} / 31 (WPI ${s.wpi} + SSS ${s.sss})`);
+	lines.push('');
+	lines.push('CRITERIA CHECK');
+	lines.push('─'.repeat(30));
+	lines.push(`Pain extent threshold: ${s.painExtent ? 'Met' : 'Not met'}`);
+	lines.push(`Generalized pain (4+ regions): ${s.generalizedPain ? 'Met' : 'Not met'} (${s.regionCount}/5 regions)`);
+	lines.push(`Duration (3+ months): ${s.duration ? 'Met' : 'Not met'}`);
+	lines.push(`Overall: ${s.criteriaMet ? 'CRITERIA THRESHOLD MET' : 'CRITERIA THRESHOLD NOT MET'}`);
+	lines.push('');
+	lines.push('═'.repeat(45));
+	lines.push('This is a screening tool, not a diagnosis. Discuss results with your doctor.');
+	lines.push('Criteria: WPI ≥7 & SSS ≥5, or WPI 4–6 & SSS ≥9; pain in 4+ of 5 regions; symptoms ≥3 months.');
+
+	return lines.join('\n');
+}
+
+// ── Event wiring ─────────────────────────────────────────────────────────────
+document.getElementById('start-btn').addEventListener('click', () => show('screen-wpi'));
+
+document.querySelectorAll('input[name="wpi"]').forEach(cb => {
+	cb.addEventListener('change', updateWpiCount);
+});
+
+document.getElementById('wpi-back-btn').addEventListener('click', () => show('screen-intro'));
+document.getElementById('wpi-next-btn').addEventListener('click', () => show('screen-sss'));
+
+document.getElementById('sss-back-btn').addEventListener('click', () => show('screen-wpi'));
+document.getElementById('sss-next-btn').addEventListener('click', () => show('screen-duration'));
+
+document.getElementById('dur-back-btn').addEventListener('click', () => show('screen-sss'));
+document.getElementById('dur-next-btn').addEventListener('click', () => {
+	const selected = document.querySelector('input[name="duration"]:checked');
+	if (!selected) {
+		document.getElementById('duration-error').hidden = false;
+		return;
+	}
+	document.getElementById('duration-error').hidden = true;
+	showResults();
+});
+
+document.querySelectorAll('input[name="duration"]').forEach(r => {
+	r.addEventListener('change', () => {
+		document.getElementById('duration-error').hidden = true;
+	});
+});
+
+document.getElementById('copy-btn').addEventListener('click', () => {
+	navigator.clipboard.writeText(buildText()).then(() => {
+		const el = document.getElementById('copy-confirm');
+		el.hidden = false;
+		setTimeout(() => el.hidden = true, 3000);
+	});
+});
+
+document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+	document.querySelectorAll('input[name="wpi"]').forEach(cb => cb.checked = false);
+	document.querySelectorAll('input[name="somatic"]').forEach(cb => cb.checked = false);
+	document.querySelectorAll('input[name="fatigue"], input[name="waking"], input[name="cognitive"]').forEach(r => {
+		r.checked = r.value === '0';
+	});
+	document.querySelectorAll('input[name="duration"]').forEach(r => r.checked = false);
+	updateWpiCount();
+	show('screen-intro');
+});
+</script>
+
+<style>
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+main {
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 2rem 1.25rem 4rem;
+}
+
+.screen { display: block; }
+.screen[hidden] { display: none; }
+
+/* ── Tool header ─────────────────────────────────────────────────────────── */
+.tool-header { margin-bottom: 2.5rem; }
+
+.section-label {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #6b7280;
+	text-decoration: none;
+	margin-bottom: 0.75rem;
+}
+.section-label:hover { color: #374151; }
+
+h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 1.2; }
+.subtitle { color: #6b7280; font-size: 1rem; margin: 0 0 1.25rem; }
+
+.disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: #78350f;
+}
+
+/* ── Setup content ───────────────────────────────────────────────────────── */
+.setup-content h2 { font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+.setup-content p, .setup-content li { line-height: 1.7; color: #374151; }
+.setup-content ul { padding-left: 1.5rem; }
+.setup-content li { margin-bottom: 0.4rem; }
+
+/* ── Progress bar ────────────────────────────────────────────────────────── */
+.progress-bar {
+	height: 4px;
+	background: #e5e7eb;
+	border-radius: 2px;
+	margin-bottom: 1.75rem;
+	overflow: hidden;
+}
+.progress-fill {
+	height: 100%;
+	background: #1d4ed8;
+	border-radius: 2px;
+	transition: width 0.3s ease;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+	display: inline-block;
+	background: #1d4ed8;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.75rem 1.75rem;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-primary:hover { background: #1e40af; }
+.btn-primary:active { background: #1e3a8a; }
+
+.btn-large { padding: 1rem 2.5rem; font-size: 1.1rem; margin-top: 1.5rem; }
+
+.btn-secondary {
+	display: inline-block;
+	background: #fff;
+	color: #1d4ed8;
+	border: 2px solid #1d4ed8;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-secondary:hover { background: #eff6ff; }
+
+.btn-outline {
+	display: inline-block;
+	background: transparent;
+	color: #6b7280;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-outline:hover { background: #f9fafb; }
+
+.nav-buttons {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 2rem;
+}
+
+/* ── Screen content ──────────────────────────────────────────────────────── */
+.screen-content h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
+.screen-content h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
+.screen-content p { color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+
+.section-note-inline {
+	font-weight: 400;
+	font-size: 0.85rem;
+	color: #6b7280;
+}
+
+/* ── WPI checkboxes ──────────────────────────────────────────────────────── */
+.wpi-regions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.25rem;
+}
+@media (max-width: 560px) {
+	.wpi-regions { grid-template-columns: 1fr; }
+}
+
+.region-group {
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1rem 1.25rem;
+	margin: 0;
+}
+.region-group legend {
+	font-size: 0.8rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: #6b7280;
+	padding: 0 0.5rem;
+}
+
+.checkbox-label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0.4rem 0;
+	cursor: pointer;
+	font-size: 0.95rem;
+	color: #374151;
+	line-height: 1.4;
+}
+.checkbox-label input[type="checkbox"] {
+	margin-top: 0.15rem;
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	accent-color: #1d4ed8;
+}
+
+.wpi-count {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: #6b7280;
+}
+
+/* ── SSS radio options ───────────────────────────────────────────────────── */
+.severity-group {
+	margin-bottom: 1.5rem;
+}
+.severity-group h4 {
+	font-size: 1rem;
+	margin: 0.75rem 0 0.4rem;
+	color: #111827;
+}
+
+.radio-options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+.radio-label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 0.925rem;
+	color: #374151;
+	line-height: 1.5;
+	transition: background 0.1s;
+}
+.radio-label:hover { background: #f9fafb; }
+.radio-label input[type="radio"] {
+	margin-top: 0.2rem;
+	flex-shrink: 0;
+	accent-color: #1d4ed8;
+}
+
+.somatic-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+
+/* ── Duration ────────────────────────────────────────────────────────────── */
+.duration-question {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1.25rem;
+}
+.duration-prompt {
+	margin: 0 0 1rem;
+	color: #111827;
+}
+
+.input-error {
+	color: #dc2626;
+	font-size: 0.85rem;
+	margin-top: 0.5rem;
+}
+.input-error[hidden] { display: none; }
+
+/* ── Results ─────────────────────────────────────────────────────────────── */
+.results-content h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+
+.summary-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+}
+.summary-card {
+	border: 1.5px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 1rem 1.1rem;
+	background: #f9fafb;
+}
+.summary-card.card-highlight {
+	background: #eff6ff;
+	border-color: #bfdbfe;
+}
+.card-value {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #111827;
+	line-height: 1;
+	margin-bottom: 0.3rem;
+}
+.card-value-suffix {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #6b7280;
+}
+.card-highlight .card-value { color: #1e40af; }
+.card-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #6b7280;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.35rem;
+}
+.card-detail { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+
+.criteria-result { margin-bottom: 1.5rem; }
+.criteria-box {
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+.criteria-met {
+	background: #f0fdf4;
+	border: 1.5px solid #86efac;
+	color: #166534;
+}
+.criteria-not-met {
+	background: #f8fafc;
+	border: 1.5px solid #e2e8f0;
+	color: #334155;
+}
+
+.interpretation-box {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: #1e293b;
+}
+.interpretation-box p { margin: 0 0 0.75rem; }
+.interpretation-box p:last-child { margin-bottom: 0; }
+
+.threshold-box {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	margin-top: 1.5rem;
+}
+.threshold-box h4 {
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #6b7280;
+	margin: 0 0 0.75rem;
+}
+.threshold-box ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+.threshold-box li {
+	font-size: 0.875rem;
+	color: #374151;
+	line-height: 1.6;
+	margin-bottom: 0.5rem;
+}
+.threshold-box li:last-child { margin-bottom: 0; }
+
+.results-disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 0.9rem 1.1rem;
+	font-size: 0.875rem;
+	color: #78350f;
+	line-height: 1.6;
+	margin-top: 1.5rem;
+}
+
+.export-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1.75rem;
+}
+
+.copy-confirm {
+	font-size: 0.875rem;
+	color: #166534;
+	margin-top: 0.5rem;
+}
+.copy-confirm[hidden] { display: none; }
+
+/* ── Print styles ────────────────────────────────────────────────────────── */
+@media print {
+	header, footer, .export-buttons, #restart-btn, .progress-bar, .nav-buttons { display: none !important; }
+	.screen[hidden] { display: none !important; }
+	#screen-results { display: block !important; }
+	main { padding: 0; max-width: 100%; }
+	body { font-size: 12pt; }
+}
+</style>
