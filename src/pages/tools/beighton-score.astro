@@ -1,0 +1,971 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+		title="Beighton score test: free online hypermobility self-assessment"
+		description="A free interactive Beighton score test for joint hypermobility, with an illustration for each of the nine manoeuvres and automatic scoring. See your score out of 9 and the age-adjusted threshold for generalised joint hypermobility, explained."
+		ogImage={ogImage}
+	/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Beighton Score", "item": "https://www.postviralrecovery.com/tools/beighton-score/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Beighton score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The Beighton score is a 9-point scale used to assess generalised joint hypermobility. It scores five manoeuvres: bending the little finger back beyond 90 degrees (1 point per side), bringing the thumb to touch the forearm (1 point per side), elbow hyperextension beyond 10 degrees (1 point per side), knee hyperextension beyond 10 degrees (1 point per side), and placing the palms flat on the floor with straight knees (1 point). It is a screening measure for hypermobility, not a diagnosis of any condition."}
+        },
+        {
+          "@type": "Question",
+          "name": "What Beighton score indicates hypermobility?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder — the Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- INTRO SCREEN -->
+			<div id="screen-intro" class="screen">
+				<div class="tool-header">
+					<a href="/tools" class="section-label tools">Tools</a>
+					<h1>Beighton Score</h1>
+					<p class="subtitle">9-point self-assessment for generalised joint hypermobility</p>
+					<div class="disclaimer">
+						<strong>This is not a diagnostic tool.</strong> The Beighton score identifies generalised joint hypermobility &mdash; it does not by itself diagnose hypermobile EDS, hypermobility spectrum disorder, or any condition. It is one part of a wider clinical assessment. A score below the threshold does not rule out a hypermobility-related condition, and historical hypermobility (joints that used to bend further) can still count under the full 2017 criteria. Use this to inform a conversation with your doctor.
+					</div>
+				</div>
+
+				<div class="setup-content">
+					<h2>What the Beighton score measures</h2>
+					<p>The Beighton score is the standard 9-point scale for <strong>generalised joint hypermobility</strong> &mdash; joints that move beyond the usual range. It checks five manoeuvres: four are scored on both sides of the body (1 point per side) and one is scored once, giving a total out of 9.</p>
+					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>&ge;6 for children and adolescents, &ge;5 for adults, and &ge;4 for adults over 50</strong>. The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders.</p>
+
+					<h2>How to complete it</h2>
+					<ul>
+						<li>The assessment takes 3&ndash;5 minutes. Each manoeuvre has an illustration showing the position that scores a point.</li>
+						<li>Move each joint <strong>passively and gently</strong> &mdash; use your other hand to move the finger or thumb rather than forcing it. <strong>Do not force any joint, and stop if anything hurts.</strong></li>
+						<li>The elbow, knee, and palms-to-floor items are easiest to judge side-on. Have someone check, or photograph yourself from the side.</li>
+					</ul>
+
+					<button id="start-btn" class="btn-primary btn-large">Begin assessment</button>
+				</div>
+			</div>
+
+			<!-- AGE SCREEN -->
+			<div id="screen-age" class="screen" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 12%"></div></div>
+					<h2>Your age</h2>
+					<p>The cut-off for generalised joint hypermobility is age-dependent, so the same score means different things at different ages. Select your age group so the correct threshold is applied.</p>
+
+					<div class="age-question">
+						<div class="radio-options">
+							<label class="radio-label"><input type="radio" name="age-band" value="under18" /><span><strong>Under 18</strong> &mdash; threshold: score of 6 or more</span></label>
+							<label class="radio-label"><input type="radio" name="age-band" value="adult" /><span><strong>18&ndash;50</strong> &mdash; threshold: score of 5 or more</span></label>
+							<label class="radio-label"><input type="radio" name="age-band" value="over50" /><span><strong>Over 50</strong> &mdash; threshold: score of 4 or more</span></label>
+						</div>
+					</div>
+
+					<p id="age-error" class="input-error" hidden>Please select your age group before continuing.</p>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-intro">Back</button>
+						<button id="age-next-btn" class="btn-primary">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- MANOEUVRE 1: LITTLE FINGER -->
+			<div id="screen-m1" class="screen screen-manoeuvre" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 26%"></div></div>
+					<span class="manoeuvre-step">Manoeuvre 1 of 5</span>
+					<h2>Little finger extension</h2>
+
+					<figure class="manoeuvre-figure">
+						<svg viewBox="0 0 240 160" role="img" aria-label="Line drawing of a hand resting flat with the little finger bent back beyond vertical, past 90 degrees">
+							<line class="ln" x1="25" y1="115" x2="150" y2="115" />
+							<line class="ref" x1="150" y1="115" x2="150" y2="55" />
+							<line class="ln" x1="150" y1="115" x2="128" y2="62" />
+							<circle class="joint" cx="150" cy="115" r="5" />
+							<path class="arc" d="M150,70 A45,45 0 0 0 133,74" />
+							<path class="arc" d="M138,68 L133,74 L140,77" fill="none" />
+							<text class="lbl" x="162" y="62">&gt;90&deg;</text>
+						</svg>
+						<figcaption>The little finger bends back beyond 90&deg; to the back of the hand.</figcaption>
+					</figure>
+
+					<p>Rest your hand palm-down on a flat surface. With your other hand, <strong>gently</strong> bend your little finger back towards you. It scores a point if it passes beyond 90&deg; &mdash; that is, beyond pointing straight up.</p>
+
+					<div class="side-question">
+						<p class="side-prompt"><strong>Left little finger</strong> &mdash; does it bend back beyond 90&deg;?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="pinky-left" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="pinky-left" value="0" /><span>No</span></label>
+						</div>
+					</div>
+					<div class="side-question">
+						<p class="side-prompt"><strong>Right little finger</strong> &mdash; does it bend back beyond 90&deg;?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="pinky-right" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="pinky-right" value="0" /><span>No</span></label>
+						</div>
+					</div>
+
+					<p class="input-error screen-error" hidden>Please answer for both sides before continuing.</p>
+					<div class="running-score">Score so far: <strong>0</strong> / 9</div>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-age">Back</button>
+						<button class="btn-primary manoeuvre-next" data-nav="screen-m2">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- MANOEUVRE 2: THUMB TO FOREARM -->
+			<div id="screen-m2" class="screen screen-manoeuvre" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 42%"></div></div>
+					<span class="manoeuvre-step">Manoeuvre 2 of 5</span>
+					<h2>Thumb to forearm</h2>
+
+					<figure class="manoeuvre-figure">
+						<svg viewBox="0 0 240 160" role="img" aria-label="Line drawing of a bent wrist with the thumb curving back to touch the inner forearm">
+							<line class="ln" x1="45" y1="60" x2="160" y2="60" />
+							<line class="ln" x1="160" y1="60" x2="196" y2="94" />
+							<circle class="joint" cx="160" cy="60" r="5" />
+							<path class="arc" d="M174,76 C162,104 130,98 120,68" />
+							<circle class="dot" cx="119" cy="65" r="5" />
+							<text class="lbl" x="38" y="148">thumb touches forearm</text>
+						</svg>
+						<figcaption>With the wrist bent, the thumb touches the inner (flexor) side of the forearm.</figcaption>
+					</figure>
+
+					<p>Bend your wrist so your fingers point down, then use your other hand to <strong>gently</strong> press your thumb towards the inner side of your forearm. It scores a point if the thumb touches the forearm. Do not force it.</p>
+
+					<div class="side-question">
+						<p class="side-prompt"><strong>Left thumb</strong> &mdash; does it touch your left forearm?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="thumb-left" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="thumb-left" value="0" /><span>No</span></label>
+						</div>
+					</div>
+					<div class="side-question">
+						<p class="side-prompt"><strong>Right thumb</strong> &mdash; does it touch your right forearm?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="thumb-right" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="thumb-right" value="0" /><span>No</span></label>
+						</div>
+					</div>
+
+					<p class="input-error screen-error" hidden>Please answer for both sides before continuing.</p>
+					<div class="running-score">Score so far: <strong>0</strong> / 9</div>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-m1">Back</button>
+						<button class="btn-primary manoeuvre-next" data-nav="screen-m3">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- MANOEUVRE 3: ELBOW HYPEREXTENSION -->
+			<div id="screen-m3" class="screen screen-manoeuvre" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 58%"></div></div>
+					<span class="manoeuvre-step">Manoeuvre 3 of 5</span>
+					<h2>Elbow hyperextension</h2>
+
+					<figure class="manoeuvre-figure">
+						<svg viewBox="0 0 240 160" role="img" aria-label="Line drawing of an outstretched arm seen from the side, with the elbow dipping below the straight line by more than 10 degrees">
+							<line class="ref" x1="30" y1="62" x2="215" y2="62" />
+							<line class="ln" x1="30" y1="62" x2="128" y2="84" />
+							<line class="ln" x1="128" y1="84" x2="215" y2="62" />
+							<circle class="joint" cx="30" cy="62" r="5" />
+							<circle class="joint" cx="128" cy="84" r="5" />
+							<path class="arc" d="M158,62 A32,32 0 0 1 156,78" />
+							<text class="lbl" x="146" y="108">&gt;10&deg;</text>
+						</svg>
+						<figcaption>Seen from the side, the elbow extends beyond straight by more than 10&deg;.</figcaption>
+					</figure>
+
+					<p>Hold your arm out straight with the palm facing up. It scores a point if the elbow extends <strong>beyond</strong> straight by more than 10&deg; &mdash; the arm looks slightly bent the &ldquo;wrong way&rdquo;. This is easiest to judge side-on: have someone check, or photograph yourself from the side.</p>
+
+					<div class="side-question">
+						<p class="side-prompt"><strong>Left elbow</strong> &mdash; does it extend beyond 10&deg; past straight?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="elbow-left" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="elbow-left" value="0" /><span>No</span></label>
+						</div>
+					</div>
+					<div class="side-question">
+						<p class="side-prompt"><strong>Right elbow</strong> &mdash; does it extend beyond 10&deg; past straight?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="elbow-right" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="elbow-right" value="0" /><span>No</span></label>
+						</div>
+					</div>
+
+					<p class="input-error screen-error" hidden>Please answer for both sides before continuing.</p>
+					<div class="running-score">Score so far: <strong>0</strong> / 9</div>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-m2">Back</button>
+						<button class="btn-primary manoeuvre-next" data-nav="screen-m4">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- MANOEUVRE 4: KNEE HYPEREXTENSION -->
+			<div id="screen-m4" class="screen screen-manoeuvre" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 74%"></div></div>
+					<span class="manoeuvre-step">Manoeuvre 4 of 5</span>
+					<h2>Knee hyperextension</h2>
+
+					<figure class="manoeuvre-figure">
+						<svg viewBox="0 0 240 160" role="img" aria-label="Line drawing of a standing leg seen from the side, with the knee bowing backwards past the straight line by more than 10 degrees">
+							<line class="ref" x1="120" y1="26" x2="120" y2="132" />
+							<line class="ln" x1="120" y1="26" x2="99" y2="80" />
+							<line class="ln" x1="99" y1="80" x2="116" y2="132" />
+							<line class="ln" x1="116" y1="132" x2="150" y2="134" />
+							<circle class="joint" cx="120" cy="26" r="5" />
+							<circle class="joint" cx="99" cy="80" r="5" />
+							<path class="arc" d="M120,52 A28,28 0 0 0 107,58" />
+							<text class="lbl" x="134" y="58">&gt;10&deg;</text>
+						</svg>
+						<figcaption>Seen from the side, the knee bows backwards beyond straight by more than 10&deg;.</figcaption>
+					</figure>
+
+					<p>Stand with your legs straight, viewed from the side. It scores a point if the knee extends <strong>beyond</strong> straight by more than 10&deg; &mdash; the leg bows backwards. This is easiest to judge side-on: have someone check, or photograph yourself from the side.</p>
+
+					<div class="side-question">
+						<p class="side-prompt"><strong>Left knee</strong> &mdash; does it extend beyond 10&deg; past straight?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="knee-left" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="knee-left" value="0" /><span>No</span></label>
+						</div>
+					</div>
+					<div class="side-question">
+						<p class="side-prompt"><strong>Right knee</strong> &mdash; does it extend beyond 10&deg; past straight?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="knee-right" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="knee-right" value="0" /><span>No</span></label>
+						</div>
+					</div>
+
+					<p class="input-error screen-error" hidden>Please answer for both sides before continuing.</p>
+					<div class="running-score">Score so far: <strong>0</strong> / 9</div>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-m3">Back</button>
+						<button class="btn-primary manoeuvre-next" data-nav="screen-m5">Continue</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- MANOEUVRE 5: PALMS TO FLOOR -->
+			<div id="screen-m5" class="screen screen-manoeuvre" hidden>
+				<div class="screen-content">
+					<div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+					<span class="manoeuvre-step">Manoeuvre 5 of 5</span>
+					<h2>Palms flat on the floor</h2>
+
+					<figure class="manoeuvre-figure">
+						<svg viewBox="0 0 240 160" role="img" aria-label="Line drawing of a person bending forward with straight legs, both palms flat on the floor">
+							<line class="ln" x1="20" y1="142" x2="225" y2="142" />
+							<line class="ln" x1="168" y1="142" x2="172" y2="62" />
+							<path class="ln" d="M172,62 C160,68 140,78 124,94" fill="none" />
+							<circle class="joint" cx="172" cy="62" r="5" />
+							<circle class="ln" cx="106" cy="104" r="10" fill="none" />
+							<line class="ln" x1="124" y1="94" x2="124" y2="138" />
+							<line class="dot-ln" x1="110" y1="142" x2="138" y2="142" />
+							<text class="lbl" x="24" y="132">palms flat</text>
+						</svg>
+						<figcaption>Bending forward with knees fully straight, both palms rest flat on the floor.</figcaption>
+					</figure>
+
+					<p>Stand with your feet together and knees <strong>completely straight</strong>, then bend forward and try to place your palms flat on the floor. It scores a point only if the whole palm (not just fingertips) reaches the floor with straight knees. Easiest to judge side-on &mdash; have someone check that your knees stay straight.</p>
+
+					<div class="side-question">
+						<p class="side-prompt"><strong>Trunk flexion</strong> &mdash; can you place both palms flat on the floor with straight knees?</p>
+						<div class="yn-options">
+							<label class="yn-label"><input type="radio" name="trunk" value="1" /><span>Yes</span></label>
+							<label class="yn-label"><input type="radio" name="trunk" value="0" /><span>No</span></label>
+						</div>
+					</div>
+
+					<p class="input-error screen-error" hidden>Please answer before viewing results.</p>
+					<div class="running-score">Score so far: <strong>0</strong> / 9</div>
+
+					<div class="nav-buttons">
+						<button class="btn-outline" data-nav="screen-m4">Back</button>
+						<button class="btn-primary manoeuvre-next" data-nav="results">View results</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- RESULTS SCREEN -->
+			<div id="screen-results" class="screen" hidden>
+				<div class="results-content">
+					<h2>Your results</h2>
+
+					<div id="summary-cards" class="summary-cards"></div>
+
+					<div id="criteria-result" class="criteria-result"></div>
+
+					<div id="results-interpretation" class="interpretation-box"></div>
+
+					<div class="threshold-box">
+						<h4>Reference thresholds</h4>
+						<ul>
+							<li>Generalised joint hypermobility is suggested by a Beighton score of &ge;5 in adults, &ge;6 in children and adolescents, and &ge;4 in adults over 50</li>
+							<li>The Beighton score is one component of the 2017 international criteria for hypermobile EDS; meeting the score alone is not a diagnosis</li>
+							<li>The maximum score is 9: little fingers (2), thumbs to forearm (2), elbows (2), knees (2), and palms to floor (1)</li>
+						</ul>
+					</div>
+
+					<div class="results-disclaimer">
+						<strong>This is not a diagnostic tool.</strong> The Beighton score identifies generalised joint hypermobility &mdash; it does not by itself diagnose hypermobile EDS, hypermobility spectrum disorder, or any condition. It is one part of a wider clinical assessment. A score below the threshold does not rule out a hypermobility-related condition, and historical hypermobility (joints that used to bend further) can still count under the full 2017 criteria. Use this to inform a conversation with your doctor.
+					</div>
+
+					<div class="export-buttons">
+						<button id="copy-btn" class="btn-secondary">Copy results as text</button>
+						<button id="print-btn" class="btn-secondary">Print / save as PDF</button>
+						<button id="restart-btn" class="btn-outline">Start again</button>
+					</div>
+					<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
+				</div>
+			</div>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+// ── Item definitions ─────────────────────────────────────────────────────────
+const ITEMS = [
+	{ name: 'pinky-left', label: 'Left little finger beyond 90°' },
+	{ name: 'pinky-right', label: 'Right little finger beyond 90°' },
+	{ name: 'thumb-left', label: 'Left thumb to forearm' },
+	{ name: 'thumb-right', label: 'Right thumb to forearm' },
+	{ name: 'elbow-left', label: 'Left elbow hyperextension >10°' },
+	{ name: 'elbow-right', label: 'Right elbow hyperextension >10°' },
+	{ name: 'knee-left', label: 'Left knee hyperextension >10°' },
+	{ name: 'knee-right', label: 'Right knee hyperextension >10°' },
+	{ name: 'trunk', label: 'Palms flat on floor, knees straight' },
+];
+
+const AGE_BANDS = {
+	under18: { label: 'Under 18', threshold: 6, phrase: 'children and adolescents' },
+	adult: { label: '18–50', threshold: 5, phrase: 'adults' },
+	over50: { label: 'Over 50', threshold: 4, phrase: 'adults over 50' },
+};
+
+// ── Screen navigation ────────────────────────────────────────────────────────
+function show(id) {
+	document.querySelectorAll('.screen').forEach(el => el.hidden = true);
+	document.getElementById(id).hidden = false;
+	window.scrollTo(0, 0);
+}
+
+// ── Scoring ──────────────────────────────────────────────────────────────────
+function itemValue(name) {
+	const checked = document.querySelector(`input[name="${name}"]:checked`);
+	return checked ? parseInt(checked.value) : null;
+}
+
+function computeScore() {
+	let total = 0;
+	const answers = {};
+	for (const item of ITEMS) {
+		const v = itemValue(item.name);
+		answers[item.name] = v;
+		total += v ?? 0;
+	}
+	const ageInput = document.querySelector('input[name="age-band"]:checked');
+	const ageBand = ageInput ? ageInput.value : null;
+	const band = ageBand ? AGE_BANDS[ageBand] : null;
+	const met = band ? total >= band.threshold : false;
+	return { total, answers, ageBand, band, met };
+}
+
+function updateRunningScores() {
+	const { total } = computeScore();
+	document.querySelectorAll('.running-score strong').forEach(el => {
+		el.textContent = String(total);
+	});
+}
+
+// ── Per-screen validation ────────────────────────────────────────────────────
+function screenAnswered(screenEl) {
+	const names = new Set();
+	screenEl.querySelectorAll('input[type="radio"]').forEach(r => names.add(r.name));
+	for (const name of names) {
+		if (!screenEl.querySelector(`input[name="${name}"]:checked`)) return false;
+	}
+	return true;
+}
+
+// ── Results display ──────────────────────────────────────────────────────────
+function showResults() {
+	const s = computeScore();
+	show('screen-results');
+
+	const cards = document.getElementById('summary-cards');
+	cards.innerHTML = `
+		<div class="summary-card card-highlight">
+			<div class="card-value">${s.total}<span class="card-value-suffix"> / 9</span></div>
+			<div class="card-label">Beighton score</div>
+			<div class="card-detail">Total points across the five manoeuvres</div>
+		</div>
+		<div class="summary-card">
+			<div class="card-value">&ge;${s.band.threshold}</div>
+			<div class="card-label">Your age-adjusted cut-off</div>
+			<div class="card-detail">Threshold for ${s.band.phrase} (age group: ${s.band.label})</div>
+		</div>`;
+
+	const criteriaEl = document.getElementById('criteria-result');
+	if (s.met) {
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-met"><strong>Your score suggests generalised joint hypermobility.</strong><br>A score of ${s.total} meets the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. This is one input a clinician uses when assessing hypermobility — it is not a diagnosis of EDS or HSD.</div>`;
+	} else {
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-not-met"><strong>Your score is below the threshold for generalised joint hypermobility.</strong><br>A score of ${s.total} is below the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. Note that historical hypermobility counts: if you could previously perform these manoeuvres but no longer can, you may still meet criteria via the wider 2017 framework — mention this to your doctor.</div>`;
+	}
+
+	const interp = document.getElementById('results-interpretation');
+	const positives = ITEMS.filter(item => s.answers[item.name] === 1).map(item => item.label);
+	let html = `<p><strong>Points scored:</strong> ${s.total} of 9.</p>`;
+	if (positives.length > 0) {
+		html += `<p><strong>Positive items:</strong> ${positives.join('; ')}.</p>`;
+	} else {
+		html += `<p><strong>Positive items:</strong> none.</p>`;
+	}
+	html += `<p>The Beighton score measures range of movement at a small set of joints. It does not capture joint pain, instability, dislocations, or symptoms in joints it does not test — those are assessed separately in a clinical evaluation, and matter regardless of your score here.</p>`;
+	interp.innerHTML = html;
+}
+
+// ── Text export ──────────────────────────────────────────────────────────────
+function buildText() {
+	const s = computeScore();
+	const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+	const lines = [
+		'BEIGHTON SCORE RESULTS',
+		`Date: ${date}`,
+		'Source: Post Viral Recovery, postviralrecovery.com',
+		'═'.repeat(45),
+		'',
+		`Age group: ${s.band.label} (cut-off: ≥${s.band.threshold})`,
+		`Beighton score: ${s.total} / 9`,
+		`Age-adjusted threshold: ${s.met ? 'MET — suggests generalised joint hypermobility' : 'NOT MET'}`,
+		'',
+		'ITEM BREAKDOWN',
+		'─'.repeat(30),
+	];
+
+	for (const item of ITEMS) {
+		lines.push(`${item.label}: ${s.answers[item.name] === 1 ? 'Yes (1 point)' : 'No (0 points)'}`);
+	}
+
+	lines.push('');
+	lines.push('═'.repeat(45));
+	lines.push('This is a screening measure, not a diagnosis. The Beighton score is one');
+	lines.push('component of the 2017 international criteria for hypermobile EDS.');
+	lines.push('Thresholds: ≥6 children/adolescents, ≥5 adults, ≥4 over 50.');
+	lines.push('Discuss results with your doctor.');
+
+	return lines.join('\n');
+}
+
+// ── Event wiring ─────────────────────────────────────────────────────────────
+document.getElementById('start-btn').addEventListener('click', () => show('screen-age'));
+
+document.querySelectorAll('button[data-nav]:not(.manoeuvre-next)').forEach(btn => {
+	btn.addEventListener('click', () => show(btn.dataset.nav));
+});
+
+document.getElementById('age-next-btn').addEventListener('click', () => {
+	if (!document.querySelector('input[name="age-band"]:checked')) {
+		document.getElementById('age-error').hidden = false;
+		return;
+	}
+	document.getElementById('age-error').hidden = true;
+	show('screen-m1');
+});
+
+document.querySelectorAll('input[name="age-band"]').forEach(r => {
+	r.addEventListener('change', () => {
+		document.getElementById('age-error').hidden = true;
+	});
+});
+
+document.querySelectorAll('.manoeuvre-next').forEach(btn => {
+	btn.addEventListener('click', () => {
+		const screenEl = btn.closest('.screen');
+		const errorEl = screenEl.querySelector('.screen-error');
+		if (!screenAnswered(screenEl)) {
+			errorEl.hidden = false;
+			return;
+		}
+		errorEl.hidden = true;
+		if (btn.dataset.nav === 'results') {
+			showResults();
+		} else {
+			show(btn.dataset.nav);
+		}
+	});
+});
+
+document.querySelectorAll('.screen-manoeuvre input[type="radio"]').forEach(r => {
+	r.addEventListener('change', () => {
+		updateRunningScores();
+		r.closest('.screen').querySelector('.screen-error').hidden = true;
+	});
+});
+
+document.getElementById('copy-btn').addEventListener('click', () => {
+	navigator.clipboard.writeText(buildText()).then(() => {
+		const el = document.getElementById('copy-confirm');
+		el.hidden = false;
+		setTimeout(() => el.hidden = true, 3000);
+	});
+});
+
+document.getElementById('print-btn').addEventListener('click', () => window.print());
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+	document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+	updateRunningScores();
+	show('screen-intro');
+});
+</script>
+
+<style is:global>
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+main {
+	width: auto;
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 2rem 1.25rem 4rem;
+}
+
+.screen { display: block; }
+.screen[hidden] { display: none; }
+
+/* ── Tool header ─────────────────────────────────────────────────────────── */
+.tool-header { margin-bottom: 2.5rem; }
+
+.section-label {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #6b7280;
+	text-decoration: none;
+	margin-bottom: 0.75rem;
+}
+.section-label:hover { color: #374151; }
+
+h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 1.2; }
+.subtitle { color: #6b7280; font-size: 1rem; margin: 0 0 1.25rem; }
+
+.disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: #78350f;
+}
+
+/* ── Setup content ───────────────────────────────────────────────────────── */
+.setup-content h2 { font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+.setup-content p, .setup-content li { line-height: 1.7; color: #374151; }
+.setup-content ul { padding-left: 1.5rem; }
+.setup-content li { margin-bottom: 0.4rem; }
+
+/* ── Progress bar ────────────────────────────────────────────────────────── */
+.progress-bar {
+	height: 4px;
+	background: #e5e7eb;
+	border-radius: 2px;
+	margin-bottom: 1.75rem;
+	overflow: hidden;
+}
+.progress-fill {
+	height: 100%;
+	background: #1d4ed8;
+	border-radius: 2px;
+	transition: width 0.3s ease;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+	display: inline-block;
+	background: #1d4ed8;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.75rem 1.75rem;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-primary:hover { background: #1e40af; }
+.btn-primary:active { background: #1e3a8a; }
+
+.btn-large { padding: 1rem 2.5rem; font-size: 1.1rem; margin-top: 1.5rem; }
+
+.btn-secondary {
+	display: inline-block;
+	background: #fff;
+	color: #1d4ed8;
+	border: 2px solid #1d4ed8;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-secondary:hover { background: #eff6ff; }
+
+.btn-outline {
+	display: inline-block;
+	background: transparent;
+	color: #6b7280;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	padding: 0.65rem 1.5rem;
+	font-size: 0.95rem;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.btn-outline:hover { background: #f9fafb; }
+
+.nav-buttons {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 2rem;
+}
+
+/* ── Screen content ──────────────────────────────────────────────────────── */
+.screen-content h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
+.screen-content p { color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+
+.manoeuvre-step {
+	display: inline-block;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #6b7280;
+	margin-bottom: 0.25rem;
+}
+
+/* ── Manoeuvre figures (SVG) ─────────────────────────────────────────────── */
+.manoeuvre-figure {
+	margin: 0 0 1.25rem;
+	padding: 1rem 1rem 0.75rem;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	text-align: center;
+}
+.manoeuvre-figure svg {
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	display: inline-block;
+}
+.manoeuvre-figure figcaption {
+	font-size: 0.825rem;
+	color: #64748b;
+	line-height: 1.5;
+	margin-top: 0.25rem;
+}
+
+.manoeuvre-figure .ln {
+	stroke: #334155;
+	stroke-width: 5;
+	stroke-linecap: round;
+	fill: none;
+}
+.manoeuvre-figure .ref {
+	stroke: #94a3b8;
+	stroke-width: 2.5;
+	stroke-dasharray: 6 6;
+	stroke-linecap: round;
+}
+.manoeuvre-figure .joint {
+	fill: #fff;
+	stroke: #334155;
+	stroke-width: 3;
+}
+.manoeuvre-figure .arc {
+	stroke: #1d4ed8;
+	stroke-width: 3;
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.manoeuvre-figure .dot { fill: #1d4ed8; }
+.manoeuvre-figure .dot-ln {
+	stroke: #1d4ed8;
+	stroke-width: 6;
+	stroke-linecap: round;
+}
+.manoeuvre-figure .lbl {
+	fill: #1d4ed8;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+/* ── Yes/No questions ────────────────────────────────────────────────────── */
+.side-question {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1rem 1.25rem;
+	margin-bottom: 0.75rem;
+}
+.side-prompt {
+	margin: 0 0 0.6rem !important;
+	color: #111827;
+	font-size: 0.95rem;
+}
+.yn-options {
+	display: flex;
+	gap: 0.6rem;
+}
+.yn-label {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.45rem 1.1rem;
+	border: 1.5px solid #d1d5db;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 0.95rem;
+	color: #374151;
+	background: #fff;
+	transition: border-color 0.1s, background 0.1s;
+}
+.yn-label:hover { border-color: #93c5fd; }
+.yn-label:has(input:checked) {
+	border-color: #1d4ed8;
+	background: #eff6ff;
+	color: #1e40af;
+	font-weight: 600;
+}
+.yn-label input[type="radio"] {
+	accent-color: #1d4ed8;
+	margin: 0;
+}
+
+/* ── Age question ────────────────────────────────────────────────────────── */
+.age-question {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1.25rem;
+}
+.radio-options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+.radio-label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 0.925rem;
+	color: #374151;
+	line-height: 1.5;
+	transition: background 0.1s;
+}
+.radio-label:hover { background: #f3f4f6; }
+.radio-label input[type="radio"] {
+	margin-top: 0.2rem;
+	flex-shrink: 0;
+	accent-color: #1d4ed8;
+}
+
+/* ── Running score ───────────────────────────────────────────────────────── */
+.running-score {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: #6b7280;
+}
+
+.input-error {
+	color: #dc2626;
+	font-size: 0.85rem;
+	margin-top: 0.5rem;
+}
+.input-error[hidden] { display: none; }
+
+/* ── Results ─────────────────────────────────────────────────────────────── */
+.results-content h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+
+.summary-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+}
+.summary-card {
+	border: 1.5px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 1rem 1.1rem;
+	background: #f9fafb;
+}
+.summary-card.card-highlight {
+	background: #eff6ff;
+	border-color: #bfdbfe;
+}
+.card-value {
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #111827;
+	line-height: 1;
+	margin-bottom: 0.3rem;
+}
+.card-value-suffix {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #6b7280;
+}
+.card-highlight .card-value { color: #1e40af; }
+.card-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #6b7280;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.35rem;
+}
+.card-detail { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+
+.criteria-result { margin-bottom: 1.5rem; }
+.criteria-box {
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+.criteria-met {
+	background: #f0fdf4;
+	border: 1.5px solid #86efac;
+	color: #166534;
+}
+.criteria-not-met {
+	background: #f8fafc;
+	border: 1.5px solid #e2e8f0;
+	color: #334155;
+}
+
+.interpretation-box {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: #1e293b;
+}
+.interpretation-box p { margin: 0 0 0.75rem; }
+.interpretation-box p:last-child { margin-bottom: 0; }
+
+.threshold-box {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1.1rem 1.25rem;
+	margin-top: 1.5rem;
+}
+.threshold-box h4 {
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #6b7280;
+	margin: 0 0 0.75rem;
+}
+.threshold-box ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+.threshold-box li {
+	font-size: 0.875rem;
+	color: #374151;
+	line-height: 1.6;
+	margin-bottom: 0.5rem;
+}
+.threshold-box li:last-child { margin-bottom: 0; }
+
+.results-disclaimer {
+	background: #fefce8;
+	border: 1px solid #fde68a;
+	border-radius: 8px;
+	padding: 0.9rem 1.1rem;
+	font-size: 0.875rem;
+	color: #78350f;
+	line-height: 1.6;
+	margin-top: 1.5rem;
+}
+
+.export-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 1.75rem;
+}
+
+.copy-confirm {
+	font-size: 0.875rem;
+	color: #166534;
+	margin-top: 0.5rem;
+}
+.copy-confirm[hidden] { display: none; }
+
+/* ── Print styles ────────────────────────────────────────────────────────── */
+@media print {
+	header, footer, .export-buttons, #restart-btn, .progress-bar, .nav-buttons { display: none !important; }
+	.screen[hidden] { display: none !important; }
+	#screen-results { display: block !important; }
+	main { padding: 0; max-width: 100%; }
+	body { font-size: 12pt; }
+}
+</style>
