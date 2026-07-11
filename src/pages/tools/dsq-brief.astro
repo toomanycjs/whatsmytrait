@@ -1,0 +1,518 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const freqOptions = [
+	{ value: 0, short: 'None', full: 'None of the time' },
+	{ value: 1, short: 'A little', full: 'A little of the time' },
+	{ value: 2, short: 'Half', full: 'About half the time' },
+	{ value: 3, short: 'Most', full: 'Most of the time' },
+	{ value: 4, short: 'All', full: 'All of the time' },
+];
+const sevOptions = [
+	{ value: 0, short: 'None', full: 'Not present' },
+	{ value: 1, short: 'Mild', full: 'Mild' },
+	{ value: 2, short: 'Moderate', full: 'Moderate' },
+	{ value: 3, short: 'Severe', full: 'Severe' },
+	{ value: 4, short: 'Very severe', full: 'Very severe' },
+];
+
+const items = [
+	{ id: 'fatigue', text: 'Fatigue or extreme tiredness' },
+	{ id: 'minexercise', text: 'A minimum of exercise makes you physically tired' },
+	{ id: 'nextday', text: 'Next-day soreness or fatigue after non-strenuous, everyday activity' },
+	{ id: 'mentaltired', text: 'Feeling mentally tired after the slightest effort' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="ME/CFS screening questionnaire: free 4-question self-check based on the DePaul Symptom Questionnaire"
+			description="A free, quick ME/CFS screening tool based on the DePaul Symptom Questionnaire Brief. Answer 4 questions and get an immediate result. No sign-up required."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "ME/CFS screening (DSQ-Brief)", "item": "https://www.postviralrecovery.com/tools/dsq-brief/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the DSQ-Brief?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-Brief is a 4-item screening scale for ME/CFS developed by Jason and colleagues at DePaul University in 2023. It assesses fatigue and post-exertional malaise, the two hallmark features of ME/CFS. In validation it achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity."}
+        },
+        {
+          "@type": "Question",
+          "name": "Does a positive DSQ-Brief screen mean I have ME/CFS?",
+          "acceptedAnswer": {"@type": "Answer", "text": "No. A positive screen means your responses match the symptom pattern the tool looks for. It is not a diagnosis. Its accuracy also drops to around 82 to 84 percent when distinguishing ME/CFS from other fatiguing conditions such as long COVID or multiple sclerosis, which is why the full DSQ-2 is more informative. Discuss any result with your doctor."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is the DSQ-Brief scored?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Each of the four symptoms is rated for frequency and severity over the past six months, each from 0 to 4. A symptom counts as present when both frequency and severity are rated 2 or higher. The screen is positive when all four symptoms meet this threshold."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>ME/CFS screening questionnaire</h1>
+				<p class="subtitle">The DSQ-Brief: a 4-item self-check</p>
+				<p class="description">
+					This is a free, interactive version of the <strong>DSQ-Brief</strong>, a short screening scale for myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS) developed by Leonard Jason and colleagues at DePaul University and published in 2023. It was drawn from the much longer DePaul Symptom Questionnaire and distilled down to the four items that best separate people with ME/CFS from those without it.
+				</p>
+				<p class="description">
+					Those four items assess the two hallmark features of ME/CFS: <strong>fatigue</strong> and <strong>post-exertional malaise</strong> — the disproportionate worsening of symptoms after even minor physical or mental effort. In the validation study of 3,427 people, this 4-item screen achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity.
+				</p>
+				<p class="description">
+					It is intended for anyone with persistent fatigue, a post-viral illness, or suspected ME/CFS who wants a quick, structured self-check before deciding whether to look into things further. It takes under two minutes. Answer each item for how it has been over the <strong>past six months</strong>, and you will get an immediate result with a per-symptom breakdown. No sign-up or email is required, and nothing you enter leaves your device.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> A screening result reflects self-reported symptoms and is not a diagnosis of ME/CFS or any other condition. The DSQ-Brief is very good at telling ME/CFS apart from health, but less so from other fatiguing illnesses, so a result here is a starting point for a conversation with your doctor, not a conclusion. Based on: Jason LA, Benner S, Furst J, Cathey P. <em>Developing and validating a brief screening scale for ME/CFS.</em> Fatigue: Biomedicine, Health &amp; Behavior. 2023.
+				</div>
+			</div>
+
+			<form id="dsq-form" novalidate>
+				<div class="scale-key">
+					<p>For each symptom, rate <strong>how often</strong> you have had it and <strong>how severe</strong> it has been, over the past six months.</p>
+				</div>
+
+				{items.map((item, i) => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text"><span class="symptom-num">{i + 1}</span>{item.text}</p>
+						<div class="ratings">
+							<div class="rating-group">
+								<span class="rating-label">How often</span>
+								<div class="segmented">
+									{freqOptions.map(opt => (
+										<label title={opt.full}>
+											<input type="radio" name={`${item.id}_f`} value={opt.value} required />
+											<span>{opt.short}</span>
+										</label>
+									))}
+								</div>
+							</div>
+							<div class="rating-group">
+								<span class="rating-label">How severe</span>
+								<div class="segmented">
+									{sevOptions.map(opt => (
+										<label title={opt.full}>
+											<input type="radio" name={`${item.id}_s`} value={opt.value} required />
+											<span>{opt.short}</span>
+										</label>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+
+				<div class="form-footer">
+					<button type="submit" id="submit-btn">See my result</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<!-- Results panel -->
+			<div id="results" class="results" hidden>
+				<h2>Your DSQ-Brief result</h2>
+				<div id="verdict" class="verdict"></div>
+				<p id="summary-statement" class="score-interp"></p>
+
+				<h3>Symptom breakdown</h3>
+				<table class="item-table">
+					<thead>
+						<tr>
+							<th>Symptom</th>
+							<th>Frequency</th>
+							<th>Severity</th>
+							<th>Score</th>
+							<th>Threshold</th>
+						</tr>
+					</thead>
+					<tbody id="item-rows"></tbody>
+				</table>
+				<p class="table-note">Score is a 0–100 composite: (frequency + severity) ÷ 2 × 25. The threshold column shows whether the symptom met the 2/2 rule (both frequency and severity rated 2 or higher).</p>
+
+				<div class="bridge">
+					<h3>Why the full questionnaire matters</h3>
+					<p>The DSQ-Brief screens for the core features of ME/CFS — fatigue and post-exertional malaise — and it does that well: 96% accuracy against healthy controls. Its accuracy drops to around 82–84%, though, when the task is telling ME/CFS apart from <em>other</em> conditions that also cause fatigue, such as long COVID, multiple sclerosis, or post-polio syndrome. Four questions can only tell you so much.</p>
+					<p>The full <strong>DePaul Symptom Questionnaire (DSQ-2)</strong> captures symptoms across eight domains — including orthostatic intolerance, cognitive impairment, pain, sleep disruption, and immune and temperature symptoms — that together build a far more complete picture. In validation studies the full questionnaire held 93–94% accuracy even against other chronic illnesses, and it screens your answers against the four major ME/CFS case definitions.</p>
+					<p>If you have 10–15 minutes, the full version gives you a detailed domain-by-domain breakdown you can take to a clinical appointment.</p>
+					<a href="/tools/dsq-2/" class="cta-button">Take the full DSQ-2 questionnaire →</a>
+				</div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your result</h3>
+					<p>This screen looks at four symptoms only. A positive result means all four were reported at a frequency and severity consistent with the pattern seen in ME/CFS in the validation study. It is not a diagnosis, and a negative result does not rule ME/CFS out — the four items here are deliberately narrow.</p>
+					<p>Post-exertional malaise, in particular, is the feature that most distinguishes ME/CFS from ordinary fatigue or deconditioning. If your symptoms clearly worsen in the hours or days after activity that used to be manageable, that is worth raising with a clinician regardless of the number this tool produces.</p>
+					<p><strong>This result is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss it with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const ITEMS: { id: string; text: string }[] = [
+	{ id: 'fatigue', text: 'Fatigue or extreme tiredness' },
+	{ id: 'minexercise', text: 'A minimum of exercise makes you physically tired' },
+	{ id: 'nextday', text: 'Next-day soreness or fatigue after everyday activity' },
+	{ id: 'mentaltired', text: 'Mentally tired after the slightest effort' },
+];
+
+const FREQ_LABELS = ['None of the time', 'A little of the time', 'About half the time', 'Most of the time', 'All of the time'];
+const SEV_LABELS = ['Not present', 'Mild', 'Moderate', 'Severe', 'Very severe'];
+
+function getVal(name: string): number | null {
+	const checked = document.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+// When frequency is set to 0 (none of the time), the symptom is absent, so
+// severity is automatically set to 0 and its buttons are disabled.
+function wireAutoSeverity() {
+	for (const item of ITEMS) {
+		const freqInputs = document.querySelectorAll<HTMLInputElement>(`input[name="${item.id}_f"]`);
+		freqInputs.forEach(inp => {
+			inp.addEventListener('change', () => {
+				const sevGroup = document.querySelector(`.symptom[data-id="${item.id}"] .rating-group:last-child .segmented`);
+				if (!sevGroup) return;
+				if (inp.checked && inp.value === '0') {
+					const zero = document.querySelector<HTMLInputElement>(`input[name="${item.id}_s"][value="0"]`);
+					if (zero) zero.checked = true;
+					sevGroup.classList.add('auto-zero');
+				} else if (inp.checked) {
+					sevGroup.classList.remove('auto-zero');
+				}
+			});
+		});
+	}
+}
+
+const form = document.getElementById('dsq-form') as HTMLFormElement;
+const resultsPanel = document.getElementById('results') as HTMLElement;
+const verdictEl = document.getElementById('verdict') as HTMLElement;
+const summaryEl = document.getElementById('summary-statement') as HTMLElement;
+const itemRowsEl = document.getElementById('item-rows') as HTMLElement;
+
+wireAutoSeverity();
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const results = ITEMS.map(item => {
+		const f = getVal(`${item.id}_f`);
+		const s = getVal(`${item.id}_s`);
+		return { item, f, s };
+	});
+
+	// Find first unanswered
+	const missing = results.find(r => r.f === null || r.s === null);
+	if (missing) {
+		alert('Please rate both frequency and severity for all four symptoms.');
+		document.querySelector(`.symptom[data-id="${missing.item.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		return;
+	}
+
+	const scored = results.map(r => {
+		const f = r.f as number;
+		const s = r.s as number;
+		const composite = ((f + s) / 2) * 25;
+		const meets = f >= 2 && s >= 2;
+		return { ...r, f, s, composite, meets };
+	});
+
+	const metCount = scored.filter(r => r.meets).length;
+
+	// Verdict badge
+	let verdictClass = 'neg';
+	let verdictText = '';
+	if (metCount === 4) {
+		verdictClass = 'pos';
+		verdictText = 'Screen positive — all 4 core symptoms met the threshold';
+	} else if (metCount >= 1) {
+		verdictClass = 'partial';
+		verdictText = `Partial — ${metCount} of 4 core symptoms met the threshold`;
+	} else {
+		verdictClass = 'neg';
+		verdictText = 'Screen negative — the threshold was not met';
+	}
+	verdictEl.className = `verdict ${verdictClass}`;
+	verdictEl.textContent = verdictText;
+
+	// Summary statement
+	let summary = '';
+	if (metCount === 4) {
+		summary = 'Your responses are consistent with the symptom pattern seen in ME/CFS. All four core symptoms — fatigue, exercise intolerance, next-day post-exertional effects, and cognitive fatigue — are present at a frequency and severity that met the screening threshold in the original validation study. This is a screen, not a diagnosis: the next step is the fuller picture below and a conversation with your doctor.';
+	} else if (metCount >= 1) {
+		summary = `You reported ${metCount} of the 4 core symptoms at the screening threshold. The DSQ-Brief screen is most informative when all four are present, but a partial result may still be worth discussing with your doctor — especially if post-exertional malaise (symptoms worsening after activity) is one of them, as that is the most distinctive feature of ME/CFS.`;
+	} else {
+		summary = 'Your responses did not meet the DSQ-Brief screening threshold. This does not rule out ME/CFS or other post-viral conditions — it means the four symptoms assessed here were not reported at the frequency and severity the screen looks for. If fatigue or post-exertional symptoms are affecting your life, they are still worth raising with a clinician.';
+	}
+	summaryEl.textContent = summary;
+
+	// Per-item table
+	itemRowsEl.innerHTML = scored.map(r => `
+		<tr class="${r.meets ? 'row-met' : ''}">
+			<td>${r.item.text}</td>
+			<td>${FREQ_LABELS[r.f]}</td>
+			<td>${SEV_LABELS[r.s]}</td>
+			<td>${Math.round(r.composite)}</td>
+			<td>${r.meets ? '<span class="met">✓ Met</span>' : '<span class="notmet">Not met</span>'}</td>
+		</tr>
+	`).join('');
+
+	form.hidden = true;
+	resultsPanel.hidden = false;
+	resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => {
+	form.reset();
+	document.querySelectorAll('.segmented.auto-zero').forEach(el => el.classList.remove('auto-zero'));
+});
+
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	resultsPanel.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.scale-key {
+		font-size: 0.9em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-light);
+		border-radius: 6px;
+		padding: 0.75em 1.25em;
+		margin-bottom: 1.5em;
+	}
+	.scale-key p { margin: 0; }
+
+	/* Symptom cards with dual rating */
+	.symptom {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.25em 1.5em;
+		margin-bottom: 1em;
+	}
+	.symptom-text {
+		margin: 0 0 1em;
+		font-weight: 700;
+		font-size: 1em;
+		line-height: 1.4;
+		display: flex;
+		align-items: baseline;
+		gap: 0.6em;
+	}
+	.symptom-num {
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.6em;
+		height: 1.6em;
+		background: var(--accent);
+		color: #fff;
+		border-radius: 50%;
+		font-size: 0.8em;
+		font-weight: 700;
+	}
+	.ratings {
+		display: flex;
+		flex-direction: column;
+		gap: 0.9em;
+	}
+	.rating-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4em;
+	}
+	.rating-label {
+		font-size: 0.78em;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+	.segmented {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.35em;
+	}
+	.segmented label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		font-size: 0.82em;
+		line-height: 1.2;
+		padding: 0.5em 0.3em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.1s, border-color 0.1s;
+		min-height: 2.6em;
+	}
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+		box-shadow: inset 0 0 0 1px var(--accent);
+	}
+	.segmented input:focus-visible + span {
+		outline: 2px solid var(--accent-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+	.segmented.auto-zero { opacity: 0.55; }
+
+	/* Form footer */
+	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent);
+		color: #fff;
+		border: none;
+		padding: 0.75em 2em;
+		border-radius: 5px;
+		font-size: 1em;
+		font-weight: 700;
+		cursor: pointer;
+		font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+	}
+	button[type="button"]:hover { border-color: rgb(var(--gray)); color: rgb(var(--black)); }
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.75em; }
+	.verdict {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 1.02em;
+		padding: 0.6em 1.1em;
+		border-radius: 6px;
+		margin-bottom: 1em;
+		line-height: 1.35;
+	}
+	.verdict.pos { background: #e7f5ec; color: #1e6b3c; border: 1px solid #b6e0c4; }
+	.verdict.partial { background: #fff5e6; color: #9a6a12; border: 1px solid #f0d9a8; }
+	.verdict.neg { background: rgb(var(--gray-light)); color: rgb(var(--gray-dark)); border: 1px solid rgb(var(--gray-light)); }
+	.score-interp {
+		font-size: 1.02em;
+		line-height: 1.6;
+		margin: 0 0 2em;
+		padding: 1em 1.25em;
+		background: var(--accent-light);
+		border-left: 4px solid var(--accent);
+		border-radius: 4px;
+	}
+	.item-table { margin: 1em 0 0.5em; font-size: 0.9em; }
+	.item-table td, .item-table th { padding: 0.5em 0.6em; }
+	.row-met { background: #f3faf5; }
+	.met { color: #1e6b3c; font-weight: 700; white-space: nowrap; }
+	.notmet { color: rgb(var(--gray)); white-space: nowrap; }
+	.table-note { font-size: 0.82em; color: rgb(var(--gray)); margin: 0.5em 0 2em; }
+
+	.bridge {
+		border: 1px solid var(--accent);
+		background: var(--accent-light);
+		border-radius: 8px;
+		padding: 1.5em 1.75em;
+		margin: 0 0 2em;
+	}
+	.bridge h3 { margin-top: 0; }
+	.bridge p { font-size: 0.95em; line-height: 1.6; }
+	.cta-button {
+		display: inline-block;
+		background: var(--accent);
+		color: #fff;
+		text-decoration: none;
+		padding: 0.75em 1.5em;
+		border-radius: 5px;
+		font-weight: 700;
+		font-size: 0.98em;
+		margin-top: 0.5em;
+	}
+	.cta-button:hover { background: var(--accent-dark); color: #fff; }
+
+	.results-disclaimer {
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+		border-top: 1px solid rgb(var(--gray-light));
+		padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { color: rgb(var(--black)); }
+	.back-btn {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+		margin-top: 1.5em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.symptom { padding: 1em; }
+		.segmented { gap: 0.25em; }
+		.segmented label { font-size: 0.72em; padding: 0.45em 0.15em; min-height: 3em; }
+		.form-footer { flex-direction: column; }
+		button[type="submit"], button[type="button"] { width: 100%; text-align: center; }
+		.item-table { font-size: 0.82em; }
+		.item-table td, .item-table th { padding: 0.4em 0.4em; }
+	}
+</style>

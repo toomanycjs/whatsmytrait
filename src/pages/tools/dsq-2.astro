@@ -1,0 +1,881 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const freqOptions = [
+	{ value: 0, short: 'None', full: 'None of the time' },
+	{ value: 1, short: 'A little', full: 'A little of the time' },
+	{ value: 2, short: 'Half', full: 'About half the time' },
+	{ value: 3, short: 'Most', full: 'Most of the time' },
+	{ value: 4, short: 'All', full: 'All of the time' },
+];
+const sevOptions = [
+	{ value: 0, short: 'None', full: 'Not present' },
+	{ value: 1, short: 'Mild', full: 'Mild' },
+	{ value: 2, short: 'Moderate', full: 'Moderate' },
+	{ value: 3, short: 'Severe', full: 'Severe' },
+	{ value: 4, short: 'Very severe', full: 'Very severe' },
+];
+
+// The 8 factor domains from the DSQ-2 validation study (Bedree et al. 2019),
+// plus an "additional symptoms" section whose items feed the case-definition
+// algorithms but do not form part of the factor structure.
+const domains = [
+	{
+		key: 'pem',
+		name: 'Post-exertional malaise',
+		intro: 'The disproportionate worsening of symptoms after physical or mental effort — the defining feature of ME/CFS.',
+		items: [
+			{ id: 'pem_fatigue', text: 'Fatigue or extreme tiredness', tags: ['fatigue'] },
+			{ id: 'pem_minexercise', text: 'A minimum of exercise makes you physically tired', tags: ['pem'] },
+			{ id: 'pem_drained', text: 'Feeling physically drained or sick after mild activity', tags: ['pem'] },
+			{ id: 'pem_nextday', text: 'Next-day soreness or fatigue after non-strenuous, everyday activity', tags: ['pem'] },
+			{ id: 'pem_dead', text: 'A dead, heavy feeling after starting to exercise', tags: ['pem'] },
+			{ id: 'pem_musclefatigue', text: 'Muscle fatigue after mild physical activity', tags: ['pem'] },
+			{ id: 'pem_worsening', text: 'Worsening of symptoms after mild physical activity', tags: ['pem'] },
+			{ id: 'pem_unrefreshing', text: 'Unrefreshing sleep (waking up feeling tired)', tags: ['unrefreshing', 'sleep'] },
+		],
+	},
+	{
+		key: 'cognitive',
+		name: 'Cognitive impairment',
+		intro: 'Difficulties with memory, attention, and thinking — often described as "brain fog".',
+		items: [
+			{ id: 'cog_memory', text: 'Problems remembering things', tags: ['cognitive', 'fukuda_memory'] },
+			{ id: 'cog_word', text: 'Difficulty finding the right word', tags: ['cognitive'] },
+			{ id: 'cog_understand', text: 'Difficulty understanding things', tags: ['cognitive'] },
+			{ id: 'cog_absent', text: 'Absent-mindedness or forgetfulness', tags: ['cognitive'] },
+			{ id: 'cog_slowthought', text: 'Slowness of thought', tags: ['cognitive'] },
+			{ id: 'cog_focus', text: 'Only able to focus on one thing at a time', tags: ['cognitive'] },
+			{ id: 'cog_attention', text: 'Difficulty paying attention for a long period', tags: ['cognitive'] },
+			{ id: 'cog_speech', text: 'Slowed speech', tags: ['cognitive'] },
+			{ id: 'cog_mentaltired', text: 'Mentally tired after the slightest effort', tags: ['cognitive'] },
+		],
+	},
+	{
+		key: 'feverflu',
+		name: 'Fever and flu-like symptoms',
+		intro: 'Immune-type symptoms and disturbances in temperature regulation.',
+		items: [
+			{ id: 'ff_fever', text: 'Fever', tags: ['flu'] },
+			{ id: 'ff_hightemp', text: 'A higher-than-normal temperature', tags: ['flu'] },
+			{ id: 'ff_flulike', text: 'Flu-like symptoms', tags: ['flu', 'immune'] },
+			{ id: 'ff_viral', text: 'Viral infections with prolonged recovery periods', tags: ['viral', 'immune'] },
+			{ id: 'ff_tempfluct', text: 'Fluctuations in temperature throughout the day', tags: ['autonomic'] },
+		],
+	},
+	{
+		key: 'pain',
+		name: 'Pain',
+		intro: 'Muscle pain and gastrointestinal discomfort.',
+		items: [
+			{ id: 'pain_abdomen', text: 'Abdominal or stomach pain', tags: ['gi'] },
+			{ id: 'pain_ibs', text: 'Irritable bowel problems', tags: ['gi'] },
+			{ id: 'pain_bloating', text: 'Bloating', tags: ['gi'] },
+			{ id: 'pain_muscle', text: 'Pain or aching in your muscles', tags: ['pain', 'fukuda_musclepain'] },
+		],
+	},
+	{
+		key: 'sleep',
+		name: 'Sleep disruption',
+		intro: 'Difficulty getting to sleep or staying asleep.',
+		items: [
+			{ id: 'sleep_falling', text: 'Problems falling asleep', tags: ['sleep'] },
+			{ id: 'sleep_staying', text: 'Problems staying asleep', tags: ['sleep'] },
+			{ id: 'sleep_early', text: 'Waking up early and being unable to get back to sleep', tags: ['sleep'] },
+		],
+	},
+	{
+		key: 'orthostatic',
+		name: 'Orthostatic intolerance',
+		intro: 'Symptoms brought on by being upright, caused by problems with blood pressure and heart rate control.',
+		items: [
+			{ id: 'ortho_graying', text: 'Graying or blacking out after standing', tags: ['orthostatic', 'autonomic', 'cardiovascular'] },
+			{ id: 'ortho_vision', text: 'Blurred or tunnel vision after standing', tags: ['orthostatic', 'autonomic', 'cardiovascular'] },
+			{ id: 'ortho_heart', text: 'Heart beating quickly after standing up', tags: ['orthostatic', 'autonomic', 'cardiovascular'] },
+			{ id: 'ortho_dizzy', text: 'Dizziness or fainting', tags: ['orthostatic', 'autonomic', 'cardiovascular'] },
+		],
+	},
+	{
+		key: 'genitourinary',
+		name: 'Genitourinary',
+		intro: 'Bladder symptoms and changes in urination.',
+		items: [
+			{ id: 'gu_urgent', text: 'An urgent need to urinate', tags: ['gu'] },
+			{ id: 'gu_bladder', text: 'Bladder problems', tags: ['gu'] },
+			{ id: 'gu_night', text: 'Waking up at night to urinate', tags: ['gu'] },
+		],
+	},
+	{
+		key: 'temperature',
+		name: 'Temperature intolerance',
+		intro: 'Feeling unusually cold, and difficulty regulating body temperature.',
+		items: [
+			{ id: 'temp_chills', text: 'Chills or shivers', tags: ['thermostatic', 'autonomic'] },
+			{ id: 'temp_low', text: 'A low body temperature', tags: ['thermostatic'] },
+			{ id: 'temp_cold', text: 'Cold limbs (hands and feet)', tags: ['thermostatic'] },
+		],
+	},
+	{
+		key: 'additional',
+		name: 'Additional symptoms',
+		intro: 'These items do not form part of the eight scored domains, but they are needed to check your responses against the different ME/CFS case definitions.',
+		additional: true,
+		items: [
+			{ id: 'add_sorethroat', text: 'Sore throat', tags: ['immune', 'fukuda_sorethroat'] },
+			{ id: 'add_lymph', text: 'Tender or sore lymph nodes', tags: ['immune', 'fukuda_lymph'] },
+			{ id: 'add_headache', text: 'Headaches of a new type, pattern, or severity', tags: ['pain', 'fukuda_headache'] },
+			{ id: 'add_jointpain', text: 'Pain in several joints, without swelling or redness', tags: ['pain', 'fukuda_jointpain'] },
+			{ id: 'add_lightsens', text: 'Sensitivity to light', tags: ['neurosensory'] },
+			{ id: 'add_noisesens', text: 'Sensitivity to noise', tags: ['neurosensory'] },
+			{ id: 'add_numbness', text: 'Numbness or tingling', tags: ['neurosensory', 'motor'] },
+			{ id: 'add_muscleweak', text: 'Muscle weakness', tags: ['motor'] },
+			{ id: 'add_twitch', text: 'Muscle twitching', tags: ['motor'] },
+			{ id: 'add_breath', text: 'Shortness of breath or breathing irregularities', tags: ['respiratory'] },
+			{ id: 'add_chestpain', text: 'Chest pain', tags: ['cardiovascular'] },
+			{ id: 'add_chemsens', text: 'Sensitivity to chemicals, odours, or foods', tags: ['sensitivities', 'immune'] },
+			{ id: 'add_mould', text: 'Sensitivity to mould', tags: ['sensitivities', 'immune'] },
+			{ id: 'add_allergies', text: 'New or worsening allergies', tags: ['immune'] },
+			{ id: 'add_sinus', text: 'Frequent sinus or respiratory infections', tags: ['immune'] },
+			{ id: 'add_alcohol', text: 'Inability to tolerate alcohol', tags: ['neuroendocrine'] },
+			{ id: 'add_weightgain', text: 'Gaining weight without trying', tags: ['neuroendocrine'] },
+			{ id: 'add_weightloss', text: 'Losing weight without trying', tags: ['neuroendocrine'] },
+			{ id: 'add_appetite', text: 'Loss of appetite', tags: ['neuroendocrine'] },
+			{ id: 'add_nightsweats', text: 'Night sweats', tags: ['neuroendocrine', 'autonomic'] },
+			{ id: 'add_eyepain', text: 'Pain behind the eyes', tags: ['pain'] },
+		],
+	},
+];
+
+// Config serialised for the client-side scoring script.
+const clientConfig = {
+	domains: domains.map(d => ({
+		key: d.key,
+		name: d.name,
+		additional: !!d.additional,
+		items: d.items.map(it => ({ id: it.id, text: it.text, tags: it.tags })),
+	})),
+};
+
+const totalSteps = domains.length + 1; // + impact step
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="DePaul Symptom Questionnaire (DSQ-2): free online ME/CFS symptom assessment with scoring"
+			description="Complete the full DePaul Symptom Questionnaire-2 online for free. Assess ME/CFS symptoms across 8 domains with automatic scoring and interpretation. No sign-up required."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "DePaul Symptom Questionnaire (DSQ-2)", "item": "https://www.postviralrecovery.com/tools/dsq-2/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the DePaul Symptom Questionnaire (DSQ-2)?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-2 is a comprehensive self-report questionnaire developed by Jason, Bedree and Sunnquist at DePaul University to assess the symptoms of ME/CFS. It covers eight symptom domains identified by factor analysis and lets you check your responses against the four major ME/CFS case definitions. It is one of the standard research instruments in the field and is free to use."}
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the DSQ-2 take?",
+          "acceptedAnswer": {"@type": "Answer", "text": "About 10 to 15 minutes. It is presented one section at a time and your progress is saved in your browser, so you can take a break and come back to it."}
+        },
+        {
+          "@type": "Question",
+          "name": "Does meeting a case definition on the DSQ-2 mean I have ME/CFS?",
+          "acceptedAnswer": {"@type": "Answer", "text": "No. Meeting a case definition on a self-report questionnaire is not the same as a clinical diagnosis. The case-definition screening shows which criteria your reported symptoms are consistent with, which can be useful to bring to an appointment, but a diagnosis requires a clinician and the exclusion of other conditions."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>DePaul Symptom Questionnaire (DSQ-2)</h1>
+				<p class="subtitle">A full ME/CFS symptom assessment across eight domains</p>
+				<p class="description">
+					The DSQ-2 is a comprehensive self-report questionnaire developed by Leonard Jason, Hannah Bedree, and Madison Sunnquist at DePaul University to assess the symptoms of myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS). It is the revised version of the original DePaul Symptom Questionnaire, with improved items and additional symptoms covering the newer case definitions. It is one of the standard research instruments used to characterise ME/CFS symptomatology, and it is free to use.
+				</p>
+				<p class="description">
+					This interactive version groups the symptoms into the <strong>eight domains</strong> identified by the study's factor analysis — post-exertional malaise, cognitive impairment, fever and flu-like symptoms, pain, sleep disruption, orthostatic intolerance, genitourinary symptoms, and temperature intolerance — so that a long questionnaire feels structured rather than overwhelming. Each symptom is rated for how often you have had it and how severe it has been over the <strong>past six months</strong>.
+				</p>
+				<p class="description">
+					When you finish, you will get a domain-by-domain breakdown, a visual profile of which systems are most affected, and a screen of your responses against the four major ME/CFS case definitions: <strong>Fukuda (1994), the Canadian Consensus Criteria (2003), the ME International Consensus Criteria (2011), and the IOM/NAM criteria (2015)</strong>. It is designed for anyone with suspected ME/CFS, long COVID, post-viral fatigue, or overlapping conditions who wants a thorough, structured symptom record to take to an appointment.
+				</p>
+				<p class="description">
+					It takes about <strong>10–15 minutes</strong>. It is presented one section at a time and your answers are saved in your browser as you go, so you can pause and pick up where you left off. Nothing you enter leaves your device, and no sign-up or email is required. If you would like a quick screen first, the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> takes under two minutes.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> Your results reflect self-reported symptoms and do not constitute a diagnosis. Meeting a case definition here is not the same as receiving a clinical diagnosis, which requires a clinician and the exclusion of other conditions. Discuss your results with your doctor or specialist. Based on: Bedree H, Sunnquist M, Jason LA. <em>The DePaul Symptom Questionnaire-2: A Validation Study.</em> Fatigue: Biomedicine, Health &amp; Behavior. 2019;7(3):166–179.
+				</div>
+			</div>
+
+			<div id="resume-banner" class="resume-banner" hidden>
+				<span>We've restored your progress from earlier on this device. You can carry on where you left off, or start again.</span>
+				<div class="resume-actions">
+					<button type="button" id="fresh-btn">Start over</button>
+				</div>
+			</div>
+
+			<form id="dsq-form" novalidate>
+				<div class="progress-wrap">
+					<div class="progress-text"><span id="progress-label">Section 1 of {totalSteps}</span></div>
+					<div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+				</div>
+
+				<!-- STEP 0: Impact / activity reduction -->
+				<section class="step" data-step="0">
+					<div class="step-head">
+						<span class="step-kicker">About your illness</span>
+						<h2>How much have your symptoms affected your activity?</h2>
+						<p class="step-intro">The ME/CFS case definitions all require a meaningful drop in your ability to function. Pick the option that best describes the past six months, compared with how you were before you became unwell.</p>
+					</div>
+					<div class="symptom single">
+						<div class="ratings">
+							<div class="rating-group">
+								<div class="segmented vertical" data-single="impact">
+									<label><input type="radio" name="impact" value="0" required /><span>No meaningful reduction in my activity</span></label>
+									<label><input type="radio" name="impact" value="1" /><span>A mild reduction — I manage most things with some limits</span></label>
+									<label><input type="radio" name="impact" value="2" /><span>A substantial reduction, but less than half</span></label>
+									<label><input type="radio" name="impact" value="3" /><span>A reduction of 50% or more in what I can do</span></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="step-footer">
+						<span></span>
+						<button type="button" class="next-btn" data-next>Next →</button>
+					</div>
+				</section>
+
+				<!-- SYMPTOM DOMAIN STEPS -->
+				{domains.map((domain, di) => (
+					<section class="step" data-step={di + 1} hidden>
+						<div class="step-head">
+							<span class="step-kicker">{domain.additional ? 'Final section' : `Domain ${di + 1} of 8`}</span>
+							<h2>{domain.name}</h2>
+							<p class="step-intro">{domain.intro}</p>
+						</div>
+						<div class="scale-key">
+							<p>Rate <strong>how often</strong> and <strong>how severe</strong> each symptom has been over the past six months. If a symptom is absent, choose "None" for frequency and severity will be set for you.</p>
+						</div>
+						{domain.items.map(item => (
+							<div class="symptom" data-id={item.id}>
+								<p class="symptom-text">{item.text}</p>
+								<div class="ratings">
+									<div class="rating-group">
+										<span class="rating-label">How often</span>
+										<div class="segmented">
+											{freqOptions.map(opt => (
+												<label title={opt.full}>
+													<input type="radio" name={`${item.id}_f`} value={opt.value} />
+													<span>{opt.short}</span>
+												</label>
+											))}
+										</div>
+									</div>
+									<div class="rating-group">
+										<span class="rating-label">How severe</span>
+										<div class="segmented">
+											{sevOptions.map(opt => (
+												<label title={opt.full}>
+													<input type="radio" name={`${item.id}_s`} value={opt.value} />
+													<span>{opt.short}</span>
+												</label>
+											))}
+										</div>
+									</div>
+								</div>
+							</div>
+						))}
+						<div class="step-footer">
+							<button type="button" class="back-step-btn" data-prev>← Back</button>
+							{domain.additional
+								? <button type="submit" class="submit-btn">Calculate my results</button>
+								: <button type="button" class="next-btn" data-next>Next →</button>}
+						</div>
+					</section>
+				))}
+			</form>
+
+			<!-- RESULTS -->
+			<div id="results" class="results" hidden>
+				<h2>Your DSQ-2 results</h2>
+				<p id="overall-summary" class="score-interp"></p>
+
+				<h3>Symptom profile</h3>
+				<p class="section-lead">Average symptom score in each domain (0–100). The taller the bar, the more that system is affected.</p>
+				<div id="chart" class="chart"></div>
+
+				<h3>Domain breakdown</h3>
+				<div id="domain-cards" class="domain-cards"></div>
+
+				<h3>Case-definition screening</h3>
+				<p class="section-lead">Whether your reported symptoms are consistent with each of the four major ME/CFS case definitions. This is a screen of self-reported symptoms, <strong>not a diagnosis</strong>.</p>
+				<div id="casedef-cards" class="casedef-cards"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your results</h3>
+					<p>The domain scores show where your symptom burden is concentrated. In ME/CFS, the post-exertional malaise domain is the one that matters most — it is the feature that most distinguishes the condition from ordinary fatigue or deconditioning. A profile weighted towards PEM and cognitive impairment, with orthostatic and sleep involvement, is a common ME/CFS pattern.</p>
+					<p>The case-definition screen applies published algorithms to your answers. Different definitions ask for different things, so it is normal to meet some and not others; the ME-ICC in particular is deliberately strict. Meeting a definition here means your <em>reported symptoms</em> are consistent with it — it is not a clinical diagnosis, which requires a doctor, an examination, and the exclusion of other conditions that can cause the same symptoms.</p>
+					<p>These results are most useful printed or written down and taken to an appointment. They give a structured, specific account of what you are experiencing, which is often hard to convey in a short consultation.</p>
+					<p><strong>This is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss your results with your doctor or specialist. The case-definition algorithms follow those described in Bedree, Sunnquist &amp; Jason (2019).</p>
+				</div>
+
+				<div class="results-buttons">
+					<button type="button" id="edit-btn" class="back-btn">Edit answers</button>
+					<button type="button" id="restart-btn" class="back-btn">Start over</button>
+				</div>
+			</div>
+
+			<script type="application/json" id="dsq2-config" set:html={JSON.stringify(clientConfig)}></script>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+type Item = { id: string; text: string; tags: string[] };
+type Domain = { key: string; name: string; additional: boolean; items: Item[] };
+type Config = { domains: Domain[] };
+
+const cfgEl = document.getElementById('dsq2-config');
+const CONFIG: Config = JSON.parse(cfgEl?.textContent || '{"domains":[]}');
+const SCORED_DOMAINS = CONFIG.domains.filter(d => !d.additional);
+const ALL_ITEMS: Item[] = CONFIG.domains.flatMap(d => d.items);
+
+const FREQ_LABELS = ['None of the time', 'A little of the time', 'About half the time', 'Most of the time', 'All of the time'];
+const SEV_LABELS = ['Not present', 'Mild', 'Moderate', 'Severe', 'Very severe'];
+
+const STORAGE_KEY = 'dsq2-answers';
+const STEP_KEY = 'dsq2-step';
+
+const form = document.getElementById('dsq-form') as HTMLFormElement;
+const steps = Array.from(document.querySelectorAll<HTMLElement>('.step'));
+const totalSteps = steps.length;
+const progressLabel = document.getElementById('progress-label') as HTMLElement;
+const progressFill = document.getElementById('progress-fill') as HTMLElement;
+const resultsPanel = document.getElementById('results') as HTMLElement;
+const resumeBanner = document.getElementById('resume-banner') as HTMLElement;
+
+let currentStep = 0;
+
+/* ---------- helpers ---------- */
+function getVal(name: string): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+function present(id: string): boolean {
+	const f = getVal(`${id}_f`);
+	const s = getVal(`${id}_s`);
+	return f !== null && s !== null && f >= 2 && s >= 2;
+}
+function itemsWithTag(tag: string): Item[] {
+	return ALL_ITEMS.filter(i => i.tags.includes(tag));
+}
+function anyPresent(tag: string): boolean {
+	return itemsWithTag(tag).some(i => present(i.id));
+}
+function countPresent(tag: string): number {
+	return itemsWithTag(tag).filter(i => present(i.id)).length;
+}
+
+/* ---------- persistence ---------- */
+function saveAnswers() {
+	const data: Record<string, string> = {};
+	form.querySelectorAll<HTMLInputElement>('input[type="radio"]:checked').forEach(inp => {
+		data[inp.name] = inp.value;
+	});
+	try {
+		// Never persist an empty answer set — that would clobber saved progress
+		// during the initial render, before answers are restored.
+		if (Object.keys(data).length === 0) {
+			localStorage.removeItem(STORAGE_KEY);
+			localStorage.removeItem(STEP_KEY);
+			return;
+		}
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+		localStorage.setItem(STEP_KEY, String(currentStep));
+	} catch (e) { /* storage unavailable */ }
+}
+function loadAnswers(): boolean {
+	try {
+		const raw = localStorage.getItem(STORAGE_KEY);
+		if (!raw) return false;
+		const data = JSON.parse(raw) as Record<string, string>;
+		let any = false;
+		for (const [name, value] of Object.entries(data)) {
+			const inp = form.querySelector<HTMLInputElement>(`input[name="${name}"][value="${value}"]`);
+			if (inp) { inp.checked = true; any = true; syncAutoZero(name); }
+		}
+		return any;
+	} catch (e) { return false; }
+}
+function clearStorage() {
+	try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY); } catch (e) { /* */ }
+}
+
+/* ---------- auto-severity ---------- */
+// When frequency is set to 0, mark the symptom absent (severity 0) and dim it.
+function syncAutoZero(changedName: string) {
+	if (!changedName.endsWith('_f')) return;
+	const id = changedName.slice(0, -2);
+	const freq = getVal(`${id}_f`);
+	const sevGroup = document.querySelector(`.symptom[data-id="${id}"] .rating-group:last-child .segmented`);
+	if (!sevGroup) return;
+	if (freq === 0) {
+		const zero = form.querySelector<HTMLInputElement>(`input[name="${id}_s"][value="0"]`);
+		if (zero) zero.checked = true;
+		sevGroup.classList.add('auto-zero');
+	} else {
+		sevGroup.classList.remove('auto-zero');
+	}
+}
+
+form.addEventListener('change', (e) => {
+	const target = e.target as HTMLInputElement;
+	if (target && target.name) syncAutoZero(target.name);
+	saveAnswers();
+});
+
+/* ---------- navigation ---------- */
+function showStep(n: number) {
+	currentStep = Math.max(0, Math.min(n, totalSteps - 1));
+	steps.forEach(s => { s.hidden = parseInt(s.dataset.step || '0', 10) !== currentStep; });
+	progressLabel.textContent = `Section ${currentStep + 1} of ${totalSteps}`;
+	progressFill.style.width = `${((currentStep + 1) / totalSteps) * 100}%`;
+	window.scrollTo({ top: (form.getBoundingClientRect().top + window.scrollY) - 20, behavior: 'smooth' });
+	saveAnswers();
+}
+
+function validateStep(n: number): boolean {
+	const step = steps[n];
+	// Every symptom in the step must have a frequency chosen (severity auto-fills on 0).
+	const symptoms = step.querySelectorAll<HTMLElement>('.symptom');
+	for (const sym of symptoms) {
+		const single = sym.querySelector<HTMLElement>('[data-single]');
+		if (single) {
+			const name = single.dataset.single!;
+			if (getVal(name) === null) { flag(sym); return false; }
+			continue;
+		}
+		const id = sym.dataset.id!;
+		if (getVal(`${id}_f`) === null || getVal(`${id}_s`) === null) { flag(sym); return false; }
+	}
+	return true;
+}
+function flag(sym: HTMLElement) {
+	sym.classList.add('missing');
+	sym.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	setTimeout(() => sym.classList.remove('missing'), 2500);
+}
+
+form.querySelectorAll('[data-next]').forEach(btn => {
+	btn.addEventListener('click', () => {
+		if (!validateStep(currentStep)) return;
+		showStep(currentStep + 1);
+	});
+});
+form.querySelectorAll('[data-prev]').forEach(btn => {
+	btn.addEventListener('click', () => showStep(currentStep - 1));
+});
+
+/* ---------- scoring ---------- */
+function composite(id: string): number | null {
+	const f = getVal(`${id}_f`);
+	const s = getVal(`${id}_s`);
+	if (f === null || s === null) return null;
+	return ((f + s) / 2) * 25;
+}
+
+function domainScore(domain: Domain) {
+	let sum = 0, n = 0, met = 0;
+	for (const item of domain.items) {
+		const c = composite(item.id);
+		if (c !== null) { sum += c; n++; }
+		if (present(item.id)) met++;
+	}
+	return { avg: n ? sum / n : 0, met, total: domain.items.length };
+}
+
+const DOMAIN_INTERP: Record<string, (met: number, total: number) => string> = {
+	pem: (m, t) => m >= 3 ? `${m} of ${t} post-exertional symptoms met the threshold. PEM is the defining feature of ME/CFS, and this suggests significant post-exertional involvement.` : m >= 1 ? `${m} of ${t} post-exertional symptoms met the threshold. Some post-exertional involvement is present.` : `No post-exertional symptoms met the threshold. PEM is the hallmark of ME/CFS, so its absence is notable.`,
+	cognitive: (m, t) => m >= 2 ? `${m} of ${t} cognitive symptoms met the threshold — a meaningful degree of "brain fog".` : m === 1 ? `1 of ${t} cognitive symptoms met the threshold.` : `No cognitive symptoms met the threshold.`,
+	feverflu: (m, t) => m >= 1 ? `${m} of ${t} immune / flu-like symptoms met the threshold.` : `No immune / flu-like symptoms met the threshold.`,
+	pain: (m, t) => m >= 1 ? `${m} of ${t} pain symptoms met the threshold.` : `No pain symptoms met the threshold.`,
+	sleep: (m, t) => m >= 1 ? `${m} of ${t} sleep symptoms met the threshold. Unrefreshing sleep is common in ME/CFS.` : `No sleep symptoms met the threshold.`,
+	orthostatic: (m, t) => m >= 1 ? `${m} of ${t} orthostatic symptoms met the threshold — worth exploring, as this overlaps with POTS and dysautonomia.` : `No orthostatic symptoms met the threshold.`,
+	genitourinary: (m, t) => m >= 1 ? `${m} of ${t} genitourinary symptoms met the threshold.` : `No genitourinary symptoms met the threshold.`,
+	temperature: (m, t) => m >= 1 ? `${m} of ${t} temperature symptoms met the threshold.` : `No temperature symptoms met the threshold.`,
+};
+
+/* ---------- case definitions ---------- */
+function computeCaseDefs() {
+	const impact = getVal('impact') ?? 0;
+	const substantial = impact >= 2;
+	const reduction50 = impact >= 3;
+
+	const fatigue = present('pem_fatigue');
+	const pem = anyPresent('pem');
+	const unrefreshing = present('pem_unrefreshing');
+	const cognitiveCount = countPresent('cognitive');
+	const sleepPresent = anyPresent('sleep');
+	const painPresent = anyPresent('pain');
+	const orthostatic = anyPresent('orthostatic');
+
+	// Fukuda 1994: fatigue + substantial reduction + >= 4 of 8 minor symptoms
+	const fukudaMinors = [
+		cognitiveCount >= 1,          // impaired memory / concentration
+		present('add_sorethroat'),
+		present('add_lymph'),
+		present('pain_muscle'),
+		present('add_jointpain'),
+		present('add_headache'),
+		unrefreshing,
+		pem,                           // post-exertional malaise
+	].filter(Boolean).length;
+	const fukuda = substantial && fatigue && fukudaMinors >= 4;
+
+	// Canadian Consensus Criteria 2003
+	const cccExtra = [anyPresent('autonomic'), anyPresent('neuroendocrine'), anyPresent('immune')].filter(Boolean).length;
+	const ccc = substantial && fatigue && pem && sleepPresent && painPresent && cognitiveCount >= 2 && cccExtra >= 2;
+
+	// ME-ICC 2011
+	const neuroDomains = [anyPresent('cognitive'), anyPresent('pain'), anyPresent('sleep'), anyPresent('neurosensory')].filter(Boolean).length;
+	const immuneDomains = [anyPresent('flu'), anyPresent('viral'), anyPresent('gi'), anyPresent('gu'), anyPresent('sensitivities')].filter(Boolean).length;
+	const energyDomains = [anyPresent('cardiovascular'), anyPresent('respiratory'), anyPresent('thermostatic')].filter(Boolean).length;
+	const meicc = reduction50 && pem && neuroDomains >= 3 && immuneDomains >= 3 && energyDomains >= 1;
+
+	// IOM / NAM 2015
+	const iom = substantial && fatigue && pem && unrefreshing && (cognitiveCount >= 1 || orthostatic);
+
+	return [
+		{ key: 'iom', name: 'IOM / NAM (2015)', met: iom, req: 'Substantial activity reduction with fatigue, plus post-exertional malaise, unrefreshing sleep, and either cognitive impairment or orthostatic intolerance.' },
+		{ key: 'fukuda', name: 'Fukuda CFS (1994)', met: fukuda, req: 'Six months of fatigue with substantial activity reduction, plus at least 4 of 8 minor symptoms (cognitive difficulty, sore throat, tender lymph nodes, muscle pain, joint pain, new headaches, unrefreshing sleep, post-exertional malaise).' },
+		{ key: 'ccc', name: 'Canadian Consensus Criteria (2003)', met: ccc, req: 'Fatigue with activity reduction, plus post-exertional malaise, sleep dysfunction, pain, two or more cognitive symptoms, and symptoms from at least two of the autonomic, neuroendocrine, and immune categories.' },
+		{ key: 'meicc', name: 'ME-ICC (2011)', met: meicc, req: 'A 50% activity reduction, post-exertional neuroimmune exhaustion, and symptoms spanning the neurological, immune/gastrointestinal/genitourinary, and energy-production categories. Deliberately the strictest definition.' },
+	];
+}
+
+/* ---------- render results ---------- */
+function renderResults() {
+	// Domain scores
+	const scores = SCORED_DOMAINS.map(d => ({ domain: d, ...domainScore(d) }));
+
+	// Chart
+	const maxAvg = Math.max(1, ...scores.map(s => s.avg));
+	const chart = document.getElementById('chart') as HTMLElement;
+	chart.innerHTML = scores.map(s => {
+		const pct = Math.round((s.avg / 100) * 100);
+		return `
+			<div class="chart-row">
+				<div class="chart-label">${s.domain.name}</div>
+				<div class="chart-track"><div class="chart-bar" style="width:${Math.max(2, pct)}%"></div></div>
+				<div class="chart-val">${Math.round(s.avg)}</div>
+			</div>`;
+	}).join('');
+
+	// Domain cards
+	const domainCards = document.getElementById('domain-cards') as HTMLElement;
+	domainCards.innerHTML = scores.map(s => {
+		const interp = DOMAIN_INTERP[s.domain.key] ? DOMAIN_INTERP[s.domain.key](s.met, s.total) : '';
+		return `
+			<div class="domain-card">
+				<div class="domain-card-head">
+					<span class="domain-card-name">${s.domain.name}</span>
+					<span class="domain-card-score">${Math.round(s.avg)}<small>/100</small></span>
+				</div>
+				<div class="domain-card-met">${s.met} of ${s.total} symptoms met the 2/2 threshold</div>
+				<p class="domain-card-interp">${interp}</p>
+			</div>`;
+	}).join('');
+
+	// Case definitions
+	const caseDefs = computeCaseDefs();
+	const casedefCards = document.getElementById('casedef-cards') as HTMLElement;
+	casedefCards.innerHTML = caseDefs.map(c => `
+		<div class="casedef-card ${c.met ? 'met' : 'notmet'}">
+			<div class="casedef-head">
+				<span class="casedef-name">${c.name}</span>
+				<span class="casedef-badge">${c.met ? '✓ Consistent' : 'Not met'}</span>
+			</div>
+			<p class="casedef-req">${c.req}</p>
+		</div>`).join('');
+
+	// Overall summary
+	const sorted = [...scores].sort((a, b) => b.avg - a.avg);
+	const top = sorted.slice(0, 2).filter(s => s.avg > 0).map(s => s.domain.name.toLowerCase());
+	const metDefs = caseDefs.filter(c => c.met).map(c => c.name);
+	let summary = '';
+	if (top.length === 0) {
+		summary = 'Few symptoms met the threshold across the domains. This does not rule out a post-viral condition, but the symptom pattern here is mild. If symptoms are affecting your life, discuss them with your doctor.';
+	} else {
+		summary = `Your symptom profile shows the strongest involvement in ${top.join(' and ')}. `;
+		if (metDefs.length) {
+			summary += `This pattern was consistent with the ${listJoin(metDefs)} case ${metDefs.length === 1 ? 'definition' : 'definitions'}. `;
+		} else {
+			summary += 'Your responses did not meet the full threshold for any of the four case definitions, though individual domains may still be significant. ';
+		}
+		summary += 'These results are a structured record of what you reported, useful to bring to a clinical appointment — not a diagnosis.';
+	}
+	(document.getElementById('overall-summary') as HTMLElement).textContent = summary;
+}
+
+function listJoin(arr: string[]): string {
+	if (arr.length <= 1) return arr.join('');
+	if (arr.length === 2) return `${arr[0]} and ${arr[1]}`;
+	return `${arr.slice(0, -1).join(', ')}, and ${arr[arr.length - 1]}`;
+}
+
+/* ---------- submit ---------- */
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	if (!validateStep(currentStep)) return;
+	renderResults();
+	form.hidden = true;
+	document.querySelector('.progress-wrap')?.setAttribute('hidden', '');
+	resultsPanel.hidden = false;
+	resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('edit-btn')?.addEventListener('click', () => {
+	resultsPanel.hidden = true;
+	form.hidden = false;
+	document.querySelector('.progress-wrap')?.removeAttribute('hidden');
+	showStep(currentStep);
+});
+
+function restart() {
+	form.reset();
+	clearStorage();
+	document.querySelectorAll('.segmented.auto-zero').forEach(el => el.classList.remove('auto-zero'));
+	resultsPanel.hidden = true;
+	form.hidden = false;
+	document.querySelector('.progress-wrap')?.removeAttribute('hidden');
+	showStep(0);
+}
+document.getElementById('restart-btn')?.addEventListener('click', restart);
+document.getElementById('fresh-btn')?.addEventListener('click', () => { resumeBanner.hidden = true; restart(); });
+
+/* ---------- init / resume ---------- */
+(function init() {
+	let hasSaved = false;
+	try {
+		const raw = localStorage.getItem(STORAGE_KEY);
+		hasSaved = !!raw && Object.keys(JSON.parse(raw)).length > 0;
+	} catch (e) { /* */ }
+
+	if (hasSaved) {
+		// Restore answers immediately (before any showStep save can clobber them),
+		// then offer a clean "start over".
+		loadAnswers();
+		let savedStep = 0;
+		try { savedStep = parseInt(localStorage.getItem(STEP_KEY) || '0', 10); } catch (e) { /* */ }
+		resumeBanner.hidden = false;
+		showStep(savedStep);
+	} else {
+		showStep(0);
+	}
+})();
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	/* Resume banner */
+	.resume-banner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+		background: var(--accent-light);
+		border: 1px solid var(--accent);
+		border-radius: 6px;
+		padding: 0.9em 1.25em;
+		margin-bottom: 1.5em;
+		font-size: 0.92em;
+	}
+	.resume-actions { display: flex; gap: 0.5em; }
+	.resume-banner button {
+		border: 1px solid var(--accent);
+		background: #fff;
+		color: var(--accent);
+		padding: 0.45em 1em;
+		border-radius: 5px;
+		font-family: inherit;
+		font-size: 0.9em;
+		cursor: pointer;
+		font-weight: 700;
+	}
+	#resume-btn { background: var(--accent); color: #fff; }
+	.resume-banner button:hover { opacity: 0.9; }
+
+	/* Progress */
+	.progress-wrap { margin-bottom: 1.75em; }
+	.progress-text { font-size: 0.82em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(var(--gray)); margin-bottom: 0.4em; }
+	.progress-bar { height: 7px; background: rgb(var(--gray-light)); border-radius: 4px; overflow: hidden; }
+	.progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.3s ease; width: 10%; }
+
+	/* Steps */
+	.step-head { margin-bottom: 1.25em; }
+	.step-kicker { font-size: 0.78em; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tools); }
+	.step-head h2 { margin: 0.2em 0 0.3em; font-size: 1.5em; }
+	.step-intro { color: rgb(var(--gray-dark)); font-size: 0.95em; margin: 0; }
+
+	.scale-key {
+		font-size: 0.86em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-light);
+		border-radius: 6px;
+		padding: 0.7em 1.1em;
+		margin-bottom: 1.25em;
+	}
+	.scale-key p { margin: 0; }
+
+	/* Symptom cards */
+	.symptom {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.1em 1.35em;
+		margin-bottom: 0.85em;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.symptom.single { border: none; padding: 0; }
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.9em; font-weight: 700; font-size: 0.98em; line-height: 1.4; }
+	.ratings { display: flex; flex-direction: column; gap: 0.8em; }
+	.rating-group { display: flex; flex-direction: column; gap: 0.35em; }
+	.rating-label { font-size: 0.75em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(var(--gray)); }
+	.segmented { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35em; }
+	.segmented.vertical { grid-template-columns: 1fr; gap: 0.5em; }
+	.segmented label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		font-size: 0.82em;
+		line-height: 1.2;
+		padding: 0.5em 0.3em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.1s, border-color 0.1s;
+		min-height: 2.6em;
+	}
+	.segmented.vertical label { justify-content: flex-start; text-align: left; padding: 0.75em 1em; font-size: 0.92em; min-height: 0; }
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+	.segmented.auto-zero { opacity: 0.55; }
+
+	/* Step footer */
+	.step-footer { display: flex; justify-content: space-between; align-items: center; gap: 1em; padding: 1.5em 0 0.5em; }
+	.next-btn, .submit-btn {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.7em 1.75em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	.next-btn:hover, .submit-btn:hover { background: var(--accent-dark); }
+	.back-step-btn {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.7em 1.25em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+	.back-step-btn:hover { border-color: rgb(var(--gray)); color: rgb(var(--black)); }
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.75em; }
+	.results h3 { margin-top: 1.75em; }
+	.section-lead { font-size: 0.9em; color: rgb(var(--gray)); margin: 0 0 1em; }
+	.score-interp {
+		font-size: 1.02em; line-height: 1.6; margin: 0 0 1em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+
+	/* Chart */
+	.chart { display: flex; flex-direction: column; gap: 0.5em; margin-bottom: 1em; }
+	.chart-row { display: grid; grid-template-columns: 11em 1fr 2.2em; align-items: center; gap: 0.75em; font-size: 0.88em; }
+	.chart-label { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
+	.chart-track { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
+	.chart-bar { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart-val { font-weight: 700; color: var(--accent); text-align: right; }
+
+	/* Domain cards */
+	.domain-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75em; }
+	.domain-card { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 1em 1.2em; }
+	.domain-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5em; }
+	.domain-card-name { font-weight: 700; font-size: 0.95em; }
+	.domain-card-score { font-weight: 700; font-size: 1.4em; color: var(--accent); }
+	.domain-card-score small { font-size: 0.5em; color: rgb(var(--gray)); font-weight: 400; }
+	.domain-card-met { font-size: 0.8em; color: rgb(var(--gray)); margin: 0.3em 0 0.5em; }
+	.domain-card-interp { font-size: 0.85em; line-height: 1.5; margin: 0; color: rgb(var(--gray-dark)); }
+
+	/* Case-def cards */
+	.casedef-cards { display: flex; flex-direction: column; gap: 0.6em; }
+	.casedef-card { border: 1px solid rgb(var(--gray-light)); border-left-width: 4px; border-radius: 6px; padding: 0.9em 1.2em; }
+	.casedef-card.met { border-left-color: #1e6b3c; background: #f3faf5; }
+	.casedef-card.notmet { border-left-color: rgb(var(--gray-light)); }
+	.casedef-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75em; margin-bottom: 0.35em; }
+	.casedef-name { font-weight: 700; font-size: 0.98em; }
+	.casedef-badge { font-size: 0.78em; font-weight: 700; white-space: nowrap; padding: 0.2em 0.6em; border-radius: 4px; }
+	.casedef-card.met .casedef-badge { background: #1e6b3c; color: #fff; }
+	.casedef-card.notmet .casedef-badge { background: rgb(var(--gray-light)); color: rgb(var(--gray-dark)); }
+	.casedef-req { font-size: 0.85em; line-height: 1.5; margin: 0; color: rgb(var(--gray-dark)); }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		margin-top: 2em; line-height: 1.6;
+	}
+	.results-disclaimer h3 { color: rgb(var(--black)); margin-top: 0; }
+	.results-buttons { display: flex; gap: 0.75em; margin-top: 1.5em; }
+	.back-btn {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.symptom { padding: 0.9em 1em; }
+		.segmented { gap: 0.25em; }
+		.segmented label { font-size: 0.72em; padding: 0.45em 0.15em; min-height: 3em; }
+		.domain-cards { grid-template-columns: 1fr; }
+		.chart-row { grid-template-columns: 7em 1fr 2em; gap: 0.5em; font-size: 0.8em; }
+		.chart-label { font-size: 0.95em; }
+		.step-footer { gap: 0.5em; }
+		.next-btn, .submit-btn { padding: 0.7em 1.1em; }
+	}
+</style>
