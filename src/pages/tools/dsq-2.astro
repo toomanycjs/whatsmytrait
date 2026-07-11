@@ -6,11 +6,11 @@ import Header from '../../components/Header.astro';
 const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 
 const freqOptions = [
-	{ value: 0, short: 'None', full: 'None of the time' },
-	{ value: 1, short: 'A little', full: 'A little of the time' },
-	{ value: 2, short: 'Half', full: 'About half the time' },
-	{ value: 3, short: 'Most', full: 'Most of the time' },
-	{ value: 4, short: 'All', full: 'All of the time' },
+	{ value: 0, short: 'None of the time', full: 'None of the time' },
+	{ value: 1, short: 'A little of the time', full: 'A little of the time' },
+	{ value: 2, short: 'Half of the time', full: 'Half of the time' },
+	{ value: 3, short: 'Most of the time', full: 'Most of the time' },
+	{ value: 4, short: 'All of the time', full: 'All of the time' },
 ];
 const sevOptions = [
 	{ value: 0, short: 'None', full: 'Not present' },
