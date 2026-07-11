@@ -1,6 +1,6 @@
 ---
-title: "Ivabradine for POTS: what the evidence says and how it's used"
-description: "Ivabradine slows the heart without lowering blood pressure, which makes it unusually well suited to POTS. This piece covers the mechanism, the randomised trial evidence, the long-COVID data, dosing, side effects, and how it's prescribed in the UK."
+title: "Ivabradine for POTS: evidence, dosing and side effects"
+description: "What the evidence says about ivabradine for POTS: how it slows the heart without lowering blood pressure, the randomised trial data, the long-COVID findings, typical dosing, side effects, and how it's prescribed off-label in the UK."
 pubDate: 2026-05-29
 ---
 
