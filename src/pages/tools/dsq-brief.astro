@@ -13,7 +13,7 @@ const freqOptions = [
 	{ value: 4, short: 'All of the time', full: 'All of the time' },
 ];
 const sevOptions = [
-	{ value: 0, short: 'None', full: 'Not present' },
+	{ value: 0, short: 'Symptom not present', full: 'Symptom not present' },
 	{ value: 1, short: 'Mild', full: 'Mild' },
 	{ value: 2, short: 'Moderate', full: 'Moderate' },
 	{ value: 3, short: 'Severe', full: 'Severe' },
@@ -186,7 +186,7 @@ const ITEMS: { id: string; text: string }[] = [
 ];
 
 const FREQ_LABELS = ['None of the time', 'A little of the time', 'Half of the time', 'Most of the time', 'All of the time'];
-const SEV_LABELS = ['Not present', 'Mild', 'Moderate', 'Severe', 'Very severe'];
+const SEV_LABELS = ['Symptom not present', 'Mild', 'Moderate', 'Severe', 'Very severe'];
 
 function getVal(name: string): number | null {
 	const checked = document.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
