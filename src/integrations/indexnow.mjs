@@ -41,67 +41,96 @@ export default function indexNow({ key }) {
 				}
 				const distDir = fileURLToPath(dir);
 
-				await writeFile(path.join(distDir, `${key}.txt`), key);
-
-				const manifest = {};
-				for (const file of await htmlFiles(distDir)) {
-					const rel = path.relative(distDir, file).split(path.sep).join('/');
-					if (rel === '404.html') continue;
-					const urlPath = rel === 'index.html' ? '/' : '/' + rel.replace(/index\.html$/, '');
-					const html = await readFile(file);
-					manifest[new URL(urlPath, site).href] = createHash('sha256').update(html).digest('hex');
-				}
-
-				let previous = {};
 				try {
-					const res = await fetch(new URL(`/${MANIFEST}`, site), { signal: AbortSignal.timeout(10_000) });
-					if (res.ok) {
-						previous = await res.json();
-					} else {
-						logger.warn(`no previous manifest on the live site (HTTP ${res.status}); treating all pages as new`);
+					await writeFile(path.join(distDir, `${key}.txt`), key);
+
+					const manifest = {};
+					for (const file of await htmlFiles(distDir)) {
+						const rel = path.relative(distDir, file).split(path.sep).join('/');
+						if (rel === '404.html') continue;
+						const urlPath = rel === 'index.html' ? '/' : '/' + rel.replace(/index\.html$/, '');
+						const html = await readFile(file);
+						manifest[new URL(urlPath, site).href] = createHash('sha256').update(html).digest('hex');
 					}
-				} catch (err) {
-					logger.warn(`could not fetch previous manifest (${err.message}); treating all pages as new`);
-				}
 
-				await writeFile(path.join(distDir, MANIFEST), JSON.stringify(manifest, null, '\t'));
+					await writeFile(path.join(distDir, MANIFEST), JSON.stringify(manifest, null, '\t'));
 
-				const changed = Object.keys(manifest).filter((url) => previous[url] !== manifest[url]);
-				if (changed.length === 0) {
-					logger.info('no new or updated pages; nothing to submit');
-					return;
-				}
-
-				const isProduction = process.env.VERCEL_ENV === 'production' || process.env.INDEXNOW_SUBMIT === '1';
-				if (!isProduction) {
-					logger.info(`dry run (not a production build): ${changed.length} page(s) would be submitted:`);
-					for (const url of changed) logger.info(`  ${url}`);
-					return;
-				}
-
-				try {
-					const res = await fetch(ENDPOINT, {
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json; charset=utf-8' },
-						body: JSON.stringify({
-							host: site.hostname,
-							key,
-							keyLocation: new URL(`/${key}.txt`, site).href,
-							urlList: changed,
-						}),
-						signal: AbortSignal.timeout(15_000),
-					});
-					if (res.ok) {
-						logger.info(`submitted ${changed.length} URL(s) to IndexNow (HTTP ${res.status})`);
-					} else {
-						logger.warn(`IndexNow submission failed: HTTP ${res.status} ${await res.text()}`);
+					// Builds that can't submit skip the network entirely: it keeps local
+					// builds fast, and avoids a Windows-only crash on process teardown
+					// when native image work and a completed request unwind together.
+					const submitting = process.env.VERCEL_ENV === 'production' || process.env.INDEXNOW_SUBMIT === '1';
+					const previewing = process.env.INDEXNOW_DRY_RUN === '1';
+					if (!submitting && !previewing) {
+						const count = Object.keys(manifest).length;
+						logger.info(`manifest written for ${count} page(s); set INDEXNOW_DRY_RUN=1 to preview what would be submitted`);
+						return;
 					}
-				} catch (err) {
-					logger.warn(`IndexNow submission failed: ${err.message}`);
+
+					let previous = {};
+					try {
+						const res = await fetch(new URL(`/${MANIFEST}`, site), { signal: AbortSignal.timeout(10_000) });
+						if (res.ok) {
+							previous = await res.json();
+						} else {
+							await res.body?.cancel();
+							logger.warn(`no previous manifest on the live site (HTTP ${res.status}); treating all pages as new`);
+						}
+					} catch (err) {
+						logger.warn(`could not fetch previous manifest (${err.message}); treating all pages as new`);
+					}
+
+					const changed = Object.keys(manifest).filter((url) => previous[url] !== manifest[url]);
+					if (changed.length === 0) {
+						logger.info('no new or updated pages; nothing to submit');
+						return;
+					}
+
+					if (!submitting) {
+						logger.info(`dry run: ${changed.length} page(s) would be submitted:`);
+						for (const url of changed) logger.info(`  ${url}`);
+						return;
+					}
+
+					try {
+						const res = await fetch(ENDPOINT, {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json; charset=utf-8' },
+							body: JSON.stringify({
+								host: site.hostname,
+								key,
+								keyLocation: new URL(`/${key}.txt`, site).href,
+								urlList: changed,
+							}),
+							signal: AbortSignal.timeout(15_000),
+						});
+						const body = await res.text();
+						if (res.ok) {
+							logger.info(`submitted ${changed.length} URL(s) to IndexNow (HTTP ${res.status})`);
+						} else {
+							logger.warn(`IndexNow submission failed: HTTP ${res.status} ${body}`);
+						}
+					} catch (err) {
+						logger.warn(`IndexNow submission failed: ${err.message}`);
+					}
+				} finally {
+					await closeConnectionPool();
 				}
 			},
 		},
 	};
+}
+
+/**
+ * `fetch` keeps its connections pooled, which leaves a handle open and stops the
+ * build process exiting cleanly once the build itself has finished. Closing the
+ * pool is best-effort: it must never break a build that otherwise succeeded.
+ */
+async function closeConnectionPool() {
+	try {
+		await globalThis[Symbol.for('undici.globalDispatcher.1')]?.close?.();
+	} catch {
+		// nothing to close, or a Node version that manages the pool differently
+	}
 }
 
 /**

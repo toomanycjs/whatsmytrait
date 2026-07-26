@@ -18,22 +18,43 @@ const SECTION_LABELS: Record<string, string> = {
 	tools: 'TOOLS',
 };
 
-const TOOL_PAGES = [
-	{ slug: 'tools/compass-31', title: 'COMPASS-31 questionnaire: free online version with automatic scoring' },
-	{ slug: 'tools/bell-scale', title: 'Bell CFIDS Disability Scale: free online functional capacity assessment' },
-	{ slug: 'tools/epworth', title: 'Epworth Sleepiness Scale: free online questionnaire with scoring' },
-	{ slug: 'tools/fss', title: 'Fatigue Severity Scale (FSS): free online questionnaire with scoring' },
-	{ slug: 'tools/nasa-lean-test', title: 'NASA lean test: how to do a poor man\'s tilt table test at home, with timer and logging' },
-	{ slug: 'tools/nijmegen', title: 'Nijmegen questionnaire: free online breathing pattern disorder screening tool' },
-	{ slug: 'tools/which-questionnaire', title: 'Which questionnaire should I take? A guide to post-viral self-assessment tools' },
-	{ slug: 'tools/fibromyalgia-survey', title: 'Fibromyalgia symptom test: free online 2016 ACR survey with scoring' },
-	{ slug: 'tools/beighton-score', title: 'Beighton score test: free online hypermobility self-assessment' },
-	{ slug: 'tools/dsq-brief', title: 'ME/CFS screening questionnaire: free 4-question self-check (DSQ-Brief)' },
-	{ slug: 'tools/dsq-2', title: 'DePaul Symptom Questionnaire (DSQ-2): free online ME/CFS symptom assessment with scoring' },
-	{ slug: 'tools/trackers/hrv-tracker', title: 'Free HRV and resting heart rate tracker: Google Sheets template for daily logging' },
-	{ slug: 'tools/trackers/stand-test-logger', title: 'Free stand test logger: track orthostatic heart rate over time' },
-	{ slug: 'tools/trackers/symptom-diary', title: 'Free post-viral symptom diary: Google Sheets template with rolling averages' },
-];
+const ENTITIES: Record<string, string> = {
+	'&amp;': '&',
+	'&lt;': '<',
+	'&gt;': '>',
+	'&quot;': '"',
+	'&#39;': "'",
+	'&ndash;': '–',
+	'&mdash;': '—',
+};
+
+function decodeEntities(text: string) {
+	return text.replace(/&(?:amp|lt|gt|quot|#39|ndash|mdash);/g, (entity) => ENTITIES[entity]);
+}
+
+// Tool pages set their title directly on <BaseHead>, so read it back out of the
+// source rather than keeping a second copy here: a hand-maintained list drifts
+// out of sync the moment a title is rewritten. The tools index is skipped
+// because it doesn't request a per-page OG image.
+const TOOL_SOURCES = import.meta.glob<string>('../tools/**/*.astro', {
+	query: '?raw',
+	import: 'default',
+	eager: true,
+});
+
+function toolPages() {
+	return Object.entries(TOOL_SOURCES)
+		.filter(([file]) => !file.endsWith('/index.astro'))
+		.map(([file, source]) => {
+			const head = source.match(/<BaseHead\b[\s\S]*?\/>/)?.[0];
+			const title = head?.match(/\btitle="([^"]*)"/)?.[1];
+			if (!title) {
+				throw new Error(`No BaseHead title found in ${file}`);
+			}
+			const slug = file.replace('../tools/', '').replace(/\.astro$/, '');
+			return { slug: `tools/${slug}`, title: decodeEntities(title) };
+		});
+}
 
 export async function getStaticPaths() {
 	const collections = ['testing', 'evidence', 'nhs'] as const;
@@ -49,7 +70,7 @@ export async function getStaticPaths() {
 		}
 	}
 
-	for (const tool of TOOL_PAGES) {
+	for (const tool of toolPages()) {
 		paths.push({
 			params: { slug: tool.slug },
 			props: { title: tool.title, section: 'tools' },
