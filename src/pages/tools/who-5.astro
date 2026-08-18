@@ -1,0 +1,284 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const statements = [
+	'I have felt cheerful and in good spirits',
+	'I have felt calm and relaxed',
+	'I have felt active and vigorous',
+	'I woke up feeling fresh and rested',
+	'My daily life has been filled with things that interest me',
+];
+
+const ratings = [
+	{ value: 5, label: 'All of the time' },
+	{ value: 4, label: 'Most of the time' },
+	{ value: 3, label: 'More than half of the time' },
+	{ value: 2, label: 'Less than half of the time' },
+	{ value: 1, label: 'Some of the time' },
+	{ value: 0, label: 'At no time' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="WHO-5 Well-Being Index: free online test with scoring"
+			description="Complete the WHO-5 Well-Being Index online and get your score out of 100 instantly. Five questions about the past two weeks, with the standard thresholds explained. Free, no sign-up required."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "WHO-5 Well-Being Index", "item": "https://www.postviralrecovery.com/tools/who-5/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the WHO-5 Well-Being Index?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The WHO-5 is a five-item measure of subjective well-being derived from World Health Organization instruments and in use since 1998. You rate five positively worded statements about the past two weeks, and the total is converted to a score from 0 to 100, where higher means better well-being. It is one of the most widely used well-being measures in the world and is free to use."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is a low WHO-5 score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score of 50 or below indicates reduced well-being and is the standard threshold for considering further assessment. A score of 28 or below suggests markedly low well-being, at a level where discussing how you are feeling with a doctor is recommended. A change of 10 points or more is generally considered clinically meaningful."}
+        },
+        {
+          "@type": "Question",
+          "name": "Why include a well-being measure on a post-viral illness site?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Chronic post-viral illness grinds at well-being — through symptoms, lost activities, and uncertainty — and tracking well-being alongside physical measures gives a fuller picture of how you are actually doing. The WHO-5 is positively worded, takes under a minute, and is sensitive to change, which makes it a light-touch companion to symptom and function tracking. A low score reflects low well-being from any cause; it is not a depression diagnosis."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>WHO-5 Well-Being Index</h1>
+				<p class="subtitle">Five questions about the past two weeks, scored 0–100</p>
+				<p class="description">
+					The WHO-5 is a five-item measure of subjective well-being, in use since 1998 and now one of the most widely applied well-being scales in the world. The World Health Organization holds the copyright and makes it freely available. All five statements are positively worded — it asks how often you have felt good, not how bad things have been — and it refers to the <strong>past two weeks</strong>.
+				</p>
+				<p class="description">
+					For anyone managing a long illness, well-being is worth measuring alongside symptoms and function: it responds to different things (pacing successes, sleep, connection, uncertainty) and it changes in both directions. At under a minute to complete, the WHO-5 is well suited to monthly tracking next to heavier instruments like the <a href="/tools/rand-36/">RAND-36</a> or the <a href="/tools/fss/">Fatigue Severity Scale</a>.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> A low score indicates reduced well-being, which in a chronic illness can have many causes; it is not a diagnosis of depression or any other condition. If your score is persistently low, or you are struggling, talk to your GP. Source: WHO-5 Well-Being Index, World Health Organization (CC BY-NC-SA 3.0 IGO). Topp CW, Østergaard SD, Søndergaard S, Bech P. <em>The WHO-5 Well-Being Index: a systematic review of the literature.</em> Psychother Psychosom. 2015;84(3):167–176.
+				</div>
+			</div>
+
+			<form id="who5-form" novalidate>
+				<p class="form-instructions">For each statement, choose the answer closest to how you have been feeling over the <strong>last two weeks</strong>.</p>
+
+				<div class="question-grid">
+					{statements.map((q, i) => (
+						<div class="question" data-index={i}>
+							<p class="q-text"><span class="q-num">{i + 1}.</span> Over the last two weeks… <strong>{q}</strong></p>
+							<div class="options">
+								{ratings.map(r => (
+									<label>
+										<input type="radio" name={`q${i}`} value={r.value} required />
+										<span>{r.label}</span>
+									</label>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+
+				<div class="form-footer">
+					<button type="submit">Calculate score</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your WHO-5 score</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">out of 100</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>Your raw score (0–25) is multiplied by 4 to give a percentage score from 0, representing the worst imaginable well-being, to 100, representing the best. General-population averages are typically around 60–75.</p>
+					<p>A score of <strong>50 or below</strong> is the standard threshold for reduced well-being, where it is worth thinking about what is draining you and whether support would help. A score of <strong>28 or below</strong> indicates markedly low well-being — at this level, WHO guidance recommends discussing how you are feeling with a doctor. A change of <strong>10 points or more</strong> between measurements is considered clinically meaningful, which makes the WHO-5 a sensitive tracking measure.</p>
+					<p>In a chronic post-viral illness, a low score can reflect the illness itself: unrefreshing sleep and low energy pull down two of the five items directly. That overlap is worth keeping in mind when interpreting your result — and worth mentioning if you discuss the score with a clinician.</p>
+					<p><strong>This is not a diagnosis.</strong> It reflects the well-being you have reported over two weeks. If you are struggling, tell your GP — and if you ever feel unable to keep yourself safe, seek urgent help (in the UK: call 111 option 2, or 999 in an emergency).</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const form = document.getElementById('who5-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+
+function getVal(i: number): number | null {
+	const checked = document.querySelector<HTMLInputElement>(`input[name="q${i}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	let raw = 0;
+	for (let i = 0; i < 5; i++) {
+		const v = getVal(i);
+		if (v === null) {
+			const el = document.querySelector<HTMLElement>(`.question[data-index="${i}"]`);
+			el?.classList.add('missing');
+			el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => el?.classList.remove('missing'), 2500);
+			return;
+		}
+		raw += v;
+	}
+
+	const score = raw * 4;
+	(document.getElementById('total-score-value') as HTMLElement).textContent = String(score);
+
+	let interp = `Your WHO-5 score is ${score} out of 100 (raw score ${raw}/25). `;
+	if (score > 50) {
+		interp += 'This is above the reduced-well-being threshold of 50. General-population averages sit around 60–75, so scores in this range suggest your well-being over the past two weeks has been reasonably intact — worth noting what is currently working for you.';
+	} else if (score > 28) {
+		interp += 'Scores of 50 or below indicate reduced well-being. In a long illness this is common and understandable, but it is not nothing: it is worth considering what is draining you most, whether any support would help, and re-checking in a few weeks. Mention it to your GP if it persists.';
+	} else {
+		interp += 'Scores of 28 or below indicate markedly low well-being. Whatever the cause — and chronic illness is itself a sufficient one — this is a level at which WHO guidance recommends talking to a doctor about how you are feeling. Please consider raising it at your next appointment, or sooner.';
+	}
+	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.form-instructions {
+		color: rgb(var(--gray));
+		font-style: italic;
+		margin-bottom: 1.5em;
+		font-size: 0.95em;
+	}
+
+	.question-grid { display: flex; flex-direction: column; gap: 0; }
+	.question {
+		padding: 1.1em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.question.missing { background: rgba(192, 57, 43, 0.05); border-radius: 6px; }
+	.q-text { margin: 0 0 0.6em; font-size: 0.95em; }
+	.q-num { font-weight: 700; margin-right: 0.25em; }
+	.options { display: flex; flex-wrap: wrap; gap: 0.4em; }
+	.options label {
+		display: flex;
+		align-items: center;
+		gap: 0.4em;
+		cursor: pointer;
+		font-size: 0.85em;
+		padding: 0.35em 0.75em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 20px;
+		transition: background 0.1s, border-color 0.1s;
+		white-space: nowrap;
+	}
+	.options label:hover { border-color: var(--accent); color: var(--accent); }
+	.options label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+	.options input[type="radio"] { display: none; }
+
+	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 2em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+	.results-disclaimer {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light));
+		padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; margin-top: 0; }
+	.back-btn {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+		margin-top: 1em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.options { flex-direction: column; }
+		.options label { white-space: normal; }
+		.form-footer { flex-direction: column; }
+	}
+</style>

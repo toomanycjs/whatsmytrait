@@ -11,7 +11,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 	<head>
 		<BaseHead
 			title="Which questionnaire should I take? A guide to post-viral self-assessment tools"
-			description="Not sure which symptom questionnaire is right for you? A plain-language guide to the COMPASS-31, Nijmegen, Fatigue Severity Scale, Epworth Sleepiness Scale, Bell scale, and NASA lean test."
+			description="Not sure which symptom questionnaire is right for you? A plain-language guide to the DSQ-2, DSQ-PEM, COMPASS-31, Malmö POTS score, FUNCAP, PCFS, RAND-36, Nijmegen, Fatigue Severity Scale, Epworth, Bell scale, WHO-5, and NASA lean test."
 			ogImage={ogImage}
 		/>
 <script type="application/ld+json">
@@ -51,20 +51,24 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				<p>→ <a href="/tools/fss/">Fatigue Severity Scale</a></p>
 
 				<h2>If you suspect ME/CFS, or your symptoms worsen after activity</h2>
-				<p>The feature that most distinguishes ME/CFS from ordinary fatigue is post-exertional malaise: symptoms flaring in the hours or days after physical or mental effort. If that pattern sounds familiar, start with the <a href="/tools/dsq-brief/">DSQ-Brief</a>, a 4-question screen based on the DePaul Symptom Questionnaire that takes under two minutes. If it flags something, or if you simply want a thorough record to take to an appointment, the full <a href="/tools/dsq-2/">DSQ-2</a> assesses symptoms across eight domains and screens your answers against the four major ME/CFS case definitions. It takes 10–15 minutes, and your progress is saved as you go.</p>
-				<p>→ <a href="/tools/dsq-brief/">DSQ-Brief (quick screen)</a> &nbsp;·&nbsp; <a href="/tools/dsq-2/">DSQ-2 (full questionnaire)</a></p>
+				<p>The feature that most distinguishes ME/CFS from ordinary fatigue is post-exertional malaise: symptoms flaring in the hours or days after physical or mental effort. If that pattern sounds familiar, start with the <a href="/tools/dsq-brief/">DSQ-Brief</a>, a 4-question screen based on the DePaul Symptom Questionnaire that takes under two minutes. To characterise the post-activity pattern specifically — triggers and recovery time — the <a href="/tools/dsq-pem/">DSQ-PEM</a> takes about three minutes. If either flags something, or if you simply want a thorough record to take to an appointment, the full <a href="/tools/dsq-2/">DSQ-2</a> assesses symptoms across eight domains and screens your answers against the four major ME/CFS case definitions. It takes 10–15 minutes, and your progress is saved as you go.</p>
+				<p>→ <a href="/tools/dsq-brief/">DSQ-Brief (quick screen)</a> &nbsp;·&nbsp; <a href="/tools/dsq-pem/">DSQ-PEM (post-exertional malaise)</a> &nbsp;·&nbsp; <a href="/tools/dsq-2/">DSQ-2 (full questionnaire)</a></p>
 
 				<h2>If you want to check for excessive daytime sleepiness</h2>
 				<p>The Epworth Sleepiness Scale measures your tendency to doze in everyday situations. Fatigue and sleepiness are not the same thing; a low ESS score alongside severe fatigue can be informative in itself. It takes about 2 minutes.</p>
 				<p>→ <a href="/tools/epworth/">Epworth Sleepiness Scale</a></p>
 
-				<h2>If you want a quick overall snapshot of your functional capacity</h2>
-				<p>The Bell CFIDS Disability Scale gives you a single score from 0 to 100 based on a description of your activity level and symptom impact. It takes less than a minute and lends itself to regular tracking.</p>
-				<p>→ <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a></p>
+				<h2>If you want to measure your functional capacity</h2>
+				<p>Three tools at three levels of detail. The <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a> gives you a single score from 0 to 100 in under a minute and lends itself to regular tracking. The <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> grades the impact on your daily life from 0 to 4 via four quick questions — it is the standard measure in long COVID research. And the <a href="/tools/funcap/">FUNCAP questionnaire</a>, developed by and for people with ME/CFS, profiles what 27 specific activities cost you across eight domains — the most detailed of the three, and the most useful for disability paperwork.</p>
+				<p>→ <a href="/tools/bell-scale/">Bell scale (quickest)</a> &nbsp;·&nbsp; <a href="/tools/pcfs/">PCFS (long COVID standard)</a> &nbsp;·&nbsp; <a href="/tools/funcap/">FUNCAP (most detailed)</a></p>
 
 				<h2>If you suspect POTS or orthostatic intolerance</h2>
-				<p>The NASA lean test guide walks you through an at-home standing test with a timer and heart rate logging. It is a practical way to gather objective data while waiting for formal autonomic testing, and the results can be useful to bring to appointments.</p>
-				<p>→ <a href="/tools/nasa-lean-test/">NASA lean test guide</a></p>
+				<p>The NASA lean test guide walks you through an at-home standing test with a timer and heart rate logging. It is a practical way to gather objective data while waiting for formal autonomic testing, and the results can be useful to bring to appointments. To quantify your POTS symptom burden over the past week — and track it over time — the Malmö POTS Symptom Score (MAPS) is the first score designed specifically for POTS. The two pair well: MAPS gives the subjective burden, the lean test the objective heart-rate data.</p>
+				<p>→ <a href="/tools/nasa-lean-test/">NASA lean test guide</a> &nbsp;·&nbsp; <a href="/tools/malmo-pots-score/">Malmö POTS Symptom Score</a></p>
+
+				<h2>If you want the big picture: quality of life and well-being</h2>
+				<p>The <a href="/tools/rand-36/">RAND-36</a> (the same 36 items as the SF-36) measures health-related quality of life across eight scales and is used in research across almost every condition, so your profile can be compared with published ME/CFS and long COVID cohorts. It takes 5–10 minutes and suits occasional use — every few months. The <a href="/tools/who-5/">WHO-5 Well-Being Index</a> is the opposite trade-off: five questions, under a minute, sensitive to change, and well suited to monthly tracking.</p>
+				<p>→ <a href="/tools/rand-36/">RAND-36 health survey</a> &nbsp;·&nbsp; <a href="/tools/who-5/">WHO-5 Well-Being Index</a></p>
 
 				<h2>Using more than one</h2>
 				<p>You can complete more than one. For someone with a post-viral condition, a reasonable starting set might be the COMPASS-31 (autonomic symptoms), the FSS (fatigue impact), and the NASA lean test (orthostatic heart rate). Together, these give a fairly rounded picture of the areas most commonly affected.</p>

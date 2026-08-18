@@ -1,0 +1,337 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const items = [
+	{ id: 'dizziness', text: 'Dizziness or light-headedness', group: 'cardiac' },
+	{ id: 'presyncope', text: 'Presyncope (feeling that you are about to faint)', group: 'cardiac' },
+	{ id: 'palpitations', text: 'Palpitations (rapid or pounding heartbeat)', group: 'cardiac' },
+	{ id: 'dyspnoea', text: 'Shortness of breath', group: 'cardiac' },
+	{ id: 'chestpain', text: 'Chest pain or chest discomfort', group: 'cardiac' },
+	{ id: 'headache', text: 'Headache', group: 'noncardiac' },
+	{ id: 'concentration', text: 'Concentration difficulties ("brain fog")', group: 'noncardiac' },
+	{ id: 'myalgia', text: 'Muscle pain', group: 'noncardiac' },
+	{ id: 'nausea', text: 'Nausea', group: 'noncardiac' },
+	{ id: 'gi', text: 'Gastrointestinal symptoms (stomach pain, diarrhoea, or constipation)', group: 'noncardiac' },
+	{ id: 'fatigue', text: 'Fatigue', group: 'noncardiac' },
+	{ id: 'insomnia', text: 'Insomnia (difficulty sleeping)', group: 'noncardiac' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Malmö POTS Symptom Score (MAPS): free online POTS symptom questionnaire"
+			description="Rate 12 POTS symptoms from the past week and get your Malmö POTS Score (0–120) instantly, with the validated ≥42 threshold explained. Free, no sign-up, useful for tracking symptom burden over time."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Malmö POTS Symptom Score", "item": "https://www.postviralrecovery.com/tools/malmo-pots-score/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Malmö POTS Symptom Score (MAPS)?",
+          "acceptedAnswer": {"@type": "Answer", "text": "MAPS is a 12-item self-rating questionnaire developed at Lund University and published in the Journal of Internal Medicine in 2023. It is the first symptom score designed specifically for POTS. You rate 12 common POTS symptoms from the past 7 days, each from 0 (no symptoms) to 10 (very pronounced), giving a total from 0 to 120."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is a high MAPS score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "In the validation study, POTS patients averaged 78 out of 120 while healthy controls averaged 14. A total score of 42 or above was the optimal threshold for distinguishing tilt-test-confirmed POTS from healthy controls, with 97% sensitivity and 98% specificity. A score above 42 is not a diagnosis — POTS requires a documented heart rate response and exclusion of other causes."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is MAPS different from COMPASS-31?",
+          "acceptedAnswer": {"@type": "Answer", "text": "COMPASS-31 measures autonomic symptoms broadly across six domains and was designed for autonomic disorders in general; research has noted it under-weights some symptoms that matter in POTS. MAPS was built specifically for POTS symptom burden and uses a 7-day recall, making it better suited to tracking week-to-week changes and treatment response."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Malmö POTS Symptom Score</h1>
+				<p class="subtitle">MAPS: a 12-symptom score for POTS symptom burden, past 7 days</p>
+				<p class="description">
+					The Malmö POTS Symptom Score (MAPS) was developed by Spahic, Fedorowski, and colleagues at Lund University and published in the <em>Journal of Internal Medicine</em> in 2023. It is the first self-rating score designed specifically for POTS: 12 commonly reported symptoms — five cardiac, seven non-cardiac — each rated from <strong>0 (no symptoms)</strong> to <strong>10 (very pronounced)</strong> for the <strong>past 7 days</strong>, giving a total from 0 to 120.
+				</p>
+				<p class="description">
+					In the validation study, patients with tilt-test-confirmed POTS scored on average <strong>78</strong>, against <strong>14</strong> for healthy controls, and a threshold of <strong>≥42</strong> separated the groups with 97% sensitivity and 98% specificity. Because the recall window is one week, MAPS is well suited to tracking symptom burden over time — before and after starting a medication, an intervention, or a pacing change.
+				</p>
+				<p class="description">
+					MAPS complements the other autonomic tools here: the <a href="/tools/compass-31/">COMPASS-31</a> covers autonomic symptoms more broadly across six domains, and the <a href="/tools/nasa-lean-test/">NASA lean test</a> gives you the objective heart-rate data that a POTS assessment actually requires. A high MAPS score plus a positive lean test is a strong, structured package to bring to an appointment.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> POTS is diagnosed from a documented orthostatic heart rate response with symptoms, after excluding other causes — not from a symptom score. The MAPS validation cohort was tilt-confirmed POTS versus healthy controls, so a high score in other conditions (including ME/CFS and long COVID) is expected and does not itself indicate POTS. Discuss your results with your doctor. Based on: Spahic JM, Hamrefors V, Johansson M, et al. <em>Malmö POTS symptom score: Assessing symptom burden in postural orthostatic tachycardia syndrome.</em> J Intern Med. 2023;293(1):91–99 (open access, CC BY-NC).
+				</div>
+			</div>
+
+			<form id="maps-form" novalidate>
+				<p class="form-instructions">Rate each symptom for the <strong>past 7 days</strong>, where 0 = no symptoms and 10 = very pronounced symptoms.</p>
+
+				<h2 class="group-title">Cardiac symptoms</h2>
+				{items.filter(i => i.group === 'cardiac').map(item => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text">{item.text}</p>
+						<div class="segmented">
+							{Array.from({ length: 11 }, (_, v) => (
+								<label>
+									<input type="radio" name={item.id} value={v} />
+									<span>{v}</span>
+								</label>
+							))}
+						</div>
+					</div>
+				))}
+
+				<h2 class="group-title">Non-cardiac symptoms</h2>
+				{items.filter(i => i.group === 'noncardiac').map(item => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text">{item.text}</p>
+						<div class="segmented">
+							{Array.from({ length: 11 }, (_, v) => (
+								<label>
+									<input type="radio" name={item.id} value={v} />
+									<span>{v}</span>
+								</label>
+							))}
+						</div>
+					</div>
+				))}
+
+				<div class="form-footer">
+					<button type="submit">Calculate my score</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your MAPS score</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">out of 120</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Symptom breakdown</h3>
+				<div id="chart" class="chart"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>In the validation study, healthy controls averaged 14 points (most scoring under 30), while tilt-confirmed POTS patients averaged 78. The optimal threshold separating the two groups was a total score of 42 or more (97% sensitivity, 98% specificity). The most prominent symptoms in POTS patients were palpitations, fatigue, and concentration difficulties.</p>
+					<p>MAPS measures symptom burden, not diagnosis. It cannot distinguish POTS from other conditions with overlapping symptoms — the validation compared POTS patients only with healthy people. Its main practical uses are quantifying how symptomatic a week has been, tracking change over time, and communicating severity to clinicians. If you have not yet had orthostatic testing, the <a href="/tools/nasa-lean-test/">NASA lean test guide</a> shows you how to record the heart-rate data that actually defines POTS.</p>
+					<p>Because the recall period is 7 days, repeating MAPS weekly or fortnightly during any treatment change gives a usable trend line. Record your scores in a note or the <a href="/tools/trackers/symptom-diary/">symptom diary</a>.</p>
+					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const ITEMS = [
+	{ id: 'dizziness', text: 'Dizziness or light-headedness' },
+	{ id: 'presyncope', text: 'Presyncope (near-fainting)' },
+	{ id: 'palpitations', text: 'Palpitations' },
+	{ id: 'dyspnoea', text: 'Shortness of breath' },
+	{ id: 'chestpain', text: 'Chest pain or discomfort' },
+	{ id: 'headache', text: 'Headache' },
+	{ id: 'concentration', text: 'Concentration difficulties' },
+	{ id: 'myalgia', text: 'Muscle pain' },
+	{ id: 'nausea', text: 'Nausea' },
+	{ id: 'gi', text: 'Gastrointestinal symptoms' },
+	{ id: 'fatigue', text: 'Fatigue' },
+	{ id: 'insomnia', text: 'Insomnia' },
+];
+
+const form = document.getElementById('maps-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+
+function getVal(id: string): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	for (const item of ITEMS) {
+		if (getVal(item.id) === null) {
+			const el = form.querySelector<HTMLElement>(`.symptom[data-id="${item.id}"]`);
+			el?.classList.add('missing');
+			el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => el?.classList.remove('missing'), 2500);
+			return;
+		}
+	}
+
+	const values = ITEMS.map(it => ({ item: it, val: getVal(it.id)! }));
+	const total = values.reduce((s, v) => s + v.val, 0);
+
+	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
+
+	let interp = `Your total MAPS score is ${total} out of 120 for the past 7 days. `;
+	if (total >= 42) {
+		interp += 'This is at or above the ≥42 threshold that separated tilt-confirmed POTS patients from healthy controls in the validation study (patients averaged 78; controls 14). A score at this level indicates a substantial symptom burden worth investigating — if you have not had orthostatic testing, a NASA lean test or a request for a standing test at your GP is a sensible next step. It is not a diagnosis: other conditions can produce similar scores.';
+	} else if (total >= 20) {
+		interp += 'This is below the ≥42 POTS-discrimination threshold but above the healthy-control average of 14. Symptoms are present but the overall burden this week was moderate. If your symptoms fluctuate, repeat the score across a few weeks — the 7-day window makes it a good tracking measure.';
+	} else {
+		interp += 'This is in the range reported by healthy controls in the validation study (average 14). If specific symptoms are still troubling you, the individual breakdown below shows where the burden is concentrated.';
+	}
+	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+
+	const chart = document.getElementById('chart') as HTMLElement;
+	chart.innerHTML = values.map(v => {
+		const pct = Math.round((v.val / 10) * 100);
+		return `
+			<div class="chart-row">
+				<div class="chart-label">${v.item.text}</div>
+				<div class="chart-track"><div class="chart-bar" style="width:${Math.max(2, pct)}%"></div></div>
+				<div class="chart-val">${v.val}</div>
+			</div>`;
+	}).join('');
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.form-instructions {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-light);
+		border-radius: 6px;
+		padding: 0.7em 1.1em;
+		margin-bottom: 1.25em;
+	}
+	.group-title { font-size: 1.15em; margin: 1.25em 0 0.6em; }
+
+	.symptom {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 0.9em 1.2em;
+		margin-bottom: 0.65em;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
+
+	.segmented { display: grid; grid-template-columns: repeat(11, 1fr); gap: 0.3em; max-width: 32em; }
+	.segmented label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.88em;
+		padding: 0.45em 0;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.1s, border-color 0.1s;
+	}
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+		box-shadow: inset 0 0 0 1px var(--accent);
+	}
+
+	.form-footer { display: flex; gap: 1em; padding: 1.5em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 1em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+
+	.chart { display: flex; flex-direction: column; gap: 0.5em; margin: 1em 0; }
+	.chart-row { display: grid; grid-template-columns: 12em 1fr 2em; align-items: center; gap: 0.75em; font-size: 0.88em; }
+	.chart-label { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
+	.chart-track { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
+	.chart-bar { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart-val { font-weight: 700; color: var(--accent); text-align: right; }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		margin-top: 2em; line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+		margin-top: 1.5em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.symptom { padding: 0.8em 0.9em; }
+		.segmented { gap: 0.2em; max-width: none; }
+		.segmented label { font-size: 0.75em; }
+		.chart-row { grid-template-columns: 8em 1fr 1.6em; gap: 0.5em; font-size: 0.8em; }
+	}
+</style>

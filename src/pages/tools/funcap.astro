@@ -1,0 +1,474 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const scaleOptions = [
+	{ value: 0, label: 'I cannot do this' },
+	{ value: 1, label: 'My capacity will be severely reduced for at least three days' },
+	{ value: 2, label: 'I can do little else on the same day and for one to two days afterwards' },
+	{ value: 3, label: 'I can do little else on the same day' },
+	{ value: 4, label: 'I must limit other activities on the same day' },
+	{ value: 5, label: 'This rarely affects other activities' },
+	{ value: 6, label: 'Unproblematic — does not affect other activities' },
+];
+
+const domains = [
+	{
+		key: 'hygiene',
+		name: 'Personal hygiene / basic functions',
+		items: [
+			{ id: 'toilet', text: 'Using the toilet (not bedpan or bedside commode)' },
+			{ id: 'shower', text: 'Showering standing up' },
+			{ id: 'dress', text: 'Getting dressed in regular clothes' },
+		],
+	},
+	{
+		key: 'walking',
+		name: 'Walking — moving around',
+		items: [
+			{ id: 'walkindoors', text: 'Walking a short distance indoors, from one room to another' },
+			{ id: 'walkoutside', text: 'Walking between approx. 100 m and 1 km on level ground (length of 1 to 10 football fields)' },
+			{ id: 'physactivity', text: 'Physical activity with increased heart rate, for approx. 15 min' },
+		],
+	},
+	{
+		key: 'upright',
+		name: 'Being upright',
+		items: [
+			{ id: 'sitbed', text: 'Sitting in bed for approx. ½ hour' },
+			{ id: 'sitchair', text: 'Sitting in an upright chair (dining chair) with feet on floor for approx. 2 hours' },
+			{ id: 'standing', text: 'Standing up for approx. 5 minutes, e.g. while queuing or while cooking' },
+		],
+	},
+	{
+		key: 'home',
+		name: 'Activities in the home',
+		items: [
+			{ id: 'housework', text: 'Heavier housework (washing floors, vacuuming etc.) for approx. ½ hour continuously' },
+			{ id: 'cooking', text: 'Cooking a complicated meal from scratch, approx. 1 hour of preparation' },
+		],
+	},
+	{
+		key: 'communication',
+		name: 'Communication',
+		items: [
+			{ id: 'conversation', text: 'Having a conversation for approx. 5 minutes' },
+			{ id: 'groupconvo', text: 'Participating in a conversation with three people for approx. ½ hour' },
+			{ id: 'party', text: 'Participating in a dinner party, party or family event' },
+		],
+	},
+	{
+		key: 'outside',
+		name: 'Activities outside your home',
+		items: [
+			{ id: 'stepoutside', text: 'Stepping right outside your home' },
+			{ id: 'shopping', text: 'Going to a shop for groceries' },
+			{ id: 'transport', text: 'Using public transport (bus or train)' },
+			{ id: 'leisure', text: 'Participating in organized leisure activities such as classes, sports etc.' },
+		],
+	},
+	{
+		key: 'lightsound',
+		name: 'Reactions to light and sound',
+		items: [
+			{ id: 'normallight', text: 'Staying in a room with normal lighting, without sunglasses, for approx. 1 hour' },
+			{ id: 'daylight', text: 'Staying outdoors in daylight without sunglasses for approx. 2 hours' },
+			{ id: 'noise', text: 'Staying in a noisy environment (shopping mall, café or open plan office) for approx. 1 hour' },
+		],
+	},
+	{
+		key: 'concentration',
+		name: 'Concentration',
+		items: [
+			{ id: 'shorttext', text: 'Reading a short text, such as a mobile phone text message' },
+			{ id: 'longtext', text: 'Reading and understanding a non-fiction text, such as an official document one A4 page long' },
+			{ id: 'socialmedia', text: 'Using social media to stay in touch with others' },
+			{ id: 'focus10', text: 'Focusing on a task for approx. 10 minutes continuously' },
+			{ id: 'focus2h', text: 'Focusing on a task for approx. 2 hours continuously' },
+			{ id: 'workday', text: 'Managing a full working day (non-physical work such as office work, classes or lectures)' },
+		],
+	},
+];
+
+const clientConfig = {
+	domains: domains.map(d => ({ key: d.key, name: d.name, items: d.items.map(it => ({ id: it.id, text: it.text })) })),
+	labels: scaleOptions.map(o => o.label),
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="FUNCAP functional capacity questionnaire for ME/CFS: free online version with scoring"
+			description="Complete the FUNCAP27 functional capacity questionnaire online for free. A patient-informed ME/CFS instrument covering 8 activity domains, with automatic scoring and a domain profile. No sign-up required."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "FUNCAP functional capacity questionnaire", "item": "https://www.postviralrecovery.com/tools/funcap/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the FUNCAP questionnaire?",
+          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what the consequences of everyday activities are — whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is FUNCAP scored?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic — does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is FUNCAP different from the Bell scale?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale gives a single 0–100 rating of overall functional status. FUNCAP measures functional capacity activity by activity across eight domains, capturing the post-exertional 'payback' pattern specific to ME/CFS. The Bell scale is quicker for regular tracking; FUNCAP gives a much more detailed profile, which is particularly useful for disability paperwork and specialist appointments."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>FUNCAP functional capacity questionnaire</h1>
+				<p class="subtitle">FUNCAP27: a patient-informed measure of what activity costs you</p>
+				<p class="description">
+					FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Kristian Sommerfelt, Trude Schei, Katharine Seton, and Simon Carding, in collaboration with the Norwegian ME Association and refined through five rounds of feedback from thousands of patients. It was validated in more than 2,600 people with ME/CFS and published open access in 2024.
+				</p>
+				<p class="description">
+					What makes FUNCAP different from most questionnaires is that it does not ask how severe your symptoms are. It asks about <strong>consequences</strong>: if you do an everyday activity — showering, having a conversation, going to a shop — how much does it limit what else you can do, that day and in the days after? This captures the post-exertional "payback" pattern of ME/CFS in a way that ordinary disability scales miss, and it was designed with severely affected patients in mind, so it has very little floor effect.
+				</p>
+				<p class="description">
+					This is the <strong>FUNCAP27</strong> short version: 27 activities across eight domains, scored 0–6, based on an average day over the <strong>past month</strong>. It takes about 5–10 minutes. You will get an overall score, a domain-by-domain profile, and a list of the activities you rated as most costly. Your answers never leave your device, and no sign-up is required.
+				</p>
+				<p class="description">
+					For a quick single-number snapshot of functional status you can track daily or weekly, see the <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a>. For symptom-based ME/CFS screening, see the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, coarser functional grading.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> FUNCAP measures functional capacity; it does not diagnose ME/CFS or any other condition. Discuss your results with your doctor or specialist. Based on: Sommerfelt K, Schei T, Seton KA, Carding SR. <em>Assessing Functional Capacity in ME/CFS: A Patient-Informed Questionnaire.</em> J Clin Med. 2024;13(12):3486 (CC BY 4.0). See <a href="https://www.funcap.no" rel="noopener">funcap.no</a> for the authors' resources.
+				</div>
+			</div>
+
+			<form id="funcap-form" novalidate>
+				<div class="scale-key">
+					<p><strong>Base your answers on an average day during the last month</strong> — not the worst nor the best. If a question concerns an activity you have not performed (for example showering standing up, because you always shower seated), score it as you think the activity <em>would</em> have affected you. Items include the activities necessary to perform them: "going to a shop for groceries" includes getting dressed and travelling as necessary. It can help to answer together with someone who sees you in everyday life.</p>
+					<p class="scale-question"><strong>What are the consequences for you if you perform the activities below?</strong></p>
+					<ol class="scale-legend" start="0">
+						{scaleOptions.map(opt => (
+							<li><span class="legend-num">{opt.value}</span> {opt.label}</li>
+						))}
+					</ol>
+				</div>
+
+				{domains.map((domain, di) => (
+					<section class="domain">
+						<h2><span class="domain-letter">{String.fromCharCode(65 + di)}</span> {domain.name}</h2>
+						{domain.items.map(item => (
+							<div class="symptom" data-id={item.id}>
+								<p class="symptom-text">{item.text}</p>
+								<div class="segmented">
+									{scaleOptions.map(opt => (
+										<label title={opt.label}>
+											<input type="radio" name={item.id} value={opt.value} />
+											<span>{opt.value}</span>
+										</label>
+									))}
+								</div>
+							</div>
+						))}
+					</section>
+				))}
+
+				<div class="form-footer">
+					<button type="submit">Calculate my results</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your FUNCAP27 results</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">mean score out of 6</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Domain profile</h3>
+				<p class="section-lead">Mean score in each domain (0–6). The shorter the bar, the more that type of activity costs you.</p>
+				<div id="chart" class="chart"></div>
+
+				<h3>Your most costly activities</h3>
+				<p class="section-lead">Activities you rated 0–2: things you cannot do, or that leave you able to do little else for a day or more.</p>
+				<ul id="costly-list" class="costly-list"></ul>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>The overall FUNCAP score is the mean of all 27 items, from 0 to 6. Lower scores mean lower functional capacity. The published validation found negligible floor and ceiling effects across the full severity spectrum of ME/CFS, from mild to very severe.</p>
+					<p>There are no official severity cut-offs yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most informative as a profile and as a record over time: which domains cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete, structured evidence of functional limitation for disability or insurance assessments — the purpose it was designed for.</p>
+					<p>If you complete it periodically (for example monthly), use the same conditions each time: an average day, not a crash or a good patch.</p>
+					<p><strong>This is not a diagnosis.</strong> It reflects the activity consequences you have reported. Discuss your results with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+
+			<script type="application/json" id="funcap-config" set:html={JSON.stringify(clientConfig)}></script>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+type Item = { id: string; text: string };
+type Domain = { key: string; name: string; items: Item[] };
+type Config = { domains: Domain[]; labels: string[] };
+
+const cfgEl = document.getElementById('funcap-config');
+const CONFIG: Config = JSON.parse(cfgEl?.textContent || '{"domains":[],"labels":[]}');
+const ALL_ITEMS: Item[] = CONFIG.domains.flatMap(d => d.items);
+
+const form = document.getElementById('funcap-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+const totalEl = document.getElementById('total-score-value') as HTMLElement;
+const interpEl = document.getElementById('score-interpretation') as HTMLElement;
+
+function getVal(id: string): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	for (const item of ALL_ITEMS) {
+		if (getVal(item.id) === null) {
+			const el = form.querySelector<HTMLElement>(`.symptom[data-id="${item.id}"]`);
+			el?.classList.add('missing');
+			el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => el?.classList.remove('missing'), 2500);
+			return;
+		}
+	}
+
+	const values = ALL_ITEMS.map(it => ({ item: it, val: getVal(it.id)! }));
+	const overall = values.reduce((s, v) => s + v.val, 0) / values.length;
+
+	totalEl.textContent = overall.toFixed(2);
+
+	let interp = `Your overall FUNCAP27 score is ${overall.toFixed(2)} out of 6, where 6 means activities do not affect what else you can do and 0 means you cannot do them at all. `;
+	if (overall >= 5) {
+		interp += 'Most everyday activities rarely limit what else you can do. If specific domains still stand out below, those are the areas worth watching.';
+	} else if (overall >= 3.5) {
+		interp += 'Everyday activities carry a real cost: many force you to limit what else you do that day. The domain profile below shows where that cost is concentrated.';
+	} else if (overall >= 2) {
+		interp += 'Everyday activities carry a substantial cost, with many leaving you able to do little else that day or for days afterwards. This level of functional limitation is worth documenting for appointments and any disability assessment.';
+	} else {
+		interp += 'Your responses indicate severely reduced functional capacity: many basic activities are impossible or cause multi-day payback. FUNCAP was designed to document exactly this, in a form that clinicians and assessors can use.';
+	}
+	interpEl.textContent = interp;
+
+	// Domain chart (lower = worse; bar length reflects score)
+	const chart = document.getElementById('chart') as HTMLElement;
+	chart.innerHTML = CONFIG.domains.map(d => {
+		const vals = d.items.map(it => getVal(it.id)!);
+		const avg = vals.reduce((s, v) => s + v, 0) / vals.length;
+		const pct = Math.round((avg / 6) * 100);
+		return `
+			<div class="chart-row">
+				<div class="chart-label">${d.name}</div>
+				<div class="chart-track"><div class="chart-bar" style="width:${Math.max(2, pct)}%"></div></div>
+				<div class="chart-val">${avg.toFixed(1)}</div>
+			</div>`;
+	}).join('');
+
+	// Costly activities (0–2)
+	const costly = values.filter(v => v.val <= 2).sort((a, b) => a.val - b.val);
+	const list = document.getElementById('costly-list') as HTMLElement;
+	if (costly.length === 0) {
+		list.innerHTML = '<li class="none">No activities rated 0–2. None of the listed activities leaves you unable to do much else for a day or more.</li>';
+	} else {
+		list.innerHTML = costly.map(v => `<li><span class="costly-score">${v.val}</span> ${v.item.text} <span class="costly-label">— ${CONFIG.labels[v.val]}</span></li>`).join('');
+	}
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.scale-key {
+		font-size: 0.9em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-light);
+		border-radius: 6px;
+		padding: 1em 1.25em;
+		margin-bottom: 1.75em;
+	}
+	.scale-key p { margin: 0 0 0.75em; }
+	.scale-question { margin-bottom: 0.4em; }
+	.scale-legend { margin: 0; padding-left: 0; list-style: none; }
+	.scale-legend li { margin-bottom: 0.2em; }
+	.legend-num {
+		display: inline-block;
+		width: 1.5em;
+		height: 1.5em;
+		line-height: 1.5em;
+		text-align: center;
+		background: #fff;
+		border: 1px solid var(--accent);
+		color: var(--accent-dark);
+		border-radius: 4px;
+		font-weight: 700;
+		font-size: 0.85em;
+		margin-right: 0.4em;
+	}
+
+	.domain { margin-bottom: 1.75em; }
+	.domain h2 { font-size: 1.15em; margin: 0 0 0.6em; }
+	.domain-letter {
+		display: inline-block;
+		background: var(--tools-bg);
+		color: var(--tools);
+		font-size: 0.8em;
+		font-weight: 700;
+		padding: 0.1em 0.5em;
+		border-radius: 4px;
+		margin-right: 0.3em;
+	}
+
+	.symptom {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 0.9em 1.2em;
+		margin-bottom: 0.65em;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
+
+	.segmented { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.35em; max-width: 24em; }
+	.segmented label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.9em;
+		padding: 0.45em 0;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.1s, border-color 0.1s;
+	}
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+		box-shadow: inset 0 0 0 1px var(--accent);
+	}
+
+	.form-footer { display: flex; gap: 1em; padding: 1.5em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
+	.section-lead { font-size: 0.9em; color: rgb(var(--gray)); margin: 0 0 1em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 1em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+
+	.chart { display: flex; flex-direction: column; gap: 0.5em; margin-bottom: 1em; }
+	.chart-row { display: grid; grid-template-columns: 13em 1fr 2.2em; align-items: center; gap: 0.75em; font-size: 0.88em; }
+	.chart-label { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
+	.chart-track { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
+	.chart-bar { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart-val { font-weight: 700; color: var(--accent); text-align: right; }
+
+	.costly-list { list-style: none; margin: 0 0 1em; padding: 0; font-size: 0.92em; }
+	.costly-list li { padding: 0.5em 0; border-bottom: 1px solid rgb(var(--gray-light)); line-height: 1.45; }
+	.costly-list li.none { color: rgb(var(--gray)); border-bottom: none; }
+	.costly-score {
+		display: inline-block;
+		width: 1.6em; height: 1.6em; line-height: 1.6em;
+		text-align: center;
+		background: var(--tools-bg); color: var(--tools);
+		border-radius: 4px; font-weight: 700; font-size: 0.85em;
+		margin-right: 0.4em;
+	}
+	.costly-label { color: rgb(var(--gray)); font-size: 0.9em; }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		margin-top: 2em; line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+		margin-top: 1.5em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.symptom { padding: 0.8em 0.9em; }
+		.segmented { max-width: none; gap: 0.25em; }
+		.chart-row { grid-template-columns: 8em 1fr 2em; gap: 0.5em; font-size: 0.8em; }
+	}
+</style>

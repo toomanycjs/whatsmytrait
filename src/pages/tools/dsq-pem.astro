@@ -1,0 +1,503 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const freqOptions = [
+	{ value: 0, label: 'None of the time' },
+	{ value: 1, label: 'A little of the time' },
+	{ value: 2, label: 'Half of the time' },
+	{ value: 3, label: 'Most of the time' },
+	{ value: 4, label: 'All of the time' },
+];
+const sevOptions = [
+	{ value: 0, label: 'Symptom not present' },
+	{ value: 1, label: 'Mild' },
+	{ value: 2, label: 'Moderate' },
+	{ value: 3, label: 'Severe' },
+	{ value: 4, label: 'Very severe' },
+];
+
+const items = [
+	{ id: 'dead', text: 'A dead, heavy feeling after starting to exercise' },
+	{ id: 'nextday', text: 'Next-day soreness or fatigue after non-strenuous, everyday activities' },
+	{ id: 'mentaltired', text: 'Mentally tired after the slightest effort' },
+	{ id: 'minexercise', text: 'A minimum of exercise makes you physically tired' },
+	{ id: 'drained', text: 'Physically drained or sick after mild activity' },
+];
+
+const durationOptions = [
+	'I do not feel worse after activities',
+	'Less than 1 hour',
+	'2–3 hours',
+	'4–10 hours',
+	'11–13 hours',
+	'14–23 hours',
+	'24 hours or more',
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Post-exertional malaise test: free DSQ-PEM questionnaire with scoring"
+			description="Check for post-exertional malaise (PEM) with the DePaul Symptom Questionnaire PEM short form. 10 questions, immediate scored result, with the ME/CFS thresholds explained. Free, no sign-up."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Post-exertional malaise (DSQ-PEM)", "item": "https://www.postviralrecovery.com/tools/dsq-pem/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is post-exertional malaise (PEM)?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Post-exertional malaise is a disproportionate worsening of symptoms after physical or mental effort, typically delayed by hours to a day and lasting far longer than ordinary tiredness would. It is the hallmark feature of ME/CFS and is common in long COVID. It is different from feeling tired after exercise: the effort involved can be trivial, and the payback can last days."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is the DSQ-PEM?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-PEM is a 10-item short form of the DePaul Symptom Questionnaire focused on post-exertional malaise, published by Cotler, Holtzman, Dudun and Jason in 2018. Five items rate PEM symptoms for frequency and severity over the past six months; five supplementary items ask about recovery time and what triggers worsening. In the validation study the five core items identified 97% of patients with ME/CFS."}
+        },
+        {
+          "@type": "Question",
+          "name": "How is the DSQ-PEM scored?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A symptom counts as present when both its frequency and severity are rated 2 or higher (at least 'half of the time' and at least 'moderate'). PEM is indicated when at least one of the five core symptoms meets this threshold. The supplementary items add context: worsening after minimal physical or mental effort, and a recovery time of 14 hours or more, are the pattern most consistent with ME/CFS-type PEM."}
+        },
+        {
+          "@type": "Question",
+          "name": "Why does PEM matter before trying graded exercise?",
+          "acceptedAnswer": {"@type": "Answer", "text": "If PEM is present, activity that exceeds your current capacity can trigger prolonged worsening. Identifying PEM first is therefore important before attempting any programme of increasing activity, and it is why pacing is the usual first-line management approach. NICE guideline NG206 advises against fixed incremental graded exercise therapy for people with ME/CFS."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Post-exertional malaise questionnaire</h1>
+				<p class="subtitle">DSQ-PEM: the DePaul post-exertional malaise short form</p>
+				<p class="description">
+					Post-exertional malaise (PEM) is the disproportionate worsening of symptoms after physical or mental effort — often delayed by hours or a day, and lasting far longer than ordinary tiredness. It is the hallmark feature of ME/CFS, is common in long COVID, and matters practically: if PEM is present, pushing through or steadily increasing activity can make things worse, which is why identifying it early changes how you approach recovery.
+				</p>
+				<p class="description">
+					The <strong>DSQ-PEM</strong> is a 10-item short form of the DePaul Symptom Questionnaire developed by Cotler, Holtzman, Dudun, and Jason (2018). Five symptoms are rated for how often and how severely they occurred over the <strong>past six months</strong>; five supplementary questions ask about triggers and recovery time. In the validation study, the five core items identified 97% of patients with ME/CFS. It takes about 3 minutes.
+				</p>
+				<p class="description">
+					This tool sits between the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> (a general ME/CFS screen) and the full <a href="/tools/dsq-2/">DSQ-2</a> (a complete symptom assessment across eight domains). If you specifically want to characterise whether your post-activity pattern looks like PEM, this is the one to take.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> A positive result means your reported pattern is consistent with PEM, not that you have ME/CFS or any other condition. Discuss your results with your doctor. Based on: Cotler J, Holtzman C, Dudun C, Jason LA. <em>A Brief Questionnaire to Assess Post-Exertional Malaise.</em> Diagnostics. 2018;8(3):66. The DSQ instruments are made freely available by DePaul University for non-commercial use.
+				</div>
+			</div>
+
+			<form id="pem-form" novalidate>
+				<h2 class="form-section-title">Part 1: Symptoms over the past six months</h2>
+				<p class="form-instructions">Rate <strong>how often</strong> you have had each symptom and <strong>how severe</strong> it has been, over the past six months. If a symptom is absent, choose "None of the time" and severity will be set for you.</p>
+
+				{items.map(item => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text">{item.text}</p>
+						<div class="ratings">
+							<div class="rating-group">
+								<span class="rating-label">How often</span>
+								<div class="segmented">
+									{freqOptions.map(opt => (
+										<label title={opt.label}>
+											<input type="radio" name={`${item.id}_f`} value={opt.value} />
+											<span>{opt.label}</span>
+										</label>
+									))}
+								</div>
+							</div>
+							<div class="rating-group">
+								<span class="rating-label">How severe</span>
+								<div class="segmented">
+									{sevOptions.map(opt => (
+										<label title={opt.label}>
+											<input type="radio" name={`${item.id}_s`} value={opt.value} />
+											<span>{opt.label}</span>
+										</label>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+
+				<h2 class="form-section-title">Part 2: Recovery and triggers</h2>
+
+				<div class="symptom" data-id="quickrecovery">
+					<p class="symptom-text">If you were to become exhausted after actively participating in extracurricular activities, sports, or outings with friends, would you recover within an hour or two after the activity ended?</p>
+					<div class="segmented yesno">
+						<label><input type="radio" name="quickrecovery" value="yes" /><span>Yes</span></label>
+						<label><input type="radio" name="quickrecovery" value="no" /><span>No</span></label>
+					</div>
+				</div>
+
+				<div class="symptom" data-id="physworse">
+					<p class="symptom-text">Do you experience a worsening of your fatigue / energy-related illness after engaging in minimal physical effort?</p>
+					<div class="segmented yesno">
+						<label><input type="radio" name="physworse" value="yes" /><span>Yes</span></label>
+						<label><input type="radio" name="physworse" value="no" /><span>No</span></label>
+					</div>
+				</div>
+
+				<div class="symptom" data-id="mentworse">
+					<p class="symptom-text">Do you experience a worsening of your fatigue / energy-related illness after engaging in mental effort?</p>
+					<div class="segmented yesno">
+						<label><input type="radio" name="mentworse" value="yes" /><span>Yes</span></label>
+						<label><input type="radio" name="mentworse" value="no" /><span>No</span></label>
+					</div>
+				</div>
+
+				<div class="symptom" data-id="duration">
+					<p class="symptom-text">If you feel worse after activities, how long does this last?</p>
+					<div class="segmented vertical">
+						{durationOptions.map((opt, i) => (
+							<label><input type="radio" name="duration" value={i} /><span>{opt}</span></label>
+						))}
+					</div>
+				</div>
+
+				<div class="symptom" data-id="noexercise">
+					<p class="symptom-text">If you do not exercise, is it because exercise makes your symptoms worse?</p>
+					<div class="segmented yesno wide">
+						<label><input type="radio" name="noexercise" value="yes" /><span>Yes</span></label>
+						<label><input type="radio" name="noexercise" value="no" /><span>No</span></label>
+						<label><input type="radio" name="noexercise" value="na" /><span>Not applicable — I exercise</span></label>
+					</div>
+				</div>
+
+				<div class="form-footer">
+					<button type="submit">Calculate my result</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your DSQ-PEM result</h2>
+				<div id="verdict" class="verdict"></div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Symptom breakdown</h3>
+				<table class="breakdown-table">
+					<thead>
+						<tr>
+							<th>Symptom</th>
+							<th>Frequency</th>
+							<th>Severity</th>
+							<th>Threshold met?</th>
+						</tr>
+					</thead>
+					<tbody id="breakdown-rows"></tbody>
+				</table>
+
+				<h3>Recovery and trigger pattern</h3>
+				<div id="pattern" class="pattern"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your result</h3>
+					<p>A symptom counts as present when it occurs at least half the time <em>and</em> is at least moderate — the standard 2/2 threshold used across the DePaul questionnaires. PEM is indicated when at least one of the five core symptoms meets this threshold.</p>
+					<p>The supplementary questions describe the character of your PEM. In the research literature, worsening after minimal physical or mental effort together with a recovery time of <strong>14 hours or more</strong> is the pattern most consistent with ME/CFS-type PEM, as distinct from ordinary post-exercise fatigue, which resolves within a few hours.</p>
+					<p>If PEM is indicated, the most practically useful next steps are usually: learning about pacing before attempting any structured increase in activity, and taking these results to your GP or specialist. The full <a href="/tools/dsq-2/">DSQ-2</a> gives a complete symptom profile with screening against the ME/CFS case definitions, and the <a href="/tools/funcap/">FUNCAP questionnaire</a> documents what activity currently costs you.</p>
+					<p><strong>This is not a diagnosis.</strong> It reflects the symptom pattern you have reported. Discuss your results with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const ITEMS = [
+	{ id: 'dead', text: 'A dead, heavy feeling after starting to exercise' },
+	{ id: 'nextday', text: 'Next-day soreness or fatigue after non-strenuous, everyday activities' },
+	{ id: 'mentaltired', text: 'Mentally tired after the slightest effort' },
+	{ id: 'minexercise', text: 'A minimum of exercise makes you physically tired' },
+	{ id: 'drained', text: 'Physically drained or sick after mild activity' },
+];
+const FREQ_LABELS = ['None of the time', 'A little of the time', 'Half of the time', 'Most of the time', 'All of the time'];
+const SEV_LABELS = ['Not present', 'Mild', 'Moderate', 'Severe', 'Very severe'];
+const DURATION_LABELS = [
+	'I do not feel worse after activities',
+	'Less than 1 hour',
+	'2–3 hours',
+	'4–10 hours',
+	'11–13 hours',
+	'14–23 hours',
+	'24 hours or more',
+];
+
+const form = document.getElementById('pem-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+
+function getVal(name: string): string | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
+	return checked ? checked.value : null;
+}
+function getNum(name: string): number | null {
+	const v = getVal(name);
+	return v === null ? null : parseInt(v, 10);
+}
+
+// Auto-set severity to 0 when frequency is 0.
+form.addEventListener('change', (e) => {
+	const target = e.target as HTMLInputElement;
+	if (!target?.name?.endsWith('_f')) return;
+	const id = target.name.slice(0, -2);
+	const sevGroup = form.querySelector(`.symptom[data-id="${id}"] .rating-group:last-child .segmented`);
+	if (!sevGroup) return;
+	if (getNum(`${id}_f`) === 0) {
+		const zero = form.querySelector<HTMLInputElement>(`input[name="${id}_s"][value="0"]`);
+		if (zero) zero.checked = true;
+		sevGroup.classList.add('auto-zero');
+	} else {
+		sevGroup.classList.remove('auto-zero');
+	}
+});
+
+function flagMissing(id: string) {
+	const el = form.querySelector<HTMLElement>(`.symptom[data-id="${id}"]`);
+	el?.classList.add('missing');
+	el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	setTimeout(() => el?.classList.remove('missing'), 2500);
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	for (const item of ITEMS) {
+		if (getNum(`${item.id}_f`) === null || getNum(`${item.id}_s`) === null) { flagMissing(item.id); return; }
+	}
+	for (const name of ['quickrecovery', 'physworse', 'mentworse', 'duration', 'noexercise']) {
+		if (getVal(name) === null) { flagMissing(name); return; }
+	}
+
+	const rows = ITEMS.map(item => {
+		const f = getNum(`${item.id}_f`)!;
+		const s = getNum(`${item.id}_s`)!;
+		return { item, f, s, met: f >= 2 && s >= 2 };
+	});
+	const metCount = rows.filter(r => r.met).length;
+	const pemIndicated = metCount >= 1;
+
+	const physworse = getVal('physworse') === 'yes';
+	const mentworse = getVal('mentworse') === 'yes';
+	const quickrecovery = getVal('quickrecovery') === 'yes';
+	const noexercise = getVal('noexercise');
+	const duration = getNum('duration')!;
+	const longRecovery = duration >= 5; // 14-23 hours or 24+ hours
+
+	const verdict = document.getElementById('verdict') as HTMLElement;
+	verdict.className = `verdict ${pemIndicated ? 'positive' : 'negative'}`;
+	verdict.textContent = pemIndicated
+		? `PEM indicated: ${metCount} of 5 symptoms met the threshold`
+		: 'PEM not indicated: no symptom met the threshold';
+
+	let interp = '';
+	if (pemIndicated) {
+		interp = `${metCount === 1 ? 'One core PEM symptom' : `${metCount} core PEM symptoms`} occurred at least half the time at moderate or worse severity over the past six months. `;
+		if ((physworse || mentworse) && longRecovery) {
+			interp += `You also report worsening after minimal ${physworse && mentworse ? 'physical and mental' : physworse ? 'physical' : 'mental'} effort, with recovery taking ${DURATION_LABELS[duration].toLowerCase()}. That combination — trivial triggers with prolonged recovery — is the pattern most consistent with ME/CFS-type PEM in the research literature.`;
+		} else if (physworse || mentworse) {
+			interp += `You report worsening after minimal effort, with recovery within ${DURATION_LABELS[duration].toLowerCase()}. Recovery under 14 hours is quicker than the pattern usually seen in ME/CFS, but the trigger pattern is still worth noting and tracking.`;
+		} else {
+			interp += 'You did not report worsening after minimal physical or mental effort, which softens the picture somewhat; consider whether larger exertions are the trigger, and track the pattern over a few weeks.';
+		}
+		if (noexercise === 'yes') {
+			interp += ' You avoid exercise because it worsens your symptoms — a common and rational adaptation when PEM is present, and useful information for a clinician.';
+		}
+	} else {
+		interp = 'None of the five core symptoms met the 2/2 threshold over the past six months. ';
+		if (!quickrecovery || physworse || mentworse) {
+			interp += 'Some of your supplementary answers still suggest slow recovery or effort-related worsening, so if symptoms are affecting your life, tracking activity and symptoms for a few weeks — and discussing the pattern with your doctor — is still worthwhile.';
+		} else {
+			interp += 'Your reported recovery pattern also looks typical. If fatigue is still a problem, the Fatigue Severity Scale measures its day-to-day impact.';
+		}
+	}
+	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+
+	(document.getElementById('breakdown-rows') as HTMLElement).innerHTML = rows.map(r => `
+		<tr>
+			<td>${r.item.text}</td>
+			<td>${FREQ_LABELS[r.f]}</td>
+			<td>${SEV_LABELS[r.s]}</td>
+			<td>${r.met ? '<strong>Yes</strong>' : 'No'}</td>
+		</tr>
+	`).join('');
+
+	(document.getElementById('pattern') as HTMLElement).innerHTML = [
+		{ q: 'Recovers within an hour or two of exhausting activity', a: quickrecovery ? 'Yes' : 'No' },
+		{ q: 'Worse after minimal physical effort', a: physworse ? 'Yes' : 'No' },
+		{ q: 'Worse after mental effort', a: mentworse ? 'Yes' : 'No' },
+		{ q: 'How long the worsening lasts', a: DURATION_LABELS[duration] },
+		{ q: 'Avoids exercise because it worsens symptoms', a: noexercise === 'na' ? 'Not applicable' : noexercise === 'yes' ? 'Yes' : 'No' },
+	].map(row => `
+		<div class="pattern-row">
+			<span class="pattern-q">${row.q}</span>
+			<span class="pattern-a">${row.a}</span>
+		</div>
+	`).join('');
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => {
+	form.reset();
+	form.querySelectorAll('.segmented.auto-zero').forEach(el => el.classList.remove('auto-zero'));
+});
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.form-section-title { font-size: 1.2em; margin: 1.5em 0 0.4em; }
+	.form-instructions {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-light);
+		border-radius: 6px;
+		padding: 0.7em 1.1em;
+		margin-bottom: 1.25em;
+	}
+
+	.symptom {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.1em 1.35em;
+		margin-bottom: 0.85em;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.9em; font-weight: 700; font-size: 0.98em; line-height: 1.4; }
+	.ratings { display: flex; flex-direction: column; gap: 0.8em; }
+	.rating-group { display: flex; flex-direction: column; gap: 0.35em; }
+	.rating-label { font-size: 0.75em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(var(--gray)); }
+
+	.segmented { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35em; }
+	.segmented.yesno { grid-template-columns: repeat(2, minmax(0, 8em)); }
+	.segmented.yesno.wide { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 30em; }
+	.segmented.vertical { grid-template-columns: 1fr; gap: 0.5em; max-width: 24em; }
+	.segmented label {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		font-size: 0.82em;
+		line-height: 1.2;
+		padding: 0.5em 0.3em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background 0.1s, border-color 0.1s;
+		min-height: 2.6em;
+	}
+	.segmented.vertical label { justify-content: flex-start; text-align: left; padding: 0.6em 1em; min-height: 0; font-size: 0.9em; }
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+	.segmented.auto-zero { opacity: 0.55; }
+
+	.form-footer { display: flex; gap: 1em; padding: 1.75em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	/* Results */
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.75em; }
+	.results h3 { margin-top: 1.75em; margin-bottom: 0.5em; }
+	.verdict {
+		display: inline-block;
+		font-size: 1.1em;
+		font-weight: 700;
+		padding: 0.6em 1.1em;
+		border-radius: 6px;
+		margin-bottom: 1em;
+	}
+	.verdict.positive { background: #fdf3e7; color: #9a5b13; border: 1px solid #e8c9a0; }
+	.verdict.negative { background: #f3faf5; color: #1e6b3c; border: 1px solid #bfe3cc; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 1em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+	.breakdown-table { margin: 0.5em 0 1em; font-size: 0.88em; }
+
+	.pattern { display: flex; flex-direction: column; }
+	.pattern-row {
+		display: flex; justify-content: space-between; gap: 1em;
+		padding: 0.55em 0; border-bottom: 1px solid rgb(var(--gray-light));
+		font-size: 0.92em;
+	}
+	.pattern-q { color: rgb(var(--gray-dark)); }
+	.pattern-a { font-weight: 700; white-space: nowrap; }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		margin-top: 2em; line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+		margin-top: 1.5em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.symptom { padding: 0.9em 1em; }
+		.segmented { gap: 0.25em; }
+		.segmented label { font-size: 0.72em; padding: 0.45em 0.15em; min-height: 3em; }
+		.segmented.vertical label { font-size: 0.85em; min-height: 0; }
+		.pattern-row { flex-direction: column; gap: 0.15em; }
+		.pattern-a { white-space: normal; }
+	}
+</style>
