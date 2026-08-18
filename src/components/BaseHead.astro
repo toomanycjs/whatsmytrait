@@ -33,6 +33,7 @@ const resolvedOgImage = ogImage ?? new URL(image.src, Astro.site).href;
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#0d6b74" />
 
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
@@ -48,10 +49,13 @@ const resolvedOgImage = ogImage ?? new URL(image.src, Astro.site).href;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content="en_GB" />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={resolvedOgImage} />
+<meta property="og:image:alt" content={title} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -59,6 +63,7 @@ const resolvedOgImage = ogImage ?? new URL(image.src, Astro.site).href;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={resolvedOgImage} />
+<meta property="twitter:image:alt" content={title} />
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPW7P1MJJ4"></script>

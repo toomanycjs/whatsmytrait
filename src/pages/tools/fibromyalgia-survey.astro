@@ -37,7 +37,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
         {
           "@type": "Question",
           "name": "What score on the fibromyalgia survey suggests fibromyalgia?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia — it indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
+          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia. It indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
         }
       ]
     }
@@ -47,7 +47,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">

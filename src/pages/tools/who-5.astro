@@ -59,7 +59,7 @@ const ratings = [
         {
           "@type": "Question",
           "name": "Why include a well-being measure on a post-viral illness site?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Chronic post-viral illness grinds at well-being — through symptoms, lost activities, and uncertainty — and tracking well-being alongside physical measures gives a fuller picture of how you are actually doing. The WHO-5 is positively worded, takes under a minute, and is sensitive to change, which makes it a light-touch companion to symptom and function tracking. A low score reflects low well-being from any cause; it is not a depression diagnosis."}
+          "acceptedAnswer": {"@type": "Answer", "text": "Chronic post-viral illness grinds at well-being through symptoms, lost activities, and uncertainty. Tracking well-being alongside physical measures gives a fuller picture of how you are actually doing. The WHO-5 is positively worded, takes under a minute, and is sensitive to change, which makes it a light-touch companion to symptom and function tracking. A low score reflects low well-being from any cause; it is not a depression diagnosis."}
         }
       ]
     }
@@ -69,16 +69,16 @@ const ratings = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>WHO-5 Well-Being Index</h1>
 				<p class="subtitle">Five questions about the past two weeks, scored 0–100</p>
 				<p class="description">
-					The WHO-5 is a five-item measure of subjective well-being, in use since 1998 and now one of the most widely applied well-being scales in the world. The World Health Organization holds the copyright and makes it freely available. All five statements are positively worded — it asks how often you have felt good, not how bad things have been — and it refers to the <strong>past two weeks</strong>.
+					The WHO-5 is a five-question measure of well-being, in use since 1998 and now one of the most widely applied well-being scales in the world. The World Health Organization holds the copyright and makes it freely available. All five statements are positively worded. It asks how often you have felt good over the <strong>past two weeks</strong>, not how bad things have been.
 				</p>
 				<p class="description">
-					For anyone managing a long illness, well-being is worth measuring alongside symptoms and function: it responds to different things (pacing successes, sleep, connection, uncertainty) and it changes in both directions. At under a minute to complete, the WHO-5 is well suited to monthly tracking next to heavier instruments like the <a href="/tools/rand-36/">RAND-36</a> or the <a href="/tools/fss/">Fatigue Severity Scale</a>.
+					If you are managing a long illness, well-being is worth measuring alongside symptoms and function. It responds to different things (pacing successes, sleep, connection, uncertainty) and it changes in both directions. It takes under a minute, so it suits monthly tracking next to heavier instruments like the <a href="/tools/rand-36/">RAND-36</a> or the <a href="/tools/fss/">Fatigue Severity Scale</a>.
 				</p>
 				<div class="disclaimer">
 					<strong>This is not a diagnostic tool.</strong> A low score indicates reduced well-being, which in a chronic illness can have many causes; it is not a diagnosis of depression or any other condition. If your score is persistently low, or you are struggling, talk to your GP. Source: WHO-5 Well-Being Index, World Health Organization (CC BY-NC-SA 3.0 IGO). Topp CW, Østergaard SD, Søndergaard S, Bech P. <em>The WHO-5 Well-Being Index: a systematic review of the literature.</em> Psychother Psychosom. 2015;84(3):167–176.
@@ -121,9 +121,9 @@ const ratings = [
 				<div class="results-disclaimer">
 					<h3>Understanding your score</h3>
 					<p>Your raw score (0–25) is multiplied by 4 to give a percentage score from 0, representing the worst imaginable well-being, to 100, representing the best. General-population averages are typically around 60–75.</p>
-					<p>A score of <strong>50 or below</strong> is the standard threshold for reduced well-being, where it is worth thinking about what is draining you and whether support would help. A score of <strong>28 or below</strong> indicates markedly low well-being — at this level, WHO guidance recommends discussing how you are feeling with a doctor. A change of <strong>10 points or more</strong> between measurements is considered clinically meaningful, which makes the WHO-5 a sensitive tracking measure.</p>
-					<p>In a chronic post-viral illness, a low score can reflect the illness itself: unrefreshing sleep and low energy pull down two of the five items directly. That overlap is worth keeping in mind when interpreting your result — and worth mentioning if you discuss the score with a clinician.</p>
-					<p><strong>This is not a diagnosis.</strong> It reflects the well-being you have reported over two weeks. If you are struggling, tell your GP — and if you ever feel unable to keep yourself safe, seek urgent help (in the UK: call 111 option 2, or 999 in an emergency).</p>
+					<p>A score of <strong>50 or below</strong> is the standard threshold for reduced well-being. It is a prompt to think about what is draining you and whether support would help. A score of <strong>28 or below</strong> indicates markedly low well-being. At that level, WHO guidance recommends discussing how you are feeling with a doctor. A change of <strong>10 points or more</strong> between measurements is considered clinically meaningful, which makes the WHO-5 a sensitive tracking measure.</p>
+					<p>In a chronic post-viral illness, a low score can reflect the illness itself. Unrefreshing sleep and low energy pull down two of the five items directly. Keep that overlap in mind when reading your result, and mention it if you discuss the score with a clinician.</p>
+					<p><strong>This is not a diagnosis.</strong> It reflects the well-being you have reported over two weeks. If you are struggling, tell your GP. If you ever feel unable to keep yourself safe, seek urgent help (in the UK: call 111 option 2, or 999 in an emergency).</p>
 				</div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
@@ -163,11 +163,11 @@ form.addEventListener('submit', (e) => {
 
 	let interp = `Your WHO-5 score is ${score} out of 100 (raw score ${raw}/25). `;
 	if (score > 50) {
-		interp += 'This is above the reduced-well-being threshold of 50. General-population averages sit around 60–75, so scores in this range suggest your well-being over the past two weeks has been reasonably intact — worth noting what is currently working for you.';
+		interp += 'This is above the reduced-well-being threshold of 50. General-population averages sit around 60 to 75, so scores in this range suggest your well-being over the past two weeks has been reasonably intact. It is worth noting what is currently working for you.';
 	} else if (score > 28) {
-		interp += 'Scores of 50 or below indicate reduced well-being. In a long illness this is common and understandable, but it is not nothing: it is worth considering what is draining you most, whether any support would help, and re-checking in a few weeks. Mention it to your GP if it persists.';
+		interp += 'Scores of 50 or below indicate reduced well-being. In a long illness this is common and understandable, but it is not nothing. Consider what is draining you most, whether any support would help, and re-check in a few weeks. Mention it to your GP if it persists.';
 	} else {
-		interp += 'Scores of 28 or below indicate markedly low well-being. Whatever the cause — and chronic illness is itself a sufficient one — this is a level at which WHO guidance recommends talking to a doctor about how you are feeling. Please consider raising it at your next appointment, or sooner.';
+		interp += 'Scores of 28 or below indicate markedly low well-being, whatever the cause, and chronic illness is itself a sufficient one. At this level, WHO guidance recommends talking to a doctor about how you are feeling. Please consider raising it at your next appointment, or sooner.';
 	}
 	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
 
@@ -229,7 +229,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		color: var(--accent-dark);
 		font-weight: 700;
 	}
-	.options input[type="radio"] { display: none; }
+	.options input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 
 	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
 	button[type="submit"] {

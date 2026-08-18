@@ -37,7 +37,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
         {
           "@type": "Question",
           "name": "What Beighton score indicates hypermobility?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder — the Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
+          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder. The Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
         }
       ]
     }
@@ -47,7 +47,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">
@@ -452,9 +452,9 @@ function showResults() {
 
 	const criteriaEl = document.getElementById('criteria-result');
 	if (s.met) {
-		criteriaEl.innerHTML = `<div class="criteria-box criteria-met"><strong>Your score suggests generalised joint hypermobility.</strong><br>A score of ${s.total} meets the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. This is one input a clinician uses when assessing hypermobility — it is not a diagnosis of EDS or HSD.</div>`;
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-met"><strong>Your score suggests generalised joint hypermobility.</strong><br>A score of ${s.total} meets the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. This is one input a clinician uses when assessing hypermobility. It is not a diagnosis of EDS or HSD.</div>`;
 	} else {
-		criteriaEl.innerHTML = `<div class="criteria-box criteria-not-met"><strong>Your score is below the threshold for generalised joint hypermobility.</strong><br>A score of ${s.total} is below the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. Note that historical hypermobility counts: if you could previously perform these manoeuvres but no longer can, you may still meet criteria via the wider 2017 framework — mention this to your doctor.</div>`;
+		criteriaEl.innerHTML = `<div class="criteria-box criteria-not-met"><strong>Your score is below the threshold for generalised joint hypermobility.</strong><br>A score of ${s.total} is below the cut-off of ${s.band.threshold} or more for ${s.band.phrase}. Note that historical hypermobility counts: if you could previously perform these manoeuvres but no longer can, you may still meet criteria via the wider 2017 framework. Mention this to your doctor.</div>`;
 	}
 
 	const interp = document.getElementById('results-interpretation');
@@ -465,7 +465,7 @@ function showResults() {
 	} else {
 		html += `<p><strong>Positive items:</strong> none.</p>`;
 	}
-	html += `<p>The Beighton score measures range of movement at a small set of joints. It does not capture joint pain, instability, dislocations, or symptoms in joints it does not test — those are assessed separately in a clinical evaluation, and matter regardless of your score here.</p>`;
+	html += `<p>The Beighton score measures range of movement at a small set of joints. It does not capture joint pain, instability, dislocations, or symptoms in joints it does not test. Those are assessed separately in a clinical evaluation, and matter regardless of your score here.</p>`;
 	interp.innerHTML = html;
 }
 
@@ -482,7 +482,7 @@ function buildText() {
 		'',
 		`Age group: ${s.band.label} (cut-off: ≥${s.band.threshold})`,
 		`Beighton score: ${s.total} / 9`,
-		`Age-adjusted threshold: ${s.met ? 'MET — suggests generalised joint hypermobility' : 'NOT MET'}`,
+		`Age-adjusted threshold: ${s.met ? 'MET (suggests generalised joint hypermobility)' : 'NOT MET'}`,
 		'',
 		'ITEM BREAKDOWN',
 		'─'.repeat(30),

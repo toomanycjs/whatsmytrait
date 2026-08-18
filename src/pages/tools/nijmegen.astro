@@ -74,7 +74,7 @@ const frequencies = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Nijmegen Questionnaire</h1>
@@ -288,7 +288,7 @@ const frequencies = [
 		color: var(--accent-dark);
 		font-weight: 700;
 	}
-	.options input[type="radio"] { display: none; }
+	.options input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 
 	.form-footer {
 		display: flex;

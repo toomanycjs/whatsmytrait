@@ -90,19 +90,22 @@ const durationOptions = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Post-exertional malaise questionnaire</h1>
 				<p class="subtitle">DSQ-PEM: the DePaul post-exertional malaise short form</p>
 				<p class="description">
-					Post-exertional malaise (PEM) is the disproportionate worsening of symptoms after physical or mental effort — often delayed by hours or a day, and lasting far longer than ordinary tiredness. It is the hallmark feature of ME/CFS, is common in long COVID, and matters practically: if PEM is present, pushing through or steadily increasing activity can make things worse, which is why identifying it early changes how you approach recovery.
+					Post-exertional malaise (PEM) is a disproportionate worsening of symptoms after physical or mental effort. It is often delayed by hours or a day, and it lasts far longer than ordinary tiredness. PEM is the hallmark feature of ME/CFS and is common in long COVID.
 				</p>
 				<p class="description">
-					The <strong>DSQ-PEM</strong> is a 10-item short form of the DePaul Symptom Questionnaire developed by Cotler, Holtzman, Dudun, and Jason (2018). Five symptoms are rated for how often and how severely they occurred over the <strong>past six months</strong>; five supplementary questions ask about triggers and recovery time. In the validation study, the five core items identified 97% of patients with ME/CFS. It takes about 3 minutes.
+					It also matters practically. If PEM is present, pushing through or steadily increasing activity can make things worse. Spotting it early changes how you approach recovery.
 				</p>
 				<p class="description">
-					This tool sits between the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> (a general ME/CFS screen) and the full <a href="/tools/dsq-2/">DSQ-2</a> (a complete symptom assessment across eight domains). If you specifically want to characterise whether your post-activity pattern looks like PEM, this is the one to take.
+					The <strong>DSQ-PEM</strong> is a 10-question short form of the DePaul Symptom Questionnaire, published by Cotler and colleagues in 2018. Five symptoms are rated for how often and how severely they occurred over the <strong>past six months</strong>. Five more questions ask about triggers and recovery time. In the validation study, the five core items identified 97% of patients with ME/CFS. It takes about 3 minutes.
+				</p>
+				<p class="description">
+					This tool sits between the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> (a general ME/CFS screen) and the full <a href="/tools/dsq-2/">DSQ-2</a> (a complete symptom assessment). If you want to check whether your post-activity pattern looks like PEM, this is the one to take.
 				</p>
 				<div class="disclaimer">
 					<strong>This is not a diagnostic tool.</strong> A positive result means your reported pattern is consistent with PEM, not that you have ME/CFS or any other condition. Discuss your results with your doctor. Based on: Cotler J, Holtzman C, Dudun C, Jason LA. <em>A Brief Questionnaire to Assess Post-Exertional Malaise.</em> Diagnostics. 2018;8(3):66. The DSQ instruments are made freely available by DePaul University for non-commercial use.
@@ -183,7 +186,7 @@ const durationOptions = [
 					<div class="segmented yesno wide">
 						<label><input type="radio" name="noexercise" value="yes" /><span>Yes</span></label>
 						<label><input type="radio" name="noexercise" value="no" /><span>No</span></label>
-						<label><input type="radio" name="noexercise" value="na" /><span>Not applicable — I exercise</span></label>
+						<label><input type="radio" name="noexercise" value="na" /><span>Not applicable (I exercise)</span></label>
 					</div>
 				</div>
 
@@ -216,7 +219,7 @@ const durationOptions = [
 
 				<div class="results-disclaimer">
 					<h3>Understanding your result</h3>
-					<p>A symptom counts as present when it occurs at least half the time <em>and</em> is at least moderate — the standard 2/2 threshold used across the DePaul questionnaires. PEM is indicated when at least one of the five core symptoms meets this threshold.</p>
+					<p>A symptom counts as present when it occurs at least half the time <em>and</em> is at least moderate. This is the standard 2/2 threshold used across the DePaul questionnaires. PEM is indicated when at least one of the five core symptoms meets it.</p>
 					<p>The supplementary questions describe the character of your PEM. In the research literature, worsening after minimal physical or mental effort together with a recovery time of <strong>14 hours or more</strong> is the pattern most consistent with ME/CFS-type PEM, as distinct from ordinary post-exercise fatigue, which resolves within a few hours.</p>
 					<p>If PEM is indicated, the most practically useful next steps are usually: learning about pacing before attempting any structured increase in activity, and taking these results to your GP or specialist. The full <a href="/tools/dsq-2/">DSQ-2</a> gives a complete symptom profile with screening against the ME/CFS case definitions, and the <a href="/tools/funcap/">FUNCAP questionnaire</a> documents what activity currently costs you.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the symptom pattern you have reported. Discuss your results with your doctor or specialist.</p>
@@ -319,19 +322,19 @@ form.addEventListener('submit', (e) => {
 	if (pemIndicated) {
 		interp = `${metCount === 1 ? 'One core PEM symptom' : `${metCount} core PEM symptoms`} occurred at least half the time at moderate or worse severity over the past six months. `;
 		if ((physworse || mentworse) && longRecovery) {
-			interp += `You also report worsening after minimal ${physworse && mentworse ? 'physical and mental' : physworse ? 'physical' : 'mental'} effort, with recovery taking ${DURATION_LABELS[duration].toLowerCase()}. That combination — trivial triggers with prolonged recovery — is the pattern most consistent with ME/CFS-type PEM in the research literature.`;
+			interp += `You also report worsening after minimal ${physworse && mentworse ? 'physical and mental' : physworse ? 'physical' : 'mental'} effort, with recovery taking ${DURATION_LABELS[duration].toLowerCase()}. That combination of small triggers and slow recovery is the pattern most consistent with ME/CFS-type PEM in the research literature.`;
 		} else if (physworse || mentworse) {
 			interp += `You report worsening after minimal effort, with recovery within ${DURATION_LABELS[duration].toLowerCase()}. Recovery under 14 hours is quicker than the pattern usually seen in ME/CFS, but the trigger pattern is still worth noting and tracking.`;
 		} else {
 			interp += 'You did not report worsening after minimal physical or mental effort, which softens the picture somewhat; consider whether larger exertions are the trigger, and track the pattern over a few weeks.';
 		}
 		if (noexercise === 'yes') {
-			interp += ' You avoid exercise because it worsens your symptoms — a common and rational adaptation when PEM is present, and useful information for a clinician.';
+			interp += ' You avoid exercise because it worsens your symptoms. That is a common and rational adaptation when PEM is present, and useful information for a clinician.';
 		}
 	} else {
 		interp = 'None of the five core symptoms met the 2/2 threshold over the past six months. ';
 		if (!quickrecovery || physworse || mentworse) {
-			interp += 'Some of your supplementary answers still suggest slow recovery or effort-related worsening, so if symptoms are affecting your life, tracking activity and symptoms for a few weeks — and discussing the pattern with your doctor — is still worthwhile.';
+			interp += 'Some of your supplementary answers still suggest slow recovery or effort-related worsening. If symptoms are affecting your life, it is still worth tracking activity and symptoms for a few weeks and discussing the pattern with your doctor.';
 		} else {
 			interp += 'Your reported recovery pattern also looks typical. If fatigue is still a problem, the Fatigue Severity Scale measures its day-to-day impact.';
 		}

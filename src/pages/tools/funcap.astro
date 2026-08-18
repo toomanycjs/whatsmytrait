@@ -12,7 +12,7 @@ const scaleOptions = [
 	{ value: 3, label: 'I can do little else on the same day' },
 	{ value: 4, label: 'I must limit other activities on the same day' },
 	{ value: 5, label: 'This rarely affects other activities' },
-	{ value: 6, label: 'Unproblematic — does not affect other activities' },
+	{ value: 6, label: 'Unproblematic – does not affect other activities' },
 ];
 
 const domains = [
@@ -27,7 +27,7 @@ const domains = [
 	},
 	{
 		key: 'walking',
-		name: 'Walking — moving around',
+		name: 'Walking – moving around',
 		items: [
 			{ id: 'walkindoors', text: 'Walking a short distance indoors, from one room to another' },
 			{ id: 'walkoutside', text: 'Walking between approx. 100 m and 1 km on level ground (length of 1 to 10 football fields)' },
@@ -125,12 +125,12 @@ const clientConfig = {
         {
           "@type": "Question",
           "name": "What is the FUNCAP questionnaire?",
-          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what the consequences of everyday activities are — whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
+          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what everyday activities cost you: whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
         },
         {
           "@type": "Question",
           "name": "How is FUNCAP scored?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic — does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
+          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
         },
         {
           "@type": "Question",
@@ -145,22 +145,22 @@ const clientConfig = {
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>FUNCAP functional capacity questionnaire</h1>
 				<p class="subtitle">FUNCAP27: a patient-informed measure of what activity costs you</p>
 				<p class="description">
-					FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Kristian Sommerfelt, Trude Schei, Katharine Seton, and Simon Carding, in collaboration with the Norwegian ME Association and refined through five rounds of feedback from thousands of patients. It was validated in more than 2,600 people with ME/CFS and published open access in 2024.
+					FUNCAP is a functional capacity questionnaire built for ME/CFS. It was created by researchers working with the Norwegian ME Association, shaped by feedback from thousands of patients, and validated in more than 2,600 people with ME/CFS. It was published open access in 2024.
 				</p>
 				<p class="description">
-					What makes FUNCAP different from most questionnaires is that it does not ask how severe your symptoms are. It asks about <strong>consequences</strong>: if you do an everyday activity — showering, having a conversation, going to a shop — how much does it limit what else you can do, that day and in the days after? This captures the post-exertional "payback" pattern of ME/CFS in a way that ordinary disability scales miss, and it was designed with severely affected patients in mind, so it has very little floor effect.
+					Most questionnaires ask how bad your symptoms feel. FUNCAP asks what activities <strong>cost</strong> you. If you shower, hold a conversation, or go to a shop, how much does that limit what else you can do that day and in the days after? This captures the "payback" pattern of ME/CFS that ordinary disability scales miss. It also works at every severity level, including for people who are housebound or bedbound.
 				</p>
 				<p class="description">
-					This is the <strong>FUNCAP27</strong> short version: 27 activities across eight domains, scored 0–6, based on an average day over the <strong>past month</strong>. It takes about 5–10 minutes. You will get an overall score, a domain-by-domain profile, and a list of the activities you rated as most costly. Your answers never leave your device, and no sign-up is required.
+					This is the short <strong>FUNCAP27</strong> version: 27 activities in eight groups, each scored 0 to 6 for an average day over the <strong>past month</strong>. It takes 5 to 10 minutes. You get an overall score, a profile by activity group, and a list of your most costly activities. Your answers stay on your device. No sign-up is needed.
 				</p>
 				<p class="description">
-					For a quick single-number snapshot of functional status you can track daily or weekly, see the <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a>. For symptom-based ME/CFS screening, see the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, coarser functional grading.
+					For a quick single-number check you can repeat often, use the <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a>. For ME/CFS symptom screening, use the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, simpler grading.
 				</p>
 				<div class="disclaimer">
 					<strong>This is not a diagnostic tool.</strong> FUNCAP measures functional capacity; it does not diagnose ME/CFS or any other condition. Discuss your results with your doctor or specialist. Based on: Sommerfelt K, Schei T, Seton KA, Carding SR. <em>Assessing Functional Capacity in ME/CFS: A Patient-Informed Questionnaire.</em> J Clin Med. 2024;13(12):3486 (CC BY 4.0). See <a href="https://www.funcap.no" rel="noopener">funcap.no</a> for the authors' resources.
@@ -169,7 +169,7 @@ const clientConfig = {
 
 			<form id="funcap-form" novalidate>
 				<div class="scale-key">
-					<p><strong>Base your answers on an average day during the last month</strong> — not the worst nor the best. If a question concerns an activity you have not performed (for example showering standing up, because you always shower seated), score it as you think the activity <em>would</em> have affected you. Items include the activities necessary to perform them: "going to a shop for groceries" includes getting dressed and travelling as necessary. It can help to answer together with someone who sees you in everyday life.</p>
+					<p><strong>Base your answers on an average day during the last month</strong>, not the worst nor the best. If you have not done an activity (for example showering standing up, because you always shower seated), score how you think it <em>would</em> have affected you. Each item includes whatever is needed to do it: "going to a shop for groceries" includes getting dressed and travelling. It can help to answer with someone who sees you day to day.</p>
 					<p class="scale-question"><strong>What are the consequences for you if you perform the activities below?</strong></p>
 					<ol class="scale-legend" start="0">
 						{scaleOptions.map(opt => (
@@ -187,8 +187,8 @@ const clientConfig = {
 								<div class="segmented">
 									{scaleOptions.map(opt => (
 										<label title={opt.label}>
-											<input type="radio" name={item.id} value={opt.value} />
-											<span>{opt.value}</span>
+											<input type="radio" name={item.id} value={opt.value} aria-label={`${opt.value}: ${opt.label}`} />
+											<span aria-hidden="true">{opt.value}</span>
 										</label>
 									))}
 								</div>
@@ -222,7 +222,7 @@ const clientConfig = {
 				<div class="results-disclaimer">
 					<h3>Understanding your score</h3>
 					<p>The overall FUNCAP score is the mean of all 27 items, from 0 to 6. Lower scores mean lower functional capacity. The published validation found negligible floor and ceiling effects across the full severity spectrum of ME/CFS, from mild to very severe.</p>
-					<p>There are no official severity cut-offs yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most informative as a profile and as a record over time: which domains cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete, structured evidence of functional limitation for disability or insurance assessments — the purpose it was designed for.</p>
+					<p>There are no official severity cut-offs yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most useful as a profile and as a record over time: which groups of activities cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete evidence of functional limitation for disability or insurance assessments. That is what it was designed for.</p>
 					<p>If you complete it periodically (for example monthly), use the same conditions each time: an average day, not a crash or a good patch.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the activity consequences you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
@@ -305,7 +305,7 @@ form.addEventListener('submit', (e) => {
 	if (costly.length === 0) {
 		list.innerHTML = '<li class="none">No activities rated 0–2. None of the listed activities leaves you unable to do much else for a day or more.</li>';
 	} else {
-		list.innerHTML = costly.map(v => `<li><span class="costly-score">${v.val}</span> ${v.item.text} <span class="costly-label">— ${CONFIG.labels[v.val]}</span></li>`).join('');
+		list.innerHTML = costly.map(v => `<li><span class="costly-score">${v.val}</span> ${v.item.text} <span class="costly-label">(${CONFIG.labels[v.val]})</span></li>`).join('');
 	}
 
 	form.hidden = true;

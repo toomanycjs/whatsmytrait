@@ -27,7 +27,7 @@ const domains = [
 	{
 		key: 'pem',
 		name: 'Post-exertional malaise',
-		intro: 'The disproportionate worsening of symptoms after physical or mental effort — the defining feature of ME/CFS.',
+		intro: 'The disproportionate worsening of symptoms after physical or mental effort. This is the defining feature of ME/CFS.',
 		items: [
 			{ id: 'pem_fatigue', text: 'Fatigue or extreme tiredness', tags: ['fatigue'] },
 			{ id: 'pem_minexercise', text: 'A minimum of exercise makes you physically tired', tags: ['pem'] },
@@ -42,7 +42,7 @@ const domains = [
 	{
 		key: 'cognitive',
 		name: 'Cognitive impairment',
-		intro: 'Difficulties with memory, attention, and thinking — often described as "brain fog".',
+		intro: 'Difficulties with memory, attention, and thinking, often described as "brain fog".',
 		items: [
 			{ id: 'cog_memory', text: 'Problems remembering things', tags: ['cognitive', 'fukuda_memory'] },
 			{ id: 'cog_word', text: 'Difficulty finding the right word', tags: ['cognitive'] },
@@ -209,7 +209,7 @@ const totalSteps = domains.length + 1; // + impact step
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>DePaul Symptom Questionnaire (DSQ-2)</h1>
@@ -218,7 +218,7 @@ const totalSteps = domains.length + 1; // + impact step
 					The DSQ-2 is a comprehensive self-report questionnaire developed by Leonard Jason, Hannah Bedree, and Madison Sunnquist at DePaul University to assess the symptoms of myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS). It is the revised version of the original DePaul Symptom Questionnaire, with improved items and additional symptoms covering the newer case definitions. It is one of the standard research instruments used to characterise ME/CFS symptomatology, and it is free to use.
 				</p>
 				<p class="description">
-					This interactive version groups the symptoms into the <strong>eight domains</strong> identified by the study's factor analysis — post-exertional malaise, cognitive impairment, fever and flu-like symptoms, pain, sleep disruption, orthostatic intolerance, genitourinary symptoms, and temperature intolerance — so that a long questionnaire feels structured rather than overwhelming. Each symptom is rated for how often you have had it and how severe it has been over the <strong>past six months</strong>.
+					This interactive version groups the symptoms into the <strong>eight domains</strong> identified by the study's factor analysis: post-exertional malaise, cognitive impairment, fever and flu-like symptoms, pain, sleep disruption, orthostatic intolerance, genitourinary symptoms, and temperature intolerance. This keeps a long questionnaire feeling structured rather than overwhelming. Each symptom is rated for how often you have had it and how severe it has been over the <strong>past six months</strong>.
 				</p>
 				<p class="description">
 					When you finish, you will get a domain-by-domain breakdown, a visual profile of which systems are most affected, and a screen of your responses against the four major ME/CFS case definitions: <strong>Fukuda (1994), the Canadian Consensus Criteria (2003), the ME International Consensus Criteria (2011), and the IOM/NAM criteria (2015)</strong>. It is designed for anyone with suspected ME/CFS, long COVID, post-viral fatigue, or overlapping conditions who wants a thorough, structured symptom record to take to an appointment.
@@ -256,7 +256,7 @@ const totalSteps = domains.length + 1; // + impact step
 							<div class="rating-group">
 								<div class="segmented vertical" data-single="impact">
 									<label><input type="radio" name="impact" value="0" required /><span>No meaningful reduction in my activity</span></label>
-									<label><input type="radio" name="impact" value="1" /><span>A mild reduction — I manage most things with some limits</span></label>
+									<label><input type="radio" name="impact" value="1" /><span>A mild reduction: I manage most things with some limits</span></label>
 									<label><input type="radio" name="impact" value="2" /><span>A substantial reduction, but less than half</span></label>
 									<label><input type="radio" name="impact" value="3" /><span>A reduction of 50% or more in what I can do</span></label>
 								</div>
@@ -337,8 +337,8 @@ const totalSteps = domains.length + 1; // + impact step
 
 				<div class="results-disclaimer">
 					<h3>Understanding your results</h3>
-					<p>The domain scores show where your symptom burden is concentrated. In ME/CFS, the post-exertional malaise domain is the one that matters most — it is the feature that most distinguishes the condition from ordinary fatigue or deconditioning. A profile weighted towards PEM and cognitive impairment, with orthostatic and sleep involvement, is a common ME/CFS pattern.</p>
-					<p>The case-definition screen applies published algorithms to your answers. Different definitions ask for different things, so it is normal to meet some and not others; the ME-ICC in particular is deliberately strict. Meeting a definition here means your <em>reported symptoms</em> are consistent with it — it is not a clinical diagnosis, which requires a doctor, an examination, and the exclusion of other conditions that can cause the same symptoms.</p>
+					<p>The domain scores show where your symptom burden is concentrated. In ME/CFS, the post-exertional malaise domain matters most. It is the feature that most distinguishes the condition from ordinary fatigue or deconditioning. A profile weighted towards PEM and cognitive impairment, with orthostatic and sleep involvement, is a common ME/CFS pattern.</p>
+					<p>The case-definition screen applies published algorithms to your answers. Different definitions ask for different things, so it is normal to meet some and not others; the ME-ICC in particular is deliberately strict. Meeting a definition here means your <em>reported symptoms</em> are consistent with it. It is not a clinical diagnosis, which requires a doctor, an examination, and the exclusion of other conditions that can cause the same symptoms.</p>
 					<p>These results are most useful printed or written down and taken to an appointment. They give a structured, specific account of what you are experiencing, which is often hard to convey in a short consultation.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss your results with your doctor or specialist. The case-definition algorithms follow those described in Bedree, Sunnquist &amp; Jason (2019).</p>
 				</div>
@@ -521,11 +521,11 @@ function domainScore(domain: Domain) {
 
 const DOMAIN_INTERP: Record<string, (met: number, total: number) => string> = {
 	pem: (m, t) => m >= 3 ? `${m} of ${t} post-exertional symptoms met the threshold. PEM is the defining feature of ME/CFS, and this suggests significant post-exertional involvement.` : m >= 1 ? `${m} of ${t} post-exertional symptoms met the threshold. Some post-exertional involvement is present.` : `No post-exertional symptoms met the threshold. PEM is the hallmark of ME/CFS, so its absence is notable.`,
-	cognitive: (m, t) => m >= 2 ? `${m} of ${t} cognitive symptoms met the threshold — a meaningful degree of "brain fog".` : m === 1 ? `1 of ${t} cognitive symptoms met the threshold.` : `No cognitive symptoms met the threshold.`,
+	cognitive: (m, t) => m >= 2 ? `${m} of ${t} cognitive symptoms met the threshold, a meaningful degree of "brain fog".` : m === 1 ? `1 of ${t} cognitive symptoms met the threshold.` : `No cognitive symptoms met the threshold.`,
 	feverflu: (m, t) => m >= 1 ? `${m} of ${t} immune / flu-like symptoms met the threshold.` : `No immune / flu-like symptoms met the threshold.`,
 	pain: (m, t) => m >= 1 ? `${m} of ${t} pain symptoms met the threshold.` : `No pain symptoms met the threshold.`,
 	sleep: (m, t) => m >= 1 ? `${m} of ${t} sleep symptoms met the threshold. Unrefreshing sleep is common in ME/CFS.` : `No sleep symptoms met the threshold.`,
-	orthostatic: (m, t) => m >= 1 ? `${m} of ${t} orthostatic symptoms met the threshold — worth exploring, as this overlaps with POTS and dysautonomia.` : `No orthostatic symptoms met the threshold.`,
+	orthostatic: (m, t) => m >= 1 ? `${m} of ${t} orthostatic symptoms met the threshold. This overlaps with POTS and dysautonomia and is worth exploring.` : `No orthostatic symptoms met the threshold.`,
 	genitourinary: (m, t) => m >= 1 ? `${m} of ${t} genitourinary symptoms met the threshold.` : `No genitourinary symptoms met the threshold.`,
 	temperature: (m, t) => m >= 1 ? `${m} of ${t} temperature symptoms met the threshold.` : `No temperature symptoms met the threshold.`,
 };
@@ -637,7 +637,7 @@ function renderResults() {
 		} else {
 			summary += 'Your responses did not meet the full threshold for any of the four case definitions, though individual domains may still be significant. ';
 		}
-		summary += 'These results are a structured record of what you reported, useful to bring to a clinical appointment — not a diagnosis.';
+		summary += 'These results are a structured record of what you reported, useful to bring to a clinical appointment. They are not a diagnosis.';
 	}
 	(document.getElementById('overall-summary') as HTMLElement).textContent = summary;
 }

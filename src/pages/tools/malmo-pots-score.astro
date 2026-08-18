@@ -52,7 +52,7 @@ const items = [
         {
           "@type": "Question",
           "name": "What is a high MAPS score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "In the validation study, POTS patients averaged 78 out of 120 while healthy controls averaged 14. A total score of 42 or above was the optimal threshold for distinguishing tilt-test-confirmed POTS from healthy controls, with 97% sensitivity and 98% specificity. A score above 42 is not a diagnosis — POTS requires a documented heart rate response and exclusion of other causes."}
+          "acceptedAnswer": {"@type": "Answer", "text": "In the validation study, POTS patients averaged 78 out of 120 while healthy controls averaged 14. A total score of 42 or above was the optimal threshold for distinguishing tilt-test-confirmed POTS from healthy controls, with 97% sensitivity and 98% specificity. A score above 42 is not a diagnosis. POTS requires a documented heart rate response and exclusion of other causes."}
         },
         {
           "@type": "Question",
@@ -67,22 +67,22 @@ const items = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Malmö POTS Symptom Score</h1>
 				<p class="subtitle">MAPS: a 12-symptom score for POTS symptom burden, past 7 days</p>
 				<p class="description">
-					The Malmö POTS Symptom Score (MAPS) was developed by Spahic, Fedorowski, and colleagues at Lund University and published in the <em>Journal of Internal Medicine</em> in 2023. It is the first self-rating score designed specifically for POTS: 12 commonly reported symptoms — five cardiac, seven non-cardiac — each rated from <strong>0 (no symptoms)</strong> to <strong>10 (very pronounced)</strong> for the <strong>past 7 days</strong>, giving a total from 0 to 120.
+					The Malmö POTS Symptom Score (MAPS) was developed at Lund University and published in the <em>Journal of Internal Medicine</em> in 2023. It is the first self-rating score designed specifically for POTS. You rate 12 common symptoms (five cardiac, seven non-cardiac) from <strong>0 (no symptoms)</strong> to <strong>10 (very pronounced)</strong> for the <strong>past 7 days</strong>. The total runs from 0 to 120.
 				</p>
 				<p class="description">
-					In the validation study, patients with tilt-test-confirmed POTS scored on average <strong>78</strong>, against <strong>14</strong> for healthy controls, and a threshold of <strong>≥42</strong> separated the groups with 97% sensitivity and 98% specificity. Because the recall window is one week, MAPS is well suited to tracking symptom burden over time — before and after starting a medication, an intervention, or a pacing change.
+					In the validation study, patients with tilt-test-confirmed POTS averaged <strong>78</strong>. Healthy controls averaged <strong>14</strong>. A threshold of <strong>42 or more</strong> separated the groups with 97% sensitivity and 98% specificity. Because it covers a single week, MAPS suits regular tracking: before and after starting a medication, an intervention, or a pacing change.
 				</p>
 				<p class="description">
 					MAPS complements the other autonomic tools here: the <a href="/tools/compass-31/">COMPASS-31</a> covers autonomic symptoms more broadly across six domains, and the <a href="/tools/nasa-lean-test/">NASA lean test</a> gives you the objective heart-rate data that a POTS assessment actually requires. A high MAPS score plus a positive lean test is a strong, structured package to bring to an appointment.
 				</p>
 				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> POTS is diagnosed from a documented orthostatic heart rate response with symptoms, after excluding other causes — not from a symptom score. The MAPS validation cohort was tilt-confirmed POTS versus healthy controls, so a high score in other conditions (including ME/CFS and long COVID) is expected and does not itself indicate POTS. Discuss your results with your doctor. Based on: Spahic JM, Hamrefors V, Johansson M, et al. <em>Malmö POTS symptom score: Assessing symptom burden in postural orthostatic tachycardia syndrome.</em> J Intern Med. 2023;293(1):91–99 (open access, CC BY-NC).
+					<strong>This is not a diagnostic tool.</strong> POTS is diagnosed from a documented orthostatic heart rate response with symptoms, after excluding other causes. A symptom score alone cannot diagnose it. The validation compared tilt-confirmed POTS with healthy controls only, so a high score in other conditions (including ME/CFS and long COVID) is expected and does not itself indicate POTS. Discuss your results with your doctor. Based on: Spahic JM, Hamrefors V, Johansson M, et al. <em>Malmö POTS symptom score: Assessing symptom burden in postural orthostatic tachycardia syndrome.</em> J Intern Med. 2023;293(1):91–99 (open access, CC BY-NC).
 				</div>
 			</div>
 
@@ -96,8 +96,8 @@ const items = [
 						<div class="segmented">
 							{Array.from({ length: 11 }, (_, v) => (
 								<label>
-									<input type="radio" name={item.id} value={v} />
-									<span>{v}</span>
+									<input type="radio" name={item.id} value={v} aria-label={v === 0 ? '0: no symptoms' : v === 10 ? '10: very pronounced symptoms' : String(v)} />
+									<span aria-hidden="true">{v}</span>
 								</label>
 							))}
 						</div>
@@ -111,8 +111,8 @@ const items = [
 						<div class="segmented">
 							{Array.from({ length: 11 }, (_, v) => (
 								<label>
-									<input type="radio" name={item.id} value={v} />
-									<span>{v}</span>
+									<input type="radio" name={item.id} value={v} aria-label={v === 0 ? '0: no symptoms' : v === 10 ? '10: very pronounced symptoms' : String(v)} />
+									<span aria-hidden="true">{v}</span>
 								</label>
 							))}
 						</div>
@@ -139,7 +139,7 @@ const items = [
 				<div class="results-disclaimer">
 					<h3>Understanding your score</h3>
 					<p>In the validation study, healthy controls averaged 14 points (most scoring under 30), while tilt-confirmed POTS patients averaged 78. The optimal threshold separating the two groups was a total score of 42 or more (97% sensitivity, 98% specificity). The most prominent symptoms in POTS patients were palpitations, fatigue, and concentration difficulties.</p>
-					<p>MAPS measures symptom burden, not diagnosis. It cannot distinguish POTS from other conditions with overlapping symptoms — the validation compared POTS patients only with healthy people. Its main practical uses are quantifying how symptomatic a week has been, tracking change over time, and communicating severity to clinicians. If you have not yet had orthostatic testing, the <a href="/tools/nasa-lean-test/">NASA lean test guide</a> shows you how to record the heart-rate data that actually defines POTS.</p>
+					<p>MAPS measures symptom burden, not diagnosis. It cannot separate POTS from other conditions with overlapping symptoms, because the validation compared POTS patients only with healthy people. Its practical uses are simpler: quantifying how symptomatic a week has been, tracking change over time, and communicating severity to clinicians. If you have not yet had orthostatic testing, the <a href="/tools/nasa-lean-test/">NASA lean test guide</a> shows you how to record the heart-rate data that actually defines POTS.</p>
 					<p>Because the recall period is 7 days, repeating MAPS weekly or fortnightly during any treatment change gives a usable trend line. Record your scores in a note or the <a href="/tools/trackers/symptom-diary/">symptom diary</a>.</p>
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
 				</div>
@@ -195,9 +195,9 @@ form.addEventListener('submit', (e) => {
 
 	let interp = `Your total MAPS score is ${total} out of 120 for the past 7 days. `;
 	if (total >= 42) {
-		interp += 'This is at or above the ≥42 threshold that separated tilt-confirmed POTS patients from healthy controls in the validation study (patients averaged 78; controls 14). A score at this level indicates a substantial symptom burden worth investigating — if you have not had orthostatic testing, a NASA lean test or a request for a standing test at your GP is a sensible next step. It is not a diagnosis: other conditions can produce similar scores.';
+		interp += 'This is at or above the threshold of 42 that separated tilt-confirmed POTS patients from healthy controls in the validation study (patients averaged 78; controls 14). A score at this level shows a substantial symptom burden worth investigating. If you have not had orthostatic testing, a NASA lean test or a request for a standing test at your GP is a sensible next step. It is not a diagnosis: other conditions can produce similar scores.';
 	} else if (total >= 20) {
-		interp += 'This is below the ≥42 POTS-discrimination threshold but above the healthy-control average of 14. Symptoms are present but the overall burden this week was moderate. If your symptoms fluctuate, repeat the score across a few weeks — the 7-day window makes it a good tracking measure.';
+		interp += 'This is below the POTS threshold of 42 but above the healthy-control average of 14. Symptoms are present, but the overall burden this week was moderate. If your symptoms fluctuate, repeat the score across a few weeks. The 7-day window makes it a good tracking measure.';
 	} else {
 		interp += 'This is in the range reported by healthy controls in the validation study (average 14). If specific symptoms are still troubling you, the individual breakdown below shows where the burden is concentrated.';
 	}

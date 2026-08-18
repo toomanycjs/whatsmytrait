@@ -4,7 +4,8 @@ import HeaderLink from './HeaderLink.astro';
 ---
 
 <header>
-	<nav>
+	<a href="#main" class="skip-link">Skip to content</a>
+	<nav aria-label="Main">
 		<a href="/" class="site-title">{SITE_TITLE}</a>
 		<div class="nav-links">
 			<HeaderLink href="/testing">Testing</HeaderLink>
@@ -14,7 +15,7 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/about">About</HeaderLink>
 			<HeaderLink href="/contact">Contact</HeaderLink>
 		</div>
-		<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+		<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
 			<span></span><span></span><span></span>
 		</button>
 	</nav>

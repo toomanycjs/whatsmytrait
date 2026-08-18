@@ -70,7 +70,7 @@ const grades = [
         {
           "@type": "Question",
           "name": "Is the PCFS a measure of symptom severity?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No — it deliberately measures functional consequences rather than symptoms. Two people with the same symptom list can have very different PCFS grades depending on how much their daily life is limited. For symptom-level detail, pair it with a symptom questionnaire; for fine-grained functional capacity in ME/CFS-type illness, the FUNCAP questionnaire is more detailed."}
+          "acceptedAnswer": {"@type": "Answer", "text": "No. It deliberately measures functional consequences rather than symptoms. Two people with the same symptom list can have very different PCFS grades depending on how much their daily life is limited. For symptom-level detail, pair it with a symptom questionnaire; for fine-grained functional capacity in ME/CFS-type illness, the FUNCAP questionnaire is more detailed."}
         }
       ]
     }
@@ -80,19 +80,19 @@ const grades = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Post-COVID-19 Functional Status scale</h1>
 				<p class="subtitle">PCFS: a 0–4 grading of how much daily life is affected</p>
 				<p class="description">
-					The PCFS scale was proposed by Klok and colleagues in 2020 as a common yardstick for measuring functional status after COVID-19. It reduces a complicated picture to a single, comparable grade from <strong>0 (no functional limitations)</strong> to <strong>4 (severe limitations)</strong>, and has since been adopted widely in long COVID research and rehabilitation, with validated versions in more than 25 languages.
+					The PCFS scale was proposed by Klok and colleagues in 2020 as a common yardstick for functional status after COVID-19. It gives you a single grade from <strong>0 (no functional limitations)</strong> to <strong>4 (severe limitations)</strong>. It is widely used in long COVID research and rehabilitation, with versions in more than 25 languages.
 				</p>
 				<p class="description">
-					Its strength is simplicity: it measures <strong>consequences for daily life</strong> rather than symptoms, so it works as a quick, repeatable tracking measure — at diagnosis, at follow-up appointments, and over the months of recovery. Answer the four questions below to find your grade; it takes well under a minute.
+					Its strength is simplicity. It measures <strong>consequences for daily life</strong> rather than symptoms, so it works as a quick, repeatable tracking measure. Answer the four questions below to find your grade. It takes well under a minute.
 				</p>
 				<p class="description">
-					If you want more granular functional measurement — particularly if your illness involves post-exertional malaise — the <a href="/tools/funcap/">FUNCAP questionnaire</a> profiles what 27 specific activities cost you, and the <a href="/tools/bell-scale/">Bell scale</a> gives a 0–100 functional rating. To characterise post-activity symptom flares, see the <a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a>.
+					Want more detail? The <a href="/tools/funcap/">FUNCAP questionnaire</a> profiles what 27 specific activities cost you, and the <a href="/tools/bell-scale/">Bell scale</a> gives a 0–100 functional rating. If your symptoms flare after activity, see the <a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a>.
 				</p>
 				<div class="disclaimer">
 					<strong>This is not a diagnostic tool.</strong> The PCFS grades the functional impact you report; it does not diagnose long COVID or measure symptom severity. Discuss your grade with your doctor. Based on: Klok FA, Boon GJAM, Barco S, et al. <em>The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19.</em> Eur Respir J. 2020;56:2001494 (CC BY-NC 4.0).
@@ -164,7 +164,7 @@ const grades = [
 			<div class="results-disclaimer">
 				<h3>Using your grade</h3>
 				<p>The PCFS is most useful tracked over time: the authors suggest recording it at discharge or diagnosis, and again at intervals such as 4–8 weeks and 6 months. A grade that is not falling over months is a concrete, communicable signal to raise with your GP or a long COVID service.</p>
-				<p>Grades 2–3 generally indicate a level of limitation where rehabilitation support and pacing advice are appropriate; grade 4 indicates a need for care support. Because the scale is deliberately coarse, a stable grade can still hide meaningful change — pairing it with a more granular tool such as the <a href="/tools/funcap/">FUNCAP</a> or a <a href="/tools/trackers/symptom-diary/">symptom diary</a> gives you both the headline and the detail.</p>
+				<p>Grades 2–3 generally indicate a level of limitation where rehabilitation support and pacing advice are appropriate; grade 4 indicates a need for care support. The scale is deliberately coarse, so a stable grade can still hide real change. Pairing it with a more detailed tool such as the <a href="/tools/funcap/">FUNCAP</a> or a <a href="/tools/trackers/symptom-diary/">symptom diary</a> gives you both the headline and the detail.</p>
 			</div>
 		</main>
 		<Footer />
@@ -173,10 +173,10 @@ const grades = [
 
 <script>
 const GRADES = [
-	{ grade: 0, name: 'No functional limitations', desc: 'No symptoms and no limitations in everyday life related to the infection. If this changes, re-grade yourself — the scale is designed for repeat use.' },
+	{ grade: 0, name: 'No functional limitations', desc: 'No symptoms and no limitations in everyday life related to the infection. If this changes, re-grade yourself. The scale is designed for repeat use.' },
 	{ grade: 1, name: 'Negligible limitations', desc: 'You still have symptoms, but they do not stop you performing your usual duties and activities. Worth re-checking monthly: a move to grade 2 or above is a signal to seek support.' },
-	{ grade: 2, name: 'Slight limitations', desc: 'You occasionally need to avoid or reduce usual activities or spread them over time. This is a level at which pacing advice and a structured symptom record start to be genuinely useful — consider discussing support with your GP.' },
-	{ grade: 3, name: 'Moderate limitations', desc: 'You are not able to perform all usual duties and activities, though you can care for yourself. This level of limitation warrants clinical support — a long COVID service or rehabilitation referral is appropriate to ask about, and documenting your limitations helps.' },
+	{ grade: 2, name: 'Slight limitations', desc: 'You occasionally need to avoid or reduce usual activities or spread them over time. At this level, pacing advice and a structured symptom record start to be genuinely useful. Consider discussing support with your GP.' },
+	{ grade: 3, name: 'Moderate limitations', desc: 'You are not able to perform all usual duties and activities, though you can care for yourself. This level of limitation warrants clinical support. A long COVID service or rehabilitation referral is worth asking about, and documenting your limitations helps.' },
 	{ grade: 4, name: 'Severe limitations', desc: 'You need assistance with activities of daily living. This warrants active clinical involvement and care support. Documenting your functional status (this grade, plus a detailed tool such as FUNCAP) supports referrals and any benefits or insurance assessment.' },
 ];
 

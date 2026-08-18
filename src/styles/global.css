@@ -162,6 +162,52 @@ li { margin-bottom: 0.4em; }
 .disclaimer strong { color: rgb(var(--black)); }
 
 /* Accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* Custom radio/checkbox controls hide the native input, so surface keyboard
+   focus on the label instead. */
+label:has(> input[type="radio"]:focus-visible),
+label:has(> input[type="checkbox"]:focus-visible) {
+	outline: 3px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 200;
+	background: var(--accent);
+	color: #fff;
+	padding: 0.6em 1.2em;
+	border-radius: 0 0 6px 0;
+	font-weight: 700;
+	text-decoration: none;
+}
+.skip-link:focus {
+	left: 0;
+	color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;

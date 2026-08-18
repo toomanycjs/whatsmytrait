@@ -69,7 +69,7 @@ const ratings = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Fatigue Severity Scale</h1>
@@ -282,7 +282,9 @@ const ratings = [
 		color: var(--accent-dark);
 		font-weight: 700;
 	}
-	.options input[type="radio"] { display: none; }
+	/* Visually hidden but still keyboard-focusable (display:none would remove
+	   the radios from tab order entirely). */
+	.options input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 
 	.form-footer {
 		display: flex;

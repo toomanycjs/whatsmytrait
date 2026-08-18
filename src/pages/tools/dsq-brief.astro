@@ -74,7 +74,7 @@ const items = [
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main">
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>ME/CFS screening questionnaire</h1>
@@ -83,7 +83,7 @@ const items = [
 					This is a free, interactive version of the <strong>DSQ-Brief</strong>, a short screening scale for myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS) developed by Leonard Jason and colleagues at DePaul University and published in 2023. It was drawn from the much longer DePaul Symptom Questionnaire and distilled down to the four items that best separate people with ME/CFS from those without it.
 				</p>
 				<p class="description">
-					Those four items assess the two hallmark features of ME/CFS: <strong>fatigue</strong> and <strong>post-exertional malaise</strong> — the disproportionate worsening of symptoms after even minor physical or mental effort. In the validation study of 3,427 people, this 4-item screen achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity.
+					Those four items assess the two hallmark features of ME/CFS: <strong>fatigue</strong> and <strong>post-exertional malaise</strong>, the disproportionate worsening of symptoms after even minor physical or mental effort. In the validation study of 3,427 people, this 4-item screen achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity.
 				</p>
 				<p class="description">
 					It is intended for anyone with persistent fatigue, a post-viral illness, or suspected ME/CFS who wants a quick, structured self-check before deciding whether to look into things further. It takes under two minutes. Answer each item for how it has been over the <strong>past six months</strong>, and you will get an immediate result with a per-symptom breakdown. No sign-up or email is required, and nothing you enter leaves your device. To characterise your post-activity symptom pattern in more depth, the <a href="/tools/dsq-pem/">DSQ-PEM</a> adds recovery time and triggers; for the complete assessment, take the full <a href="/tools/dsq-2/">DSQ-2</a>.
@@ -157,15 +157,15 @@ const items = [
 
 				<div class="bridge">
 					<h3>Why the full questionnaire matters</h3>
-					<p>The DSQ-Brief screens for the core features of ME/CFS — fatigue and post-exertional malaise — and it does that well: 96% accuracy against healthy controls. Its accuracy drops to around 82–84%, though, when the task is telling ME/CFS apart from <em>other</em> conditions that also cause fatigue, such as long COVID, multiple sclerosis, or post-polio syndrome. Four questions can only tell you so much.</p>
-					<p>The full <strong>DePaul Symptom Questionnaire (DSQ-2)</strong> captures symptoms across eight domains — including orthostatic intolerance, cognitive impairment, pain, sleep disruption, and immune and temperature symptoms — that together build a far more complete picture. In validation studies the full questionnaire held 93–94% accuracy even against other chronic illnesses, and it screens your answers against the four major ME/CFS case definitions.</p>
+					<p>The DSQ-Brief screens for the core features of ME/CFS (fatigue and post-exertional malaise), and it does that well: 96% accuracy against healthy controls. Its accuracy drops to around 82–84%, though, when the task is telling ME/CFS apart from <em>other</em> conditions that also cause fatigue, such as long COVID, multiple sclerosis, or post-polio syndrome. Four questions can only tell you so much.</p>
+					<p>The full <strong>DePaul Symptom Questionnaire (DSQ-2)</strong> captures symptoms across eight domains, including orthostatic intolerance, cognitive impairment, pain, sleep disruption, and immune and temperature symptoms. Together these build a far more complete picture. In validation studies the full questionnaire held 93–94% accuracy even against other chronic illnesses, and it screens your answers against the four major ME/CFS case definitions.</p>
 					<p>If you have 10–15 minutes, the full version gives you a detailed domain-by-domain breakdown you can take to a clinical appointment.</p>
 					<a href="/tools/dsq-2/" class="cta-button">Take the full DSQ-2 questionnaire →</a>
 				</div>
 
 				<div class="results-disclaimer">
 					<h3>Understanding your result</h3>
-					<p>This screen looks at four symptoms only. A positive result means all four were reported at a frequency and severity consistent with the pattern seen in ME/CFS in the validation study. It is not a diagnosis, and a negative result does not rule ME/CFS out — the four items here are deliberately narrow.</p>
+					<p>This screen looks at four symptoms only. A positive result means all four were reported at a frequency and severity consistent with the pattern seen in ME/CFS in the validation study. It is not a diagnosis, and a negative result does not rule ME/CFS out. The four items here are deliberately narrow.</p>
 					<p>Post-exertional malaise, in particular, is the feature that most distinguishes ME/CFS from ordinary fatigue or deconditioning. If your symptoms clearly worsen in the hours or days after activity that used to be manageable, that is worth raising with a clinician regardless of the number this tool produces.</p>
 					<p><strong>This result is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss it with your doctor or specialist.</p>
 				</div>
@@ -254,13 +254,13 @@ form.addEventListener('submit', (e) => {
 	let verdictText = '';
 	if (metCount === 4) {
 		verdictClass = 'pos';
-		verdictText = 'Screen positive — all 4 core symptoms met the threshold';
+		verdictText = 'Screen positive: all 4 core symptoms met the threshold';
 	} else if (metCount >= 1) {
 		verdictClass = 'partial';
-		verdictText = `Partial — ${metCount} of 4 core symptoms met the threshold`;
+		verdictText = `Partial: ${metCount} of 4 core symptoms met the threshold`;
 	} else {
 		verdictClass = 'neg';
-		verdictText = 'Screen negative — the threshold was not met';
+		verdictText = 'Screen negative: the threshold was not met';
 	}
 	verdictEl.className = `verdict ${verdictClass}`;
 	verdictEl.textContent = verdictText;
@@ -268,11 +268,11 @@ form.addEventListener('submit', (e) => {
 	// Summary statement
 	let summary = '';
 	if (metCount === 4) {
-		summary = 'Your responses are consistent with the symptom pattern seen in ME/CFS. All four core symptoms — fatigue, exercise intolerance, next-day post-exertional effects, and cognitive fatigue — are present at a frequency and severity that met the screening threshold in the original validation study. This is a screen, not a diagnosis: the next step is the fuller picture below and a conversation with your doctor.';
+		summary = 'Your responses are consistent with the symptom pattern seen in ME/CFS. All four core symptoms (fatigue, exercise intolerance, next-day post-exertional effects, and cognitive fatigue) are present at a frequency and severity that met the screening threshold in the original validation study. This is a screen, not a diagnosis: the next step is the fuller picture below and a conversation with your doctor.';
 	} else if (metCount >= 1) {
-		summary = `You reported ${metCount} of the 4 core symptoms at the screening threshold. The DSQ-Brief screen is most informative when all four are present, but a partial result may still be worth discussing with your doctor — especially if post-exertional malaise (symptoms worsening after activity) is one of them, as that is the most distinctive feature of ME/CFS.`;
+		summary = `You reported ${metCount} of the 4 core symptoms at the screening threshold. The DSQ-Brief screen is most informative when all four are present, but a partial result may still be worth discussing with your doctor, especially if post-exertional malaise (symptoms worsening after activity) is one of them. That is the most distinctive feature of ME/CFS.`;
 	} else {
-		summary = 'Your responses did not meet the DSQ-Brief screening threshold. This does not rule out ME/CFS or other post-viral conditions — it means the four symptoms assessed here were not reported at the frequency and severity the screen looks for. If fatigue or post-exertional symptoms are affecting your life, they are still worth raising with a clinician.';
+		summary = 'Your responses did not meet the DSQ-Brief screening threshold. This does not rule out ME/CFS or other post-viral conditions. It means the four symptoms assessed here were not reported at the frequency and severity the screen looks for. If fatigue or post-exertional symptoms are affecting your life, they are still worth raising with a clinician.';
 	}
 	summaryEl.textContent = summary;
 
