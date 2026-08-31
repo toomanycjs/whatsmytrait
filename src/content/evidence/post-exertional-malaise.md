@@ -46,7 +46,7 @@ The problem is that GET was designed for a condition that doesn't exist in the w
 
 The [2021 NICE guideline update](/nhs/what-i-wish-id-known-earlier/) removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
 
-This does not mean exercise is contraindicated. It means that the type, intensity, and management of activity must account for PEM in a way that standard rehabilitation frameworks do not.
+This does not mean exercise is contraindicated. It means that the type, intensity, and management of activity must account for PEM in a way that standard rehabilitation frameworks do not. The [review of the CHOP and Levine exercise protocols](/evidence/chop-levine-protocol-pots/) covers what this means for the POTS exercise programmes most often recommended to post-viral patients.
 
 ## What pacing actually means
 

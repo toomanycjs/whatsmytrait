@@ -18,7 +18,7 @@ This isn't a theoretical distinction. Multiple studies of POTS patients have fou
 
 ## The evidence
 
-The Levine protocol, originally published in Heart (2015) and updated in subsequent work, involves a graduated programme starting with rowing, swimming, or recumbent cycling three times per week, building over three to six months to more upright activities. The results across multiple studies are genuinely good: significant reductions in orthostatic heart rate, improved quality of life, reduced symptom burden.
+The [Levine protocol](/evidence/chop-levine-protocol-pots/), originally published in Heart (2015) and updated in subsequent work, involves a graduated programme starting with rowing, swimming, or recumbent cycling three times per week, building over three to six months to more upright activities. The results across multiple studies are genuinely good: significant reductions in orthostatic heart rate, improved quality of life, reduced symptom burden.
 
 There are important caveats. Most of the evidence is for POTS without prominent [post-exertional malaise](/evidence/post-exertional-malaise/). For people with ME/CFS overlap or significant post-viral fatigue, the Levine protocol as written is too aggressive; the steady escalation assumes a tolerance for exertion that many post-viral patients simply don't have. Several ME/CFS researchers have explicitly warned against applying exercise rehabilitation frameworks designed for POTS to the post-viral ME/CFS population.
 
