@@ -37,6 +37,8 @@ In the last two weeks of June, fatigue has actually been slightly worse, averagi
 
 *Previous posts: [Starting Nurosym: why I'm trying vagal nerve stimulation](/testing/nurosym-week-1/) · [Week 3: early HRV gains](/testing/nurosym-week-3/)*
 
+*Next in this series: [Does Nurosym work for POTS and dysautonomia? The 5-month verdict](/testing/nurosym-5-months/)*
+
 *The Nurosym device was purchased at my own expense. I have no affiliation with the manufacturer.*
 
 ## Further reading
