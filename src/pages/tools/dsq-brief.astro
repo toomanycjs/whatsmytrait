@@ -458,9 +458,10 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	}
 	.item-table { margin: 1em 0 0.5em; font-size: 0.9em; }
 	.item-table td, .item-table th { padding: 0.5em 0.6em; }
-	.row-met { background: #f3faf5; }
-	.met { color: #1e6b3c; font-weight: 700; white-space: nowrap; }
-	.notmet { color: rgb(var(--gray)); white-space: nowrap; }
+	/* Injected by script: anchor to the static .item-table container. */
+	.item-table :global(.row-met) { background: #f3faf5; }
+	.item-table :global(.met) { color: #1e6b3c; font-weight: 700; white-space: nowrap; }
+	.item-table :global(.notmet) { color: rgb(var(--gray)); white-space: nowrap; }
 	.table-note { font-size: 0.82em; color: rgb(var(--gray)); margin: 0.5em 0 2em; }
 
 	.bridge {

@@ -1,0 +1,436 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ToolPurpose from '../../components/ToolPurpose.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const redFlags = [
+	'Chest pain or pressure during or after activity',
+	'Fainting, or coming close to fainting, on exertion',
+	'Breathlessness that is out of proportion to the effort involved',
+	'A known heart condition, or a family history of sudden cardiac death',
+	'Cardiac findings after COVID-19 (such as myocarditis or pericarditis) that have not been signed off as resolved',
+	'If you have a pulse oximeter: oxygen saturation that drops on exertion',
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Exercise readiness screen for post-viral illness: red flags and PEM check"
+			description="A short screen to take before starting any exercise with a post-viral condition. Checks red flags, post-exertional malaise, and relevant comorbidities, then points you to the safer starting place. Free, private, no sign-up."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Exercise readiness screen", "item": "https://www.postviralrecovery.com/tools/exercise-readiness/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why screen before exercising with a post-viral condition?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Two reasons. First, a small number of symptoms (chest pain on exertion, exertional fainting, unresolved cardiac findings) need a clinician's review before any activity plan. Second, if you have post-exertional malaise (PEM), activity that exceeds your capacity can trigger prolonged worsening, so pacing is the safer starting point and structured exercise progression is not recommended."}
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I screen positive for PEM?",
+          "acceptedAnswer": {"@type": "Answer", "text": "You are pointed to the pacing and heart rate guide rather than the exercise progression guide. That is not a downgrade. For people with PEM, staying inside the energy envelope is the approach with the least risk of harm, and gentle movement without progression targets is still possible on good days."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main id="main">
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Exercise readiness screen</h1>
+				<p class="subtitle">Three quick checks before you start anything</p>
+				<ToolPurpose />
+				<p class="description">
+					Before starting any movement or exercise plan with a post-viral condition, three things are worth checking:
+					red-flag symptoms that need a clinician first, post-exertional malaise (PEM), and a couple of conditions
+					that change how you should approach activity. This screen walks through all three in a few minutes, then
+					points you to the page that fits your situation.
+				</p>
+				<p class="storage-note">Your answers are stored on this device only and never sent anywhere.</p>
+			</div>
+
+			<!-- Returning user summary -->
+			<div id="prev-result" class="panel" hidden>
+				<h2>Your previous screen</h2>
+				<p id="prev-summary"></p>
+				<div id="prev-stale" class="stale-note" hidden>
+					<strong>This screen is more than 3 months old.</strong> PEM status and symptoms change over time, so it is worth retaking.
+				</div>
+				<div id="prev-links" class="route-cards"></div>
+				<button type="button" id="retake-btn" class="secondary-btn">Retake this screen</button>
+			</div>
+
+			<!-- Step 1: red flags -->
+			<div id="step-flags" class="panel" hidden>
+				<h2><span class="step-num">1</span> Red flags</h2>
+				<p>Do any of these apply to you?</p>
+				<ul class="flag-list">
+					{redFlags.map(f => <li>{f}</li>)}
+				</ul>
+				<div class="step-actions">
+					<button type="button" id="flags-yes" class="secondary-btn">Yes, at least one applies</button>
+					<button type="button" id="flags-no" class="primary-btn">No, none of these apply</button>
+				</div>
+			</div>
+
+			<!-- Step 2: PEM -->
+			<div id="step-pem" class="panel" hidden>
+				<h2><span class="step-num">2</span> Post-exertional malaise</h2>
+				<p>
+					PEM is a delayed, disproportionate worsening of symptoms after physical or mental effort, usually starting
+					hours to a day later and lasting a day or more. Whether you have it changes which approach is safer for you.
+				</p>
+				<div id="pem-found" class="pem-found" hidden>
+					<p id="pem-found-text"></p>
+					<div class="step-actions">
+						<button type="button" id="pem-use-result" class="primary-btn">Use this result</button>
+						<a class="secondary-btn linklike" href="/tools/dsq-pem/">Retake the DSQ-PEM</a>
+					</div>
+				</div>
+				<div id="pem-ask" hidden>
+					<p>
+						The most reliable option is the 3-minute <a href="/tools/dsq-pem/">DSQ-PEM questionnaire</a>. Take it,
+						then come back to this page: your result is picked up automatically. Or answer from what you already know:
+					</p>
+					<div class="step-actions vertical">
+						<a class="primary-btn linklike" href="/tools/dsq-pem/">Take the DSQ-PEM (3 minutes)</a>
+						<button type="button" id="pem-self-yes" class="secondary-btn">I know I get PEM</button>
+						<button type="button" id="pem-self-no" class="secondary-btn">I am confident I do not get PEM</button>
+						<button type="button" id="pem-self-unsure" class="secondary-btn">I am not sure</button>
+					</div>
+					<p class="small-note">If you are not sure, the screen treats you as if PEM is present. That is the cautious default, and you can retake this screen after doing the DSQ-PEM.</p>
+				</div>
+			</div>
+
+			<!-- Step 3: comorbidities -->
+			<div id="step-comorbid" class="panel" hidden>
+				<h2><span class="step-num">3</span> Two conditions worth flagging</h2>
+				<p>These do not block anything. They add notes to the later pages, because they change how activity should be approached.</p>
+				<label class="check-row">
+					<input type="checkbox" id="flag-heds" />
+					<span><strong>Hypermobile EDS or joint hypermobility.</strong> Joints need more protection: form, low resistance, and gradual load matter more than usual.</span>
+				</label>
+				<label class="check-row">
+					<input type="checkbox" id="flag-mcas" />
+					<span><strong>MCAS or significant allergic-type reactivity.</strong> Heat, exertion, and some environments can be triggers, so changes are worth making one at a time.</span>
+				</label>
+				<div class="step-actions">
+					<button type="button" id="comorbid-done" class="primary-btn">See my result</button>
+				</div>
+			</div>
+
+			<!-- Results -->
+			<div id="result-redflag" class="panel result-panel" hidden>
+				<h2>Please talk to your clinician first</h2>
+				<p>
+					You ticked at least one red flag. These symptoms and findings need a clinician's assessment before you start
+					any exercise or movement plan, including gentle ones. That is not a prediction that something is wrong.
+					It is the standard, sensible order to do things in.
+				</p>
+				<p>
+					Bring specifics if you can: what brings the symptom on, how long it lasts, and any readings you have.
+					The <a href="/tools/nasa-lean-test/">NASA lean test guide</a> and the site's
+					<a href="/tools/trackers/symptom-diary/">symptom diary</a> can help you build that record.
+				</p>
+				<p>This result is saved on this device, and the exercise progression page will point back here. When your clinician has cleared you, retake this screen.</p>
+				<button type="button" class="secondary-btn retake-inline">Retake this screen</button>
+			</div>
+
+			<div id="result-pem" class="panel result-panel" hidden>
+				<h2>Your route: pacing first</h2>
+				<p id="result-pem-lead"></p>
+				<p>
+					With PEM present or possible, the approach with the least risk of harm is working within your energy envelope,
+					not progressive exercise. The pacing guide covers the energy envelope, a heart rate ceiling you can use as a
+					rough guardrail, and gentle movement that carries no progression target. The structured progression guide is
+					not offered on this route, because progressive training plans assume the payback pattern of PEM is absent.
+				</p>
+				<div class="route-cards">
+					<a href="/tools/pacing-and-heart-rate/" class="route-card recommended">
+						<span class="route-badge">Your page</span>
+						<strong>Pacing and heart rate ceiling</strong>
+						<span>The energy envelope, a heart rate guardrail, counter-pressure manoeuvres, and a session log.</span>
+					</a>
+				</div>
+				<p class="small-note" id="result-pem-comorbid"></p>
+				<button type="button" class="secondary-btn retake-inline">Retake this screen</button>
+			</div>
+
+			<div id="result-clear" class="panel result-panel" hidden>
+				<h2>Your route: both pages are open</h2>
+				<p>
+					No red flags, and your answers do not indicate PEM. Both pages below are available to you.
+					Starting with pacing is still recommended: a week or two of logging with a heart rate ceiling gives you a
+					baseline, and the progression page works better once that habit exists.
+				</p>
+				<div class="route-cards">
+					<a href="/tools/pacing-and-heart-rate/" class="route-card recommended">
+						<span class="route-badge">Start here</span>
+						<strong>Pacing and heart rate ceiling</strong>
+						<span>The energy envelope, a heart rate guardrail, and a session log to build a baseline.</span>
+					</a>
+					<a href="/tools/exercise-progression/" class="route-card">
+						<span class="route-badge alt">When ready</span>
+						<strong>Exercise progression</strong>
+						<span>A tiered, hold-by-default record keeper for cautious progression, with 48-hour checks.</span>
+					</a>
+				</div>
+				<p class="small-note" id="result-clear-comorbid"></p>
+				<p class="small-note">If your situation changes, or symptoms start flaring after activity, retake this screen. PEM can develop or resolve over time.</p>
+				<button type="button" class="secondary-btn retake-inline">Retake this screen</button>
+			</div>
+
+			<div class="results-disclaimer">
+				<h3>About this screen</h3>
+				<p>This screen is an information filter, not a medical assessment. It cannot detect problems you did not report, and it does not replace a clinician's judgement. If you are in doubt about your readiness for activity, ask your GP or specialist, and bring your symptom records with you.</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+import { loadStore, saveStore, readDsqPemResult, screenAgeDays, fmtDate } from '../../scripts/exercise-store';
+import type { ScreenResult } from '../../scripts/exercise-store';
+
+const store = loadStore();
+
+const panels = {
+	prev: document.getElementById('prev-result') as HTMLElement,
+	flags: document.getElementById('step-flags') as HTMLElement,
+	pem: document.getElementById('step-pem') as HTMLElement,
+	comorbid: document.getElementById('step-comorbid') as HTMLElement,
+	redflag: document.getElementById('result-redflag') as HTMLElement,
+	resultPem: document.getElementById('result-pem') as HTMLElement,
+	resultClear: document.getElementById('result-clear') as HTMLElement,
+};
+
+let pemSource: ScreenResult['pemSource'] = 'none';
+let pemPositive = false;
+
+function showOnly(el: HTMLElement) {
+	Object.values(panels).forEach(p => { p.hidden = p !== el; });
+	el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function comorbidNote(heds: boolean, mcas: boolean): string {
+	const notes = [];
+	if (heds) notes.push('hypermobility (joint protection notes will appear on the guides)');
+	if (mcas) notes.push('MCAS (trigger-awareness notes will appear on the guides)');
+	return notes.length ? `Flagged: ${notes.join(' and ')}.` : '';
+}
+
+function finish(outcome: ScreenResult['outcome']) {
+	const heds = (document.getElementById('flag-heds') as HTMLInputElement)?.checked ?? false;
+	const mcas = (document.getElementById('flag-mcas') as HTMLInputElement)?.checked ?? false;
+	store.screen = { completedAt: new Date().toISOString(), outcome, pemSource, heds, mcas };
+	saveStore(store);
+
+	if (outcome === 'redflag') {
+		showOnly(panels.redflag);
+	} else if (outcome === 'pem-positive') {
+		const lead = document.getElementById('result-pem-lead') as HTMLElement;
+		lead.textContent = pemSource === 'self-unsure'
+			? 'You were not sure about PEM, so this screen takes the cautious route and treats it as present until the DSQ-PEM says otherwise.'
+			: pemSource === 'dsq-pem'
+				? 'Your DSQ-PEM result indicates post-exertional malaise.'
+				: 'You reported that you get post-exertional malaise.';
+		(document.getElementById('result-pem-comorbid') as HTMLElement).textContent = comorbidNote(heds, mcas);
+		showOnly(panels.resultPem);
+	} else {
+		(document.getElementById('result-clear-comorbid') as HTMLElement).textContent = comorbidNote(heds, mcas);
+		showOnly(panels.resultClear);
+	}
+}
+
+// ── Step 1 ──
+document.getElementById('flags-yes')?.addEventListener('click', () => finish('redflag'));
+document.getElementById('flags-no')?.addEventListener('click', () => {
+	// Step 2: check for a stored DSQ-PEM result first.
+	const dsq = readDsqPemResult();
+	const found = document.getElementById('pem-found') as HTMLElement;
+	const ask = document.getElementById('pem-ask') as HTMLElement;
+	if (dsq) {
+		(document.getElementById('pem-found-text') as HTMLElement).innerHTML =
+			`You completed the DSQ-PEM on <strong>${fmtDate(dsq.date.slice(0, 10))}</strong>. Result: <strong>PEM ${dsq.pemIndicated ? 'indicated' : 'not indicated'}</strong>.`;
+		found.hidden = false;
+		ask.hidden = true;
+	} else {
+		found.hidden = true;
+		ask.hidden = false;
+	}
+	showOnly(panels.pem);
+});
+
+// ── Step 2 ──
+document.getElementById('pem-use-result')?.addEventListener('click', () => {
+	const dsq = readDsqPemResult();
+	pemSource = 'dsq-pem';
+	pemPositive = dsq ? dsq.pemIndicated : true;
+	showOnly(panels.comorbid);
+});
+document.getElementById('pem-self-yes')?.addEventListener('click', () => { pemSource = 'self-yes'; pemPositive = true; showOnly(panels.comorbid); });
+document.getElementById('pem-self-no')?.addEventListener('click', () => { pemSource = 'self-no'; pemPositive = false; showOnly(panels.comorbid); });
+document.getElementById('pem-self-unsure')?.addEventListener('click', () => { pemSource = 'self-unsure'; pemPositive = true; showOnly(panels.comorbid); });
+
+// ── Step 3 ──
+document.getElementById('comorbid-done')?.addEventListener('click', () => {
+	finish(pemPositive ? 'pem-positive' : 'pem-negative');
+});
+
+// ── Retake ──
+function startFresh() {
+	pemSource = 'none';
+	pemPositive = false;
+	showOnly(panels.flags);
+}
+document.getElementById('retake-btn')?.addEventListener('click', startFresh);
+document.querySelectorAll('.retake-inline').forEach(b => b.addEventListener('click', startFresh));
+
+// ── Entry: returning user or fresh screen ──
+if (store.screen) {
+	const s = store.screen;
+	const age = screenAgeDays(store) ?? 0;
+	const outcomeText = s.outcome === 'redflag'
+		? 'a red flag was reported, so the advice was to see your clinician before starting anything'
+		: s.outcome === 'pem-positive'
+			? 'PEM present or possible, so the pacing page is your route'
+			: 'no red flags and no PEM indicated, so both pages are open to you';
+	(document.getElementById('prev-summary') as HTMLElement).innerHTML =
+		`You completed this screen on <strong>${fmtDate(s.completedAt.slice(0, 10))}</strong>: ${outcomeText}.`;
+	(document.getElementById('prev-stale') as HTMLElement).hidden = age <= 90;
+
+	const links = document.getElementById('prev-links') as HTMLElement;
+	if (s.outcome === 'pem-positive') {
+		links.innerHTML = `<a href="/tools/pacing-and-heart-rate/" class="route-card recommended"><span class="route-badge">Your page</span><strong>Pacing and heart rate ceiling</strong><span>Continue where you left off.</span></a>`;
+	} else if (s.outcome === 'pem-negative') {
+		links.innerHTML = `
+			<a href="/tools/pacing-and-heart-rate/" class="route-card recommended"><span class="route-badge">Recommended first</span><strong>Pacing and heart rate ceiling</strong><span>Baseline and guardrails.</span></a>
+			<a href="/tools/exercise-progression/" class="route-card"><span class="route-badge alt">Open to you</span><strong>Exercise progression</strong><span>Tiered, hold-by-default record keeper.</span></a>`;
+	} else {
+		links.innerHTML = '';
+	}
+	showOnly(panels.prev);
+} else {
+	showOnly(panels.flags);
+}
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.25em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 1.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.5em; }
+	.description { margin-bottom: 0.75em; }
+	.storage-note { font-size: 0.85em; color: rgb(var(--gray)); margin: 0; }
+
+	.panel {
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 8px;
+		padding: 1.4em 1.6em;
+		margin-bottom: 1.5em;
+	}
+	.panel h2 { font-size: 1.25em; margin-bottom: 0.5em; }
+	.step-num {
+		display: inline-block;
+		width: 1.5em; height: 1.5em; line-height: 1.5em;
+		text-align: center;
+		background: var(--tools-bg); color: var(--tools);
+		border-radius: 6px; font-size: 0.85em;
+		margin-right: 0.3em;
+	}
+
+	.flag-list { margin: 0.5em 0 1.25em; }
+	.flag-list li { margin-bottom: 0.5em; }
+
+	.step-actions { display: flex; gap: 0.75em; flex-wrap: wrap; margin-top: 1em; }
+	.step-actions.vertical { flex-direction: column; align-items: stretch; max-width: 26em; }
+
+	.primary-btn, .secondary-btn {
+		font-family: inherit; font-size: 0.95em; font-weight: 700;
+		padding: 0.65em 1.4em; border-radius: 5px; cursor: pointer;
+		text-align: center;
+	}
+	.primary-btn { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+	.primary-btn:hover { background: var(--accent-dark); }
+	.secondary-btn { background: none; color: var(--accent); border: 1px solid var(--accent); }
+	.secondary-btn:hover { background: var(--accent-light); }
+	.linklike { display: inline-block; text-decoration: none; }
+
+	.check-row {
+		display: flex; gap: 0.7em; align-items: flex-start;
+		padding: 0.75em 0.9em; border: 1px solid rgb(var(--gray-light));
+		border-radius: 6px; margin-bottom: 0.6em; cursor: pointer;
+		font-size: 0.92em; line-height: 1.5;
+	}
+	.check-row input { margin-top: 0.3em; flex-shrink: 0; }
+	.check-row:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+
+	.small-note { font-size: 0.85em; color: rgb(var(--gray)); margin-top: 0.75em; }
+	.pem-found p { margin-bottom: 0.5em; }
+	.stale-note {
+		border: 1px solid #e8c9a0; background: #fdf3e7; color: #9a5b13;
+		border-radius: 6px; padding: 0.7em 1em; font-size: 0.9em; margin: 0.75em 0;
+	}
+
+	.result-panel h2 { color: rgb(var(--black)); }
+
+	.route-cards { display: flex; flex-direction: column; gap: 0.75em; margin: 1em 0; }
+	/* Route cards are also injected by script into #prev-links, so anchor to
+	   the static container and keep them global within it. */
+	.route-cards :global(.route-card) {
+		display: flex; flex-direction: column; gap: 0.25em;
+		border: 1px solid rgb(var(--gray-light)); border-radius: 8px;
+		padding: 1em 1.2em; text-decoration: none; color: rgb(var(--gray-dark));
+		transition: border-color 0.15s, box-shadow 0.15s;
+		font-size: 0.95em;
+	}
+	.route-cards :global(.route-card:hover) { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+	.route-cards :global(.route-card.recommended) { border-color: var(--accent); }
+	.route-cards :global(.route-card strong) { color: rgb(var(--black)); font-size: 1.05em; }
+	.route-cards :global(.route-badge) {
+		align-self: flex-start;
+		font-size: 0.72em; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+		color: var(--accent-dark); background: var(--accent-light);
+		padding: 0.15em 0.5em; border-radius: 3px;
+	}
+	.route-cards :global(.route-badge.alt) { color: var(--tools); background: var(--tools-bg); }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		margin-top: 2em; line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; margin-bottom: 0.5em; }
+
+	@media (max-width: 600px) {
+		.panel { padding: 1.1em 1.2em; }
+		.step-actions { flex-direction: column; align-items: stretch; }
+	}
+</style>

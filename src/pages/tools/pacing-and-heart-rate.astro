@@ -1,0 +1,460 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ToolPurpose from '../../components/ToolPurpose.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Pacing and heart rate ceilings for POTS and post-viral fatigue: a practical guide"
+			description="How to use the energy envelope, a resting heart rate based ceiling, counter-pressure manoeuvres, and gentle recumbent movement to manage a post-viral condition. With a private session log kept on your device."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Pacing and heart rate ceiling", "item": "https://www.postviralrecovery.com/tools/pacing-and-heart-rate/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a heart rate ceiling for pacing?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A heart rate ceiling is a self-chosen guardrail: a heart rate you try to stay under during daily activity, to avoid repeatedly pushing into effort levels that trigger payback. A common starting heuristic in patient communities is resting heart rate plus about 25 beats per minute. This is a rough rule of thumb, not a validated threshold, and it should be adjusted based on how you respond."}
+        },
+        {
+          "@type": "Question",
+          "name": "Do heart rate ceilings work on beta blockers or ivabradine?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Not reliably. These medications lower heart rate directly, so heart rate stops being a fair proxy for effort: you can be working far too hard at an apparently safe number. If you take them, perceived exertion (how hard it feels) should carry more weight than any number."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is pacing just resting?",
+          "acceptedAnswer": {"@type": "Answer", "text": "No. Pacing means planning activity so it stays inside the energy you reliably have, using rest before payback forces it. It usually includes gentle movement on the days it fits, without progression targets. The goal is stability first: fewer crashes, a more predictable week, and a baseline you can build on if and when your capacity grows."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main id="main">
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Pacing and heart rate ceiling</h1>
+				<p class="subtitle">Stability first: the energy envelope, a heart rate guardrail, and a private log</p>
+				<ToolPurpose />
+				<p class="description">
+					For most people with a post-viral condition, this page is the right starting point, and for many it is the
+					right place to stay. Pacing is not a consolation prize while you wait to exercise. It is the approach with
+					the best safety profile, and for anyone with post-exertional malaise it is the recommended one. The aim is
+					a more stable, more predictable week, which is worth having in itself.
+				</p>
+				<p class="description">
+					If you have not taken the <a href="/tools/exercise-readiness/">readiness screen</a> yet, it takes a few
+					minutes and checks the things worth checking first.
+				</p>
+			</div>
+
+			<div id="screen-banner" class="banner" hidden></div>
+			<div id="comorbid-banner" class="banner info" hidden></div>
+
+			<section>
+				<h2>The energy envelope</h2>
+				<p>
+					Think of your usable energy as an envelope: the amount you can spend today without paying for it tomorrow.
+					The envelope is smaller than it was before you were ill, and it changes from day to day. Spend inside it and
+					the week tends to hold steady. Spend past it, even on a good day, and the bill arrives a day or two later.
+				</p>
+				<p>
+					Pacing is the practice of living inside that envelope on purpose. In practical terms: break tasks into
+					pieces, rest between them before you feel you need to, alternate physical, mental, and upright activities,
+					and treat good days as days to bank, not days to catch up. The most common pacing mistake is the
+					boom-and-bust loop: overdoing it on good days, crashing, resting until the next good day, and repeating.
+				</p>
+			</section>
+
+			<section>
+				<h2>A heart rate ceiling as a guardrail</h2>
+				<p>
+					Heart rate can act as a crude effort meter you can watch in real time. The idea: pick a ceiling, and when
+					your heart rate goes above it during everyday activity, that is your cue to sit, slow down, or lie down for
+					a moment. A starting heuristic used widely in patient communities is <strong>resting heart rate plus 25</strong>.
+				</p>
+				<div class="calc">
+					<label for="rhr-input">Your resting heart rate (bpm), measured lying down after waking:</label>
+					<div class="calc-row">
+						<input type="number" id="rhr-input" min="30" max="120" inputmode="numeric" />
+						<span id="calc-output" class="calc-output">Enter a value to see the arithmetic.</span>
+					</div>
+					<p class="small-note">This is a rough rule of thumb, not a validated threshold. Some people need a lower ceiling, some can sit higher. Adjust it based on what your 48-hour pattern tells you, and treat it as one signal among several.</p>
+				</div>
+				<div class="warn">
+					<strong>If you take a beta blocker or ivabradine, heart rate ceilings are unreliable for you.</strong>
+					These medications lower heart rate directly, so the number on your watch stops reflecting effort. You can
+					be working much too hard at an apparently safe heart rate. Perceived exertion should carry more weight:
+					keep effort at a level where you could talk comfortably, and stop before anything feels like work.
+					<label class="meds-check"><input type="checkbox" id="hr-meds" /> I take one of these medications (this note will be repeated next to your log)</label>
+				</div>
+				<h3>Limit time above the ceiling</h3>
+				<p>
+					The ceiling is not a line you must never cross. Standing up will cross it, for some people repeatedly.
+					What matters more is cumulative time spent above it. If your device shows time in heart rate zones, watching
+					minutes-above-ceiling per day tells you more than any single reading. Many people find their week stabilises
+					when that number comes down, before anything else changes.
+				</p>
+			</section>
+
+			<section>
+				<h2>Counter-pressure manoeuvres</h2>
+				<p>When you have to be upright and symptoms build, these use muscle tension to push blood back up from the legs. They are standard advice in orthostatic intolerance, and they are worth practising before you need them:</p>
+				<ul>
+					<li><strong>Leg crossing with tension.</strong> Cross one leg over the other while standing and squeeze thighs, buttocks, and calves hard for 15 to 30 seconds.</li>
+					<li><strong>Whole-body tensing.</strong> Clench fists, tense arms, buttocks, and legs together, hold, release, repeat.</li>
+					<li><strong>Squatting or perching.</strong> A brief squat, or perching on a stool or counter edge, cuts the pooling distance. Sitting with knees to chest works too.</li>
+					<li><strong>Toe raises and calf pumps.</strong> Rocking onto tiptoes repeatedly uses the calf muscles as a pump when you are stuck standing in a queue.</li>
+				</ul>
+				<p class="small-note">If a manoeuvre reliably fails to help and you feel a faint coming on, do not fight it upright: sit or lie down and raise your legs.</p>
+			</section>
+
+			<section>
+				<h2>Gentle movement, no progression target</h2>
+				<p>
+					Pacing does not mean no movement. On days when it fits inside the envelope, gentle recumbent movement helps
+					maintain what you have: stretching lying down, slow leg movements in bed, short spells of recumbent pedalling
+					if you have access to equipment, gentle range-of-motion work. The defining feature is that there is
+					<strong>no target and no ladder</strong>. A day without movement is not a failure, and a good week does not
+					mean next week should be bigger.
+				</p>
+				<p>
+					If you later screen clear of PEM and want a structured, cautious ladder, that is what the
+					<a href="/tools/exercise-progression/">exercise progression page</a> is for. It stays gated behind the
+					readiness screen.
+				</p>
+			</section>
+
+			<!-- 48-hour follow-up prompts -->
+			<section id="followups-section" hidden>
+				<h2>48-hour checks due</h2>
+				<p class="small-note">Two days after each logged session, this asks how you were. The delayed answer is the honest one in post-viral illness.</p>
+				<div id="followups" class="followups"></div>
+			</section>
+
+			<!-- Session log -->
+			<section>
+				<h2>Session log</h2>
+				<p class="storage-note">Stored on this device only, never sent anywhere. Clearing browser data or switching device loses the record, so an occasional export is worth doing.</p>
+				<form id="log-form" class="log-form">
+					<div class="field-row">
+						<label>Date <input type="date" id="log-date" required /></label>
+						<label>What you did <input type="text" id="log-activity" placeholder="e.g. recumbent stretching, short walk" required maxlength="120" /></label>
+						<label>Minutes <input type="number" id="log-minutes" min="1" max="600" inputmode="numeric" /></label>
+					</div>
+					<div class="field-row">
+						<label>How you felt afterwards, 0 (no symptom impact) to 10 (severe)
+							<select id="log-felt" required>
+								<option value="" selected disabled>Choose</option>
+								{Array.from({ length: 11 }, (_, i) => <option value={i}>{i}</option>)}
+							</select>
+						</label>
+						<label class="grow">Notes (optional) <input type="text" id="log-notes" maxlength="200" /></label>
+					</div>
+					<button type="submit" class="primary-btn">Log session</button>
+					<span id="log-saved" class="saved-note" hidden>Saved. A 48-hour check will appear here in two days.</span>
+				</form>
+				<div id="recent-sessions"></div>
+			</section>
+
+			<!-- Data controls -->
+			<section class="data-section">
+				<h2>Your data</h2>
+				<p class="small-note">Everything on this page lives in your browser's local storage. Export it now and then so the record survives a cleared browser, and so you can hand it to a clinician. A <a href="/tools/exercise-progression/#printable">printable blank log sheet</a> is available if you would rather use paper.</p>
+				<div class="data-actions">
+					<button type="button" id="export-btn" class="secondary-btn">Export everything as CSV</button>
+					<button type="button" id="clear-btn" class="danger-btn">Clear all data on this device</button>
+					<span id="clear-confirm" hidden>
+						This deletes your screen result and every logged session. It cannot be undone.
+						<button type="button" id="clear-yes" class="danger-btn">Yes, delete everything</button>
+						<button type="button" id="clear-no" class="secondary-btn">Cancel</button>
+					</span>
+				</div>
+			</section>
+
+			<div class="results-disclaimer">
+				<h3>About this page</h3>
+				<p>This page describes widely used self-management approaches for post-viral conditions and orthostatic intolerance. None of it is individual medical advice, the heart rate heuristic is not a validated threshold, and your own pattern, logged honestly, outranks any rule here. Discuss significant changes with your clinician.</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+import { loadStore, saveStore, clearStore, addSession, dueFollowUps, fmtDate, todayISO, screenAgeDays, downloadCSV } from '../../scripts/exercise-store';
+
+const store = loadStore();
+
+// ── Screen banner ──
+const banner = document.getElementById('screen-banner') as HTMLElement;
+const age = screenAgeDays(store);
+if (!store.screen) {
+	banner.innerHTML = `You have not taken the <a href="/tools/exercise-readiness/">readiness screen</a> yet. It takes a few minutes and checks red flags and PEM first.`;
+	banner.hidden = false;
+} else if (age !== null && age > 90) {
+	banner.innerHTML = `Your readiness screen is over 3 months old. PEM status changes over time, so it is worth <a href="/tools/exercise-readiness/">retaking it</a>.`;
+	banner.hidden = false;
+}
+
+// ── Comorbidity notes carried through from the screen ──
+const comorbid = document.getElementById('comorbid-banner') as HTMLElement;
+if (store.screen && (store.screen.heds || store.screen.mcas)) {
+	const notes = [];
+	if (store.screen.heds) notes.push('<strong>Hypermobility note:</strong> favour low resistance and controlled movement; joints tolerate load better than stretch.');
+	if (store.screen.mcas) notes.push('<strong>MCAS note:</strong> heat and exertion can be triggers; change one thing at a time and log reactions in the notes field.');
+	comorbid.innerHTML = notes.join('<br>');
+	comorbid.hidden = false;
+}
+
+// ── HR ceiling calculator ──
+const rhrInput = document.getElementById('rhr-input') as HTMLInputElement;
+const calcOut = document.getElementById('calc-output') as HTMLElement;
+if (store.prefs.rhr) rhrInput.value = String(store.prefs.rhr);
+
+function renderCalc() {
+	const v = parseInt(rhrInput.value, 10);
+	if (!Number.isFinite(v) || v < 30 || v > 120) {
+		calcOut.textContent = 'Enter a value to see the arithmetic.';
+		return;
+	}
+	calcOut.innerHTML = `${v} + 25 = <strong>${v + 25} bpm</strong> as a starting ceiling`;
+	store.prefs.rhr = v;
+	store.prefs.ceiling = v + 25;
+	saveStore(store);
+}
+rhrInput.addEventListener('input', renderCalc);
+renderCalc();
+
+const medsBox = document.getElementById('hr-meds') as HTMLInputElement;
+medsBox.checked = !!store.prefs.hrMeds;
+medsBox.addEventListener('change', () => {
+	store.prefs.hrMeds = medsBox.checked;
+	saveStore(store);
+	renderSessions();
+});
+
+// ── Follow-ups ──
+function renderFollowUps() {
+	const due = dueFollowUps(store);
+	const section = document.getElementById('followups-section') as HTMLElement;
+	const wrap = document.getElementById('followups') as HTMLElement;
+	section.hidden = due.length === 0;
+	wrap.innerHTML = due.map(s => `
+		<div class="fu-card" data-id="${s.id}">
+			<p>You logged <strong>${s.activity.replace(/</g, '&lt;')}</strong> on <strong>${fmtDate(s.date, true)}</strong>. How were you two days later?</p>
+			<div class="fu-verdicts">
+				<button type="button" data-verdict="better">Better than before</button>
+				<button type="button" data-verdict="same">About the same</button>
+				<button type="button" data-verdict="worse">Worse</button>
+			</div>
+			<label class="fu-score">Symptom impact that day, 0 to 10:
+				<select>${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}</select>
+			</label>
+		</div>
+	`).join('');
+
+	wrap.querySelectorAll<HTMLButtonElement>('button[data-verdict]').forEach(btn => {
+		btn.addEventListener('click', () => {
+			const card = btn.closest<HTMLElement>('.fu-card')!;
+			const session = store.sessions.find(s => s.id === card.dataset.id);
+			if (!session) return;
+			session.followUp.completedAt = new Date().toISOString();
+			session.followUp.verdict = btn.dataset.verdict as 'better' | 'same' | 'worse';
+			session.followUp.score = parseInt(card.querySelector('select')!.value, 10);
+			saveStore(store);
+			renderFollowUps();
+			renderSessions();
+		});
+	});
+}
+
+// ── Session log ──
+(document.getElementById('log-date') as HTMLInputElement).value = todayISO();
+
+document.getElementById('log-form')?.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const date = (document.getElementById('log-date') as HTMLInputElement).value;
+	const activity = (document.getElementById('log-activity') as HTMLInputElement).value.trim();
+	const minutes = parseInt((document.getElementById('log-minutes') as HTMLInputElement).value, 10);
+	const felt = (document.getElementById('log-felt') as HTMLSelectElement).value;
+	if (!date || !activity || felt === '') return;
+	addSession(store, {
+		date, context: 'pacing', activity,
+		minutes: Number.isFinite(minutes) ? minutes : undefined,
+		feltAfter: parseInt(felt, 10),
+		notes: (document.getElementById('log-notes') as HTMLInputElement).value.trim() || undefined,
+	});
+	saveStore(store);
+	(document.getElementById('log-form') as HTMLFormElement).reset();
+	(document.getElementById('log-date') as HTMLInputElement).value = todayISO();
+	const saved = document.getElementById('log-saved') as HTMLElement;
+	saved.hidden = false;
+	setTimeout(() => { saved.hidden = true; }, 4000);
+	renderSessions();
+	renderFollowUps();
+});
+
+function renderSessions() {
+	const wrap = document.getElementById('recent-sessions') as HTMLElement;
+	const recent = [...store.sessions].reverse().slice(0, 10);
+	if (recent.length === 0) { wrap.innerHTML = ''; return; }
+	const medsNote = store.prefs.hrMeds
+		? `<p class="meds-reminder">Reminder: you flagged a heart rate lowering medication, so judge sessions by perceived exertion rather than heart rate.</p>`
+		: '';
+	wrap.innerHTML = `${medsNote}
+		<table class="log-table">
+			<thead><tr><th>Date</th><th>Activity</th><th>Felt after</th><th>48h check</th></tr></thead>
+			<tbody>
+				${recent.map(s => `
+					<tr>
+						<td>${fmtDate(s.date)}</td>
+						<td>${s.activity.replace(/</g, '&lt;')}${s.minutes ? `, ${s.minutes} min` : ''}${s.context === 'progression' ? ' <em>(progression)</em>' : ''}</td>
+						<td>${s.feltAfter}/10</td>
+						<td>${s.followUp.completedAt ? `${s.followUp.verdict}${s.followUp.score != null ? `, ${s.followUp.score}/10` : ''}` : s.followUp.due <= todayISO() ? 'due now' : `due ${fmtDate(s.followUp.due)}`}</td>
+					</tr>`).join('')}
+			</tbody>
+		</table>`;
+}
+
+renderFollowUps();
+renderSessions();
+
+// ── Data controls ──
+document.getElementById('export-btn')?.addEventListener('click', () => downloadCSV(store));
+
+const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+const clearConfirm = document.getElementById('clear-confirm') as HTMLElement;
+clearBtn.addEventListener('click', () => { clearBtn.hidden = true; clearConfirm.hidden = false; });
+document.getElementById('clear-no')?.addEventListener('click', () => { clearConfirm.hidden = true; clearBtn.hidden = false; });
+document.getElementById('clear-yes')?.addEventListener('click', () => {
+	clearStore();
+	window.location.reload();
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.25em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 1.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.5em; }
+	.description { margin-bottom: 0.75em; }
+
+	section { margin-bottom: 2.25em; }
+	section h2 { font-size: 1.3em; margin-bottom: 0.4em; }
+	section h3 { font-size: 1.05em; margin-top: 1.25em; }
+
+	.banner {
+		border: 1px solid #e8c9a0; background: #fdf3e7; color: #9a5b13;
+		border-radius: 6px; padding: 0.8em 1.1em; font-size: 0.92em; margin-bottom: 1.25em;
+	}
+	.banner :global(a) { color: inherit; font-weight: 700; }
+	.banner.info { border-color: rgb(var(--gray-light)); background: var(--accent-light); color: rgb(var(--gray-dark)); }
+
+	.calc {
+		border: 1px solid rgb(var(--gray-light)); border-radius: 8px;
+		padding: 1em 1.25em; margin: 1em 0;
+	}
+	.calc label { font-size: 0.92em; font-weight: 700; }
+	.calc-row { display: flex; align-items: center; gap: 1em; margin: 0.6em 0; flex-wrap: wrap; }
+	.calc input { width: 6em; padding: 0.5em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; font-family: inherit; }
+	.calc-output { font-size: 1.05em; }
+	.calc-output strong { color: var(--accent); font-size: 1.15em; }
+
+	.warn {
+		border: 1px solid #e8c9a0; background: #fdf3e7;
+		border-radius: 6px; padding: 0.9em 1.1em; font-size: 0.92em;
+		color: rgb(var(--gray-dark)); margin: 1em 0; line-height: 1.6;
+	}
+	.meds-check { display: block; margin-top: 0.6em; font-weight: 700; cursor: pointer; }
+
+	.small-note { font-size: 0.85em; color: rgb(var(--gray)); }
+	.storage-note { font-size: 0.85em; color: rgb(var(--gray)); margin-bottom: 1em; }
+
+	/* Follow-up cards are injected by script. */
+	.followups :global(.fu-card) {
+		border: 1px solid var(--accent); border-radius: 8px;
+		padding: 1em 1.2em; margin-bottom: 0.75em; background: var(--accent-light);
+	}
+	.followups :global(.fu-card p) { margin: 0 0 0.6em; font-size: 0.95em; }
+	.followups :global(.fu-verdicts) { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 0.6em; }
+	.followups :global(.fu-verdicts button) {
+		font-family: inherit; font-size: 0.88em; font-weight: 700;
+		padding: 0.5em 1em; border-radius: 5px; cursor: pointer;
+		background: #fff; border: 1px solid var(--accent); color: var(--accent-dark);
+	}
+	.followups :global(.fu-verdicts button:hover) { background: var(--accent); color: #fff; }
+	.followups :global(.fu-score) { font-size: 0.85em; }
+	.followups :global(.fu-score select) { margin-left: 0.4em; padding: 0.25em; font-family: inherit; }
+
+	.log-form { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 1em 1.25em; margin-bottom: 1.25em; }
+	.field-row { display: flex; gap: 1em; flex-wrap: wrap; margin-bottom: 0.75em; }
+	.field-row label { display: flex; flex-direction: column; gap: 0.25em; font-size: 0.85em; font-weight: 700; color: rgb(var(--gray-dark)); }
+	.field-row label.grow { flex: 1; min-width: 12em; }
+	.field-row input, .field-row select { padding: 0.5em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; font-family: inherit; font-weight: 400; }
+	.saved-note { font-size: 0.85em; color: #1e6b3c; margin-left: 0.75em; }
+
+	#recent-sessions :global(.log-table) { font-size: 0.85em; }
+	#recent-sessions :global(.meds-reminder) {
+		font-size: 0.85em; color: #9a5b13; background: #fdf3e7;
+		border-radius: 6px; padding: 0.6em 0.9em;
+	}
+
+	.primary-btn {
+		background: var(--accent); color: #fff; border: 1px solid var(--accent);
+		font-family: inherit; font-size: 0.95em; font-weight: 700;
+		padding: 0.6em 1.4em; border-radius: 5px; cursor: pointer;
+	}
+	.primary-btn:hover { background: var(--accent-dark); }
+	.secondary-btn {
+		background: none; color: var(--accent); border: 1px solid var(--accent);
+		font-family: inherit; font-size: 0.9em; font-weight: 700;
+		padding: 0.55em 1.2em; border-radius: 5px; cursor: pointer;
+	}
+	.secondary-btn:hover { background: var(--accent-light); }
+	.danger-btn {
+		background: none; color: #9f1239; border: 1px solid #9f1239;
+		font-family: inherit; font-size: 0.9em; font-weight: 700;
+		padding: 0.55em 1.2em; border-radius: 5px; cursor: pointer;
+	}
+	.danger-btn:hover { background: #9f1239; color: #fff; }
+	.data-actions { display: flex; gap: 0.75em; flex-wrap: wrap; align-items: center; font-size: 0.9em; }
+	#clear-confirm { color: #9f1239; }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; margin-bottom: 0.5em; }
+
+	@media (max-width: 600px) {
+		.field-row { flex-direction: column; gap: 0.6em; }
+	}
+</style>

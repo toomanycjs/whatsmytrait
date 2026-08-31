@@ -1153,25 +1153,27 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	gap: 0.75rem;
 	margin-bottom: 2rem;
 }
-.summary-card {
+/* Cards are injected by script and never get Astro's scope attribute,
+   so anchor them to the static .summary-cards container. */
+.summary-cards :global(.summary-card) {
 	border: 1.5px solid #e5e7eb;
 	border-radius: 12px;
 	padding: 1rem 1.1rem;
 	background: #f9fafb;
 }
-.summary-card.card-flagged {
+.summary-cards :global(.summary-card.card-flagged) {
 	background: #fff1f2;
 	border-color: #fecdd3;
 }
-.card-value {
+.summary-cards :global(.card-value) {
 	font-size: 1.75rem;
 	font-weight: 700;
 	color: #111827;
 	line-height: 1;
 	margin-bottom: 0.3rem;
 }
-.card-flagged .card-value { color: #9f1239; }
-.card-label {
+.summary-cards :global(.card-flagged .card-value) { color: #9f1239; }
+.summary-cards :global(.card-label) {
 	font-size: 0.8rem;
 	font-weight: 600;
 	color: #6b7280;
@@ -1179,7 +1181,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	letter-spacing: 0.04em;
 	margin-bottom: 0.35rem;
 }
-.card-detail { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+.summary-cards :global(.card-detail) { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
 
 .results-tables { display: grid; gap: 1.5rem; }
 @media (min-width: 560px) {
@@ -1224,8 +1226,8 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	line-height: 1.7;
 	color: #1e293b;
 }
-.interpretation-box p { margin: 0 0 0.75rem; }
-.interpretation-box p:last-child { margin-bottom: 0; }
+.interpretation-box :global(p) { margin: 0 0 0.75rem; }
+.interpretation-box :global(p:last-child) { margin-bottom: 0; }
 
 .threshold-box {
 	background: #f9fafb;
@@ -1286,7 +1288,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	#screen-results { display: block !important; }
 	.overlay { display: none !important; }
 	main { padding: 0; max-width: 100%; }
-	.summary-card.card-flagged { border: 2px solid #000; }
+	.summary-cards :global(.summary-card.card-flagged) { border: 2px solid #000; }
 	body { font-size: 12pt; }
 	.timer-value { font-size: 2rem; }
 }

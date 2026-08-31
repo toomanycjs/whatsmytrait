@@ -222,6 +222,7 @@ const durationOptions = [
 					<p>A symptom counts as present when it occurs at least half the time <em>and</em> is at least moderate. This is the standard 2/2 threshold used across the DePaul questionnaires. PEM is indicated when at least one of the five core symptoms meets it.</p>
 					<p>The supplementary questions describe the character of your PEM. In the research literature, worsening after minimal physical or mental effort together with a recovery time of <strong>14 hours or more</strong> is the pattern most consistent with ME/CFS-type PEM, as distinct from ordinary post-exercise fatigue, which resolves within a few hours.</p>
 					<p>If PEM is indicated, the most practically useful next steps are usually: learning about pacing before attempting any structured increase in activity, and taking these results to your GP or specialist. The full <a href="/tools/dsq-2/">DSQ-2</a> gives a complete symptom profile with screening against the ME/CFS case definitions, and the <a href="/tools/funcap/">FUNCAP questionnaire</a> documents what activity currently costs you.</p>
+					<p>Your headline result is saved on this device only, never sent anywhere, so that the <a href="/tools/exercise-readiness/">exercise readiness screen</a> can pick it up automatically.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the symptom pattern you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
 
@@ -304,6 +305,12 @@ form.addEventListener('submit', (e) => {
 	});
 	const metCount = rows.filter(r => r.met).length;
 	const pemIndicated = metCount >= 1;
+
+	// Save the headline result on this device so the exercise readiness screen
+	// can pick it up. Nothing is sent anywhere.
+	try {
+		localStorage.setItem('pvr-dsq-pem-result', JSON.stringify({ date: new Date().toISOString(), pemIndicated }));
+	} catch { /* storage unavailable; the tool still works */ }
 
 	const physworse = getVal('physworse') === 'yes';
 	const mentworse = getVal('mentworse') === 'yes';
@@ -472,13 +479,14 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.breakdown-table { margin: 0.5em 0 1em; font-size: 0.88em; }
 
 	.pattern { display: flex; flex-direction: column; }
-	.pattern-row {
+	/* Injected by script: anchor to the static .pattern container. */
+	.pattern :global(.pattern-row) {
 		display: flex; justify-content: space-between; gap: 1em;
 		padding: 0.55em 0; border-bottom: 1px solid rgb(var(--gray-light));
 		font-size: 0.92em;
 	}
-	.pattern-q { color: rgb(var(--gray-dark)); }
-	.pattern-a { font-weight: 700; white-space: nowrap; }
+	.pattern :global(.pattern-q) { color: rgb(var(--gray-dark)); }
+	.pattern :global(.pattern-a) { font-weight: 700; white-space: nowrap; }
 
 	.results-disclaimer {
 		font-size: 0.88em; color: rgb(var(--gray-dark));
@@ -500,7 +508,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		.segmented { gap: 0.25em; }
 		.segmented label { font-size: 0.72em; padding: 0.45em 0.15em; min-height: 3em; }
 		.segmented.vertical label { font-size: 0.85em; min-height: 0; }
-		.pattern-row { flex-direction: column; gap: 0.15em; }
-		.pattern-a { white-space: normal; }
+		.pattern :global(.pattern-row) { flex-direction: column; gap: 0.15em; }
+		.pattern :global(.pattern-a) { white-space: normal; }
 	}
 </style>

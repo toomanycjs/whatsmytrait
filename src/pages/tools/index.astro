@@ -83,12 +83,6 @@ const questionnaires = [
 		badge: 'Questionnaire',
 	},
 	{
-		title: 'NASA Lean Test Guide',
-		description: 'Interactive guide and timer for performing a poor man\'s tilt table test at home, with fields to log your HR readings at each stage.',
-		href: '/tools/nasa-lean-test/',
-		badge: 'Interactive guide',
-	},
-	{
 		title: '2016 ACR Fibromyalgia Survey',
 		description: 'Self-report fibromyalgia screening questionnaire with Widespread Pain Index, Symptom Severity Scale, and FS severity score. Based on the 2016 revised ACR criteria.',
 		href: '/tools/fibromyalgia-survey/',
@@ -99,6 +93,33 @@ const questionnaires = [
 		description: '9-point self-assessment for generalised joint hypermobility, with an illustration for each manoeuvre and the age-adjusted threshold explained. One component of the 2017 hypermobile EDS criteria.',
 		href: '/tools/beighton-score/',
 		badge: 'Questionnaire',
+	},
+];
+
+const guides = [
+	{
+		title: 'Exercise readiness screen',
+		description: 'Three quick checks before starting any movement plan: red flags, post-exertional malaise, and relevant comorbidities. Routes you to the page that fits your situation.',
+		href: '/tools/exercise-readiness/',
+		badge: 'Interactive guide',
+	},
+	{
+		title: 'Pacing and heart rate ceiling',
+		description: 'The energy envelope in plain language, a resting-heart-rate-based ceiling with the arithmetic shown, counter-pressure manoeuvres, and a private session log.',
+		href: '/tools/pacing-and-heart-rate/',
+		badge: 'Interactive guide',
+	},
+	{
+		title: 'Exercise progression for orthostatic intolerance',
+		description: 'A hold-by-default record keeper informed by the CHOP modified Dallas programme and Levine\'s protocol. You pick the tier; it keeps the record and asks how you were 48 hours later.',
+		href: '/tools/exercise-progression/',
+		badge: 'Interactive guide',
+	},
+	{
+		title: 'NASA Lean Test Guide',
+		description: 'Interactive guide and timer for performing a poor man\'s tilt table test at home, with fields to log your HR readings at each stage.',
+		href: '/tools/nasa-lean-test/',
+		badge: 'Interactive guide',
 	},
 	{
 		title: 'Which questionnaire should I take?',
@@ -135,7 +156,7 @@ const sheets = [
 	<head>
 		<BaseHead
 			title="Free post-viral symptom tools: questionnaires, trackers, and self-assessments"
-			description="15 free interactive questionnaires with instant scoring: DSQ-2 and DSQ-PEM for ME/CFS, COMPASS-31 and the Malmö POTS score for dysautonomia, FUNCAP and PCFS for functional capacity, RAND-36, WHO-5, Nijmegen, and more. Plus a NASA lean test guide and free symptom trackers."
+			description="15 free interactive questionnaires with instant scoring: DSQ-2 and DSQ-PEM for ME/CFS, COMPASS-31 and the Malmö POTS score for dysautonomia, FUNCAP and PCFS for functional capacity, RAND-36, WHO-5, and more. Plus guides for pacing, heart rate ceilings, exercise readiness, and the NASA lean test."
 		/>
 <script type="application/ld+json">
 {
@@ -166,6 +187,24 @@ const sheets = [
 				<h2>Interactive questionnaires</h2>
 				<ul class="tool-list">
 					{questionnaires.map(tool => (
+						<li>
+							<a href={tool.href} class="tool-card">
+								<div class="tool-meta">
+									<span class="tool-badge">{tool.badge}</span>
+								</div>
+								<h3>{tool.title}</h3>
+								<p>{tool.description}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section>
+				<h2>Interactive guides</h2>
+				<p class="section-note">Guided tools rather than questionnaires: screens, timers, and record keepers that run entirely in your browser.</p>
+				<ul class="tool-list">
+					{guides.map(tool => (
 						<li>
 							<a href={tool.href} class="tool-card">
 								<div class="tool-meta">

@@ -1,0 +1,713 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ToolPurpose from '../../components/ToolPurpose.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const tiers = [
+	{ n: 1, name: 'Lying down, gentle', desc: 'Stretching and range-of-motion work done lying down. Slow leg movements in bed. Very short, very easy.' },
+	{ n: 2, name: 'Recumbent, short', desc: 'Short spells on a recumbent bike, rowing machine, or in a pool, at an easy, conversational effort.' },
+	{ n: 3, name: 'Recumbent, building', desc: 'Longer steady recumbent sessions. Light leg resistance work (bodyweight or light bands), still horizontal or seated.' },
+	{ n: 4, name: 'Semi-upright', desc: 'Upright stationary bike or seated workouts. The body is more vertical but still supported.' },
+	{ n: 5, name: 'Upright, short bouts', desc: 'Short bouts of walking or gentle elliptical work, broken up with recovery.' },
+	{ n: 6, name: 'Upright, sustained', desc: 'Longer walking or elliptical sessions. The end of the published calendars, not a requirement.' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Exercise progression for orthostatic intolerance: a cautious, self-paced record keeper"
+			description="A hold-by-default exercise progression tool for POTS and orthostatic intolerance, informed by the CHOP modified Dallas programme and Levine's published protocol. You pick the tier, the tool keeps the record and never advances you on its own."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Exercise progression", "item": "https://www.postviralrecovery.com/tools/exercise-progression/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does this tool never advance me automatically?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A paper exercise calendar advances whether or not your body kept up, and in post-viral conditions that is exactly the wrong default. Here, repeating a week is the normal outcome, and moving up a tier is always an explicit choice you make, only unlockable after a completed week whose 48-hour checks showed no symptom rise."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is the evidence behind recumbent exercise programmes for POTS?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The strongest published work comes from Levine and colleagues, whose three-month programmes starting with recumbent modes improved fitness and symptoms in many participants. The studies are small, largely uncontrolled, and used selected patients. The Children's Hospital of Philadelphia adaptation is widely circulated but has never been separately validated. This page explains that structure; it does not prescribe it."}
+        },
+        {
+          "@type": "Question",
+          "name": "Why is this page gated behind a readiness screen?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Because progressive exercise assumes post-exertional malaise is absent. If PEM is present, structured progression can cause prolonged worsening, so the readiness screen routes to pacing instead. The gate also checks red-flag symptoms that need a clinician before any plan."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main id="main">
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Exercise progression for orthostatic intolerance</h1>
+				<p class="subtitle">Learning from the CHOP modified Dallas programme and Levine's published protocol</p>
+				<ToolPurpose />
+			</div>
+
+			<!-- Gates -->
+			<div id="gate-none" class="gate" hidden>
+				<h2>Take the readiness screen first</h2>
+				<p>This page is gated behind a short screen that checks red-flag symptoms and post-exertional malaise. It takes a few minutes, and this page unlocks automatically if the screen comes back clear.</p>
+				<a href="/tools/exercise-readiness/" class="primary-btn linklike">Take the readiness screen</a>
+			</div>
+
+			<div id="gate-redflag" class="gate" hidden>
+				<h2>See your clinician before starting anything</h2>
+				<p>Your readiness screen recorded a red flag. That needs a clinician's assessment before any exercise plan, including this one. When you have been cleared, <a href="/tools/exercise-readiness/">retake the screen</a> and this page will open.</p>
+			</div>
+
+			<div id="gate-pem" class="gate" hidden>
+				<h2>This page is not offered on your route</h2>
+				<p>
+					Your readiness screen indicated post-exertional malaise, or that you were not sure. Progressive exercise
+					programmes assume PEM is absent; with PEM present they carry a real risk of prolonged worsening. That is why
+					this tool routes you to pacing instead. It is the safer approach, and it is a real approach, not a waiting room.
+				</p>
+				<a href="/tools/pacing-and-heart-rate/" class="primary-btn linklike">Go to pacing and heart rate</a>
+				<p class="small-note">If your situation changes, <a href="/tools/exercise-readiness/">retake the readiness screen</a>. PEM can resolve over time, and the gate follows your latest result.</p>
+			</div>
+
+			<!-- Main content, shown only when screen outcome is pem-negative -->
+			<div id="content" hidden>
+				<div id="stale-banner" class="banner" hidden></div>
+				<div id="comorbid-banner" class="banner info" hidden></div>
+
+				<div class="evidence-box">
+					<h2>What the evidence does and does not show</h2>
+					<ul>
+						<li>The Levine group's programmes improved fitness and symptoms for many participants over three months, but the studies are <strong>small and largely uncontrolled</strong>, with selected patients and meaningful dropout.</li>
+						<li>The CHOP modification of the Dallas programme is widely circulated and clinically popular, but it has <strong>never been separately validated</strong>.</li>
+						<li>Chronic fatigue conditions are multi-faceted and very individual, so even genuinely evidence-based protocols can be unsuitable for a given person. Take things slowly, in your own time, and let your body and how you are feeling be the guide.</li>
+					</ul>
+					<p class="sources">
+						Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/21690484/" rel="noopener">Fu, Levine et al., Hypertension 2011</a> ·
+						<a href="https://pubmed.ncbi.nlm.nih.gov/26690066/" rel="noopener">George et al., community implementation, 2016</a> ·
+						<a href="https://www.dysautonomiainternational.org/pdf/CHOP_Modified_Dallas_POTS_Exercise_Program.pdf" rel="noopener">Dysautonomia International: CHOP modified Dallas programme (PDF)</a>.
+						This page describes those sources in its own words and reproduces nothing from them.
+					</p>
+				</div>
+
+				<section>
+					<h2>How this tool works</h2>
+					<p>
+						This page scaffolds your decisions. It does not make them. You pick a tier, you set your own session
+						structure and ceiling, and you log what you did. Two days after each session it asks how you actually
+						were, because in orthostatic and post-viral illness the delayed answer is the honest one. It never moves
+						you up a tier by itself: <strong>repeating a week is the normal outcome</strong>, and advancing is a
+						button you press, which only unlocks after a completed week whose 48-hour checks showed no worsening.
+					</p>
+				</section>
+
+				<section>
+					<h2>The ladder</h2>
+					<p>Published programmes run from horizontal training to upright endurance over several months. Pick where you are, not where a calendar says you should be. Starting lower than you think you need is the cheap mistake; starting higher is the expensive one.</p>
+					<div id="tier-list" class="tier-list">
+						{tiers.map(t => (
+							<div class="tier-card" data-tier={t.n}>
+								<div class="tier-head">
+									<span class="tier-num">{t.n}</span>
+									<strong>{t.name}</strong>
+									<button type="button" class="tier-pick secondary-btn" data-tier={t.n}>This is my tier</button>
+								</div>
+								<p>{t.desc}</p>
+							</div>
+						))}
+					</div>
+					<details class="ref-table">
+						<summary>Where do people with my functional score tend to sit? (extrapolation, not a rule)</summary>
+						<p class="small-note">
+							Nothing computes your tier from these scores, because no published mapping exists. This table is an
+							extrapolation to orient yourself with, alongside the <a href="/tools/bell-scale/">Bell scale</a> and the
+							<a href="/tools/pcfs/">PCFS grade</a>. Your own judgement, and your clinician's, outrank it.
+						</p>
+						<table>
+							<thead><tr><th>Bell scale</th><th>PCFS grade</th><th>Ballpark starting tier</th></tr></thead>
+							<tbody>
+								<tr><td>0 to 30</td><td>4</td><td>Tier 1, if activity is appropriate at all: ask your clinician</td></tr>
+								<tr><td>30 to 50</td><td>3</td><td>Tiers 1 to 2</td></tr>
+								<tr><td>50 to 70</td><td>2</td><td>Tiers 2 to 4</td></tr>
+								<tr><td>70 and up</td><td>0 to 1</td><td>Tiers 4 to 6</td></tr>
+							</tbody>
+						</table>
+					</details>
+				</section>
+
+				<section>
+					<h2>Your session structure</h2>
+					<p>You set every number. The published figures beside each field are reference values from the protocols this page learns from, shown for orientation only.</p>
+					<div class="prefs-grid">
+						<label>Warm-up (minutes) <input type="number" id="pref-warmup" min="0" max="60" inputmode="numeric" /><span class="ref">published: 5 to 10</span></label>
+						<label>Work (minutes) <input type="number" id="pref-work" min="0" max="180" inputmode="numeric" /><span class="ref">published: 10 to 30 early on, longer later</span></label>
+						<label>Cool-down (minutes) <input type="number" id="pref-cooldown" min="0" max="60" inputmode="numeric" /><span class="ref">published: 5 to 10, recumbent</span></label>
+						<label>Heart rate ceiling (bpm) <input type="number" id="pref-ceiling" min="60" max="220" inputmode="numeric" /><span class="ref" id="ceiling-ref">a conversational effort; see the pacing page</span></label>
+						<label>Planned sessions per week <input type="number" id="pref-perweek" min="1" max="7" inputmode="numeric" /><span class="ref">published: 3 to 4</span></label>
+					</div>
+					<div id="meds-warn" class="banner" hidden>
+						You flagged a heart rate lowering medication on the pacing page, so a heart rate ceiling is unreliable for you.
+						Judge sessions by perceived exertion: you should be able to talk comfortably throughout.
+					</div>
+				</section>
+
+				<!-- Step-back interstitial -->
+				<div id="stepback-note" class="stepback" hidden>
+					<h2>Stop and reconsider</h2>
+					<p>
+						Your logged symptom scores have risen for two weeks in a row. That pattern is the tool's signal to stop
+						progressing, not push through. Sensible next moves: step back a tier or two, cut session length, or move
+						back to <a href="/tools/pacing-and-heart-rate/">pacing</a> for a while and let things settle. If the rise
+						continues while you rest, talk to your clinician and take your exported log with you.
+					</p>
+					<button type="button" id="stepback-ack" class="secondary-btn">I have read this</button>
+				</div>
+
+				<!-- 48-hour checks -->
+				<section id="followups-section" hidden>
+					<h2>48-hour checks due</h2>
+					<p class="small-note">Two days after each session, how were you really? This is the question a paper calendar cannot ask.</p>
+					<div id="followups" class="followups"></div>
+				</section>
+
+				<!-- Week panel -->
+				<section id="week-panel" hidden>
+					<h2>This week</h2>
+					<p id="week-status"></p>
+					<ul id="week-checklist" class="week-checklist"></ul>
+					<div class="week-actions">
+						<button type="button" id="repeat-btn" class="primary-btn">Repeat this week</button>
+						<button type="button" id="advance-btn" class="secondary-btn" disabled>Advance a tier</button>
+						<button type="button" id="stepback-btn" class="secondary-btn">Step back a tier</button>
+					</div>
+					<p class="small-note">Repeating is a normal outcome, not a failure. The published calendars themselves expect weeks to be repeated, and holding at a tier that works is a success state.</p>
+				</section>
+
+				<!-- Log -->
+				<section>
+					<h2>Log a session</h2>
+					<p class="storage-note">Stored on this device only, never sent anywhere. Clearing browser data or switching device loses the record, so an occasional export is worth doing.</p>
+					<form id="log-form" class="log-form">
+						<div class="field-row">
+							<label>Date <input type="date" id="log-date" required /></label>
+							<label>What you did <input type="text" id="log-activity" placeholder="e.g. recumbent bike, easy pace" required maxlength="120" /></label>
+							<label>Minutes <input type="number" id="log-minutes" min="1" max="600" inputmode="numeric" /></label>
+						</div>
+						<div class="field-row">
+							<label>How you felt afterwards, 0 (no symptom impact) to 10 (severe)
+								<select id="log-felt" required>
+									<option value="" selected disabled>Choose</option>
+									{Array.from({ length: 11 }, (_, i) => <option value={i}>{i}</option>)}
+								</select>
+							</label>
+							<label class="grow">Notes (optional) <input type="text" id="log-notes" maxlength="200" /></label>
+						</div>
+						<button type="submit" class="primary-btn">Log session</button>
+						<span id="log-saved" class="saved-note" hidden>Saved. The 48-hour check appears in two days.</span>
+					</form>
+				</section>
+
+				<!-- Trend -->
+				<section id="trend-section" hidden>
+					<h2>Symptom trend</h2>
+					<p class="small-note">Each point is a session's symptom score: the 48-hour check score where completed, otherwise the same-day score. Lower is better. A flat or falling line while activity holds steady is the pattern you want. Useful to show a clinician.</p>
+					<div id="trend" class="trend"></div>
+				</section>
+
+				<!-- Data -->
+				<section class="data-section" id="printable">
+					<h2>Your data</h2>
+					<p class="small-note">Everything here lives in your browser's local storage on this device. Export or print it now and then so the record survives a cleared browser and can go to appointments.</p>
+					<div class="data-actions">
+						<button type="button" id="export-btn" class="secondary-btn">Export everything as CSV</button>
+						<button type="button" id="print-record-btn" class="secondary-btn">Print my record</button>
+						<button type="button" id="print-blank-btn" class="secondary-btn">Print a blank paper log sheet</button>
+						<button type="button" id="clear-btn" class="danger-btn">Clear all data on this device</button>
+						<span id="clear-confirm" hidden>
+							This deletes your screen result, preferences, and every logged session. It cannot be undone.
+							<button type="button" id="clear-yes" class="danger-btn">Yes, delete everything</button>
+							<button type="button" id="clear-no" class="secondary-btn">Cancel</button>
+						</span>
+					</div>
+				</section>
+
+				<div class="results-disclaimer">
+					<h3>About this page</h3>
+					<p>This page explains the structure of published exercise programmes for orthostatic intolerance and gives you a place to keep your own record against that structure. It does not prescribe a programme, and no part of it calculates what you should do. If you work with a clinician or physiotherapist, this record is designed to be shown to them.</p>
+				</div>
+			</div>
+
+			<!-- Print-only areas -->
+			<div id="print-record" class="print-only" aria-hidden="true"></div>
+			<div id="print-blank" class="print-only" aria-hidden="true">
+				<h1>Exercise session log</h1>
+				<p>One row per session. Fill in the 48-hour column two days later; the delayed answer is the honest one. From postviralrecovery.com/tools/exercise-progression/</p>
+				<table class="blank-table">
+					<thead>
+						<tr>
+							<th style="width:5.5em">Date</th>
+							<th>What you did (activity, minutes)</th>
+							<th style="width:7em">How you felt after (0 to 10)</th>
+							<th style="width:14em" class="boxed">48-hour follow-up (date, better / same / worse, notes)</th>
+						</tr>
+					</thead>
+					<tbody>
+						{Array.from({ length: 14 }, () => (
+							<tr><td>&nbsp;</td><td></td><td></td><td class="boxed"></td></tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+import {
+	loadStore, saveStore, clearStore, addSession, dueFollowUps, advanceCheck,
+	risingTwoWeeks, sessionScore, fmtDate, todayISO, screenAgeDays, downloadCSV,
+} from '../../scripts/exercise-store';
+
+const store = loadStore();
+
+// ── Gate ──
+const gates = {
+	none: document.getElementById('gate-none') as HTMLElement,
+	redflag: document.getElementById('gate-redflag') as HTMLElement,
+	pem: document.getElementById('gate-pem') as HTMLElement,
+	content: document.getElementById('content') as HTMLElement,
+};
+const outcome = store.screen?.outcome;
+if (!store.screen) gates.none.hidden = false;
+else if (outcome === 'redflag') gates.redflag.hidden = false;
+else if (outcome === 'pem-positive') gates.pem.hidden = false;
+else gates.content.hidden = false;
+
+if (!gates.content.hidden) {
+	// ── Banners ──
+	const age = screenAgeDays(store);
+	if (age !== null && age > 90) {
+		const b = document.getElementById('stale-banner') as HTMLElement;
+		b.innerHTML = `Your readiness screen is over 3 months old. PEM status changes over time, so it is worth <a href="/tools/exercise-readiness/">retaking it</a> before progressing further.`;
+		b.hidden = false;
+	}
+	if (store.screen && (store.screen.heds || store.screen.mcas)) {
+		const notes = [];
+		if (store.screen.heds) notes.push('<strong>Hypermobility note:</strong> prioritise controlled movement and low resistance. Recumbent bike and swimming load joints more kindly than impact work, and end-range stretching is not the goal.');
+		if (store.screen.mcas) notes.push('<strong>MCAS note:</strong> exertion and heat can be triggers. Change one variable at a time, keep sessions cool, and log any reactions in the notes field so the pattern is visible.');
+		const b = document.getElementById('comorbid-banner') as HTMLElement;
+		b.innerHTML = notes.join('<br>');
+		b.hidden = false;
+	}
+	if (store.prefs.hrMeds) (document.getElementById('meds-warn') as HTMLElement).hidden = false;
+
+	// ── Prefs ──
+	const prefIds: [string, keyof typeof store.prefs][] = [
+		['pref-warmup', 'warmup'], ['pref-work', 'work'], ['pref-cooldown', 'cooldown'],
+		['pref-ceiling', 'ceiling'], ['pref-perweek', 'perWeek'],
+	];
+	for (const [id, key] of prefIds) {
+		const el = document.getElementById(id) as HTMLInputElement;
+		const v = store.prefs[key];
+		if (typeof v === 'number') el.value = String(v);
+		el.addEventListener('input', () => {
+			const n = parseInt(el.value, 10);
+			(store.prefs as Record<string, unknown>)[key] = Number.isFinite(n) ? n : undefined;
+			saveStore(store);
+			renderWeek();
+		});
+	}
+	if (store.prefs.rhr) {
+		(document.getElementById('ceiling-ref') as HTMLElement).textContent =
+			`your pacing page heuristic: ${store.prefs.rhr} + 25 = ${store.prefs.rhr + 25} bpm`;
+	}
+
+	// ── Tier selection ──
+	function renderTierCards() {
+		document.querySelectorAll<HTMLElement>('.tier-card').forEach(card => {
+			card.classList.toggle('active', parseInt(card.dataset.tier || '0', 10) === store.progression.tier);
+		});
+	}
+	document.querySelectorAll<HTMLButtonElement>('.tier-pick').forEach(btn => {
+		btn.addEventListener('click', () => {
+			const tier = parseInt(btn.dataset.tier || '1', 10);
+			const from = store.progression.tier;
+			store.progression.tier = tier;
+			store.progression.weekStarted = todayISO();
+			store.progression.decisions.push({ date: todayISO(), action: from === null ? 'start' : tier > (from ?? 0) ? 'advance' : tier < (from ?? 0) ? 'stepback' : 'repeat', fromTier: from, toTier: tier });
+			saveStore(store);
+			renderTierCards();
+			renderWeek();
+		});
+	});
+	renderTierCards();
+
+	// ── Week panel ──
+	function renderWeek() {
+		const panel = document.getElementById('week-panel') as HTMLElement;
+		if (store.progression.tier === null) { panel.hidden = true; return; }
+		panel.hidden = false;
+		const check = advanceCheck(store);
+		(document.getElementById('week-status') as HTMLElement).innerHTML =
+			`Tier <strong>${store.progression.tier}</strong>, week started <strong>${fmtDate(store.progression.weekStarted!)}</strong>. ` +
+			`${check.sessionsThisWeek} of ${check.target} planned sessions logged.`;
+		const list = document.getElementById('week-checklist') as HTMLElement;
+		list.innerHTML = check.eligible
+			? '<li class="ok">A full week is logged, every 48-hour check is done, and none reported worsening. Advancing is unlocked. It is still your call, and staying put is fine.</li>'
+			: check.reasons.map(r => `<li>${r}</li>`).join('');
+		(document.getElementById('advance-btn') as HTMLButtonElement).disabled = !check.eligible || store.progression.tier === 6;
+	}
+
+	function decide(action: 'advance' | 'repeat' | 'stepback') {
+		const from = store.progression.tier!;
+		const to = action === 'advance' ? Math.min(6, from + 1) : action === 'stepback' ? Math.max(1, from - 1) : from;
+		store.progression.tier = to;
+		store.progression.weekStarted = todayISO();
+		store.progression.decisions.push({ date: todayISO(), action, fromTier: from, toTier: to });
+		saveStore(store);
+		renderTierCards();
+		renderWeek();
+	}
+	document.getElementById('repeat-btn')?.addEventListener('click', () => decide('repeat'));
+	document.getElementById('advance-btn')?.addEventListener('click', () => decide('advance'));
+	document.getElementById('stepback-btn')?.addEventListener('click', () => decide('stepback'));
+
+	// ── Step-back interstitial ──
+	function renderStepback() {
+		const el = document.getElementById('stepback-note') as HTMLElement;
+		const acked = store.progression.stepbackAck
+			&& (Date.now() - new Date(store.progression.stepbackAck).getTime()) < 7 * 86400000;
+		el.hidden = !risingTwoWeeks(store) || !!acked;
+	}
+	document.getElementById('stepback-ack')?.addEventListener('click', () => {
+		store.progression.stepbackAck = new Date().toISOString();
+		saveStore(store);
+		renderStepback();
+	});
+
+	// ── Follow-ups ──
+	function renderFollowUps() {
+		const due = dueFollowUps(store);
+		const section = document.getElementById('followups-section') as HTMLElement;
+		const wrap = document.getElementById('followups') as HTMLElement;
+		section.hidden = due.length === 0;
+		wrap.innerHTML = due.map(s => `
+			<div class="fu-card" data-id="${s.id}">
+				<p>You logged <strong>${s.activity.replace(/</g, '&lt;')}</strong> on <strong>${fmtDate(s.date, true)}</strong>. How were you two days later?</p>
+				<div class="fu-verdicts">
+					<button type="button" data-verdict="better">Better than before</button>
+					<button type="button" data-verdict="same">About the same</button>
+					<button type="button" data-verdict="worse">Worse</button>
+				</div>
+				<label class="fu-score">Symptom impact that day, 0 to 10:
+					<select>${Array.from({ length: 11 }, (_, i) => `<option value="${i}">${i}</option>`).join('')}</select>
+				</label>
+			</div>
+		`).join('');
+		wrap.querySelectorAll<HTMLButtonElement>('button[data-verdict]').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const card = btn.closest<HTMLElement>('.fu-card')!;
+				const session = store.sessions.find(s => s.id === card.dataset.id);
+				if (!session) return;
+				session.followUp.completedAt = new Date().toISOString();
+				session.followUp.verdict = btn.dataset.verdict as 'better' | 'same' | 'worse';
+				session.followUp.score = parseInt(card.querySelector('select')!.value, 10);
+				saveStore(store);
+				renderFollowUps();
+				renderWeek();
+				renderTrend();
+				renderStepback();
+			});
+		});
+	}
+
+	// ── Logging ──
+	(document.getElementById('log-date') as HTMLInputElement).value = todayISO();
+	document.getElementById('log-form')?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const date = (document.getElementById('log-date') as HTMLInputElement).value;
+		const activity = (document.getElementById('log-activity') as HTMLInputElement).value.trim();
+		const minutes = parseInt((document.getElementById('log-minutes') as HTMLInputElement).value, 10);
+		const felt = (document.getElementById('log-felt') as HTMLSelectElement).value;
+		if (!date || !activity || felt === '') return;
+		addSession(store, {
+			date, context: 'progression', tier: store.progression.tier ?? undefined, activity,
+			minutes: Number.isFinite(minutes) ? minutes : undefined,
+			feltAfter: parseInt(felt, 10),
+			notes: (document.getElementById('log-notes') as HTMLInputElement).value.trim() || undefined,
+		});
+		saveStore(store);
+		(document.getElementById('log-form') as HTMLFormElement).reset();
+		(document.getElementById('log-date') as HTMLInputElement).value = todayISO();
+		const saved = document.getElementById('log-saved') as HTMLElement;
+		saved.hidden = false;
+		setTimeout(() => { saved.hidden = true; }, 4000);
+		renderWeek();
+		renderFollowUps();
+		renderTrend();
+	});
+
+	// ── Trend chart ──
+	function renderTrend() {
+		const section = document.getElementById('trend-section') as HTMLElement;
+		const wrap = document.getElementById('trend') as HTMLElement;
+		const sessions = store.sessions;
+		if (sessions.length < 2) { section.hidden = true; return; }
+		section.hidden = false;
+
+		const W = 600, H = 200, PAD = 28;
+		const points = sessions.map((s, i) => {
+			const x = PAD + (i / (sessions.length - 1)) * (W - 2 * PAD);
+			const y = PAD + ((10 - sessionScore(s)) / 10) * (H - 2 * PAD);
+			return { x, y, s };
+		});
+		const line = points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+		const first = sessions[0], last = sessions[sessions.length - 1];
+		wrap.innerHTML = `
+			<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Line chart of symptom scores per session from ${fmtDate(first.date)} to ${fmtDate(last.date)}. Lower is better.">
+				${[0, 5, 10].map(v => {
+					const y = PAD + ((10 - v) / 10) * (H - 2 * PAD);
+					return `<line x1="${PAD}" y1="${y}" x2="${W - PAD}" y2="${y}" class="grid"></line><text x="${PAD - 6}" y="${y + 4}" class="axis" text-anchor="end">${v}</text>`;
+				}).join('')}
+				<polyline points="${line}" class="trend-line"></polyline>
+				${points.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" class="trend-dot"><title>${fmtDate(p.s.date)}: ${sessionScore(p.s)}/10</title></circle>`).join('')}
+				<text x="${PAD}" y="${H - 6}" class="axis">${fmtDate(first.date)}</text>
+				<text x="${W - PAD}" y="${H - 6}" class="axis" text-anchor="end">${fmtDate(last.date)}</text>
+			</svg>`;
+	}
+
+	renderWeek();
+	renderFollowUps();
+	renderTrend();
+	renderStepback();
+
+	// ── Data controls ──
+	document.getElementById('export-btn')?.addEventListener('click', () => downloadCSV(store));
+
+	function printMode(mode: 'record' | 'blank') {
+		if (mode === 'record') {
+			const rec = document.getElementById('print-record') as HTMLElement;
+			rec.innerHTML = `
+				<h1>Exercise log: ${fmtDate(todayISO())}</h1>
+				<p>Kept with the exercise tools at postviralrecovery.com. Symptom scores run 0 (no impact) to 10 (severe); the 48-hour column is how things were two days after the session.</p>
+				<table>
+					<thead><tr><th>Date</th><th>Context</th><th>Tier</th><th>Activity</th><th>Min</th><th>Felt after</th><th>48h verdict</th><th>48h score</th><th>Notes</th></tr></thead>
+					<tbody>
+						${store.sessions.map(s => `<tr>
+							<td>${fmtDate(s.date)}</td><td>${s.context}</td><td>${s.tier ?? ''}</td>
+							<td>${s.activity.replace(/</g, '&lt;')}</td><td>${s.minutes ?? ''}</td><td>${s.feltAfter}</td>
+							<td>${s.followUp.verdict ?? ''}</td><td>${s.followUp.score ?? ''}</td>
+							<td>${(s.notes ?? '').replace(/</g, '&lt;')} ${(s.followUp.note ?? '').replace(/</g, '&lt;')}</td>
+						</tr>`).join('')}
+					</tbody>
+				</table>`;
+		}
+		document.documentElement.dataset.print = mode;
+		window.print();
+		delete document.documentElement.dataset.print;
+	}
+	document.getElementById('print-record-btn')?.addEventListener('click', () => printMode('record'));
+	document.getElementById('print-blank-btn')?.addEventListener('click', () => printMode('blank'));
+
+	const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+	const clearConfirm = document.getElementById('clear-confirm') as HTMLElement;
+	clearBtn.addEventListener('click', () => { clearBtn.hidden = true; clearConfirm.hidden = false; });
+	document.getElementById('clear-no')?.addEventListener('click', () => { clearConfirm.hidden = true; clearBtn.hidden = false; });
+	document.getElementById('clear-yes')?.addEventListener('click', () => {
+		clearStore();
+		window.location.reload();
+	});
+}
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.25em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 1.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.5em; }
+
+	.gate {
+		border: 1px solid rgb(var(--gray-light));
+		border-left: 4px solid var(--accent);
+		border-radius: 8px;
+		padding: 1.5em 1.75em;
+		margin-bottom: 2em;
+	}
+	.gate h2 { font-size: 1.3em; margin-bottom: 0.4em; }
+	.small-note { font-size: 0.85em; color: rgb(var(--gray)); }
+	.storage-note { font-size: 0.85em; color: rgb(var(--gray)); margin-bottom: 1em; }
+
+	.banner {
+		border: 1px solid #e8c9a0; background: #fdf3e7; color: #9a5b13;
+		border-radius: 6px; padding: 0.8em 1.1em; font-size: 0.92em; margin-bottom: 1.25em;
+	}
+	.banner :global(a) { color: inherit; font-weight: 700; }
+	.banner.info { border-color: rgb(var(--gray-light)); background: var(--accent-light); color: rgb(var(--gray-dark)); }
+
+	.evidence-box {
+		border: 1px solid rgb(var(--gray-light));
+		border-left: 4px solid var(--tools);
+		border-radius: 6px;
+		padding: 1.1em 1.4em;
+		margin-bottom: 2em;
+		font-size: 0.92em;
+	}
+	.evidence-box h2 { font-size: 1.1em; margin-bottom: 0.5em; }
+	.evidence-box ul { margin: 0 0 0.75em; }
+	.evidence-box li { margin-bottom: 0.5em; line-height: 1.55; }
+	.sources { font-size: 0.88em; color: rgb(var(--gray)); margin: 0; }
+
+	section { margin-bottom: 2.25em; }
+	section h2 { font-size: 1.3em; margin-bottom: 0.4em; }
+
+	.tier-list { display: flex; flex-direction: column; gap: 0.6em; margin: 1em 0; }
+	.tier-card {
+		border: 1px solid rgb(var(--gray-light)); border-radius: 8px;
+		padding: 0.9em 1.2em;
+	}
+	.tier-card.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+	.tier-head { display: flex; align-items: center; gap: 0.6em; flex-wrap: wrap; }
+	.tier-head strong { flex: 1; }
+	.tier-num {
+		width: 1.7em; height: 1.7em; line-height: 1.7em; text-align: center;
+		background: var(--tools-bg); color: var(--tools);
+		border-radius: 6px; font-weight: 700; flex-shrink: 0;
+	}
+	.tier-card.active .tier-num { background: var(--accent); color: #fff; }
+	.tier-card p { margin: 0.5em 0 0; font-size: 0.9em; color: rgb(var(--gray-dark)); }
+	.tier-pick { font-size: 0.8em; padding: 0.4em 0.9em; }
+
+	.ref-table { margin-top: 1em; font-size: 0.92em; }
+	.ref-table summary { cursor: pointer; font-weight: 700; }
+	.ref-table table { margin-top: 0.75em; font-size: 0.92em; }
+
+	.prefs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em 1.5em; margin: 1em 0; }
+	.prefs-grid label { display: flex; flex-direction: column; gap: 0.25em; font-size: 0.88em; font-weight: 700; }
+	.prefs-grid input { padding: 0.5em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; font-family: inherit; max-width: 8em; }
+	.prefs-grid .ref { font-weight: 400; font-size: 0.88em; color: rgb(var(--gray)); }
+
+	.stepback {
+		border: 2px solid #9f1239; background: #fdf0f3; border-radius: 8px;
+		padding: 1.25em 1.5em; margin-bottom: 2em;
+	}
+	.stepback h2 { color: #9f1239; font-size: 1.2em; margin-bottom: 0.4em; }
+	.stepback p { font-size: 0.95em; }
+
+	.followups :global(.fu-card) {
+		border: 1px solid var(--accent); border-radius: 8px;
+		padding: 1em 1.2em; margin-bottom: 0.75em; background: var(--accent-light);
+	}
+	.followups :global(.fu-card p) { margin: 0 0 0.6em; font-size: 0.95em; }
+	.followups :global(.fu-verdicts) { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 0.6em; }
+	.followups :global(.fu-verdicts button) {
+		font-family: inherit; font-size: 0.88em; font-weight: 700;
+		padding: 0.5em 1em; border-radius: 5px; cursor: pointer;
+		background: #fff; border: 1px solid var(--accent); color: var(--accent-dark);
+	}
+	.followups :global(.fu-verdicts button:hover) { background: var(--accent); color: #fff; }
+	.followups :global(.fu-score) { font-size: 0.85em; }
+	.followups :global(.fu-score select) { margin-left: 0.4em; padding: 0.25em; font-family: inherit; }
+
+	.week-checklist { font-size: 0.92em; margin: 0.5em 0 1em; }
+	.week-checklist :global(li) { margin-bottom: 0.3em; }
+	.week-checklist :global(li.ok) { color: #1e6b3c; font-weight: 700; list-style: none; margin-left: -1.5em; }
+	.week-actions { display: flex; gap: 0.75em; flex-wrap: wrap; }
+
+	.log-form { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 1em 1.25em; }
+	.field-row { display: flex; gap: 1em; flex-wrap: wrap; margin-bottom: 0.75em; }
+	.field-row label { display: flex; flex-direction: column; gap: 0.25em; font-size: 0.85em; font-weight: 700; color: rgb(var(--gray-dark)); }
+	.field-row label.grow { flex: 1; min-width: 12em; }
+	.field-row input, .field-row select { padding: 0.5em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; font-family: inherit; font-weight: 400; }
+	.saved-note { font-size: 0.85em; color: #1e6b3c; margin-left: 0.75em; }
+
+	.trend :global(svg) { width: 100%; height: auto; }
+	.trend :global(.grid) { stroke: rgb(var(--gray-light)); stroke-width: 1; }
+	.trend :global(.axis) { font-size: 11px; fill: rgb(var(--gray)); font-family: inherit; }
+	.trend :global(.trend-line) { fill: none; stroke: var(--accent); stroke-width: 2; }
+	.trend :global(.trend-dot) { fill: var(--accent); }
+
+	.primary-btn {
+		background: var(--accent); color: #fff; border: 1px solid var(--accent);
+		font-family: inherit; font-size: 0.95em; font-weight: 700;
+		padding: 0.6em 1.4em; border-radius: 5px; cursor: pointer;
+	}
+	.primary-btn:hover { background: var(--accent-dark); }
+	.primary-btn.linklike { display: inline-block; text-decoration: none; }
+	.secondary-btn {
+		background: none; color: var(--accent); border: 1px solid var(--accent);
+		font-family: inherit; font-size: 0.9em; font-weight: 700;
+		padding: 0.55em 1.2em; border-radius: 5px; cursor: pointer;
+	}
+	.secondary-btn:hover:not(:disabled) { background: var(--accent-light); }
+	.secondary-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+	.danger-btn {
+		background: none; color: #9f1239; border: 1px solid #9f1239;
+		font-family: inherit; font-size: 0.9em; font-weight: 700;
+		padding: 0.55em 1.2em; border-radius: 5px; cursor: pointer;
+	}
+	.danger-btn:hover { background: #9f1239; color: #fff; }
+	.data-actions { display: flex; gap: 0.75em; flex-wrap: wrap; align-items: center; font-size: 0.9em; }
+	#clear-confirm { color: #9f1239; }
+
+	.results-disclaimer {
+		font-size: 0.88em; color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; margin-bottom: 0.5em; }
+
+	.print-only { display: none; }
+
+	@media (max-width: 600px) {
+		.prefs-grid { grid-template-columns: 1fr; }
+		.field-row { flex-direction: column; gap: 0.6em; }
+		.week-actions { flex-direction: column; align-items: stretch; }
+	}
+</style>
+
+<style is:global>
+	/* Print modes: html[data-print] is set just before window.print() and
+	   removed after. Each mode shows only its own print area. */
+	@media print {
+		html[data-print] body > header,
+		html[data-print] body > footer,
+		html[data-print] main > *:not(.print-only) { display: none !important; }
+		html[data-print='record'] #print-record { display: block !important; }
+		html[data-print='blank'] #print-blank { display: block !important; }
+		#print-record h1, #print-blank h1 { font-size: 18pt; margin-bottom: 0.25em; }
+		#print-record p, #print-blank p { font-size: 10pt; margin-bottom: 1em; }
+		#print-record table, #print-blank table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+		#print-record th, #print-record td, #print-blank th, #print-blank td {
+			border: 1px solid #999; padding: 0.35em 0.5em; text-align: left; vertical-align: top;
+		}
+		#print-blank tbody td { height: 2.4em; }
+		#print-blank .boxed { border: 2px solid #333; }
+	}
+</style>

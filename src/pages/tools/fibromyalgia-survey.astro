@@ -724,30 +724,32 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	gap: 0.75rem;
 	margin-bottom: 1.5rem;
 }
-.summary-card {
+/* Cards and criteria boxes are injected by script and never get Astro's
+   scope attribute, so anchor them to their static containers. */
+.summary-cards :global(.summary-card) {
 	border: 1.5px solid #e5e7eb;
 	border-radius: 12px;
 	padding: 1rem 1.1rem;
 	background: #f9fafb;
 }
-.summary-card.card-highlight {
+.summary-cards :global(.summary-card.card-highlight) {
 	background: #eff6ff;
 	border-color: #bfdbfe;
 }
-.card-value {
+.summary-cards :global(.card-value) {
 	font-size: 1.75rem;
 	font-weight: 700;
 	color: #111827;
 	line-height: 1;
 	margin-bottom: 0.3rem;
 }
-.card-value-suffix {
+.summary-cards :global(.card-value-suffix) {
 	font-size: 1rem;
 	font-weight: 400;
 	color: #6b7280;
 }
-.card-highlight .card-value { color: #1e40af; }
-.card-label {
+.summary-cards :global(.card-highlight .card-value) { color: #1e40af; }
+.summary-cards :global(.card-label) {
 	font-size: 0.8rem;
 	font-weight: 600;
 	color: #6b7280;
@@ -755,21 +757,21 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	letter-spacing: 0.04em;
 	margin-bottom: 0.35rem;
 }
-.card-detail { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
+.summary-cards :global(.card-detail) { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
 
 .criteria-result { margin-bottom: 1.5rem; }
-.criteria-box {
+.criteria-result :global(.criteria-box) {
 	border-radius: 10px;
 	padding: 1.1rem 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.6;
 }
-.criteria-met {
+.criteria-result :global(.criteria-met) {
 	background: #f0fdf4;
 	border: 1.5px solid #86efac;
 	color: #166534;
 }
-.criteria-not-met {
+.criteria-result :global(.criteria-not-met) {
 	background: #f8fafc;
 	border: 1.5px solid #e2e8f0;
 	color: #334155;
@@ -784,8 +786,8 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	line-height: 1.7;
 	color: #1e293b;
 }
-.interpretation-box p { margin: 0 0 0.75rem; }
-.interpretation-box p:last-child { margin-bottom: 0; }
+.interpretation-box :global(p) { margin: 0 0 0.75rem; }
+.interpretation-box :global(p:last-child) { margin-bottom: 0; }
 
 .threshold-box {
 	background: #f9fafb;
