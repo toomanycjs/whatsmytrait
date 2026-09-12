@@ -63,7 +63,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				<div class="setup-content">
 					<h2>What the Beighton score measures</h2>
 					<p>The Beighton score is the standard 9-point scale for <strong>generalised joint hypermobility</strong> &mdash; joints that move beyond the usual range. It checks five manoeuvres: four are scored on both sides of the body (1 point per side) and one is scored once, giving a total out of 9.</p>
-					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>&ge;6 for children and adolescents, &ge;5 for adults, and &ge;4 for adults over 50</strong>. The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders.</p>
+					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>&ge;6 for children and adolescents, &ge;5 for adults, and &ge;4 for adults over 50</strong>. The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders. If your score lands one point below the cut-off, the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> can make up the difference under those criteria, and the <a href="/tools/heds-criteria/">hEDS criteria checker</a> walks through all three criteria using your score from here.</p>
 
 					<h2>How to complete it</h2>
 					<ul>
@@ -344,7 +344,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 						<h4>Reference thresholds</h4>
 						<ul>
 							<li>Generalised joint hypermobility is suggested by a Beighton score of &ge;5 in adults, &ge;6 in children and adolescents, and &ge;4 in adults over 50</li>
-							<li>The Beighton score is one component of the 2017 international criteria for hypermobile EDS; meeting the score alone is not a diagnosis</li>
+							<li>The Beighton score is one component of the 2017 international criteria for hypermobile EDS; meeting the score alone is not a diagnosis. The <a href="/tools/heds-criteria/">hEDS criteria checker</a> applies the full criteria, and the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> captures past hypermobility</li>
 							<li>The maximum score is 9: little fingers (2), thumbs to forearm (2), elbows (2), knees (2), and palms to floor (1)</li>
 						</ul>
 					</div>
@@ -436,6 +436,18 @@ function screenAnswered(screenEl) {
 function showResults() {
 	const s = computeScore();
 	show('screen-results');
+
+	// Save the headline result on this device so the hEDS criteria checker
+	// (/tools/heds-criteria/) can offer to reuse it. Nothing is sent anywhere.
+	try {
+		localStorage.setItem('pvr-beighton-result', JSON.stringify({
+			date: new Date().toISOString(),
+			total: s.total,
+			ageBand: s.ageBand,
+			threshold: s.band ? s.band.threshold : null,
+			met: s.met,
+		}));
+	} catch (e) { /* storage unavailable; the tool still works */ }
 
 	const cards = document.getElementById('summary-cards');
 	cards.innerHTML = `

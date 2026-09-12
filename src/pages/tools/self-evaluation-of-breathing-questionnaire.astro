@@ -1,0 +1,310 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const options = [
+	{ short: 'Never / not true at all', value: 0 },
+	{ short: 'Occasionally / a bit true', value: 1 },
+	{ short: 'Frequently / mostly true', value: 2 },
+	{ short: 'Very frequently / very true', value: 3 },
+];
+
+const items = [
+	'I get easily breathless out of proportion to my fitness',
+	'I notice myself breathing shallowly',
+	'I get short of breath reading and talking',
+	'I notice myself sighing',
+	'I notice myself yawning',
+	'I feel I cannot get a deep or satisfying breath',
+	'I notice that I am breathing irregularly',
+	'My breathing feels stuck or restricted',
+	'My ribcage feels tight and cannot expand',
+	'I notice myself breathing quickly',
+	'I get breathless when I\'m anxious',
+	'I find myself holding my breath',
+	'I feel breathless in association with other physical symptoms',
+	'I have trouble coordinating my breathing when I am speaking',
+	'I can\'t catch my breath',
+	'I feel that the air is stuffy, as if not enough air in the room',
+	'I get breathless even when I am resting',
+	'My breath feels like it does not go in all the way',
+	'My breath feels like it does not go out all the way',
+	'My breathing is heavy',
+	'I feel that I am breathing more',
+	'My breathing requires work',
+	'My breathing requires effort',
+	'I find myself breathing through my mouth during the day',
+	'I breathe through my mouth at night while I sleep',
+];
+
+const pages = [items.slice(0, 13), items.slice(13)];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Self-Evaluation of Breathing Questionnaire (SEBQ): free online breathing pattern disorder questionnaire"
+			description="Complete the 25-item Self-Evaluation of Breathing Questionnaire and get your SEBQ score out of 75 instantly, with the proposed threshold of 25 and reference values explained. The companion to the Nijmegen questionnaire for breathing pattern disorder. Free, no sign-up."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Self-Evaluation of Breathing Questionnaire", "item": "https://www.postviralrecovery.com/tools/self-evaluation-of-breathing-questionnaire/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Self-Evaluation of Breathing Questionnaire?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The SEBQ is a 25-item questionnaire developed by Rosalba Courtney and Kenneth Greenwood in 2009 to measure the symptoms of dysfunctional breathing, also called breathing pattern disorder. Each statement about your breathing is rated from 0 (never or not true at all) to 3 (very frequently or very true), giving a total from 0 to 75. It covers both air hunger and the sense of restricted or effortful breathing."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is a high SEBQ score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "A score of 25 or more is the threshold suggested by expert opinion for dysfunctional breathing, but it has not been validated against a diagnostic standard. In a general community sample of 180 adults the mean score was 15 with a standard deviation of about 12, so scores in the high teens and twenties are not rare among people with no diagnosed breathing problem."}
+        },
+        {
+          "@type": "Question",
+          "name": "How does the SEBQ differ from the Nijmegen questionnaire?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The Nijmegen questionnaire was designed for hyperventilation syndrome and includes many non-breathing symptoms such as tingling, palpitations, and anxiety. The SEBQ asks only about breathing sensations, and picks up biomechanical breathing problems (restricted, effortful, or shallow breathing) that the Nijmegen misses. Physiotherapists often use both together."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main id="main">
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Self-Evaluation of Breathing Questionnaire (SEBQ)</h1>
+				<p class="subtitle">25 statements about how your breathing feels: the breathing-specific companion to the Nijmegen questionnaire</p>
+				<p class="description">
+					The Self-Evaluation of Breathing Questionnaire was developed by osteopath and breathing researcher Rosalba Courtney with Kenneth Greenwood and published in 2009, with the current 25-item version following soon after. Where the <a href="/tools/nijmegen/">Nijmegen questionnaire</a> was written for hyperventilation and includes tingling, palpitations, and anxiety, the SEBQ asks only about breathing: whether it feels shallow, restricted, effortful, irregular, or unsatisfying. That makes it better suited to the biomechanical breathing pattern disorders (upper-chest breathing, breath-holding, mouth breathing) that are common after respiratory infections and in people with POTS and ME/CFS.
+				</p>
+				<p class="description">
+					You rate each of 25 statements from <strong>0 (never / not true at all)</strong> to <strong>3 (very frequently / very true)</strong>, for a total of 0–75. The 2016 reliability study by Mitchell and colleagues found the questionnaire very consistent over two weeks (ICC 0.89) and a community average of about 15. A threshold of <strong>25 or more</strong> is used in practice as a marker of dysfunctional breathing, on expert opinion rather than validation. Respiratory physiotherapy services increasingly use the SEBQ alongside the Nijmegen in long COVID assessment.
+				</p>
+				<p class="description">
+					The questionnaire is presented in two pages of 12–13 statements and takes about five minutes. If you have not done the <a href="/tools/nijmegen/">Nijmegen questionnaire</a>, the two together give a fuller picture: the Nijmegen for the systemic symptoms of over-breathing, the SEBQ for the breathing sensations themselves.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> Breathlessness has many causes, including cardiac and lung disease that need investigation in their own right. A high SEBQ score suggests that assessment of breathing pattern by a respiratory physiotherapist may be worthwhile; it does not establish a diagnosis of breathing pattern disorder or exclude anything else. Discuss your results with your doctor. Based on: Courtney R, Greenwood KM. <em>Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ).</em> Int J Osteopath Med. 2009;12(4):121–127; and Mitchell AJ, Bacon CJ, Moran RW. <em>Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score.</em> Appl Psychophysiol Biofeedback. 2016;41(1):111–120. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.
+				</div>
+			</div>
+
+			<form id="sebq-form" novalidate>
+				<div class="progress-wrap">
+					<div class="progress-text"><span id="progress-label">Page 1 of 2</span></div>
+					<div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+				</div>
+				<p class="form-instructions">For each statement, choose how often it applies to you, or how true it is of your breathing, as things generally are for you at the moment.</p>
+
+				{pages.map((page, p) => (
+					<section class="step" data-step={p} hidden={p > 0}>
+						{page.map((text, i) => {
+							const n = p === 0 ? i + 1 : i + 14;
+							return (
+								<div class="symptom" data-id={`i${n}`}>
+									<p class="symptom-text"><span class="num">{n}.</span> {text}</p>
+									<div class="segmented">
+										{options.map(opt => (
+											<label><input type="radio" name={`i${n}`} value={opt.value} /><span>{opt.short}</span></label>
+										))}
+									</div>
+								</div>
+							);
+						})}
+						<div class="step-footer">
+							{p > 0 ? <button type="button" class="back-step-btn" data-prev>← Back</button> : <span></span>}
+							{p === pages.length - 1
+								? <button type="submit" class="submit-btn">Calculate my score</button>
+								: <button type="button" class="next-btn" data-next>Next page →</button>}
+						</div>
+					</section>
+				))}
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your SEBQ score</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">out of 75</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Your highest-rated statements</h3>
+				<div id="chart" class="chart"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>The threshold of 25 comes from expert opinion (Kiesel and colleagues, 2017) and the 2026 European Respiratory Society-linked review of breathing pattern disorder repeats that it has not been verified against a reference standard. In Mitchell's 2016 community sample of 180 adults the mean was 15.1 (SD 11.6); smoking, respiratory disease, a recent respiratory illness, and female sex all raised scores. So the questionnaire measures breathing symptom burden well and reliably, but where "normal" ends is a judgement.</p>
+					<p>The original 2009 analysis found two groups of items: sensations of not getting enough air (air hunger), and sensations of restricted, effortful, or inappropriate breathing. The first group overlaps with the Nijmegen questionnaire; the second does not, which is the SEBQ's added value. Looking at which statements you rated highest tells you which pattern dominates.</p>
+					<p>In long COVID, breathing pattern disorder is common and treatable with breathing retraining from a respiratory physiotherapist. If your score is high, particularly if the <a href="/tools/nijmegen/">Nijmegen</a> is also above 23, ask your GP about referral. Breathlessness that is new, severe, or accompanied by chest pain, swelling, or low oxygen readings needs medical assessment regardless of any questionnaire.</p>
+					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+import { trackStep } from '../../scripts/pageview';
+
+const N = 25;
+const form = document.getElementById('sebq-form') as HTMLFormElement;
+const steps = Array.from(document.querySelectorAll<HTMLElement>('.step'));
+const progressLabel = document.getElementById('progress-label') as HTMLElement;
+const progressFill = document.getElementById('progress-fill') as HTMLElement;
+const results = document.getElementById('results') as HTMLElement;
+let currentStep = 0;
+
+function getVal(n: number): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="i${n}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+function itemText(n: number): string {
+	const el = form.querySelector<HTMLElement>(`.symptom[data-id="i${n}"] .symptom-text`);
+	return (el?.textContent || '').replace(/^\s*\d+\.\s*/, '').trim();
+}
+function flag(n: number) {
+	const el = form.querySelector<HTMLElement>(`.symptom[data-id="i${n}"]`);
+	el?.classList.add('missing');
+	el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	setTimeout(() => el?.classList.remove('missing'), 2500);
+}
+function showStep(n: number) {
+	currentStep = Math.max(0, Math.min(n, steps.length - 1));
+	steps.forEach(s => { s.hidden = parseInt(s.dataset.step || '0', 10) !== currentStep; });
+	progressLabel.textContent = `Page ${currentStep + 1} of ${steps.length}`;
+	progressFill.style.width = `${((currentStep + 1) / (steps.length + 1)) * 100}%`;
+	window.scrollTo({ top: (form.getBoundingClientRect().top + window.scrollY) - 20, behavior: 'smooth' });
+	if (currentStep > 0) trackStep(currentStep + 1, `Page ${currentStep + 1}`);
+}
+function validateStep(n: number): boolean {
+	const range = n === 0 ? [1, 13] : [14, 25];
+	for (let i = range[0]; i <= range[1]; i++) {
+		if (getVal(i) === null) { flag(i); return false; }
+	}
+	return true;
+}
+form.querySelectorAll('[data-next]').forEach(btn => btn.addEventListener('click', () => {
+	if (!validateStep(currentStep)) return;
+	showStep(currentStep + 1);
+}));
+form.querySelectorAll('[data-prev]').forEach(btn => btn.addEventListener('click', () => showStep(currentStep - 1)));
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	if (!validateStep(currentStep)) return;
+	const vals: { n: number; v: number }[] = [];
+	for (let i = 1; i <= N; i++) vals.push({ n: i, v: getVal(i)! });
+	const total = vals.reduce((s, x) => s + x.v, 0);
+	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
+
+	let interp = `Your SEBQ score is ${total} out of 75. `;
+	if (total >= 25) {
+		interp += 'This is at or above 25, the threshold used in practice for dysfunctional breathing. It is well above the community average of about 15. Breathing symptoms are a significant feature by this measure, and an assessment of breathing pattern by a respiratory physiotherapist is a reasonable thing to ask for. If breathlessness is new or worsening, see your GP first to exclude other causes.';
+	} else if (total > 15) {
+		interp += 'This is above the community average of about 15 but below the practice threshold of 25. Breathing symptoms are present at a moderate level. The statements you rated highest, below, show whether the pattern is air hunger or restricted, effortful breathing.';
+	} else {
+		interp += 'This is at or below the community average of about 15. Breathing symptoms are at a level commonly reported by people without a breathing pattern disorder.';
+	}
+	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+
+	const top = vals.filter(x => x.v > 0).sort((a, b) => b.v - a.v || a.n - b.n).slice(0, 8);
+	(document.getElementById('chart') as HTMLElement).innerHTML = top.length ? top.map(x => `
+		<div class="chart-row">
+			<div class="chart-label">${x.n}. ${itemText(x.n)}</div>
+			<div class="chart-track"><div class="chart-bar" style="width:${Math.max(2, Math.round((x.v / 3) * 100))}%"></div></div>
+			<div class="chart-val">${x.v}</div>
+		</div>`).join('') : '<p class="none">You rated every statement 0.</p>';
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	trackStep('results', 'Results');
+});
+
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	showStep(0);
+});
+</script>
+
+<style>
+	.tool-header { padding-bottom: 1.5em; border-bottom: 1px solid rgb(var(--gray-light)); margin-bottom: 2em; }
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.progress-wrap { margin-bottom: 1.25em; }
+	.progress-text { font-size: 0.82em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(var(--gray)); margin-bottom: 0.4em; }
+	.progress-bar { height: 7px; background: rgb(var(--gray-light)); border-radius: 4px; overflow: hidden; }
+	.progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.3s ease; width: 33%; }
+
+	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); background: var(--accent-light); border-radius: 6px; padding: 0.7em 1.1em; margin-bottom: 1.25em; }
+
+	.symptom { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 0.9em 1.2em; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
+	.num { color: rgb(var(--gray)); margin-right: 0.3em; }
+
+	.segmented { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3em; max-width: 40em; }
+	.segmented label { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.82em; padding: 0.5em 0.4em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; cursor: pointer; transition: background 0.1s, border-color 0.1s; line-height: 1.25; }
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+
+	.step-footer { display: flex; justify-content: space-between; align-items: center; gap: 1em; padding: 1.5em 0 0.5em; }
+	.next-btn, .submit-btn { background: var(--accent); color: #fff; border: none; padding: 0.75em 1.6em; border-radius: 5px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
+	.next-btn:hover, .submit-btn:hover { background: var(--accent-dark); }
+	.back-step-btn, .back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
+	.back-step-btn:hover, .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 1em 1.25em; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
+
+	.chart { display: flex; flex-direction: column; gap: 0.5em; margin: 1em 0; }
+	.chart :global(.chart-row) { display: grid; grid-template-columns: 20em 1fr 2em; align-items: center; gap: 0.75em; font-size: 0.88em; }
+	.chart :global(.chart-label) { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
+	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
+	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart :global(.chart-val) { font-weight: 700; color: var(--accent); text-align: right; }
+	.chart :global(.none) { color: rgb(var(--gray)); }
+
+	.results-disclaimer { font-size: 0.88em; color: rgb(var(--gray-dark)); border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em; margin-top: 2em; line-height: 1.6; }
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn { margin-top: 1.5em; }
+
+	@media (max-width: 640px) {
+		.symptom { padding: 0.8em 0.9em; }
+		.segmented { grid-template-columns: repeat(2, 1fr); max-width: none; }
+		.chart :global(.chart-row) { grid-template-columns: 10em 1fr 1.6em; gap: 0.5em; font-size: 0.8em; }
+	}
+</style>

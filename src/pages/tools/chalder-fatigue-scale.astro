@@ -1,0 +1,307 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+
+const usual = ['Less than usual', 'No more than usual', 'More than usual', 'Much more than usual'];
+const memory = ['Better than usual', 'No worse than usual', 'Worse than usual', 'Much worse than usual'];
+
+const items = [
+	{ id: 'c1', text: 'Do you have problems with tiredness?', group: 'physical', options: usual },
+	{ id: 'c2', text: 'Do you need to rest more?', group: 'physical', options: usual },
+	{ id: 'c3', text: 'Do you feel sleepy or drowsy?', group: 'physical', options: usual },
+	{ id: 'c4', text: 'Do you have problems starting things?', group: 'physical', options: usual },
+	{ id: 'c5', text: 'Do you lack energy?', group: 'physical', options: usual },
+	{ id: 'c6', text: 'Do you have less strength in your muscles?', group: 'physical', options: usual },
+	{ id: 'c7', text: 'Do you feel weak?', group: 'physical', options: usual },
+	{ id: 'c8', text: 'Do you have difficulty concentrating?', group: 'mental', options: usual },
+	{ id: 'c9', text: 'Do you make slips of the tongue when speaking?', group: 'mental', options: usual },
+	{ id: 'c10', text: 'Do you find it more difficult to find the correct word?', group: 'mental', options: usual },
+	{ id: 'c11', text: 'How is your memory?', group: 'mental', options: memory },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Chalder Fatigue Scale (CFQ-11): free online calculator with Likert and bimodal scoring"
+			description="Complete the 11-item Chalder Fatigue Questionnaire and get your Likert score (0–33), physical and mental subscales, and bimodal score (0–11) with the ≥4 case threshold explained. The fatigue measure used across UK ME/CFS and long COVID services. Free, instant, no sign-up."
+			ogImage={ogImage}
+		/>
+		<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+        {"@type": "ListItem", "position": 3, "name": "Chalder Fatigue Scale", "item": "https://www.postviralrecovery.com/tools/chalder-fatigue-scale/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is the Chalder Fatigue Scale scored?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Each of the 11 items has four answers. Likert scoring gives them 0, 1, 2, 3 for a total of 0 to 33, with a physical fatigue subscale (items 1 to 7, 0 to 21) and a mental fatigue subscale (items 8 to 11, 0 to 12). Bimodal scoring gives the first two answers 0 and the last two 1, for a total of 0 to 11; a bimodal score of 4 or more is the conventional threshold for clinically significant fatigue."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is a normal Chalder Fatigue Scale score?",
+          "acceptedAnswer": {"@type": "Answer", "text": "In a UK community sample of 1,615 people (Cella and Chalder 2010) the mean Likert score was 14.2 with a standard deviation of 4.6, so scores up to about 18 fall within one standard deviation of the population mean. People with chronic fatigue syndrome in the same study averaged 24.4, and a Likert score of 29 or more separated them from the community sample in 96% of cases. Bimodal scores of 4 or more are considered a positive screen."}
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the Chalder Fatigue Scale and the Fatigue Severity Scale?",
+          "acceptedAnswer": {"@type": "Answer", "text": "The Chalder scale asks how much fatigue symptoms have changed compared with when you were last well, across physical and mental items, over the past month. The Fatigue Severity Scale asks how much fatigue interferes with daily functioning over the past week. The Chalder scale is the standard in UK ME/CFS and long COVID services and trials; the FSS is more common in neurology and in US research."}
+        }
+      ]
+    }
+  ]
+}
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main id="main">
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
+				<p class="subtitle">The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services</p>
+				<p class="description">
+					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics; it was the primary outcome in the PACE trial and appears in most UK long COVID cohort studies. It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.
+				</p>
+				<p class="description">
+					It has two scoring systems, and this page gives you both. <strong>Likert scoring</strong> rates each answer 0–3 for a total of 0–33 and is the more sensitive to change. <strong>Bimodal scoring</strong> counts each item as either absent (0) or present (1) for a total of 0–11, with <strong>4 or more</strong> the conventional threshold for clinically significant fatigue. Papers and clinic letters quote whichever they prefer, so it helps to know your score on both.
+				</p>
+				<p class="description">
+					If your fatigue gets disproportionately worse after activity, the <a href="/tools/dsq-pem/">DSQ-PEM</a> characterises that pattern specifically. The <a href="/tools/fss/">Fatigue Severity Scale</a> measures the impact of fatigue on functioning rather than the symptom itself, and the <a href="/tools/funcap/">FUNCAP</a> profiles what activities cost you.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> A high score indicates fatigue as a symptom; it does not tell you the cause, and fatigue has many. The bimodal threshold was derived against a psychiatric interview measure of fatigue, not against any diagnosis. Discuss your results with your doctor. Based on: Chalder T, Berelowitz G, Pawlikowska T, et al. <em>Development of a fatigue scale.</em> J Psychosom Res. 1993;37(2):147–153; and Cella M, Chalder T. <em>Measuring fatigue in clinical and community settings.</em> J Psychosom Res. 2010;69(1):17–22. The Chalder Fatigue Scale is the work of its authors at King's College London; this page provides an interactive scoring aid for personal, non-commercial use.
+				</div>
+			</div>
+
+			<form id="cfq-form" novalidate>
+				<p class="form-instructions">These questions are about any problems you have had with feeling tired, weak, or lacking in energy <strong>in the last month</strong>. If you have been feeling tired for a long while, compare yourself with how you felt when you were <strong>last well</strong>. Choose the answer that applies to you most closely.</p>
+
+				<h2 class="group-title">Physical fatigue</h2>
+				{items.filter(i => i.group === 'physical').map((item, i) => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text"><span class="num">{i + 1}.</span> {item.text}</p>
+						<div class="segmented">
+							{item.options.map((opt, v) => (
+								<label><input type="radio" name={item.id} value={v} /><span>{opt}</span></label>
+							))}
+						</div>
+					</div>
+				))}
+
+				<h2 class="group-title">Mental fatigue</h2>
+				{items.filter(i => i.group === 'mental').map((item, i) => (
+					<div class="symptom" data-id={item.id}>
+						<p class="symptom-text"><span class="num">{i + 8}.</span> {item.text}</p>
+						<div class="segmented">
+							{item.options.map((opt, v) => (
+								<label><input type="radio" name={item.id} value={v} /><span>{opt}</span></label>
+							))}
+						</div>
+					</div>
+				))}
+
+				<div class="form-footer">
+					<button type="submit">Calculate my scores</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your Chalder Fatigue Scale scores</h2>
+				<div class="score-grid">
+					<div class="score-card highlight">
+						<div class="score-value"><span id="likert-total">—</span><span class="score-max"> / 33</span></div>
+						<div class="score-label">Likert total</div>
+					</div>
+					<div class="score-card">
+						<div class="score-value"><span id="physical-total">—</span><span class="score-max"> / 21</span></div>
+						<div class="score-label">Physical fatigue (items 1–7)</div>
+					</div>
+					<div class="score-card">
+						<div class="score-value"><span id="mental-total">—</span><span class="score-max"> / 12</span></div>
+						<div class="score-label">Mental fatigue (items 8–11)</div>
+					</div>
+					<div class="score-card highlight">
+						<div class="score-value"><span id="bimodal-total">—</span><span class="score-max"> / 11</span></div>
+						<div class="score-label">Bimodal score</div>
+					</div>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+
+				<h3>Where your Likert score sits</h3>
+				<p class="section-lead">Reference means from published cohorts, with your score marked.</p>
+				<div id="chart" class="chart"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your scores</h3>
+					<p><strong>Likert (0–33).</strong> In Cella and Chalder's 2010 study, 1,615 people from the UK community averaged 14.2 (SD 4.6) and 361 patients with chronic fatigue syndrome averaged 24.4 (SD 5.8). A score of 29 or more separated the two groups in 96% of cases. The PACE trial defined its "normal range" as 18 or below (the community mean plus one standard deviation) and treated a change of 2 points as clinically useful. Non-hospitalised long COVID cohorts have averaged around 15–16, with wide spread.</p>
+					<p><strong>Bimodal (0–11).</strong> A score of 4 or more is the standard case threshold, from the original 1993 study (sensitivity 75.5%, specificity 74.5% against an interview measure of fatigue). Roughly one in seven people in general-population samples score 4 or more, so it is a screen for significant fatigue rather than a marker of any condition. CFS patients in the 2010 study averaged 9.1; the community sample averaged 3.3.</p>
+					<p><strong>Subscales.</strong> The physical and mental subscales are usually reported separately in long COVID research, where mental fatigue items often stand out. Some 2023 long COVID trials have used 16 or more on physical and 8 or more on mental as markers of moderate-to-severe fatigue.</p>
+					<p>Because the recall period is a month, the scale suits monthly repeats during a treatment or pacing change. Note that the reference point ("compared with when you were last well") does not move, so a person who has been ill for years is still comparing against their healthy baseline.</p>
+					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<script>
+const PHYSICAL = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
+const MENTAL = ['c8', 'c9', 'c10', 'c11'];
+const ALL = [...PHYSICAL, ...MENTAL];
+
+const form = document.getElementById('cfq-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+
+function getVal(id: string): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	for (const id of ALL) {
+		if (getVal(id) === null) {
+			const el = form.querySelector<HTMLElement>(`.symptom[data-id="${id}"]`);
+			el?.classList.add('missing');
+			el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => el?.classList.remove('missing'), 2500);
+			return;
+		}
+	}
+	const sum = (ids: string[]) => ids.reduce((s, id) => s + getVal(id)!, 0);
+	const physical = sum(PHYSICAL);
+	const mental = sum(MENTAL);
+	const likert = physical + mental;
+	const bimodal = ALL.filter(id => getVal(id)! >= 2).length;
+
+	(document.getElementById('likert-total') as HTMLElement).textContent = String(likert);
+	(document.getElementById('physical-total') as HTMLElement).textContent = String(physical);
+	(document.getElementById('mental-total') as HTMLElement).textContent = String(mental);
+	(document.getElementById('bimodal-total') as HTMLElement).textContent = String(bimodal);
+
+	let interp = `Your Likert score is ${likert} out of 33 (physical ${physical}/21, mental ${mental}/12) and your bimodal score is ${bimodal} out of 11. `;
+	if (bimodal >= 4) {
+		interp += 'The bimodal score is at or above the threshold of 4, the conventional cut-off for clinically significant fatigue. ';
+	} else {
+		interp += 'The bimodal score is below the threshold of 4, so on this measure your fatigue does not reach the conventional case level. ';
+	}
+	if (likert >= 29) {
+		interp += 'A Likert score of 29 or more is in the range that distinguished chronic fatigue syndrome patients from the community sample in the validation study (patients averaged 24.4, the community 14.2). This is a high fatigue burden.';
+	} else if (likert > 18) {
+		interp += 'A Likert score above 18 is outside the "normal range" used in the PACE trial (the community mean plus one standard deviation) and towards the range seen in clinical fatigue populations (CFS patients averaged 24.4).';
+	} else if (likert > 14) {
+		interp += 'A Likert score in this range is above the community average of 14.2 but within one standard deviation of it, which the PACE trial treated as the normal range.';
+	} else {
+		interp += 'A Likert score in this range is at or below the community average of 14.2.';
+	}
+	if (mental >= 8 && physical < 16) {
+		interp += ' Your mental fatigue subscale is proportionally high, a pattern often reported in long COVID.';
+	}
+	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+
+	const refs = [
+		{ label: 'UK community (Cella & Chalder 2010)', val: 14.2 },
+		{ label: 'Long COVID, non-hospitalised (Stavem 2021)', val: 15.1 },
+		{ label: 'PACE "normal range" ceiling', val: 18 },
+		{ label: 'CFS patients (Cella & Chalder 2010)', val: 24.4 },
+		{ label: 'Your score', val: likert, you: true },
+	].sort((a, b) => a.val - b.val);
+	(document.getElementById('chart') as HTMLElement).innerHTML = refs.map(r => `
+		<div class="chart-row${r.you ? ' you' : ''}">
+			<div class="chart-label">${r.label}</div>
+			<div class="chart-track"><div class="chart-bar" style="width:${Math.max(2, Math.round((r.val / 33) * 100))}%"></div></div>
+			<div class="chart-val">${r.val}</div>
+		</div>`).join('');
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header { padding-bottom: 1.5em; border-bottom: 1px solid rgb(var(--gray-light)); margin-bottom: 2em; }
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); background: var(--accent-light); border-radius: 6px; padding: 0.7em 1.1em; margin-bottom: 1.25em; }
+	.group-title { font-size: 1.15em; margin: 1.25em 0 0.6em; }
+
+	.symptom { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 0.9em 1.2em; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
+	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
+	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
+	.num { color: rgb(var(--gray)); margin-right: 0.3em; }
+
+	.segmented { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3em; max-width: 40em; }
+	.segmented label { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.84em; padding: 0.5em 0.4em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; cursor: pointer; transition: background 0.1s, border-color 0.1s; line-height: 1.25; }
+	.segmented label:hover { border-color: var(--accent); }
+	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
+	.segmented label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+
+	.form-footer { display: flex; gap: 1em; padding: 1.5em 0 1em; }
+	button[type="submit"] { background: var(--accent); color: #fff; border: none; padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
+
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.75em; }
+	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
+	.section-lead { font-size: 0.88em; color: rgb(var(--gray)); margin: 0 0 0.75em; }
+	.score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75em; margin-bottom: 1.25em; }
+	.score-card { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 0.9em 1em; }
+	.score-card.highlight { border-color: var(--accent); background: var(--accent-light); }
+	.score-value { font-size: 2em; font-weight: 700; color: var(--accent); line-height: 1.1; }
+	.score-max { font-size: 0.5em; color: rgb(var(--gray)); font-weight: 400; }
+	.score-label { font-size: 0.82em; color: rgb(var(--gray-dark)); margin-top: 0.3em; line-height: 1.3; }
+	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 1em 1.25em; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
+
+	.chart { display: flex; flex-direction: column; gap: 0.5em; margin: 1em 0; }
+	.chart :global(.chart-row) { display: grid; grid-template-columns: 16em 1fr 2.5em; align-items: center; gap: 0.75em; font-size: 0.88em; }
+	.chart :global(.chart-label) { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
+	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
+	.chart :global(.chart-bar) { height: 100%; background: rgb(var(--gray)); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart :global(.chart-row.you .chart-bar) { background: var(--accent); }
+	.chart :global(.chart-row.you .chart-label) { font-weight: 700; color: var(--accent-dark); }
+	.chart :global(.chart-val) { font-weight: 700; color: rgb(var(--gray-dark)); text-align: right; }
+	.chart :global(.chart-row.you .chart-val) { color: var(--accent); }
+
+	.results-disclaimer { font-size: 0.88em; color: rgb(var(--gray-dark)); border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em; margin-top: 2em; line-height: 1.6; }
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 640px) {
+		.symptom { padding: 0.8em 0.9em; }
+		.segmented { grid-template-columns: repeat(2, 1fr); max-width: none; }
+		.score-grid { grid-template-columns: 1fr 1fr; }
+		.chart :global(.chart-row) { grid-template-columns: 9em 1fr 2em; gap: 0.5em; font-size: 0.8em; }
+	}
+</style>
