@@ -1,53 +1,44 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-		title="Beighton score: free online hypermobility test with scoring"
-		description="Work through the nine Beighton score manoeuvres with an illustration for each and get your score out of 9 instantly. Free and interactive, with the age-adjusted threshold for generalised joint hypermobility explained."
-		ogImage={ogImage}
-	/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Beighton Score", "item": "https://www.postviralrecovery.com/tools/beighton-score/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a Beighton score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Beighton score is a 9-point scale used to assess generalised joint hypermobility. It scores five manoeuvres: bending the little finger back beyond 90 degrees (1 point per side), bringing the thumb to touch the forearm (1 point per side), elbow hyperextension beyond 10 degrees (1 point per side), knee hyperextension beyond 10 degrees (1 point per side), and placing the palms flat on the floor with straight knees (1 point). It is a screening measure for hypermobility, not a diagnosis of any condition."}
-        },
-        {
-          "@type": "Question",
-          "name": "What Beighton score indicates hypermobility?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder. The Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Beighton score: free online hypermobility test with scoring"
+	description="Work through the nine Beighton score manoeuvres with an illustration for each and get your score out of 9 instantly. Free and interactive, with the age-adjusted threshold for generalised joint hypermobility explained."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Beighton Score", "item": "https://www.postviralrecovery.com/tools/beighton-score/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is a Beighton score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Beighton score is a 9-point scale used to assess generalised joint hypermobility. It scores five manoeuvres: bending the little finger back beyond 90 degrees (1 point per side), bringing the thumb to touch the forearm (1 point per side), elbow hyperextension beyond 10 degrees (1 point per side), knee hyperextension beyond 10 degrees (1 point per side), and placing the palms flat on the floor with straight knees (1 point). It is a screening measure for hypermobility, not a diagnosis of any condition."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What Beighton score indicates hypermobility?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder. The Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">
@@ -362,10 +353,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				</div>
 			</div>
 
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 // ── Item definitions ─────────────────────────────────────────────────────────
@@ -579,7 +567,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 
 <style is:global>
 /* ── Base ─────────────────────────────────────────────────────────────────── */
-main {
+:global(main) {
 	width: auto;
 	max-width: 680px;
 	margin: 0 auto;
@@ -977,7 +965,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	header, footer, .export-buttons, #restart-btn, .progress-bar, .nav-buttons { display: none !important; }
 	.screen[hidden] { display: none !important; }
 	#screen-results { display: block !important; }
-	main { padding: 0; max-width: 100%; }
+	:global(main) { padding: 0; max-width: 100%; }
 	body { font-size: 12pt; }
 }
 </style>

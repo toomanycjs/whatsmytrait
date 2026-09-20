@@ -1,26 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import { isDefaultLocaleId } from '../../i18n/config';
+import Page from '../../layouts/Page.astro';
 import SectionIndex from '../../components/SectionIndex.astro';
 
-const posts = (await getCollection('testing', p => !p.data.draft))
+const posts = (await getCollection('testing', p => !p.data.draft && isDefaultLocaleId(p.id)))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.map(p => ({ ...p, href: `/testing/${p.id}/` }));
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Testing: Headaches & Heartbeats"
-			description="Structured first-person accounts of specific interventions for post-viral syndrome, with data where available."
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Testing: Headaches & Heartbeats"
+	description="Structured first-person accounts of specific interventions for post-viral syndrome, with data where available."
+>
 			<SectionIndex
 				title="Testing"
 				description="Structured first-person accounts of interventions"
@@ -28,7 +20,4 @@ const posts = (await getCollection('testing', p => !p.data.draft))
 				posts={posts}
 				intro="Structured write-ups of specific things I'm trying: Nurosym vagal nerve stimulation, diaphragmatic breathing, recumbent exercise, medications, and supplements, with HRV and RHR data where I have it. Each intervention gets an introductory post, then periodic updates."
 			/>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>

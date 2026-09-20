@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const freqOptions = [
 	{ value: 0, short: 'None of the time', full: 'None of the time' },
@@ -28,53 +24,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="ME/CFS screening questionnaire: free 4-question self-check based on the DePaul Symptom Questionnaire"
-			description="A free, quick ME/CFS screening tool based on the DePaul Symptom Questionnaire Brief. Answer 4 questions and get an immediate result. No sign-up required."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "ME/CFS screening (DSQ-Brief)", "item": "https://www.postviralrecovery.com/tools/dsq-brief/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the DSQ-Brief?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-Brief is a 4-item screening scale for ME/CFS developed by Jason and colleagues at DePaul University in 2023. It assesses fatigue and post-exertional malaise, the two hallmark features of ME/CFS. In validation it achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity."}
-        },
-        {
-          "@type": "Question",
-          "name": "Does a positive DSQ-Brief screen mean I have ME/CFS?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. A positive screen means your responses match the symptom pattern the tool looks for. It is not a diagnosis. Its accuracy also drops to around 82 to 84 percent when distinguishing ME/CFS from other fatiguing conditions such as long COVID or multiple sclerosis, which is why the full DSQ-2 is more informative. Discuss any result with your doctor."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is the DSQ-Brief scored?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Each of the four symptoms is rated for frequency and severity over the past six months, each from 0 to 4. A symptom counts as present when both frequency and severity are rated 2 or higher. The screen is positive when all four symptoms meet this threshold."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="ME/CFS screening questionnaire: free 4-question self-check based on the DePaul Symptom Questionnaire"
+	description="A free, quick ME/CFS screening tool based on the DePaul Symptom Questionnaire Brief. Answer 4 questions and get an immediate result. No sign-up required."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "ME/CFS screening (DSQ-Brief)", "item": "https://www.postviralrecovery.com/tools/dsq-brief/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the DSQ-Brief?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-Brief is a 4-item screening scale for ME/CFS developed by Jason and colleagues at DePaul University in 2023. It assesses fatigue and post-exertional malaise, the two hallmark features of ME/CFS. In validation it achieved 96% accuracy against healthy controls, with 94% sensitivity and 98% specificity."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Does a positive DSQ-Brief screen mean I have ME/CFS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. A positive screen means your responses match the symptom pattern the tool looks for. It is not a diagnosis. Its accuracy also drops to around 82 to 84 percent when distinguishing ME/CFS from other fatiguing conditions such as long COVID or multiple sclerosis, which is why the full DSQ-2 is more informative. Discuss any result with your doctor."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is the DSQ-Brief scored?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Each of the four symptoms is rated for frequency and severity over the past six months, each from 0 to 4. A symptom counts as present when both frequency and severity are rated 2 or higher. The screen is positive when all four symptoms meet this threshold."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>ME/CFS screening questionnaire</h1>
@@ -172,10 +162,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS: { id: string; text: string }[] = [

@@ -1,12 +1,17 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+import { stripLocale } from '../i18n/config';
 
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+// Compare paths with the locale prefix and trailing slash removed, so
+// /de/tools/compass-31/ marks the (localised or English) Tools link active.
+const trim = (p: string) => stripLocale(p).replace(/\/+$/, '') || '/';
+const current = trim(Astro.url.pathname);
+const target = trim(String(href ?? ''));
+const isActive = target === current || (target !== '/' && current.startsWith(`${target}/`));
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const usual = ['Less than usual', 'No more than usual', 'More than usual', 'Much more than usual'];
 const memory = ['Better than usual', 'No worse than usual', 'Worse than usual', 'Much worse than usual'];
@@ -23,53 +19,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Chalder Fatigue Scale (CFQ-11): free online calculator with Likert and bimodal scoring"
-			description="Complete the 11-item Chalder Fatigue Questionnaire and get your Likert score (0–33), physical and mental subscales, and bimodal score (0–11) with the ≥4 case threshold explained. The fatigue measure used across UK ME/CFS and long COVID services. Free, instant, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Chalder Fatigue Scale", "item": "https://www.postviralrecovery.com/tools/chalder-fatigue-scale/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How is the Chalder Fatigue Scale scored?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Each of the 11 items has four answers. Likert scoring gives them 0, 1, 2, 3 for a total of 0 to 33, with a physical fatigue subscale (items 1 to 7, 0 to 21) and a mental fatigue subscale (items 8 to 11, 0 to 12). Bimodal scoring gives the first two answers 0 and the last two 1, for a total of 0 to 11; a bimodal score of 4 or more is the conventional threshold for clinically significant fatigue."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a normal Chalder Fatigue Scale score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "In a UK community sample of 1,615 people (Cella and Chalder 2010) the mean Likert score was 14.2 with a standard deviation of 4.6, so scores up to about 18 fall within one standard deviation of the population mean. People with chronic fatigue syndrome in the same study averaged 24.4, and a Likert score of 29 or more separated them from the community sample in 96% of cases. Bimodal scores of 4 or more are considered a positive screen."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between the Chalder Fatigue Scale and the Fatigue Severity Scale?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Chalder scale asks how much fatigue symptoms have changed compared with when you were last well, across physical and mental items, over the past month. The Fatigue Severity Scale asks how much fatigue interferes with daily functioning over the past week. The Chalder scale is the standard in UK ME/CFS and long COVID services and trials; the FSS is more common in neurology and in US research."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Chalder Fatigue Scale (CFQ-11): free online calculator with Likert and bimodal scoring"
+	description="Complete the 11-item Chalder Fatigue Questionnaire and get your Likert score (0–33), physical and mental subscales, and bimodal score (0–11) with the ≥4 case threshold explained. The fatigue measure used across UK ME/CFS and long COVID services. Free, instant, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Chalder Fatigue Scale", "item": "https://www.postviralrecovery.com/tools/chalder-fatigue-scale/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "How is the Chalder Fatigue Scale scored?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Each of the 11 items has four answers. Likert scoring gives them 0, 1, 2, 3 for a total of 0 to 33, with a physical fatigue subscale (items 1 to 7, 0 to 21) and a mental fatigue subscale (items 8 to 11, 0 to 12). Bimodal scoring gives the first two answers 0 and the last two 1, for a total of 0 to 11; a bimodal score of 4 or more is the conventional threshold for clinically significant fatigue."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a normal Chalder Fatigue Scale score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "In a UK community sample of 1,615 people (Cella and Chalder 2010) the mean Likert score was 14.2 with a standard deviation of 4.6, so scores up to about 18 fall within one standard deviation of the population mean. People with chronic fatigue syndrome in the same study averaged 24.4, and a Likert score of 29 or more separated them from the community sample in 96% of cases. Bimodal scores of 4 or more are considered a positive screen."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is the difference between the Chalder Fatigue Scale and the Fatigue Severity Scale?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Chalder scale asks how much fatigue symptoms have changed compared with when you were last well, across physical and mental items, over the past month. The Fatigue Severity Scale asks how much fatigue interferes with daily functioning over the past week. The Chalder scale is the standard in UK ME/CFS and long COVID services and trials; the FSS is more common in neurology and in US research."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
@@ -158,10 +148,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const PHYSICAL = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];

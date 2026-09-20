@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const scaleOptions = [
 	{ value: 0, label: 'I cannot do this' },
@@ -99,53 +95,47 @@ const clientConfig = {
 };
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="FUNCAP functional capacity questionnaire for ME/CFS: free online version with scoring"
-			description="Complete the FUNCAP27 functional capacity questionnaire online for free. A patient-informed ME/CFS instrument covering 8 activity domains, with automatic scoring and a domain profile. No sign-up required."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "FUNCAP functional capacity questionnaire", "item": "https://www.postviralrecovery.com/tools/funcap/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the FUNCAP questionnaire?",
-          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what everyday activities cost you: whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is FUNCAP scored?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is FUNCAP different from the Bell scale?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale gives a single 0–100 rating of overall functional status. FUNCAP measures functional capacity activity by activity across eight domains, capturing the post-exertional 'payback' pattern specific to ME/CFS. The Bell scale is quicker for regular tracking; FUNCAP gives a much more detailed profile, which is particularly useful for disability paperwork and specialist appointments."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="FUNCAP functional capacity questionnaire for ME/CFS: free online version with scoring"
+	description="Complete the FUNCAP27 functional capacity questionnaire online for free. A patient-informed ME/CFS instrument covering 8 activity domains, with automatic scoring and a domain profile. No sign-up required."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "FUNCAP functional capacity questionnaire", "item": "https://www.postviralrecovery.com/tools/funcap/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the FUNCAP questionnaire?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what everyday activities cost you: whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is FUNCAP scored?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is FUNCAP different from the Bell scale?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale gives a single 0–100 rating of overall functional status. FUNCAP measures functional capacity activity by activity across eight domains, capturing the post-exertional 'payback' pattern specific to ME/CFS. The Bell scale is quicker for regular tracking; FUNCAP gives a much more detailed profile, which is particularly useful for disability paperwork and specialist appointments."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>FUNCAP functional capacity questionnaire</h1>
@@ -231,10 +221,7 @@ const clientConfig = {
 			</div>
 
 			<script type="application/json" id="funcap-config" set:html={JSON.stringify(clientConfig)}></script>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 type Item = { id: string; text: string };

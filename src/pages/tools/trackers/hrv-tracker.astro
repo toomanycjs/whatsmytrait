@@ -1,23 +1,12 @@
 ---
-import BaseHead from '../../../components/BaseHead.astro';
-import Footer from '../../../components/Footer.astro';
-import Header from '../../../components/Header.astro';
+import Page from '../../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Free HRV and resting heart rate tracker: Google Sheets template for daily logging"
-			description="A free Google Sheets template for tracking daily HRV and resting heart rate. Automatic weekly and monthly medians with trend charts. Works with Garmin, Apple Watch, Polar, or manual entry."
-			ogImage={ogImage}
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Free HRV and resting heart rate tracker: Google Sheets template for daily logging"
+	description="A free Google Sheets template for tracking daily HRV and resting heart rate. Automatic weekly and monthly medians with trend charts. Works with Garmin, Apple Watch, Polar, or manual entry."
+>
 			<div class="page-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>HRV and resting heart rate tracker</h1>
@@ -39,10 +28,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 
 				<p class="note">If you're tracking HRV in the context of an intervention, consider pairing this with the <a href="/tools/trackers/symptom-diary/">symptom diary</a> to look for correlations between autonomic markers and how you feel. For more on HRV as a tracking metric, see the <a href="/evidence/hrv-as-a-tracking-metric/">HRV as a tracking metric</a> evidence post.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.page-header {

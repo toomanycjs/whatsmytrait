@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const freqOptions = [
 	{ value: 0, label: 'None of the time' },
@@ -39,58 +35,52 @@ const durationOptions = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Post-exertional malaise test: free DSQ-PEM questionnaire with scoring"
-			description="Check for post-exertional malaise (PEM) with the DePaul Symptom Questionnaire PEM short form. 10 questions, immediate scored result, with the ME/CFS thresholds explained. Free, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Post-exertional malaise (DSQ-PEM)", "item": "https://www.postviralrecovery.com/tools/dsq-pem/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is post-exertional malaise (PEM)?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Post-exertional malaise is a disproportionate worsening of symptoms after physical or mental effort, typically delayed by hours to a day and lasting far longer than ordinary tiredness would. It is the hallmark feature of ME/CFS and is common in long COVID. It is different from feeling tired after exercise: the effort involved can be trivial, and the payback can last days."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is the DSQ-PEM?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-PEM is a 10-item short form of the DePaul Symptom Questionnaire focused on post-exertional malaise, published by Cotler, Holtzman, Dudun and Jason in 2018. Five items rate PEM symptoms for frequency and severity over the past six months; five supplementary items ask about recovery time and what triggers worsening. In the validation study the five core items identified 97% of patients with ME/CFS."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is the DSQ-PEM scored?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A symptom counts as present when both its frequency and severity are rated 2 or higher (at least 'half of the time' and at least 'moderate'). PEM is indicated when at least one of the five core symptoms meets this threshold. The supplementary items add context: worsening after minimal physical or mental effort, and a recovery time of 14 hours or more, are the pattern most consistent with ME/CFS-type PEM."}
-        },
-        {
-          "@type": "Question",
-          "name": "Why does PEM matter before trying graded exercise?",
-          "acceptedAnswer": {"@type": "Answer", "text": "If PEM is present, activity that exceeds your current capacity can trigger prolonged worsening. Identifying PEM first is therefore important before attempting any programme of increasing activity, and it is why pacing is the usual first-line management approach. NICE guideline NG206 advises against fixed incremental graded exercise therapy for people with ME/CFS."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Post-exertional malaise test: free DSQ-PEM questionnaire with scoring"
+	description="Check for post-exertional malaise (PEM) with the DePaul Symptom Questionnaire PEM short form. 10 questions, immediate scored result, with the ME/CFS thresholds explained. Free, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Post-exertional malaise (DSQ-PEM)", "item": "https://www.postviralrecovery.com/tools/dsq-pem/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is post-exertional malaise (PEM)?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Post-exertional malaise is a disproportionate worsening of symptoms after physical or mental effort, typically delayed by hours to a day and lasting far longer than ordinary tiredness would. It is the hallmark feature of ME/CFS and is common in long COVID. It is different from feeling tired after exercise: the effort involved can be trivial, and the payback can last days."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is the DSQ-PEM?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-PEM is a 10-item short form of the DePaul Symptom Questionnaire focused on post-exertional malaise, published by Cotler, Holtzman, Dudun and Jason in 2018. Five items rate PEM symptoms for frequency and severity over the past six months; five supplementary items ask about recovery time and what triggers worsening. In the validation study the five core items identified 97% of patients with ME/CFS."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is the DSQ-PEM scored?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A symptom counts as present when both its frequency and severity are rated 2 or higher (at least 'half of the time' and at least 'moderate'). PEM is indicated when at least one of the five core symptoms meets this threshold. The supplementary items add context: worsening after minimal physical or mental effort, and a recovery time of 14 hours or more, are the pattern most consistent with ME/CFS-type PEM."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Why does PEM matter before trying graded exercise?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "If PEM is present, activity that exceeds your current capacity can trigger prolonged worsening. Identifying PEM first is therefore important before attempting any programme of increasing activity, and it is why pacing is the usual first-line management approach. NICE guideline NG206 advises against fixed incremental graded exercise therapy for people with ME/CFS."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Post-exertional malaise questionnaire</h1>
@@ -228,10 +218,7 @@ const durationOptions = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS = [

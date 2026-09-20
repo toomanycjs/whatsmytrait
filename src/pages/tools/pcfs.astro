@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const grades = [
 	{
@@ -34,53 +30,47 @@ const grades = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Post-COVID-19 Functional Status (PCFS) scale: free online self-assessment"
-			description="Find your PCFS grade in under a minute. The Post-COVID-19 Functional Status scale grades the functional impact of long COVID from 0 (no limitations) to 4 (severe limitations), with each step explained."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Post-COVID-19 Functional Status scale", "item": "https://www.postviralrecovery.com/tools/pcfs/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the PCFS scale?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Post-COVID-19 Functional Status (PCFS) scale is a simple ordinal scale proposed by Klok and colleagues in 2020 to measure how much everyday functioning is affected after COVID-19. It has five grades, from 0 (no functional limitations) to 4 (severe limitations, needing assistance with daily living). It has been translated into more than 25 languages and is widely used in long COVID research and rehabilitation."}
-        },
-        {
-          "@type": "Question",
-          "name": "What do the PCFS grades mean?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Grade 0: no limitations. Grade 1: symptoms persist but all usual activities can be performed. Grade 2: usual activities occasionally need to be reduced, avoided, or spread over time. Grade 3: not able to perform all usual activities. Grade 4: needing assistance with activities of daily living. Grades 2 and above generally indicate a level of limitation worth discussing with a clinician or rehabilitation service."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is the PCFS a measure of symptom severity?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. It deliberately measures functional consequences rather than symptoms. Two people with the same symptom list can have very different PCFS grades depending on how much their daily life is limited. For symptom-level detail, pair it with a symptom questionnaire; for fine-grained functional capacity in ME/CFS-type illness, the FUNCAP questionnaire is more detailed."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Post-COVID-19 Functional Status (PCFS) scale: free online self-assessment"
+	description="Find your PCFS grade in under a minute. The Post-COVID-19 Functional Status scale grades the functional impact of long COVID from 0 (no limitations) to 4 (severe limitations), with each step explained."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Post-COVID-19 Functional Status scale", "item": "https://www.postviralrecovery.com/tools/pcfs/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the PCFS scale?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Post-COVID-19 Functional Status (PCFS) scale is a simple ordinal scale proposed by Klok and colleagues in 2020 to measure how much everyday functioning is affected after COVID-19. It has five grades, from 0 (no functional limitations) to 4 (severe limitations, needing assistance with daily living). It has been translated into more than 25 languages and is widely used in long COVID research and rehabilitation."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What do the PCFS grades mean?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Grade 0: no limitations. Grade 1: symptoms persist but all usual activities can be performed. Grade 2: usual activities occasionally need to be reduced, avoided, or spread over time. Grade 3: not able to perform all usual activities. Grade 4: needing assistance with activities of daily living. Grades 2 and above generally indicate a level of limitation worth discussing with a clinician or rehabilitation service."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Is the PCFS a measure of symptom severity?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. It deliberately measures functional consequences rather than symptoms. Two people with the same symptom list can have very different PCFS grades depending on how much their daily life is limited. For symptom-level detail, pair it with a symptom questionnaire; for fine-grained functional capacity in ME/CFS-type illness, the FUNCAP questionnaire is more detailed."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Post-COVID-19 Functional Status scale</h1>
@@ -166,10 +156,7 @@ const grades = [
 				<p>The PCFS is most useful tracked over time: the authors suggest recording it at discharge or diagnosis, and again at intervals such as 4–8 weeks and 6 months. A grade that is not falling over months is a concrete, communicable signal to raise with your GP or a long COVID service.</p>
 				<p>Grades 2–3 generally indicate a level of limitation where rehabilitation support and pacing advice are appropriate; grade 4 indicates a need for care support. The scale is deliberately coarse, so a stable grade can still hide real change. Pairing it with a more detailed tool such as the <a href="/tools/funcap/">FUNCAP</a> or a <a href="/tools/trackers/symptom-diary/">symptom diary</a> gives you both the headline and the detail.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const GRADES = [

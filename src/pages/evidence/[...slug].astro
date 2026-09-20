@@ -1,9 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { isDefaultLocaleId } from '../../i18n/config';
 import Post from '../../layouts/Post.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('evidence', p => !p.data.draft);
+	const posts = await getCollection('evidence', p => !p.data.draft && isDefaultLocaleId(p.id));
 	return posts.map(p => ({ params: { slug: p.id }, props: p }));
 }
 

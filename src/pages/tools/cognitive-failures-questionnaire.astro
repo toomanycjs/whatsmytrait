@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const options = ['Never', 'Very rarely', 'Occasionally', 'Quite often', 'Very often'];
 
@@ -38,53 +34,47 @@ const items = [
 const pages = [items.slice(0, 13), items.slice(13)];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Cognitive Failures Questionnaire (CFQ): free online brain fog questionnaire with scoring"
-			description="Complete Broadbent's 25-item Cognitive Failures Questionnaire and get your score out of 100 instantly, with forgetfulness, distractibility, and blunders subscales and reference values from healthy adults, long COVID, and ME/CFS studies. The standard measure of everyday cognitive lapses. Free, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Cognitive Failures Questionnaire", "item": "https://www.postviralrecovery.com/tools/cognitive-failures-questionnaire/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Cognitive Failures Questionnaire?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Cognitive Failures Questionnaire (CFQ) was published by Donald Broadbent and colleagues in 1982. It asks how often 25 everyday lapses of memory, attention, and action have happened to you over the past six months, each rated from 0 (never) to 4 (very often), for a total of 0 to 100. It is the most widely used self-report measure of everyday cognitive slips, and is increasingly used to quantify brain fog in long COVID research."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a normal Cognitive Failures Questionnaire score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Healthy adult samples typically average in the low-to-mid 30s: about 32 in a large US community sample, 35 to 37 in Broadbent's original working samples, and 38 in UK naval personnel. A score of 43 or more, one standard deviation above the mean of a Dutch reference sample, is the cut-off some studies use for a high level of cognitive failures. Long COVID cohorts have averaged 44 to 50 and ME/CFS patients around 57."}
-        },
-        {
-          "@type": "Question",
-          "name": "Does a high CFQ score mean I have cognitive impairment?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The CFQ measures how often you notice yourself making everyday slips. Scores correlate only modestly with performance on objective cognitive tests, and they are influenced by fatigue, sleep, mood, and anxiety. A high score is a valid record of the lapses you experience, and a reasonable basis for asking about cognitive assessment, but it is not a test of cognitive function."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Cognitive Failures Questionnaire (CFQ): free online brain fog questionnaire with scoring"
+	description="Complete Broadbent's 25-item Cognitive Failures Questionnaire and get your score out of 100 instantly, with forgetfulness, distractibility, and blunders subscales and reference values from healthy adults, long COVID, and ME/CFS studies. The standard measure of everyday cognitive lapses. Free, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Cognitive Failures Questionnaire", "item": "https://www.postviralrecovery.com/tools/cognitive-failures-questionnaire/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Cognitive Failures Questionnaire?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Cognitive Failures Questionnaire (CFQ) was published by Donald Broadbent and colleagues in 1982. It asks how often 25 everyday lapses of memory, attention, and action have happened to you over the past six months, each rated from 0 (never) to 4 (very often), for a total of 0 to 100. It is the most widely used self-report measure of everyday cognitive slips, and is increasingly used to quantify brain fog in long COVID research."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a normal Cognitive Failures Questionnaire score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Healthy adult samples typically average in the low-to-mid 30s: about 32 in a large US community sample, 35 to 37 in Broadbent's original working samples, and 38 in UK naval personnel. A score of 43 or more, one standard deviation above the mean of a Dutch reference sample, is the cut-off some studies use for a high level of cognitive failures. Long COVID cohorts have averaged 44 to 50 and ME/CFS patients around 57."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Does a high CFQ score mean I have cognitive impairment?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The CFQ measures how often you notice yourself making everyday slips. Scores correlate only modestly with performance on objective cognitive tests, and they are influenced by fatigue, sleep, mood, and anxiety. A high score is a valid record of the lapses you experience, and a reasonable basis for asking about cognitive assessment, but it is not a test of cognitive function."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Cognitive Failures Questionnaire (CFQ)</h1>
@@ -161,10 +151,7 @@ const pages = [items.slice(0, 13), items.slice(13)];
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';

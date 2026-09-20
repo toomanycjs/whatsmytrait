@@ -4,6 +4,7 @@ import JsonLd from '../components/JsonLd.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
 
 interface Props {
 	title: string;
@@ -20,6 +21,8 @@ interface Props {
 
 const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage } = Astro.props;
 
+const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
+const t = ui(lang);
 const slug = Astro.url.pathname.replace(/^\//, '').replace(/\/$/, '');
 const generatedOgImage = new URL(`/og/${slug}.png`, Astro.site).href;
 const resolvedOgImage = ogImage ?? generatedOgImage;
@@ -28,7 +31,7 @@ const schemaType = section === 'evidence' ? 'MedicalWebPage' as const : 'BlogPos
 const effectiveModified = lastModified ?? updatedDate;
 ---
 
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<BaseHead title={title} description={description} ogImage={resolvedOgImage} ogType="article" />
 		<JsonLd
@@ -39,6 +42,7 @@ const effectiveModified = lastModified ?? updatedDate;
 			updatedDate={effectiveModified}
 			url={canonicalURL}
 			image={resolvedOgImage}
+			lang={lang}
 		/>
 	</head>
 	<body>
@@ -53,9 +57,9 @@ const effectiveModified = lastModified ?? updatedDate;
 					<h1>{title}</h1>
 					<p class="post-description">{description}</p>
 					<div class="dates">
-						<FormattedDate date={pubDate} />
+						<FormattedDate date={pubDate} locale={lang} />
 						{updatedDate && (
-							<span class="updated">· Updated <FormattedDate date={updatedDate} /></span>
+							<span class="updated">· {t.updated} <FormattedDate date={updatedDate} locale={lang} /></span>
 						)}
 					</div>
 					<hr />

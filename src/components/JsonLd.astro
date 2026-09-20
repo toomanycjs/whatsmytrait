@@ -7,15 +7,17 @@ interface Props {
 	updatedDate?: Date;
 	url: string;
 	image?: string;
+	lang?: string;
 }
 
-const { type, title, description, pubDate, updatedDate, url, image } = Astro.props;
+const { type, title, description, pubDate, updatedDate, url, image, lang = 'en' } = Astro.props;
 
 const schema: Record<string, unknown> = {
 	'@context': 'https://schema.org',
 	'@type': type,
 	headline: title,
 	description,
+	inLanguage: lang,
 	datePublished: pubDate.toISOString(),
 	dateModified: (updatedDate ?? pubDate).toISOString(),
 	mainEntityOfPage: {

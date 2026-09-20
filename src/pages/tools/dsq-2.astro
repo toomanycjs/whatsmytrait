@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const freqOptions = [
 	{ value: 0, short: 'None of the time', full: 'None of the time' },
@@ -163,53 +159,47 @@ const clientConfig = {
 const totalSteps = domains.length + 1; // + impact step
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="DePaul Symptom Questionnaire (DSQ-2): free online ME/CFS symptom assessment with scoring"
-			description="Complete the full DePaul Symptom Questionnaire-2 online for free. Assess ME/CFS symptoms across 8 domains with automatic scoring and interpretation. No sign-up required."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "DePaul Symptom Questionnaire (DSQ-2)", "item": "https://www.postviralrecovery.com/tools/dsq-2/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the DePaul Symptom Questionnaire (DSQ-2)?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-2 is a comprehensive self-report questionnaire developed by Jason, Bedree and Sunnquist at DePaul University to assess the symptoms of ME/CFS. It covers eight symptom domains identified by factor analysis and lets you check your responses against the four major ME/CFS case definitions. It is one of the standard research instruments in the field and is free to use."}
-        },
-        {
-          "@type": "Question",
-          "name": "How long does the DSQ-2 take?",
-          "acceptedAnswer": {"@type": "Answer", "text": "About 10 to 15 minutes. It is presented one section at a time and your progress is saved in your browser, so you can take a break and come back to it."}
-        },
-        {
-          "@type": "Question",
-          "name": "Does meeting a case definition on the DSQ-2 mean I have ME/CFS?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. Meeting a case definition on a self-report questionnaire is not the same as a clinical diagnosis. The case-definition screening shows which criteria your reported symptoms are consistent with, which can be useful to bring to an appointment, but a diagnosis requires a clinician and the exclusion of other conditions."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="DePaul Symptom Questionnaire (DSQ-2): free online ME/CFS symptom assessment with scoring"
+	description="Complete the full DePaul Symptom Questionnaire-2 online for free. Assess ME/CFS symptoms across 8 domains with automatic scoring and interpretation. No sign-up required."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "DePaul Symptom Questionnaire (DSQ-2)", "item": "https://www.postviralrecovery.com/tools/dsq-2/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the DePaul Symptom Questionnaire (DSQ-2)?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The DSQ-2 is a comprehensive self-report questionnaire developed by Jason, Bedree and Sunnquist at DePaul University to assess the symptoms of ME/CFS. It covers eight symptom domains identified by factor analysis and lets you check your responses against the four major ME/CFS case definitions. It is one of the standard research instruments in the field and is free to use."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How long does the DSQ-2 take?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "About 10 to 15 minutes. It is presented one section at a time and your progress is saved in your browser, so you can take a break and come back to it."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Does meeting a case definition on the DSQ-2 mean I have ME/CFS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. Meeting a case definition on a self-report questionnaire is not the same as a clinical diagnosis. The case-definition screening shows which criteria your reported symptoms are consistent with, which can be useful to bring to an appointment, but a diagnosis requires a clinician and the exclusion of other conditions."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>DePaul Symptom Questionnaire (DSQ-2)</h1>
@@ -350,10 +340,7 @@ const totalSteps = domains.length + 1; // + impact step
 			</div>
 
 			<script type="application/json" id="dsq2-config" set:html={JSON.stringify(clientConfig)}></script>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 type Item = { id: string; text: string; tags: string[] };

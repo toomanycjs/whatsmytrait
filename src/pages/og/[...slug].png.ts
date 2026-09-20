@@ -3,6 +3,9 @@ import { getCollection } from 'astro:content';
 import fs from 'node:fs';
 import satori from 'satori';
 import sharp from 'sharp';
+import { SITE_TITLE } from '../../consts';
+import { DEFAULT_LOCALE, localeOfId, ui, type Locale } from '../../i18n/config';
+import { listPages } from '../../i18n/registry';
 
 const SECTION_COLORS: Record<string, string> = {
 	evidence: '#2563eb',
@@ -10,13 +13,7 @@ const SECTION_COLORS: Record<string, string> = {
 	nhs: '#1d4ed8',
 	tools: '#7c3aed',
 };
-
-const SECTION_LABELS: Record<string, string> = {
-	evidence: 'EVIDENCE REVIEW',
-	testing: 'TESTING',
-	nhs: 'NHS GUIDANCE',
-	tools: 'TOOLS',
-};
+const DEFAULT_COLOR = '#0d6b74';
 
 const ENTITIES: Record<string, string> = {
 	'&amp;': '&',
@@ -32,28 +29,42 @@ function decodeEntities(text: string) {
 	return text.replace(/&(?:amp|lt|gt|quot|#39|ndash|mdash);/g, (entity) => ENTITIES[entity]);
 }
 
-// Tool pages set their title directly on <BaseHead>, so read it back out of the
-// source rather than keeping a second copy here: a hand-maintained list drifts
-// out of sync the moment a title is rewritten. The tools index is skipped
-// because it doesn't request a per-page OG image.
-const TOOL_SOURCES = import.meta.glob<string>('../tools/**/*.astro', {
-	query: '?raw',
-	import: 'default',
-	eager: true,
-});
+/** Section kicker for the image, in the page's own language. */
+function sectionLabel(locale: Locale, firstSegment: string | undefined): string {
+	const t = ui(locale);
+	switch (firstSegment) {
+		case 'testing': return t.nav.testing;
+		case 'evidence': return t.nav.evidence;
+		case 'nhs': return t.nav.nhs;
+		case 'tools': return t.nav.tools;
+		case 'about': return t.nav.about;
+		case 'contact': return t.nav.contact;
+		default: return '';
+	}
+}
 
-function toolPages() {
-	return Object.entries(TOOL_SOURCES)
-		.filter(([file]) => !file.endsWith('/index.astro'))
-		.map(([file, source]) => {
-			const head = source.match(/<BaseHead\b[\s\S]*?\/>/)?.[0];
-			const title = head?.match(/\btitle="([^"]*)"/)?.[1];
-			if (!title) {
-				throw new Error(`No BaseHead title found in ${file}`);
-			}
-			const slug = file.replace('../tools/', '').replace(/\.astro$/, '');
-			return { slug: `tools/${slug}`, title: decodeEntities(title) };
-		});
+// Static pages set their title on the <Page> layout (or <BaseHead> directly),
+// so read it back out of the source rather than keeping a second copy here:
+// a hand-maintained list drifts out of sync the moment a title is rewritten.
+// The registry already knows every page's locale and URL, translations included.
+function staticPages() {
+	return listPages().map((page) => {
+		const tag = page.source.match(/<(?:Page|BaseHead)\b([^>]*?)\/?>/)?.[1] ?? '';
+		let title = tag.match(/\btitle="([^"]*)"/)?.[1];
+		if (!title && /\btitle=\{SITE_TITLE\}/.test(tag)) title = SITE_TITLE;
+		if (!title) {
+			throw new Error(`No literal title found on <Page> or <BaseHead> in ${page.file}`);
+		}
+		const slug = page.path.replace(/^\/|\/$/g, '') || 'home';
+		const segments = page.path.replace(/^\/|\/$/g, '').split('/');
+		if (page.locale !== DEFAULT_LOCALE) segments.shift();
+		return {
+			slug,
+			title: decodeEntities(title),
+			section: segments[0] ?? '',
+			locale: page.locale,
+		};
+	});
 }
 
 export async function getStaticPaths() {
@@ -63,17 +74,19 @@ export async function getStaticPaths() {
 	for (const collection of collections) {
 		const posts = await getCollection(collection, (p) => !p.data.draft);
 		for (const post of posts) {
+			const { locale, rest } = localeOfId(post.id);
+			const slug = locale === DEFAULT_LOCALE ? `${collection}/${rest}` : `${locale}/${collection}/${rest}`;
 			paths.push({
-				params: { slug: `${collection}/${post.id}` },
-				props: { title: post.data.title, section: collection },
+				params: { slug },
+				props: { title: post.data.title, section: collection, locale },
 			});
 		}
 	}
 
-	for (const tool of toolPages()) {
+	for (const page of staticPages()) {
 		paths.push({
-			params: { slug: tool.slug },
-			props: { title: tool.title, section: 'tools' },
+			params: { slug: page.slug },
+			props: { title: page.title, section: page.section, locale: page.locale },
 		});
 	}
 
@@ -83,9 +96,9 @@ export async function getStaticPaths() {
 type Props = InferGetStaticPathsType<typeof getStaticPaths>['props'];
 
 export async function GET({ props }: { props: Props }) {
-	const { title, section } = props;
-	const color = SECTION_COLORS[section] ?? '#666';
-	const label = SECTION_LABELS[section] ?? section.toUpperCase();
+	const { title, section, locale } = props;
+	const color = SECTION_COLORS[section] ?? DEFAULT_COLOR;
+	const label = sectionLabel(locale as Locale, section).toUpperCase();
 	const fontSize = title.length > 80 ? 36 : title.length > 50 ? 42 : 48;
 
 	const fontRegular = fs.readFileSync('./public/fonts/atkinson-regular.woff');

@@ -11,6 +11,11 @@ const postSchema = z.object({
 	series: z.string().optional(),
 	draft: z.boolean().optional().default(false),
 	ogImage: z.string().optional(),
+	// Translations live in a locale subfolder (e.g. src/content/testing/de/foo.md
+	// → /de/testing/foo/) and pair with the English post at the same slug
+	// automatically. Set the same translationKey on both when the slugs differ.
+	lang: z.string().optional(),
+	translationKey: z.string().optional(),
 });
 
 const testing = defineCollection({

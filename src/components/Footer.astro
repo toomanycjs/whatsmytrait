@@ -1,33 +1,42 @@
 ---
+import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
+import { localizedPath } from '../i18n/registry';
+
 const today = new Date();
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
+const t = ui(locale);
+
+const NAV = [
+	{ path: '/testing/', label: t.nav.testing },
+	{ path: '/evidence/', label: t.nav.evidence },
+	{ path: '/tools/', label: t.nav.tools },
+	{ path: '/nhs/', label: t.nav.nhs },
+	{ path: '/about/', label: t.nav.about },
+	{ path: '/contact/', label: t.nav.contact },
+];
+const hrefs = await Promise.all(NAV.map((n) => localizedPath(locale, n.path)));
+const nav = NAV.map((n, i) => ({ ...n, href: hrefs[i] }));
 ---
 
 <footer>
 	<div class="footer-inner">
-		<p class="tagline">One person's documented experience of post-viral syndrome.</p>
-		<p class="disclaimer-note">
-			Nothing here is medical advice. I'm not a clinician; I'm a patient trying to make sense of my own condition. Always discuss any intervention with your doctor.
-		</p>
+		<p class="tagline">{t.footer.tagline}</p>
+		<p class="disclaimer-note">{t.footer.disclaimer}</p>
 		<div class="signup-block">
-			<p class="signup-label">Get new posts by email</p>
+			<p class="signup-label">{t.footer.signupLabel}</p>
 			<form
 				action="https://buttondown.email/api/emails/embed-subscribe/postviralrecovery"
 				method="post"
 				target="popupwindow"
 				class="signup-form"
 			>
-				<input type="email" name="email" placeholder="your@email.com" required />
-				<button type="submit">Subscribe</button>
+				<input type="email" name="email" placeholder={t.footer.emailPlaceholder} required />
+				<button type="submit">{t.footer.subscribe}</button>
 			</form>
-			<p class="signup-note">No spam. Unsubscribe any time.</p>
+			<p class="signup-note">{t.footer.signupNote}</p>
 		</div>
 		<nav class="footer-links">
-			<a href="/testing">Testing</a>
-			<a href="/evidence">Evidence</a>
-			<a href="/tools">Tools</a>
-			<a href="/nhs">NHS</a>
-			<a href="/about">About</a>
-			<a href="/contact">Contact</a>
+			{nav.map((n) => <a href={n.href}>{n.label}</a>)}
 		</nav>
 		<p class="copyright">&copy; {today.getFullYear()} Post Viral Recovery</p>
 	</div>

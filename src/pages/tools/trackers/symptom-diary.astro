@@ -1,23 +1,12 @@
 ---
-import BaseHead from '../../../components/BaseHead.astro';
-import Footer from '../../../components/Footer.astro';
-import Header from '../../../components/Header.astro';
+import Page from '../../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Free post-viral symptom diary: Google Sheets template with rolling averages"
-			description="A free Google Sheets symptom diary for tracking fatigue, breathlessness, head pain, and cognitive function daily. Automatic rolling averages and trend charts. Designed for post-viral and chronic illness tracking."
-			ogImage={ogImage}
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Free post-viral symptom diary: Google Sheets template with rolling averages"
+	description="A free Google Sheets symptom diary for tracking fatigue, breathlessness, head pain, and cognitive function daily. Automatic rolling averages and trend charts. Designed for post-viral and chronic illness tracking."
+>
 			<div class="page-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Post-viral symptom diary</h1>
@@ -39,10 +28,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 
 				<p class="note">If you are also tracking HRV and resting heart rate, the <a href="/tools/trackers/hrv-tracker/">HRV tracker</a> pairs well with this diary for looking at correlations between objective markers and how you feel.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.page-header {

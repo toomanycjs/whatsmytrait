@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const statements = [
 	'I have felt cheerful and in good spirits',
@@ -23,53 +19,47 @@ const ratings = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="WHO-5 Well-Being Index: free online test with scoring"
-			description="Complete the WHO-5 Well-Being Index online and get your score out of 100 instantly. Five questions about the past two weeks, with the standard thresholds explained. Free, no sign-up required."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "WHO-5 Well-Being Index", "item": "https://www.postviralrecovery.com/tools/who-5/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the WHO-5 Well-Being Index?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The WHO-5 is a five-item measure of subjective well-being derived from World Health Organization instruments and in use since 1998. You rate five positively worded statements about the past two weeks, and the total is converted to a score from 0 to 100, where higher means better well-being. It is one of the most widely used well-being measures in the world and is free to use."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a low WHO-5 score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A score of 50 or below indicates reduced well-being and is the standard threshold for considering further assessment. A score of 28 or below suggests markedly low well-being, at a level where discussing how you are feeling with a doctor is recommended. A change of 10 points or more is generally considered clinically meaningful."}
-        },
-        {
-          "@type": "Question",
-          "name": "Why include a well-being measure on a post-viral illness site?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Chronic post-viral illness grinds at well-being through symptoms, lost activities, and uncertainty. Tracking well-being alongside physical measures gives a fuller picture of how you are actually doing. The WHO-5 is positively worded, takes under a minute, and is sensitive to change, which makes it a light-touch companion to symptom and function tracking. A low score reflects low well-being from any cause; it is not a depression diagnosis."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="WHO-5 Well-Being Index: free online test with scoring"
+	description="Complete the WHO-5 Well-Being Index online and get your score out of 100 instantly. Five questions about the past two weeks, with the standard thresholds explained. Free, no sign-up required."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "WHO-5 Well-Being Index", "item": "https://www.postviralrecovery.com/tools/who-5/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the WHO-5 Well-Being Index?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The WHO-5 is a five-item measure of subjective well-being derived from World Health Organization instruments and in use since 1998. You rate five positively worded statements about the past two weeks, and the total is converted to a score from 0 to 100, where higher means better well-being. It is one of the most widely used well-being measures in the world and is free to use."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a low WHO-5 score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 50 or below indicates reduced well-being and is the standard threshold for considering further assessment. A score of 28 or below suggests markedly low well-being, at a level where discussing how you are feeling with a doctor is recommended. A change of 10 points or more is generally considered clinically meaningful."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Why include a well-being measure on a post-viral illness site?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Chronic post-viral illness grinds at well-being through symptoms, lost activities, and uncertainty. Tracking well-being alongside physical measures gives a fuller picture of how you are actually doing. The WHO-5 is positively worded, takes under a minute, and is sensitive to change, which makes it a light-touch companion to symptom and function tracking. A low score reflects low well-being from any cause; it is not a depression diagnosis."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>WHO-5 Well-Being Index</h1>
@@ -128,10 +118,7 @@ const ratings = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const form = document.getElementById('who5-form') as HTMLFormElement;

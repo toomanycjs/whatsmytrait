@@ -1,53 +1,44 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-		title="Fibromyalgia test: free online 2016 ACR survey, instant scoring"
-		description="A free interactive version of the 2016 ACR fibromyalgia survey. Tick your pain areas and rate your symptoms to get your Widespread Pain Index, Symptom Severity score and total fibromyalgia severity score, with the criteria thresholds explained."
-		ogImage={ogImage}
-	/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Fibromyalgia Survey", "item": "https://www.postviralrecovery.com/tools/fibromyalgia-survey/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the 2016 fibromyalgia survey?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The 2016 ACR fibromyalgia survey is a revised self-report questionnaire that measures two components: a Widespread Pain Index (WPI, 0–19) based on pain locations in the past week, and a Symptom Severity Scale (SSS, 0–12) covering fatigue, unrefreshed sleep, cognitive problems, headaches, abdominal pain, and depression. It is validated for research and screening, not for clinical diagnosis in an individual."}
-        },
-        {
-          "@type": "Question",
-          "name": "What score on the fibromyalgia survey suggests fibromyalgia?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia. It indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Fibromyalgia test: free online 2016 ACR survey, instant scoring"
+	description="A free interactive version of the 2016 ACR fibromyalgia survey. Tick your pain areas and rate your symptoms to get your Widespread Pain Index, Symptom Severity score and total fibromyalgia severity score, with the criteria thresholds explained."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Fibromyalgia Survey", "item": "https://www.postviralrecovery.com/tools/fibromyalgia-survey/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the 2016 fibromyalgia survey?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The 2016 ACR fibromyalgia survey is a revised self-report questionnaire that measures two components: a Widespread Pain Index (WPI, 0–19) based on pain locations in the past week, and a Symptom Severity Scale (SSS, 0–12) covering fatigue, unrefreshed sleep, cognitive problems, headaches, abdominal pain, and depression. It is validated for research and screening, not for clinical diagnosis in an individual."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What score on the fibromyalgia survey suggests fibromyalgia?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia. It indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">
@@ -247,10 +238,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				</div>
 			</div>
 
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 // ── Pain area definitions with region mappings ───────────────────────────────
@@ -486,7 +474,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 
 <style>
 /* ── Base ─────────────────────────────────────────────────────────────────── */
-main {
+:global(main) {
 	max-width: 680px;
 	margin: 0 auto;
 	padding: 2rem 1.25rem 4rem;
@@ -846,7 +834,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	header, footer, .export-buttons, #restart-btn, .progress-bar, .nav-buttons { display: none !important; }
 	.screen[hidden] { display: none !important; }
 	#screen-results { display: block !important; }
-	main { padding: 0; max-width: 100%; }
+	:global(main) { padding: 0; max-width: 100%; }
 	body { font-size: 12pt; }
 }
 </style>

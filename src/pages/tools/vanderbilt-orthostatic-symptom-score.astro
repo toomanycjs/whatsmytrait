@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const items = [
 	{ id: 'clouding', text: 'Mental clouding (brain fog, difficulty thinking clearly)' },
@@ -18,53 +14,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Vanderbilt Orthostatic Symptom Score (VOSS): free online POTS symptom rating"
-			description="Rate the nine VOSS symptoms from 0 to 10 while upright and get your Vanderbilt Orthostatic Symptom Score (0–90) instantly, with reference values from POTS trials and healthy controls. The standing symptom score used in Vanderbilt and Calgary POTS studies. Free, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Vanderbilt Orthostatic Symptom Score", "item": "https://www.postviralrecovery.com/tools/vanderbilt-orthostatic-symptom-score/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Vanderbilt Orthostatic Symptom Score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS is a nine-symptom rating used in POTS research from the Vanderbilt Autonomic Dysfunction Center. Each symptom (mental clouding, blurred vision, shortness of breath, rapid heartbeat, tremulousness, chest discomfort, headache, lightheadedness, nausea) is rated from 0 (absent) to 10 (worst you have experienced) at a moment in time, usually at the end of a stand or tilt test. The total runs from 0 to 90."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a high VOSS score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "There is no validated cut-off. In published studies, people with POTS have scored around 26 on average after ten minutes of head-up tilt and a median of about 35 after a stand test, while healthy adults averaged about 12 after ten minutes of tilt. Treatments that helped in trials moved the score by around 5 to 14 points."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is the VOSS different from the Malmö POTS score or COMPASS-31?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS measures symptoms right now, typically while standing, which makes it a test-day measure that pairs with a NASA lean test or tilt. The Malmö POTS Symptom Score covers the past seven days and the COMPASS-31 covers a longer period across six autonomic domains. They answer different questions: acute orthostatic burden versus weekly or overall symptom load."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Vanderbilt Orthostatic Symptom Score (VOSS): free online POTS symptom rating"
+	description="Rate the nine VOSS symptoms from 0 to 10 while upright and get your Vanderbilt Orthostatic Symptom Score (0–90) instantly, with reference values from POTS trials and healthy controls. The standing symptom score used in Vanderbilt and Calgary POTS studies. Free, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Vanderbilt Orthostatic Symptom Score", "item": "https://www.postviralrecovery.com/tools/vanderbilt-orthostatic-symptom-score/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Vanderbilt Orthostatic Symptom Score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS is a nine-symptom rating used in POTS research from the Vanderbilt Autonomic Dysfunction Center. Each symptom (mental clouding, blurred vision, shortness of breath, rapid heartbeat, tremulousness, chest discomfort, headache, lightheadedness, nausea) is rated from 0 (absent) to 10 (worst you have experienced) at a moment in time, usually at the end of a stand or tilt test. The total runs from 0 to 90."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a high VOSS score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "There is no validated cut-off. In published studies, people with POTS have scored around 26 on average after ten minutes of head-up tilt and a median of about 35 after a stand test, while healthy adults averaged about 12 after ten minutes of tilt. Treatments that helped in trials moved the score by around 5 to 14 points."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is the VOSS different from the Malmö POTS score or COMPASS-31?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS measures symptoms right now, typically while standing, which makes it a test-day measure that pairs with a NASA lean test or tilt. The Malmö POTS Symptom Score covers the past seven days and the COMPASS-31 covers a longer period across six autonomic domains. They answer different questions: acute orthostatic burden versus weekly or overall symptom load."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Vanderbilt Orthostatic Symptom Score (VOSS)</h1>
@@ -133,10 +123,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS = [

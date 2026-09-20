@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const scaleItems = [
 	{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
@@ -20,43 +16,37 @@ const scaleItems = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Bell CFIDS Disability Scale: free online functional test"
-			description="Rate your functional ability on the Bell CFIDS Disability Scale, the 0–100 scale used in ME/CFS to describe day-to-day function. Free, instant, and interactive, with each level explained in plain language."
-			ogImage={ogImage}
-		/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Bell CFIDS Disability Scale", "item": "https://www.postviralrecovery.com/tools/bell-scale/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does the Bell CFIDS Disability Scale measure?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale is a 0–100 functional capacity rating used in ME/CFS and post-viral communities. Higher scores indicate better functioning. It is designed as a quick, repeatable snapshot of overall activity level and symptom impact."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Bell CFIDS Disability Scale: free online functional test"
+	description="Rate your functional ability on the Bell CFIDS Disability Scale, the 0–100 scale used in ME/CFS to describe day-to-day function. Free, instant, and interactive, with each level explained in plain language."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Bell CFIDS Disability Scale", "item": "https://www.postviralrecovery.com/tools/bell-scale/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What does the Bell CFIDS Disability Scale measure?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale is a 0–100 functional capacity rating used in ME/CFS and post-viral communities. Higher scores indicate better functioning. It is designed as a quick, repeatable snapshot of overall activity level and symptom impact."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Bell CFIDS Disability Scale</h1>
@@ -116,10 +106,7 @@ const scaleItems = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit selection</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 	const SCALE_ITEMS: { value: number; description: string }[] = [

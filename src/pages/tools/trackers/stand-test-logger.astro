@@ -1,23 +1,12 @@
 ---
-import BaseHead from '../../../components/BaseHead.astro';
-import Footer from '../../../components/Footer.astro';
-import Header from '../../../components/Header.astro';
+import Page from '../../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Free stand test logger: track orthostatic heart rate over time"
-			description="A free Google Sheets template for logging NASA lean test and active stand test results over time. Record heart rate at baseline, 2, 5, and 10 minutes standing. Track your orthostatic response."
-			ogImage={ogImage}
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Free stand test logger: track orthostatic heart rate over time"
+	description="A free Google Sheets template for logging NASA lean test and active stand test results over time. Record heart rate at baseline, 2, 5, and 10 minutes standing. Track your orthostatic response."
+>
 			<div class="page-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Stand test logger</h1>
@@ -39,10 +28,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 
 				<a href="https://docs.google.com/spreadsheets/d/1SXMyBUa9eyfv01wyk9arEziqeb8L7e245YT0A0PTZrc/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="cta-button">Open the stand test logger template →</a>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.page-header {

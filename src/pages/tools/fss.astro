@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const questions = [
 	'My motivation is lower when I am fatigued.',
@@ -28,48 +24,42 @@ const ratings = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Fatigue Severity Scale: free online FSS test with scoring"
-			description="Complete the Fatigue Severity Scale (FSS) online and get your score instantly. A free, interactive version of the 9-item questionnaire, with your average score calculated and the interpretation thresholds explained. No sign-up needed."
-			ogImage={ogImage}
-		/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Fatigue Severity Scale", "item": "https://www.postviralrecovery.com/tools/fss/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a normal FSS score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls had a mean FSS score of approximately 2.3. A score of 4 or above is the most widely used threshold for clinically meaningful fatigue."}
-        },
-        {
-          "@type": "Question",
-          "name": "What does an FSS score above 5 mean?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Scores above 5 are consistent with clinically meaningful fatigue as seen in ME/CFS, multiple sclerosis, and post-viral fatigue in published research. Discuss your results with your doctor."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Fatigue Severity Scale: free online FSS test with scoring"
+	description="Complete the Fatigue Severity Scale (FSS) online and get your score instantly. A free, interactive version of the 9-item questionnaire, with your average score calculated and the interpretation thresholds explained. No sign-up needed."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Fatigue Severity Scale", "item": "https://www.postviralrecovery.com/tools/fss/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is a normal FSS score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls had a mean FSS score of approximately 2.3. A score of 4 or above is the most widely used threshold for clinically meaningful fatigue."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What does an FSS score above 5 mean?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Scores above 5 are consistent with clinically meaningful fatigue as seen in ME/CFS, multiple sclerosis, and post-viral fatigue in published research. Discuss your results with your doctor."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Fatigue Severity Scale</h1>
@@ -152,10 +142,7 @@ const ratings = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 	const QUESTIONS = [

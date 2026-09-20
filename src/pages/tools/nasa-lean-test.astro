@@ -1,53 +1,44 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-		title="NASA lean test: free at-home tilt table test with timer"
-		description="Do the NASA lean test (the poor man's tilt table test) at home with a guided timer and heart rate logging at each stage. Free and interactive, with your orthostatic heart rate change calculated and the POTS thresholds explained."
-		ogImage={ogImage}
-	/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "NASA Lean Test", "item": "https://www.postviralrecovery.com/tools/nasa-lean-test/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the NASA lean test?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The NASA lean test is a simplified orthostatic stress test used as an at-home screening method for POTS and orthostatic intolerance. The patient lies flat for 10 minutes, then stands and leans against a wall for 10 minutes, with heart rate recorded at intervals."}
-        },
-        {
-          "@type": "Question",
-          "name": "What heart rate increase suggests POTS on the NASA lean test?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A sustained heart rate increase of 30 bpm or more within 10 minutes of standing, or a standing heart rate exceeding 120 bpm, meets the commonly referenced threshold. This test alone cannot diagnose POTS; results should be discussed with a clinician."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="NASA lean test: free at-home tilt table test with timer"
+	description="Do the NASA lean test (the poor man's tilt table test) at home with a guided timer and heart rate logging at each stage. Free and interactive, with your orthostatic heart rate change calculated and the POTS thresholds explained."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "NASA Lean Test", "item": "https://www.postviralrecovery.com/tools/nasa-lean-test/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the NASA lean test?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The NASA lean test is a simplified orthostatic stress test used as an at-home screening method for POTS and orthostatic intolerance. The patient lies flat for 10 minutes, then stands and leans against a wall for 10 minutes, with heart rate recorded at intervals."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What heart rate increase suggests POTS on the NASA lean test?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A sustained heart rate increase of 30 bpm or more within 10 minutes of standing, or a standing heart rate exceeding 120 bpm, meets the commonly referenced threshold. This test alone cannot diagnose POTS; results should be discussed with a clinician."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 
 			<!-- ─── SETUP SCREEN ─────────────────────────────────────────── -->
 			<div id="screen-setup" class="screen">
@@ -301,10 +292,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				</div>
 			</div>
 
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const PROMPT_SECONDS = [60, 180, 300, 600];
@@ -756,7 +744,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 
 <style>
 /* ── Base ─────────────────────────────────────────────────────────────────── */
-main {
+:global(main) {
 	max-width: 680px;
 	margin: 0 auto;
 	padding: 2rem 1.25rem 4rem;
@@ -1287,7 +1275,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	.screen[hidden] { display: none !important; }
 	#screen-results { display: block !important; }
 	.overlay { display: none !important; }
-	main { padding: 0; max-width: 100%; }
+	:global(main) { padding: 0; max-width: 100%; }
 	.summary-cards :global(.summary-card.card-flagged) { border: 2px solid #000; }
 	body { font-size: 12pt; }
 	.timer-value { font-size: 2rem; }

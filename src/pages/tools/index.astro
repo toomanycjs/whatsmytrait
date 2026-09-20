@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
 const questionnaires = [
 	{
@@ -193,27 +191,22 @@ const sheets = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Free post-viral symptom tools: questionnaires, trackers, and self-assessments"
-			description="22 free interactive questionnaires with instant scoring: DSQ-2 and DSQ-PEM for ME/CFS, the Chalder Fatigue Scale, COMPASS-31, Malmö POTS score, VOSS and Orthostatic Grading Scale for dysautonomia, Beighton, 5PQ and the hEDS criteria for hypermobility, the Cognitive Failures Questionnaire for brain fog, SEBQ and Nijmegen for breathing, and more. Plus guides for pacing, heart rate ceilings, exercise readiness, and the NASA lean test."
-		/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"}
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Free post-viral symptom tools: questionnaires, trackers, and self-assessments"
+	description="22 free interactive questionnaires with instant scoring: DSQ-2 and DSQ-PEM for ME/CFS, the Chalder Fatigue Scale, COMPASS-31, Malmö POTS score, VOSS and Orthostatic Grading Scale for dysautonomia, Beighton, 5PQ and the hEDS criteria for hypermobility, the Cognitive Failures Questionnaire for brain fog, SEBQ and Nijmegen for breathing, and more. Plus guides for pacing, heart rate ceilings, exercise readiness, and the NASA lean test."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "BreadcrumbList",
+	  "itemListElement": [
+	    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"}
+	  ]
+	}
+	</script>
+	</Fragment>
 			<div class="section-header">
 				<span class="section-label tools">Tools</span>
 				<h1>Tools</h1>
@@ -277,10 +270,7 @@ const sheets = [
 					))}
 				</ul>
 			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.section-header {

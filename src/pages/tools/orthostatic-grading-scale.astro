@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const items = [
 	{
@@ -64,53 +60,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Orthostatic Grading Scale (OGS): free online orthostatic intolerance questionnaire"
-			description="Complete the five-item Orthostatic Grading Scale from the Mayo Clinic and get your score out of 20 instantly, with the mild, moderate, and severe bands and reference values from POTS, ME/CFS, and long COVID studies. Free, quick, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Orthostatic Grading Scale", "item": "https://www.postviralrecovery.com/tools/orthostatic-grading-scale/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Orthostatic Grading Scale?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Orthostatic Grading Scale (OGS) is a five-item self-report questionnaire developed at the Mayo Clinic and published in 2005. It grades the frequency and severity of orthostatic symptoms, the conditions that bring them on, their interference with daily activities, and how long you can stand before symptoms start. Each item scores 0 to 4, giving a total from 0 to 20."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a high Orthostatic Grading Scale score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Published bands are mild (below 4), moderate (4 to 9), and severe (above 9). In the original Mayo study a score of 9 or more best matched laboratory evidence of adrenergic autonomic failure. Healthy controls typically score 0 to 3; UK POTS patients have averaged about 13, ME/CFS cohorts 8 to 13, and hypermobile EDS patients about 10."}
-        },
-        {
-          "@type": "Question",
-          "name": "Does the Orthostatic Grading Scale diagnose POTS?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. It measures the burden of orthostatic symptoms, whatever their cause. POTS and orthostatic hypotension are diagnosed from heart rate and blood pressure responses to standing or tilt. A high OGS score is a reason to ask for that testing, and the scale is useful for tracking symptoms over time."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Orthostatic Grading Scale (OGS): free online orthostatic intolerance questionnaire"
+	description="Complete the five-item Orthostatic Grading Scale from the Mayo Clinic and get your score out of 20 instantly, with the mild, moderate, and severe bands and reference values from POTS, ME/CFS, and long COVID studies. Free, quick, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Orthostatic Grading Scale", "item": "https://www.postviralrecovery.com/tools/orthostatic-grading-scale/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Orthostatic Grading Scale?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Orthostatic Grading Scale (OGS) is a five-item self-report questionnaire developed at the Mayo Clinic and published in 2005. It grades the frequency and severity of orthostatic symptoms, the conditions that bring them on, their interference with daily activities, and how long you can stand before symptoms start. Each item scores 0 to 4, giving a total from 0 to 20."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a high Orthostatic Grading Scale score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Published bands are mild (below 4), moderate (4 to 9), and severe (above 9). In the original Mayo study a score of 9 or more best matched laboratory evidence of adrenergic autonomic failure. Healthy controls typically score 0 to 3; UK POTS patients have averaged about 13, ME/CFS cohorts 8 to 13, and hypermobile EDS patients about 10."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Does the Orthostatic Grading Scale diagnose POTS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. It measures the burden of orthostatic symptoms, whatever their cause. POTS and orthostatic hypotension are diagnosed from heart rate and blood pressure responses to standing or tilt. A high OGS score is a reason to ask for that testing, and the scale is useful for tracking symptoms over time."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Orthostatic Grading Scale (OGS)</h1>
@@ -171,10 +161,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS = [

@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const featureA = [
 	{ id: 'a1', text: 'Unusually soft or velvety skin', clinical: false },
@@ -41,53 +37,47 @@ const prerequisites = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="hEDS diagnostic criteria (2017): free interactive checklist"
-			description="Walk through the 2017 international diagnostic criteria for hypermobile Ehlers-Danlos syndrome step by step: Beighton score and the five-part questionnaire, the 12 Feature A signs, family history, musculoskeletal features, and the three exclusion prerequisites. Free, private, and clearly not a diagnosis."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "hEDS diagnostic criteria", "item": "https://www.postviralrecovery.com/tools/heds-criteria/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What are the 2017 hEDS diagnostic criteria?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 international criteria for hypermobile Ehlers-Danlos syndrome require all three of: Criterion 1, generalised joint hypermobility on the Beighton score (6 or more before puberty, 5 or more up to age 50, 4 or more over 50, with the five-part questionnaire used when the score is one point short); Criterion 2, two or more of Feature A (five or more of 12 systemic signs), Feature B (a first-degree relative meeting the criteria) and Feature C (chronic limb pain, widespread pain, or recurrent atraumatic dislocations or instability); and Criterion 3, exclusion of unusual skin fragility, other connective tissue disorders, and alternative causes of hypermobility."}
-        },
-        {
-          "@type": "Question",
-          "name": "Can I diagnose hEDS myself with this checklist?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. Several items, including atrophic scarring, mitral valve prolapse, aortic root dilatation, and all of Criterion 3, require clinical examination, imaging, or genetic testing. This checklist shows how your answers map onto the published criteria so you can have an informed conversation with a clinician. Hypermobile EDS is a clinical diagnosis made by a doctor after excluding other conditions."}
-        },
-        {
-          "@type": "Question",
-          "name": "What if I have hypermobility but do not meet the hEDS criteria?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 framework introduced hypermobility spectrum disorders (HSD) for people with symptomatic joint hypermobility who do not meet the full hEDS criteria. HSD is not a lesser diagnosis; symptom burden and management are similar, and the criteria were deliberately made strict for hEDS to support research into its genetic basis."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="hEDS diagnostic criteria (2017): free interactive checklist"
+	description="Walk through the 2017 international diagnostic criteria for hypermobile Ehlers-Danlos syndrome step by step: Beighton score and the five-part questionnaire, the 12 Feature A signs, family history, musculoskeletal features, and the three exclusion prerequisites. Free, private, and clearly not a diagnosis."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "hEDS diagnostic criteria", "item": "https://www.postviralrecovery.com/tools/heds-criteria/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What are the 2017 hEDS diagnostic criteria?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 international criteria for hypermobile Ehlers-Danlos syndrome require all three of: Criterion 1, generalised joint hypermobility on the Beighton score (6 or more before puberty, 5 or more up to age 50, 4 or more over 50, with the five-part questionnaire used when the score is one point short); Criterion 2, two or more of Feature A (five or more of 12 systemic signs), Feature B (a first-degree relative meeting the criteria) and Feature C (chronic limb pain, widespread pain, or recurrent atraumatic dislocations or instability); and Criterion 3, exclusion of unusual skin fragility, other connective tissue disorders, and alternative causes of hypermobility."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Can I diagnose hEDS myself with this checklist?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. Several items, including atrophic scarring, mitral valve prolapse, aortic root dilatation, and all of Criterion 3, require clinical examination, imaging, or genetic testing. This checklist shows how your answers map onto the published criteria so you can have an informed conversation with a clinician. Hypermobile EDS is a clinical diagnosis made by a doctor after excluding other conditions."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What if I have hypermobility but do not meet the hEDS criteria?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 framework introduced hypermobility spectrum disorders (HSD) for people with symptomatic joint hypermobility who do not meet the full hEDS criteria. HSD is not a lesser diagnosis; symptom burden and management are similar, and the criteria were deliberately made strict for hEDS to support research into its genetic basis."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>hEDS diagnostic criteria checker</h1>
@@ -280,10 +270,7 @@ const prerequisites = [
 				</div>
 				<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';

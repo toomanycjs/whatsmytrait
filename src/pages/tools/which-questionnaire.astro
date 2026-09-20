@@ -1,34 +1,25 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Which questionnaire should I take? A guide to post-viral self-assessment tools"
-			description="Not sure which symptom questionnaire is right for you? A plain-language guide to the DSQ-2, DSQ-PEM, COMPASS-31, Malmö POTS score, VOSS, Orthostatic Grading Scale, FUNCAP, PCFS, RAND-36, Chalder Fatigue Scale, Nijmegen, SEBQ, Cognitive Failures Questionnaire, Beighton, 5PQ, hEDS criteria, Epworth, Bell scale, WHO-5, and NASA lean test."
-			ogImage={ogImage}
-		/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-    {"@type": "ListItem", "position": 3, "name": "Which questionnaire?", "item": "https://www.postviralrecovery.com/tools/which-questionnaire/"}
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Which questionnaire should I take? A guide to post-viral self-assessment tools"
+	description="Not sure which symptom questionnaire is right for you? A plain-language guide to the DSQ-2, DSQ-PEM, COMPASS-31, Malmö POTS score, VOSS, Orthostatic Grading Scale, FUNCAP, PCFS, RAND-36, Chalder Fatigue Scale, Nijmegen, SEBQ, Cognitive Failures Questionnaire, Beighton, 5PQ, hEDS criteria, Epworth, Bell scale, WHO-5, and NASA lean test."
+>
+	<Fragment slot="head">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "BreadcrumbList",
+	  "itemListElement": [
+	    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	    {"@type": "ListItem", "position": 3, "name": "Which questionnaire?", "item": "https://www.postviralrecovery.com/tools/which-questionnaire/"}
+	  ]
+	}
+	</script>
+	</Fragment>
 			<div class="page-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Which questionnaire should I take?</h1>
@@ -81,10 +72,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				<h2>Using more than one</h2>
 				<p>You can complete more than one. For someone with a post-viral condition, a reasonable starting set might be the COMPASS-31 (autonomic symptoms), the FSS (fatigue impact), and the NASA lean test (orthostatic heart rate). Together, these give a fairly rounded picture of the areas most commonly affected.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.page-header {

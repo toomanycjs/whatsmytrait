@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const items = [
 	{ id: 'q1', text: 'Can you now (or could you ever) place your hands flat on the floor without bending your knees?' },
@@ -14,53 +10,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Five-part questionnaire for hypermobility (5PQ): free online screen"
-			description="Answer the five yes/no questions of the Hakim and Grahame five-part questionnaire and see whether you screen positive for joint hypermobility, including past hypermobility the Beighton score misses. Free, instant, with the hEDS criteria rule explained."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Five-part questionnaire (5PQ)", "item": "https://www.postviralrecovery.com/tools/five-part-questionnaire/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the five-part questionnaire for hypermobility?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The five-part questionnaire (5PQ) is a five-item yes/no screen for generalised joint hypermobility published by Hakim and Grahame in 2003. Two or more yes answers is a positive screen. In the original study it identified 84% of hypermobile cases with 89% specificity. Because it asks what you can do now or could ever do, it captures hypermobility that has faded with age or injury."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is the 5PQ used in the hEDS diagnostic criteria?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Under the 2017 hypermobile Ehlers-Danlos syndrome criteria, if your Beighton score is exactly one point below the age-specific cut-off, a positive 5PQ (two or more yes answers) allows generalised joint hypermobility to be recorded for Criterion 1. It does not replace the Beighton score when the score is further below the cut-off."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is a positive 5PQ a diagnosis of hypermobility or EDS?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. It is a screening questionnaire. A positive result suggests generalised joint hypermobility is likely and worth assessing with the Beighton score and a clinical examination. It says nothing on its own about hEDS or a hypermobility spectrum disorder, which require further criteria and exclusion of other conditions."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Five-part questionnaire for hypermobility (5PQ): free online screen"
+	description="Answer the five yes/no questions of the Hakim and Grahame five-part questionnaire and see whether you screen positive for joint hypermobility, including past hypermobility the Beighton score misses. Free, instant, with the hEDS criteria rule explained."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Five-part questionnaire (5PQ)", "item": "https://www.postviralrecovery.com/tools/five-part-questionnaire/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the five-part questionnaire for hypermobility?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The five-part questionnaire (5PQ) is a five-item yes/no screen for generalised joint hypermobility published by Hakim and Grahame in 2003. Two or more yes answers is a positive screen. In the original study it identified 84% of hypermobile cases with 89% specificity. Because it asks what you can do now or could ever do, it captures hypermobility that has faded with age or injury."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is the 5PQ used in the hEDS diagnostic criteria?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Under the 2017 hypermobile Ehlers-Danlos syndrome criteria, if your Beighton score is exactly one point below the age-specific cut-off, a positive 5PQ (two or more yes answers) allows generalised joint hypermobility to be recorded for Criterion 1. It does not replace the Beighton score when the score is further below the cut-off."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Is a positive 5PQ a diagnosis of hypermobility or EDS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. It is a screening questionnaire. A positive result suggests generalised joint hypermobility is likely and worth assessing with the Beighton score and a clinical examination. It says nothing on its own about hEDS or a hypermobility spectrum disorder, which require further criteria and exclusion of other conditions."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Five-part questionnaire for hypermobility (5PQ)</h1>
@@ -115,10 +105,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS = [

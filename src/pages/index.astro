@@ -1,15 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import { isDefaultLocaleId } from '../i18n/config';
+import Page from '../layouts/Page.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const [testing, evidence, nhs] = await Promise.all([
-	getCollection('testing', p => !p.data.draft),
-	getCollection('evidence', p => !p.data.draft),
-	getCollection('nhs', p => !p.data.draft),
+	getCollection('testing', p => !p.data.draft && isDefaultLocaleId(p.id)),
+	getCollection('evidence', p => !p.data.draft && isDefaultLocaleId(p.id)),
+	getCollection('nhs', p => !p.data.draft && isDefaultLocaleId(p.id)),
 ]);
 
 type PostItem = {
@@ -29,14 +28,7 @@ const allPosts: PostItem[] = [
 const recentPosts = allPosts.slice(0, 6);
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
 			<section class="intro">
 				<h1>Post Viral Recovery</h1>
 				<p class="lede">
@@ -92,10 +84,7 @@ const recentPosts = allPosts.slice(0, 6);
 					</ul>
 				</section>
 			)}
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <style>
 	.intro {

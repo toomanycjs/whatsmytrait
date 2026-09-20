@@ -1,20 +1,11 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Page from '../layouts/Page.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Contact | Post Viral Recovery"
-			description="Get in touch with questions, feedback, or suggestions for tools and content. Run by a post-viral patient, not a clinician."
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Contact | Post Viral Recovery"
+	description="Get in touch with questions, feedback, or suggestions for tools and content. Run by a post-viral patient, not a clinician."
+>
 			<div class="page-header">
 				<h1>Contact</h1>
 				<p class="subtitle">Questions, feedback, or tool requests</p>
@@ -71,16 +62,12 @@ import Header from '../components/Header.astro';
 					<button type="submit" class="submit-button" data-fs-submit-btn>Send message</button>
 				</form>
 			</div>
-		</main>
-		<Footer />
-
-		<script>
+			<script>
 			window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
 			formspree('initForm', { formElement: '#contact-form', formId: 'xdapllow' });
 		</script>
-		<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-	</body>
-</html>
+			<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</Page>
 
 <style>
 	.page-header {

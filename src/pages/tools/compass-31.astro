@@ -1,58 +1,49 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="COMPASS-31: free online questionnaire with automatic scoring"
-			description="Complete the COMPASS-31 autonomic symptom questionnaire online and get your weighted score instantly, across all six domains. Free and interactive, with the scoring done for you and your result explained. No PDF, no sign-up."
-			ogImage={ogImage}
-		/>
-	<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "COMPASS-31", "item": "https://www.postviralrecovery.com/tools/compass-31/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a normal COMPASS-31 score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls scored a mean of approximately 5–7. A score above 16 is commonly cited as suggesting a meaningful autonomic symptom burden."}
-        },
-        {
-          "@type": "Question",
-          "name": "What does a high COMPASS-31 score mean?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A high score reflects a greater self-reported burden of autonomic symptoms across the six domains measured. It is not a diagnosis of any condition. Scores should be discussed with your doctor or specialist."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is the COMPASS-31 used for POTS?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes. The COMPASS-31 is widely used in POTS research and clinical practice to measure autonomic symptom burden. It has also been used in long COVID and ME/CFS research."}
-        }
-      ]
-    }
-  ]
-}
-</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="COMPASS-31: free online questionnaire with automatic scoring"
+	description="Complete the COMPASS-31 autonomic symptom questionnaire online and get your weighted score instantly, across all six domains. Free and interactive, with the scoring done for you and your result explained. No PDF, no sign-up."
+>
+	<Fragment slot="head">
+		<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "COMPASS-31", "item": "https://www.postviralrecovery.com/tools/compass-31/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is a normal COMPASS-31 score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls scored a mean of approximately 5–7. A score above 16 is commonly cited as suggesting a meaningful autonomic symptom burden."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What does a high COMPASS-31 score mean?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A high score reflects a greater self-reported burden of autonomic symptoms across the six domains measured. It is not a diagnosis of any condition. Scores should be discussed with your doctor or specialist."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Is the COMPASS-31 used for POTS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Yes. The COMPASS-31 is widely used in POTS research and clinical practice to measure autonomic symptom burden. It has also been used in long COVID and ME/CFS research."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+	</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>COMPASS-31</h1>
@@ -507,10 +498,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 // Domain configuration

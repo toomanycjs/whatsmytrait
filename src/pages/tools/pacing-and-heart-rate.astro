@@ -1,59 +1,50 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import Page from '../../layouts/Page.astro';
 import ToolPurpose from '../../components/ToolPurpose.astro';
 
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Pacing and heart rate ceilings for POTS and post-viral fatigue: a practical guide"
-			description="How to use the energy envelope, a resting heart rate based ceiling, counter-pressure manoeuvres, and gentle recumbent movement to manage a post-viral condition. With a private session log kept on your device."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Pacing and heart rate ceiling", "item": "https://www.postviralrecovery.com/tools/pacing-and-heart-rate/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a heart rate ceiling for pacing?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A heart rate ceiling is a self-chosen guardrail: a heart rate you try to stay under during daily activity, to avoid repeatedly pushing into effort levels that trigger payback. A common starting heuristic in patient communities is resting heart rate plus about 25 beats per minute. This is a rough rule of thumb, not a validated threshold, and it should be adjusted based on how you respond."}
-        },
-        {
-          "@type": "Question",
-          "name": "Do heart rate ceilings work on beta blockers or ivabradine?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Not reliably. These medications lower heart rate directly, so heart rate stops being a fair proxy for effort: you can be working far too hard at an apparently safe number. If you take them, perceived exertion (how hard it feels) should carry more weight than any number."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is pacing just resting?",
-          "acceptedAnswer": {"@type": "Answer", "text": "No. Pacing means planning activity so it stays inside the energy you reliably have, using rest before payback forces it. It usually includes gentle movement on the days it fits, without progression targets. The goal is stability first: fewer crashes, a more predictable week, and a baseline you can build on if and when your capacity grows."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Pacing and heart rate ceilings for POTS and post-viral fatigue: a practical guide"
+	description="How to use the energy envelope, a resting heart rate based ceiling, counter-pressure manoeuvres, and gentle recumbent movement to manage a post-viral condition. With a private session log kept on your device."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Pacing and heart rate ceiling", "item": "https://www.postviralrecovery.com/tools/pacing-and-heart-rate/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is a heart rate ceiling for pacing?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A heart rate ceiling is a self-chosen guardrail: a heart rate you try to stay under during daily activity, to avoid repeatedly pushing into effort levels that trigger payback. A common starting heuristic in patient communities is resting heart rate plus about 25 beats per minute. This is a rough rule of thumb, not a validated threshold, and it should be adjusted based on how you respond."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Do heart rate ceilings work on beta blockers or ivabradine?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Not reliably. These medications lower heart rate directly, so heart rate stops being a fair proxy for effort: you can be working far too hard at an apparently safe number. If you take them, perceived exertion (how hard it feels) should carry more weight than any number."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Is pacing just resting?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. Pacing means planning activity so it stays inside the energy you reliably have, using rest before payback forces it. It usually includes gentle movement on the days it fits, without progression targets. The goal is stability first: fewer crashes, a more predictable week, and a baseline you can build on if and when your capacity grows."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Pacing and heart rate ceiling</h1>
@@ -201,10 +192,7 @@ const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro
 				<h3>About this page</h3>
 				<p>This page describes widely used self-management approaches for post-viral conditions and orthostatic intolerance. None of it is individual medical advice, the heart rate heuristic is not a validated threshold, and your own pattern, logged honestly, outranks any rule here. Discuss significant changes with your clinician.</p>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 import { loadStore, saveStore, clearStore, addSession, dueFollowUps, fmtDate, todayISO, screenAgeDays, downloadCSV } from '../../scripts/exercise-store';

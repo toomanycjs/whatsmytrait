@@ -1,0 +1,70 @@
+---
+// Links to the other language versions of the current page. Plain <a> links
+// with lang/hreflang so crawlers follow them; each language named in itself.
+// Renders nothing when the page has no translations (the caller checks too).
+import { LANGUAGE_NAMES, ui, type Locale } from '../i18n/config';
+import type { Variant } from '../i18n/registry';
+
+interface Props {
+	alternates: Variant[];
+	locale: Locale;
+	class?: string;
+}
+
+const { alternates, locale, class: className } = Astro.props;
+const t = ui(locale);
+---
+
+{alternates.length > 1 && (
+	<nav class:list={['lang-switch', className]} aria-label={t.languageLabel}>
+		<svg class="globe" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="9" />
+			<path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+		</svg>
+		<ul>
+			{alternates.map((a) => (
+				<li>
+					{a.locale === locale ? (
+						<span class="current" aria-current="page" lang={a.locale}>{LANGUAGE_NAMES[a.locale]}</span>
+					) : (
+						<a href={a.path} lang={a.locale} hreflang={a.locale}>{LANGUAGE_NAMES[a.locale]}</a>
+					)}
+				</li>
+			))}
+		</ul>
+	</nav>
+)}
+
+<style>
+	.lang-switch {
+		display: flex;
+		align-items: center;
+		gap: 0.4em;
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+	}
+	.globe { flex-shrink: 0; }
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 0.15em;
+	}
+	li { display: flex; align-items: center; }
+	li + li::before {
+		content: '·';
+		padding: 0 0.35em;
+		color: rgb(var(--gray-light));
+	}
+	a, .current {
+		padding: 0.25em 0.35em;
+		border-radius: 4px;
+		text-decoration: none;
+		color: rgb(var(--gray));
+		white-space: nowrap;
+	}
+	a:hover { color: rgb(var(--black)); background: rgb(var(--gray-light)); }
+	.current { color: var(--accent); font-weight: 700; }
+</style>

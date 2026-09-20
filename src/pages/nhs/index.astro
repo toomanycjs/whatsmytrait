@@ -1,26 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import { isDefaultLocaleId } from '../../i18n/config';
+import Page from '../../layouts/Page.astro';
 import SectionIndex from '../../components/SectionIndex.astro';
 
-const posts = (await getCollection('nhs', p => !p.data.draft))
+const posts = (await getCollection('nhs', p => !p.data.draft && isDefaultLocaleId(p.id)))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.map(p => ({ ...p, href: `/nhs/${p.id}/` }));
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="NHS: Headaches & Heartbeats"
-			description="Practical, experience-based guidance on getting appropriate care for post-viral conditions through the NHS."
-		/>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="NHS: Headaches & Heartbeats"
+	description="Practical, experience-based guidance on getting appropriate care for post-viral conditions through the NHS."
+>
 			<SectionIndex
 				title="NHS"
 				description="Navigating the system"
@@ -28,7 +20,4 @@ const posts = (await getCollection('nhs', p => !p.data.draft))
 				posts={posts}
 				intro="Practical, experience-based guidance on getting appropriate care for post-viral conditions through the NHS: what to ask for, how to frame it, how referral pathways work, and how to advocate for yourself without alienating clinicians. Always framed as personal experience, not complaints."
 			/>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>

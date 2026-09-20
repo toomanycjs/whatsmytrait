@@ -1,12 +1,13 @@
 import { getCollection } from 'astro:content';
+import { isDefaultLocaleId } from '../i18n/config';
 import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
 	const [testing, evidence, nhs] = await Promise.all([
-		getCollection('testing', p => !p.data.draft),
-		getCollection('evidence', p => !p.data.draft),
-		getCollection('nhs', p => !p.data.draft),
+		getCollection('testing', p => !p.data.draft && isDefaultLocaleId(p.id)),
+		getCollection('evidence', p => !p.data.draft && isDefaultLocaleId(p.id)),
+		getCollection('nhs', p => !p.data.draft && isDefaultLocaleId(p.id)),
 	]);
 
 	const allPosts = [

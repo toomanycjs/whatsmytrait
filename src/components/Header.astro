@@ -1,31 +1,51 @@
 ---
 import { SITE_TITLE } from '../consts';
+import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
+import { getAlternates, localizedPath } from '../i18n/registry';
 import HeaderLink from './HeaderLink.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
+const t = ui(locale);
+
+// Navigation stays in the visitor's language wherever a translated page
+// exists and falls back to the English page otherwise, so it never 404s.
+const NAV = [
+	{ path: '/testing/', label: t.nav.testing },
+	{ path: '/evidence/', label: t.nav.evidence },
+	{ path: '/tools/', label: t.nav.tools },
+	{ path: '/nhs/', label: t.nav.nhs },
+	{ path: '/about/', label: t.nav.about },
+	{ path: '/contact/', label: t.nav.contact },
+];
+const [homeHref, ...navHrefs] = await Promise.all([
+	localizedPath(locale, '/'),
+	...NAV.map((n) => localizedPath(locale, n.path)),
+]);
+const nav = NAV.map((n, i) => ({ ...n, href: navHrefs[i] }));
+const alternates = await getAlternates(Astro.url.pathname);
+const hasTranslations = alternates.length > 1;
 ---
 
 <header>
-	<a href="#main" class="skip-link">Skip to content</a>
-	<nav aria-label="Main">
-		<a href="/" class="site-title">{SITE_TITLE}</a>
+	<a href="#main" class="skip-link">{t.skipLink}</a>
+	<nav aria-label={t.mainNav}>
+		<a href={homeHref} class="site-title">{SITE_TITLE}</a>
 		<div class="nav-links">
-			<HeaderLink href="/testing">Testing</HeaderLink>
-			<HeaderLink href="/evidence">Evidence</HeaderLink>
-			<HeaderLink href="/tools">Tools</HeaderLink>
-			<HeaderLink href="/nhs">NHS</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/contact">Contact</HeaderLink>
+			{nav.map((n) => <HeaderLink href={n.href}>{n.label}</HeaderLink>)}
 		</div>
+		{hasTranslations && <LanguageSwitcher class="lang-desktop" alternates={alternates} locale={locale} />}
 		<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
 			<span></span><span></span><span></span>
 		</button>
 	</nav>
+	{hasTranslations && (
+		<div class="lang-strip">
+			<LanguageSwitcher alternates={alternates} locale={locale} />
+		</div>
+	)}
 	<div class="mobile-menu" id="mobile-menu" hidden>
-		<a href="/testing">Testing</a>
-		<a href="/evidence">Evidence</a>
-		<a href="/tools">Tools</a>
-		<a href="/nhs">NHS</a>
-		<a href="/about">About</a>
-		<a href="/contact">Contact</a>
+		{nav.map((n) => <a href={n.href}>{n.label}</a>)}
 	</div>
 </header>
 
@@ -89,6 +109,17 @@ import HeaderLink from './HeaderLink.astro';
 		font-weight: 700;
 		background: var(--accent-light);
 	}
+	/* Desktop: switcher sits in the bar. Mobile: a slim strip under the bar,
+	   visible without opening the menu, since most tool use is on phones. */
+	header :global(.lang-desktop) { margin-left: auto; }
+	.lang-strip {
+		display: none;
+		width: 740px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 0.35em 1em;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
 	.menu-toggle {
 		display: none;
 		flex-direction: column;
@@ -123,6 +154,11 @@ import HeaderLink from './HeaderLink.astro';
 	}
 	.mobile-menu a:hover {
 		background: rgb(var(--gray-light));
+	}
+	/* The bar is full with six links; below ~820px the switcher moves to the strip. */
+	@media (max-width: 820px) {
+		header :global(.lang-desktop) { display: none; }
+		.lang-strip { display: block; }
 	}
 	@media (max-width: 600px) {
 		.nav-links { display: none; }

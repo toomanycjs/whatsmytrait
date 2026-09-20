@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const options = [
 	{ short: 'Never / not true at all', value: 0 },
@@ -43,53 +39,47 @@ const items = [
 const pages = [items.slice(0, 13), items.slice(13)];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Self-Evaluation of Breathing Questionnaire (SEBQ): free online breathing pattern disorder questionnaire"
-			description="Complete the 25-item Self-Evaluation of Breathing Questionnaire and get your SEBQ score out of 75 instantly, with the proposed threshold of 25 and reference values explained. The companion to the Nijmegen questionnaire for breathing pattern disorder. Free, no sign-up."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Self-Evaluation of Breathing Questionnaire", "item": "https://www.postviralrecovery.com/tools/self-evaluation-of-breathing-questionnaire/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Self-Evaluation of Breathing Questionnaire?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The SEBQ is a 25-item questionnaire developed by Rosalba Courtney and Kenneth Greenwood in 2009 to measure the symptoms of dysfunctional breathing, also called breathing pattern disorder. Each statement about your breathing is rated from 0 (never or not true at all) to 3 (very frequently or very true), giving a total from 0 to 75. It covers both air hunger and the sense of restricted or effortful breathing."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a high SEBQ score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "A score of 25 or more is the threshold suggested by expert opinion for dysfunctional breathing, but it has not been validated against a diagnostic standard. In a general community sample of 180 adults the mean score was 15 with a standard deviation of about 12, so scores in the high teens and twenties are not rare among people with no diagnosed breathing problem."}
-        },
-        {
-          "@type": "Question",
-          "name": "How does the SEBQ differ from the Nijmegen questionnaire?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The Nijmegen questionnaire was designed for hyperventilation syndrome and includes many non-breathing symptoms such as tingling, palpitations, and anxiety. The SEBQ asks only about breathing sensations, and picks up biomechanical breathing problems (restricted, effortful, or shallow breathing) that the Nijmegen misses. Physiotherapists often use both together."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Self-Evaluation of Breathing Questionnaire (SEBQ): free online breathing pattern disorder questionnaire"
+	description="Complete the 25-item Self-Evaluation of Breathing Questionnaire and get your SEBQ score out of 75 instantly, with the proposed threshold of 25 and reference values explained. The companion to the Nijmegen questionnaire for breathing pattern disorder. Free, no sign-up."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Self-Evaluation of Breathing Questionnaire", "item": "https://www.postviralrecovery.com/tools/self-evaluation-of-breathing-questionnaire/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Self-Evaluation of Breathing Questionnaire?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The SEBQ is a 25-item questionnaire developed by Rosalba Courtney and Kenneth Greenwood in 2009 to measure the symptoms of dysfunctional breathing, also called breathing pattern disorder. Each statement about your breathing is rated from 0 (never or not true at all) to 3 (very frequently or very true), giving a total from 0 to 75. It covers both air hunger and the sense of restricted or effortful breathing."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a high SEBQ score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 25 or more is the threshold suggested by expert opinion for dysfunctional breathing, but it has not been validated against a diagnostic standard. In a general community sample of 180 adults the mean score was 15 with a standard deviation of about 12, so scores in the high teens and twenties are not rare among people with no diagnosed breathing problem."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How does the SEBQ differ from the Nijmegen questionnaire?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Nijmegen questionnaire was designed for hyperventilation syndrome and includes many non-breathing symptoms such as tingling, palpitations, and anxiety. The SEBQ asks only about breathing sensations, and picks up biomechanical breathing problems (restricted, effortful, or shallow breathing) that the Nijmegen misses. Physiotherapists often use both together."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Self-Evaluation of Breathing Questionnaire (SEBQ)</h1>
@@ -161,10 +151,7 @@ const pages = [items.slice(0, 13), items.slice(13)];
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';

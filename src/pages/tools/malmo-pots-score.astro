@@ -1,9 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-
-const ogImage = new URL(`/og${Astro.url.pathname.replace(/\/$/, '')}.png`, Astro.site).href;
+import Page from '../../layouts/Page.astro';
 
 const items = [
 	{ id: 'dizziness', text: 'Dizziness or light-headedness', group: 'cardiac' },
@@ -21,53 +17,47 @@ const items = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Malmö POTS Symptom Score (MAPS): free online POTS symptom questionnaire"
-			description="Rate 12 POTS symptoms from the past week and get your Malmö POTS Score (0–120) instantly, with the validated ≥42 threshold explained. Free, no sign-up, useful for tracking symptom burden over time."
-			ogImage={ogImage}
-		/>
-		<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-        {"@type": "ListItem", "position": 3, "name": "Malmö POTS Symptom Score", "item": "https://www.postviralrecovery.com/tools/malmo-pots-score/"}
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the Malmö POTS Symptom Score (MAPS)?",
-          "acceptedAnswer": {"@type": "Answer", "text": "MAPS is a 12-item self-rating questionnaire developed at Lund University and published in the Journal of Internal Medicine in 2023. It is the first symptom score designed specifically for POTS. You rate 12 common POTS symptoms from the past 7 days, each from 0 (no symptoms) to 10 (very pronounced), giving a total from 0 to 120."}
-        },
-        {
-          "@type": "Question",
-          "name": "What is a high MAPS score?",
-          "acceptedAnswer": {"@type": "Answer", "text": "In the validation study, POTS patients averaged 78 out of 120 while healthy controls averaged 14. A total score of 42 or above was the optimal threshold for distinguishing tilt-test-confirmed POTS from healthy controls, with 97% sensitivity and 98% specificity. A score above 42 is not a diagnosis. POTS requires a documented heart rate response and exclusion of other causes."}
-        },
-        {
-          "@type": "Question",
-          "name": "How is MAPS different from COMPASS-31?",
-          "acceptedAnswer": {"@type": "Answer", "text": "COMPASS-31 measures autonomic symptoms broadly across six domains and was designed for autonomic disorders in general; research has noted it under-weights some symptoms that matter in POTS. MAPS was built specifically for POTS symptom burden and uses a 7-day recall, making it better suited to tracking week-to-week changes and treatment response."}
-        }
-      ]
-    }
-  ]
-}
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
+<Page
+	title="Malmö POTS Symptom Score (MAPS): free online POTS symptom questionnaire"
+	description="Rate 12 POTS symptoms from the past week and get your Malmö POTS Score (0–120) instantly, with the validated ≥42 threshold explained. Free, no sign-up, useful for tracking symptom burden over time."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Malmö POTS Symptom Score", "item": "https://www.postviralrecovery.com/tools/malmo-pots-score/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Malmö POTS Symptom Score (MAPS)?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "MAPS is a 12-item self-rating questionnaire developed at Lund University and published in the Journal of Internal Medicine in 2023. It is the first symptom score designed specifically for POTS. You rate 12 common POTS symptoms from the past 7 days, each from 0 (no symptoms) to 10 (very pronounced), giving a total from 0 to 120."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What is a high MAPS score?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "In the validation study, POTS patients averaged 78 out of 120 while healthy controls averaged 14. A total score of 42 or above was the optimal threshold for distinguishing tilt-test-confirmed POTS from healthy controls, with 97% sensitivity and 98% specificity. A score above 42 is not a diagnosis. POTS requires a documented heart rate response and exclusion of other causes."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is MAPS different from COMPASS-31?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "COMPASS-31 measures autonomic symptoms broadly across six domains and was designed for autonomic disorders in general; research has noted it under-weights some symptoms that matter in POTS. MAPS was built specifically for POTS symptom burden and uses a 7-day recall, making it better suited to tracking week-to-week changes and treatment response."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Malmö POTS Symptom Score</h1>
@@ -146,10 +136,7 @@ const items = [
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
-		</main>
-		<Footer />
-	</body>
-</html>
+</Page>
 
 <script>
 const ITEMS = [
