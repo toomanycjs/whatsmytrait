@@ -44,7 +44,7 @@ I don't feel anything happening in a broader sense. No wave of calm, no acute ch
 
 My primary metrics are:
 
-- **RMSSD (heart rate variability):** measured overnight by my Fitbit. My current baseline median is around 16ms, which is severely reduced for my age. If taVNS is improving my parasympathetic tone, I'd expect to see this rise. (I've written in more detail about [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) if the reasoning behind this is unfamiliar.) The [HRV and resting heart rate tracker](/tools/trackers/hrv-tracker/) is a free Google Sheets template for logging daily readings.
+- **RMSSD (heart rate variability):** measured overnight by my Fitbit. My current baseline median is around 16ms, which is severely reduced for my age. If taVNS is improving my parasympathetic tone, I'd expect to see this rise. (I've written in more detail about [HRV as a tracking metric](/evidence/hrv-as-a-tracking-metric/) if the reasoning behind this is unfamiliar.) The [HRV and resting heart rate tracker](/tools/trackers/hrv-tracker/) is a free tool for logging daily readings and seeing the trend, with everything stored on your own device.
 - **Resting heart rate:** also from the Fitbit. My current baseline is around 82 bpm, up from the low 60s before I became ill. I'd expect this to drop if vagal tone improves.
 - **Symptom scores:** daily fatigue/breathlessness and head pain, logged on a 0–10 scale.
 

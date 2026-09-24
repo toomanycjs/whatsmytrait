@@ -90,4 +90,4 @@ Stavrakis S, Chakraborty P, Farhat K, et al. Noninvasive vagus nerve stimulation
 - [Pyridostigmine for POTS and ME/CFS: what the evidence says](/evidence/pyridostigmine-pots-mecfs/)
 - [Amitriptyline, propranolol, and candesartan: evidence and trade-offs](/evidence/amitriptyline-propranolol-candesartan/)
 - [What's actually going on: a plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
-- [Track your own HRV: free tracking spreadsheet](/tools/trackers/hrv-tracker/)
+- [Track your own HRV: free browser-based tracker](/tools/trackers/hrv-tracker/)

@@ -34,7 +34,7 @@ My own median RMSSD is around 16ms, measured overnight by a Fitbit. A typical va
 
 ## How I use it
 
-The [HRV and resting heart rate tracker](/tools/trackers/hrv-tracker/) is a free Google Sheets template for logging daily readings with automatic trend charts.
+The [HRV and resting heart rate tracker](/tools/trackers/hrv-tracker/) logs daily readings in your browser, or imports them from a wearable export, and shows rolling medians and trend charts. Data stays on your device.
 
 I use RMSSD for three things. First, as a baseline measure of my autonomic state: a way of putting a number on how impaired my parasympathetic tone is. Second, as a long-term trend marker: if an intervention is genuinely improving my autonomic function, I'd expect to see RMSSD rise over weeks or months. Third, as a loose daily readiness signal: on mornings when my overnight RMSSD is particularly low, I treat that as a flag to be cautious about exertion.
 
