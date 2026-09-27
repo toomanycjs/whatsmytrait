@@ -1,0 +1,345 @@
+---
+import Page from '../../layouts/Page.astro';
+
+const freq = ['Never', 'Less than monthly', 'Monthly', 'Weekly', 'Daily or almost daily'];
+const yesNo = [
+	{ value: 0, label: 'No' },
+	{ value: 2, label: 'Yes, but not in the last year' },
+	{ value: 4, label: 'Yes, during the last year' },
+];
+
+const questions = [
+	{
+		text: 'How often do you have a drink containing alcohol?',
+		options: ['Never', 'Monthly or less', '2 to 4 times a month', '2 to 3 times a week', '4 or more times a week'].map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How many drinks containing alcohol do you have on a typical day when you are drinking?',
+		options: ['1 or 2', '3 or 4', '5 or 6', '7 to 9', '10 or more'].map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often do you have six or more drinks on one occasion?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often during the last year have you found that you were not able to stop drinking once you had started?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often during the last year have you failed to do what was normally expected of you because of drinking?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often during the last year have you had a feeling of guilt or remorse after drinking?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'How often during the last year have you been unable to remember what happened the night before because of your drinking?',
+		options: freq.map((l, v) => ({ value: v, label: l })),
+	},
+	{
+		text: 'Have you or someone else been injured because of your drinking?',
+		options: yesNo,
+	},
+	{
+		text: 'Has a relative, friend, doctor or other health worker been concerned about your drinking or suggested you cut down?',
+		options: yesNo,
+	},
+];
+---
+
+<Page
+	title="AUDIT alcohol screening test: free online with scoring"
+	description="Complete the WHO Alcohol Use Disorders Identification Test (AUDIT) online and get your score out of 40 with the risk zones explained. Ten questions, two minutes. Free, no sign-up required."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "AUDIT alcohol screening test", "item": "https://www.postviralrecovery.com/tools/audit/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the AUDIT?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "The Alcohol Use Disorders Identification Test is a ten-question screen developed by the World Health Organization in the 1980s and 1990s to pick up hazardous and harmful drinking before it causes lasting damage. It covers how much you drink, signs of dependence, and problems caused by drinking, and gives a score from 0 to 40. It is the most widely validated alcohol screen in the world and is used across the NHS."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "What AUDIT score is a problem?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 0 to 7 is low risk. 8 to 15 indicates hazardous or increasing-risk drinking, where brief advice is recommended. 16 to 19 indicates harmful or higher-risk drinking, where a fuller assessment is recommended. 20 or more suggests possible dependence, where referral to specialist support is recommended. Women, older adults and people who are ill may be affected at lower scores."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Why is an alcohol screen on a post-viral illness site?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "Alcohol interacts with almost everything these conditions affect: sleep quality, heart rate variability, blood volume and orthostatic tolerance, and post-exertional recovery. Many people with ME/CFS, POTS or long COVID find they no longer tolerate alcohol at all, while others use it to sleep or to cope. An honest score is a useful baseline for a conversation with a clinician, particularly when medications are being considered."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>AUDIT: Alcohol Use Disorders Identification Test</h1>
+				<p class="subtitle">Ten questions about drinking over the past year, scored 0–40</p>
+				<p class="description">
+					The AUDIT was developed by the World Health Organization as a screen for drinking that is risky before it becomes damaging. Its ten questions cover three things: how much and how often you drink, early signs of dependence, and harm that drinking has already caused. It was validated across six countries and is now the standard alcohol screen in UK primary care and NHS services. It takes about two minutes.
+				</p>
+				<p class="description">
+					Alcohol sits awkwardly with post-viral illness. It worsens sleep quality and lowers overnight HRV, it dilates blood vessels and pulls fluid, which is exactly what someone with POTS is trying to avoid, and hangovers and post-exertional malaise compound each other. Many people find their tolerance collapses after the illness begins. Others lean on alcohol to get to sleep or to cope with a shrunken life. Neither is a moral matter; both are worth knowing about, especially before starting medication. If you track HRV, the <a href="/tools/trackers/hrv-tracker/">HRV tracker</a> will usually show you what a drink costs.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool.</strong> The AUDIT is a screen; a high score is a reason to talk to a clinician, not a diagnosis. Answer for the <strong>past 12 months</strong>. One "drink" means one standard drink of roughly 10 g of alcohol, close to a small glass of wine, half a pint of ordinary-strength beer, or a single measure of spirits; in UK units that is about 1.25 units. Source: Babor TF, Higgins-Biddle JC, Saunders JB, Monteiro MG. <em>AUDIT: The Alcohol Use Disorders Identification Test. Guidelines for use in primary care.</em> 2nd ed. World Health Organization; 2001. Original validation: Saunders JB et al. <em>Addiction.</em> 1993;88(6):791–804. The WHO makes the AUDIT freely available for non-commercial use.
+				</div>
+			</div>
+
+			<form id="audit-form" novalidate>
+				<p class="form-instructions">Because alcohol use can affect your health and can interfere with certain medications and treatments, it is important to answer honestly. Your answers stay on this page and are not stored or sent anywhere.</p>
+
+				<div class="question-grid">
+					{questions.map((q, i) => (
+						<div class="question" data-index={i}>
+							<p class="q-text"><span class="q-num">{i + 1}.</span> <strong>{q.text}</strong></p>
+							<div class="options">
+								{q.options.map(o => (
+									<label>
+										<input type="radio" name={`q${i}`} value={o.value} required />
+										<span>{o.label}</span>
+									</label>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+				<p id="skip-note" class="skip-note" hidden>Because you never drink, questions 2 to 8 are skipped and scored as 0. Questions 9 and 10 still apply, as they can refer to the past.</p>
+
+				<div class="form-footer">
+					<button type="submit">Calculate score</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your AUDIT score</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">out of 40</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+				<div id="subscores" class="subscores"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>Each question scores 0 to 4 and the total runs from 0 to 40. The WHO's zones are: <strong>0–7</strong> low risk; <strong>8–15</strong> hazardous drinking, where brief advice on cutting down is recommended; <strong>16–19</strong> harmful drinking, where a fuller assessment and structured support are recommended; <strong>20 or more</strong> possible dependence, where referral for specialist assessment is recommended. UK guidance uses the same cut-offs under the labels increasing risk, higher risk and possible dependence.</p>
+					<p>The first three questions measure consumption, the middle three dependence symptoms, and the last four harm. The breakdown above shows which of those is driving your score. A high consumption score with nothing else is a different conversation from a low consumption score with a dependence item or two.</p>
+					<p>The WHO notes that the threshold of 8 is a general-population figure and that a lower threshold may be appropriate for women, for people over 65, and for anyone whose health makes alcohol riskier. A post-viral illness with sleep disruption, orthostatic intolerance or medication is a reasonable example. If your score is 5 to 7 and you notice alcohol makes your symptoms worse, that is worth taking seriously on its own terms.</p>
+					<p><strong>This is not a diagnosis.</strong> If your score is 8 or more, or if you are worried about your drinking regardless of the number, talk to your GP. In the UK, <a href="https://www.nhs.uk/live-well/alcohol-advice/" rel="noopener">NHS alcohol advice</a> and <a href="https://www.drinkaware.co.uk/" rel="noopener">Drinkaware</a> offer confidential support. If you have been drinking heavily every day, do not stop suddenly without medical advice, as withdrawal can be dangerous.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+</Page>
+
+<script>
+const form = document.getElementById('audit-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+const skipNote = document.getElementById('skip-note') as HTMLElement;
+
+function getVal(i: number): number | null {
+	const checked = document.querySelector<HTMLInputElement>(`input[name="q${i}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+// WHO skip rule: if the answer to question 1 is "Never", questions 2 to 8 are skipped.
+function applySkip() {
+	const never = getVal(0) === 0;
+	for (let i = 1; i <= 7; i++) {
+		const el = document.querySelector<HTMLElement>(`.question[data-index="${i}"]`);
+		el?.classList.toggle('skipped', never);
+		el?.querySelectorAll<HTMLInputElement>('input').forEach(inp => { inp.disabled = never; if (never) inp.checked = false; });
+	}
+	skipNote.hidden = !never;
+}
+document.querySelectorAll<HTMLInputElement>('input[name="q0"]').forEach(r => r.addEventListener('change', applySkip));
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const never = getVal(0) === 0;
+	const scores: number[] = [];
+	for (let i = 0; i < 10; i++) {
+		if (never && i >= 1 && i <= 7) { scores.push(0); continue; }
+		const v = getVal(i);
+		if (v === null) {
+			const el = document.querySelector<HTMLElement>(`.question[data-index="${i}"]`);
+			el?.classList.add('missing');
+			el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => el?.classList.remove('missing'), 2500);
+			return;
+		}
+		scores.push(v);
+	}
+
+	const total = scores.reduce((a, b) => a + b, 0);
+	const consumption = scores[0] + scores[1] + scores[2];
+	const dependence = scores[3] + scores[4] + scores[5];
+	const harm = scores[6] + scores[7] + scores[8] + scores[9];
+	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
+
+	let zone: string, note: string;
+	if (total <= 7) {
+		zone = 'low risk';
+		note = never
+			? 'You do not drink, and any past harm items are noted in the breakdown below. There is nothing here to act on for alcohol itself.'
+			: 'Your drinking pattern does not reach the level where the WHO recommends intervention. If you have a post-viral condition and notice that alcohol worsens sleep, heart rate or next-day symptoms, that is a separate and reasonable thing to weigh, whatever the score.';
+	} else if (total <= 15) {
+		zone = 'hazardous (increasing risk)';
+		note = 'Your pattern of drinking carries a risk of harm to your health, even if none has shown up yet. The WHO recommends simple advice at this level: know what you are drinking, set a lower limit, and build in alcohol-free days. With a post-viral illness the case for cutting down is stronger than usual, because alcohol worsens the sleep, autonomic and recovery problems you already have. It is worth mentioning to your GP.';
+	} else if (total <= 19) {
+		zone = 'harmful (higher risk)';
+		note = 'Drinking at this level is likely already affecting your health, and possibly other parts of your life. The WHO recommends brief counselling and continued monitoring, and a GP can arrange that. Please raise it at your next appointment, particularly if you are on any medication or being investigated for a post-viral condition, because alcohol can confuse the picture and interact with treatment.';
+	} else {
+		zone = 'possible dependence';
+		note = 'A score of 20 or more suggests you may be dependent on alcohol, and the WHO recommends referral to a specialist for assessment and treatment. Please talk to your GP soon; this is common, treatable, and nothing to be ashamed of. If you drink heavily every day, do not stop suddenly on your own, because withdrawal can be medically dangerous. A GP or alcohol service can help you do it safely.';
+	}
+
+	(document.getElementById('score-interpretation') as HTMLElement).textContent =
+		`Your AUDIT score is ${total} out of 40, which falls in the "${zone}" zone. ${note}`;
+
+	(document.getElementById('subscores') as HTMLElement).innerHTML = `
+		<div><span class="sub-label">Consumption (Q1–3)</span><span class="sub-value">${consumption} / 12</span></div>
+		<div><span class="sub-label">Dependence (Q4–6)</span><span class="sub-value">${dependence} / 12</span></div>
+		<div><span class="sub-label">Harm (Q7–10)</span><span class="sub-value">${harm} / 16</span></div>`;
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => { form.reset(); applySkip(); });
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+
+	.form-instructions {
+		color: rgb(var(--gray));
+		font-style: italic;
+		margin-bottom: 1.5em;
+		font-size: 0.95em;
+	}
+
+	.question-grid { display: flex; flex-direction: column; gap: 0; }
+	.question {
+		padding: 1.1em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.question.missing { background: rgba(192, 57, 43, 0.05); border-radius: 6px; }
+	.question.skipped { opacity: 0.4; pointer-events: none; }
+	.skip-note { font-size: 0.88em; color: rgb(var(--gray)); margin: 1em 0 0; }
+	.q-text { margin: 0 0 0.6em; font-size: 0.95em; }
+	.q-num { font-weight: 700; margin-right: 0.25em; }
+	.options { display: flex; flex-wrap: wrap; gap: 0.4em; }
+	.options label {
+		display: flex;
+		align-items: center;
+		gap: 0.4em;
+		cursor: pointer;
+		font-size: 0.85em;
+		padding: 0.35em 0.75em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 20px;
+		transition: background 0.1s, border-color 0.1s;
+		white-space: nowrap;
+	}
+	.options label:hover { border-color: var(--accent); color: var(--accent); }
+	.options label:has(input:checked) {
+		background: var(--accent-light);
+		border-color: var(--accent);
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+	.options input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+
+	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 1.5em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+	.subscores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75em; margin-bottom: 2em; }
+	.subscores :global(div) { border: 1px solid rgb(var(--gray-light)); border-radius: 6px; padding: 0.7em 0.9em; display: flex; flex-direction: column; }
+	.subscores :global(.sub-label) { font-size: 0.78em; color: rgb(var(--gray)); text-transform: uppercase; letter-spacing: 0.04em; }
+	.subscores :global(.sub-value) { font-size: 1.3em; font-weight: 700; color: rgb(var(--black)); }
+	.results-disclaimer {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light));
+		padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; margin-top: 0; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+		margin-top: 1em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.options { flex-direction: column; }
+		.options label { white-space: normal; }
+		.form-footer { flex-direction: column; }
+		.subscores { grid-template-columns: 1fr; }
+	}
+</style>

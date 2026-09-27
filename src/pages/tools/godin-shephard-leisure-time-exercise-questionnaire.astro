@@ -1,0 +1,281 @@
+---
+import Page from '../../layouts/Page.astro';
+
+const categories = [
+	{
+		key: 'strenuous',
+		name: 'Strenuous exercise',
+		sub: 'heart beats rapidly',
+		examples: 'running, jogging, hockey, football, squash, basketball, cross-country skiing, judo, roller skating, vigorous swimming, vigorous long-distance cycling',
+		weight: 9,
+	},
+	{
+		key: 'moderate',
+		name: 'Moderate exercise',
+		sub: 'not exhausting',
+		examples: 'fast walking, baseball, tennis, easy cycling, volleyball, badminton, easy swimming, alpine skiing, popular and folk dancing',
+		weight: 5,
+	},
+	{
+		key: 'mild',
+		name: 'Mild exercise',
+		sub: 'minimal effort',
+		examples: 'yoga, archery, fishing from a river bank, bowling, horseshoes, golf, snowmobiling, easy walking',
+		weight: 3,
+	},
+];
+---
+
+<Page
+	title="Godin-Shephard Leisure-Time Exercise Questionnaire: free online with scoring"
+	description="Complete the Godin-Shephard Leisure-Time Exercise Questionnaire online and get your Leisure Score Index instantly, with the active, moderately active and insufficiently active bands explained. Three questions, one minute. Free."
+>
+	<Fragment slot="head">
+			<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+	    {
+	      "@type": "BreadcrumbList",
+	      "itemListElement": [
+	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
+	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
+	        {"@type": "ListItem", "position": 3, "name": "Godin-Shephard Leisure-Time Exercise Questionnaire", "item": "https://www.postviralrecovery.com/tools/godin-shephard-leisure-time-exercise-questionnaire/"}
+	      ]
+	    },
+	    {
+	      "@type": "FAQPage",
+	      "mainEntity": [
+	        {
+	          "@type": "Question",
+	          "name": "What is the Godin-Shephard Leisure-Time Exercise Questionnaire?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "A three-question measure of how many times a week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time, published by Gaston Godin and Roy Shephard in 1985. The counts are weighted by intensity and added to give a Leisure Score Index. It is one of the shortest validated physical activity questionnaires and is free to use."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "How is the Godin-Shephard score interpreted?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "In Godin's 2011 update, only the strenuous and moderate counts are used for the health classification: 9 times strenuous plus 5 times moderate. A score of 24 or more is classed as active, 14 to 23 as moderately active, and under 14 as insufficiently active. The traditional total also adds 3 times the mild count."}
+	        },
+	        {
+	          "@type": "Question",
+	          "name": "Is a low score bad if I have ME/CFS or POTS?",
+	          "acceptedAnswer": {"@type": "Answer", "text": "No. The bands were built for the general population, where more exercise is nearly always better. In conditions with post-exertional malaise, the right amount of exercise is the amount that does not cause a crash, and for many people that is little or none. The score is useful as a record of what you actually did, not as a target."}
+	        }
+	      ]
+	    }
+	  ]
+	}
+			</script>
+	</Fragment>
+			<div class="tool-header">
+				<a href="/tools" class="section-label tools">Tools</a>
+				<h1>Godin-Shephard Leisure-Time Exercise Questionnaire</h1>
+				<p class="subtitle">Three questions about a typical week, scored as a Leisure Score Index</p>
+				<p class="description">
+					Published by Gaston Godin and Roy Shephard in 1985, this is one of the shortest physical activity questionnaires in use. It asks how many times in a typical week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time. The counts are weighted by intensity and added up. It has been validated against fitness testing and accelerometers and is widely used in research, including in cancer and cardiac populations, because it takes about a minute.
+				</p>
+				<p class="description">
+					On this site it is offered as a record, not a target. The activity bands were derived for healthy adults, where more is generally better. In post-exertional conditions the right amount of exercise is the amount your body can absorb without a crash, and that can be a very low number, or zero, for a long time. What the questionnaire is good for is capturing what you actually did, week by week, so that changes in capacity are visible, and so that a clinician sees your real activity level rather than a guess. For a more detailed record, including sitting time, see the <a href="/tools/ipaq-short-form/">IPAQ short form</a>.
+				</p>
+				<div class="disclaimer">
+					<strong>This is not a diagnostic tool or an exercise prescription.</strong> It records your leisure-time exercise; it does not say what you should do. If you have post-exertional malaise, see the <a href="/tools/exercise-readiness/">exercise readiness screen</a> before changing your activity. Source: Godin G, Shephard RJ. <em>A simple method to assess exercise behavior in the community.</em> Can J Appl Sport Sci. 1985;10(3):141–146. Scoring bands from Godin G. <em>The Godin-Shephard Leisure-Time Physical Activity Questionnaire.</em> Health Fitness J Can. 2011;4(1):18–22. The questionnaire is free to use and reproduced here with attribution.
+				</div>
+			</div>
+
+			<form id="godin-form" novalidate>
+				<p class="form-instructions">During a typical 7-day period (a week), how many times on average do you do the following kinds of exercise for <strong>more than 15 minutes</strong> during your free time? Write in the number of times per week. If none, enter 0.</p>
+
+				<div class="question-grid">
+					{categories.map((c, i) => (
+						<div class="question" data-index={i}>
+							<p class="q-text"><span class="q-num">{String.fromCharCode(97 + i)}.</span> <strong>{c.name}</strong> <span class="q-sub">({c.sub})</span></p>
+							<p class="q-examples">e.g. {c.examples}</p>
+							<label class="count-label">
+								Times per week
+								<input type="number" id={`n-${c.key}`} min="0" max="50" step="1" inputmode="numeric" placeholder="0" />
+							</label>
+						</div>
+					))}
+				</div>
+
+				<p class="small-note">The original 1985 questionnaire also asked how often you engage in activity long enough to work up a sweat. That item is not part of the scoring and is left out here.</p>
+
+				<div class="form-footer">
+					<button type="submit">Calculate score</button>
+					<button type="button" id="reset-btn">Clear all</button>
+				</div>
+			</form>
+
+			<div id="results" class="results" hidden>
+				<h2>Your Leisure Score Index</h2>
+				<div class="total-score">
+					<span id="total-score-value">—</span>
+					<span class="total-score-label">strenuous and moderate only (2011 scoring)</span>
+				</div>
+				<p id="score-interpretation" class="score-interp"></p>
+				<div id="breakdown" class="subscores"></div>
+
+				<div class="results-disclaimer">
+					<h3>Understanding your score</h3>
+					<p>The weekly counts are multiplied by a weight that reflects the intensity of each category, roughly its energy cost in METs: strenuous <strong>×9</strong>, moderate <strong>×5</strong>, mild <strong>×3</strong>. Godin's 2011 update uses only the strenuous and moderate parts for the health classification, because mild activity contributes little to fitness: <strong>24 or more</strong> is classed as active, <strong>14 to 23</strong> as moderately active, and <strong>under 14</strong> as insufficiently active. A score of 24 corresponds to the public-health guideline of about 150 minutes of moderate activity a week. The traditional total including mild activity is shown in the breakdown.</p>
+					<p>The bands describe the general population. They do not apply cleanly to people with post-exertional malaise, for whom the "active" band may be unreachable or actively harmful, and for whom mild activity may be all of the exercise there is. If that is you, the number to watch is your own score over time, and what happened to your symptoms afterwards. A steady score with stable symptoms is a success. A rising score followed by a crash is information.</p>
+					<p>Note what the questionnaire leaves out: it only counts leisure-time exercise in bouts of more than 15 minutes, so housework, work, short walks and the effort of daily living are not included. For someone with a limited energy envelope those may be the bulk of the week's exertion. The <a href="/tools/ipaq-short-form/">IPAQ short form</a> captures walking and sitting time as well.</p>
+					<p><strong>This is not an exercise prescription.</strong> If you are considering increasing activity, the <a href="/tools/exercise-readiness/">readiness screen</a> and the <a href="/tools/pacing-and-heart-rate/">pacing guide</a> are the places to start, and your clinician's advice outranks any questionnaire.</p>
+				</div>
+
+				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
+			</div>
+</Page>
+
+<script>
+const form = document.getElementById('godin-form') as HTMLFormElement;
+const results = document.getElementById('results') as HTMLElement;
+
+function read(id: string, index: number): number | null {
+	const el = document.getElementById(id) as HTMLInputElement;
+	const raw = el.value.trim();
+	const n = raw === '' ? 0 : parseInt(raw, 10);
+	if (!Number.isFinite(n) || n < 0 || n > 50) {
+		const q = document.querySelector<HTMLElement>(`.question[data-index="${index}"]`);
+		q?.classList.add('missing');
+		q?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		setTimeout(() => q?.classList.remove('missing'), 2500);
+		el.focus();
+		return null;
+	}
+	return n;
+}
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const s = read('n-strenuous', 0); if (s === null) return;
+	const m = read('n-moderate', 1); if (m === null) return;
+	const l = read('n-mild', 2); if (l === null) return;
+
+	const health = 9 * s + 5 * m;
+	const total = health + 3 * l;
+	(document.getElementById('total-score-value') as HTMLElement).textContent = String(health);
+
+	let band: string, note: string;
+	if (health >= 24) {
+		band = 'active';
+		note = 'By Godin\'s 2011 classification, your strenuous and moderate exercise reaches the level associated with substantial health benefits in the general population, roughly the 150-minutes-a-week guideline. If you have a post-exertional condition, the important question is not whether you reached this band but what it cost you in the days afterwards.';
+	} else if (health >= 14) {
+		band = 'moderately active';
+		note = 'Your strenuous and moderate exercise sits in the middle band, associated with some health benefits in the general population. For someone managing a limited energy envelope this can be a sustainable place, and holding it steady without symptom flares matters more than climbing out of it.';
+	} else {
+		band = 'insufficiently active';
+		note = 'Your strenuous and moderate exercise falls below the level the general-population bands treat as beneficial. If you have ME/CFS, POTS or long COVID, that label is not a judgement: for many people it is the only safe place to be, and any mild activity you logged is still real activity. The useful comparison is with your own score in earlier weeks.';
+	}
+
+	(document.getElementById('score-interpretation') as HTMLElement).textContent =
+		`Your Leisure Score Index is ${health}, which falls in the "${band}" band. ${note}`;
+
+	(document.getElementById('breakdown') as HTMLElement).innerHTML = `
+		<div><span class="sub-label">Strenuous</span><span class="sub-value">${s} × 9 = ${9 * s}</span></div>
+		<div><span class="sub-label">Moderate</span><span class="sub-value">${m} × 5 = ${5 * m}</span></div>
+		<div><span class="sub-label">Mild</span><span class="sub-value">${l} × 3 = ${3 * l}</span></div>
+		<div><span class="sub-label">Traditional total (all three)</span><span class="sub-value">${total}</span></div>`;
+
+	form.hidden = true;
+	results.hidden = false;
+	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('reset-btn')?.addEventListener('click', () => form.reset());
+document.getElementById('back-btn')?.addEventListener('click', () => {
+	results.hidden = true;
+	form.hidden = false;
+	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+<style>
+	.tool-header {
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin-bottom: 2.5em;
+	}
+	.tool-header h1 { margin: 0.3em 0 0.1em; }
+	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
+	.description { margin-bottom: 1em; }
+	.disclaimer a { color: inherit; }
+
+	.form-instructions {
+		color: rgb(var(--gray));
+		font-style: italic;
+		margin-bottom: 1.5em;
+		font-size: 0.95em;
+	}
+	.small-note { font-size: 0.88em; color: rgb(var(--gray)); margin: 1em 0 0; }
+
+	.question-grid { display: flex; flex-direction: column; gap: 0; }
+	.question {
+		padding: 1.1em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.question.missing { background: rgba(192, 57, 43, 0.05); border-radius: 6px; }
+	.q-text { margin: 0 0 0.3em; font-size: 0.95em; }
+	.q-num { font-weight: 700; margin-right: 0.25em; }
+	.q-sub { color: rgb(var(--gray)); }
+	.q-examples { margin: 0 0 0.7em; font-size: 0.85em; color: rgb(var(--gray)); line-height: 1.5; }
+	.count-label { display: inline-flex; align-items: center; gap: 0.75em; font-size: 0.88em; font-weight: 700; color: rgb(var(--gray-dark)); }
+	.count-label input {
+		width: 5.5em; padding: 0.5em; font-size: 1rem; font-family: inherit; font-weight: 400;
+		border: 1px solid rgb(var(--gray-light)); border-radius: 5px;
+	}
+
+	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
+	button[type="submit"] {
+		background: var(--accent); color: #fff; border: none;
+		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		cursor: pointer; font-family: inherit;
+	}
+	button[type="submit"]:hover { background: var(--accent-dark); }
+	button[type="button"] {
+		background: none; border: 1px solid rgb(var(--gray-light));
+		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
+	}
+
+	.results { padding-top: 1em; }
+	.results h2 { margin-bottom: 0.5em; }
+	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; flex-wrap: wrap; }
+	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	.total-score-label { color: rgb(var(--gray)); font-size: 1em; }
+	.score-interp {
+		font-size: 1em; line-height: 1.6; margin: 0 0 1.5em;
+		padding: 1em 1.25em; background: var(--accent-light);
+		border-left: 4px solid var(--accent); border-radius: 4px;
+	}
+	.subscores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75em; margin-bottom: 2em; }
+	.subscores :global(div) { border: 1px solid rgb(var(--gray-light)); border-radius: 6px; padding: 0.7em 0.9em; display: flex; flex-direction: column; }
+	.subscores :global(.sub-label) { font-size: 0.75em; color: rgb(var(--gray)); text-transform: uppercase; letter-spacing: 0.04em; }
+	.subscores :global(.sub-value) { font-size: 1.15em; font-weight: 700; color: rgb(var(--black)); }
+	.results-disclaimer {
+		font-size: 0.88em;
+		color: rgb(var(--gray-dark));
+		border-top: 1px solid rgb(var(--gray-light));
+		padding-top: 1.5em;
+		line-height: 1.6;
+	}
+	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; margin-top: 0; }
+	.results-disclaimer a { color: var(--accent); }
+	.back-btn {
+		background: none;
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.6em 1.25em;
+		border-radius: 5px;
+		font-size: 0.95em;
+		cursor: pointer;
+		color: rgb(var(--gray));
+		font-family: inherit;
+		margin-top: 1em;
+	}
+	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+	@media (max-width: 600px) {
+		.form-footer { flex-direction: column; }
+		.subscores { grid-template-columns: 1fr 1fr; }
+	}
+</style>
