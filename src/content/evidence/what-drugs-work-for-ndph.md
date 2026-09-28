@@ -1,6 +1,6 @@
 ---
-title: "What drug(s) work for NDPH?"
-description: "No drug is licensed for new daily persistent headache, so treatment is borrowed from migraine and tension-type headache. A patient's reading of the preventives on offer, how each is thought to work, and why the evidence is so hard to judge."
+title: "What drugs work for NDPH?"
+description: "TLDR: We don't know as NDPH might have different causes for different people, but below are the most commonly tried and their intended mechanism"
 pubDate: 2026-09-28
 ---
 
@@ -15,7 +15,7 @@ The official ICHD-3 diagnostic criteria are:
 
 As such, it is more a diagnosis of exclusion than one of a defined mechanism. In the UK at least, no drug is licensed for NDPH itself, so doctors usually borrow treatments from migraine or tension-type headache, depending on which one the person's headache most resembles.
 
-This article sets out the potential medications available to try and support management of NDPH. Note that I am not a clinician. I'm a patient with new daily persistent headache. I woke up on 23rd December, previously fit and healthy, with a headache on the right side of my forehead, a headache I've had ever since. The [full timeline](/testing/what-happened-to-me/) is elsewhere on this site.
+This article sets out the potential medications available to try and support management of NDPH. Note that I am not a clinician. I'm a patient with new daily persistent headache. I woke up on 23rd December 2022, previously fit and healthy, with a headache on the right side of my forehead, a headache I've had ever since. The [full timeline](/testing/what-happened-to-me/) is elsewhere on this site.
 
 This is just my reading of the evidence and intended to help you understand the symptoms and the condition better.
 
