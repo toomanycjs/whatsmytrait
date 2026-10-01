@@ -3,16 +3,16 @@ import Page from '../../layouts/Page.astro';
 
 const scaleItems = [
 	{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
-	{ value: 90, description: 'No symptoms at rest. Mild symptoms with exercise. Normal activity. Able to work full-time with some difficulty.' },
-	{ value: 80, description: 'Mild symptoms at rest. Symptoms worsened by exercise. Reduced activity level. Able to work full-time with difficulty.' },
-	{ value: 70, description: 'Mild to moderate symptoms at rest. Some daily activity reduced. Able to work part-time or full-time with significant difficulty.' },
-	{ value: 60, description: 'Moderate symptoms at rest. Daily activity reduced to 70–80% of expected. Unable to work full-time. Difficulty with most tasks.' },
-	{ value: 50, description: 'Moderate symptoms at rest. Daily activity reduced to 50–70%. Unable to perform strenuous duties. Able to do light work 4–5 hours a day.' },
-	{ value: 40, description: 'Moderate symptoms at rest. Daily activity limited. Unable to do strenuous work. Able to do light work 3–4 hours a day with rest periods. Mostly housebound.' },
-	{ value: 30, description: 'Moderate to severe symptoms at rest. Able to do only light tasks. Housebound most of the time. Unable to do concentrated effort.' },
-	{ value: 20, description: 'Moderate to severe symptoms. Unable to carry out most daily activities. Housebound most of the time. Occasional short outings.' },
-	{ value: 10, description: 'Severe symptoms. Bedridden most of the time. Cognitive symptoms limiting ability to read or converse.' },
-	{ value: 0, description: 'Severe symptoms on a continuous basis. Bedridden and unable to care for self.' },
+	{ value: 90, description: 'No symptoms at rest. Mild symptoms with activity. Normal overall activity. Able to work full-time without difficulty.' },
+	{ value: 80, description: 'Mild symptoms at rest, made worse by exertion. Activity only slightly restricted, and only for activities that need exertion. Able to work full-time, with difficulty in jobs that need exertion.' },
+	{ value: 70, description: 'Mild symptoms at rest. Some limitation of daily activity, clearly noticeable. Overall functioning close to 90% of expected, except for activities that need exertion. Able to work full-time with difficulty.' },
+	{ value: 60, description: 'Mild to moderate symptoms at rest. Limitation of daily activity, clearly noticeable. Overall functioning 70–90% of expected. Unable to work full-time in jobs involving physical labour, but able to work full-time in light work if hours are flexible.' },
+	{ value: 50, description: 'Moderate symptoms at rest. Moderate to severe symptoms with exercise or activity. Overall activity reduced to 70% of expected. Unable to do strenuous work, but able to do light duties or desk work for 4–5 hours a day, with rest periods.' },
+	{ value: 40, description: 'Moderate symptoms at rest. Moderate to severe symptoms with exercise or activity. Overall activity reduced to 50–70% of expected. Not confined to the house. Unable to do strenuous work; able to do light duties or desk work for 3–4 hours a day, with rest periods.' },
+	{ value: 30, description: 'Moderate to severe symptoms at rest. Severe symptoms with any exercise. Overall activity reduced to 50% of expected. Usually confined to the house. Unable to do any strenuous tasks. Able to do desk work for 2–3 hours a day, with rest periods.' },
+	{ value: 20, description: 'Moderate to severe symptoms at rest. Unable to do strenuous activity. Overall activity 30–50% of expected. Rarely able to leave the house. In bed most of the day. Unable to concentrate for more than an hour a day.' },
+	{ value: 10, description: 'Severe symptoms at rest. Bedridden most of the time. No travel outside the house. Marked cognitive symptoms that prevent concentration.' },
+	{ value: 0, description: 'Severe symptoms all the time. Bedridden constantly. Unable to care for self.' },
 ];
 ---
 
@@ -64,7 +64,7 @@ const scaleItems = [
   This is a free, interactive version. Select the description that best fits your current situation and see your score immediately. No sign-up or email is required.
 </p>
 <div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> Your score is a self-assessed measure of functional capacity and does not constitute a clinical diagnosis. Discuss your results with your doctor.
+  <strong>This is not a diagnostic tool.</strong> Your score is a self-assessed measure of functional capacity and does not constitute a clinical diagnosis. Discuss your results with your doctor. Based on: Bell DS. <em>The measurement of disability.</em> In: The Doctor's Guide to Chronic Fatigue Syndrome. 2nd ed. Perseus Books; 1995. p. 119–31.
 </div>
 			</div>
 
@@ -100,7 +100,8 @@ const scaleItems = [
 				<div class="results-disclaimer">
   <h3>Understanding your score</h3>
   <p>The Bell CFIDS Disability Scale runs from 0 to 100 in increments of 10. Each level has a specific description of symptom severity and functional capacity. Higher scores indicate better functioning.</p>
-  <p>The scale is most useful as a tracking tool. Noting your score at regular intervals gives you a record that can reveal gradual improvement or decline that might not be obvious day to day. A sustained shift of 10 or more points is generally considered meaningful.</p>
+  <!-- REVIEW: replaced an unsourced "10 points is meaningful" claim; no minimal important change has been published for this scale. -->
+  <p>The scale is most useful as a tracking tool. Noting your score at regular intervals gives you a record that can reveal gradual improvement or decline that might not be obvious day to day. No minimal important change has been published for the Bell scale. Because it moves in steps of 10, one step is the smallest change it can record, and a change is more convincing when it holds over several weeks than when it shows up once.</p>
   <p>This is a self-assessed measure of functional capacity. It is not a clinical diagnosis or measurement. Discuss your results with your doctor.</p>
 </div>
 
@@ -111,16 +112,16 @@ const scaleItems = [
 <script>
 	const SCALE_ITEMS: { value: number; description: string }[] = [
 		{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
-		{ value: 90, description: 'No symptoms at rest. Mild symptoms with exercise. Normal activity. Able to work full-time with some difficulty.' },
-		{ value: 80, description: 'Mild symptoms at rest. Symptoms worsened by exercise. Reduced activity level. Able to work full-time with difficulty.' },
-		{ value: 70, description: 'Mild to moderate symptoms at rest. Some daily activity reduced. Able to work part-time or full-time with significant difficulty.' },
-		{ value: 60, description: 'Moderate symptoms at rest. Daily activity reduced to 70–80% of expected. Unable to work full-time. Difficulty with most tasks.' },
-		{ value: 50, description: 'Moderate symptoms at rest. Daily activity reduced to 50–70%. Unable to perform strenuous duties. Able to do light work 4–5 hours a day.' },
-		{ value: 40, description: 'Moderate symptoms at rest. Daily activity limited. Unable to do strenuous work. Able to do light work 3–4 hours a day with rest periods. Mostly housebound.' },
-		{ value: 30, description: 'Moderate to severe symptoms at rest. Able to do only light tasks. Housebound most of the time. Unable to do concentrated effort.' },
-		{ value: 20, description: 'Moderate to severe symptoms. Unable to carry out most daily activities. Housebound most of the time. Occasional short outings.' },
-		{ value: 10, description: 'Severe symptoms. Bedridden most of the time. Cognitive symptoms limiting ability to read or converse.' },
-		{ value: 0, description: 'Severe symptoms on a continuous basis. Bedridden and unable to care for self.' },
+		{ value: 90, description: 'No symptoms at rest. Mild symptoms with activity. Normal overall activity. Able to work full-time without difficulty.' },
+		{ value: 80, description: 'Mild symptoms at rest, made worse by exertion. Activity only slightly restricted, and only for activities that need exertion. Able to work full-time, with difficulty in jobs that need exertion.' },
+		{ value: 70, description: 'Mild symptoms at rest. Some limitation of daily activity, clearly noticeable. Overall functioning close to 90% of expected, except for activities that need exertion. Able to work full-time with difficulty.' },
+		{ value: 60, description: 'Mild to moderate symptoms at rest. Limitation of daily activity, clearly noticeable. Overall functioning 70–90% of expected. Unable to work full-time in jobs involving physical labour, but able to work full-time in light work if hours are flexible.' },
+		{ value: 50, description: 'Moderate symptoms at rest. Moderate to severe symptoms with exercise or activity. Overall activity reduced to 70% of expected. Unable to do strenuous work, but able to do light duties or desk work for 4–5 hours a day, with rest periods.' },
+		{ value: 40, description: 'Moderate symptoms at rest. Moderate to severe symptoms with exercise or activity. Overall activity reduced to 50–70% of expected. Not confined to the house. Unable to do strenuous work; able to do light duties or desk work for 3–4 hours a day, with rest periods.' },
+		{ value: 30, description: 'Moderate to severe symptoms at rest. Severe symptoms with any exercise. Overall activity reduced to 50% of expected. Usually confined to the house. Unable to do any strenuous tasks. Able to do desk work for 2–3 hours a day, with rest periods.' },
+		{ value: 20, description: 'Moderate to severe symptoms at rest. Unable to do strenuous activity. Overall activity 30–50% of expected. Rarely able to leave the house. In bed most of the day. Unable to concentrate for more than an hour a day.' },
+		{ value: 10, description: 'Severe symptoms at rest. Bedridden most of the time. No travel outside the house. Marked cognitive symptoms that prevent concentration.' },
+		{ value: 0, description: 'Severe symptoms all the time. Bedridden constantly. Unable to care for self.' },
 	];
 
 	const form = document.getElementById('bell-form') as HTMLFormElement;
