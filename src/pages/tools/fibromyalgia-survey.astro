@@ -74,11 +74,12 @@ import Page from '../../layouts/Page.astro';
 					<div class="progress-bar"><div class="progress-fill" style="width: 33%"></div></div>
 					<h2>Widespread Pain Index</h2>
 					<p>Tick each area where you have had <strong>pain in the past week</strong>. Do not include areas where you had only tingling, numbness, or stiffness without pain.</p>
+					<p class="section-note">Jaw, chest and abdomen count towards your pain index, but under the 2016 criteria they do not count when checking whether pain is spread across at least 4 of the 5 regions.</p>
 
 					<div class="wpi-regions">
 						<fieldset class="region-group">
 							<legend>Left upper</legend>
-							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-jaw" data-region="left-upper" /><span>Left jaw</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-jaw" data-generalised="no" data-region="left-upper" /><span>Left jaw</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-shoulder" data-region="left-upper" /><span>Left shoulder girdle</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-upper-arm" data-region="left-upper" /><span>Left upper arm</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="left-lower-arm" data-region="left-upper" /><span>Left lower arm</span></label>
@@ -86,7 +87,7 @@ import Page from '../../layouts/Page.astro';
 
 						<fieldset class="region-group">
 							<legend>Right upper</legend>
-							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-jaw" data-region="right-upper" /><span>Right jaw</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-jaw" data-generalised="no" data-region="right-upper" /><span>Right jaw</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-shoulder" data-region="right-upper" /><span>Right shoulder girdle</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-upper-arm" data-region="right-upper" /><span>Right upper arm</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="right-lower-arm" data-region="right-upper" /><span>Right lower arm</span></label>
@@ -111,8 +112,8 @@ import Page from '../../layouts/Page.astro';
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="neck" data-region="axial" /><span>Neck</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="upper-back" data-region="axial" /><span>Upper back</span></label>
 							<label class="checkbox-label"><input type="checkbox" name="wpi" value="lower-back" data-region="axial" /><span>Lower back</span></label>
-							<label class="checkbox-label"><input type="checkbox" name="wpi" value="chest" data-region="axial" /><span>Chest</span></label>
-							<label class="checkbox-label"><input type="checkbox" name="wpi" value="abdomen" data-region="axial" /><span>Abdomen</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="chest" data-generalised="no" data-region="axial" /><span>Chest</span></label>
+							<label class="checkbox-label"><input type="checkbox" name="wpi" value="abdomen" data-generalised="no" data-region="axial" /><span>Abdomen</span></label>
 						</fieldset>
 					</div>
 
@@ -219,9 +220,10 @@ import Page from '../../layouts/Page.astro';
 						<h4>Reference thresholds</h4>
 						<ul>
 							<li>Criteria met when WPI &ge;7 and SSS &ge;5, OR WPI 4&ndash;6 and SSS &ge;9</li>
-							<li>Plus generalized pain in at least 4 of 5 body regions</li>
+							<li>Plus generalised pain in at least 4 of 5 body regions (jaw, chest and abdominal pain are not counted for this)</li>
 							<li>Plus symptoms present at a similar level for at least 3 months</li>
-							<li>The FS score (WPI + SSS, range 0&ndash;31) is a continuous measure of symptom severity and is meaningful regardless of whether the threshold is crossed</li>
+							<li>The FS score (WPI + SSS, range 0&ndash;31) is a continuous measure of symptom severity and is meaningful regardless of whether the threshold is crossed. A score below 12 cannot meet the criteria</li>
+							<li>FS severity categories (Wolfe et al. 2015): 0&ndash;3 none, 4&ndash;7 mild, 8&ndash;11 moderate, 12&ndash;19 severe, 20&ndash;31 very severe</li>
 						</ul>
 					</div>
 
@@ -263,7 +265,8 @@ function computeScores() {
 	const wpi = checkedWpi.length;
 
 	const regionsWithPain = new Set();
-	checkedWpi.forEach(cb => regionsWithPain.add(cb.dataset.region));
+	// Jaw, chest and abdomen count towards the WPI but not towards generalised pain (Wolfe et al. 2016, Table 3).
+	checkedWpi.forEach(cb => { if (cb.dataset.generalised !== 'no') regionsWithPain.add(cb.dataset.region); });
 	const regionCount = regionsWithPain.size;
 
 	const fatigue = parseInt(document.querySelector('input[name="fatigue"]:checked').value);
@@ -329,9 +332,9 @@ function showResults() {
 
 	html += `<p><strong>Pain distribution:</strong> You reported pain in ${s.wpi} of 19 areas, spread across ${s.regionCount} of 5 body regions. `;
 	if (s.regionCount >= 4) {
-		html += `This meets the generalized pain criterion (4 or more regions).`;
+		html += `This meets the generalised pain criterion (4 or more regions).`;
 	} else {
-		html += `The generalized pain criterion requires pain in at least 4 regions.`;
+		html += `The generalised pain criterion requires pain in at least 4 regions. Jaw, chest and abdominal pain are not counted for this.`;
 	}
 	html += `</p>`;
 
@@ -348,15 +351,10 @@ function showResults() {
 	}
 
 	html += `<p><strong>Severity score:</strong> Your FS score of ${s.fsScore} out of 31 is a continuous measure of your overall symptom burden. `;
-	if (s.fsScore <= 6) {
-		html += `This is in the lower range.`;
-	} else if (s.fsScore <= 12) {
-		html += `This suggests a moderate symptom burden.`;
-	} else if (s.fsScore <= 20) {
-		html += `This suggests a substantial symptom burden.`;
-	} else {
-		html += `This suggests a high symptom burden.`;
-	}
+	// Polysymptomatic distress categories: Wolfe et al., J Rheumatol 2015;42(8):1494-501.
+	const fsCategory = s.fsScore <= 3 ? 'none' : s.fsScore <= 7 ? 'mild' : s.fsScore <= 11 ? 'moderate' : s.fsScore <= 19 ? 'severe' : 'very severe';
+	html += `On the published severity categories for this score, ${s.fsScore} falls in the <strong>${fsCategory}</strong> range (0–3 none, 4–7 mild, 8–11 moderate, 12–19 severe, 20–31 very severe).`;
+	if (s.fsScore < 12) html += ` A score below 12 cannot meet the criteria.`;
 	html += ` This score is meaningful regardless of whether the criteria threshold is crossed, and can be used to track changes over time.</p>`;
 
 	interp.innerHTML = html;
@@ -381,7 +379,7 @@ function buildText() {
 		'WIDESPREAD PAIN INDEX (WPI)',
 		'─'.repeat(30),
 		`Score: ${s.wpi} / 19`,
-		`Regions with pain: ${s.regionCount} / 5`,
+		`Regions with pain (excluding jaw, chest, abdomen): ${s.regionCount} / 5`,
 		`Areas: ${checkedAreas.length > 0 ? checkedAreas.join(', ') : 'None'}`,
 		'',
 		'SYMPTOM SEVERITY SCALE (SSS)',
@@ -409,7 +407,7 @@ function buildText() {
 	lines.push('CRITERIA CHECK');
 	lines.push('─'.repeat(30));
 	lines.push(`Pain extent threshold: ${s.painExtent ? 'Met' : 'Not met'}`);
-	lines.push(`Generalized pain (4+ regions): ${s.generalizedPain ? 'Met' : 'Not met'} (${s.regionCount}/5 regions)`);
+	lines.push(`Generalised pain (4+ regions): ${s.generalizedPain ? 'Met' : 'Not met'} (${s.regionCount}/5 regions)`);
 	lines.push(`Duration (3+ months): ${s.duration ? 'Met' : 'Not met'}`);
 	lines.push(`Overall: ${s.criteriaMet ? 'CRITERIA THRESHOLD MET' : 'CRITERIA THRESHOLD NOT MET'}`);
 	lines.push('');
@@ -587,6 +585,8 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .screen-content h2 { font-size: 1.5rem; margin: 0 0 0.75rem; }
 .screen-content h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
 .screen-content p { color: #374151; line-height: 1.7; margin-bottom: 1rem; }
+
+.screen-content p.section-note { font-size: 0.9rem; color: #6b7280; }
 
 .section-note-inline {
 	font-weight: 400;
