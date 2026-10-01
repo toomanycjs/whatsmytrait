@@ -123,7 +123,7 @@ const clientConfig = {
 	        {
 	          "@type": "Question",
 	          "name": "How is FUNCAP scored?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. The overall score is the mean across all questions, and domain means show which types of activity are most affected. Lower scores mean lower functional capacity."}
+	          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. Each of the eight domains is scored as the mean of its questions, and the overall score is the mean of the eight domain scores, so domains with fewer questions count as much as those with more. Domain scores show which types of activity are most affected. Lower scores mean lower functional capacity."}
 	        },
 	        {
 	          "@type": "Question",
@@ -211,8 +211,10 @@ const clientConfig = {
 
 				<div class="results-disclaimer">
 					<h3>Understanding your score</h3>
-					<p>The overall FUNCAP score is the mean of all 27 items, from 0 to 6. Lower scores mean lower functional capacity. The published validation found negligible floor and ceiling effects across the full severity spectrum of ME/CFS, from mild to very severe.</p>
-					<p>There are no official severity cut-offs yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most useful as a profile and as a record over time: which groups of activities cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete evidence of functional limitation for disability or insurance assessments. That is what it was designed for.</p>
+					<!-- REVIEW: scoring corrected to the paper (total = mean of the eight domain scores); reference means are from Table 5 of Sommerfelt et al. 2024. -->
+					<p>Each domain score is the mean of its questions, from 0 to 6, and the overall FUNCAP score is the mean of the eight domain scores, as in the <a href="https://doi.org/10.3390/jcm13123486" rel="noopener">validation paper</a>. Lower scores mean lower functional capacity. The validation found negligible floor and ceiling effects across the full severity spectrum of ME/CFS, from mild to very severe.</p>
+					<p>For reference, in the main validation survey the average FUNCAP27 total was 3.3 (standard deviation 1.1) among 1,263 people with ME/CFS and 5.8 (standard deviation 0.3) among 178 healthy controls. Average scores were lower at each step of ME/CFS severity, from mild to very severe. When the same people answered twice, two weeks apart, the total was highly repeatable (intraclass correlation 0.98).</p>
+					<p>There are no official severity cut-offs or published minimal important change yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most useful as a profile and as a record over time: which groups of activities cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete evidence of functional limitation for disability or insurance assessments. That is what it was designed for.</p>
 					<p>If you complete it periodically (for example monthly), use the same conditions each time: an average day, not a crash or a good patch.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the activity consequences you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
@@ -256,27 +258,23 @@ form.addEventListener('submit', (e) => {
 	}
 
 	const values = ALL_ITEMS.map(it => ({ item: it, val: getVal(it.id)! }));
-	const overall = values.reduce((s, v) => s + v.val, 0) / values.length;
+	// Domain score = mean of its items; total = mean of the eight domain scores (Sommerfelt et al. 2024).
+	const domainMeans = CONFIG.domains.map(d => ({
+		domain: d,
+		avg: d.items.reduce((s, it) => s + getVal(it.id)!, 0) / d.items.length,
+	}));
+	const overall = domainMeans.reduce((s, d) => s + d.avg, 0) / domainMeans.length;
 
 	totalEl.textContent = overall.toFixed(2);
 
-	let interp = `Your overall FUNCAP27 score is ${overall.toFixed(2)} out of 6, where 6 means activities do not affect what else you can do and 0 means you cannot do them at all. `;
-	if (overall >= 5) {
-		interp += 'Most everyday activities rarely limit what else you can do. If specific domains still stand out below, those are the areas worth watching.';
-	} else if (overall >= 3.5) {
-		interp += 'Everyday activities carry a real cost: many force you to limit what else you do that day. The domain profile below shows where that cost is concentrated.';
-	} else if (overall >= 2) {
-		interp += 'Everyday activities carry a substantial cost, with many leaving you able to do little else that day or for days afterwards. This level of functional limitation is worth documenting for appointments and any disability assessment.';
-	} else {
-		interp += 'Your responses indicate severely reduced functional capacity: many basic activities are impossible or cause multi-day payback. FUNCAP was designed to document exactly this, in a form that clinicians and assessors can use.';
-	}
+	// REVIEW: no published cut-offs, so this compares with the validation means instead of banding.
+	const lowest = [...domainMeans].sort((x, y) => x.avg - y.avg)[0];
+	const interp = `Your overall FUNCAP27 score is ${overall.toFixed(2)} out of 6, where 6 means activities do not affect what else you can do and 0 means you cannot do them at all. There are no official cut-offs. For comparison, the average in the validation study was 3.3 among people with ME/CFS and 5.8 among healthy controls. Your lowest domain was ${lowest.domain.name.toLowerCase()} (${lowest.avg.toFixed(1)}).`;
 	interpEl.textContent = interp;
 
 	// Domain chart (lower = worse; bar length reflects score)
 	const chart = document.getElementById('chart') as HTMLElement;
-	chart.innerHTML = CONFIG.domains.map(d => {
-		const vals = d.items.map(it => getVal(it.id)!);
-		const avg = vals.reduce((s, v) => s + v, 0) / vals.length;
+	chart.innerHTML = domainMeans.map(({ domain: d, avg }) => {
 		const pct = Math.round((avg / 6) * 100);
 		return `
 			<div class="chart-row">
