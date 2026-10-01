@@ -1,6 +1,156 @@
 ---
 import Page from '../../layouts/Page.astro';
 
+// COMPASS-31 items, answer options and scoring key, following the published
+// instrument and scoring algorithm (Sletten et al., Mayo Clin Proc 2012, as
+// reproduced with its scoring table in Okdahl et al., BMJ Open 2021,
+// supplementary material 3). Question wording here is a plain-English
+// rendering; the structure, recall periods, answer options, skip rules and
+// points are the published ones.
+//
+// Each domain's raw score is the sum of its item points, then multiplied by
+// max / rawMax (OI ×4.0, VM ×0.8333, SM ×2.1429, GI ×0.8929, BL ×1.1111,
+// PM ×0.3333), giving 40 + 5 + 15 + 25 + 10 + 5 = 100.
+//
+// `skips`: when the answer is one of `on` (option indexes), the listed items
+// are not asked and score 0, as in the paper instrument's "skip to" notes.
+
+type Option = { label: string; points: number };
+type Item = {
+	n: number;
+	text: string;
+	type?: 'check';
+	options: Option[];
+	skips?: { on: number[]; items: number[] };
+};
+type Domain = { key: string; name: string; intro: string; max: number; rawMax: number; items: Item[] };
+
+const yesNo: Option[] = [
+	{ label: 'Yes', points: 1 },
+	{ label: 'No', points: 0 },
+];
+const severity: Option[] = [
+	{ label: 'Mild', points: 1 },
+	{ label: 'Moderate', points: 2 },
+	{ label: 'Severe', points: 3 },
+];
+const frequency: Option[] = [
+	{ label: 'Rarely', points: 0 },
+	{ label: 'Occasionally', points: 1 },
+	{ label: 'Frequently', points: 2 },
+	{ label: 'Constantly', points: 3 },
+];
+const neverToConstantly: Option[] = [
+	{ label: 'Never', points: 0 },
+	{ label: 'Occasionally', points: 1 },
+	{ label: 'Frequently', points: 2 },
+	{ label: 'Constantly', points: 3 },
+];
+const neverToALot: Option[] = [
+	{ label: 'Never', points: 0 },
+	{ label: 'Sometimes', points: 1 },
+	{ label: 'A lot of the time', points: 2 },
+];
+const trend: Option[] = [
+	{ label: 'Much worse', points: 3 },
+	{ label: 'Somewhat worse', points: 2 },
+	{ label: 'About the same', points: 1 },
+	{ label: 'Somewhat better', points: 0 },
+	{ label: 'Much better', points: 0 },
+	{ label: 'Gone completely', points: 0 },
+];
+const trendOrNone: Option[] = [{ label: "I haven't had any of these symptoms", points: 0 }, ...trend];
+
+const domains: Domain[] = [
+	{
+		key: 'orthostatic',
+		name: 'Orthostatic intolerance',
+		intro: 'Symptoms that come on after standing up from sitting or lying down.',
+		max: 40,
+		rawMax: 10,
+		items: [
+			{ n: 1, text: 'In the past year, have you felt faint, dizzy or muddled, or found it hard to think, soon after standing up from sitting or lying down?', options: yesNo, skips: { on: [1], items: [2, 3, 4] } },
+			{ n: 2, text: 'When you stand up, how often do you get these feelings or symptoms?', options: [{ label: 'Rarely', points: 0 }, { label: 'Occasionally', points: 1 }, { label: 'Frequently', points: 2 }, { label: 'Almost always', points: 3 }] },
+			{ n: 3, text: 'How severe are these feelings or symptoms?', options: severity },
+			{ n: 4, text: 'Over the past year, have these feelings or symptoms got:', options: trend },
+		],
+	},
+	{
+		key: 'vasomotor',
+		name: 'Vasomotor',
+		intro: 'Changes in skin colour linked to blood flow.',
+		max: 5,
+		rawMax: 6,
+		items: [
+			{ n: 5, text: 'In the past year, have you noticed colour changes in your skin, such as red, white or purple?', options: yesNo, skips: { on: [1], items: [6, 7] } },
+			{ n: 6, text: 'Which parts of your body are affected by these colour changes? Tick all that apply.', type: 'check', options: [{ label: 'Hands', points: 1 }, { label: 'Feet', points: 1 }] },
+			{ n: 7, text: 'Are these skin colour changes getting:', options: trend },
+		],
+	},
+	{
+		key: 'secretomotor',
+		name: 'Secretomotor',
+		intro: 'Sweating, and dryness of the eyes and mouth.',
+		max: 15,
+		rawMax: 7,
+		items: [
+			{ n: 8, text: 'In the past five years, what change, if any, has there been in how much you sweat overall?', options: [{ label: 'I sweat much more than I used to', points: 1 }, { label: 'I sweat somewhat more than I used to', points: 0 }, { label: "I haven't noticed any change", points: 0 }, { label: 'I sweat somewhat less than I used to', points: 1 }, { label: 'I sweat much less than I used to', points: 2 }] },
+			{ n: 9, text: 'Do your eyes feel excessively dry?', options: yesNo },
+			{ n: 10, text: 'Does your mouth feel excessively dry?', options: yesNo },
+			{ n: 11, text: "Thinking of whichever you've had longest, dry eyes or dry mouth, is it getting:", options: trendOrNone },
+		],
+	},
+	{
+		key: 'gi',
+		name: 'Gastrointestinal',
+		intro: 'Digestion and bowel function. The autonomic nervous system controls how the gut moves.',
+		max: 25,
+		rawMax: 28,
+		items: [
+			{ n: 12, text: 'In the past year, has there been any change in how quickly you feel full when eating a meal?', options: [{ label: 'I get full a lot more quickly than I used to', points: 2 }, { label: 'I get full more quickly than I used to', points: 1 }, { label: "I haven't noticed any change", points: 0 }, { label: 'I get full less quickly than I used to', points: 0 }, { label: 'I get full a lot less quickly than I used to', points: 0 }] },
+			{ n: 13, text: 'In the past year, have you felt excessively or persistently full (bloated) after a meal?', options: neverToALot },
+			{ n: 14, text: 'In the past year, have you vomited after a meal?', options: neverToALot },
+			{ n: 15, text: 'In the past year, have you had cramping or colicky pain in your abdomen?', options: neverToALot },
+			{ n: 16, text: 'In the past year, have you had any bouts of diarrhoea?', options: yesNo, skips: { on: [1], items: [17, 18, 19] } },
+			{ n: 17, text: 'How often do the bouts of diarrhoea happen?', options: frequency },
+			{ n: 18, text: 'How severe are the bouts of diarrhoea?', options: severity },
+			{ n: 19, text: 'Are the bouts of diarrhoea getting:', options: trend },
+			{ n: 20, text: 'In the past year, have you been constipated?', options: yesNo, skips: { on: [1], items: [21, 22, 23] } },
+			{ n: 21, text: 'How often are you constipated?', options: frequency },
+			{ n: 22, text: 'How severe are the episodes of constipation?', options: severity },
+			{ n: 23, text: 'Is the constipation getting:', options: trend },
+		],
+	},
+	{
+		key: 'bladder',
+		name: 'Bladder',
+		intro: 'Bladder control and emptying.',
+		max: 10,
+		rawMax: 9,
+		items: [
+			{ n: 24, text: 'In the past year, have you lost control of your bladder?', options: neverToConstantly },
+			{ n: 25, text: 'In the past year, have you had difficulty passing urine?', options: neverToConstantly },
+			{ n: 26, text: 'In the past year, have you had trouble emptying your bladder completely?', options: neverToConstantly },
+		],
+	},
+	{
+		key: 'pupillomotor',
+		name: 'Pupillomotor',
+		intro: 'Light sensitivity and focusing, which depend on how the pupils respond.',
+		max: 5,
+		rawMax: 15,
+		items: [
+			{ n: 27, text: 'In the past year, without sunglasses or tinted glasses, has bright light bothered your eyes?', options: neverToConstantly, skips: { on: [0], items: [28] } },
+			{ n: 28, text: 'How severe is this sensitivity to bright light?', options: severity },
+			{ n: 29, text: 'In the past year, have you had trouble focusing your eyes?', options: neverToConstantly, skips: { on: [0], items: [30] } },
+			{ n: 30, text: 'How severe is this focusing problem?', options: severity },
+			{ n: 31, text: 'Is your most troublesome eye symptom (sensitivity to bright light or trouble focusing) getting:', options: trendOrNone },
+		],
+	},
+];
+
+// Serialised for the client-side scoring script.
+const clientConfig = { domains };
 ---
 
 <Page
@@ -26,7 +176,7 @@ import Page from '../../layouts/Page.astro';
 	        {
 	          "@type": "Question",
 	          "name": "What is a normal COMPASS-31 score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls scored a mean of approximately 5–7. A score above 16 is commonly cited as suggesting a meaningful autonomic symptom burden."}
+	          "acceptedAnswer": {"@type": "Answer", "text": "There is no agreed normal range or cut-off. The paper that introduced the COMPASS-31 (Sletten et al. 2012) set out the questions and the weighting but did not publish a normal range or severity bands. For context, in a 2022 survey of 2,314 adults with long COVID, 66% scored above 20, which the authors described as suggestive of moderate to severe autonomic dysfunction."}
 	        },
 	        {
 	          "@type": "Question",
@@ -69,395 +219,29 @@ import Page from '../../layouts/Page.astro';
 			</div>
 
 			<form id="compass-form" novalidate>
-				<!-- DOMAIN 1: Orthostatic Intolerance -->
-				<fieldset class="domain" data-domain="orthostatic">
-					<legend>
-						<span class="domain-number">Domain 1</span>
-						<span class="domain-name">Orthostatic intolerance</span>
-					</legend>
-					<p class="domain-intro">Symptoms that occur when standing up or remaining upright: such as dizziness, faintness, visual changes, palpitations, or weakness of the legs.</p>
-
-					<div class="question">
-						<p class="q-text">1. When standing for prolonged periods or rising quickly, do you experience symptoms such as dizziness, faintness, lightheadedness, visual blurring, palpitations, tremulousness, or weakness of the legs?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q1" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q1" value="1"> <span>Mild: occasionally, doesn't limit activity</span></label>
-							<label><input type="radio" name="q1" value="2"> <span>Moderate: frequently, mildly limits activity</span></label>
-							<label><input type="radio" name="q1" value="3"> <span>Severe: frequently, significantly limits activity</span></label>
-							<label><input type="radio" name="q1" value="4"> <span>Very severe: constantly present, prevents normal activity</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">2. When these orthostatic symptoms occur, do they improve promptly upon sitting down or lying flat?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q2" value="0" required> <span>Not applicable (I don't have these symptoms)</span></label>
-							<label><input type="radio" name="q2" value="1"> <span>Rarely improves</span></label>
-							<label><input type="radio" name="q2" value="2"> <span>Sometimes improves</span></label>
-							<label><input type="radio" name="q2" value="3"> <span>Usually improves</span></label>
-							<label><input type="radio" name="q2" value="4"> <span>Always improves immediately</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">3. Have you fainted (lost consciousness) in the past year?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q3" value="0" required> <span>No</span></label>
-							<label><input type="radio" name="q3" value="4"> <span>Yes</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">4. If you have fainted in the past year, approximately how many times?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q4" value="0" required> <span>Not applicable / none</span></label>
-							<label><input type="radio" name="q4" value="1"> <span>1 time</span></label>
-							<label><input type="radio" name="q4" value="2"> <span>2–4 times</span></label>
-							<label><input type="radio" name="q4" value="3"> <span>5–10 times</span></label>
-							<label><input type="radio" name="q4" value="4"> <span>More than 10 times</span></label>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- DOMAIN 2: Vasomotor -->
-				<fieldset class="domain" data-domain="vasomotor">
-					<legend>
-						<span class="domain-number">Domain 2</span>
-						<span class="domain-name">Vasomotor</span>
-					</legend>
-					<p class="domain-intro">Symptoms related to temperature regulation and sweating.</p>
-
-					<div class="question">
-						<p class="q-text">5. Do you experience heat intolerance: unusual discomfort, worsening of symptoms, or inability to tolerate warm environments?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q5" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q5" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q5" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q5" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q5" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">6. Have you noticed decreased sweating in your feet or legs compared to what it used to be?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q6" value="0" required> <span>No change</span></label>
-							<label><input type="radio" name="q6" value="1"> <span>Mildly decreased</span></label>
-							<label><input type="radio" name="q6" value="2"> <span>Moderately decreased</span></label>
-							<label><input type="radio" name="q6" value="3"> <span>Markedly decreased</span></label>
-							<label><input type="radio" name="q6" value="4"> <span>Absent / no sweating in these areas</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">7. Have you noticed excessive or compensatory sweating in areas that still sweat normally (such as the face, head, or trunk)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q7" value="0" required> <span>No</span></label>
-							<label><input type="radio" name="q7" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q7" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q7" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q7" value="4"> <span>Very severe: soaks clothing</span></label>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- DOMAIN 3: Secretomotor -->
-				<fieldset class="domain" data-domain="secretomotor">
-					<legend>
-						<span class="domain-number">Domain 3</span>
-						<span class="domain-name">Secretomotor</span>
-					</legend>
-					<p class="domain-intro">Symptoms related to dryness of the mouth, eyes, and throat.</p>
-
-					<div class="question">
-						<p class="q-text">8. Do you experience significant dryness of the mouth?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q8" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q8" value="1"> <span>Mild: occasionally dry</span></label>
-							<label><input type="radio" name="q8" value="2"> <span>Moderate: frequently dry</span></label>
-							<label><input type="radio" name="q8" value="3"> <span>Severe: constantly dry, need to sip water frequently</span></label>
-							<label><input type="radio" name="q8" value="4"> <span>Very severe: interferes with eating and speaking</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">9. Do you experience significant dryness of the eyes?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q9" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q9" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q9" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q9" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q9" value="4"> <span>Very severe: need eye drops constantly</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">10. Do you have difficulty swallowing because of a dry mouth or throat?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q10" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q10" value="1"> <span>Mild: occasionally</span></label>
-							<label><input type="radio" name="q10" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q10" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q10" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">11. Do you experience significant dryness of the skin overall?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q11" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q11" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q11" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q11" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q11" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- DOMAIN 4: Gastrointestinal -->
-				<fieldset class="domain" data-domain="gi">
-					<legend>
-						<span class="domain-number">Domain 4</span>
-						<span class="domain-name">Gastrointestinal</span>
-					</legend>
-					<p class="domain-intro">Symptoms related to digestion and gut function. The autonomic nervous system plays a major role in gut motility.</p>
-
-					<div class="question">
-						<p class="q-text">12. Do you experience constipation (fewer than 3 bowel movements per week, or very hard/difficult stools)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q12" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q12" value="1"> <span>Mild: occasionally</span></label>
-							<label><input type="radio" name="q12" value="2"> <span>Moderate: frequently</span></label>
-							<label><input type="radio" name="q12" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q12" value="4"> <span>Very severe: requires laxatives regularly</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">13. Do you experience diarrhoea?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q13" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q13" value="1"> <span>Mild: occasionally loose stools</span></label>
-							<label><input type="radio" name="q13" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q13" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q13" value="4"> <span>Very severe: incapacitating</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">14. Do you experience alternating constipation and diarrhoea?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q14" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q14" value="1"> <span>Occasionally</span></label>
-							<label><input type="radio" name="q14" value="2"> <span>Frequently</span></label>
-							<label><input type="radio" name="q14" value="3"> <span>Most of the time</span></label>
-							<label><input type="radio" name="q14" value="4"> <span>Constantly</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">15. Do you experience nausea?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q15" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q15" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q15" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q15" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q15" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">16. Do you experience vomiting?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q16" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q16" value="1"> <span>Rarely</span></label>
-							<label><input type="radio" name="q16" value="2"> <span>Sometimes</span></label>
-							<label><input type="radio" name="q16" value="3"> <span>Often</span></label>
-							<label><input type="radio" name="q16" value="4"> <span>Very often</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">17. Do you feel full unusually quickly when eating (early satiety)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q17" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q17" value="1"> <span>Mild: occasionally</span></label>
-							<label><input type="radio" name="q17" value="2"> <span>Moderate: frequently</span></label>
-							<label><input type="radio" name="q17" value="3"> <span>Severe: unable to finish normal-sized meals</span></label>
-							<label><input type="radio" name="q17" value="4"> <span>Very severe: very small portions only</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">18. Do you experience bloating or abdominal distension after meals?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q18" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q18" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q18" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q18" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q18" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">19. Do you experience difficulty swallowing solid food?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q19" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q19" value="1"> <span>Mild: occasionally</span></label>
-							<label><input type="radio" name="q19" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q19" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q19" value="4"> <span>Very severe: liquid diet only</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">20. Have you had unintentional weight loss of more than 5 kg in the past year?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q20" value="0" required> <span>No</span></label>
-							<label><input type="radio" name="q20" value="2"> <span>Yes, 5–10 kg</span></label>
-							<label><input type="radio" name="q20" value="4"> <span>Yes, more than 10 kg</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">21. Do you experience abdominal pain or cramping?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q21" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q21" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q21" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q21" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q21" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">22. Do you experience rectal urgency (sudden need to have a bowel movement with very little warning)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q22" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q22" value="1"> <span>Rarely</span></label>
-							<label><input type="radio" name="q22" value="2"> <span>Sometimes</span></label>
-							<label><input type="radio" name="q22" value="3"> <span>Often</span></label>
-							<label><input type="radio" name="q22" value="4"> <span>Constantly</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">23. Do you experience faecal incontinence?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q23" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q23" value="1"> <span>Rarely</span></label>
-							<label><input type="radio" name="q23" value="2"> <span>Sometimes</span></label>
-							<label><input type="radio" name="q23" value="3"> <span>Often</span></label>
-							<label><input type="radio" name="q23" value="4"> <span>Frequently</span></label>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- DOMAIN 5: Bladder -->
-				<fieldset class="domain" data-domain="bladder">
-					<legend>
-						<span class="domain-number">Domain 5</span>
-						<span class="domain-name">Bladder</span>
-					</legend>
-					<p class="domain-intro">Urinary symptoms related to autonomic control of the bladder.</p>
-
-					<div class="question">
-						<p class="q-text">24. Do you experience urinary urgency or increased frequency of urination?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q24" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q24" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q24" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q24" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q24" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">25. Do you have difficulty starting urination or feel that your bladder doesn't empty completely?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q25" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q25" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q25" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q25" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q25" value="4"> <span>Very severe: need to catheterise</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">26. Do you experience urinary incontinence (leakage of urine)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q26" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q26" value="1"> <span>Rarely</span></label>
-							<label><input type="radio" name="q26" value="2"> <span>Sometimes</span></label>
-							<label><input type="radio" name="q26" value="3"> <span>Often</span></label>
-							<label><input type="radio" name="q26" value="4"> <span>Constantly</span></label>
-						</div>
-					</div>
-				</fieldset>
-
-				<!-- DOMAIN 6: Pupillomotor -->
-				<fieldset class="domain" data-domain="pupillomotor">
-					<legend>
-						<span class="domain-number">Domain 6</span>
-						<span class="domain-name">Pupillomotor</span>
-					</legend>
-					<p class="domain-intro">Visual symptoms related to autonomic control of pupil size and light adaptation.</p>
-
-					<div class="question">
-						<p class="q-text">27. Do you have difficulty seeing clearly in low light or dim environments?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q27" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q27" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q27" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q27" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q27" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">28. Do your eyes take longer than usual to adjust when moving from bright to dark environments (dark adaptation)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q28" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q28" value="1"> <span>Mild: slight delay</span></label>
-							<label><input type="radio" name="q28" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q28" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q28" value="4"> <span>Very severe: takes minutes to adjust</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">29. Do you experience blurred vision?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q29" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q29" value="1"> <span>Mild: occasionally</span></label>
-							<label><input type="radio" name="q29" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q29" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q29" value="4"> <span>Very severe: constantly blurred</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">30. Are you abnormally sensitive to bright light (photophobia)?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q30" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q30" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q30" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q30" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q30" value="4"> <span>Very severe: need to wear sunglasses indoors</span></label>
-						</div>
-					</div>
-
-					<div class="question">
-						<p class="q-text">31. Do you experience pain, aching, or grittiness in or around the eyes?</p>
-						<div class="options" data-max="4">
-							<label><input type="radio" name="q31" value="0" required> <span>Never</span></label>
-							<label><input type="radio" name="q31" value="1"> <span>Mild</span></label>
-							<label><input type="radio" name="q31" value="2"> <span>Moderate</span></label>
-							<label><input type="radio" name="q31" value="3"> <span>Severe</span></label>
-							<label><input type="radio" name="q31" value="4"> <span>Very severe</span></label>
-						</div>
-					</div>
-				</fieldset>
+				<p class="form-instructions">Most questions ask about the past year. Some follow-up questions only appear if they apply to you, depending on your earlier answers.</p>
+				{domains.map((domain, di) => (
+					<fieldset class="domain" data-domain={domain.key}>
+						<legend>
+							<span class="domain-number">Domain {di + 1}</span>
+							<span class="domain-name">{domain.name}</span>
+						</legend>
+						<p class="domain-intro">{domain.intro}</p>
+						{domain.items.map(item => (
+							<div class="question" data-q={item.n}>
+								<p class="q-text" id={`q${item.n}-text`}>{item.n}. {item.text}</p>
+								<div class="options" role={item.type === 'check' ? 'group' : 'radiogroup'} aria-labelledby={`q${item.n}-text`}>
+									{item.options.map((opt, oi) => (
+										<label>
+											<input type={item.type === 'check' ? 'checkbox' : 'radio'} name={`q${item.n}`} value={oi} />
+											<span>{opt.label}</span>
+										</label>
+									))}
+								</div>
+							</div>
+						))}
+					</fieldset>
+				))}
 
 				<div class="form-footer">
 					<button type="submit" id="submit-btn">Calculate score</button>
@@ -486,118 +270,30 @@ import Page from '../../layouts/Page.astro';
 					<tbody id="domain-rows"></tbody>
 				</table>
 
+				<!-- REVIEW: corrected copy, cut-offs removed (unsourced), Larsen 2022 figure verified against the paper's abstract. -->
 				<div class="results-disclaimer">
   <h3>Understanding your score</h3>
   <p>The COMPASS-31 produces a total weighted score between 0 and 100 and individual scores for each of the six domains. Higher scores reflect a greater self-reported burden of autonomic symptoms.</p>
-  <p>In the original validation study, healthy controls scored a mean of approximately 5–7. There is no single universally agreed clinical threshold, but a total score above 16 is commonly cited in the published literature. In a large survey of over 2,300 people with post-acute COVID-19, a score of 20 or above was used to indicate moderate to severe autonomic dysfunction, and 66% of participants met that threshold.</p>
-  <p>As a rough guide: <strong>0–10</strong> is within the range seen in healthy individuals in the validation study. <strong>11–20</strong> is mildly elevated above that range. <strong>21–40</strong> represents a moderate symptom burden consistent with clinically significant autonomic involvement in most published studies. <strong>Above 40</strong> represents a high symptom burden.</p>
-  <p>The domain breakdown is often as informative as the total score. A high score driven mainly by gastrointestinal symptoms tells a different story from one driven by orthostatic intolerance. When discussing your results with a clinician, the domain scores can help focus the conversation.</p>
-  <p>If you use the COMPASS-31 to track your symptoms over time, complete it under similar conditions each time and at consistent intervals (such as monthly).</p>
+  <p>There is no agreed normal range or cut-off. The paper that introduced the COMPASS-31 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3541923/" rel="noopener">Sletten et al. 2012</a>) set out the questions and the weighting but did not publish a normal range or severity bands. For context, in a <a href="https://doi.org/10.3389/fneur.2022.1012668" rel="noopener">2022 survey of 2,314 adults with long COVID</a>, 66% scored above 20, which the authors described as suggestive of moderate to severe autonomic dysfunction.</p>
+  <p>The domains are weighted differently: orthostatic intolerance counts for up to 40 points, gastrointestinal up to 25, secretomotor up to 15, bladder up to 10, and vasomotor and pupillomotor up to 5 each. The domain breakdown is often as informative as the total score. A high score driven mainly by gastrointestinal symptoms tells a different story from one driven by orthostatic intolerance. When discussing your results with a clinician, the domain scores can help focus the conversation.</p>
+  <p>Most questions ask about the past year, and several ask whether symptoms are getting better or worse, so the score changes slowly. If you use it to track your symptoms, retaking it every few months tells you more than retaking it every week.</p>
   <p><strong>This score is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss your results with your doctor or specialist.</p>
 </div>
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<script type="application/json" id="compass-config" set:html={JSON.stringify(clientConfig)}></script>
 </Page>
 
 <script>
-// Domain configuration
-// Weights produce a max total of 100
-const DOMAINS: {
-	key: string;
-	name: string;
-	questions: string[];
-	weight: number; // max contribution to total score
-}[] = [
-	{
-		key: 'orthostatic',
-		name: 'Orthostatic intolerance',
-		questions: ['q1', 'q2', 'q3', 'q4'],
-		weight: 40,
-	},
-	{
-		key: 'vasomotor',
-		name: 'Vasomotor',
-		questions: ['q5', 'q6', 'q7'],
-		weight: 5,
-	},
-	{
-		key: 'secretomotor',
-		name: 'Secretomotor',
-		questions: ['q8', 'q9', 'q10', 'q11'],
-		weight: 15,
-	},
-	{
-		key: 'gi',
-		name: 'Gastrointestinal',
-		questions: ['q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19', 'q20', 'q21', 'q22', 'q23'],
-		weight: 25,
-	},
-	{
-		key: 'bladder',
-		name: 'Bladder',
-		questions: ['q24', 'q25', 'q26'],
-		weight: 5,
-	},
-	{
-		key: 'pupillomotor',
-		name: 'Pupillomotor',
-		questions: ['q27', 'q28', 'q29', 'q30', 'q31'],
-		weight: 10,
-	},
-];
+type Option = { label: string; points: number };
+type Item = { n: number; text: string; type?: 'check'; options: Option[]; skips?: { on: number[]; items: number[] } };
+type Domain = { key: string; name: string; max: number; rawMax: number; items: Item[] };
 
-function getMaxForQuestion(name: string): number {
-	const inputs = document.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`);
-	let max = 0;
-	inputs.forEach(inp => {
-		const val = parseFloat(inp.value);
-		if (!isNaN(val) && val > max) max = val;
-	});
-	return max;
-}
-
-function getAnsweredValue(name: string): number | null {
-	const checked = document.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`);
-	return checked ? parseFloat(checked.value) : null;
-}
-
-function computeScore(): { domainScores: { name: string; score: number; max: number; raw: number; rawMax: number }[]; total: number } | null {
-	const domainScores = [];
-	let total = 0;
-
-	for (const domain of DOMAINS) {
-		let rawScore = 0;
-		let rawMax = 0;
-
-		for (const q of domain.questions) {
-			const val = getAnsweredValue(q);
-			if (val === null) return null; // unanswered
-			rawScore += val;
-			rawMax += getMaxForQuestion(q);
-		}
-
-		const domainScore = rawMax > 0 ? (rawScore / rawMax) * domain.weight : 0;
-		domainScores.push({
-			name: domain.name,
-			score: domainScore,
-			max: domain.weight,
-			raw: rawScore,
-			rawMax,
-		});
-		total += domainScore;
-	}
-
-	return { domainScores, total };
-}
-
-function interpret(score: number): string {
-	if (score < 5) return `Your score of ${score} is in the range typically seen in people without significant autonomic symptoms in the validation study.`;
-	if (score < 16) return `Your score of ${score} is mildly elevated above the range seen in healthy controls in the validation study. Discuss any symptoms with your doctor.`;
-	if (score < 30) return `Your score of ${score} is above the threshold of 16 that is commonly cited in the published literature. Discuss your score and symptoms with your doctor.`;
-	if (score < 50) return `Your score of ${score} indicates autonomic symptoms across multiple domains. Discuss your score and symptoms with your doctor.`;
-	return `Your score of ${score} indicates autonomic symptoms across multiple domains. Discuss your score and symptoms with your doctor.`;
-}
+const cfgEl = document.getElementById('compass-config');
+const DOMAINS: Domain[] = JSON.parse(cfgEl?.textContent || '{"domains":[]}').domains;
+const ITEMS: Item[] = DOMAINS.flatMap(d => d.items);
 
 const form = document.getElementById('compass-form') as HTMLFormElement;
 const resultsPanel = document.getElementById('results') as HTMLElement;
@@ -605,35 +301,103 @@ const totalScoreEl = document.getElementById('total-score-value') as HTMLElement
 const interpEl = document.getElementById('score-interpretation') as HTMLElement;
 const domainRowsEl = document.getElementById('domain-rows') as HTMLElement;
 
+function inputs(n: number) {
+	return form.querySelectorAll<HTMLInputElement>(`input[name="q${n}"]`);
+}
+
+function selectedIndex(n: number): number | null {
+	const checked = form.querySelector<HTMLInputElement>(`input[name="q${n}"]:checked`);
+	return checked ? parseInt(checked.value, 10) : null;
+}
+
+// Items not asked because of an earlier answer, per the instrument's skip notes.
+function skippedItems(): Set<number> {
+	const skipped = new Set<number>();
+	for (const item of ITEMS) {
+		if (!item.skips || skipped.has(item.n)) continue;
+		const sel = selectedIndex(item.n);
+		if (sel !== null && item.skips.on.includes(sel)) item.skips.items.forEach(n => skipped.add(n));
+	}
+	return skipped;
+}
+
+function applySkips() {
+	const skipped = skippedItems();
+	for (const item of ITEMS) {
+		const el = form.querySelector<HTMLElement>(`.question[data-q="${item.n}"]`);
+		if (!el) continue;
+		const skip = skipped.has(item.n);
+		el.hidden = skip;
+		inputs(item.n).forEach(inp => {
+			inp.disabled = skip;
+			if (skip) inp.checked = false;
+		});
+	}
+}
+
+function itemPoints(item: Item): number | null {
+	if (item.type === 'check') {
+		let sum = 0;
+		inputs(item.n).forEach(inp => { if (inp.checked) sum += item.options[parseInt(inp.value, 10)].points; });
+		return sum;
+	}
+	const sel = selectedIndex(item.n);
+	return sel === null ? null : item.options[sel].points;
+}
+
+type DomainScore = { name: string; score: number; max: number; raw: number; rawMax: number };
+
+// Returns the first unanswered item number if the form is incomplete.
+function computeScore(): { domainScores: DomainScore[]; total: number } | { missing: number } {
+	const skipped = skippedItems();
+	const domainScores: DomainScore[] = [];
+	let total = 0;
+	for (const domain of DOMAINS) {
+		let raw = 0;
+		for (const item of domain.items) {
+			if (skipped.has(item.n)) continue;
+			const pts = itemPoints(item);
+			if (pts === null) return { missing: item.n };
+			raw += pts;
+		}
+		const score = raw * (domain.max / domain.rawMax);
+		domainScores.push({ name: domain.name, score, max: domain.max, raw, rawMax: domain.rawMax });
+		total += score;
+	}
+	return { domainScores, total };
+}
+
+const round1 = (x: number) => Math.round(x * 10) / 10;
+
+// REVIEW: no published cut-offs exist, so this describes the score without banding it.
+function interpret(total: number, domainScores: DomainScore[]): string {
+	let text = `Your total is ${round1(total)} out of 100. There is no agreed cut-off or normal range for the COMPASS-31; a higher score means more autonomic symptoms.`;
+	const top = [...domainScores].filter(d => d.score > 0).sort((a, b) => b.score / b.max - a.score / a.max)[0];
+	if (top) text += ` Relative to its maximum, your highest domain was ${top.name.toLowerCase()} (${round1(top.score)} of ${top.max}).`;
+	return text;
+}
+
+form.addEventListener('change', applySkips);
+
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const result = computeScore();
 
-	if (!result) {
+	if ('missing' in result) {
 		alert('Please answer all questions before calculating your score.');
-		// Highlight first unanswered
-		for (const domain of DOMAINS) {
-			for (const q of domain.questions) {
-				if (getAnsweredValue(q) === null) {
-					const firstInput = document.querySelector<HTMLInputElement>(`input[name="${q}"]`);
-					firstInput?.closest('.question')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-					return;
-				}
-			}
-		}
+		const el = form.querySelector<HTMLElement>(`.question[data-q="${result.missing}"]`);
+		el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 		return;
 	}
 
 	const { domainScores, total } = result;
-	const rounded = Math.round(total * 10) / 10;
-
-	totalScoreEl.textContent = String(rounded);
-	interpEl.textContent = interpret(rounded);
+	totalScoreEl.textContent = String(round1(total));
+	interpEl.textContent = interpret(total, domainScores);
 
 	domainRowsEl.innerHTML = domainScores.map(d => `
 		<tr>
 			<td>${d.name}</td>
-			<td>${Math.round(d.score * 10) / 10}</td>
+			<td>${round1(d.score)}</td>
 			<td>${d.max}</td>
 		</tr>
 	`).join('');
@@ -645,6 +409,7 @@ form.addEventListener('submit', (e) => {
 
 document.getElementById('reset-btn')?.addEventListener('click', () => {
 	form.reset();
+	applySkips();
 });
 
 document.getElementById('back-btn')?.addEventListener('click', () => {
@@ -652,6 +417,8 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	form.hidden = false;
 	form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+
+applySkips();
 </script>
 
 <style>
@@ -714,7 +481,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		transition: background 0.1s;
 	}
 	.options label:hover { background: rgb(var(--gray-light)); }
-	.options input[type="radio"] { flex-shrink: 0; margin: 0; }
+	.options input[type="radio"], .options input[type="checkbox"] { flex-shrink: 0; margin: 0; }
+	.question[hidden] { display: none; }
+	.form-instructions { color: rgb(var(--gray)); font-size: 0.95em; margin: 0 0 1.5em; }
 	.options label:has(input:checked) {
 		background: var(--accent-light);
 		color: var(--accent-dark);
