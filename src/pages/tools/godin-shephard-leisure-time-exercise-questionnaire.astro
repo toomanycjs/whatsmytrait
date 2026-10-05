@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const categories = [
 	{
@@ -123,11 +125,21 @@ const categories = [
 					<p><strong>This is not an exercise prescription.</strong> If you are considering increasing activity, the <a href="/tools/exercise-readiness/">readiness screen</a> and the <a href="/tools/pacing-and-heart-rate/">pacing guide</a> are the places to start, and your clinician's advice outranks any questionnaire.</p>
 				</div>
 
+				<ScoreHistory toolId="godin-shephard-leisure-time-exercise-questionnaire" toolName="Godin-Shephard questionnaire" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="godin-shephard-leisure-time-exercise-questionnaire" />
 </Page>
 
 <script>
+import { godinShephard } from '../../tools/godin-shephard-leisure-time-exercise-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(godinShephard);
+mountSharedResults(godinShephard);
+
 const form = document.getElementById('godin-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
 
@@ -179,6 +191,11 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({
+		total: health,
+		subscores: { strenuous: s, moderate: m, mild: l, traditional: total },
+		summary: `Godin-Shephard Leisure Score Index ${health} (strenuous ${s}, moderate ${m}, mild ${l} times a week; traditional total ${total})`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
