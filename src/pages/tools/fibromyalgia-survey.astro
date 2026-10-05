@@ -1,6 +1,12 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import FibromyalgiaInterpretation from '../../components/interpretation/FibromyalgiaSurvey.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/fibromyalgia-survey.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
+const jsonLd = toolJsonLd('Fibromyalgia Survey', '/tools/fibromyalgia-survey/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -8,36 +14,7 @@ import Page from '../../layouts/Page.astro';
 	description="A free interactive version of the 2016 ACR fibromyalgia survey. Tick your pain areas and rate your symptoms to get your Widespread Pain Index, Symptom Severity score and total fibromyalgia severity score, with the criteria thresholds explained."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Fibromyalgia Survey", "item": "https://www.postviralrecovery.com/tools/fibromyalgia-survey/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the 2016 fibromyalgia survey?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The 2016 ACR fibromyalgia survey is a revised self-report questionnaire that measures two components: a Widespread Pain Index (WPI, 0–19) based on pain locations in the past week, and a Symptom Severity Scale (SSS, 0–12) covering fatigue, unrefreshed sleep, cognitive problems, headaches, abdominal pain, and depression. It is validated for research and screening, not for clinical diagnosis in an individual."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What score on the fibromyalgia survey suggests fibromyalgia?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The survey criteria threshold is met when: (1) WPI is 7 or above and SSS is 5 or above, OR WPI is 4–6 and SSS is 9 or above; (2) pain is present in at least 4 of 5 body regions; and (3) symptoms have been present at a similar level for at least 3 months. Meeting the threshold does not diagnose fibromyalgia. It indicates a pattern consistent with the research criteria that should be discussed with a doctor."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 
 			<!-- INTRO SCREEN -->
@@ -209,12 +186,15 @@ import Page from '../../layouts/Page.astro';
 			<div id="screen-results" class="screen" hidden>
 				<div class="results-content">
 					<h2>Your results</h2>
+					<p id="layer1" class="layer1-interp"></p>
 
 					<div id="summary-cards" class="summary-cards"></div>
 
 					<div id="criteria-result" class="criteria-result"></div>
 
 					<div id="results-interpretation" class="interpretation-box"></div>
+
+					<ScoreHistory toolId="fibromyalgia-survey" toolName="fibromyalgia survey" />
 
 					<div class="threshold-box">
 						<h4>Reference thresholds</h4>
@@ -240,9 +220,19 @@ import Page from '../../layouts/Page.astro';
 				</div>
 			</div>
 
+			<SharedResults toolId="fibromyalgia-survey" />
+
+			<FibromyalgiaInterpretation />
 </Page>
 
 <script>
+import { fibromyalgiaSurvey } from '../../tools/fibromyalgia-survey';
+import { interpretResult } from '../../scripts/results/interpretation';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(fibromyalgiaSurvey);
+mountSharedResults(fibromyalgiaSurvey);
+
 // ── Pain area definitions with region mappings ───────────────────────────────
 const REGIONS = ['left-upper', 'right-upper', 'left-lower', 'right-lower', 'axial'];
 
@@ -294,6 +284,16 @@ function computeScores() {
 function showResults() {
 	const s = computeScores();
 	show('screen-results');
+
+	// REVIEW: Layer 1 copy: the published category, then what the score is made of.
+	const subscores = { wpi: s.wpi, sss: s.sss, regions: s.regionCount, criteria: s.criteriaMet ? 1 : 0 };
+	const banded = interpretResult(fibromyalgiaSurvey, { total: s.fsScore, subscores }, history.latest());
+	document.getElementById('layer1').textContent = `${banded} It is made up of a pain index of ${s.wpi} out of 19 and a symptom score of ${s.sss} out of 12.`;
+	history.record({
+		total: s.fsScore,
+		subscores,
+		summary: `Fibromyalgia severity score ${s.fsScore} out of 31 (pain index ${s.wpi}, symptom score ${s.sss}, pain in ${s.regionCount} of 5 regions); 2016 criteria ${s.criteriaMet ? 'met' : 'not met'}`,
+	});
 
 	// Summary cards
 	const cards = document.getElementById('summary-cards');
@@ -351,10 +351,7 @@ function showResults() {
 	}
 
 	html += `<p><strong>Severity score:</strong> Your FS score of ${s.fsScore} out of 31 is a continuous measure of your overall symptom burden. `;
-	// Polysymptomatic distress categories: Wolfe et al., J Rheumatol 2015;42(8):1494-501.
-	const fsCategory = s.fsScore <= 3 ? 'none' : s.fsScore <= 7 ? 'mild' : s.fsScore <= 11 ? 'moderate' : s.fsScore <= 19 ? 'severe' : 'very severe';
-	html += `On the published severity categories for this score, ${s.fsScore} falls in the <strong>${fsCategory}</strong> range (0–3 none, 4–7 mild, 8–11 moderate, 12–19 severe, 20–31 very severe).`;
-	if (s.fsScore < 12) html += ` A score below 12 cannot meet the criteria.`;
+	if (s.fsScore < 12) html += `A score below 12 cannot meet the criteria.`;
 	html += ` This score is meaningful regardless of whether the criteria threshold is crossed, and can be used to track changes over time.</p>`;
 
 	interp.innerHTML = html;
@@ -471,6 +468,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 </script>
 
 <style>
+.layer1-interp { font-size: 1.05rem; line-height: 1.6; margin: 0 0 1.25rem; padding: 0.9rem 1.1rem; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
 /* ── Base ─────────────────────────────────────────────────────────────────── */
 :global(main) {
 	max-width: 680px;

@@ -63,6 +63,8 @@ export interface ToolConfig {
 	/** Override the default "A X total of N is in the Y range." sentence. */
 	bandSentence?: (total: string, band: Band) => string;
 	subscores: SubscoreDef[];
+	/** How many top domains Layer 1 names. Defaults to 2; 0 turns the sentence off. */
+	topDomains?: number;
 	/** Published minimal important change, in total-score points, with its source. */
 	mic?: { value: number; source: string } | null;
 	/** Text for the outcome column when total is null (criteria-based instruments). */

@@ -30,7 +30,7 @@ export function interpretResult(cfg: ToolConfig, r: ScoreResult, previous?: Resu
 		parts.push(cfg.bandSentence ? cfg.bandSentence(t, band) : `A ${cfg.name} total of ${t} is in the ${band.label} range.`);
 	}
 
-	const top = topDomains(cfg, r.subscores);
+	const top = topDomains(cfg, r.subscores, cfg.topDomains ?? 2);
 	if (top.length) {
 		parts.push(cfg.direction === 'higher-better'
 			? `Your lowest ${top.length === 1 ? 'domain was' : 'domains were'} ${listJoin(top)}.`
