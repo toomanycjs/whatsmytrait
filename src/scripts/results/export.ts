@@ -18,6 +18,15 @@ export function toText(cfg: ToolConfig, entries: ResultEntry[]): string {
 	return lines.join('\n');
 }
 
+/** Plain text of every tool with saved results, for the my-results page. */
+export function toTextAll(configs: ToolConfig[], entries: ResultEntry[]): string {
+	return configs
+		.map(cfg => ({ cfg, mine: entries.filter(e => e.tool === cfg.id) }))
+		.filter(x => x.mine.length)
+		.map(x => toText(x.cfg, x.mine))
+		.join('\n\n');
+}
+
 function csvCell(v: string | number | null | undefined): string {
 	if (v === null || v === undefined) return '';
 	const s = String(v);

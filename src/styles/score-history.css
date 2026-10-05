@@ -95,6 +95,7 @@
 	.score-history .sh-delete-all,
 	.score-history .sh-privacy,
 	.score-history .sh-my-results,
-	.sh-table th:nth-last-child(-n + 2),
-	.sh-table td:nth-last-child(-n + 2) { display: none !important; }
+	.sh-table .sh-noprint,
+	.my-results .mr-tool-foot,
+	.my-results .mr-actions { display: none !important; }
 }

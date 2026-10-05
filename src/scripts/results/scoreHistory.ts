@@ -11,26 +11,26 @@ import { comparisonSentence, defaultSummary, findBand, formatDate, formatTotal, 
 import { deleteEntry, deleteTool, isAvailable, localIso, newId, readTool, saveEntry } from './resultsStore';
 import type { ResultEntry, ScoreResult, ToolConfig } from './types';
 
-/** Flip to true when /tools/my-results/ exists (rollout step 7). */
-const MY_RESULTS_LIVE = false;
+/** Whether /tools/my-results/ is live; shows the links to it. */
+const MY_RESULTS_LIVE = true;
 
 // ── Small DOM helpers ──
 
-function h<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
+export function h<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string): HTMLElementTagNameMap[K] {
 	const node = document.createElement(tag);
 	if (cls) node.className = cls;
 	if (text !== undefined) node.textContent = text;
 	return node;
 }
 
-function button(text: string, cls = 'sh-btn'): HTMLButtonElement {
+export function button(text: string, cls = 'sh-btn'): HTMLButtonElement {
 	const b = h('button', cls, text);
 	b.type = 'button';
 	return b;
 }
 
 /** A control that asks for confirmation inline before acting. */
-function confirmControl(label: string, question: string, confirmLabel: string, onConfirm: () => void): HTMLElement {
+export function confirmControl(label: string, question: string, confirmLabel: string, onConfirm: () => void): HTMLElement {
 	const wrap = h('span', 'sh-confirm');
 	const start = button(label, 'sh-link');
 	const showStart = () => { wrap.replaceChildren(start); };
@@ -46,7 +46,7 @@ function confirmControl(label: string, question: string, confirmLabel: string, o
 	return wrap;
 }
 
-async function copyText(text: string): Promise<boolean> {
+export async function copyText(text: string): Promise<boolean> {
 	try {
 		await navigator.clipboard.writeText(text);
 		return true;
@@ -68,7 +68,7 @@ async function copyText(text: string): Promise<boolean> {
 	}
 }
 
-function download(filename: string, content: string, type: string) {
+export function download(filename: string, content: string, type: string) {
 	const url = URL.createObjectURL(new Blob([content], { type }));
 	const a = h('a');
 	a.href = url;
@@ -111,7 +111,7 @@ export function renderTable(cfg: ToolConfig, entries: ResultEntry[], opts: Table
 	if (opts.unshared) headers.push('Share');
 	if (opts.onDelete) headers.push('Delete');
 	for (const label of headers) {
-		const th = h('th', undefined, label);
+		const th = h('th', label === 'Share' || label === 'Delete' ? 'sh-noprint' : undefined, label);
 		th.scope = 'col';
 		headRow.append(th);
 	}
@@ -127,11 +127,14 @@ export function renderTable(cfg: ToolConfig, entries: ResultEntry[], opts: Table
 		const th = h('th', undefined, formatDate(e.date));
 		th.scope = 'row';
 		tr.append(th, h('td', undefined, outcomeText(cfg, e)));
-		for (const s of subs) tr.append(h('td', undefined, e.subscores[s.key] === undefined ? '—' : formatTotal({ ...cfg, decimals: 1 }, e.subscores[s.key])));
+		for (const s of subs) {
+			const v = e.subscores[s.key];
+			tr.append(h('td', undefined, v === undefined ? '—' : s.format ? s.format(v) : formatTotal({ ...cfg, decimals: 1 }, v)));
+		}
 		const change = prev && prev.total !== null && e.total !== null ? changeText(cfg, roundedDiff(cfg, prev.total, e.total)) : '—';
 		tr.append(h('td', undefined, change));
 		if (opts.unshared) {
-			const td = h('td');
+			const td = h('td', 'sh-noprint');
 			const cb = h('input');
 			cb.type = 'checkbox';
 			cb.checked = !opts.unshared.has(e.id);
@@ -141,7 +144,7 @@ export function renderTable(cfg: ToolConfig, entries: ResultEntry[], opts: Table
 			tr.append(td);
 		}
 		if (opts.onDelete) {
-			const td = h('td');
+			const td = h('td', 'sh-noprint');
 			const onDelete = opts.onDelete;
 			td.append(confirmControl('Delete', `Delete the result from ${formatDate(e.date)}?`, 'Yes, delete', () => onDelete(e.id)));
 			tr.append(td);
@@ -226,7 +229,7 @@ export interface ScoreHistoryController {
 
 export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 	const root = document.querySelector<HTMLElement>(`.score-history[data-tool="${cfg.id}"]`);
-	if (!root) return { latest: () => null, record: () => {} };
+	if (!root) return { latest: () => null, record: () => {}, startNew: () => {} };
 
 	const q = <T extends HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
 	const notice = q('.sh-notice');

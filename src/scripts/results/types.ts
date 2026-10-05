@@ -42,6 +42,8 @@ export interface SubscoreDef {
 	sentenceLabel?: string;
 	/** Maximum possible value; ranks higher-better domains relative to their maximum. */
 	max?: number;
+	/** Text for the history table cell, for coded values (e.g. a rating context). */
+	format?: (value: number) => string;
 	/** Show as a column in the history table and CSV. Defaults to true. */
 	inTable?: boolean;
 }

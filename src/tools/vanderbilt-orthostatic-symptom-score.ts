@@ -17,7 +17,7 @@ export const vanderbiltOrthostaticSymptomScore: ToolConfig = {
 	// No validated cut-off and no published minimal important change.
 	mic: null,
 	topDomains: 0,
-	// Item ratings (0-10) and the rating context, kept for the record but out of the history table.
+	// Item ratings (0-10) are kept for the record but out of the history table; the rating context is shown.
 	subscores: [
 		{ key: 'clouding', label: 'Mental clouding', max: 10, inTable: false },
 		{ key: 'vision', label: 'Blurred vision', max: 10, inTable: false },
@@ -28,7 +28,7 @@ export const vanderbiltOrthostaticSymptomScore: ToolConfig = {
 		{ key: 'headache', label: 'Headache', max: 10, inTable: false },
 		{ key: 'lightheaded', label: 'Lightheadedness', max: 10, inTable: false },
 		{ key: 'nausea', label: 'Nausea', max: 10, inTable: false },
-		{ key: 'context', label: 'Rated when', sentenceLabel: 'Rating context (0 rest, 1 short stand, 2 10-minute stand)', max: 2, inTable: false },
+		{ key: 'context', label: 'Rated when', sentenceLabel: 'Rating context (0 rest, 1 short stand, 2 10-minute stand)', max: 2, format: v => ['At rest', 'Short stand', '10-minute stand'][v] ?? '—' },
 	],
 	// Only compare ratings made in the same context (at rest vs after standing).
 	comparableBy: 'context',

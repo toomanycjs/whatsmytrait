@@ -23,6 +23,8 @@ export default defineConfig({
 		// prefixes and emits xhtml:link alternates for them, mirroring the
 		// hreflang tags in <head>. Bare language codes, not regions.
 		sitemap({
+			// /tools/my-results/ is personal to each visitor and noindexed.
+			filter: (page) => !page.includes('/tools/my-results/'),
 			i18n: {
 				defaultLocale: 'en',
 				locales: Object.fromEntries(locales.map((l) => [l, l])),
