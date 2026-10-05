@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const freqOptions = [
 	{ value: 0, short: 'None of the time', full: 'None of the time' },
@@ -149,7 +151,7 @@ const items = [
 					<h3>Why the full questionnaire matters</h3>
 					<p>The DSQ-Brief screens for the core features of ME/CFS (fatigue and post-exertional malaise), and it does that well: 96% accuracy against healthy controls. Its accuracy drops to around 82–84%, though, when the task is telling ME/CFS apart from <em>other</em> conditions that also cause fatigue, such as long COVID, multiple sclerosis, or post-polio syndrome. Four questions can only tell you so much.</p>
 					<p>The full <strong>DePaul Symptom Questionnaire (DSQ-2)</strong> captures symptoms across eight domains, including orthostatic intolerance, cognitive impairment, pain, sleep disruption, and immune and temperature symptoms. Together these build a far more complete picture. In validation studies the full questionnaire held 93–94% accuracy even against other chronic illnesses, and it screens your answers against the four major ME/CFS case definitions.</p>
-					<p>If you have 10–15 minutes, the full version gives you a detailed domain-by-domain breakdown you can take to a clinical appointment.</p>
+					<p>If you have time for something longer, the full version asks all 79 DSQ-2 symptom questions and checks your answers against four ME/CFS case definitions, which gives you a detailed record to take to a clinical appointment.</p>
 					<a href="/tools/dsq-2/" class="cta-button">Take the full DSQ-2 questionnaire →</a>
 				</div>
 
@@ -160,11 +162,21 @@ const items = [
 					<p><strong>This result is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss it with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="dsq-brief" toolName="DSQ-Brief" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="dsq-brief" />
 </Page>
 
 <script>
+import { dsqBrief, dsqBriefOutcome } from '../../tools/dsq-brief';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(dsqBrief);
+mountSharedResults(dsqBrief);
+
 const ITEMS: { id: string; text: string }[] = [
 	{ id: 'fatigue', text: 'Fatigue or extreme tiredness' },
 	{ id: 'minexercise', text: 'A minimum of exercise makes you physically tired' },
@@ -273,6 +285,10 @@ form.addEventListener('submit', (e) => {
 			<td>${r.meets ? '<span class="met">✓ Met</span>' : '<span class="notmet">Not met</span>'}</td>
 		</tr>
 	`).join('');
+
+	const subscores: Record<string, number> = Object.fromEntries(scored.map(r => [r.item.id, Math.round(r.composite)]));
+	subscores.met = metCount;
+	history.record({ total: null, subscores, band: dsqBriefOutcome({ subscores }) });
 
 	form.hidden = true;
 	resultsPanel.hidden = false;

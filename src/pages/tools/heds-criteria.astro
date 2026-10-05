@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const featureA = [
 	{ id: 'a1', text: 'Unusually soft or velvety skin', clinical: false },
@@ -263,6 +265,8 @@ const prerequisites = [
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your GP, a rheumatologist, or a clinical geneticist.</p>
 				</div>
 
+				<ScoreHistory toolId="heds-criteria" toolName="hEDS criteria checklist" />
+
 				<div class="export-buttons">
 					<button type="button" id="copy-btn" class="btn-secondary">Copy results as text</button>
 					<button type="button" id="print-btn" class="btn-secondary">Print / save as PDF</button>
@@ -270,10 +274,17 @@ const prerequisites = [
 				</div>
 				<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
 			</div>
+
+			<SharedResults toolId="heds-criteria" />
 </Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';
+import { hedsCriteria, hedsOutcome } from '../../tools/heds-criteria';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(hedsCriteria);
+mountSharedResults(hedsCriteria);
 
 const FEATURE_A = [
 	{ id: 'a1', short: 'Soft or velvety skin' },
@@ -539,6 +550,17 @@ form.addEventListener('submit', (e) => {
 		'',
 		'Self-reported. Not a diagnosis.',
 	].join('\n');
+
+	const subscores = {
+		beighton: o.beighton,
+		featurea: o.aYes.length,
+		c1: o.c1 ? 1 : 0,
+		c2: o.c2Met ? 1 : 0,
+		c3: o.c3Met ? 1 : 0,
+		c2open: c2Status === 'open' ? 1 : 0,
+		c3open: c3Status === 'open' ? 1 : 0,
+	};
+	history.record({ total: null, subscores, band: hedsOutcome({ subscores }) });
 
 	form.hidden = true;
 	results.hidden = false;

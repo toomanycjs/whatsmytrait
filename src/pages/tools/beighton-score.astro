@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 ---
 
@@ -344,6 +346,8 @@ import Page from '../../layouts/Page.astro';
 						<strong>This is not a diagnostic tool.</strong> The Beighton score identifies generalised joint hypermobility &mdash; it does not by itself diagnose hypermobile EDS, hypermobility spectrum disorder, or any condition. It is one part of a wider clinical assessment. A score below the threshold does not rule out a hypermobility-related condition, and historical hypermobility (joints that used to bend further) can still count under the full 2017 criteria. Use this to inform a conversation with your doctor.
 					</div>
 
+					<ScoreHistory toolId="beighton-score" toolName="Beighton score" />
+
 					<div class="export-buttons">
 						<button id="copy-btn" class="btn-secondary">Copy results as text</button>
 						<button id="print-btn" class="btn-secondary">Print / save as PDF</button>
@@ -353,9 +357,17 @@ import Page from '../../layouts/Page.astro';
 				</div>
 			</div>
 
+			<SharedResults toolId="beighton-score" />
+
 </Page>
 
 <script>
+import { beightonScore } from '../../tools/beighton-score';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(beightonScore);
+mountSharedResults(beightonScore);
+
 // ── Item definitions ─────────────────────────────────────────────────────────
 const ITEMS = [
 	{ name: 'pinky-left', label: 'Left little finger beyond 90°' },
@@ -467,6 +479,19 @@ function showResults() {
 	}
 	html += `<p>The Beighton score measures range of movement at a small set of joints. It does not capture joint pain, instability, dislocations, or symptoms in joints it does not test. Those are assessed separately in a clinical evaluation, and matter regardless of your score here.</p>`;
 	interp.innerHTML = html;
+
+	const pair = (side) => (s.answers[`${side}-left`] ?? 0) + (s.answers[`${side}-right`] ?? 0);
+	history.record({
+		total: s.total,
+		subscores: {
+			fingers: pair('pinky'),
+			thumbs: pair('thumb'),
+			elbows: pair('elbow'),
+			knees: pair('knee'),
+			palms: s.answers.trunk ?? 0,
+			met: s.met ? 1 : 0,
+		},
+	});
 }
 
 // ── Text export ──────────────────────────────────────────────────────────────

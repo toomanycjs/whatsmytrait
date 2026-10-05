@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const freqOptions = [
 	{ value: 0, label: 'None of the time' },
@@ -216,11 +218,21 @@ const durationOptions = [
 					<p><strong>This is not a diagnosis.</strong> It reflects the symptom pattern you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="dsq-pem" toolName="DSQ-PEM" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="dsq-pem" />
 </Page>
 
 <script>
+import { dsqPem, dsqPemOutcome } from '../../tools/dsq-pem';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(dsqPem);
+mountSharedResults(dsqPem);
+
 const ITEMS = [
 	{ id: 'dead', text: 'A dead, heavy feeling after starting to exercise' },
 	{ id: 'nextday', text: 'Next-day soreness or fatigue after non-strenuous, everyday activities' },
@@ -356,6 +368,15 @@ form.addEventListener('submit', (e) => {
 			<span class="pattern-a">${row.a}</span>
 		</div>
 	`).join('');
+
+	const subscores = {
+		symptoms: metCount,
+		longrecovery: longRecovery ? 1 : 0,
+		pem: pemIndicated ? 1 : 0,
+		physical: physworse ? 1 : 0,
+		mental: mentworse ? 1 : 0,
+	};
+	history.record({ total: null, subscores, band: dsqPemOutcome({ subscores }) });
 
 	form.hidden = true;
 	results.hidden = false;

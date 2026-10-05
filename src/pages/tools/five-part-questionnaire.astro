@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const items = [
 	{ id: 'q1', text: 'Can you now (or could you ever) place your hands flat on the floor without bending your knees?' },
@@ -103,11 +105,21 @@ const items = [
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor.</p>
 				</div>
 
+				<ScoreHistory toolId="five-part-questionnaire" toolName="5PQ" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="five-part-questionnaire" />
 </Page>
 
 <script>
+import { fivePartQuestionnaire } from '../../tools/five-part-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(fivePartQuestionnaire);
+mountSharedResults(fivePartQuestionnaire);
+
 const ITEMS = [
 	{ id: 'q1', short: 'Hands flat on the floor, knees straight (now or ever)' },
 	{ id: 'q2', short: 'Thumb to forearm (now or ever)' },
@@ -155,6 +167,8 @@ form.addEventListener('submit', (e) => {
 	try {
 		localStorage.setItem('pvr-5pq-result', JSON.stringify({ date: new Date().toISOString(), yes: n, answers: Object.fromEntries(ITEMS.map(it => [it.id, getVal(it.id)])) }));
 	} catch { /* storage unavailable */ }
+
+	history.record({ total: n, subscores: Object.fromEntries(ITEMS.map(it => [it.id, getVal(it.id) ?? 0])) });
 
 	form.hidden = true;
 	results.hidden = false;
