@@ -6,14 +6,17 @@ import type { ResultEntry, ScoreResult, ToolConfig } from './types';
 
 const listJoin = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
 
-/** The one or two domains that contributed most (or, for higher-better scales, scored lowest). */
+/**
+ * The one or two domains that contributed the most points to the total, or for
+ * higher-better scales the lowest-scoring domains (relative to their maximum).
+ */
 export function topDomains(cfg: ToolConfig, subscores: Record<string, number>, n = 2): string[] {
 	const better = cfg.direction === 'higher-better';
 	return cfg.subscores
-		.filter(s => s.max && subscores[s.key] !== undefined)
-		.map(s => ({ label: s.label, rel: subscores[s.key] / s.max! }))
-		.filter(s => (better ? s.rel < 1 : s.rel > 0))
-		.sort((a, b) => (better ? a.rel - b.rel : b.rel - a.rel))
+		.filter(s => subscores[s.key] !== undefined && (!better || s.max))
+		.map(s => ({ label: s.sentenceLabel ?? s.label, value: better ? subscores[s.key] / s.max! : subscores[s.key] }))
+		.filter(s => (better ? s.value < 1 : s.value > 0))
+		.sort((a, b) => (better ? a.value - b.value : b.value - a.value))
 		.slice(0, n)
 		.map(s => s.label.toLowerCase());
 }

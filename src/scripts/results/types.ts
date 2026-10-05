@@ -36,8 +36,11 @@ export interface Band {
 
 export interface SubscoreDef {
 	key: string;
+	/** Short column label for tables and CSV. */
 	label: string;
-	/** Maximum possible value, used to rank domains by relative contribution. */
+	/** Longer name for use in sentences, if the label is abbreviated. */
+	sentenceLabel?: string;
+	/** Maximum possible value; ranks higher-better domains relative to their maximum. */
 	max?: number;
 	/** Show as a column in the history table and CSV. Defaults to true. */
 	inTable?: boolean;

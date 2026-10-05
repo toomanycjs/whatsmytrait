@@ -1,5 +1,9 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import Compass31Interpretation from '../../components/interpretation/Compass31.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/compass-31.content';
 
 // COMPASS-31 items, answer options and scoring key, following the published
 // instrument and scoring algorithm (Sletten et al., Mayo Clin Proc 2012, as
@@ -151,6 +155,26 @@ const domains: Domain[] = [
 
 // Serialised for the client-side scoring script.
 const clientConfig = { domains };
+
+// Breadcrumb plus FAQPage. FAQ answers are rendered word for word in the
+// "Understanding your COMPASS-31 score" section, so schema and page match.
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.postviralrecovery.com/' },
+				{ '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.postviralrecovery.com/tools/' },
+				{ '@type': 'ListItem', position: 3, name: 'COMPASS-31', item: 'https://www.postviralrecovery.com/tools/compass-31/' },
+			],
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: FAQ_ORDER.map(k => ({ '@type': 'Question', name: FAQ[k].q, acceptedAnswer: { '@type': 'Answer', text: FAQ[k].a } })),
+		},
+	],
+};
 ---
 
 <Page
@@ -158,41 +182,7 @@ const clientConfig = { domains };
 	description="Complete the COMPASS-31 autonomic symptom questionnaire online and get your weighted score instantly, across all six domains. Free and interactive, with the scoring done for you and your result explained. No PDF, no sign-up."
 >
 	<Fragment slot="head">
-		<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "COMPASS-31", "item": "https://www.postviralrecovery.com/tools/compass-31/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal COMPASS-31 score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "There is no agreed normal range or cut-off. The paper that introduced the COMPASS-31 (Sletten et al. 2012) set out the questions and the weighting but did not publish a normal range or severity bands. For context, in a 2022 survey of 2,314 adults with long COVID, 66% scored above 20, which the authors described as suggestive of moderate to severe autonomic dysfunction."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What does a high COMPASS-31 score mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A high score reflects a greater self-reported burden of autonomic symptoms across the six domains measured. It is not a diagnosis of any condition. Scores should be discussed with your doctor or specialist."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Is the COMPASS-31 used for POTS?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Yes. The COMPASS-31 is widely used in POTS research and clinical practice to measure autonomic symptom burden. It has also been used in long COVID and ME/CFS research."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -270,23 +260,23 @@ const clientConfig = { domains };
 					<tbody id="domain-rows"></tbody>
 				</table>
 
-				<!-- REVIEW: corrected copy, cut-offs removed (unsourced), Larsen 2022 figure verified against the paper's abstract. -->
-				<div class="results-disclaimer">
-  <h3>Understanding your score</h3>
-  <p>The COMPASS-31 produces a total weighted score between 0 and 100 and individual scores for each of the six domains. Higher scores reflect a greater self-reported burden of autonomic symptoms.</p>
-  <p>There is no agreed normal range or cut-off. The paper that introduced the COMPASS-31 (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3541923/" rel="noopener">Sletten et al. 2012</a>) set out the questions and the weighting but did not publish a normal range or severity bands. For context, in a <a href="https://doi.org/10.3389/fneur.2022.1012668" rel="noopener">2022 survey of 2,314 adults with long COVID</a>, 66% scored above 20, which the authors described as suggestive of moderate to severe autonomic dysfunction.</p>
-  <p>The domains are weighted differently: orthostatic intolerance counts for up to 40 points, gastrointestinal up to 25, secretomotor up to 15, bladder up to 10, and vasomotor and pupillomotor up to 5 each. The domain breakdown is often as informative as the total score. A high score driven mainly by gastrointestinal symptoms tells a different story from one driven by orthostatic intolerance. When discussing your results with a clinician, the domain scores can help focus the conversation.</p>
-  <p>Most questions ask about the past year, and several ask whether symptoms are getting better or worse, so the score changes slowly. If you use it to track your symptoms, retaking it every few months tells you more than retaking it every week.</p>
-  <p><strong>This score is not a diagnosis.</strong> It reflects what you have reported about your own symptoms. Discuss your results with your doctor or specialist.</p>
-</div>
+				<ScoreHistory toolId="compass-31" toolName="COMPASS-31" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="compass-31" />
+
+			<Compass31Interpretation />
 
 			<script type="application/json" id="compass-config" set:html={JSON.stringify(clientConfig)}></script>
 </Page>
 
 <script>
+import { compass31 } from '../../tools/compass-31';
+import { interpretResult } from '../../scripts/results/interpretation';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 type Option = { label: string; points: number };
 type Item = { n: number; text: string; type?: 'check'; options: Option[]; skips?: { on: number[]; items: number[] } };
 type Domain = { key: string; name: string; max: number; rawMax: number; items: Item[] };
@@ -345,7 +335,7 @@ function itemPoints(item: Item): number | null {
 	return sel === null ? null : item.options[sel].points;
 }
 
-type DomainScore = { name: string; score: number; max: number; raw: number; rawMax: number };
+type DomainScore = { key: string; name: string; score: number; max: number; raw: number; rawMax: number };
 
 // Returns the first unanswered item number if the form is incomplete.
 function computeScore(): { domainScores: DomainScore[]; total: number } | { missing: number } {
@@ -361,7 +351,7 @@ function computeScore(): { domainScores: DomainScore[]; total: number } | { miss
 			raw += pts;
 		}
 		const score = raw * (domain.max / domain.rawMax);
-		domainScores.push({ name: domain.name, score, max: domain.max, raw, rawMax: domain.rawMax });
+		domainScores.push({ key: domain.key, name: domain.name, score, max: domain.max, raw, rawMax: domain.rawMax });
 		total += score;
 	}
 	return { domainScores, total };
@@ -369,12 +359,15 @@ function computeScore(): { domainScores: DomainScore[]; total: number } | { miss
 
 const round1 = (x: number) => Math.round(x * 10) / 10;
 
-// REVIEW: no published cut-offs exist, so this describes the score without banding it.
-function interpret(total: number, domainScores: DomainScore[]): string {
-	let text = `Your total is ${round1(total)} out of 100. There is no agreed cut-off or normal range for the COMPASS-31; a higher score means more autonomic symptoms.`;
-	const top = [...domainScores].filter(d => d.score > 0).sort((a, b) => b.score / b.max - a.score / a.max)[0];
-	if (top) text += ` Relative to its maximum, your highest domain was ${top.name.toLowerCase()} (${round1(top.score)} of ${top.max}).`;
-	return text;
+const history = mountScoreHistory(compass31);
+mountSharedResults(compass31);
+
+// REVIEW: Layer 1 copy. No published cut-offs exist, so the first sentence
+// describes the score without banding it; interpretResult adds the domains
+// that contributed most (and a MIC comparison, if one is ever published).
+function interpret(total: number, subscores: Record<string, number>): string {
+	const opening = `Your total is ${round1(total)} out of 100. There is no agreed cut-off, so the reference points below show how scores compare in published studies.`;
+	return [opening, interpretResult(compass31, { total, subscores }, history.latest())].filter(Boolean).join(' ');
 }
 
 form.addEventListener('change', applySkips);
@@ -391,8 +384,9 @@ form.addEventListener('submit', (e) => {
 	}
 
 	const { domainScores, total } = result;
+	const subscores = Object.fromEntries(domainScores.map(d => [d.key, round1(d.score)]));
 	totalScoreEl.textContent = String(round1(total));
-	interpEl.textContent = interpret(total, domainScores);
+	interpEl.textContent = interpret(round1(total), subscores);
 
 	domainRowsEl.innerHTML = domainScores.map(d => `
 		<tr>
@@ -404,6 +398,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	resultsPanel.hidden = false;
+	history.record({ total: round1(total), subscores });
 	resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
@@ -546,13 +541,6 @@ applySkips();
 		border-radius: 4px;
 	}
 	.domain-table { margin: 1em 0 2em; }
-	.results-disclaimer {
-		font-size: 0.88em;
-		color: rgb(var(--gray));
-		border-top: 1px solid rgb(var(--gray-light));
-		padding-top: 1.5em;
-		line-height: 1.6;
-	}
 	.back-btn {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));

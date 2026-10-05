@@ -36,8 +36,8 @@
 .sh-chart .sh-grid { stroke: rgb(var(--gray-light)); stroke-width: 1; }
 .sh-chart .sh-line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; }
 .sh-chart .sh-point { fill: var(--accent); }
-.sh-chart .sh-axis { fill: rgb(var(--gray)); font-size: 12px; }
-.sh-chart .sh-value { fill: rgb(var(--gray-dark)); font-size: 13px; font-weight: 700; }
+.sh-chart .sh-axis { fill: rgb(var(--gray)); font-size: 15px; }
+.sh-chart .sh-value { fill: rgb(var(--gray-dark)); font-size: 16px; font-weight: 700; }
 
 .sh-delete-all { margin: 0 0 1.5em; }
 
