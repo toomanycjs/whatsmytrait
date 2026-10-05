@@ -81,6 +81,15 @@ function download(filename: string, content: string, type: string) {
 
 const shortDate = (iso: string) => formatDate(iso).replace(/^(\d+) (\w{3})\w* /, '$1 $2 ');
 
+/** The latest entry before index i that can be compared with entries[i]. */
+export function previousComparable(cfg: ToolConfig, entries: ResultEntry[], i: number): ResultEntry | undefined {
+	const key = cfg.comparableBy;
+	for (let j = i - 1; j >= 0; j--) {
+		if (!key || entries[j].subscores[key] === entries[i].subscores[key]) return entries[j];
+	}
+	return undefined;
+}
+
 // ── Table ──
 
 interface TableOptions {
@@ -113,7 +122,7 @@ export function renderTable(cfg: ToolConfig, entries: ResultEntry[], opts: Table
 	const body = h('tbody');
 	for (let i = entries.length - 1; i >= 0; i--) {
 		const e = entries[i];
-		const prev = entries[i - 1];
+		const prev = previousComparable(cfg, entries, i);
 		const tr = h('tr');
 		const th = h('th', undefined, formatDate(e.date));
 		th.scope = 'row';
@@ -162,7 +171,7 @@ export function renderChart(cfg: ToolConfig, entries: ResultEntry[]): SVGSVGElem
 	if (pts.length < 3) return null;
 
 	const W = 600, H = 190, L = 44, R = 20, T = 24, B = 30;
-	const lo = cfg.totalMin ?? 0;
+	const lo = Math.min(cfg.totalMin ?? 0, ...pts.map(p => p.total));
 	let hi = cfg.totalMax ?? Math.max(...pts.map(p => p.total));
 	if (hi <= lo) hi = lo + 1;
 	const times = pts.map(p => new Date(p.date).getTime());
@@ -211,6 +220,8 @@ export interface ScoreHistoryController {
 	latest(): ResultEntry | null;
 	/** Save a just-produced result (replacing this visit's earlier save, if any) and render. */
 	record(result: ScoreResult): void;
+	/** Make the next record() a new entry instead of replacing this visit's (e.g. a second test in one visit). */
+	startNew(): void;
 }
 
 export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
@@ -271,8 +282,9 @@ export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 		privacy.hidden = !available;
 		myResults.hidden = !MY_RESULTS_LIVE || n === 0;
 		firstLine.hidden = n !== 1;
-		comparison.hidden = n < 2;
-		comparison.textContent = n >= 2 ? comparisonSentence(cfg, all[n - 2], all[n - 1]) : '';
+		const prevForLatest = n >= 2 ? previousComparable(cfg, all, n - 1) : undefined;
+		comparison.hidden = !prevForLatest;
+		comparison.textContent = prevForLatest ? comparisonSentence(cfg, prevForLatest, all[n - 1]) : '';
 		exportStatus.textContent = '';
 
 		tableSlot.replaceChildren();
@@ -328,6 +340,9 @@ export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 	render();
 
 	return {
+		startNew() {
+			sessionId = null;
+		},
 		latest() {
 			const prev = entries().filter(e => e.id !== sessionId);
 			return prev[prev.length - 1] ?? null;
@@ -370,8 +385,9 @@ export function mountSharedResults(cfg: ToolConfig) {
 
 	const q = <T extends HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
 	const n = shared.length;
-	q('.sh-comparison').textContent = n >= 2
-		? comparisonSentence(cfg, shared[n - 2], shared[n - 1])
+	const sharedPrev = n >= 2 ? previousComparable(cfg, shared, n - 1) : undefined;
+	q('.sh-comparison').textContent = sharedPrev
+		? comparisonSentence(cfg, sharedPrev, shared[n - 1])
 		: `${formatDate(shared[0].date)}: ${outcomeText(cfg, shared[0])}.`;
 	q('.sh-table-slot').append(renderTable(cfg, shared, { caption: `Shared ${cfg.name} results, newest first` }));
 	const chart = renderChart(cfg, shared);

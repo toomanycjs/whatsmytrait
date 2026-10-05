@@ -85,3 +85,16 @@
 .sh-export-status, .sh-save-status { font-size: 0.9em; color: rgb(var(--gray)); margin: 0.6em 0 0; min-height: 1.2em; }
 .sh-privacy { font-size: 0.85em; color: rgb(var(--gray)); margin: 1.25em 0 0; }
 .sh-my-results { margin: 1em 0 0; }
+
+/* Printing a result: keep the table and chart, drop the controls. */
+@media print {
+	.score-history .sh-notice,
+	.score-history .sh-actions,
+	.score-history .sh-reminder,
+	.score-history .sh-export,
+	.score-history .sh-delete-all,
+	.score-history .sh-privacy,
+	.score-history .sh-my-results,
+	.sh-table th:nth-last-child(-n + 2),
+	.sh-table td:nth-last-child(-n + 2) { display: none !important; }
+}

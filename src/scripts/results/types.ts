@@ -69,6 +69,12 @@ export interface ToolConfig {
 	mic?: { value: number; source: string } | null;
 	/** Text for the outcome column when total is null (criteria-based instruments). */
 	outcome?: (entry: Pick<ResultEntry, 'total' | 'subscores' | 'band'>) => string;
+	/**
+	 * Sub-score key that must match for two results to be compared (e.g. the
+	 * VOSS rating context: at rest or after standing). Comparisons and the
+	 * change column then skip results taken under different conditions.
+	 */
+	comparableBy?: string;
 	/** Reminder repeat interval in months. Defaults to 1 (monthly, 12 occurrences). */
 	reminderMonths?: number;
 }
