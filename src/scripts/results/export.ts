@@ -10,8 +10,6 @@ export const SITE = 'https://www.postviralrecovery.com';
 /** Longest fragment payload accepted when decoding a share link. */
 export const MAX_SHARE_CHARS = 20000;
 
-const tableSubscores = (cfg: ToolConfig) => cfg.subscores.filter(s => s.inTable !== false);
-
 /** Plain text for pasting into an email or message, oldest result first. */
 export function toText(cfg: ToolConfig, entries: ResultEntry[]): string {
 	const lines = [`${cfg.name} results`, ''];
@@ -35,7 +33,8 @@ export function toCsv(entries: ResultEntry[], configs: ToolConfig[], withTool = 
 	const byId = new Map(configs.map(c => [c.id, c]));
 	const subCols: { key: string; label: string }[] = [];
 	const seen = new Set<string>();
-	for (const cfg of configs) for (const s of tableSubscores(cfg)) if (!seen.has(s.key)) { seen.add(s.key); subCols.push(s); }
+	// Every sub-score, including ones hidden from the on-screen table.
+	for (const cfg of configs) for (const s of cfg.subscores) if (!seen.has(s.key)) { seen.add(s.key); subCols.push(s); }
 	for (const e of entries) for (const k of Object.keys(e.subscores)) if (!seen.has(k)) { seen.add(k); subCols.push({ key: k, label: k }); }
 
 	const header = [...(withTool ? ['tool'] : []), 'date', 'total', ...subCols.map(s => s.label), 'band', 'tool_version'];

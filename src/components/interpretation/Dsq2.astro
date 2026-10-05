@@ -1,0 +1,64 @@
+---
+// REVIEW: Layer 2 interpretation for the DSQ-2, drafted for Craig's review.
+// FAQ answers come from dsq-2.content.ts and are shown word for word.
+import { DEFINITIONS, FAQ, SOURCES } from '../../tools/dsq-2.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-dsq2">
+	<h2 id="understanding-dsq2">Understanding your DSQ-2 results</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		This version asks all 79 symptom questions in DePaul's wording, the illness questions the scoring rules use, and ten
+		questions from the RAND 36-Item Health Survey that give the three SF-36 scores the rules need. It leaves out the
+		DSQ-2's other background questions, such as work and medical history.
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.scoring.a}</p>
+	<table class="interp-table">
+		<caption>What each case definition needs, in DePaul's scoring rules</caption>
+		<thead><tr><th scope="col">Definition</th><th scope="col">Main requirements</th></tr></thead>
+		<tbody>
+			{DEFINITIONS.map(d => <tr><th scope="row">{d.name}</th><td>{d.needs}</td></tr>)}
+		</tbody>
+	</table>
+	<p>
+		The domain scores are this site's summary of the eight symptom groups found in the DSQ-2 validation study
+		(<a href={s.bedree2019.href} rel="noopener">{s.bedree2019.label}</a>): the average of each symptom's frequency and
+		severity, scaled to 0 to 100. They are not official DSQ-2 scores, and no cut-offs exist for them.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		The <a href="/tools/dsq-pem/">DSQ-PEM</a> looks at post-exertional malaise in more depth, and the
+		<a href="/tools/funcap/">FUNCAP</a> records what everyday activities cost you. The
+		<a href="/evidence/post-exertional-malaise/">post-exertional malaise explainer</a> covers the symptom every
+		definition here except Fukuda requires.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the date, which definitions you met and which criteria you missed, and the symptoms that met the threshold;
+		copying your results as text captures these. In the UK, the NICE guideline (<a href={s.nice.href} rel="noopener">{s.nice.label}</a>)
+		uses its own criteria: fatigue worsened by activity, post-exertional malaise, unrefreshing or disturbed sleep and
+		cognitive difficulties, suspected after 6 weeks and diagnosed after 3 months of assessment. The DSQ-2 does not score
+		the NICE criteria, but your answers cover the same symptoms. See also
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Jason LA, Sunnquist M. The development of the DePaul Symptom Questionnaire: original, expanded, brief, and pediatric versions. <em>Front Pediatr</em> 2018;6:330, including Supplementary Data Sheet 2 (case-definition scoring rules). <a href={s.jason2018.href} rel="noopener">Article</a></li>
+		<li>Bedree H, Sunnquist M, Jason LA. The DePaul Symptom Questionnaire-2: a validation study. <em>Fatigue</em> 2019;7(3):166–79. <a href={s.bedree2019.href} rel="noopener">Full text</a></li>
+		<li>RAND Corporation. 36-Item Short Form Survey: scoring instructions. <a href={s.rand.href} rel="noopener">{s.rand.label}</a></li>
+		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+	</ul>
+</section>

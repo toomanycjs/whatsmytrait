@@ -32,9 +32,12 @@ export function interpretResult(cfg: ToolConfig, r: ScoreResult, previous?: Resu
 
 	const top = topDomains(cfg, r.subscores, cfg.topDomains ?? 2);
 	if (top.length) {
+		const was = top.length === 1 ? 'domain was' : 'domains were';
 		parts.push(cfg.direction === 'higher-better'
-			? `Your lowest ${top.length === 1 ? 'domain was' : 'domains were'} ${listJoin(top)}.`
-			: `The largest ${top.length === 1 ? 'contribution came' : 'contributions came'} from ${listJoin(top)}.`);
+			? `Your lowest ${was} ${listJoin(top)}.`
+			: r.total === null
+				? `Your highest-scoring ${was} ${listJoin(top)}.`
+				: `The largest ${top.length === 1 ? 'contribution came' : 'contributions came'} from ${listJoin(top)}.`);
 	}
 
 	if (cfg.mic && previous && previous.total !== null && r.total !== null) {
