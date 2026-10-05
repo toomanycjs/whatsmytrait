@@ -77,7 +77,7 @@ export function defaultSummary(cfg: ToolConfig, r: ScoreResult): string {
 	parts.push(head);
 	const subs = cfg.subscores
 		.filter(s => s.inTable !== false && r.subscores[s.key] !== undefined)
-		.map(s => `${s.label} ${formatNumber(r.subscores[s.key], 1)}`);
+		.map(s => `${s.sentenceLabel ?? s.label} ${formatNumber(r.subscores[s.key], 1)}`);
 	if (subs.length) parts.push(subs.join(', '));
 	return parts.join('. ').slice(0, 500);
 }
