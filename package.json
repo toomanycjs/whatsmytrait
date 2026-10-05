@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.2",
@@ -18,5 +19,9 @@
     "astro": "^6.0.8",
     "satori": "^0.26.0",
     "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "ical.js": "^2.2.1",
+    "vitest": "^5.0.3"
   }
 }

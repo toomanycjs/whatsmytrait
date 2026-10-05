@@ -39,3 +39,13 @@ export function trackStep(step: number | string, label?: string) {
 		page_path: path,
 	});
 }
+
+/**
+ * Send a GA4 event through the same dataLayer route as the page views above.
+ * Callers must never pass score values: only ids, counts and formats.
+ */
+export function trackEvent(name: string, params: Record<string, string | number>) {
+	try {
+		gtag('event', name, params);
+	} catch { /* analytics must never break the page */ }
+}
