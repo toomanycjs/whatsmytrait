@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const grades = [
 	{
@@ -131,10 +133,13 @@ const grades = [
 					<span id="grade-name" class="total-score-label"></span>
 				</div>
 				<p id="grade-desc" class="score-interp"></p>
+				<ScoreHistory toolId="pcfs" toolName="PCFS scale" />
 				<div class="results-buttons">
 					<button type="button" id="restart-btn" class="back-btn">Start again</button>
 				</div>
 			</div>
+
+			<SharedResults toolId="pcfs" />
 
 			<section class="grade-table-section">
 				<h2>The five PCFS grades</h2>
@@ -159,6 +164,9 @@ const grades = [
 </Page>
 
 <script>
+import { pcfs } from '../../tools/pcfs';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 const GRADES = [
 	{ grade: 0, name: 'No functional limitations', desc: 'No symptoms and no limitations in everyday life related to the infection. If this changes, re-grade yourself. The scale is designed for repeat use.' },
 	{ grade: 1, name: 'Negligible limitations', desc: 'You still have symptoms, but they do not stop you performing your usual duties and activities. Worth re-checking monthly: a move to grade 2 or above is a signal to seek support.' },
@@ -170,6 +178,8 @@ const GRADES = [
 const flow = document.getElementById('flow') as HTMLElement;
 const steps = Array.from(flow.querySelectorAll<HTMLElement>('.flow-step'));
 const results = document.getElementById('results') as HTMLElement;
+const history = mountScoreHistory(pcfs);
+mountSharedResults(pcfs);
 
 function showStep(n: number) {
 	steps.forEach(s => { s.hidden = parseInt(s.dataset.q || '0', 10) !== n; });
@@ -185,6 +195,7 @@ function finish(grade: number) {
 	document.querySelectorAll<HTMLElement>('.grade-row').forEach(row => {
 		row.classList.toggle('active', parseInt(row.dataset.grade || '-1', 10) === grade);
 	});
+	history.record({ total: g.grade, subscores: {}, summary: `PCFS grade ${g.grade} out of 4 (${g.name.toLowerCase()})` });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 

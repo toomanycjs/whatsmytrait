@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const options = ['Never', 'Very rarely', 'Occasionally', 'Quite often', 'Very often'];
 
@@ -149,12 +151,18 @@ const pages = [items.slice(0, 13), items.slice(13)];
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="cognitive-failures-questionnaire" toolName="Cognitive Failures Questionnaire" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="cognitive-failures-questionnaire" />
 </Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';
+import { cognitiveFailuresQuestionnaire } from '../../tools/cognitive-failures-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 const N = 25;
 const SUBSCALES = [
@@ -169,6 +177,8 @@ const progressLabel = document.getElementById('progress-label') as HTMLElement;
 const progressFill = document.getElementById('progress-fill') as HTMLElement;
 const results = document.getElementById('results') as HTMLElement;
 let currentStep = 0;
+const history = mountScoreHistory(cognitiveFailuresQuestionnaire);
+mountSharedResults(cognitiveFailuresQuestionnaire);
 
 function getVal(n: number): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="i${n}"]:checked`);
@@ -245,6 +255,13 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	const [forgetfulness, distractibility, blunders] = SUBSCALES.map(s =>
+		Math.round((s.items.reduce((acc, i) => acc + getVal(i)!, 0) / s.items.length) * 10) / 10);
+	history.record({
+		total,
+		subscores: { forgetfulness, distractibility, blunders },
+		summary: `Cognitive Failures Questionnaire ${total} out of 100. Item means (0-4): forgetfulness ${forgetfulness}, distractibility ${distractibility}, blunders ${blunders}`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	trackStep('results', 'Results');
 });

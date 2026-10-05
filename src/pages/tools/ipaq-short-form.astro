@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const activities = [
 	{
@@ -140,13 +142,22 @@ const activities = [
 					<p><strong>This is not an exercise prescription.</strong> If you are considering changing your activity level, start with the <a href="/tools/exercise-readiness/">readiness screen</a> and the <a href="/tools/pacing-and-heart-rate/">pacing guide</a>, and let your clinician's advice outrank any questionnaire.</p>
 				</div>
 
+				<ScoreHistory toolId="ipaq-short-form" toolName="IPAQ" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="ipaq-short-form" />
 </Page>
 
 <script>
+import { ipaqShortForm } from '../../tools/ipaq-short-form';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 const form = document.getElementById('ipaq-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
+const history = mountScoreHistory(ipaqShortForm);
+mountSharedResults(ipaqShortForm);
 
 function flag(index: number, el: HTMLInputElement) {
 	const q = document.querySelector<HTMLElement>(`.question[data-index="${index}"]`);
@@ -233,6 +244,13 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({
+		total,
+		subscores: { vigorous: vig.met, moderate: mod.met, walking: walk.met, sitting },
+		summary: category === 'not assigned'
+			? `IPAQ ${total} MET-minutes per week (category not assigned: over 16 hours a day reported)`
+			: `IPAQ ${total} MET-minutes per week, ${category} activity category`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 

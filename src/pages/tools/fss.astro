@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const questions = [
 	'My motivation is lower when I am fatigued.',
@@ -140,11 +142,18 @@ const ratings = [
   <p>This score reflects the impact of fatigue on your daily life as you have reported it. It is not a diagnosis of any condition. Discuss your results with your doctor.</p>
 </div>
 
+				<ScoreHistory toolId="fss" toolName="FSS" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="fss" />
 </Page>
 
 <script>
+	import { fss } from '../../tools/fss';
+	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 	const QUESTIONS = [
 		'My motivation is lower when I am fatigued.',
 		'Exercise brings on my fatigue.',
@@ -163,6 +172,8 @@ const ratings = [
 	const interpEl = document.getElementById('score-interpretation') as HTMLElement;
 	const rowsEl = document.getElementById('breakdown-rows') as HTMLElement;
 	const breakdownTotalEl = document.getElementById('breakdown-total') as HTMLElement;
+	const history = mountScoreHistory(fss);
+	mountSharedResults(fss);
 
 	function getVal(i: number): number | null {
 		const checked = document.querySelector<HTMLInputElement>(`input[name="q${i}"]:checked`);
@@ -210,6 +221,7 @@ const ratings = [
 
 		form.hidden = true;
 		results.hidden = false;
+		history.record({ total: Math.round(mean * 10) / 10, subscores: {} });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 

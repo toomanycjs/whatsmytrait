@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const OPTION_SETS: Record<string, string[]> = {
 	genhealth: ['Excellent', 'Very good', 'Good', 'Fair', 'Poor'],
@@ -207,11 +209,18 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 					<p><strong>This is not a diagnosis.</strong> It reflects the health status you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="rand-36" toolName="RAND-36" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="rand-36" />
 </Page>
 
 <script>
+import { rand36 } from '../../tools/rand-36';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 // Official RAND-36 scoring: recode each item to 0-100, then average within scales.
 const RECODE: Record<string, Record<number, number>> = {
 	A: { 1: 100, 2: 75, 3: 50, 4: 25, 5: 0 },        // items 1,2,20,22,34,36
@@ -246,6 +255,8 @@ const CHANGE_LABELS = ['much better than one year ago', 'somewhat better than on
 
 const form = document.getElementById('rand-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
+const history = mountScoreHistory(rand36);
+mountSharedResults(rand36);
 
 function getVal(n: number): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="q${n}"]:checked`);
@@ -305,6 +316,15 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	const r = scores.map(s => Math.round(s.score));
+	history.record({
+		total: null,
+		subscores: {
+			physical: r[0], rolephysical: r[1], roleemotional: r[2], energy: r[3],
+			emotional: r[4], social: r[5], pain: r[6], general: r[7],
+		},
+		summary: `RAND-36: physical functioning ${r[0]}, role limitations (physical) ${r[1]}, role limitations (emotional) ${r[2]}, energy ${r[3]}, emotional well-being ${r[4]}, social functioning ${r[5]}, pain ${r[6]}, general health ${r[7]} (each 0-100, higher is better)`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
