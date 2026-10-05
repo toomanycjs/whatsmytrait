@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const questions = [
 	'Chest pain',
@@ -149,11 +151,18 @@ const frequencies = [
   <p><strong>This is a screening tool only.</strong> It cannot establish a diagnosis. Discuss your score and any breathing symptoms with your doctor.</p>
 </div>
 
+				<ScoreHistory toolId="nijmegen" toolName="Nijmegen Questionnaire" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="nijmegen" />
 </Page>
 
 <script>
+	import { nijmegen } from '../../tools/nijmegen';
+	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 	const QUESTIONS = [
 		'Chest pain', 'Feeling tense', 'Blurred vision', 'Dizziness',
 		'Feeling confused or disoriented', 'Faster or deeper breathing than usual',
@@ -171,6 +180,9 @@ const frequencies = [
 	const interpEl = document.getElementById('score-interpretation') as HTMLElement;
 	const rowsEl = document.getElementById('breakdown-rows') as HTMLElement;
 	const breakdownTotalEl = document.getElementById('breakdown-total') as HTMLElement;
+
+	const history = mountScoreHistory(nijmegen);
+	mountSharedResults(nijmegen);
 
 	function getVal(i: number): number | null {
 		const checked = document.querySelector<HTMLInputElement>(`input[name="q${i}"]:checked`);
@@ -216,6 +228,7 @@ const frequencies = [
 
 		form.hidden = true;
 		results.hidden = false;
+		history.record({ total, subscores: Object.fromEntries(answers.map((v, i) => [`q${i + 1}`, v])) });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 

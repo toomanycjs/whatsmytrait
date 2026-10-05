@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const options = [
 	{ short: 'Never / not true at all', value: 0 },
@@ -149,12 +151,18 @@ const pages = [items.slice(0, 13), items.slice(13)];
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="self-evaluation-of-breathing-questionnaire" toolName="SEBQ" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="self-evaluation-of-breathing-questionnaire" />
 </Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';
+import { selfEvaluationOfBreathingQuestionnaire } from '../../tools/self-evaluation-of-breathing-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 const N = 25;
 const form = document.getElementById('sebq-form') as HTMLFormElement;
@@ -163,6 +171,9 @@ const progressLabel = document.getElementById('progress-label') as HTMLElement;
 const progressFill = document.getElementById('progress-fill') as HTMLElement;
 const results = document.getElementById('results') as HTMLElement;
 let currentStep = 0;
+
+const history = mountScoreHistory(selfEvaluationOfBreathingQuestionnaire);
+mountSharedResults(selfEvaluationOfBreathingQuestionnaire);
 
 function getVal(n: number): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="i${n}"]:checked`);
@@ -227,6 +238,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total, subscores: Object.fromEntries(vals.map(x => [`i${x.n}`, x.v])) });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	trackStep('results', 'Results');
 });

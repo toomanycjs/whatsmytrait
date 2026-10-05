@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const items = [
 	{ id: 'clouding', text: 'Mental clouding (brain fog, difficulty thinking clearly)' },
@@ -121,11 +123,18 @@ const items = [
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
 				</div>
 
+				<ScoreHistory toolId="vanderbilt-orthostatic-symptom-score" toolName="VOSS" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="vanderbilt-orthostatic-symptom-score" />
 </Page>
 
 <script>
+import { vanderbiltOrthostaticSymptomScore, VOSS_CONTEXT_CODES } from '../../tools/vanderbilt-orthostatic-symptom-score';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 const ITEMS = [
 	{ id: 'clouding', text: 'Mental clouding' },
 	{ id: 'vision', text: 'Blurred vision' },
@@ -138,9 +147,13 @@ const ITEMS = [
 	{ id: 'nausea', text: 'Nausea' },
 ];
 const KEY = 'pvr-voss-last';
+let lastRecordedContext: string | null = null;
 
 const form = document.getElementById('voss-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
+
+const history = mountScoreHistory(vanderbiltOrthostaticSymptomScore);
+mountSharedResults(vanderbiltOrthostaticSymptomScore);
 
 function getVal(id: string): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
@@ -210,6 +223,15 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	// A rating in a different context (e.g. after standing, following one at
+	// rest) is a separate result, not an edit of the earlier one.
+	if (lastRecordedContext !== null && lastRecordedContext !== context) history.startNew();
+	lastRecordedContext = context;
+	history.record({
+		total,
+		subscores: { ...Object.fromEntries(values.map(v => [v.item.id, v.val])), context: VOSS_CONTEXT_CODES[context] },
+		summary: `VOSS ${total} out of 90, rated ${ctxLabel}`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
