@@ -1,0 +1,70 @@
+---
+// REVIEW: Layer 2 interpretation for the DSQ-Brief, drafted for Craig's review.
+// FAQ answers come from dsq-brief.content.ts and are shown word for word.
+import { ACCURACY, FAQ, SOURCES } from '../../tools/dsq-brief.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-dsq-brief">
+	<h2 id="understanding-dsq-brief">Understanding your DSQ-Brief result</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		The wording follows DePaul's published form (<a href={s.form.href} rel="noopener">{s.form.label}</a>). Each symptom's
+		0 to 100 score combines frequency and severity, as DePaul does in its research; it is for tracking and has no cut-off.
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.scoring.a}</p>
+	<p>
+		The 2/2 rule is the one DePaul uses elsewhere (<a href={s.cotler2018.href} rel="noopener">{s.cotler2018.label}</a>),
+		and the four symptoms line up with the four NICE needs before ME/CFS is suspected: fatigue worsened by activity,
+		post-exertional malaise, unrefreshing sleep and cognitive difficulties
+		(<a href={s.nice.href} rel="noopener">{s.nice.label}</a>).
+	</p>
+	<p>{FAQ.accuracy.a}</p>
+	<table class="interp-table">
+		<caption>Accuracy / sensitivity / specificity (%) in the validation study, as summarised by ME Research UK</caption>
+		<thead>
+			<tr><th scope="col">Questionnaire</th><th scope="col">ME/CFS vs healthy controls</th><th scope="col">ME/CFS vs other illnesses</th></tr>
+		</thead>
+		<tbody>
+			{ACCURACY.map(r => <tr><th scope="row">{r.version}</th><td>{r.controls}</td><td>{r.illness}</td></tr>)}
+		</tbody>
+	</table>
+	<p>
+		These figures come from a statistical model, not from this page's 4-of-4 rule, so they describe the four questions
+		rather than this page's verdict.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		It does not cover orthostatic intolerance, pain or how long you have been ill. The
+		<a href="/tools/dsq-pem/">DSQ-PEM</a> looks at post-exertional malaise in depth, and the
+		<a href="/tools/dsq-2/">DSQ-2</a> checks four ME/CFS case definitions.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the date, the verdict, which symptoms met the threshold, and any earlier results. Describe it as a 4-question
+		screen from the DePaul Symptom Questionnaire, published in 2023. NICE says ME/CFS should be suspected when all four
+		core symptoms have lasted 6 weeks in an adult whose activity has dropped markedly, and diagnosed only after 3 months
+		and an assessment for other causes. A positive screen is a reason to ask for that assessment, not evidence of ME/CFS
+		on its own. See <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Jason LA, Benner S, Furst J, Cathey P. Developing and validating a brief screening scale for ME/CFS. <em>Fatigue: Biomedicine, Health &amp; Behavior</em> 2023;11(2–4):176–87. <a href={s.jason2023.href} rel="noopener">Article (paywalled)</a></li>
+		<li>ME Research UK. Can a brief screening scale accurately detect ME/CFS? Research summary. <a href={s.meResearch.href} rel="noopener">{s.meResearch.label}</a></li>
+		<li>DePaul University. DePaul Symptom Questionnaire – Brief. <a href={s.form.href} rel="noopener">{s.form.label}</a></li>
+		<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, Appendix B. <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
+		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+	</ul>
+</section>

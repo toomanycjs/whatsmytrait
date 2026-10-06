@@ -2,6 +2,9 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import Rand36Interpretation from '../../components/interpretation/Rand36.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/rand-36.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const OPTION_SETS: Record<string, string[]> = {
 	genhealth: ['Excellent', 'Very good', 'Good', 'Fair', 'Poor'],
@@ -104,6 +107,8 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 		],
 	},
 ];
+
+const jsonLd = toolJsonLd('RAND-36 health survey', '/tools/rand-36/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -111,57 +116,23 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 	description="Complete the RAND 36-Item Health Survey online for free and get all eight scale scores instantly: physical functioning, role limitations, energy, emotional well-being, social functioning, pain, and general health."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "RAND-36 health survey", "item": "https://www.postviralrecovery.com/tools/rand-36/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the difference between the RAND-36 and the SF-36?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "They contain exactly the same 36 questions, which were developed in the RAND Medical Outcomes Study. The SF-36 is the commercially licensed version; the RAND-36 is distributed by RAND as a public document, free to use without permission, with slightly different scoring for the pain and general health scales. This tool uses the official RAND scoring."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is the RAND-36 scored?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Each answer is converted to a 0–100 value using RAND's scoring key, where 100 represents the most favourable health state. Items are then averaged within eight scales: physical functioning, role limitations due to physical health, role limitations due to emotional problems, energy/fatigue, emotional well-being, social functioning, pain, and general health. Higher scores mean better health-related quality of life."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Why is the SF-36/RAND-36 used in ME/CFS and long COVID research?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "It is one of the most widely used health-related quality of life measures in medicine, so scores can be compared across conditions and studies. ME/CFS and long COVID cohorts consistently show very low physical functioning and role limitation scores, often lower than in many other chronic diseases, and the physical functioning subscale is a common outcome measure in trials."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>RAND-36 health survey</h1>
 				<p class="subtitle">The RAND 36-Item Health Survey 1.0: the same items as the SF-36</p>
 				<p class="description">
-					The 36-Item Short Form Survey came out of the RAND Medical Outcomes Study. It is one of the most widely used measures of health-related quality of life in the world. The same 36 questions exist in two forms: the commercially licensed SF-36, and the <strong>RAND-36</strong>, which RAND distributes free of charge with no permission needed. This page uses the RAND version and its official scoring.
+					The 36-Item Short Form Survey came out of the RAND Medical Outcomes Study. It is one of the most widely used measures of health-related quality of life in the world. The same 36 questions exist in two forms: the commercially licensed SF-36, and the <strong>RAND-36</strong>, which RAND publishes as a public document, available without charge. This page uses the RAND version and its official scoring.
 				</p>
 				<p class="description">
-					The survey produces <strong>eight scale scores</strong>, each from 0 to 100: physical functioning, role limitations (physical and emotional), energy, emotional well-being, social functioning, pain, and general health. Because it is used across almost every area of medicine, you can set your scores against published results from ME/CFS, long COVID, and many other conditions. The physical functioning scale in particular is a standard outcome measure in post-viral research.
+					The survey produces <strong>eight scale scores</strong>, each from 0 to 100: physical functioning, role limitations (physical and emotional), energy, emotional well-being, social functioning, pain, and general health. <!-- REVIEW: unsourced long COVID and "standard outcome measure" claims removed. -->Because it is so widely used, you can compare your scores with published results, including from people with ME/CFS (see below the results).
 				</p>
 				<p class="description">
 					It takes 5 to 10 minutes. Most questions refer to the <strong>past 4 weeks</strong>. For a fatigue-specific measure, see the <a href="/tools/fss/">Fatigue Severity Scale</a>. For activity-level functional capacity in ME/CFS, see the <a href="/tools/funcap/">FUNCAP questionnaire</a>. For a quick well-being check, see the <a href="/tools/who-5/">WHO-5</a>.
 				</p>
 				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The RAND-36 measures self-reported health-related quality of life; it does not diagnose any condition. Discuss your results with your doctor. Source: RAND 36-Item Health Survey 1.0. RAND surveys are public documents; RAND requires no permission or fee for their use. Hays RD, Sherbourne CD, Mazel RM. <em>The RAND 36-Item Health Survey 1.0.</em> Health Econ. 1993;2(3):217–227.
+					<strong>This is not a diagnostic tool.</strong> The RAND-36 measures self-reported health-related quality of life; it does not diagnose any condition. Discuss your results with your doctor. Source: RAND 36-Item Health Survey 1.0. RAND surveys are public documents, available without charge. Hays RD, Sherbourne CD, Mazel RM. <em>The RAND 36-Item Health Survey 1.0.</em> Health Econ. 1993;2(3):217–227.
 				</div>
 			</div>
 
@@ -202,10 +173,8 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 				<p id="health-change" class="health-change"></p>
 
 				<div class="results-disclaimer">
-					<h3>Understanding your scores</h3>
-					<p>In the RAND scoring, every scale runs from 0 (worst) to 100 (best); a score of 50 on a scale means your answers averaged halfway between the best and worst possible responses. General-population averages sit roughly in the 70–90 range for most scales (lower for energy/fatigue, typically around 60).</p>
-					<p>In published ME/CFS cohorts, physical functioning commonly falls below 40 and role limitations (physical) below 20. These are among the lowest scores of any chronic condition, while emotional well-being is often relatively preserved. That <em>pattern</em>, with physical scales far below emotional scales, is itself informative and worth pointing out to a clinician if it appears in your profile.</p>
-					<p>The RAND-36 works best repeated every few months rather than weekly, since most items ask about the past 4 weeks. Record the eight scores each time. A sustained change of around 5 to 10 points on a scale is generally considered meaningful.</p>
+					<!-- REVIEW: unsourced general-population averages, ME/CFS cut-offs and the "5 to 10 points" change claim removed; sourced reference scores are in the section below the results. -->
+					<p>What the scores mean, with published averages for comparison, is explained <a href="#understanding-rand-36">below the results</a>.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the health status you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
 
@@ -215,6 +184,8 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 			</div>
 
 			<SharedResults toolId="rand-36" />
+
+			<Rand36Interpretation />
 </Page>
 
 <script>
@@ -299,14 +270,18 @@ form.addEventListener('submit', (e) => {
 	const lowest = sorted[0];
 	const highest = sorted[sorted.length - 1];
 	let summary = `Your lowest scale is ${lowest.name.toLowerCase()} (${Math.round(lowest.score)}/100) and your highest is ${highest.name.toLowerCase()} (${Math.round(highest.score)}/100). `;
+	// REVIEW: Layer 1 copy. interpretResult adds nothing here (no total, no bands,
+	// no published minimal important change). The 50 and 25-point triggers are
+	// this page's own, not published cut-offs; the figures quoted are RAND's
+	// Table 3 (MOS) and Nacul et al. 2011 Table 2. Unsourced long COVID claims removed.
 	const physical = scores[0].score;
 	const emotional = scores[4].score;
 	if (physical <= 50 && emotional - physical >= 25) {
-		summary += 'Physical functioning is markedly lower than emotional well-being. This is the pattern typically reported in ME/CFS and long COVID cohorts, where the illness burden is physical rather than psychological. The contrast is worth showing to a clinician.';
+		summary += 'Your physical functioning is well below your emotional well-being. A UK study of people with ME/CFS found the same contrast on average (physical functioning 30, mental health 51), so it is worth pointing out to a clinician.';
 	} else if (physical <= 50) {
-		summary += 'Physical functioning is substantially reduced; in published post-viral cohorts, scores at this level are common and reflect significant day-to-day limitation.';
+		summary += 'For comparison, average physical functioning was 71 among 2,471 patients in the Medical Outcomes Study and 30 in a UK study of people with ME/CFS.';
 	} else {
-		summary += 'Scores in the upper ranges suggest comparatively preserved function on those scales; the profile is most useful tracked over time.';
+		summary += 'There are no official cut-offs for these scales; the profile is most useful tracked over time.';
 	}
 	(document.getElementById('overall-summary') as HTMLElement).textContent = summary;
 

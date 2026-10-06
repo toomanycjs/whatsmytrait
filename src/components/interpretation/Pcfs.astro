@@ -1,0 +1,59 @@
+---
+// REVIEW: Layer 2 interpretation for the PCFS scale, drafted for Craig's review.
+// FAQ answers come from pcfs.content.ts and are shown word for word.
+import { FAQ, SOURCES } from '../../tools/pcfs.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-pcfs">
+	<h2 id="understanding-pcfs">Understanding your PCFS grade</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		It covers duties and activities at home, work or study, including sport and social life. The four questions follow
+		the flowchart in the manual (<a href={s.manual.href} rel="noopener">{s.manual.label}</a>) and the original paper
+		(<a href={s.klok2020.href} rel="noopener">{s.klok2020.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>The grades are the bands; there are no other cut-offs.</p>
+	<p>{FAQ.grades.a}</p>
+	<p>{FAQ.symptoms.a}</p>
+	<p>
+		That study (<a href={s.machado2021.href} rel="noopener">{s.machado2021.label}</a>) was self-selected and 85% women,
+		with few people at grades 0 and 1; the authors suggest grade 1 still separates incomplete from full recovery.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		For more detail, pair it with the <a href="/tools/funcap/">FUNCAP</a>, the <a href="/tools/bell-scale/">Bell
+		scale</a> or a <a href="/tools/trackers/symptom-diary/">symptom diary</a>.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		It does not measure fatigue, breathlessness or <a href="/tools/dsq-pem/">post-exertional malaise</a>.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring your grade, the date and your saved grades over time, with a note of which activities you have cut back or
+		handed over. Describe it as the Post-COVID-19 Functional Status scale, recommended in the World Health
+		Organization's guideline on clinical management of COVID-19
+		(<a href={s.dejong2023.href} rel="noopener">{s.dejong2023.label}</a>). A grade that is not improving over months is a
+		concrete basis for asking about a long COVID service. It shows how limited you are, not why. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Klok FA, Boon GJAM, Barco S, et al. The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19. <em>Eur Respir J</em> 2020;56(1):2001494. <a href={s.klok2020.href} rel="noopener">Full text</a></li>
+		<li>Post-COVID-19 Functional Status Scale manual, version 2. July 2020. <a href={s.manual.href} rel="noopener">{s.manual.label}</a></li>
+		<li>Machado FVC, Meys R, Delbressine JM, et al. Construct validity of the Post-COVID-19 Functional Status Scale in adult subjects with COVID-19. <em>Health Qual Life Outcomes</em> 2021;19:40. <a href={s.machado2021.href} rel="noopener">Full text</a></li>
+		<li>de Jong CMM, Le YNJ, Boon GJAM, Barco S, Klok FA, Siegerink B. Eight lessons from 2 years of use of the Post-COVID-19 Functional Status scale. <em>Eur Respir J</em> 2023;61(5):2300416. <a href={s.dejong2023.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>
