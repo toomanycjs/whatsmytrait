@@ -2,7 +2,11 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import NasaLeanTestInterpretation from '../../components/interpretation/NasaLeanTest.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/nasa-lean-test.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
+const jsonLd = toolJsonLd('NASA Lean Test', '/tools/nasa-lean-test/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -10,36 +14,7 @@ import SharedResults from '../../components/SharedResults.astro';
 	description="Do the NASA lean test (the poor man's tilt table test) at home with a guided timer and heart rate logging at each stage. Free and interactive, with your orthostatic heart rate change calculated and the POTS thresholds explained."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "NASA Lean Test", "item": "https://www.postviralrecovery.com/tools/nasa-lean-test/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the NASA lean test?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The NASA lean test is a simplified orthostatic stress test used as an at-home screening method for POTS and orthostatic intolerance. The patient lies flat for 10 minutes, then stands and leans against a wall for 10 minutes, with heart rate recorded at intervals."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What heart rate increase suggests POTS on the NASA lean test?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A sustained heart rate increase of 30 bpm or more within 10 minutes of standing, or a standing heart rate exceeding 120 bpm, meets the commonly referenced threshold. This test alone cannot diagnose POTS; results should be discussed with a clinician."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 
 			<!-- ─── SETUP SCREEN ─────────────────────────────────────────── -->
@@ -56,7 +31,7 @@ import SharedResults from '../../components/SharedResults.astro';
 				<div class="setup-content">
 					<h2>What this test does</h2>
 					<p>The NASA lean test is a simplified version of a tilt table test that you can perform at home with just a heart rate monitor or a finger on your pulse. It is sometimes called the “poor man’s tilt table test” and is widely used in POTS and dysautonomia communities as a practical screening method for orthostatic intolerance.</p>
-<p>The test involves lying flat for a period, then standing up and leaning against a wall with your heels a few inches from the wall and your back supported. Your heart rate is recorded at intervals while lying and while standing. The key finding that suggests POTS is whether heart rate rises by 30 or more beats per minute within 10 minutes of standing (or exceeds 120 bpm) without a significant drop in blood pressure.</p>
+<p>The test involves lying flat for a period, then standing up and leaning against a wall with your heels a few inches from the wall and your back supported. Your heart rate is recorded at intervals while lying and while standing. The key finding that suggests POTS is whether heart rate rises by 30 or more beats per minute within 10 minutes of standing (40 or more at ages 12 to 19) without a significant drop in blood pressure. Some definitions also accept a standing heart rate above 120 bpm.</p>
 <p>A formal tilt table test involves being strapped to a motorised table in a clinical setting, which can be difficult to access, especially through the NHS where waiting times for autonomic testing are often long. The NASA lean test is not a replacement for formal testing, but it gives you a structured way to gather objective data at home that you can bring to appointments. Many patients find that presenting lean test results helps move conversations forward with clinicians who may not otherwise consider autonomic testing.</p>
 <p>This guide walks you through the test step by step, with an interactive timer for each stage and fields to log your heart rate readings. You can repeat it on different days to build up a picture of your orthostatic heart rate response. To put a number on symptoms as well as heart rate, complete the <a href="/tools/vanderbilt-orthostatic-symptom-score/">Vanderbilt Orthostatic Symptom Score</a> in the final minute of standing; it is the symptom score POTS trials use at exactly that point.</p>
 
@@ -275,9 +250,10 @@ import SharedResults from '../../components/SharedResults.astro';
 					<div class="threshold-box">
 						<h4>Reference thresholds</h4>
 						<ul>
-							<li><strong>POTS (adults):</strong> A sustained heart rate increase of ≥30 bpm within 10 minutes of standing, or an absolute standing heart rate above 120 bpm, without significant orthostatic hypotension, with symptoms present for at least 3 months.</li>
-							<li><strong>Orthostatic hypotension:</strong> A drop in systolic BP of ≥20 mmHg, or diastolic BP of ≥10 mmHg, within 3 minutes of standing.</li>
-							<li><strong>Note on this test:</strong> The NASA Lean Test uses a wall lean rather than formal passive tilt. This can produce slightly different results. Heart rate rises from a lean may be modestly smaller than those from a tilt table. Results should always be interpreted alongside symptoms and clinical context.</li>
+							<!-- REVIEW: thresholds rewritten to match Sheldon 2015 and Vernino 2021; see nasa-lean-test.content.ts. -->
+							<li><strong>POTS:</strong> A sustained heart rate increase of 30 bpm or more within 10 minutes of standing or tilt (40 bpm or more at ages 12 to 19), without orthostatic hypotension, with symptoms on standing for at least 3 months. Some definitions also accept a standing heart rate above 120 bpm.</li>
+							<li><strong>Orthostatic hypotension:</strong> A drop in systolic BP of 20 mmHg or more, or diastolic BP of 10 mmHg or more, within 3 minutes of standing (the definition used in lean test research).</li>
+							<li><strong>Note on this test:</strong> The NASA lean test uses a wall lean rather than a true stand or a passive tilt, and it has not been validated against either. These thresholds were set for standing and tilt tests. Results should always be interpreted alongside symptoms and clinical context.</li>
 						</ul>
 					</div>
 
@@ -297,6 +273,8 @@ import SharedResults from '../../components/SharedResults.astro';
 			</div>
 
 			<SharedResults toolId="nasa-lean-test" />
+
+			<NasaLeanTestInterpretation />
 
 </Page>
 
@@ -617,13 +595,13 @@ function showResults() {
 		html = `<p><strong>Heart rate pattern:</strong> `;
 		if (hrIncrease != null && hrIncrease >= 30) html += `Your heart rate increased by ${hrIncrease} bpm on standing. `;
 		if (peakHR > 120) html += `Your peak standing heart rate was ${peakHR} bpm. `;
-		html += `Your readings show a pattern that meets one or more of the heart rate thresholds commonly referenced in the POTS literature. This test alone cannot establish a diagnosis; results need to be confirmed with clinical assessment, and symptoms must have been present for at least 3 months. Discuss these results with your doctor.</p>`;
+		html += `Your readings meet one or more of the heart rate thresholds used in POTS definitions (a rise of 30 bpm or more, or 40 bpm or more at ages 12 to 19; some definitions also accept a standing rate above 120 bpm). This home test cannot establish a diagnosis: it has not been validated against clinical testing, some healthy people also pass 30 bpm on a lean test, and a diagnosis also needs symptoms for at least 3 months with other causes ruled out. Discuss these results with your doctor.</p>`;
 		if (sysDrop != null) {
 			html += `<p><strong>Blood pressure:</strong> No orthostatic hypotension was identified (systolic drop was ${sysDrop} mmHg, below the 20 mmHg threshold).</p>`;
 		}
 	} else {
 		html = `<p><strong>Heart rate pattern:</strong> `;
-		if (hrIncrease != null) html += `Your heart rate increased by ${hrIncrease} bpm on standing. This does not meet the 30 bpm threshold commonly used for POTS. `;
+		if (hrIncrease != null) html += `Your heart rate increased by ${hrIncrease} bpm on standing. This does not meet the 30 bpm threshold used in POTS definitions. `;
 		if (peakHR != null) html += `Your peak standing heart rate was ${peakHR} bpm. `;
 		html += `If you have significant symptoms of orthostatic intolerance, discuss them with your doctor regardless of this result. A sub-threshold rise can still cause symptoms and may warrant further investigation.</p>`;
 		if (sysDrop != null) {
@@ -696,7 +674,7 @@ function buildText() {
 	lines.push('');
 	lines.push('═'.repeat(45));
 	lines.push('This is an informational tool only. Results should be discussed with a clinician.');
-	lines.push('POTS threshold: ≥30 bpm increase on standing, or standing HR >120 bpm (with symptoms ≥3 months)');
+	lines.push('POTS threshold: sustained rise of 30 bpm or more within 10 minutes (40 bpm at ages 12-19), no orthostatic hypotension, symptoms for 3 months or more; some definitions also accept standing HR >120 bpm');
 	lines.push('Orthostatic hypotension threshold: systolic drop ≥20 mmHg or diastolic drop ≥10 mmHg');
 	return lines.join('\n');
 }

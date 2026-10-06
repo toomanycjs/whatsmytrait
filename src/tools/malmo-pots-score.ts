@@ -11,7 +11,15 @@ export const malmoPotsScore: ToolConfig = {
 	totalMax: 120,
 	decimals: 0,
 	direction: 'higher-worse',
-	// No bands stored here, and no published minimal important change.
+	// Spahic et al., J Intern Med 2023;293(1):91-99 (Abstract, Results, Figure 3):
+	// the optimal cut-off was a total of 42 or more (≥42). No other bands are published.
+	bands: [
+		{ min: 0, max: 41, label: 'below 42' },
+		{ min: 42, max: 120, label: '42 or above' },
+	],
+	// REVIEW: Layer 1 band sentence.
+	bandSentence: (t, band) => `A total of ${t} is ${band.min >= 42 ? 'at or above' : 'below'} 42, the cut-off that best separated people with POTS from healthy controls in the original study.`,
+	// No published minimal important change.
 	mic: null,
 	topDomains: 0,
 	// Item ratings (0-10), kept for the record but out of the history table.

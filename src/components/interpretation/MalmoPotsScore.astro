@@ -1,0 +1,70 @@
+---
+// REVIEW: Layer 2 interpretation for the Malmö POTS Symptom Score (MAPS),
+// drafted for Craig's review. Static, rendered at build time. FAQ answers come
+// from malmo-pots-score.content.ts and are shown word for word (they also feed
+// the page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/malmo-pots-score.content';
+import '../../styles/interpretation.css';
+
+const s = SOURCES;
+---
+
+<!-- REVIEW: new copy for Craig's review. -->
+<section class="interpretation" aria-labelledby="understanding-maps">
+	<h2 id="understanding-maps">Understanding your MAPS score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		The symptoms are those reported by at least 75% of 4,835 people in an international POTS survey
+		(<a href={s.spahic.href} rel="noopener">{s.spahic.label}</a>).
+	</p>
+	<p>{FAQ.compass.a}</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.high.a}</p>
+	<table class="interp-table">
+		<caption>Average MAPS totals in published studies</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">People</th><th scope="col">Average</th><th scope="col">Source</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => (
+				<tr><th scope="row">{r.group}</th><td>{r.n}</td><td>{r.mean}</td><td><a href={s[r.source].href} rel="noopener">{s[r.source].label}</a></td></tr>
+			))}
+		</tbody>
+	</table>
+	<p>
+		The POTS group was small and highly selected, from one specialist centre, and the authors say the score still needs
+		testing elsewhere. Treat 42 as a guide, not a line.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		Rating weekly or fortnightly around a treatment change gives a usable trend, and your saved results above keep it on
+		this device. The <a href="/tools/trackers/symptom-diary/">symptom diary</a> can hold the day-to-day detail.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		For the heart rate side, use the <a href="/tools/nasa-lean-test/">NASA lean test</a> and the
+		<a href="/evidence/30-bpm-threshold-pots/">30 bpm threshold explainer</a>.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring your total, the date, your highest-rated symptoms and the trend from your saved results. Most GPs will not know
+		MAPS: describe it as a 12-symptom POTS questionnaire from Lund University (<em>J Intern Med</em> 2023), where 42 or
+		more separated POTS from healthy controls. It supports asking for a lying and standing heart rate and blood pressure
+		check, alongside any lean test readings, but is not evidence of a diagnosis. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Spahic JM, Hamrefors V, Johansson M, Ricci F, Melander O, Sutton R, Fedorowski A. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
+		<li>Stick M, et al. Deep abdominal breathing reduces heart rate and symptoms during orthostatic challenge in patients with postural orthostatic tachycardia syndrome. <em>Eur J Neurol</em> 2024;31:e16402. <a href={s.stick.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>

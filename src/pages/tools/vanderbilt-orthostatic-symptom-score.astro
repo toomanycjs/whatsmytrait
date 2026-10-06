@@ -2,6 +2,11 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import VossInterpretation from '../../components/interpretation/VanderbiltOrthostaticSymptomScore.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/vanderbilt-orthostatic-symptom-score.content';
+import { toolJsonLd } from '../../tools/jsonld';
+
+const jsonLd = toolJsonLd('Vanderbilt Orthostatic Symptom Score', '/tools/vanderbilt-orthostatic-symptom-score/', FAQ_ORDER.map(k => FAQ[k]));
 
 const items = [
 	{ id: 'clouding', text: 'Mental clouding (brain fog, difficulty thinking clearly)' },
@@ -21,41 +26,7 @@ const items = [
 	description="Rate the nine VOSS symptoms from 0 to 10 while upright and get your Vanderbilt Orthostatic Symptom Score (0–90) instantly, with reference values from POTS trials and healthy controls. The standing symptom score used in Vanderbilt and Calgary POTS studies. Free, no sign-up."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Vanderbilt Orthostatic Symptom Score", "item": "https://www.postviralrecovery.com/tools/vanderbilt-orthostatic-symptom-score/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the Vanderbilt Orthostatic Symptom Score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS is a nine-symptom rating used in POTS research from the Vanderbilt Autonomic Dysfunction Center. Each symptom (mental clouding, blurred vision, shortness of breath, rapid heartbeat, tremulousness, chest discomfort, headache, lightheadedness, nausea) is rated from 0 (absent) to 10 (worst you have experienced) at a moment in time, usually at the end of a stand or tilt test. The total runs from 0 to 90."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a high VOSS score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "There is no validated cut-off. In published studies, people with POTS have scored around 26 on average after ten minutes of head-up tilt and a median of about 35 after a stand test, while healthy adults averaged about 12 after ten minutes of tilt. Treatments that helped in trials moved the score by around 5 to 14 points."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is the VOSS different from the Malmö POTS score or COMPASS-31?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The VOSS measures symptoms right now, typically while standing, which makes it a test-day measure that pairs with a NASA lean test or tilt. The Malmö POTS Symptom Score covers the past seven days and the COMPASS-31 covers a longer period across six autonomic domains. They answer different questions: acute orthostatic burden versus weekly or overall symptom load."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -115,24 +86,19 @@ const items = [
 				<h3>Symptom breakdown</h3>
 				<div id="chart" class="chart"></div>
 
-				<div class="results-disclaimer">
-					<h3>Understanding your score</h3>
-					<p>Published reference points, all rated while upright: healthy adults after 10 minutes of head-up tilt averaged about 12 (SD 12); people with POTS after 10 minutes of tilt averaged 26 (SD 17) without compression and 12 with full abdominal and leg compression (Bourne 2021); POTS patients after a stand test scored a median of about 35; and people with post-COVID POTS averaged 41 after an active stand, falling to 33 after a 12-week exercise programme. A mild unselected post-COVID cohort scored a median of 1 while standing.</p>
-					<p>Treatment effects in trials were around 5–14 points, so a change of that size between two ratings under the same conditions is the kind of difference the studies treated as meaningful. There is no cut-off that identifies POTS: that needs the heart-rate response recorded by a stand or tilt test.</p>
-					<p>To use the VOSS as a tracker, keep the conditions constant: same time of day, same posture, same duration standing. Rating at rest and then at the end of a standing period, and noting both, gives you the orthostatic component specifically. Record scores in a note or the <a href="/tools/trackers/stand-test-logger/">stand test logger</a> alongside your heart-rate readings.</p>
-					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
-				</div>
-
 				<ScoreHistory toolId="vanderbilt-orthostatic-symptom-score" toolName="VOSS" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
 
 			<SharedResults toolId="vanderbilt-orthostatic-symptom-score" />
+
+			<VossInterpretation />
 </Page>
 
 <script>
 import { vanderbiltOrthostaticSymptomScore, VOSS_CONTEXT_CODES } from '../../tools/vanderbilt-orthostatic-symptom-score';
+import { interpretResult } from '../../scripts/results/interpretation';
 import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 const ITEMS = [
@@ -183,18 +149,18 @@ form.addEventListener('submit', (e) => {
 	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
 
 	const ctxLabel = context === 'rest' ? 'at rest' : context === 'short' ? 'standing for under 10 minutes' : 'at the end of a 10-minute stand';
-	let interp = `Your VOSS score is ${total} out of 90, rated ${ctxLabel}. `;
-	if (context === 'stand') {
-		if (total >= 26) interp += 'This is at or above the average of 26 reported for people with POTS after 10 minutes of head-up tilt, and well above the healthy-control average of 12. It indicates a substantial orthostatic symptom burden on this occasion.';
-		else if (total > 12) interp += 'This sits between the healthy-control average of 12 and the POTS average of 26 after 10 minutes of tilt. Symptoms are present with standing but the burden on this occasion was moderate.';
-		else interp += 'This is at or below the average of 12 reported for healthy adults after 10 minutes of tilt. Standing produced few or mild symptoms on this occasion.';
-	} else if (context === 'short') {
-		interp += 'Trials rate the VOSS after a full 10 minutes upright, and symptoms typically build over that time, so a short-stand score will usually understate your 10-minute score. Use it for comparison with your own earlier ratings under the same conditions.';
-	} else {
-		if (total >= 20) interp += 'This is a high resting score. Vanderbilt studies report seated baselines in POTS of roughly 14–27, so symptoms are substantial even before standing. Rating again at the end of a stand will show how much orthostatic stress adds.';
-		else if (total >= 5) interp += 'Some symptoms are present at rest. Rating again at the end of a 10-minute stand, and comparing the two numbers, shows the orthostatic component.';
-		else interp += 'Few symptoms at rest. The VOSS is most informative when repeated at the end of a 10-minute stand, so that the difference between the two shows what standing itself does.';
-	}
+	// REVIEW: Layer 1 copy. No validated cut-off, bands or MIC exist, so
+	// interpretResult adds nothing today; the reference points are from
+	// Pereira and Edgell 2025 (healthy, 10-minute tilt) and Bourne et al. 2026
+	// (POTS, 10-minute stand).
+	const subscores = { ...Object.fromEntries(values.map(v => [v.item.id, v.val])), context: VOSS_CONTEXT_CODES[context] };
+	const opening = `Your VOSS score is ${total} out of 90, rated ${ctxLabel}. There is no validated cut-off.`;
+	const reference = context === 'stand'
+		? 'As rough reference points, healthy adults averaged 12 at the end of 10 minutes of tilt, and women with POTS had a median of 35 at the end of a 10-minute stand.'
+		: context === 'short'
+			? 'Published figures are for ratings at the end of 10 minutes upright, so compare this only with your own earlier short-stand ratings.'
+			: 'Rating again at the end of a 10-minute stand, and comparing the two, shows how much standing itself adds.';
+	const interp = [opening, interpretResult(vanderbiltOrthostaticSymptomScore, { total, subscores }, history.latest()), reference].filter(Boolean).join(' ');
 	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
 
 	// Compare with a saved rating under a different condition from the same day.
@@ -229,7 +195,7 @@ form.addEventListener('submit', (e) => {
 	lastRecordedContext = context;
 	history.record({
 		total,
-		subscores: { ...Object.fromEntries(values.map(v => [v.item.id, v.val])), context: VOSS_CONTEXT_CODES[context] },
+		subscores,
 		summary: `VOSS ${total} out of 90, rated ${ctxLabel}`,
 	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -289,9 +255,6 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
 	.chart :global(.chart-val) { font-weight: 700; color: var(--accent); text-align: right; }
 
-	.results-disclaimer { font-size: 0.88em; color: rgb(var(--gray-dark)); border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em; margin-top: 2em; line-height: 1.6; }
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
-	.results-disclaimer a { color: var(--accent); }
 	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 

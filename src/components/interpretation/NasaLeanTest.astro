@@ -1,0 +1,79 @@
+---
+// REVIEW: Layer 2 interpretation for the NASA lean test, drafted for Craig's
+// review. Static, rendered at build time. FAQ answers come from
+// nasa-lean-test.content.ts and are shown word for word (they also feed the
+// page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/nasa-lean-test.content';
+import '../../styles/interpretation.css';
+
+const s = SOURCES;
+---
+
+<!-- REVIEW: new copy for Craig's review. -->
+<section class="interpretation" aria-labelledby="understanding-lean-test">
+	<h2 id="understanding-lean-test">Understanding your NASA lean test result</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.what.a}</p>
+	<p>
+		This page takes readings at 1, 3, 5 and 10 minutes. Research versions take one every minute, so a brief peak can be
+		missed (<a href={s.lee.href} rel="noopener">{s.lee.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.threshold.a}</p>
+	<p>
+		Sources: <a href={s.sheldon.href} rel="noopener">{s.sheldon.label}</a> and
+		<a href={s.vernino.href} rel="noopener">{s.vernino.label}</a>. The 120 bpm alternative is from European Society of
+		Cardiology criteria (<a href={s.spahic.href} rel="noopener">as summarised by Spahic et al.</a>). See the
+		<a href="/evidence/30-bpm-threshold-pots/">30 bpm threshold explainer</a>.
+	</p>
+	<p>{FAQ.normal.a}</p>
+	<table class="interp-table">
+		<caption>How often a 10-minute lean test met POTS heart rate criteria</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">People</th><th scope="col">Met criteria</th><th scope="col">Source</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => (
+				<tr><th scope="row">{r.group}</th><td>{r.n}</td><td>{r.result}</td><td><a href={s[r.source].href} rel="noopener">{s[r.source].label}</a></td></tr>
+			))}
+		</tbody>
+	</table>
+	<p>The studies used slightly different rules, which partly explains the spread.</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.repeat.a}</p>
+	<p>
+		Repeat it at the same time of day with the same device. Rating the
+		<a href="/tools/vanderbilt-orthostatic-symptom-score/">Vanderbilt score</a> in the last minute adds a symptom number.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnose.a}</p>
+	<p>
+		It does not separate POTS from other causes of a fast heart rate (see <a href="/evidence/pots-vs-ist/">POTS vs
+		IST</a>). A normal result does not rule POTS out: the Heart Rhythm Society suggests a tilt test when standing readings
+		are normal but suspicion is high. Leaning is neither a true stand nor a tilt; in a small 1975 NASA experiment it
+		raised heart rate more than tilting did (<a href={s.teuschl.href} rel="noopener">{s.teuschl.label}</a>).
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the full readings (“Copy results as text” or print), the date, time and device, any heart rate medication, your
+		symptoms and earlier results. A rise of 30 bpm or more with symptoms supports asking for a clinic stand test or an
+		autonomic referral. It cannot confirm POTS. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Sheldon RS, Grubb BP, Olshansky B, et al. 2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope. <em>Heart Rhythm</em> 2015;12(6):e41–63. <a href={s.sheldon.href} rel="noopener">Full text</a></li>
+		<li>Vernino S, Bourne KM, Stiles LE, et al. Postural orthostatic tachycardia syndrome (POTS): state of the science and clinical care from a 2019 National Institutes of Health expert consensus meeting, part 1. <em>Auton Neurosci</em> 2021;235:102828. <a href={s.vernino.href} rel="noopener">Full text</a></li>
+		<li>Lee J, Vernon SD, Jeys P, et al. Hemodynamics during the 10-minute NASA lean test: evidence of circulatory decompensation in a subset of ME/CFS patients. <em>J Transl Med</em> 2020;18:314. <a href={s.lee.href} rel="noopener">Full text</a></li>
+		<li>Iftekhar N, et al. Normative data for the 10-min lean test in adults without orthostatic intolerance. <em>Front Neurol</em> 2025;16:1625216. <a href={s.iftekhar.href} rel="noopener">Full text</a></li>
+		<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
+		<li>Teuschl Y, Fanciulli A, Pavy-Le Traon A, et al. Is the NASA lean test a suitable tool to diagnose cardiovascular autonomic disorders? <em>Clin Auton Res</em> 2025;35(3):529–531. <a href={s.teuschl.href} rel="noopener">Full text</a></li>
+		<li>Spahic JM, Hamrefors V, Johansson M, et al. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>
