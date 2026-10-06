@@ -12,6 +12,9 @@ export const beightonScore: ToolConfig = {
 	decimals: 0,
 	direction: 'higher-worse',
 	// Age-dependent cut-off only, and no published minimal important change.
+	// REVIEW: no bands on purpose. The cut-off depends on the age group (6, 5
+	// or 4 or more; Malfait et al. 2017), which a single band list cannot
+	// express, so the page states the cut-off result itself.
 	mic: null,
 	subscores: [
 		{ key: 'fingers', label: 'Little fingers', max: 2 },

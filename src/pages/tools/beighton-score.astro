@@ -2,7 +2,11 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import BeightonInterpretation from '../../components/interpretation/BeightonScore.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/beighton-score.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
+const jsonLd = toolJsonLd('Beighton Score', '/tools/beighton-score/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -10,36 +14,7 @@ import SharedResults from '../../components/SharedResults.astro';
 	description="Work through the nine Beighton score manoeuvres with an illustration for each and get your score out of 9 instantly. Free and interactive, with the age-adjusted threshold for generalised joint hypermobility explained."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Beighton Score", "item": "https://www.postviralrecovery.com/tools/beighton-score/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is a Beighton score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Beighton score is a 9-point scale used to assess generalised joint hypermobility. It scores five manoeuvres: bending the little finger back beyond 90 degrees (1 point per side), bringing the thumb to touch the forearm (1 point per side), elbow hyperextension beyond 10 degrees (1 point per side), knee hyperextension beyond 10 degrees (1 point per side), and placing the palms flat on the floor with straight knees (1 point). It is a screening measure for hypermobility, not a diagnosis of any condition."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What Beighton score indicates hypermobility?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The cut-off for generalised joint hypermobility is age-dependent: a score of 5 or more in adults, 6 or more in children and adolescents, and 4 or more in adults over 50. Meeting the cut-off suggests generalised joint hypermobility but does not by itself diagnose hypermobile EDS or hypermobility spectrum disorder. The Beighton score is one component of the 2017 international diagnostic criteria and should be interpreted by a clinician."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 
 			<!-- INTRO SCREEN -->
@@ -56,7 +31,7 @@ import SharedResults from '../../components/SharedResults.astro';
 				<div class="setup-content">
 					<h2>What the Beighton score measures</h2>
 					<p>The Beighton score is the standard 9-point scale for <strong>generalised joint hypermobility</strong> &mdash; joints that move beyond the usual range. It checks five manoeuvres: four are scored on both sides of the body (1 point per side) and one is scored once, giving a total out of 9.</p>
-					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>&ge;6 for children and adolescents, &ge;5 for adults, and &ge;4 for adults over 50</strong>. The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders. If your score lands one point below the cut-off, the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> can make up the difference under those criteria, and the <a href="/tools/heds-criteria/">hEDS criteria checker</a> walks through all three criteria using your score from here.</p>
+					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>6 or more for pre-pubertal children and adolescents, 5 or more from puberty to age 50, and 4 or more over 50</strong> (2017 international criteria). <!-- REVIEW: thresholds reworded to match Malfait et al. 2017 --> The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders. If your score lands one point below the cut-off, the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> can make up the difference under those criteria, and the <a href="/tools/heds-criteria/">hEDS criteria checker</a> walks through all three criteria using your score from here.</p>
 
 					<h2>How to complete it</h2>
 					<ul>
@@ -336,7 +311,8 @@ import SharedResults from '../../components/SharedResults.astro';
 					<div class="threshold-box">
 						<h4>Reference thresholds</h4>
 						<ul>
-							<li>Generalised joint hypermobility is suggested by a Beighton score of &ge;5 in adults, &ge;6 in children and adolescents, and &ge;4 in adults over 50</li>
+							<!-- REVIEW: thresholds reworded to match Malfait et al. 2017 -->
+						<li>Generalised joint hypermobility is suggested by a Beighton score of 6 or more in pre-pubertal children and adolescents, 5 or more from puberty to age 50, and 4 or more over 50</li>
 							<li>The Beighton score is one component of the 2017 international criteria for hypermobile EDS; meeting the score alone is not a diagnosis. The <a href="/tools/heds-criteria/">hEDS criteria checker</a> applies the full criteria, and the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> captures past hypermobility</li>
 							<li>The maximum score is 9: little fingers (2), thumbs to forearm (2), elbows (2), knees (2), and palms to floor (1)</li>
 						</ul>
@@ -358,6 +334,8 @@ import SharedResults from '../../components/SharedResults.astro';
 			</div>
 
 			<SharedResults toolId="beighton-score" />
+
+			<BeightonInterpretation />
 
 </Page>
 
@@ -521,7 +499,7 @@ function buildText() {
 	lines.push('═'.repeat(45));
 	lines.push('This is a screening measure, not a diagnosis. The Beighton score is one');
 	lines.push('component of the 2017 international criteria for hypermobile EDS.');
-	lines.push('Thresholds: ≥6 children/adolescents, ≥5 adults, ≥4 over 50.');
+	lines.push('Thresholds: ≥6 pre-pubertal children and adolescents, ≥5 puberty to 50, ≥4 over 50.');
 	lines.push('Discuss results with your doctor.');
 
 	return lines.join('\n');

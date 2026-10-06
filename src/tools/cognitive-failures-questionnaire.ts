@@ -11,6 +11,10 @@ export const cognitiveFailuresQuestionnaire: ToolConfig = {
 	totalMax: 100,
 	decimals: 0,
 	direction: 'higher-worse',
+	// REVIEW: no bands on purpose. The CFQ has no published clinical cut-offs;
+	// the page compares with published averages instead (see
+	// cognitive-failures-questionnaire.content.ts). No minimal important change
+	// has been published either (Berentschot et al., Lancet Reg Health Eur 2025).
 	mic: null,
 	subscores: [
 		{ key: 'forgetfulness', label: 'Forgetfulness', max: 4 },

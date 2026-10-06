@@ -1,0 +1,65 @@
+---
+// REVIEW: Layer 2 interpretation for the Beighton score, drafted for Craig's
+// review. Static, always visible, rendered at build time. FAQ answers come
+// from beighton-score.content.ts and are shown word for word (they also feed
+// the page's FAQPage JSON-LD).
+import { CUTOFFS, FAQ, SOURCES } from '../../tools/beighton-score.content';
+import '../../styles/interpretation.css';
+
+const s = SOURCES;
+---
+
+<!-- REVIEW -->
+<section class="interpretation" aria-labelledby="understanding-beighton">
+	<h2 id="understanding-beighton">Understanding your Beighton score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		It is the most widely recognised tool for generalised joint hypermobility and the entry point to the 2017 criteria
+		for hypermobile Ehlers-Danlos syndrome (<a href={s.malfait.href} rel="noopener">{s.malfait.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.cutoff.a}</p>
+	<table class="interp-table">
+		<caption>Beighton cut-offs for generalised joint hypermobility (2017 hEDS criteria)</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">Cut-off</th></tr>
+		</thead>
+		<tbody>
+			{CUTOFFS.map(c => <tr><td>{c.group}</td><td>{c.cutoff}</td></tr>)}
+		</tbody>
+	</table>
+	<p>
+		The published groups are defined by puberty, not exact age, so this page's age options are an approximation. If you
+		are one point short, the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> can make up the
+		difference.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.self.a} (<a href={s.juul.href} rel="noopener">{s.juul.label}</a>)</p>
+	<p>
+		It does not measure pain, instability, dislocations or joints it does not test, such as shoulders, hips or jaw. The
+		<a href="/tools/heds-criteria/">hEDS criteria checklist</a> shows how the score fits with the other criteria.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the total, the date, your age group, which manoeuvres scored, and any history of joints that used to bend
+		further, dislocations or sprains. Most GPs know the Beighton score, but ask for a self-score to be checked by
+		examination. With symptoms, a score at or above the cut-off can support a referral to physiotherapy or
+		rheumatology; on its own it diagnoses nothing. See also
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Beighton P, Solomon L, Soskolne CL. Articular mobility in an African population. <em>Ann Rheum Dis</em> 1973;32(5):413–418. <a href={s.beighton.href} rel="noopener">DOI</a></li>
+		<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
+		<li>Juul-Kristensen B, Schmedling K, Rombaut L, Lund H, Engelbert RH. Measurement properties of clinical assessment methods for classifying generalized joint hypermobility: a systematic review. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):116–147. <a href={s.juul.href} rel="noopener">DOI</a></li>
+	</ul>
+</section>
