@@ -18,7 +18,8 @@ export function formatNumber(n: number, decimals = 0): string {
 	return String(Number(n.toFixed(decimals)));
 }
 
-export const formatTotal = (cfg: ToolConfig, n: number) => formatNumber(n, cfg.decimals ?? 0);
+export const formatTotal = (cfg: ToolConfig, n: number) =>
+	cfg.fixedDecimals ? n.toFixed(cfg.decimals ?? 0) : formatNumber(n, cfg.decimals ?? 0);
 
 /** Rounded difference, so "down 0.1" never shows as "down 0.10000001". */
 export function roundedDiff(cfg: ToolConfig, from: number, to: number): number {

@@ -59,6 +59,8 @@ export interface ToolConfig {
 	totalMax?: number;
 	/** Decimal places for the total. Defaults to 0. */
 	decimals?: number;
+	/** Always show all decimal places (4.0, not 4), to match how the page shows the score. */
+	fixedDecimals?: boolean;
 	/** Whether a higher total means more symptoms or more function. Defaults to higher-worse. */
 	direction?: 'higher-worse' | 'higher-better';
 	bands?: Band[];
