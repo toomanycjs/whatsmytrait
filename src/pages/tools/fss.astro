@@ -2,6 +2,9 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import FssInterpretation from '../../components/interpretation/Fss.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/fss.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const questions = [
 	'My motivation is lower when I am fatigued.',
@@ -24,6 +27,8 @@ const ratings = [
 	{ value: 6, label: '6' },
 	{ value: 7, label: 'Strongly agree' },
 ];
+
+const jsonLd = toolJsonLd('Fatigue Severity Scale', '/tools/fss/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -31,36 +36,7 @@ const ratings = [
 	description="Complete the Fatigue Severity Scale (FSS) online and get your score instantly. A free, interactive version of the 9-item questionnaire, with your average score calculated and the interpretation thresholds explained. No sign-up needed."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Fatigue Severity Scale", "item": "https://www.postviralrecovery.com/tools/fss/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal FSS score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "In the original validation study, healthy controls had a mean FSS score of approximately 2.3. A score of 4 or above is the most widely used threshold for clinically meaningful fatigue."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What does an FSS score above 5 mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Scores above 5 are consistent with clinically meaningful fatigue as seen in ME/CFS, multiple sclerosis, and post-viral fatigue in published research. Discuss your results with your doctor."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -73,7 +49,7 @@ const ratings = [
   The FSS does not measure how tired you feel in the moment. Instead, it captures how much fatigue interferes with your life over the preceding week: your motivation, exercise capacity, ability to carry out duties, and physical functioning. This makes it particularly useful for people with post-viral conditions, ME/CFS, and other chronic illnesses where fatigue is persistent and functionally limiting rather than simply a feeling of tiredness.
 </p>
 <p class="description">
-  The FSS has been validated in multiple populations including multiple sclerosis, systemic lupus erythematosus, ME/CFS, and post-viral fatigue. It is referenced in major long COVID research studies and is one of the instruments used in the NIH RECOVER programme. If your fatigue worsens disproportionately after activity, the <a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a> characterises that pattern specifically; for a broader quality-of-life profile, see the <a href="/tools/rand-36/">RAND-36</a>. In UK ME/CFS and long COVID services the fatigue measure you are most likely to meet is the <a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a>, which scores the symptom itself rather than its impact; the two complement each other.
+  <!-- REVIEW: unsourced claims removed --> The FSS was developed in multiple sclerosis and lupus, and a larger validation in 2008 added stroke and sleep disorders. If your fatigue worsens disproportionately after activity, the <a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a> characterises that pattern specifically; for a broader quality-of-life profile, see the <a href="/tools/rand-36/">RAND-36</a>. Another fatigue measure often used in the UK is the <a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a>, which scores the symptom itself rather than its impact; the two complement each other.
 </p>
 <p class="description">
   This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
@@ -133,25 +109,19 @@ const ratings = [
 					</tfoot>
 				</table>
 
-				<div class="results-disclaimer">
-  <h3>Understanding your score</h3>
-  <p>The FSS produces a mean score between 1 and 7. Higher scores indicate that fatigue has a greater impact on your daily functioning.</p>
-  <p>In the original validation study, healthy controls had a mean score of approximately 2.3, while patients with MS and lupus had mean scores of around 4.7 and 4.6 respectively. In long COVID research, mean FSS scores above 5 are commonly reported.</p>
-  <p>A score of 4 or above is the most widely used threshold for clinically meaningful fatigue, though interpretation depends on context.</p>
-  <p>The FSS is most useful when tracked over time. A change of 0.5 or more in the mean score is generally considered clinically meaningful. If you are testing an intervention or tracking your condition, completing the FSS at regular intervals (such as monthly) can give you a structured record of whether your functional fatigue is improving, stable, or worsening.</p>
-  <p>This score reflects the impact of fatigue on your daily life as you have reported it. It is not a diagnosis of any condition. Discuss your results with your doctor.</p>
-</div>
-
 				<ScoreHistory toolId="fss" toolName="FSS" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
 
 			<SharedResults toolId="fss" />
+
+			<FssInterpretation />
 </Page>
 
 <script>
 	import { fss } from '../../tools/fss';
+	import { interpretResult } from '../../scripts/results/interpretation';
 	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 	const QUESTIONS = [
@@ -180,13 +150,13 @@ const ratings = [
 		return checked ? parseInt(checked.value) : null;
 	}
 
-	function interpret(mean: number): string {
-		if (mean < 4) {
-			return `Your score of ${mean.toFixed(1)} is below 4. Scores in this range are typical of healthy individuals in the validation studies, suggesting fatigue is not having a major impact on daily functioning.`;
-		} else if (mean < 5) {
-			return `Your score of ${mean.toFixed(1)} is in the moderate range. Fatigue is interfering with some aspects of daily life. This may be worth discussing with your doctor.`;
-		}
-		return `Your score of ${mean.toFixed(1)} is above 5. Scores at this level are consistent with clinically meaningful fatigue as seen in ME/CFS, multiple sclerosis, and post-viral fatigue in the published literature. Discuss your results with your doctor.`;
+	// REVIEW: Layer 1 copy. The band is judged on the rounded mean that is shown,
+	// so 3.95 displays as 4.0 and is described as at or above 4 (Valko et al. 2008).
+	function interpret(rounded: number): string {
+		const shown = rounded.toFixed(1);
+		const opening = `Your FSS score is ${shown} out of 7, the average of your nine answers.`;
+		const context = 'In that study, healthy adults averaged 3.0 and people with multiple sclerosis 4.7.';
+		return [opening, interpretResult(fss, { total: rounded, subscores: {} }, history.latest()), context].filter(Boolean).join(' ');
 	}
 
 	form.addEventListener('submit', (e) => {
@@ -208,9 +178,10 @@ const ratings = [
 		}
 
 		const mean = total / 9;
-		totalEl.textContent = mean.toFixed(1);
-		interpEl.textContent = interpret(mean);
-		breakdownTotalEl.textContent = mean.toFixed(1);
+		const rounded = Math.round(mean * 10) / 10;
+		totalEl.textContent = rounded.toFixed(1);
+		interpEl.textContent = interpret(rounded);
+		breakdownTotalEl.textContent = rounded.toFixed(1);
 
 		rowsEl.innerHTML = answers.map((val, i) => `
 			<tr>
@@ -221,7 +192,7 @@ const ratings = [
 
 		form.hidden = true;
 		results.hidden = false;
-		history.record({ total: Math.round(mean * 10) / 10, subscores: {} });
+		history.record({ total: rounded, subscores: {} });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 
@@ -340,14 +311,6 @@ const ratings = [
 	}
 	.breakdown-table { margin: 1em 0 2em; font-size: 0.9em; }
 	.breakdown-table tfoot td { border-bottom: none; border-top: 2px solid rgb(var(--gray-light)); }
-	.results-disclaimer {
-		font-size: 0.88em;
-		color: rgb(var(--gray-dark));
-		border-top: 1px solid rgb(var(--gray-light));
-		padding-top: 1.5em;
-		line-height: 1.6;
-	}
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; }
 	.back-btn {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));

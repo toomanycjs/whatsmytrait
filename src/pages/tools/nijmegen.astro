@@ -2,6 +2,11 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import NijmegenInterpretation from '../../components/interpretation/Nijmegen.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/nijmegen.content';
+import { toolJsonLd } from '../../tools/jsonld';
+
+const jsonLd = toolJsonLd('Nijmegen Questionnaire', '/tools/nijmegen/', FAQ_ORDER.map(k => FAQ[k]));
 
 const questions = [
 	'Chest pain',
@@ -36,49 +41,20 @@ const frequencies = [
 	description="Complete the Nijmegen questionnaire online and get your score instantly. A free, interactive version of the breathing pattern questionnaire used to screen for hyperventilation syndrome, with your result explained. No sign-up, no PDF to print."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Nijmegen Questionnaire", "item": "https://www.postviralrecovery.com/tools/nijmegen/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Nijmegen questionnaire score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A score below 23 is below the clinical threshold for hyperventilation syndrome. A score of 23 or above is the standard positive screen threshold."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What does a Nijmegen score above 23 mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 23 or above is a positive screen for hyperventilation syndrome or breathing pattern disorder. It suggests that further clinical assessment of breathing pattern may be helpful. Discuss your score with your doctor."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Nijmegen Questionnaire</h1>
 				<p class="subtitle">Breathing Pattern Disorder Screening</p>
 				<p class="description">
-  The Nijmegen questionnaire is a 16-item self-report screening tool for hyperventilation syndrome and breathing pattern disorder. It was originally developed by van Dixhoorn and Duivenvoorden and has been widely used in respiratory and physiotherapy settings since the 1980s. Each item asks how often you experience a particular symptom on a scale from 0 (never) to 4 (very often), producing a total score between 0 and 64.
+  The Nijmegen questionnaire is a 16-item self-report screening tool for hyperventilation syndrome and breathing pattern disorder. <!-- REVIEW: corrected authorship and threshold wording --> It was developed in the Netherlands by van Doorn, Colla and Folgering, validated by van Dixhoorn and Duivenvoorden in 1985, and is still widely used in research and clinical practice. Each item asks how often you experience a particular symptom on a scale from 0 (never) to 4 (very often), producing a total score between 0 and 64.
 </p>
 <p class="description">
-  Breathing pattern disorder is common in post-viral conditions, POTS, and ME/CFS, and is often underdiagnosed. It can contribute to or worsen symptoms including breathlessness, dizziness, chest tightness, tingling in the hands and face, and brain fog. Because these symptoms overlap significantly with autonomic dysfunction and post-viral fatigue, breathing pattern disorder can be difficult to distinguish from other aspects of a post-viral condition without specific screening.
+  Breathing pattern disorder can occur alongside post-viral conditions, POTS and ME/CFS. It can contribute to or worsen symptoms including breathlessness, dizziness, chest tightness, tingling in the hands and face, and brain fog. Because these symptoms overlap significantly with autonomic dysfunction and post-viral fatigue, breathing pattern disorder can be difficult to distinguish from other aspects of a post-viral condition without specific screening.
 </p>
 <p class="description">
-  The Nijmegen questionnaire is not a definitive diagnostic test, but it is a useful first step. A score above 23 is the standard threshold for suspected hyperventilation syndrome, and it is commonly used by respiratory physiotherapists and in specialist post-viral clinics to decide whether further assessment of breathing pattern is warranted. Because it was written for hyperventilation, it can miss the restricted, effortful, upper-chest breathing patterns that are common after respiratory infections; the <a href="/tools/self-evaluation-of-breathing-questionnaire/">Self-Evaluation of Breathing Questionnaire (SEBQ)</a> asks only about breathing sensations and is the usual companion measure.
+  The Nijmegen questionnaire is not a definitive diagnostic test, but it is a useful first step. A score of 23 or above (more than 22) is the cut-off most often used to decide whether further assessment of breathing pattern is worthwhile. Because it was written for hyperventilation, it can miss the restricted, effortful, upper-chest breathing patterns; the <a href="/tools/self-evaluation-of-breathing-questionnaire/">Self-Evaluation of Breathing Questionnaire (SEBQ)</a> asks only about breathing sensations and is often used alongside it.
 </p>
 <p class="description">
   This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
@@ -140,27 +116,19 @@ const frequencies = [
 					</tfoot>
 				</table>
 
-				<div class="results-disclaimer">
-  <h3>Understanding your score</h3>
-  <p>The Nijmegen questionnaire produces a total score between 0 and 64. Higher scores indicate a greater number and frequency of symptoms associated with hyperventilation and disordered breathing.</p>
-  <p>The established clinical threshold is a score of <strong>23 or above</strong>, which is considered a positive screen for hyperventilation syndrome or breathing pattern disorder.</p>
-  <p><strong>0–22:</strong> below the clinical threshold. Your pattern of symptoms is not strongly suggestive of hyperventilation syndrome based on this screening, though individual symptoms may still be worth discussing with a clinician.</p>
-  <p><strong>23 and above:</strong> positive screen. This score suggests that further assessment of breathing pattern may be helpful. Discuss your score with your doctor.</p>
-  <p>A positive score does not mean you definitely have breathing pattern disorder. Similarly, a score below 23 does not rule it out, particularly if you have symptoms that come and go or are triggered by specific situations.</p>
-  <p>In post-viral conditions, breathing pattern disorder often coexists with autonomic dysfunction, deconditioning, and anxiety. The two presentations can reinforce each other.</p>
-  <p><strong>This is a screening tool only.</strong> It cannot establish a diagnosis. Discuss your score and any breathing symptoms with your doctor.</p>
-</div>
-
 				<ScoreHistory toolId="nijmegen" toolName="Nijmegen Questionnaire" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
 
 			<SharedResults toolId="nijmegen" />
+
+			<NijmegenInterpretation />
 </Page>
 
 <script>
 	import { nijmegen } from '../../tools/nijmegen';
+	import { interpretResult } from '../../scripts/results/interpretation';
 	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 	const QUESTIONS = [
@@ -189,11 +157,14 @@ const frequencies = [
 		return checked ? parseInt(checked.value) : null;
 	}
 
-	function interpret(score: number): string {
-		if (score < 23) {
-			return `Your score of ${score} is below the published threshold of 23. If you have ongoing breathlessness or other respiratory symptoms, discuss them with your doctor.`;
-		}
-		return `Your score of ${score} is at or above the published threshold of 23. The questionnaire was designed to identify people who may benefit from clinical assessment of their breathing pattern. Discuss this score with your doctor.`;
+	// REVIEW: Layer 1 copy. interpretResult gives the band sentence (cut-off of
+	// more than 22, van Dixhoorn & Folgering 2015); this adds what it means.
+	function interpret(score: number, subscores: Record<string, number>): string {
+		const opening = `Your Nijmegen score is ${score} out of 64.`;
+		const after = score >= 23
+			? 'That is a reasonable basis for asking to have your breathing pattern assessed, but it is not a diagnosis.'
+			: 'A score below the cut-off does not rule out a breathing pattern problem, and ongoing breathlessness is still worth discussing with your doctor.';
+		return [opening, interpretResult(nijmegen, { total: score, subscores }, history.latest()), after].filter(Boolean).join(' ');
 	}
 
 	form.addEventListener('submit', (e) => {
@@ -215,7 +186,8 @@ const frequencies = [
 		}
 
 		totalEl.textContent = String(total);
-		interpEl.textContent = interpret(total);
+		const subscores = Object.fromEntries(answers.map((v, i) => [`q${i + 1}`, v]));
+		interpEl.textContent = interpret(total, subscores);
 		breakdownTotalEl.textContent = String(total);
 
 		rowsEl.innerHTML = answers.map((val, i) => `
@@ -228,7 +200,7 @@ const frequencies = [
 
 		form.hidden = true;
 		results.hidden = false;
-		history.record({ total, subscores: Object.fromEntries(answers.map((v, i) => [`q${i + 1}`, v])) });
+		history.record({ total, subscores });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 
@@ -345,14 +317,6 @@ const frequencies = [
 	}
 	.breakdown-table { margin: 1em 0 2em; font-size: 0.9em; }
 	.breakdown-table tfoot td { border-bottom: none; border-top: 2px solid rgb(var(--gray-light)); }
-	.results-disclaimer {
-		font-size: 0.88em;
-		color: rgb(var(--gray-dark));
-		border-top: 1px solid rgb(var(--gray-light));
-		padding-top: 1.5em;
-		line-height: 1.6;
-	}
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; }
 	.back-btn {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));

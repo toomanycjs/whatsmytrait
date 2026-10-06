@@ -11,6 +11,10 @@ export const chalderFatigueScale: ToolConfig = {
 	totalMax: 33,
 	decimals: 0,
 	direction: 'higher-worse',
+	// REVIEW: no published Likert bands, and no minimal important change for
+	// individuals (PACE's 2 points was a between-group difference; see
+	// chalder-fatigue-scale.content.ts). The bimodal cut-off of 4 applies to a
+	// subscore, so the page states it rather than storing it as a band.
 	mic: null,
 	subscores: [
 		{ key: 'physical', label: 'Physical', sentenceLabel: 'Physical fatigue', max: 21 },

@@ -2,6 +2,9 @@
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
+import ChalderInterpretation from '../../components/interpretation/ChalderFatigueScale.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/chalder-fatigue-scale.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const usual = ['Less than usual', 'No more than usual', 'More than usual', 'Much more than usual'];
 const memory = ['Better than usual', 'No worse than usual', 'Worse than usual', 'Much worse than usual'];
@@ -19,6 +22,8 @@ const items = [
 	{ id: 'c10', text: 'Do you find it more difficult to find the correct word?', group: 'mental', options: usual },
 	{ id: 'c11', text: 'How is your memory?', group: 'mental', options: memory },
 ];
+
+const jsonLd = toolJsonLd('Chalder Fatigue Scale', '/tools/chalder-fatigue-scale/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -26,48 +31,14 @@ const items = [
 	description="Complete the 11-item Chalder Fatigue Questionnaire and get your Likert score (0–33), physical and mental subscales, and bimodal score (0–11) with the ≥4 case threshold explained. The fatigue measure used across UK ME/CFS and long COVID services. Free, instant, no sign-up."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Chalder Fatigue Scale", "item": "https://www.postviralrecovery.com/tools/chalder-fatigue-scale/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "How is the Chalder Fatigue Scale scored?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Each of the 11 items has four answers. Likert scoring gives them 0, 1, 2, 3 for a total of 0 to 33, with a physical fatigue subscale (items 1 to 7, 0 to 21) and a mental fatigue subscale (items 8 to 11, 0 to 12). Bimodal scoring gives the first two answers 0 and the last two 1, for a total of 0 to 11; a bimodal score of 4 or more is the conventional threshold for clinically significant fatigue."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Chalder Fatigue Scale score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "In a UK community sample of 1,615 people (Cella and Chalder 2010) the mean Likert score was 14.2 with a standard deviation of 4.6, so scores up to about 18 fall within one standard deviation of the population mean. People with chronic fatigue syndrome in the same study averaged 24.4, and a Likert score of 29 or more separated them from the community sample in 96% of cases. Bimodal scores of 4 or more are considered a positive screen."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is the difference between the Chalder Fatigue Scale and the Fatigue Severity Scale?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Chalder scale asks how much fatigue symptoms have changed compared with when you were last well, across physical and mental items, over the past month. The Fatigue Severity Scale asks how much fatigue interferes with daily functioning over the past week. The Chalder scale is the standard in UK ME/CFS and long COVID services and trials; the FSS is more common in neurology and in US research."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
 				<p class="subtitle">The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services</p>
 				<p class="description">
-					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics; it was the primary outcome in the PACE trial and appears in most UK long COVID cohort studies. It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.
+					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics; it was a primary outcome in the PACE trial and has been used in long COVID studies. <!-- REVIEW: unsourced claim softened --> It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.
 				</p>
 				<p class="description">
 					It has two scoring systems, and this page gives you both. <strong>Likert scoring</strong> rates each answer 0–3 for a total of 0–33 and is the more sensitive to change. <strong>Bimodal scoring</strong> counts each item as either absent (0) or present (1) for a total of 0–11, with <strong>4 or more</strong> the conventional threshold for clinically significant fatigue. Papers and clinic letters quote whichever they prefer, so it helps to know your score on both.
@@ -136,17 +107,8 @@ const items = [
 				<p id="score-interpretation" class="score-interp"></p>
 
 				<h3>Where your Likert score sits</h3>
-				<p class="section-lead">Reference means from published cohorts, with your score marked.</p>
+				<p class="section-lead">Reference points from published studies, with your score marked.</p>
 				<div id="chart" class="chart"></div>
-
-				<div class="results-disclaimer">
-					<h3>Understanding your scores</h3>
-					<p><strong>Likert (0–33).</strong> In Cella and Chalder's 2010 study, 1,615 people from the UK community averaged 14.2 (SD 4.6) and 361 patients with chronic fatigue syndrome averaged 24.4 (SD 5.8). A score of 29 or more separated the two groups in 96% of cases. The PACE trial defined its "normal range" as 18 or below (the community mean plus one standard deviation) and treated a change of 2 points as clinically useful. Non-hospitalised long COVID cohorts have averaged around 15–16, with wide spread.</p>
-					<p><strong>Bimodal (0–11).</strong> A score of 4 or more is the standard case threshold, from the original 1993 study (sensitivity 75.5%, specificity 74.5% against an interview measure of fatigue). Roughly one in seven people in general-population samples score 4 or more, so it is a screen for significant fatigue rather than a marker of any condition. CFS patients in the 2010 study averaged 9.1; the community sample averaged 3.3.</p>
-					<p><strong>Subscales.</strong> The physical and mental subscales are usually reported separately in long COVID research, where mental fatigue items often stand out. Some 2023 long COVID trials have used 16 or more on physical and 8 or more on mental as markers of moderate-to-severe fatigue.</p>
-					<p>Because the recall period is a month, the scale suits monthly repeats during a treatment or pacing change. Note that the reference point ("compared with when you were last well") does not move, so a person who has been ill for years is still comparing against their healthy baseline.</p>
-					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
-				</div>
 
 				<ScoreHistory toolId="chalder-fatigue-scale" toolName="Chalder Fatigue Scale" />
 
@@ -154,10 +116,13 @@ const items = [
 			</div>
 
 			<SharedResults toolId="chalder-fatigue-scale" />
+
+			<ChalderInterpretation />
 </Page>
 
 <script>
 import { chalderFatigueScale } from '../../tools/chalder-fatigue-scale';
+import { interpretResult } from '../../scripts/results/interpretation';
 import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 
 const PHYSICAL = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
@@ -196,29 +161,21 @@ form.addEventListener('submit', (e) => {
 	(document.getElementById('mental-total') as HTMLElement).textContent = String(mental);
 	(document.getElementById('bimodal-total') as HTMLElement).textContent = String(bimodal);
 
-	let interp = `Your Likert score is ${likert} out of 33 (physical ${physical}/21, mental ${mental}/12) and your bimodal score is ${bimodal} out of 11. `;
-	if (bimodal >= 4) {
-		interp += 'The bimodal score is at or above the threshold of 4, the conventional cut-off for clinically significant fatigue. ';
-	} else {
-		interp += 'The bimodal score is below the threshold of 4, so on this measure your fatigue does not reach the conventional case level. ';
-	}
-	if (likert >= 29) {
-		interp += 'A Likert score of 29 or more is in the range that distinguished chronic fatigue syndrome patients from the community sample in the validation study (patients averaged 24.4, the community 14.2). This is a high fatigue burden.';
-	} else if (likert > 18) {
-		interp += 'A Likert score above 18 is outside the "normal range" used in the PACE trial (the community mean plus one standard deviation) and towards the range seen in clinical fatigue populations (CFS patients averaged 24.4).';
-	} else if (likert > 14) {
-		interp += 'A Likert score in this range is above the community average of 14.2 but within one standard deviation of it, which the PACE trial treated as the normal range.';
-	} else {
-		interp += 'A Likert score in this range is at or below the community average of 14.2.';
-	}
-	if (mental >= 8 && physical < 16) {
-		interp += ' Your mental fatigue subscale is proportionally high, a pattern often reported in long COVID.';
-	}
-	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+	// REVIEW: Layer 1 copy. No published Likert bands or minimal important
+	// change, so interpretResult adds nothing yet; the bimodal cut-off of 4 and
+	// the reference averages are sourced in chalder-fatigue-scale.content.ts.
+	const subscores = { physical, mental, bimodal };
+	const opening = `Your Likert score is ${likert} out of 33 (physical ${physical}/21, mental ${mental}/12) and your bimodal score is ${bimodal} out of 11.`;
+	const bimodalText = bimodal >= 4
+		? 'The bimodal score is at or above 4, the conventional cut-off for significant fatigue.'
+		: 'The bimodal score is below 4, the conventional cut-off for significant fatigue.';
+	const context = 'For comparison, UK general practice attenders averaged 14.2 on Likert scoring and people with chronic fatigue syndrome 24.4.';
+	(document.getElementById('score-interpretation') as HTMLElement).textContent =
+		[opening, bimodalText, interpretResult(chalderFatigueScale, { total: likert, subscores }, history.latest()), context].filter(Boolean).join(' ');
 
 	const refs = [
-		{ label: 'UK community (Cella & Chalder 2010)', val: 14.2 },
-		{ label: 'Long COVID, non-hospitalised (Stavem 2021)', val: 15.1 },
+		{ label: 'UK general practice attenders (Cella & Chalder 2010)', val: 14.2 },
+		{ label: 'Four months after COVID-19, non-hospitalised (Stavem 2021)', val: 15.1 },
 		{ label: 'PACE "normal range" ceiling', val: 18 },
 		{ label: 'CFS patients (Cella & Chalder 2010)', val: 24.4 },
 		{ label: 'Your score', val: likert, you: true },
@@ -234,7 +191,7 @@ form.addEventListener('submit', (e) => {
 	results.hidden = false;
 	history.record({
 		total: likert,
-		subscores: { physical, mental, bimodal },
+		subscores,
 		summary: `Chalder Fatigue Scale Likert ${likert} out of 33 (physical ${physical}/21, mental ${mental}/12), bimodal ${bimodal} out of 11`,
 	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -295,9 +252,6 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.chart :global(.chart-val) { font-weight: 700; color: rgb(var(--gray-dark)); text-align: right; }
 	.chart :global(.chart-row.you .chart-val) { color: var(--accent); }
 
-	.results-disclaimer { font-size: 0.88em; color: rgb(var(--gray-dark)); border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em; margin-top: 2em; line-height: 1.6; }
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
-	.results-disclaimer a { color: var(--accent); }
 	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
