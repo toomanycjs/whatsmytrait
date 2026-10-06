@@ -4,7 +4,8 @@ import type { ToolConfig } from '../scripts/results/types';
 
 export const cognitiveFailuresQuestionnaire: ToolConfig = {
 	id: 'cognitive-failures-questionnaire',
-	version: '1',
+	// 2: sub-scores use the Rast et al. 2009 item lists (October 2026); the total is unchanged.
+	version: '2',
 	name: 'Cognitive Failures Questionnaire',
 	path: '/tools/cognitive-failures-questionnaire/',
 	totalMin: 0,
@@ -19,7 +20,8 @@ export const cognitiveFailuresQuestionnaire: ToolConfig = {
 	subscores: [
 		{ key: 'forgetfulness', label: 'Forgetfulness', max: 4 },
 		{ key: 'distractibility', label: 'Distractibility', max: 4 },
-		{ key: 'blunders', label: 'Blunders', sentenceLabel: 'False triggering (blunders)', max: 4 },
+		// Key kept from version 1 so history columns line up.
+		{ key: 'blunders', label: 'False triggering', max: 4 },
 	],
 	topDomains: 0,
 	reminderMonths: 1,

@@ -15,7 +15,12 @@
 //   Table 2: CFQ total mean 31.71 (SD 12.70). A single factor fitted best;
 //   subscales "are not recommended for use in future research or clinical
 //   contexts" (abstract). CFQ total correlated only with one of the objective
-//   tasks (r = .11) (Results).
+//   tasks (r = .11) (Results). Table 1 lists the items in each factor of the
+//   Rast et al. 2009 three-factor solution (Forgetfulness 1, 2, 5, 6, 7, 13, 16,
+//   17, 20, 21, 22, 23; Distractibility 2, 5, 7, 8, 9, 10, 11, 14, 15, 16, 18,
+//   19, 21, 25; False Triggering 1-6, 12, 13, 15, 17, 18, 20, 23, 24); the
+//   page's sub-scores use these lists. Rast 2009 itself (Assessment
+//   16(2):145-158) was not opened.
 // - Bland AR et al. Sci Rep 2024;14:13368 (PMC11166972): Table 1, CFQ total
 //   44.42 post-COVID syndrome (n = 50), 34.71 recovered (n = 59), 32.66 never
 //   had COVID-19 (n = 53); recall period 2 weeks (Methods); subjective and
@@ -48,6 +53,7 @@
 export const SOURCES = {
 	broadbent: { label: 'Broadbent et al. 1982', href: 'https://doi.org/10.1111/j.2044-8260.1982.tb01421.x' },
 	goodman: { label: 'Goodman et al. 2022', href: 'https://doi.org/10.1037/pas0001127' },
+	rast: { label: 'Rast et al. 2009', href: 'https://doi.org/10.1177/1073191108324440' },
 	bland: { label: 'Bland et al. 2024', href: 'https://doi.org/10.1038/s41598-024-62050-x' },
 	holland: { label: 'Holland et al. 2024', href: 'https://doi.org/10.1002/brb3.70027' },
 	miskowiak: { label: 'Miskowiak et al. 2023', href: 'https://doi.org/10.1016/j.jad.2022.12.122' },
