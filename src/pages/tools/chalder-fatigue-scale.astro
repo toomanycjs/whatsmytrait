@@ -38,7 +38,7 @@ const jsonLd = toolJsonLd('Chalder Fatigue Scale', '/tools/chalder-fatigue-scale
 				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
 				<p class="subtitle">The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services</p>
 				<p class="description">
-					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics; it was a primary outcome in the PACE trial and has been used in long COVID studies. <!-- REVIEW: unsourced claim softened --> It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.
+					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics, and has been used in long COVID studies. <!-- REVIEW: unsourced claim softened --> It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.
 				</p>
 				<p class="description">
 					It has two scoring systems, and this page gives you both. <strong>Likert scoring</strong> rates each answer 0–3 for a total of 0–33 and is the more sensitive to change. <strong>Bimodal scoring</strong> counts each item as either absent (0) or present (1) for a total of 0–11, with <strong>4 or more</strong> the conventional threshold for clinically significant fatigue. Papers and clinic letters quote whichever they prefer, so it helps to know your score on both.
@@ -176,7 +176,6 @@ form.addEventListener('submit', (e) => {
 	const refs = [
 		{ label: 'UK general practice attenders (Cella & Chalder 2010)', val: 14.2 },
 		{ label: 'Four months after COVID-19, non-hospitalised (Stavem 2021)', val: 15.1 },
-		{ label: 'PACE "normal range" ceiling', val: 18 },
 		{ label: 'CFS patients (Cella & Chalder 2010)', val: 24.4 },
 		{ label: 'Your score', val: likert, you: true },
 	].sort((a, b) => a.val - b.val);
