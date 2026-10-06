@@ -50,6 +50,8 @@ export default function indexNow({ key }) {
 						if (rel === '404.html') continue;
 						const urlPath = rel === 'index.html' ? '/' : '/' + rel.replace(/index\.html$/, '');
 						const html = await readFile(file);
+						// Pages that ask not to be indexed (e.g. /tools/my-results/) are not submitted.
+						if (/<meta name="robots" content="noindex/i.test(html.toString())) continue;
 						manifest[new URL(urlPath, site).href] = createHash('sha256').update(html).digest('hex');
 					}
 

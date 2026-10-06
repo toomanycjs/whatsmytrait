@@ -1,5 +1,10 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import FuncapInterpretation from '../../components/interpretation/Funcap.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/funcap.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const scaleOptions = [
 	{ value: 0, label: 'I cannot do this' },
@@ -89,6 +94,8 @@ const domains = [
 	},
 ];
 
+const jsonLd = toolJsonLd('FUNCAP functional capacity questionnaire', '/tools/funcap/', FAQ_ORDER.map(k => FAQ[k]));
+
 const clientConfig = {
 	domains: domains.map(d => ({ key: d.key, name: d.name, items: d.items.map(it => ({ id: it.id, text: it.text })) })),
 	labels: scaleOptions.map(o => o.label),
@@ -100,41 +107,7 @@ const clientConfig = {
 	description="Complete the FUNCAP27 functional capacity questionnaire online for free. A patient-informed ME/CFS instrument covering 8 activity domains, with automatic scoring and a domain profile. No sign-up required."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "FUNCAP functional capacity questionnaire", "item": "https://www.postviralrecovery.com/tools/funcap/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the FUNCAP questionnaire?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "FUNCAP is a functional capacity questionnaire developed specifically for ME/CFS by Sommerfelt, Schei, Seton and Carding, working with patient organisations. Instead of asking how bad symptoms feel, it asks what everyday activities cost you: whether doing something forces you to limit other activities that day, or for days afterwards. It was validated in over 2,600 people with ME/CFS and published open access in 2024. FUNCAP27 is the short 27-question version; FUNCAP55 is the longer research and disability-assessment version."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is FUNCAP scored?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Each activity is scored from 0 (I cannot do this) to 6 (unproblematic, does not affect other activities), based on an average day over the past month. Each of the eight domains is scored as the mean of its questions, and the overall score is the mean of the eight domain scores, so domains with fewer questions count as much as those with more. Domain scores show which types of activity are most affected. Lower scores mean lower functional capacity."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is FUNCAP different from the Bell scale?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale gives a single 0–100 rating of overall functional status. FUNCAP measures functional capacity activity by activity across eight domains, capturing the post-exertional 'payback' pattern specific to ME/CFS. The Bell scale is quicker for regular tracking; FUNCAP gives a much more detailed profile, which is particularly useful for disability paperwork and specialist appointments."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -209,23 +182,23 @@ const clientConfig = {
 				<p class="section-lead">Activities you rated 0–2: things you cannot do, or that leave you able to do little else for a day or more.</p>
 				<ul id="costly-list" class="costly-list"></ul>
 
-				<div class="results-disclaimer">
-					<h3>Understanding your score</h3>
-					<!-- REVIEW: scoring corrected to the paper (total = mean of the eight domain scores); reference means are from Table 5 of Sommerfelt et al. 2024. -->
-					<p>Each domain score is the mean of its questions, from 0 to 6, and the overall FUNCAP score is the mean of the eight domain scores, as in the <a href="https://doi.org/10.3390/jcm13123486" rel="noopener">validation paper</a>. Lower scores mean lower functional capacity. The validation found negligible floor and ceiling effects across the full severity spectrum of ME/CFS, from mild to very severe.</p>
-					<p>For reference, in the main validation survey the average FUNCAP27 total was 3.3 (standard deviation 1.1) among 1,263 people with ME/CFS and 5.8 (standard deviation 0.3) among 178 healthy controls. Average scores were lower at each step of ME/CFS severity, from mild to very severe. When the same people answered twice, two weeks apart, the total was highly repeatable (intraclass correlation 0.98).</p>
-					<p>There are no official severity cut-offs or published minimal important change yet; the authors are developing clinical guidance at <a href="https://www.funcap.no" rel="noopener">funcap.no</a>. The score is most useful as a profile and as a record over time: which groups of activities cost you most, and whether your capacity is changing. A completed FUNCAP is also concrete evidence of functional limitation for disability or insurance assessments. That is what it was designed for.</p>
-					<p>If you complete it periodically (for example monthly), use the same conditions each time: an average day, not a crash or a good patch.</p>
-					<p><strong>This is not a diagnosis.</strong> It reflects the activity consequences you have reported. Discuss your results with your doctor or specialist.</p>
-				</div>
+				<ScoreHistory toolId="funcap" toolName="FUNCAP27" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="funcap" />
+
+			<FuncapInterpretation />
 
 			<script type="application/json" id="funcap-config" set:html={JSON.stringify(clientConfig)}></script>
 </Page>
 
 <script>
+import { funcap } from '../../tools/funcap';
+import { interpretResult } from '../../scripts/results/interpretation';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 type Item = { id: string; text: string };
 type Domain = { key: string; name: string; items: Item[] };
 type Config = { domains: Domain[]; labels: string[] };
@@ -238,6 +211,10 @@ const form = document.getElementById('funcap-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
 const totalEl = document.getElementById('total-score-value') as HTMLElement;
 const interpEl = document.getElementById('score-interpretation') as HTMLElement;
+
+const history = mountScoreHistory(funcap);
+mountSharedResults(funcap);
+const round2 = (x: number) => Math.round(x * 100) / 100;
 
 function getVal(id: string): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
@@ -267,10 +244,11 @@ form.addEventListener('submit', (e) => {
 
 	totalEl.textContent = overall.toFixed(2);
 
-	// REVIEW: no published cut-offs, so this compares with the validation means instead of banding.
-	const lowest = [...domainMeans].sort((x, y) => x.avg - y.avg)[0];
-	const interp = `Your overall FUNCAP27 score is ${overall.toFixed(2)} out of 6, where 6 means activities do not affect what else you can do and 0 means you cannot do them at all. There are no official cut-offs. For comparison, the average in the validation study was 3.3 among people with ME/CFS and 5.8 among healthy controls. Your lowest domain was ${lowest.domain.name.toLowerCase()} (${lowest.avg.toFixed(1)}).`;
-	interpEl.textContent = interp;
+	// REVIEW: Layer 1 copy. No published cut-offs, so this compares with the
+	// validation means; interpretResult names the lowest domains.
+	const subscores = Object.fromEntries(domainMeans.map(d => [d.domain.key, round2(d.avg)]));
+	const opening = `Your overall FUNCAP27 score is ${overall.toFixed(2)} out of 6, where 6 means activities do not affect what else you can do and 0 means you cannot do them at all. There are no official cut-offs; in the validation study the average was 3.3 among people with ME/CFS and 5.8 among healthy controls.`;
+	interpEl.textContent = [opening, interpretResult(funcap, { total: round2(overall), subscores }, history.latest())].filter(Boolean).join(' ');
 
 	// Domain chart (lower = worse; bar length reflects score)
 	const chart = document.getElementById('chart') as HTMLElement;
@@ -295,6 +273,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total: round2(overall), subscores });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
@@ -437,13 +416,6 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	}
 	.costly-list :global(.costly-label) { color: rgb(var(--gray)); font-size: 0.9em; }
 
-	.results-disclaimer {
-		font-size: 0.88em; color: rgb(var(--gray-dark));
-		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
-		margin-top: 2em; line-height: 1.6;
-	}
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
-	.results-disclaimer a { color: var(--accent); }
 	.back-btn {
 		background: none; border: 1px solid rgb(var(--gray-light));
 		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;

@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const situations = [
 	'Sitting and reading',
@@ -141,11 +143,21 @@ const ratings = [
   <p>This is a screening tool only. Discuss your score with your doctor.</p>
 </div>
 
+				<ScoreHistory toolId="epworth" toolName="Epworth Sleepiness Scale" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="epworth" />
 </Page>
 
 <script>
+	import { epworth } from '../../tools/epworth';
+	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+	const history = mountScoreHistory(epworth);
+	mountSharedResults(epworth);
+
 	const SITUATIONS = [
 		'Sitting and reading',
 		'Watching television',
@@ -216,6 +228,7 @@ const ratings = [
 
 		form.hidden = true;
 		results.hidden = false;
+		history.record({ total, subscores: {} });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 

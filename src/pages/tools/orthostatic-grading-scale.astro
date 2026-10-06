@@ -1,5 +1,12 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import OgsInterpretation from '../../components/interpretation/OrthostaticGradingScale.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/orthostatic-grading-scale.content';
+import { toolJsonLd } from '../../tools/jsonld';
+
+const jsonLd = toolJsonLd('Orthostatic Grading Scale', '/tools/orthostatic-grading-scale/', FAQ_ORDER.map(k => FAQ[k]));
 
 const items = [
 	{
@@ -62,44 +69,10 @@ const items = [
 
 <Page
 	title="Orthostatic Grading Scale (OGS): free online orthostatic intolerance questionnaire"
-	description="Complete the five-item Orthostatic Grading Scale from the Mayo Clinic and get your score out of 20 instantly, with the mild, moderate, and severe bands and reference values from POTS, ME/CFS, and long COVID studies. Free, quick, no sign-up."
+	description="Complete the five-item Orthostatic Grading Scale from the Mayo Clinic and get your score out of 20 instantly, with the published thresholds and reference values from POTS, ME/CFS, long COVID and hypermobility studies. Free, quick, no sign-up."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Orthostatic Grading Scale", "item": "https://www.postviralrecovery.com/tools/orthostatic-grading-scale/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the Orthostatic Grading Scale?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Orthostatic Grading Scale (OGS) is a five-item self-report questionnaire developed at the Mayo Clinic and published in 2005. It grades the frequency and severity of orthostatic symptoms, the conditions that bring them on, their interference with daily activities, and how long you can stand before symptoms start. Each item scores 0 to 4, giving a total from 0 to 20."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a high Orthostatic Grading Scale score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Published bands are mild (below 4), moderate (4 to 9), and severe (above 9). In the original Mayo study a score of 9 or more best matched laboratory evidence of adrenergic autonomic failure. Healthy controls typically score 0 to 3; UK POTS patients have averaged about 13, ME/CFS cohorts 8 to 13, and hypermobile EDS patients about 10."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Does the Orthostatic Grading Scale diagnose POTS?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. It measures the burden of orthostatic symptoms, whatever their cause. POTS and orthostatic hypotension are diagnosed from heart rate and blood pressure responses to standing or tilt. A high OGS score is a reason to ask for that testing, and the scale is useful for tracking symptoms over time."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -149,21 +122,25 @@ const items = [
 				<div id="chart" class="chart"></div>
 
 				<h3>Reference values</h3>
+				<p class="section-lead">Average totals in published studies; sources are listed under "Understanding your OGS score" below.</p>
 				<div id="refchart" class="chart"></div>
 
-				<div class="results-disclaimer">
-					<h3>Understanding your score</h3>
-					<p>The bands most often quoted are <strong>mild (below 4)</strong>, <strong>moderate (4–9)</strong>, and <strong>severe (above 9)</strong>, from Frith and Newton's work on orthostatic symptoms. In the original Mayo data a score of 9 or more was the best match for laboratory evidence of adrenergic failure, with modest accuracy (66% sensitivity, 69% specificity), which is a reminder that symptom burden and measured autonomic function only partly overlap.</p>
-					<p>Published averages: healthy controls 0.6–3; UK POTS patients about 13 (SD 4); ME/CFS cohorts 8–13; hypermobile EDS about 10; post-COVID condition about 11. A 2023 UK study of people referred with suspected POTS found the five items behave as a single dimension and correlate with heart-rate responses on standing.</p>
-					<p>Because the OGS asks about your usual pattern rather than a single week, it changes slowly. Repeating it monthly, or before and after a treatment change, is enough. Record it with your <a href="/tools/trackers/stand-test-logger/">stand test results</a> so the symptom score and the heart-rate response sit together.</p>
-					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
-				</div>
+				<ScoreHistory toolId="orthostatic-grading-scale" toolName="Orthostatic Grading Scale" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="orthostatic-grading-scale" />
+
+			<OgsInterpretation />
 </Page>
 
 <script>
+import { orthostaticGradingScale } from '../../tools/orthostatic-grading-scale';
+import { REFERENCE } from '../../tools/orthostatic-grading-scale.content';
+import { interpretResult } from '../../scripts/results/interpretation';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
 const ITEMS = [
 	{ id: 'frequency', text: 'Frequency' },
 	{ id: 'severity', text: 'Severity' },
@@ -174,6 +151,9 @@ const ITEMS = [
 
 const form = document.getElementById('ogs-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
+
+const history = mountScoreHistory(orthostaticGradingScale);
+mountSharedResults(orthostaticGradingScale);
 
 function getVal(id: string): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="${id}"]:checked`);
@@ -195,14 +175,13 @@ form.addEventListener('submit', (e) => {
 	const total = values.reduce((s, v) => s + v.val, 0);
 	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
 
-	let interp = `Your OGS score is ${total} out of 20. `;
-	if (total > 9) {
-		interp += 'This is in the severe band (above 9). It is at or above the level that best matched laboratory evidence of adrenergic autonomic failure in the original study, and in the range reported by UK POTS patients (about 13) and ME/CFS cohorts. If you have not had orthostatic testing, a standing test or NASA lean test is a sensible next step, and this score is worth showing to your GP.';
-	} else if (total >= 4) {
-		interp += 'This is in the moderate band (4–9). Orthostatic symptoms are a regular feature and interfere with life to some degree; healthy controls typically score 0–3. Tracking the score alongside stand-test heart-rate data will show whether it is changing.';
-	} else {
-		interp += 'This is in the mild band (below 4), the range typically reported by healthy controls. Orthostatic symptoms are infrequent or minor by this measure. If you still have standing-related symptoms that the five items did not capture, the Vanderbilt score rated while standing may show them.';
-	}
+	// REVIEW: Layer 1 copy. interpretResult adds the band sentence (thresholds
+	// 4 and 9, Słomko et al. 2020 citing Schrezenmaier et al. 2005); no MIC is
+	// published and topDomains is 0.
+	const subscores = Object.fromEntries(values.map(v => [v.item.id, v.val]));
+	const opening = `Your OGS score is ${total} out of 20.`;
+	const context = 'For comparison, published averages are 0.6 in healthy controls, 8.3 in ME/CFS and 13 in POTS; the score measures symptoms, not their cause.';
+	const interp = [opening, interpretResult(orthostaticGradingScale, { total, subscores }, history.latest()), context].filter(Boolean).join(' ');
 	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
 
 	(document.getElementById('chart') as HTMLElement).innerHTML = values.map(v => `
@@ -212,11 +191,9 @@ form.addEventListener('submit', (e) => {
 			<div class="chart-val">${v.val}</div>
 		</div>`).join('');
 
-	const refs = [
-		{ label: 'Healthy controls', val: 2 },
-		{ label: 'ME/CFS (Issa 2025)', val: 8.3 },
-		{ label: 'hEDS (Peebles 2022)', val: 10.4 },
-		{ label: 'UK POTS (McDonald 2014)', val: 13 },
+	// Published averages (see orthostatic-grading-scale.content.ts for sources).
+	const refs: { label: string; val: number; you?: boolean }[] = [
+		...REFERENCE.map(r => ({ label: r.group, val: Number(r.mean) })),
 		{ label: 'Your score', val: total, you: true },
 	].sort((a, b) => a.val - b.val);
 	(document.getElementById('refchart') as HTMLElement).innerHTML = refs.map(r => `
@@ -228,6 +205,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total, subscores });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
@@ -284,9 +262,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	#refchart :global(.chart-row.you .chart-label) { font-weight: 700; color: var(--accent-dark); }
 	#refchart :global(.chart-row.you .chart-val) { color: var(--accent); }
 
-	.results-disclaimer { font-size: 0.88em; color: rgb(var(--gray-dark)); border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em; margin-top: 2em; line-height: 1.6; }
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
-	.results-disclaimer a { color: var(--accent); }
+	.section-lead { font-size: 0.9em; color: rgb(var(--gray)); margin: 0 0 1em; }
 	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 

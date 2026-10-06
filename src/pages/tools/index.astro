@@ -4,13 +4,13 @@ import Page from '../../layouts/Page.astro';
 const questionnaires = [
 	{
 		title: 'ME/CFS screening (DSQ-Brief)',
-		description: 'A 4-question self-check for ME/CFS based on the DePaul Symptom Questionnaire Brief. Assesses fatigue and post-exertional malaise in under two minutes, with an immediate result.',
+		description: 'A 4-question self-check for ME/CFS based on the DePaul Symptom Questionnaire Brief. Asks about fatigue, tiredness after minimal exercise, unrefreshing sleep and memory problems, in under two minutes, with an immediate result.',
 		href: '/tools/dsq-brief/',
 		badge: 'Questionnaire',
 	},
 	{
 		title: 'DePaul Symptom Questionnaire (DSQ-2)',
-		description: 'The full ME/CFS symptom questionnaire across eight domains, with automatic scoring, a symptom profile, and screening against four case definitions (Fukuda, CCC, ME-ICC, IOM). Takes 10–15 minutes.',
+		description: "All 79 DSQ-2 symptom questions, checked against four ME/CFS case definitions (IOM, CCC, ME-ICC, Fukuda) with DePaul's published rules, plus a symptom profile. About 100 answers; progress is saved.",
 		href: '/tools/dsq-2/',
 		badge: 'Questionnaire',
 	},
@@ -246,6 +246,7 @@ const sheets = [
 				<div class="disclaimer">
 					<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
 				</div>
+				<p class="saved-results" hidden><a href="/tools/my-results/">Your saved results <span class="saved-count"></span></a></p>
 			</div>
 
 			<section>
@@ -302,6 +303,17 @@ const sheets = [
 			</section>
 </Page>
 
+<script>
+	// Link to /tools/my-results/ with a count, shown only when this browser has saved results.
+	import { readAll } from '../../scripts/results/resultsStore';
+	const n = readAll().length;
+	const link = document.querySelector<HTMLElement>('.saved-results');
+	if (link && n > 0) {
+		link.querySelector('.saved-count')!.textContent = `(${n})`;
+		link.hidden = false;
+	}
+</script>
+
 <style>
 	.section-header {
 		padding-bottom: 1.5em;
@@ -310,6 +322,8 @@ const sheets = [
 	}
 	.section-header h1 { margin: 0.3em 0 0.3em; }
 	.section-intro { color: rgb(var(--gray)); margin: 0 0 1em; }
+	.saved-results { margin: 1em 0 0; font-weight: 700; }
+	.saved-count { font-weight: 400; color: rgb(var(--gray)); }
 
 	section { margin-bottom: 3em; }
 	h2 { margin-bottom: 0.25em; }

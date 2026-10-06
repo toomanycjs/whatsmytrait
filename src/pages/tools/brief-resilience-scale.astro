@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 // Items 2, 4 and 6 are reverse-scored.
 const statements = [
@@ -117,11 +119,21 @@ const ratings = [
 					<p><strong>This is not a diagnosis.</strong> A low score is not a personality flaw and does not mean you are failing to cope. If stress is overwhelming you, talk to your GP about support. If you ever feel unable to keep yourself safe, seek urgent help (in the UK: call 111 option 2, or 999 in an emergency).</p>
 				</div>
 
+				<ScoreHistory toolId="brief-resilience-scale" toolName="BRS" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="brief-resilience-scale" />
 </Page>
 
 <script>
+import { briefResilienceScale } from '../../tools/brief-resilience-scale';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(briefResilienceScale);
+mountSharedResults(briefResilienceScale);
+
 const form = document.getElementById('brs-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
 
@@ -169,6 +181,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total: Math.round(mean * 100) / 100, subscores: {} });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 

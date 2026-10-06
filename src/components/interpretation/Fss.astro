@@ -1,0 +1,66 @@
+---
+// REVIEW: Layer 2 interpretation for the Fatigue Severity Scale, drafted for
+// Craig's review. FAQ answers come from fss.content.ts and are shown word for
+// word (they also feed the page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/fss.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-fss">
+	<h2 id="understanding-fss">Understanding your FSS score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		It was developed in multiple sclerosis and lupus (<a href={s.krupp.href} rel="noopener">{s.krupp.label}</a>) and
+		later checked in more than 1,300 people in Switzerland (<a href={s.valko.href} rel="noopener">{s.valko.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.normal.a}</p>
+	<table class="interp-table">
+		<caption>Average FSS scores in validation studies</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">Average</th><th scope="col">Scoring 4 or more</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => <tr><th scope="row">{r.group}</th><td>{r.mean}</td><td>{r.over4}</td></tr>)}
+		</tbody>
+	</table>
+	<p>{FAQ.score5.a}</p>
+	<p>
+		Your result is shown to one decimal place and judged on that number, so 4.0 counts as 4 or more.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		The questions cover the past week, so one bad week can move your score; a monthly trend says more than any single
+		pair. The multiple sclerosis figures come from <a href={s.rooney.href} rel="noopener">{s.rooney.label}</a>.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		For worsening after effort, see the <a href="/tools/dsq-pem/">DSQ-PEM</a> and the
+		<a href="/evidence/post-exertional-malaise/">post-exertional malaise explainer</a>. The
+		<a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a> scores the fatigue itself.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the score, the date, the trend from your saved results, and a note of which statements you rated 6 or 7. Describe
+		it as a nine-question measure of how much fatigue interferes with daily life, developed in multiple sclerosis and
+		now one of the most commonly used fatigue questionnaires. It can show that fatigue is substantial and how it has
+		changed. It cannot show the cause, and it is not a test for ME/CFS or long COVID. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Krupp LB, LaRocca NG, Muir-Nash J, Steinberg AD. The fatigue severity scale: application to patients with multiple sclerosis and systemic lupus erythematosus. <em>Arch Neurol</em> 1989;46(10):1121–1123. <a href={s.krupp.href} rel="noopener">Article</a></li>
+		<li>Valko PO, Bassetti CL, Bloch KE, Held U, Baumann CR. Validation of the fatigue severity scale in a Swiss cohort. <em>Sleep</em> 2008;31(11):1601–1607. <a href={s.valko.href} rel="noopener">Full text</a></li>
+		<li>Rooney S, McFadyen DA, Wood DL, Moffat DF, Paul PL. Minimally important difference of the fatigue severity scale and modified fatigue impact scale in people with multiple sclerosis. <em>Mult Scler Relat Disord</em> 2019. <a href={s.rooney.href} rel="noopener">Article</a></li>
+	</ul>
+</section>

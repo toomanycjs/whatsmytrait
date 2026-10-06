@@ -1,5 +1,10 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import CognitiveFailuresInterpretation from '../../components/interpretation/CognitiveFailures.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/cognitive-failures-questionnaire.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const options = ['Never', 'Very rarely', 'Occasionally', 'Quite often', 'Very often'];
 
@@ -32,6 +37,8 @@ const items = [
 ];
 
 const pages = [items.slice(0, 13), items.slice(13)];
+
+const jsonLd = toolJsonLd('Cognitive Failures Questionnaire', '/tools/cognitive-failures-questionnaire/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -39,57 +46,24 @@ const pages = [items.slice(0, 13), items.slice(13)];
 	description="Complete Broadbent's 25-item Cognitive Failures Questionnaire and get your score out of 100 instantly, with forgetfulness, distractibility, and blunders subscales and reference values from healthy adults, long COVID, and ME/CFS studies. The standard measure of everyday cognitive lapses. Free, no sign-up."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Cognitive Failures Questionnaire", "item": "https://www.postviralrecovery.com/tools/cognitive-failures-questionnaire/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the Cognitive Failures Questionnaire?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Cognitive Failures Questionnaire (CFQ) was published by Donald Broadbent and colleagues in 1982. It asks how often 25 everyday lapses of memory, attention, and action have happened to you over the past six months, each rated from 0 (never) to 4 (very often), for a total of 0 to 100. It is the most widely used self-report measure of everyday cognitive slips, and is increasingly used to quantify brain fog in long COVID research."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Cognitive Failures Questionnaire score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Healthy adult samples typically average in the low-to-mid 30s: about 32 in a large US community sample, 35 to 37 in Broadbent's original working samples, and 38 in UK naval personnel. A score of 43 or more, one standard deviation above the mean of a Dutch reference sample, is the cut-off some studies use for a high level of cognitive failures. Long COVID cohorts have averaged 44 to 50 and ME/CFS patients around 57."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Does a high CFQ score mean I have cognitive impairment?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The CFQ measures how often you notice yourself making everyday slips. Scores correlate only modestly with performance on objective cognitive tests, and they are influenced by fatigue, sleep, mood, and anxiety. A high score is a valid record of the lapses you experience, and a reasonable basis for asking about cognitive assessment, but it is not a test of cognitive function."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Cognitive Failures Questionnaire (CFQ)</h1>
 				<p class="subtitle">Broadbent's 25-item measure of everyday memory, attention, and action slips: the standard brain fog questionnaire</p>
 				<p class="description">
-					Brain fog is one of the most common complaints in long COVID and ME/CFS, and one of the hardest to put a number on. The Cognitive Failures Questionnaire, published by Donald Broadbent and colleagues at Oxford in 1982, is the most widely used self-report instrument for everyday cognitive lapses: forgetting why you walked into a room, reading a paragraph and taking nothing in, losing your thread mid-sentence. You rate how often 25 such lapses have happened over the <strong>past six months</strong>, from <strong>0 (never)</strong> to <strong>4 (very often)</strong>, for a total of 0–100.
+					Brain fog is one of the most common complaints in long COVID and ME/CFS, and one of the hardest to put a number on. The Cognitive Failures Questionnaire, published by Donald Broadbent and colleagues in 1982, is a widely used self-report measure of everyday cognitive lapses: forgetting why you walked into a room, reading a paragraph and taking nothing in, losing your thread mid-sentence. You rate how often 25 such lapses have happened over the <strong>past six months</strong>, from <strong>0 (never)</strong> to <strong>4 (very often)</strong>, for a total of 0–100.
 				</p>
 				<p class="description">
-					Healthy adults typically score in the low-to-mid 30s. Long COVID cohorts have averaged in the mid-40s to 50, and ME/CFS patients higher still. The questionnaire does not measure cognitive performance (scores correlate only modestly with objective testing), but it does capture the lived frequency of lapses, which is what most people mean by brain fog and what clinicians rarely have a number for. The results also give three subscales: forgetfulness, distractibility, and blunders.
+					<!-- REVIEW: rewritten intro paragraph -->
+					Community samples have averaged in the low 30s. Groups with long COVID have averaged from the mid-40s to the 60s, and one ME/CFS sample averaged 57. The questionnaire does not measure cognitive performance (scores are only weakly linked to objective testing, if at all), but it does capture how often lapses happen, which is what most people mean by brain fog and what clinicians rarely have a number for. The results also show three item groups, forgetfulness, distractibility and blunders, as a rough guide to where lapses cluster.
 				</p>
 				<p class="description">
 					The questionnaire is presented in two pages of 12–13 items. If mental fatigue rather than lapses is your main concern, the <a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a> has a mental fatigue subscale, and the <a href="/tools/dsq-pem/">DSQ-PEM</a> characterises symptoms that worsen after cognitive effort.
 				</p>
 				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The CFQ records self-reported lapses; it does not assess cognitive function and cannot diagnose cognitive impairment or any condition. Scores rise with fatigue, poor sleep, low mood, and anxiety as well as with neurological causes. Discuss your results with your doctor. Based on: Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. <em>The Cognitive Failures Questionnaire (CFQ) and its correlates.</em> Br J Clin Psychol. 1982;21(1):1–16. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.
+					<strong>This is not a diagnostic tool.</strong> The CFQ records self-reported lapses; it does not assess cognitive function and cannot diagnose cognitive impairment or any condition. Scores rise with fatigue, stress, and low mood as well as with neurological causes. Discuss your results with your doctor. Based on: Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. <em>The Cognitive Failures Questionnaire (CFQ) and its correlates.</em> Br J Clin Psychol. 1982;21(1):1–16. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.
 				</div>
 			</div>
 
@@ -134,27 +108,32 @@ const pages = [items.slice(0, 13), items.slice(13)];
 				<p id="score-interpretation" class="score-interp"></p>
 
 				<h3>Subscales</h3>
-				<p class="section-lead">Average item score (0–4) in each of the three factors identified by Rast and colleagues (2009). Not all 25 items load on a factor.</p>
+				<!-- REVIEW: rewritten lead; the item groups are not validated subscales -->
+				<p class="section-lead">Average item score (0–4) for three groups of items. Not all 25 items are in a group. Studies group the items differently and the total is the more reliable measure, so treat these as a rough description.</p>
 				<div id="subchart" class="chart"></div>
 
 				<h3>Where your total sits</h3>
 				<div id="refchart" class="chart"></div>
 
 				<div class="results-disclaimer">
-					<h3>Understanding your score</h3>
-					<p><strong>Reference values.</strong> Broadbent's original working samples averaged 35–37 (student nurses 52). A US community sample of 839 adults averaged 31.7 (SD 12.7); UK naval personnel averaged 37.6 (SD 14.0). Several clinical studies use <strong>43 or more</strong> as a high score, being one standard deviation above the mean of a Dutch reference sample. There is no validated diagnostic cut-off.</p>
-					<p><strong>Post-viral cohorts.</strong> In a 2024 UK study, people with post-COVID syndrome averaged 44.4 against 32.7 in people who had never had COVID; another 2024 study reported 50.2 versus 25.9. Danish post-COVID clinic patients averaged 61–67, with 83–90% scoring 43 or more. People with ME/CFS averaged 57.4 in a 2014 study. In the UK study, CFQ scores did not track objective test performance, which supports using the CFQ as a record of experience rather than a proxy for cognitive testing.</p>
-					<p><strong>Subscales.</strong> Forgetfulness (items 2, 6, 16, 17, 23), distractibility (1, 3, 7, 9, 19, 21), and false triggering or blunders (5, 8, 10, 14, 15, 18, 24, 25) come from Rast and colleagues' 2009 factor analysis. Later work suggests the total score is the most reliable summary; treat the subscale profile as a description of where your lapses cluster, not as separate measures.</p>
-					<p>The six-month recall period makes the CFQ a slow-moving measure. Repeating it every three to six months, or before and after a significant change, is appropriate. If cognitive symptoms are affecting work or safety, ask your GP about referral for formal cognitive assessment.</p>
-					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor or specialist.</p>
+					<p><strong>This is not a diagnosis.</strong> See <a href="#understanding-cfq">understanding your score</a> below for reference values and what the CFQ can and cannot show, and discuss your results with your doctor or specialist.</p>
 				</div>
+
+				<ScoreHistory toolId="cognitive-failures-questionnaire" toolName="Cognitive Failures Questionnaire" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="cognitive-failures-questionnaire" />
+
+			<CognitiveFailuresInterpretation />
 </Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';
+import { cognitiveFailuresQuestionnaire } from '../../tools/cognitive-failures-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+import { interpretResult } from '../../scripts/results/interpretation';
 
 const N = 25;
 const SUBSCALES = [
@@ -169,6 +148,8 @@ const progressLabel = document.getElementById('progress-label') as HTMLElement;
 const progressFill = document.getElementById('progress-fill') as HTMLElement;
 const results = document.getElementById('results') as HTMLElement;
 let currentStep = 0;
+const history = mountScoreHistory(cognitiveFailuresQuestionnaire);
+mountSharedResults(cognitiveFailuresQuestionnaire);
 
 function getVal(n: number): number | null {
 	const checked = form.querySelector<HTMLInputElement>(`input[name="i${n}"]:checked`);
@@ -208,15 +189,20 @@ form.addEventListener('submit', (e) => {
 	for (let i = 1; i <= N; i++) total += getVal(i)!;
 	(document.getElementById('total-score-value') as HTMLElement).textContent = String(total);
 
-	let interp = `Your CFQ total is ${total} out of 100. `;
-	if (total >= 43) {
-		interp += 'This is at or above 43, the level used in several clinical studies as a high score (one standard deviation above a healthy reference mean). It is in the range reported by long COVID cohorts (44–50 on average) and, at the upper end, by people with ME/CFS (about 57). Everyday lapses are frequent enough to be a significant feature of your life and worth raising with a clinician, particularly if they affect work, driving, or medication safety.';
-	} else if (total > 37) {
-		interp += 'This is above the range typically reported by healthy adults (about 32–38 on average) but below the 43 threshold used for a high score. Lapses are somewhat more frequent than average.';
-	} else {
-		interp += 'This is within the range typically reported by healthy adults (about 32–38 on average). Everyday lapses are at a common level by this measure, though the subscale profile may still show a specific pattern.';
-	}
-	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+	const [forgetfulness, distractibility, blunders] = SUBSCALES.map(s =>
+		Math.round((s.items.reduce((acc, i) => acc + getVal(i)!, 0) / s.items.length) * 10) / 10);
+
+	// REVIEW: Layer 1 copy. The CFQ has no clinical cut-offs, so this compares
+	// with published averages (see cognitive-failures-questionnaire.content.ts)
+	// instead of naming a band. interpretResult adds nothing today (no bands,
+	// no published minimal important change, topDomains 0) but is kept so the
+	// page picks up any future config change.
+	const opening = `Your CFQ total is ${total} out of 100. There are no clinical cut-offs: for comparison, a US community sample averaged about 32, and people with post-COVID syndrome averaged 44 and 50 in two 2024 studies.`;
+	const high = total > 43
+		? 'Your total is above 43, a level some research studies use to mark a high number of everyday lapses. If lapses affect work, driving or taking medicines safely, that is worth raising with a clinician.'
+		: '';
+	(document.getElementById('score-interpretation') as HTMLElement).textContent =
+		[opening, high, interpretResult(cognitiveFailuresQuestionnaire, { total, subscores: { forgetfulness, distractibility, blunders } }, history.latest())].filter(Boolean).join(' ');
 
 	(document.getElementById('subchart') as HTMLElement).innerHTML = SUBSCALES.map(s => {
 		const mean = s.items.reduce((acc, i) => acc + getVal(i)!, 0) / s.items.length;
@@ -228,12 +214,15 @@ form.addEventListener('submit', (e) => {
 		</div>`;
 	}).join('');
 
+	// REVIEW: published averages, sources in cognitive-failures-questionnaire.content.ts.
 	const refs = [
-		{ label: 'US community adults (2022)', val: 31.7 },
-		{ label: 'UK naval personnel (Bridger 2013)', val: 37.6 },
-		{ label: '"High" threshold', val: 43 },
+		{ label: 'US community adults (Goodman 2022)', val: 31.7 },
+		{ label: 'Never had COVID-19 (Bland 2024)', val: 32.7 },
+		{ label: 'Research "high" level', val: 43 },
 		{ label: 'Post-COVID syndrome (Bland 2024)', val: 44.4 },
+		{ label: 'Post-COVID clinic (Holland 2024)', val: 50.2 },
 		{ label: 'ME/CFS (Attree 2014)', val: 57.4 },
+		{ label: 'Long COVID clinic (Miskowiak 2023)', val: 63.5 },
 		{ label: 'Your score', val: total, you: true },
 	].sort((a, b) => a.val - b.val);
 	(document.getElementById('refchart') as HTMLElement).innerHTML = refs.map(r => `
@@ -245,6 +234,11 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({
+		total,
+		subscores: { forgetfulness, distractibility, blunders },
+		summary: `Cognitive Failures Questionnaire ${total} out of 100. Item means (0-4): forgetfulness ${forgetfulness}, distractibility ${distractibility}, blunders ${blunders}`,
+	});
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	trackStep('results', 'Results');
 });

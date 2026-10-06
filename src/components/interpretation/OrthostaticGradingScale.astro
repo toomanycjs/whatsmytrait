@@ -1,0 +1,78 @@
+---
+// REVIEW: Layer 2 interpretation for the Orthostatic Grading Scale (OGS),
+// drafted for Craig's review. Static, rendered at build time. FAQ answers come
+// from orthostatic-grading-scale.content.ts and are shown word for word (they
+// also feed the page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/orthostatic-grading-scale.content';
+import '../../styles/interpretation.css';
+
+const s = SOURCES;
+---
+
+<!-- REVIEW: new copy for Craig's review. -->
+<section class="interpretation" aria-labelledby="understanding-ogs">
+	<h2 id="understanding-ogs">Understanding your OGS score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		In the original study of 145 people tested in the Mayo autonomic laboratory, the five questions hung together well
+		(alpha 0.91), and scores tracked laboratory measures of autonomic function, most closely the adrenergic (blood
+		pressure control) part (<a href={s.schrezenmaier.href} rel="noopener">{s.schrezenmaier.label}</a>).
+	</p>
+	<p>{FAQ.pots.a} (<a href={s.knoop.href} rel="noopener">{s.knoop.label}</a>)</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.high.a}</p>
+	<p>
+		The thresholds of 4 and 9 are as stated by <a href={s.slomko.href} rel="noopener">{s.slomko.label}</a>; we could not
+		check them against the full text of the original paper. Mild, moderate and severe labels sometimes quoted for the OGS
+		have no published thresholds we could verify, so they are not used here.
+	</p>
+	<table class="interp-table">
+		<caption>Average OGS totals in published studies</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">People</th><th scope="col">Average</th><th scope="col">Source</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => (
+				<tr><th scope="row">{r.group}</th><td>{r.n}</td><td>{r.mean}</td><td><a href={s[r.source].href} rel="noopener">{s[r.source].label}</a></td></tr>
+			))}
+		</tbody>
+	</table>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		Your saved results above keep the history on this device; keep your
+		<a href="/tools/trackers/stand-test-logger/">stand test</a> readings alongside.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		The <a href="/tools/nasa-lean-test/">NASA lean test</a> records those readings at home, and the
+		<a href="/evidence/30-bpm-threshold-pots/">30 bpm threshold explainer</a> covers what they mean. The
+		<a href="/tools/malmo-pots-score/">Malmö POTS score</a> covers a wider set of symptoms over the past week.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring your total, the date, your answer to the standing-time question and, if you have it, the trend from your saved
+		results. Describe the OGS as a five-question Mayo Clinic scale for symptoms on standing, used in POTS and ME/CFS
+		research. A score of 9 or more, with symptoms on standing, supports asking for a lying and standing blood pressure and
+		heart rate check. It does not show what is causing the symptoms. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Schrezenmaier C, Gehrking JA, Hines SM, Low PA, Benrud-Larson LM, Sandroni P. Evaluation of orthostatic hypotension: relationship of a new self-report instrument to laboratory-based measures. <em>Mayo Clin Proc</em> 2005;80(3):330–334. <a href={s.schrezenmaier.href} rel="noopener">Article</a></li>
+		<li>Słomko J, et al. Autonomic phenotypes in chronic fatigue syndrome (CFS) are associated with illness severity: a cluster analysis. <em>J Clin Med</em> 2020;9(8):2531. <a href={s.slomko.href} rel="noopener">Full text</a></li>
+		<li>Knoop I, et al. Validation of symptom measures in patients under investigation for postural orthostatic tachycardia syndrome (POTS): the Orthostatic Grading Scale (OGS) and the Symptom Screen for Small-fiber Polyneuropathy (SSS). <em>Auton Neurosci</em> 2023. <a href={s.knoop.href} rel="noopener">Article</a></li>
+		<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
+		<li>Peebles KC, et al. The prevalence and impact of orthostatic intolerance in young women across the hypermobility spectrum. <em>Am J Med Genet A</em> 2022;188(6):1761. <a href={s.peebles.href} rel="noopener">Full text</a></li>
+		<li>McDonald C, Koshi S, Busner L, Kavi L, Newton JL. Postural tachycardia syndrome is associated with significant symptoms and functional impairment predominantly affecting young women: a UK perspective. <em>BMJ Open</em> 2014;4:e004127. <a href={s.mcdonald.href} rel="noopener">Full text</a></li>
+		<li>Domingo JC, et al. Association of circulating biomarkers with illness severity measures differentiates myalgic encephalomyelitis/chronic fatigue syndrome and post-COVID-19 condition: a prospective pilot cohort study. <em>J Transl Med</em> 2024;22:343. <a href={s.domingo.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>

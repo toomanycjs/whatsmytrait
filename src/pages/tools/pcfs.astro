@@ -1,33 +1,12 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import PcfsInterpretation from '../../components/interpretation/Pcfs.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/pcfs.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
-const grades = [
-	{
-		grade: 0,
-		name: 'No functional limitations',
-		desc: 'No symptoms and no limitations in everyday life related to the infection.',
-	},
-	{
-		grade: 1,
-		name: 'Negligible limitations',
-		desc: 'You can perform all usual duties and activities, although you still have persistent symptoms, pain, depression or anxiety.',
-	},
-	{
-		grade: 2,
-		name: 'Slight limitations',
-		desc: 'You occasionally need to avoid or reduce usual duties and activities, or spread them over time, due to symptoms. You can perform all activities without assistance.',
-	},
-	{
-		grade: 3,
-		name: 'Moderate limitations',
-		desc: 'You are not able to perform all usual duties and activities due to symptoms, but you can take care of yourself without assistance.',
-	},
-	{
-		grade: 4,
-		name: 'Severe limitations',
-		desc: 'You need assistance with activities of daily living: you are dependent on nursing care and/or assistance from another person due to symptoms.',
-	},
-];
+const jsonLd = toolJsonLd('Post-COVID-19 Functional Status scale', '/tools/pcfs/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -35,41 +14,7 @@ const grades = [
 	description="Find your PCFS grade in under a minute. The Post-COVID-19 Functional Status scale grades the functional impact of long COVID from 0 (no limitations) to 4 (severe limitations), with each step explained."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Post-COVID-19 Functional Status scale", "item": "https://www.postviralrecovery.com/tools/pcfs/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the PCFS scale?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Post-COVID-19 Functional Status (PCFS) scale is a simple ordinal scale proposed by Klok and colleagues in 2020 to measure how much everyday functioning is affected after COVID-19. It has five grades, from 0 (no functional limitations) to 4 (severe limitations, needing assistance with daily living). It has been translated into more than 25 languages and is widely used in long COVID research and rehabilitation."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What do the PCFS grades mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Grade 0: no limitations. Grade 1: symptoms persist but all usual activities can be performed. Grade 2: usual activities occasionally need to be reduced, avoided, or spread over time. Grade 3: not able to perform all usual activities. Grade 4: needing assistance with activities of daily living. Grades 2 and above generally indicate a level of limitation worth discussing with a clinician or rehabilitation service."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Is the PCFS a measure of symptom severity?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. It deliberately measures functional consequences rather than symptoms. Two people with the same symptom list can have very different PCFS grades depending on how much their daily life is limited. For symptom-level detail, pair it with a symptom questionnaire; for fine-grained functional capacity in ME/CFS-type illness, the FUNCAP questionnaire is more detailed."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -131,60 +76,58 @@ const grades = [
 					<span id="grade-name" class="total-score-label"></span>
 				</div>
 				<p id="grade-desc" class="score-interp"></p>
+				<ScoreHistory toolId="pcfs" toolName="PCFS scale" />
 				<div class="results-buttons">
 					<button type="button" id="restart-btn" class="back-btn">Start again</button>
 				</div>
 			</div>
 
-			<section class="grade-table-section">
-				<h2>The five PCFS grades</h2>
-				<div class="grade-table">
-					{grades.map(g => (
-						<div class="grade-row" data-grade={g.grade}>
-							<div class="grade-num">{g.grade}</div>
-							<div>
-								<p class="grade-name">{g.name}</p>
-								<p class="grade-desc">{g.desc}</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
+			<SharedResults toolId="pcfs" />
 
-			<div class="results-disclaimer">
-				<h3>Using your grade</h3>
-				<p>The PCFS is most useful tracked over time: the authors suggest recording it at discharge or diagnosis, and again at intervals such as 4–8 weeks and 6 months. A grade that is not falling over months is a concrete, communicable signal to raise with your GP or a long COVID service.</p>
-				<p>Grades 2–3 generally indicate a level of limitation where rehabilitation support and pacing advice are appropriate; grade 4 indicates a need for care support. The scale is deliberately coarse, so a stable grade can still hide real change. Pairing it with a more detailed tool such as the <a href="/tools/funcap/">FUNCAP</a> or a <a href="/tools/trackers/symptom-diary/">symptom diary</a> gives you both the headline and the detail.</p>
-			</div>
+			<PcfsInterpretation />
 </Page>
 
 <script>
-const GRADES = [
-	{ grade: 0, name: 'No functional limitations', desc: 'No symptoms and no limitations in everyday life related to the infection. If this changes, re-grade yourself. The scale is designed for repeat use.' },
-	{ grade: 1, name: 'Negligible limitations', desc: 'You still have symptoms, but they do not stop you performing your usual duties and activities. Worth re-checking monthly: a move to grade 2 or above is a signal to seek support.' },
-	{ grade: 2, name: 'Slight limitations', desc: 'You occasionally need to avoid or reduce usual activities or spread them over time. At this level, pacing advice and a structured symptom record start to be genuinely useful. Consider discussing support with your GP.' },
-	{ grade: 3, name: 'Moderate limitations', desc: 'You are not able to perform all usual duties and activities, though you can care for yourself. This level of limitation warrants clinical support. A long COVID service or rehabilitation referral is worth asking about, and documenting your limitations helps.' },
-	{ grade: 4, name: 'Severe limitations', desc: 'You need assistance with activities of daily living. This warrants active clinical involvement and care support. Documenting your functional status (this grade, plus a detailed tool such as FUNCAP) supports referrals and any benefits or insurance assessment.' },
+import { pcfs } from '../../tools/pcfs';
+import { interpretResult } from '../../scripts/results/interpretation';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+// Grade names from the PCFS manual (version 2, July 2020), Table 1.
+const GRADE_NAMES = [
+	'No functional limitations',
+	'Negligible functional limitations',
+	'Slight functional limitations',
+	'Moderate functional limitations',
+	'Severe functional limitations',
 ];
+
+// REVIEW: Layer 1 copy. interpretResult gives the grade's meaning from the
+// config bands; this adds what the validation study found at that grade
+// (Machado et al. 2021). The old per-grade advice ("warrants clinical
+// support" and so on) was unsourced and has been removed.
+const GRADE_CONTEXT = (grade: number) => grade <= 1
+	? 'In a study of 1,939 people about three months after COVID-19, people at grades 0 and 1 did not differ in symptoms or quality of life.'
+	: 'In a study of 1,939 people about three months after COVID-19, symptoms and quality of life got steadily worse from grade 2 to grade 4.';
 
 const flow = document.getElementById('flow') as HTMLElement;
 const steps = Array.from(flow.querySelectorAll<HTMLElement>('.flow-step'));
 const results = document.getElementById('results') as HTMLElement;
+const history = mountScoreHistory(pcfs);
+mountSharedResults(pcfs);
 
 function showStep(n: number) {
 	steps.forEach(s => { s.hidden = parseInt(s.dataset.q || '0', 10) !== n; });
 }
 
 function finish(grade: number) {
-	const g = GRADES[grade];
-	(document.getElementById('grade-value') as HTMLElement).textContent = String(g.grade);
-	(document.getElementById('grade-name') as HTMLElement).textContent = g.name;
-	(document.getElementById('grade-desc') as HTMLElement).textContent = g.desc;
+	const name = GRADE_NAMES[grade];
+	(document.getElementById('grade-value') as HTMLElement).textContent = String(grade);
+	(document.getElementById('grade-name') as HTMLElement).textContent = name;
+	(document.getElementById('grade-desc') as HTMLElement).textContent =
+		[interpretResult(pcfs, { total: grade, subscores: {} }, history.latest()), GRADE_CONTEXT(grade)].filter(Boolean).join(' ');
 	flow.hidden = true;
 	results.hidden = false;
-	document.querySelectorAll<HTMLElement>('.grade-row').forEach(row => {
-		row.classList.toggle('active', parseInt(row.dataset.grade || '-1', 10) === grade);
-	});
+	history.record({ total: grade, subscores: {}, summary: `PCFS grade ${grade} out of 4 (${name.toLowerCase()})` });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -207,7 +150,6 @@ flow.addEventListener('click', (e) => {
 document.getElementById('restart-btn')?.addEventListener('click', () => {
 	results.hidden = true;
 	flow.hidden = false;
-	document.querySelectorAll('.grade-row.active').forEach(r => r.classList.remove('active'));
 	showStep(0);
 	flow.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
@@ -259,35 +201,6 @@ document.getElementById('restart-btn')?.addEventListener('click', () => {
 	}
 	.results-buttons { margin-top: 0.5em; }
 
-	.grade-table-section h2 { margin-bottom: 0.75em; }
-	.grade-table { display: flex; flex-direction: column; gap: 0.6em; margin-bottom: 2em; }
-	.grade-row {
-		display: flex;
-		gap: 1em;
-		align-items: flex-start;
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 8px;
-		padding: 0.9em 1.2em;
-	}
-	.grade-row.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
-	.grade-num {
-		flex: 0 0 auto;
-		width: 1.9em; height: 1.9em; line-height: 1.9em;
-		text-align: center;
-		background: var(--tools-bg); color: var(--tools);
-		border-radius: 6px; font-weight: 700;
-	}
-	.grade-row.active .grade-num { background: var(--accent); color: #fff; }
-	.grade-name { font-weight: 700; margin: 0 0 0.15em; }
-	.grade-desc { margin: 0; font-size: 0.88em; color: rgb(var(--gray-dark)); line-height: 1.5; }
-
-	.results-disclaimer {
-		font-size: 0.88em; color: rgb(var(--gray-dark));
-		border-top: 1px solid rgb(var(--gray-light)); padding-top: 1.5em;
-		line-height: 1.6;
-	}
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-top: 0; margin-bottom: 0.5em; }
-	.results-disclaimer a { color: var(--accent); }
 	.back-btn {
 		background: none; border: 1px solid rgb(var(--gray-light));
 		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;

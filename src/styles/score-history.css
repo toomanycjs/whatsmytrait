@@ -1,0 +1,101 @@
+/* Score history, export, reminders and shared results. Global because the
+   table and chart are created by script. Uses the site's colour tokens. */
+
+.score-history {
+	margin: 2em 0;
+	padding-top: 1.5em;
+	border-top: 1px solid rgb(var(--gray-light));
+}
+.score-history[hidden],
+.score-history [hidden] { display: none !important; }
+.score-history h2,
+.score-history h3 { margin: 0 0 0.6em; }
+.score-history h2:focus,
+.score-history h3:focus,
+.sh-notice:focus { outline: none; }
+
+.sh-notice:empty { display: none; }
+.sh-notice {
+	margin: 0 0 1.25em;
+	padding: 0.6em 0.9em;
+	background: var(--accent-light);
+	border-radius: 4px;
+	font-size: 0.95em;
+}
+
+.sh-comparison { font-weight: 700; margin: 0 0 1em; }
+.sh-first { margin: 0 0 1em; }
+
+.sh-table-scroll { overflow-x: auto; margin: 0 0 1em; }
+.sh-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+.sh-table caption { text-align: left; font-weight: 700; padding: 0 0 0.5em; color: rgb(var(--gray-dark)); }
+.sh-table th, .sh-table td { white-space: nowrap; }
+.sh-table tbody th { font-weight: 400; }
+
+.sh-chart { display: block; width: 100%; height: auto; max-width: 600px; margin: 0.5em 0 1em; }
+.sh-chart .sh-grid { stroke: rgb(var(--gray-light)); stroke-width: 1; }
+.sh-chart .sh-line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; }
+.sh-chart .sh-point { fill: var(--accent); }
+.sh-chart .sh-axis { fill: rgb(var(--gray)); font-size: 15px; }
+.sh-chart .sh-value { fill: rgb(var(--gray-dark)); font-size: 16px; font-weight: 700; }
+
+.sh-delete-all { margin: 0 0 1.5em; }
+
+.sh-reminder {
+	margin: 1.5em 0;
+	padding: 0.9em 1.1em;
+	border: 1px solid rgb(var(--gray-light));
+	border-radius: 6px;
+}
+.sh-reminder p { margin: 0 0 0.75em; }
+
+.sh-actions { display: flex; flex-wrap: wrap; gap: 0.6em; align-items: center; }
+
+.score-history .sh-btn {
+	display: inline-block;
+	background: none;
+	border: 1px solid rgb(var(--gray-light));
+	padding: 0.55em 1.1em;
+	border-radius: 5px;
+	font: inherit;
+	font-size: 0.92em;
+	color: rgb(var(--gray-dark));
+	cursor: pointer;
+	text-decoration: none;
+	width: auto;
+}
+.score-history .sh-btn:hover { border-color: var(--accent); color: var(--accent); }
+.score-history .sh-btn:disabled { opacity: 0.6; cursor: default; }
+.score-history .sh-btn-danger { border-color: #b42318; color: #b42318; }
+
+.score-history .sh-link {
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	color: var(--accent);
+	text-decoration: underline;
+	cursor: pointer;
+	width: auto;
+}
+.sh-confirm { display: inline-flex; flex-wrap: wrap; gap: 0.5em; align-items: center; }
+.sh-confirm-q { font-size: 0.95em; }
+
+.sh-export { margin: 1.5em 0 0; }
+.sh-export-status, .sh-save-status { font-size: 0.9em; color: rgb(var(--gray)); margin: 0.6em 0 0; min-height: 1.2em; }
+.sh-privacy { font-size: 0.85em; color: rgb(var(--gray)); margin: 1.25em 0 0; }
+.sh-my-results { margin: 1em 0 0; }
+
+/* Printing a result: keep the table and chart, drop the controls. */
+@media print {
+	.score-history .sh-notice,
+	.score-history .sh-actions,
+	.score-history .sh-reminder,
+	.score-history .sh-export,
+	.score-history .sh-delete-all,
+	.score-history .sh-privacy,
+	.score-history .sh-my-results,
+	.sh-table .sh-noprint,
+	.my-results .mr-tool-foot,
+	.my-results .mr-actions { display: none !important; }
+}

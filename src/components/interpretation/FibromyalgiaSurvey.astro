@@ -1,0 +1,51 @@
+---
+// REVIEW: Layer 2 interpretation for the 2016 fibromyalgia survey, drafted for
+// Craig's review. FAQ answers come from fibromyalgia-survey.content.ts and are
+// shown word for word.
+import { FAQ, SOURCES } from '../../tools/fibromyalgia-survey.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-fibromyalgia">
+	<h2 id="understanding-fibromyalgia">Understanding your fibromyalgia survey score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		The criteria were revised in 2016 to combine the clinician and self-report versions and to stop pain confined to one
+		part of the body from counting as fibromyalgia (<a href={s.wolfe2016.href} rel="noopener">{s.wolfe2016.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.criteria.a}</p>
+	<p>{FAQ.bands.a}</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		It does not measure fatigue in depth, post-exertional malaise or joint hypermobility, all of which overlap with
+		fibromyalgia in post-viral illness. The <a href="/tools/fss/">Fatigue Severity Scale</a>, the
+		<a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a> and the
+		<a href="/tools/beighton-score/">Beighton score</a> cover those.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the severity score, the pain index and symptom score, the body areas you ticked, and the date; the copied text
+		from your result has all of these. In the UK, fibromyalgia is usually assessed by a GP or rheumatologist, and NICE
+		guidance on chronic primary pain (<a href={s.nice.href} rel="noopener">{s.nice.label}</a>) covers it. The 2016 criteria
+		are widely recognised, but say that this was the self-report version, which supports a conversation rather than
+		replacing an assessment. See also <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Wolfe F, Clauw DJ, Fitzcharles MA, et al. 2016 revisions to the 2010/2011 fibromyalgia diagnostic criteria. <em>Semin Arthritis Rheum</em> 2016;46(3):319–29. <a href={s.wolfe2016.href} rel="noopener">Article</a></li>
+		<li>Wolfe F, Walitt BT, Rasker JJ, Katz RS, Häuser W. The use of polysymptomatic distress categories in the evaluation of fibromyalgia (FM) and FM severity. <em>J Rheumatol</em> 2015;42(8):1494–501. <a href={s.wolfe2015.href} rel="noopener">Abstract</a></li>
+		<li>National Institute for Health and Care Excellence. Chronic pain (primary and secondary) in over 16s (NG193). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+	</ul>
+</section>

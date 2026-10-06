@@ -1,5 +1,10 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import HedsInterpretation from '../../components/interpretation/HedsCriteria.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/heds-criteria.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const featureA = [
 	{ id: 'a1', text: 'Unusually soft or velvety skin', clinical: false },
@@ -35,6 +40,8 @@ const prerequisites = [
 	{ id: 'p2', text: 'Exclusion of other heritable and acquired connective tissue disorders, including autoimmune rheumatological conditions' },
 	{ id: 'p3', text: 'Exclusion of alternative diagnoses that may also involve joint hypermobility through low muscle tone or connective tissue laxity, such as neuromuscular disorders (e.g. Bethlem myopathy), other hereditary connective tissue disorders (other EDS types, Loeys-Dietz syndrome, Marfan syndrome), and skeletal dysplasias (e.g. osteogenesis imperfecta)' },
 ];
+
+const jsonLd = toolJsonLd('hEDS diagnostic criteria', '/tools/heds-criteria/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -42,41 +49,7 @@ const prerequisites = [
 	description="Walk through the 2017 international diagnostic criteria for hypermobile Ehlers-Danlos syndrome step by step: Beighton score and the five-part questionnaire, the 12 Feature A signs, family history, musculoskeletal features, and the three exclusion prerequisites. Free, private, and clearly not a diagnosis."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "hEDS diagnostic criteria", "item": "https://www.postviralrecovery.com/tools/heds-criteria/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What are the 2017 hEDS diagnostic criteria?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 international criteria for hypermobile Ehlers-Danlos syndrome require all three of: Criterion 1, generalised joint hypermobility on the Beighton score (6 or more before puberty, 5 or more up to age 50, 4 or more over 50, with the five-part questionnaire used when the score is one point short); Criterion 2, two or more of Feature A (five or more of 12 systemic signs), Feature B (a first-degree relative meeting the criteria) and Feature C (chronic limb pain, widespread pain, or recurrent atraumatic dislocations or instability); and Criterion 3, exclusion of unusual skin fragility, other connective tissue disorders, and alternative causes of hypermobility."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Can I diagnose hEDS myself with this checklist?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. Several items, including atrophic scarring, mitral valve prolapse, aortic root dilatation, and all of Criterion 3, require clinical examination, imaging, or genetic testing. This checklist shows how your answers map onto the published criteria so you can have an informed conversation with a clinician. Hypermobile EDS is a clinical diagnosis made by a doctor after excluding other conditions."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What if I have hypermobility but do not meet the hEDS criteria?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The 2017 framework introduced hypermobility spectrum disorders (HSD) for people with symptomatic joint hypermobility who do not meet the full hEDS criteria. HSD is not a lesser diagnosis; symptom burden and management are similar, and the criteria were deliberately made strict for hEDS to support research into its genetic basis."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -257,11 +230,12 @@ const prerequisites = [
 
 				<div class="results-disclaimer">
 					<h3>Reading this result</h3>
-					<p>hEDS requires Criteria 1, 2, and 3 simultaneously. Criteria 1 and 2 can be substantially self-assessed, which is what this page does; Criterion 3 cannot. A clinician also verifies the Feature A signs during examination, and the Beighton score is more reliable when a clinician measures it with a goniometer. Treat the result as a structured summary to bring to an appointment, not a conclusion.</p>
-					<p>If you have generalised joint hypermobility with symptoms but do not meet the full criteria, the 2017 framework describes this as a <strong>hypermobility spectrum disorder (HSD)</strong>. The management of HSD and hEDS is the same, and the strictness of the hEDS criteria is deliberate: it was designed to define a tighter group for genetic research.</p>
-					<p>People with hypermobility often also have orthostatic symptoms. The <a href="/tools/nasa-lean-test/">NASA lean test</a> records the heart-rate response a POTS assessment needs, and the <a href="/tools/compass-31/">COMPASS-31</a> profiles autonomic symptoms across six domains.</p>
+					<!-- REVIEW: HSD and POTS paragraphs moved to the "Understanding your hEDS criteria checklist result" section below -->
+					<p>hEDS requires Criteria 1, 2, and 3 simultaneously. Criteria 1 and 2 can be substantially self-assessed, which is what this page does; Criterion 3 cannot. A clinician also verifies the Feature A signs during examination, and the published method measures each Beighton joint with a goniometer. Treat the result as a structured summary to bring to an appointment, not a conclusion.</p>
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your GP, a rheumatologist, or a clinical geneticist.</p>
 				</div>
+
+				<ScoreHistory toolId="heds-criteria" toolName="hEDS criteria checklist" />
 
 				<div class="export-buttons">
 					<button type="button" id="copy-btn" class="btn-secondary">Copy results as text</button>
@@ -270,10 +244,19 @@ const prerequisites = [
 				</div>
 				<p id="copy-confirm" class="copy-confirm" hidden>Results copied to clipboard.</p>
 			</div>
+
+			<SharedResults toolId="heds-criteria" />
+
+			<HedsInterpretation />
 </Page>
 
 <script>
 import { trackStep } from '../../scripts/pageview';
+import { hedsCriteria, hedsOutcome } from '../../tools/heds-criteria';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(hedsCriteria);
+mountSharedResults(hedsCriteria);
 
 const FEATURE_A = [
 	{ id: 'a1', short: 'Soft or velvety skin' },
@@ -479,7 +462,7 @@ form.addEventListener('submit', (e) => {
 	let c1Line: string;
 	if (o.beighton >= o.cutoff) c1Line = `Beighton ${o.beighton}/9 meets the cut-off of ${o.cutoff} or more for ${BAND_LABEL[o.band]}.`;
 	else if (o.fivepqUsed && o.c1) c1Line = `Beighton ${o.beighton}/9 is one point below the cut-off of ${o.cutoff}, but ${o.fivepqYes} of 5 "yes" answers on the five-part questionnaire (2 or more needed) make up the difference.`;
-	else if (o.fivepqUsed) c1Line = `Beighton ${o.beighton}/9 is one point below the cut-off of ${o.cutoff}, and ${o.fivepqYes} "yes" answer${o.fivepqYes === 1 ? '' : 's'} on the five-part questionnaire is fewer than the 2 needed.`;
+	else if (o.fivepqUsed) c1Line = `Beighton ${o.beighton}/9 is one point below the cut-off of ${o.cutoff}, and ${o.fivepqYes} "yes" ${o.fivepqYes === 1 ? 'answer' : 'answers'} on the five-part questionnaire ${o.fivepqYes === 1 ? 'is' : 'are'} fewer than the 2 needed.`;
 	else c1Line = `Beighton ${o.beighton}/9 is below the cut-off of ${o.cutoff} or more for ${BAND_LABEL[o.band]} by more than one point, so the five-part questionnaire cannot be applied.`;
 
 	const aLine = o.aMet ? `Feature A met (${o.aYes.length} of 12 signs; 5 needed)` : o.aPossible ? `Feature A undecided (${o.aYes.length} present, ${o.aUnknown.length} unknown; 5 needed)` : `Feature A not met (${o.aYes.length} of 12 signs; 5 needed)`;
@@ -539,6 +522,17 @@ form.addEventListener('submit', (e) => {
 		'',
 		'Self-reported. Not a diagnosis.',
 	].join('\n');
+
+	const subscores = {
+		beighton: o.beighton,
+		featurea: o.aYes.length,
+		c1: o.c1 ? 1 : 0,
+		c2: o.c2Met ? 1 : 0,
+		c3: o.c3Met ? 1 : 0,
+		c2open: c2Status === 'open' ? 1 : 0,
+		c3open: c3Status === 'open' ? 1 : 0,
+	};
+	history.record({ total: null, subscores, band: hedsOutcome({ subscores }) });
 
 	form.hidden = true;
 	results.hidden = false;

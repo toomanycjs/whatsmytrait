@@ -50,7 +50,7 @@ If your breathlessness is accompanied by a significant [heart rate rise on stand
 
 ### The Nijmegen Questionnaire
 
-The [Nijmegen questionnaire](/tools/nijmegen/) is a validated 16-item screening tool for breathing pattern disorder. A score above 23 out of 64 is considered positive. It was designed for BPD, not POTS or dysautonomia, and several of its items (breathlessness on exertion, tight chest, fatigue) are non-specific features of both conditions. A high Nijmegen score supports BPD being present or coexisting, but a positive score does not exclude autonomic breathlessness.
+The [Nijmegen questionnaire](/tools/nijmegen/) is a validated 16-item screening tool for breathing pattern disorder. A score of 23 or more out of 64 (more than 22) is the threshold most often used. It was designed for BPD, not POTS or dysautonomia, and several of its items (shortness of breath, tight chest, dizziness, palpitations) are non-specific features of both conditions. A high Nijmegen score supports BPD being present or coexisting, but a positive score does not exclude autonomic breathlessness.
 
 ### Spirometry and gas transfer
 

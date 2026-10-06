@@ -1,5 +1,12 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import BellInterpretation from '../../components/interpretation/BellScale.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/bell-scale.content';
+import { toolJsonLd } from '../../tools/jsonld';
+
+const jsonLd = toolJsonLd('Bell CFIDS Disability Scale', '/tools/bell-scale/', FAQ_ORDER.map(k => FAQ[k]));
 
 const scaleItems = [
 	{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
@@ -21,31 +28,7 @@ const scaleItems = [
 	description="Rate your functional ability on the Bell CFIDS Disability Scale, the 0–100 scale used in ME/CFS to describe day-to-day function. Free, instant, and interactive, with each level explained in plain language."
 >
 	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Bell CFIDS Disability Scale", "item": "https://www.postviralrecovery.com/tools/bell-scale/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What does the Bell CFIDS Disability Scale measure?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Bell CFIDS Disability Scale is a 0–100 functional capacity rating used in ME/CFS and post-viral communities. Higher scores indicate better functioning. It is designed as a quick, repeatable snapshot of overall activity level and symptom impact."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
@@ -96,20 +79,21 @@ const scaleItems = [
 					<span class="total-score-label">out of 100</span>
 				</div>
 				<p id="score-description" class="score-description-text"></p>
+				<p id="score-neighbours" class="score-neighbours"></p>
 
-				<div class="results-disclaimer">
-  <h3>Understanding your score</h3>
-  <p>The Bell CFIDS Disability Scale runs from 0 to 100 in increments of 10. Each level has a specific description of symptom severity and functional capacity. Higher scores indicate better functioning.</p>
-  <!-- REVIEW: replaced an unsourced "10 points is meaningful" claim; no minimal important change has been published for this scale. -->
-  <p>The scale is most useful as a tracking tool. Noting your score at regular intervals gives you a record that can reveal gradual improvement or decline that might not be obvious day to day. No minimal important change has been published for the Bell scale. Because it moves in steps of 10, one step is the smallest change it can record, and a change is more convincing when it holds over several weeks than when it shows up once.</p>
-  <p>This is a self-assessed measure of functional capacity. It is not a clinical diagnosis or measurement. Discuss your results with your doctor.</p>
-</div>
+				<ScoreHistory toolId="bell-scale" toolName="Bell scale" />
 
 				<button type="button" id="back-btn" class="back-btn">Edit selection</button>
 			</div>
+
+			<SharedResults toolId="bell-scale" />
+
+			<BellInterpretation />
 </Page>
 
 <script>
+	import { bellScale, BELL_SHORT } from '../../tools/bell-scale';
+	import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
 	const SCALE_ITEMS: { value: number; description: string }[] = [
 		{ value: 100, description: 'No symptoms at rest or with exercise. Normal overall activity. Able to work full-time without difficulty.' },
 		{ value: 90, description: 'No symptoms at rest. Mild symptoms with activity. Normal overall activity. Able to work full-time without difficulty.' },
@@ -128,6 +112,19 @@ const scaleItems = [
 	const results = document.getElementById('results') as HTMLElement;
 	const totalEl = document.getElementById('total-score-value') as HTMLElement;
 	const descEl = document.getElementById('score-description') as HTMLElement;
+	const neighboursEl = document.getElementById('score-neighbours') as HTMLElement;
+
+	const history = mountScoreHistory(bellScale);
+	mountSharedResults(bellScale);
+
+	// REVIEW: Layer 1 copy. Names the steps either side of the chosen one, since
+	// the Bell scale has no bands beyond its own descriptions.
+	function neighbours(value: number): string {
+		const parts: string[] = [];
+		if (BELL_SHORT[value + 10]) parts.push(`One step up, ${value + 10}, describes ${BELL_SHORT[value + 10]}.`);
+		if (BELL_SHORT[value - 10]) parts.push(`One step down, ${value - 10}, describes ${BELL_SHORT[value - 10]}.`);
+		return parts.join(' ');
+	}
 
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -143,9 +140,11 @@ const scaleItems = [
 
 		totalEl.textContent = String(value);
 		descEl.textContent = item ? item.description : '';
+		neighboursEl.textContent = neighbours(value);
 
 		form.hidden = true;
 		results.hidden = false;
+		history.record({ total: value, subscores: {}, summary: `Bell scale ${value} out of 100` });
 		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	});
 
@@ -159,6 +158,7 @@ const scaleItems = [
 </script>
 
 <style>
+	.score-neighbours { color: rgb(var(--gray-dark)); line-height: 1.6; margin: 0 0 1.5em; }
 	.tool-header {
 		padding-bottom: 1.5em;
 		border-bottom: 1px solid rgb(var(--gray-light));
@@ -276,14 +276,6 @@ const scaleItems = [
 		border-left: 4px solid var(--accent);
 		border-radius: 4px;
 	}
-	.results-disclaimer {
-		font-size: 0.88em;
-		color: rgb(var(--gray-dark));
-		border-top: 1px solid rgb(var(--gray-light));
-		padding-top: 1.5em;
-		line-height: 1.6;
-	}
-	.results-disclaimer h3 { font-size: 1em; color: rgb(var(--black)); margin-bottom: 0.5em; }
 	.back-btn {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));

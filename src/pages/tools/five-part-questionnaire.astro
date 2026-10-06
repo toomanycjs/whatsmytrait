@@ -1,5 +1,10 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
+import FivePartInterpretation from '../../components/interpretation/FivePartQuestionnaire.astro';
+import { FAQ, FAQ_ORDER } from '../../tools/five-part-questionnaire.content';
+import { toolJsonLd } from '../../tools/jsonld';
 
 const items = [
 	{ id: 'q1', text: 'Can you now (or could you ever) place your hands flat on the floor without bending your knees?' },
@@ -8,6 +13,8 @@ const items = [
 	{ id: 'q4', text: 'As a child or teenager, did your shoulder or kneecap dislocate on more than one occasion?' },
 	{ id: 'q5', text: 'Do you consider yourself “double-jointed”?' },
 ];
+
+const jsonLd = toolJsonLd('Five-part questionnaire (5PQ)', '/tools/five-part-questionnaire/', FAQ_ORDER.map(k => FAQ[k]));
 ---
 
 <Page
@@ -15,57 +22,23 @@ const items = [
 	description="Answer the five yes/no questions of the Hakim and Grahame five-part questionnaire and see whether you screen positive for joint hypermobility, including past hypermobility the Beighton score misses. Free, instant, with the hEDS criteria rule explained."
 >
 	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Five-part questionnaire (5PQ)", "item": "https://www.postviralrecovery.com/tools/five-part-questionnaire/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the five-part questionnaire for hypermobility?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The five-part questionnaire (5PQ) is a five-item yes/no screen for generalised joint hypermobility published by Hakim and Grahame in 2003. Two or more yes answers is a positive screen. In the original study it identified 84% of hypermobile cases with 89% specificity. Because it asks what you can do now or could ever do, it captures hypermobility that has faded with age or injury."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is the 5PQ used in the hEDS diagnostic criteria?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Under the 2017 hypermobile Ehlers-Danlos syndrome criteria, if your Beighton score is exactly one point below the age-specific cut-off, a positive 5PQ (two or more yes answers) allows generalised joint hypermobility to be recorded for Criterion 1. It does not replace the Beighton score when the score is further below the cut-off."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Is a positive 5PQ a diagnosis of hypermobility or EDS?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. It is a screening questionnaire. A positive result suggests generalised joint hypermobility is likely and worth assessing with the Beighton score and a clinical examination. It says nothing on its own about hEDS or a hypermobility spectrum disorder, which require further criteria and exclusion of other conditions."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</Fragment>
 			<div class="tool-header">
 				<a href="/tools" class="section-label tools">Tools</a>
 				<h1>Five-part questionnaire for hypermobility (5PQ)</h1>
 				<p class="subtitle">Five yes/no questions that pick up hypermobility, including hypermobility you used to have</p>
 				<p class="description">
-					The five-part questionnaire was published by Alan Hakim and Rodney Grahame in 2003 as a quick way to identify generalised joint hypermobility without a physical examination. It asks five yes/no questions, and <strong>two or more "yes" answers</strong> is a positive screen. In the original study of 212 hypermobile patients and 57 controls it had a sensitivity of <strong>84%</strong> and a specificity of <strong>89%</strong>; a replication cohort gave 84% and 80%.
+					The five-part questionnaire was published by Alan Hakim and Rodney Grahame in 2003 as a quick way to identify generalised joint hypermobility without a physical examination. It asks five yes/no questions, and <strong>two or more "yes" answers</strong> is a positive screen. In the original study of 212 hypermobile women attending London clinics and 57 healthy volunteers it had a sensitivity of <strong>84%</strong> and a specificity of <strong>89%</strong>; a second clinic group gave 84% and 80%. <!-- REVIEW: wording checked against the Hakim and Grahame 2003 abstract -->
 				</p>
 				<p class="description">
-					Its particular value is the phrase <em>"or could you ever"</em>. The <a href="/tools/beighton-score/">Beighton score</a> measures joint range today, and joints stiffen with age, injury, and surgery. Someone who was markedly hypermobile at 20 can fail the Beighton cut-off at 45 while still carrying the connective tissue that caused it. The 5PQ was written to capture that history, which is why the 2017 hEDS criteria use it: if your Beighton score is exactly one point below the age cut-off, a positive 5PQ makes up the difference for Criterion 1.
+					Its particular value is the phrase <em>"or could you ever"</em>. The <a href="/tools/beighton-score/">Beighton score</a> measures joint range today, and joints stiffen with age, injury, and surgery. Someone who was markedly hypermobile at 20 can fail the Beighton cut-off at 45. The 5PQ captures that history, which is why the 2017 hEDS criteria use it: if your Beighton score is exactly one point below the Beighton cut-off for your group, a positive 5PQ makes up the difference for Criterion 1. <!-- REVIEW: trimmed an unsourced clause -->
 				</p>
 				<p class="description">
 					It takes under a minute. If you screen positive, the next steps are the <a href="/tools/beighton-score/">Beighton score</a> for today's joint range and, if hEDS is a question, the <a href="/tools/heds-criteria/">2017 hEDS criteria checker</a>, which uses both.
 				</p>
 				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A positive screen suggests generalised joint hypermobility is likely; it does not diagnose hypermobile EDS, a hypermobility spectrum disorder, or anything else. The validation studies were in adults, mostly women attending rheumatology clinics, and later general-population studies found lower specificity (61–77%), so false positives are common. Discuss your result with your doctor. Based on: Hakim AJ, Grahame R. <em>A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain.</em> Int J Clin Pract. 2003;57(3):163–166.
+					<strong>This is not a diagnostic tool.</strong> A positive screen suggests generalised joint hypermobility is likely; it does not diagnose hypermobile EDS, a hypermobility spectrum disorder, or anything else. The original studies were in women attending hypermobility clinics, and later studies outside clinics found lower specificity (75% in Swedish adults, 62% in pregnant women), so false positives are common. It has not been validated in children. Discuss your result with your doctor. Based on: Hakim AJ, Grahame R. <em>A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain.</em> Int J Clin Pract. 2003;57(3):163–166.
 				</div>
 			</div>
 
@@ -96,18 +69,29 @@ const items = [
 				<p id="positives" class="positives"></p>
 
 				<div class="results-disclaimer">
-					<h3>Understanding your result</h3>
-					<p>Two or more "yes" answers is the published threshold for a positive screen. In Hakim and Grahame's clinic cohorts it correctly classified 84% of people; in a Swedish general-population study (Glans 2020) sensitivity was 91% and specificity 75% against an age-adjusted Beighton cut-off, and in a pregnancy cohort specificity fell to 62%. Roughly one in five UK adults screen positive in postal surveys. In other words, a positive 5PQ is common and is a prompt for assessment, not a finding in itself.</p>
-					<p>Under the 2017 hEDS criteria, the 5PQ is only applied when the Beighton score is exactly one point below the cut-off (6 before puberty, 5 up to age 50, 4 over 50). If you have not measured your Beighton score, the <a href="/tools/beighton-score/">illustrated Beighton tool</a> takes a few minutes. The <a href="/tools/heds-criteria/">hEDS criteria checker</a> then applies both rules together with the rest of the criteria.</p>
-					<p>Hypermobility is more common in people with POTS and other forms of orthostatic intolerance. If that describes you, the <a href="/tools/nasa-lean-test/">NASA lean test</a> and the <a href="/tools/compass-31/">COMPASS-31</a> cover the autonomic side.</p>
+					<!-- REVIEW: accuracy figures and the hEDS rule moved to the "Understanding your 5PQ score" section below -->
+					<p>If you have not measured your Beighton score, the <a href="/tools/beighton-score/">illustrated Beighton tool</a> takes a few minutes. The <a href="/tools/heds-criteria/">hEDS criteria checker</a> then applies both scores together with the rest of the criteria. If you also have symptoms on standing, the <a href="/tools/nasa-lean-test/">NASA lean test</a> and the <a href="/tools/compass-31/">COMPASS-31</a> cover the autonomic side.</p>
 					<p><strong>This is not a diagnosis.</strong> Discuss your results with your doctor.</p>
 				</div>
 
+				<ScoreHistory toolId="five-part-questionnaire" toolName="5PQ" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="five-part-questionnaire" />
+
+			<FivePartInterpretation />
 </Page>
 
 <script>
+import { fivePartQuestionnaire } from '../../tools/five-part-questionnaire';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+import { interpretResult } from '../../scripts/results/interpretation';
+
+const history = mountScoreHistory(fivePartQuestionnaire);
+mountSharedResults(fivePartQuestionnaire);
+
 const ITEMS = [
 	{ id: 'q1', short: 'Hands flat on the floor, knees straight (now or ever)' },
 	{ id: 'q2', short: 'Thumb to forearm (now or ever)' },
@@ -139,15 +123,19 @@ form.addEventListener('submit', (e) => {
 	const n = yes.length;
 	(document.getElementById('total-score-value') as HTMLElement).textContent = String(n);
 
-	let interp: string;
+	// REVIEW: Layer 1 copy. The band sentence comes from the tool config via
+	// interpretResult; the page adds what the band means.
+	const subscores = Object.fromEntries(ITEMS.map(it => [it.id, getVal(it.id) ?? 0]));
+	let follow: string;
 	if (n >= 2) {
-		interp = `You answered "yes" to ${n} of the 5 questions, which is at or above the threshold of 2. This is a positive screen for generalised joint hypermobility. It suggests that a Beighton assessment and, if symptoms warrant it, a clinical hypermobility assessment are worthwhile. On its own it is not a diagnosis of any condition.`;
+		follow = 'It suggests that a Beighton assessment and, if you have symptoms, a clinical hypermobility assessment are worthwhile. Outside clinics false positives are common, and on its own it is not a diagnosis of any condition.';
 	} else if (n === 1) {
-		interp = 'You answered "yes" to 1 of the 5 questions, which is below the threshold of 2. This is a negative screen. One positive item is common in the general population and does not indicate generalised hypermobility, though it does not rule out hypermobility in a specific joint.';
+		follow = 'A single "yes" does not indicate generalised hypermobility, though it does not rule out hypermobility in particular joints.';
 	} else {
-		interp = 'You answered "no" to all five questions. This is a negative screen; generalised joint hypermobility is unlikely on this measure. If a clinician has raised hypermobility with you, the Beighton score is the next step regardless.';
+		follow = 'Generalised joint hypermobility is unlikely on this measure. If a clinician has raised hypermobility with you, the Beighton score is the next step regardless.';
 	}
-	(document.getElementById('score-interpretation') as HTMLElement).textContent = interp;
+	(document.getElementById('score-interpretation') as HTMLElement).textContent =
+		[interpretResult(fivePartQuestionnaire, { total: n, subscores }, history.latest()), follow].filter(Boolean).join(' ');
 	(document.getElementById('positives') as HTMLElement).innerHTML = yes.length
 		? `<strong>Items answered yes:</strong> ${yes.map(y => y.short).join('; ')}.`
 		: '';
@@ -155,6 +143,8 @@ form.addEventListener('submit', (e) => {
 	try {
 		localStorage.setItem('pvr-5pq-result', JSON.stringify({ date: new Date().toISOString(), yes: n, answers: Object.fromEntries(ITEMS.map(it => [it.id, getVal(it.id)])) }));
 	} catch { /* storage unavailable */ }
+
+	history.record({ total: n, subscores });
 
 	form.hidden = true;
 	results.hidden = false;

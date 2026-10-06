@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const statements = [
 	'I have felt cheerful and in good spirits',
@@ -116,11 +118,21 @@ const ratings = [
 					<p><strong>This is not a diagnosis.</strong> It reflects the well-being you have reported over two weeks. If you are struggling, tell your GP. If you ever feel unable to keep yourself safe, seek urgent help (in the UK: call 111 option 2, or 999 in an emergency).</p>
 				</div>
 
+				<ScoreHistory toolId="who-5" toolName="WHO-5" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="who-5" />
 </Page>
 
 <script>
+import { who5 } from '../../tools/who-5';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(who5);
+mountSharedResults(who5);
+
 const form = document.getElementById('who5-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
 
@@ -160,6 +172,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total: score, subscores: {} });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 

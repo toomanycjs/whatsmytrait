@@ -1,0 +1,70 @@
+---
+// REVIEW: Layer 2 interpretation for the Chalder Fatigue Scale (CFQ-11),
+// drafted for Craig's review. FAQ answers come from
+// chalder-fatigue-scale.content.ts and are shown word for word (they also
+// feed the page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/chalder-fatigue-scale.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-chalder">
+	<h2 id="understanding-chalder">Understanding your Chalder Fatigue Scale score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.scoring.a}</p>
+	<p>
+		It was developed in UK general practice, where its questions split into physical and mental fatigue
+		(<a href={s.chalder1993.href} rel="noopener">{s.chalder1993.label}</a>); the same split appeared in a later study
+		(<a href={s.cella2010.href} rel="noopener">{s.cella2010.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.normal.a}</p>
+	<table class="interp-table">
+		<caption>Likert reference points (0–33)</caption>
+		<thead>
+			<tr><th scope="col">Score</th><th scope="col">What it is</th><th scope="col">Source</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => <tr><th scope="row">{r.score}</th><td>{r.group}</td><td><a href={s[r.source].href} rel="noopener">{s[r.source].label}</a></td></tr>)}
+		</tbody>
+	</table>
+	<p>
+		There are no published Likert bands. After COVID-19, 46% of the Norwegian group scored 4 or more on bimodal scoring
+		(<a href={s.stavem2021.href} rel="noopener">{s.stavem2021.label}</a>).
+	</p>
+	<p>{FAQ.bimodal.a}</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		The comparison point, "when you were last well", does not move, so after years of illness you are still comparing
+		with your healthy self.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		The <a href="/tools/fss/">Fatigue Severity Scale</a> measures how much fatigue gets in the way. For worsening after
+		effort, use the <a href="/tools/dsq-pem/">DSQ-PEM</a> and see the
+		<a href="/evidence/post-exertional-malaise/">post-exertional malaise explainer</a>.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the Likert total, the physical and mental subscores, the bimodal score, the date and the trend from your saved
+		results. Papers and clinic letters quote either scoring, so give both. Describe it as a widely used 11-question
+		fatigue questionnaire. It can show how much fatigue you report and how that changes; it cannot diagnose ME/CFS or
+		long COVID. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Chalder T, Berelowitz G, Pawlikowska T, et al. Development of a fatigue scale. <em>J Psychosom Res</em> 1993;37(2):147–153. <a href={s.chalder1993.href} rel="noopener">Article</a></li>
+		<li>Cella M, Chalder T. Measuring fatigue in clinical and community settings. <em>J Psychosom Res</em> 2010;69(1):17–22. <a href={s.cella2010.href} rel="noopener">Article</a> (averages as reported by White et al. 2011 and later papers)</li>
+		<li>White PD, Goldsmith KA, Johnson AL, et al. Comparison of adaptive pacing therapy, cognitive behaviour therapy, graded exercise therapy, and specialist medical care for chronic fatigue syndrome (PACE): a randomised trial. <em>Lancet</em> 2011;377(9768):823–836. <a href={s.white2011.href} rel="noopener">Full text</a></li>
+		<li>Stavem K, Ghanima W, Olsen MK, Gilboe HM, Einvik G. Prevalence and determinants of fatigue after COVID-19 in non-hospitalized subjects: a population-based study. <em>Int J Environ Res Public Health</em> 2021;18(4):2030. <a href={s.stavem2021.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>

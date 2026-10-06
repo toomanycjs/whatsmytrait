@@ -1,0 +1,66 @@
+---
+// REVIEW: Layer 2 interpretation for the DSQ-PEM, drafted for Craig's review.
+// FAQ answers come from dsq-pem.content.ts and are shown word for word.
+import { DURATION, FAQ, SOURCES } from '../../tools/dsq-pem.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-dsq-pem">
+	<h2 id="understanding-dsq-pem">Understanding your DSQ-PEM result</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		NICE describes PEM as a worsening of symptoms after activity that is often delayed by hours or days, out of
+		proportion to the activity, and slow to recover from (<a href={s.nice.href} rel="noopener">{s.nice.label}</a>; see
+		the <a href="/evidence/post-exertional-malaise/">PEM explainer</a>). Cotler and colleagues tested the five extra
+		questions as a second step after the symptom questions
+		(<a href={s.cotler2018.href} rel="noopener">{s.cotler2018.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.scoring.a}</p>
+	<table class="interp-table">
+		<caption>How long worsening after activity lasted, by illness (% of each group, Cotler et al. 2018)</caption>
+		<thead>
+			<tr><th scope="col">Duration</th><th scope="col">ME/CFS</th><th scope="col">Multiple sclerosis</th><th scope="col">Post-polio</th></tr>
+		</thead>
+		<tbody>
+			{DURATION.map(r => <tr><th scope="row">{r.duration}</th><td>{r.mecfs}</td><td>{r.ms}</td><td>{r.pps}</td></tr>)}
+		</tbody>
+	</table>
+	<p>{FAQ.recovery.a}</p>
+	<p>
+		Step 1 alone is broad: 99% of the ME/CFS group met it. Only 1.3% of them said they would recover within an hour or
+		two of an exhausting outing, against 42.3% with multiple sclerosis and 38.3% with post-polio syndrome.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>
+		It does not measure how much activity you can manage. The <a href="/tools/funcap/">FUNCAP</a> records what
+		everyday activities cost you, and the <a href="/tools/dsq-2/">DSQ-2</a> checks a full symptom profile against
+		ME/CFS case definitions.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the date, whether PEM was indicated, which symptoms met the threshold, how long the worsening lasts, and your
+		saved results over time. Describe it as a 10-question DePaul questionnaire on post-exertional malaise, whose five
+		symptom questions a US NIH/CDC working group recommended. PEM is one of the four symptoms NICE needs before ME/CFS is
+		suspected, and NICE advises against programmes with fixed incremental increases in exercise, such as graded
+		exercise therapy (recommendation 1.11.14). A positive result is a reason to discuss pacing; it cannot confirm
+		ME/CFS. See <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, including Appendix A (questionnaire) and Appendix B (scoring). <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
+		<li>DePaul University Center for Community Research. DePaul Symptom Questionnaire measures. <a href={s.depaul.href} rel="noopener">{s.depaul.label}</a></li>
+		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+	</ul>
+</section>

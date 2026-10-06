@@ -1,0 +1,60 @@
+---
+// REVIEW: Layer 2 interpretation for the SEBQ, drafted for Craig's review.
+// FAQ answers come from self-evaluation-of-breathing-questionnaire.content.ts
+// and are shown word for word (they also feed the page's FAQPage JSON-LD).
+import { FAQ, SOURCES } from '../../tools/self-evaluation-of-breathing-questionnaire.content';
+import '../../styles/interpretation.css';
+const s = SOURCES;
+---
+
+<section class="interpretation" aria-labelledby="understanding-sebq">
+	<h2 id="understanding-sebq">Understanding your SEBQ score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		A 17-statement first version was tested in 83 adults
+		(<a href={s.courtney2009.href} rel="noopener">{s.courtney2009.label}</a>). The 25-statement version was very
+		consistent when repeated two weeks apart, and smoking, respiratory disease, a recent respiratory illness and being
+		female were linked with higher scores (<a href={s.mitchell2016.href} rel="noopener">{s.mitchell2016.label}</a>).
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.normal.a}</p>
+	<p>
+		The study that used 25 said plainly that no cut-off had been established
+		(<a href={s.kiesel2017.href} rel="noopener">{s.kiesel2017.label}</a>), so this page does not sort scores into bands.
+		Compare your total with your own earlier results.
+	</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.diagnosis.a}</p>
+	<p>{FAQ.nijmegen.a}</p>
+	<p>
+		The <a href="/tools/nijmegen/">Nijmegen questionnaire</a> covers the wider symptoms. The
+		<a href="/evidence/breathing-pattern-disorder-vs-autonomic-breathlessness/">breathing pattern disorder versus
+		autonomic breathlessness explainer</a> covers the overlap with POTS, and
+		<a href="/testing/diaphragmatic-breathing/">diaphragmatic breathing</a> describes one approach to retraining.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the total, the date, the statements you rated 2 or 3, your Nijmegen score if you have one, and the trend from
+		your saved results. Describe it as a 25-item research questionnaire about breathing
+		sensations. It can support a request for referral to a respiratory physiotherapist. Breathlessness that is new,
+		worsening or severe, or comes with chest pain, swelling or low oxygen readings, needs a medical assessment whatever
+		the score. See
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Courtney R, Greenwood KM. Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ). <em>Int J Osteopath Med</em> 2009;12(4):121–127. <a href={s.courtney2009.href} rel="noopener">Article</a></li>
+		<li>Mitchell AJ, Bacon CJ, Moran RW. Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score: a symptoms-based measure of dysfunctional breathing. <em>Appl Psychophysiol Biofeedback</em> 2016;41(1):111–120. <a href={s.mitchell2016.href} rel="noopener">Article</a></li>
+		<li>Kiesel K, Rhodes T, Mueller J, Waninger A, Butler R. Development of a screening protocol to identify individuals with dysfunctional breathing. <em>Int J Sports Phys Ther</em> 2017;12(5):774–786. <a href={s.kiesel2017.href} rel="noopener">Full text</a></li>
+		<li>Bondarenko J, Grillo L, Denton E, Button B, Hew M, Holland A. Breathing pattern disorder: assessment and diagnosis. <em>ERJ Open Res</em> 2026. <a href={s.bondarenko2026.href} rel="noopener">Full text</a></li>
+	</ul>
+</section>

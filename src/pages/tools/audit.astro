@@ -1,5 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ScoreHistory from '../../components/ScoreHistory.astro';
+import SharedResults from '../../components/SharedResults.astro';
 
 const freq = ['Never', 'Less than monthly', 'Monthly', 'Weekly', 'Daily or almost daily'];
 const yesNo = [
@@ -109,7 +111,7 @@ const questions = [
 			</div>
 
 			<form id="audit-form" novalidate>
-				<p class="form-instructions">Because alcohol use can affect your health and can interfere with certain medications and treatments, it is important to answer honestly. Your answers stay on this page and are not stored or sent anywhere.</p>
+				<p class="form-instructions">Because alcohol use can affect your health and can interfere with certain medications and treatments, it is important to answer honestly. Your answers are never sent anywhere. Your score is saved only in this browser, and you can delete it at any time.</p><!-- REVIEW: updated now that results are saved on the device -->
 
 				<div class="question-grid">
 					{questions.map((q, i) => (
@@ -151,11 +153,21 @@ const questions = [
 					<p><strong>This is not a diagnosis.</strong> If your score is 8 or more, or if you are worried about your drinking regardless of the number, talk to your GP. In the UK, <a href="https://www.nhs.uk/live-well/alcohol-advice/" rel="noopener">NHS alcohol advice</a> and <a href="https://www.drinkaware.co.uk/" rel="noopener">Drinkaware</a> offer confidential support. If you have been drinking heavily every day, do not stop suddenly without medical advice, as withdrawal can be dangerous.</p>
 				</div>
 
+				<ScoreHistory toolId="audit" toolName="AUDIT" />
+
 				<button type="button" id="back-btn" class="back-btn">Edit answers</button>
 			</div>
+
+			<SharedResults toolId="audit" />
 </Page>
 
 <script>
+import { audit } from '../../tools/audit';
+import { mountScoreHistory, mountSharedResults } from '../../scripts/results/scoreHistory';
+
+const history = mountScoreHistory(audit);
+mountSharedResults(audit);
+
 const form = document.getElementById('audit-form') as HTMLFormElement;
 const results = document.getElementById('results') as HTMLElement;
 const skipNote = document.getElementById('skip-note') as HTMLElement;
@@ -227,6 +239,7 @@ form.addEventListener('submit', (e) => {
 
 	form.hidden = true;
 	results.hidden = false;
+	history.record({ total, subscores: { consumption, dependence, harm } });
 	results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 

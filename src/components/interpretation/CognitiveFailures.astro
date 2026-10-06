@@ -1,0 +1,76 @@
+---
+// REVIEW: Layer 2 interpretation for the Cognitive Failures Questionnaire,
+// drafted for Craig's review. Static, always visible, rendered at build time.
+// FAQ answers come from cognitive-failures-questionnaire.content.ts and are
+// shown word for word (they also feed the page's FAQPage JSON-LD).
+import { FAQ, REFERENCE, SOURCES } from '../../tools/cognitive-failures-questionnaire.content';
+import '../../styles/interpretation.css';
+
+const s = SOURCES;
+---
+
+<!-- REVIEW -->
+<section class="interpretation" aria-labelledby="understanding-cfq">
+	<h2 id="understanding-cfq">Understanding your Cognitive Failures Questionnaire score</h2>
+
+	<h3 id="what-it-measures">What the score measures</h3>
+	<p>{FAQ.measures.a}</p>
+	<p>
+		The forgetfulness, distractibility and blunders figures are averages of item groups. Studies group the items
+		differently, and an analysis of 839 adults found the total fitted best and advised against subscales
+		(<a href={s.goodman.href} rel="noopener">{s.goodman.label}</a>). Treat them as a rough guide.
+	</p>
+
+	<h3 id="score-bands">Score bands</h3>
+	<p>{FAQ.normal.a}</p>
+	<table class="interp-table">
+		<caption>Average CFQ totals in published studies (number of people in brackets)</caption>
+		<thead>
+			<tr><th scope="col">Group</th><th scope="col">Average</th><th scope="col">Source</th></tr>
+		</thead>
+		<tbody>
+			{REFERENCE.map(r => (
+				<tr><td>{r.group}</td><td>{r.mean}</td><td><a href={s[r.source].href} rel="noopener">{s[r.source].label}</a></td></tr>
+			))}
+		</tbody>
+	</table>
+	<p>The studies used different recall periods, so compare loosely.</p>
+
+	<h3 id="change">What a change in score means</h3>
+	<p>{FAQ.change.a}</p>
+	<p>
+		Broadbent's team also found scores stable over long periods
+		(<a href={s.broadbent.href} rel="noopener">{s.broadbent.label}</a>). With no published figure, one Dutch study used a
+		10-point change as its own threshold (<a href={s.coflow.href} rel="noopener">{s.coflow.label}</a>): a reasonable rule of
+		thumb, not a validated one.
+	</p>
+
+	<h3 id="what-it-does-not-measure">What it does not measure</h3>
+	<p>{FAQ.impairment.a}</p>
+	<p>
+		It does not measure mental fatigue or what thinking costs you afterwards: see the
+		<a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a>, the <a href="/tools/dsq-pem/">DSQ-PEM</a> and the
+		<a href="/evidence/post-exertional-malaise/">post-exertional malaise explainer</a>.
+	</p>
+
+	<h3 id="taking-it-to-your-gp">Taking this to your GP or consultant</h3>
+	<p>
+		Bring the total, the date and the trend from your saved results. Describe the CFQ as a validated 25-question measure
+		of how often everyday lapses happen, widely used in long COVID research, and give two or three examples that matter,
+		such as missed appointments or medication mistakes. It can support a request for a cognitive assessment or work
+		adjustments; it cannot show the cause or confirm impairment. See also
+		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
+	</p>
+
+	<h3 id="sources">Sources</h3>
+	<ul class="interp-sources">
+		<li>Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. The Cognitive Failures Questionnaire (CFQ) and its correlates. <em>Br J Clin Psychol</em> 1982;21(1):1–16. <a href={s.broadbent.href} rel="noopener">DOI</a></li>
+		<li>Goodman ZT, Timpano KR, Llabre MM, Bainter SA. Revisiting the factor structure and construct validity of the Cognitive Failures Questionnaire. <em>Psychol Assess</em> 2022;34(7):671–683. <a href={s.goodman.href} rel="noopener">DOI</a></li>
+		<li>Bland AR, Barraclough M, Trender WR, et al. Profiles of objective and subjective cognitive function in Post-COVID Syndrome, COVID-19 recovered, and COVID-19 naïve individuals. <em>Sci Rep</em> 2024;14:13368. <a href={s.bland.href} rel="noopener">Full text</a></li>
+		<li>Holland J, Brown S, O'Flanagan S, et al. Self-reported immune status and COVID-19 associated subjective cognitive functioning in post-COVID-19 syndrome: examination of an Irish cohort. <em>Brain Behav</em> 2024;14(9):e70027. <a href={s.holland.href} rel="noopener">Full text</a></li>
+		<li>Miskowiak KW, Pedersen JK, Gunnarsson DV, et al. Cognitive impairments among patients in a long-COVID clinic: prevalence, pattern and relation to illness severity, work function and quality of life. <em>J Affect Disord</em> 2023;324:162–169. <a href={s.miskowiak.href} rel="noopener">Full text</a></li>
+		<li>Attree EA, Arroll MA, Dancey CP, et al. Psychosocial factors involved in memory and cognitive failures in people with myalgic encephalomyelitis/chronic fatigue syndrome. <em>Psychol Res Behav Manag</em> 2014;7:67–76. <a href={s.attree.href} rel="noopener">Full text</a></li>
+		<li>Berentschot JC, Bek LM, Drost M, et al. Health outcomes up to 3 years and post-exertional malaise in patients after hospitalization for COVID-19: a multicentre prospective cohort study (CO-FLOW). <em>Lancet Reg Health Eur</em> 2025;53:101290. <a href={s.coflow.href} rel="noopener">Full text</a></li>
+		<li>Bridger RS, et al. Psychometric properties of the Cognitive Failures Questionnaire. <em>Ergonomics</em> 2013;56(10):1515–1524. <a href={s.bridger.href} rel="noopener">DOI</a></li>
+	</ul>
+</section>
