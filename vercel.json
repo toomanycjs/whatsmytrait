@@ -1,3 +1,8 @@
 {
-  "framework": "astro"
+  "framework": "astro",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/tools/trackers/medication-log", "destination": "/tools/", "permanent": true },
+    { "source": "/tools/trackers", "destination": "/tools/", "permanent": true }
+  ]
 }
