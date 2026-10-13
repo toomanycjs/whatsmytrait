@@ -761,15 +761,8 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 .tool-header { margin-bottom: 2.5rem; }
 
 .section-label {
-	display: inline-block;
-	font-size: 0.75rem;
-	font-weight: 600;
-	letter-spacing: 0.06em;
-	text-transform: uppercase;
-	color: #6b7280;
-	text-decoration: none;
-	margin-bottom: 0.75rem;
-}
+		margin-bottom: 0.35em;
+	}
 .section-label:hover { color: #374151; }
 
 h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 1.2; }
@@ -778,7 +771,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .disclaimer {
 	background: #fefce8;
 	border: 1px solid #fde68a;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 1rem 1.25rem;
 	font-size: 0.9rem;
 	line-height: 1.6;
@@ -798,7 +791,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	align-items: flex-start;
 	background: #f9fafb;
 	border: 1px solid #e5e7eb;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 1rem 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.6;
@@ -819,7 +812,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: #1d4ed8;
 	color: #fff;
 	border: none;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.75rem 1.75rem;
 	font-size: 1rem;
 	font-weight: 600;
@@ -836,7 +829,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: #fff;
 	color: #1d4ed8;
 	border: 2px solid #1d4ed8;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.65rem 1.5rem;
 	font-size: 0.95rem;
 	font-weight: 600;
@@ -850,7 +843,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: transparent;
 	color: #6b7280;
 	border: 1px solid #d1d5db;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.65rem 1.5rem;
 	font-size: 0.95rem;
 	cursor: pointer;
@@ -862,7 +855,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: #fff;
 	color: #991b1b;
 	border: 2px solid #fca5a5;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.5rem 1.1rem;
 	font-size: 0.875rem;
 	font-weight: 600;
@@ -893,12 +886,10 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .phase-badge {
 	font-size: 0.8rem;
 	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
 	color: #1d4ed8;
 	background: #eff6ff;
 	border: 1px solid #bfdbfe;
-	border-radius: 999px;
+	border-radius: 3px;
 	padding: 0.3rem 0.9rem;
 }
 
@@ -993,11 +984,9 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	display: inline-block;
 	font-size: 0.7rem;
 	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.07em;
 	background: #dcfce7;
 	color: #166534;
-	border-radius: 999px;
+	border-radius: 3px;
 	padding: 0.2rem 0.75rem;
 	margin-bottom: 0.5rem;
 }
@@ -1040,7 +1029,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	width: 100%;
 	box-sizing: border-box;
 	border: 1.5px solid #d1d5db;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.7rem 0.9rem;
 	font-size: 1.1rem;
 	color: #111827;
@@ -1117,7 +1106,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .transition-note {
 	background: #f0fdf4;
 	border: 1px solid #bbf7d0;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.9rem 1.1rem;
 	font-size: 0.925rem;
 	color: #166534;
@@ -1131,7 +1120,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .stopped-note {
 	background: #fef3c7;
 	border: 1px solid #fcd34d;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.75rem 1rem;
 	font-size: 0.9rem;
 	color: #92400e;
@@ -1149,7 +1138,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
    so anchor them to the static .summary-cards container. */
 .summary-cards :global(.summary-card) {
 	border: 1.5px solid #e5e7eb;
-	border-radius: 12px;
+	border-radius: 3px;
 	padding: 1rem 1.1rem;
 	background: #f9fafb;
 }
@@ -1169,8 +1158,6 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	font-size: 0.8rem;
 	font-weight: 600;
 	color: #6b7280;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 	margin-bottom: 0.35rem;
 }
 .summary-cards :global(.card-detail) { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
@@ -1191,8 +1178,6 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	padding: 0.4rem 0.6rem;
 	border-bottom: 2px solid #e5e7eb;
 	font-size: 0.78rem;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 	color: #6b7280;
 	font-weight: 600;
 }
@@ -1212,7 +1197,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .interpretation-box {
 	background: #f8fafc;
 	border: 1px solid #e2e8f0;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.1rem 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.7;
@@ -1224,7 +1209,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .threshold-box {
 	background: #f9fafb;
 	border: 1px solid #e5e7eb;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.1rem 1.25rem;
 	margin-top: 1.5rem;
 }
@@ -1251,7 +1236,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .results-disclaimer {
 	background: #fefce8;
 	border: 1px solid #fde68a;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.9rem 1.1rem;
 	font-size: 0.875rem;
 	color: #78350f;

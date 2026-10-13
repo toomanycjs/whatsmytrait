@@ -52,7 +52,7 @@ const effectiveModified = lastModified ?? updatedDate;
 				<header class="post-header">
 					<div class="meta">
 						<a href={sectionHref} class={`section-label ${section}`}>{sectionLabel}</a>
-						{series && <span class="series-tag">{series}</span>}
+						{series && <span class="series-tag">{series} series</span>}
 					</div>
 					<h1>{title}</h1>
 					<p class="post-description">{description}</p>
@@ -84,11 +84,12 @@ const effectiveModified = lastModified ?? updatedDate;
 		margin-bottom: 0.75em;
 	}
 	.series-tag {
-		font-size: 0.8em;
+		font-size: 0.82em;
 		color: rgb(var(--gray));
-		background: rgb(var(--gray-light));
-		padding: 0.15em 0.5em;
-		border-radius: 3px;
+	}
+	.series-tag::before {
+		content: "·";
+		margin-right: 0.5em;
 	}
 	h1 {
 		margin: 0 0 0.4em;
@@ -99,6 +100,7 @@ const effectiveModified = lastModified ?? updatedDate;
 		font-size: 1.05em;
 		margin: 0 0 0.75em;
 		line-height: 1.5;
+		text-wrap: pretty;
 	}
 	.dates {
 		font-size: 0.88em;

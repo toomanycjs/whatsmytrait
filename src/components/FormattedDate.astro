@@ -14,7 +14,7 @@ const dateLocale = DATE_LOCALES[isLocale(locale) ? locale : DEFAULT_LOCALE];
 	{
 		date.toLocaleDateString(dateLocale, {
 			year: 'numeric',
-			month: 'short',
+			month: 'long',
 			day: 'numeric',
 		})
 	}

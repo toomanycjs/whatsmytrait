@@ -19,7 +19,7 @@
 	margin: 0 0 1.25em;
 	padding: 0.6em 0.9em;
 	background: var(--accent-light);
-	border-radius: 4px;
+	border-radius: 3px;
 	font-size: 0.95em;
 }
 
@@ -45,7 +45,7 @@
 	margin: 1.5em 0;
 	padding: 0.9em 1.1em;
 	border: 1px solid rgb(var(--gray-light));
-	border-radius: 6px;
+	border-radius: 3px;
 }
 .sh-reminder p { margin: 0 0 0.75em; }
 
@@ -56,7 +56,7 @@
 	background: none;
 	border: 1px solid rgb(var(--gray-light));
 	padding: 0.55em 1.1em;
-	border-radius: 5px;
+	border-radius: 3px;
 	font: inherit;
 	font-size: 0.92em;
 	color: rgb(var(--gray-dark));

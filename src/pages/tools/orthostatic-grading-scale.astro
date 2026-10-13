@@ -223,38 +223,40 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.subtitle { color: rgb(var(--gray)); font-size: 1.05em; margin: 0 0 0.75em; }
 	.description { margin-bottom: 1em; }
 
-	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); background: var(--accent-light); border-radius: 6px; padding: 0.7em 1.1em; margin-bottom: 1.25em; }
+	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); border-radius: 3px; padding: 0.7em 1.1em; margin-bottom: 1.25em;
+		border: 1px solid rgb(var(--gray-light));
+	}
 
-	.symptom { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 0.9em 1.2em; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
+	.symptom { border-top: 1px solid rgb(var(--gray-light)); padding: 0.9em 0; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
 	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
 	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
 	.num { color: rgb(var(--gray)); margin-right: 0.3em; }
 
 	.radio-options { display: flex; flex-direction: column; gap: 0.4em; }
-	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.55em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 6px; cursor: pointer; font-size: 0.9em; line-height: 1.4; }
+	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.55em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; }
 	.radio-label:hover { border-color: var(--accent); }
 	.radio-label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); }
 	.radio-label input { margin-top: 0.25em; flex-shrink: 0; }
 	.pts { display: inline-block; min-width: 1.4em; font-weight: 700; color: var(--accent); }
 
 	.form-footer { display: flex; gap: 1em; padding: 1.5em 0 1em; }
-	button[type="submit"] { background: var(--accent); color: #fff; border: none; padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
+	button[type="submit"] { background: var(--accent); color: #fff; border: none; padding: 0.75em 2em; border-radius: 3px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
 	button[type="submit"]:hover { background: var(--accent-dark); }
-	button[type="button"] { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
+	button[type="button"] { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.5em; border-radius: 3px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
 
 	.results { padding-top: 1em; }
 	.results h2 { margin-bottom: 0.5em; }
 	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
 	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
-	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	#total-score-value { font-family: var(--font-serif); font-size: 3.2em; font-weight: 600; color: rgb(var(--black)); line-height: 1; font-variant-numeric: tabular-nums; }
 	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
-	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 1em 1.25em; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
+	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 0; }
 
 	.chart { display: flex; flex-direction: column; gap: 0.5em; margin: 1em 0; }
 	.chart :global(.chart-row) { display: grid; grid-template-columns: 12em 1fr 2.5em; align-items: center; gap: 0.75em; font-size: 0.88em; }
 	.chart :global(.chart-label) { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
-	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
-	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 3px; height: 1.5em; overflow: hidden; }
+	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 3px; min-width: 2px; transition: width 0.4s ease; }
 	.chart :global(.chart-val) { font-weight: 700; color: var(--accent); text-align: right; }
 	#refchart :global(.chart-bar) { background: rgb(var(--gray)); }
 	#refchart :global(.chart-val) { color: rgb(var(--gray-dark)); }
@@ -263,11 +265,11 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	#refchart :global(.chart-row.you .chart-val) { color: var(--accent); }
 
 	.section-lead { font-size: 0.9em; color: rgb(var(--gray)); margin: 0 0 1em; }
-	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
+	.back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.6em 1.25em; border-radius: 3px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; margin-top: 1.5em; }
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 	@media (max-width: 600px) {
-		.symptom { padding: 0.8em 0.9em; }
+		.symptom { padding: 0.8em 0; }
 		.chart :global(.chart-row) { grid-template-columns: 8em 1fr 2em; gap: 0.5em; font-size: 0.8em; }
 	}
 </style>

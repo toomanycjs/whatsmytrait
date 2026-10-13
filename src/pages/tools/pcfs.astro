@@ -167,9 +167,7 @@ document.getElementById('restart-btn')?.addEventListener('click', () => {
 
 	.flow { margin-bottom: 2.5em; }
 	.flow-step {
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 8px;
-		padding: 1.5em 1.75em;
+		padding: 0.5em 0 1.5em;
 	}
 	.flow-question { font-size: 1.15em; font-weight: 700; margin: 0 0 0.3em; line-height: 1.4; }
 	.flow-hint { color: rgb(var(--gray)); font-size: 0.9em; margin: 0 0 1.25em; }
@@ -179,7 +177,7 @@ document.getElementById('restart-btn')?.addEventListener('click', () => {
 		font-size: 1em;
 		font-weight: 700;
 		padding: 0.65em 2.5em;
-		border-radius: 5px;
+		border-radius: 3px;
 		border: 1px solid var(--accent);
 		background: none;
 		color: var(--accent);
@@ -192,24 +190,23 @@ document.getElementById('restart-btn')?.addEventListener('click', () => {
 	.results { padding-top: 0.5em; margin-bottom: 2.5em; }
 	.results h2 { margin-bottom: 0.5em; }
 	.total-score { display: flex; align-items: baseline; gap: 0.6em; margin: 0.75em 0; }
-	#grade-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	#grade-value { font-family: var(--font-serif); font-size: 3.2em; font-weight: 600; color: rgb(var(--black)); line-height: 1; font-variant-numeric: tabular-nums; }
 	.total-score-label { color: rgb(var(--gray-dark)); font-size: 1.3em; font-weight: 700; }
 	.score-interp {
 		font-size: 1em; line-height: 1.6; margin: 0 0 1em;
-		padding: 1em 1.25em; background: var(--accent-light);
-		border-left: 4px solid var(--accent); border-radius: 4px;
+		padding: 0;
 	}
 	.results-buttons { margin-top: 0.5em; }
 
 	.back-btn {
 		background: none; border: 1px solid rgb(var(--gray-light));
-		padding: 0.6em 1.25em; border-radius: 5px; font-size: 0.95em;
+		padding: 0.6em 1.25em; border-radius: 3px; font-size: 0.95em;
 		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
 	}
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 	@media (max-width: 600px) {
-		.flow-step { padding: 1.1em 1.2em; }
+		.flow-step { padding: 1.1em 0; }
 		.flow-answers button { flex: 1; padding: 0.65em 0; }
 	}
 </style>

@@ -179,7 +179,7 @@ export function ui(locale: string | undefined): UiStrings {
 
 /** Date formatting locale for toLocaleDateString. English keeps the site's existing US short format. */
 export const DATE_LOCALES: Record<Locale, string> = {
-	en: 'en-us',
+	en: 'en-GB',
 	de: 'de-DE',
 	nl: 'nl-NL',
 	it: 'it-IT',

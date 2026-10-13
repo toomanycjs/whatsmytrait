@@ -97,7 +97,7 @@ const jsonLd = toolJsonLd('Self-Evaluation of Breathing Questionnaire', '/tools/
 							{p > 0 ? <button type="button" class="back-step-btn" data-prev>← Back</button> : <span></span>}
 							{p === pages.length - 1
 								? <button type="submit" class="submit-btn">Calculate my score</button>
-								: <button type="button" class="next-btn" data-next>Next page →</button>}
+								: <button type="button" class="next-btn" data-next>Next page</button>}
 						</div>
 					</section>
 				))}
@@ -223,49 +223,51 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.description { margin-bottom: 1em; }
 
 	.progress-wrap { margin-bottom: 1.25em; }
-	.progress-text { font-size: 0.82em; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: rgb(var(--gray)); margin-bottom: 0.4em; }
-	.progress-bar { height: 7px; background: rgb(var(--gray-light)); border-radius: 4px; overflow: hidden; }
-	.progress-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.3s ease; width: 33%; }
+	.progress-text { font-size: 0.82em; font-weight: 700; color: rgb(var(--gray)); margin-bottom: 0.4em; }
+	.progress-bar { height: 7px; background: rgb(var(--gray-light)); border-radius: 3px; overflow: hidden; }
+	.progress-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.3s ease; width: 33%; }
 
-	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); background: var(--accent-light); border-radius: 6px; padding: 0.7em 1.1em; margin-bottom: 1.25em; }
+	.form-instructions { font-size: 0.88em; color: rgb(var(--gray-dark)); border-radius: 3px; padding: 0.7em 1.1em; margin-bottom: 1.25em;
+		border: 1px solid rgb(var(--gray-light));
+	}
 
-	.symptom { border: 1px solid rgb(var(--gray-light)); border-radius: 8px; padding: 0.9em 1.2em; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
+	.symptom { border-top: 1px solid rgb(var(--gray-light)); padding: 0.9em 0; margin-bottom: 0.65em; transition: border-color 0.15s, box-shadow 0.15s; }
 	.symptom.missing { border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12); }
 	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
 	.num { color: rgb(var(--gray)); margin-right: 0.3em; }
 
 	.segmented { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3em; max-width: 40em; }
-	.segmented label { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.82em; padding: 0.5em 0.4em; border: 1px solid rgb(var(--gray-light)); border-radius: 5px; cursor: pointer; transition: background 0.1s, border-color 0.1s; line-height: 1.25; }
+	.segmented label { position: relative; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.82em; padding: 0.5em 0.4em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; transition: background 0.1s, border-color 0.1s; line-height: 1.25; }
 	.segmented label:hover { border-color: var(--accent); }
 	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
-	.segmented label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); color: var(--accent-dark); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+	.segmented label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 
 	.step-footer { display: flex; justify-content: space-between; align-items: center; gap: 1em; padding: 1.5em 0 0.5em; }
-	.next-btn, .submit-btn { background: var(--accent); color: #fff; border: none; padding: 0.75em 1.6em; border-radius: 5px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
+	.next-btn, .submit-btn { background: var(--accent); color: #fff; border: none; padding: 0.75em 1.6em; border-radius: 3px; font-size: 1em; font-weight: 700; cursor: pointer; font-family: inherit; }
 	.next-btn:hover, .submit-btn:hover { background: var(--accent-dark); }
-	.back-step-btn, .back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.25em; border-radius: 5px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
+	.back-step-btn, .back-btn { background: none; border: 1px solid rgb(var(--gray-light)); padding: 0.75em 1.25em; border-radius: 3px; font-size: 0.95em; cursor: pointer; color: rgb(var(--gray)); font-family: inherit; }
 	.back-step-btn:hover, .back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 	.results { padding-top: 1em; }
 	.results h2 { margin-bottom: 0.5em; }
 	.results h3 { margin-top: 1.75em; margin-bottom: 0.4em; }
 	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
-	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	#total-score-value { font-family: var(--font-serif); font-size: 3.2em; font-weight: 600; color: rgb(var(--black)); line-height: 1; font-variant-numeric: tabular-nums; }
 	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
-	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 1em 1.25em; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
+	.score-interp { font-size: 1em; line-height: 1.6; margin: 0 0 1em; padding: 0; }
 
 	.chart { display: flex; flex-direction: column; gap: 0.5em; margin: 1em 0; }
 	.chart :global(.chart-row) { display: grid; grid-template-columns: 20em 1fr 2em; align-items: center; gap: 0.75em; font-size: 0.88em; }
 	.chart :global(.chart-label) { text-align: right; color: rgb(var(--gray-dark)); line-height: 1.25; }
-	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 4px; height: 1.5em; overflow: hidden; }
-	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 4px; min-width: 2px; transition: width 0.4s ease; }
+	.chart :global(.chart-track) { background: rgb(var(--gray-light)); border-radius: 3px; height: 1.5em; overflow: hidden; }
+	.chart :global(.chart-bar) { height: 100%; background: var(--accent); border-radius: 3px; min-width: 2px; transition: width 0.4s ease; }
 	.chart :global(.chart-val) { font-weight: 700; color: var(--accent); text-align: right; }
 	.chart :global(.none) { color: rgb(var(--gray)); }
 
 	.back-btn { margin-top: 1.5em; }
 
 	@media (max-width: 640px) {
-		.symptom { padding: 0.8em 0.9em; }
+		.symptom { padding: 0.8em 0; }
 		.segmented { grid-template-columns: repeat(2, 1fr); max-width: none; }
 		.chart :global(.chart-row) { grid-template-columns: 10em 1fr 1.6em; gap: 0.5em; font-size: 0.8em; }
 	}

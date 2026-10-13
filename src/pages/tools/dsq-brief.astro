@@ -128,7 +128,7 @@ const jsonLd = toolJsonLd('ME/CFS screening (DSQ-Brief)', '/tools/dsq-brief/', F
 					<p>The DSQ-Brief does well at telling ME/CFS apart from health: 96% accuracy against healthy controls in its validation study. Against a group with <em>other</em> illnesses that also cause fatigue (long COVID, multiple sclerosis or post-polio syndrome), accuracy fell to 84%. Four questions can only tell you so much.</p>
 					<p>The full <strong>DePaul Symptom Questionnaire (DSQ-2)</strong> captures symptoms across eight domains, including orthostatic intolerance, cognitive impairment, pain, sleep disruption, and immune and temperature symptoms. Together these build a far more complete picture. In the same study, the longer DSQ-1 (54 items) and DSQ-SF (14 items) reached 94% and 93% accuracy against the other illnesses, and the authors suggest following the DSQ-Brief with a longer questionnaire.</p>
 					<p>If you have time for something longer, the full version asks all 79 DSQ-2 symptom questions and checks your answers against four ME/CFS case definitions, which gives you a detailed record to take to a clinical appointment.</p>
-					<a href="/tools/dsq-2/" class="cta-button">Take the full DSQ-2 questionnaire →</a>
+					<a href="/tools/dsq-2/" class="cta-button">Take the full DSQ-2 questionnaire</a>
 				</div>
 
 				<div class="results-disclaimer">
@@ -301,18 +301,17 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.scale-key {
 		font-size: 0.9em;
 		color: rgb(var(--gray-dark));
-		background: var(--accent-light);
-		border-radius: 6px;
+		border-radius: 3px;
 		padding: 0.75em 1.25em;
 		margin-bottom: 1.5em;
+		border: 1px solid rgb(var(--gray-light));
 	}
 	.scale-key p { margin: 0; }
 
 	/* Symptom cards with dual rating */
 	.symptom {
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 8px;
-		padding: 1.25em 1.5em;
+		border-top: 1px solid rgb(var(--gray-light));
+		padding: 1.25em 0;
 		margin-bottom: 1em;
 	}
 	.symptom-text {
@@ -326,16 +325,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	}
 	.symptom-num {
 		flex-shrink: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 1.6em;
-		height: 1.6em;
-		background: var(--accent);
-		color: #fff;
-		border-radius: 50%;
-		font-size: 0.8em;
 		font-weight: 700;
+		color: rgb(var(--gray));
+		font-variant-numeric: tabular-nums;
 	}
 	.ratings {
 		display: flex;
@@ -350,8 +342,6 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.rating-label {
 		font-size: 0.78em;
 		font-weight: 700;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
 		color: rgb(var(--gray));
 	}
 	.segmented {
@@ -369,7 +359,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		line-height: 1.2;
 		padding: 0.5em 0.3em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 5px;
+		border-radius: 3px;
 		cursor: pointer;
 		transition: background 0.1s, border-color 0.1s;
 		min-height: 2.6em;
@@ -377,11 +367,10 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.segmented label:hover { border-color: var(--accent); }
 	.segmented input { position: absolute; opacity: 0; width: 0; height: 0; }
 	.segmented label:has(input:checked) {
-		background: var(--accent-light);
+		background: var(--accent);
 		border-color: var(--accent);
-		color: var(--accent-dark);
+		color: #fff;
 		font-weight: 700;
-		box-shadow: inset 0 0 0 1px var(--accent);
 	}
 	.segmented input:focus-visible + span {
 		outline: 2px solid var(--accent-dark);
@@ -397,7 +386,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		color: #fff;
 		border: none;
 		padding: 0.75em 2em;
-		border-radius: 5px;
+		border-radius: 3px;
 		font-size: 1em;
 		font-weight: 700;
 		cursor: pointer;
@@ -408,7 +397,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));
 		padding: 0.75em 1.5em;
-		border-radius: 5px;
+		border-radius: 3px;
 		font-size: 0.95em;
 		cursor: pointer;
 		color: rgb(var(--gray));
@@ -420,25 +409,21 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.results { padding-top: 1em; }
 	.results h2 { margin-bottom: 0.75em; }
 	.verdict {
-		display: inline-block;
 		font-weight: 700;
 		font-size: 1.02em;
-		padding: 0.6em 1.1em;
-		border-radius: 6px;
-		margin-bottom: 1em;
 		line-height: 1.35;
+		display: block;
+		padding: 0;
+		margin: 0 0 0.75em;
 	}
-	.verdict.pos { background: #e7f5ec; color: #1e6b3c; border: 1px solid #b6e0c4; }
-	.verdict.partial { background: #fff5e6; color: #9a6a12; border: 1px solid #f0d9a8; }
-	.verdict.neg { background: rgb(var(--gray-light)); color: rgb(var(--gray-dark)); border: 1px solid rgb(var(--gray-light)); }
+	.verdict.pos { color: #1e6b3c; }
+	.verdict.partial { color: #9a6a12; }
+	.verdict.neg { color: rgb(var(--gray-dark)); }
 	.score-interp {
 		font-size: 1.02em;
 		line-height: 1.6;
 		margin: 0 0 2em;
-		padding: 1em 1.25em;
-		background: var(--accent-light);
-		border-left: 4px solid var(--accent);
-		border-radius: 4px;
+		padding: 0;
 	}
 	.item-table { margin: 1em 0 0.5em; font-size: 0.9em; }
 	.item-table td, .item-table th { padding: 0.5em 0.6em; }
@@ -449,9 +434,8 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.table-note { font-size: 0.82em; color: rgb(var(--gray)); margin: 0.5em 0 2em; }
 
 	.bridge {
-		border: 1px solid var(--accent);
-		background: var(--accent-light);
-		border-radius: 8px;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 3px;
 		padding: 1.5em 1.75em;
 		margin: 0 0 2em;
 	}
@@ -463,7 +447,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		color: #fff;
 		text-decoration: none;
 		padding: 0.75em 1.5em;
-		border-radius: 5px;
+		border-radius: 3px;
 		font-weight: 700;
 		font-size: 0.98em;
 		margin-top: 0.5em;
@@ -482,7 +466,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));
 		padding: 0.6em 1.25em;
-		border-radius: 5px;
+		border-radius: 3px;
 		font-size: 0.95em;
 		cursor: pointer;
 		color: rgb(var(--gray));
@@ -492,7 +476,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.back-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 	@media (max-width: 600px) {
-		.symptom { padding: 1em; }
+		.symptom { padding: 1em 0; }
 		.segmented { gap: 0.25em; }
 		.segmented label { font-size: 0.72em; padding: 0.45em 0.15em; min-height: 3em; }
 		.form-footer { flex-direction: column; }

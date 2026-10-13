@@ -208,7 +208,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		padding: 1.1em 0;
 		border-bottom: 1px solid rgb(var(--gray-light));
 	}
-	.question.missing { background: rgba(192, 57, 43, 0.05); border-radius: 6px; }
+	.question.missing { background: rgba(192, 57, 43, 0.05); border-radius: 3px; }
 	.q-text { margin: 0 0 0.6em; font-size: 0.95em; }
 	.q-num { font-weight: 700; margin-right: 0.25em; }
 	.options { display: flex; flex-wrap: wrap; gap: 0.4em; }
@@ -226,9 +226,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	}
 	.options label:hover { border-color: var(--accent); color: var(--accent); }
 	.options label:has(input:checked) {
-		background: var(--accent-light);
+		background: var(--accent);
 		border-color: var(--accent);
-		color: var(--accent-dark);
+		color: #fff;
 		font-weight: 700;
 	}
 	.options input[type="radio"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
@@ -236,25 +236,24 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.form-footer { display: flex; gap: 1em; padding: 2em 0 1em; }
 	button[type="submit"] {
 		background: var(--accent); color: #fff; border: none;
-		padding: 0.75em 2em; border-radius: 5px; font-size: 1em; font-weight: 700;
+		padding: 0.75em 2em; border-radius: 3px; font-size: 1em; font-weight: 700;
 		cursor: pointer; font-family: inherit;
 	}
 	button[type="submit"]:hover { background: var(--accent-dark); }
 	button[type="button"] {
 		background: none; border: 1px solid rgb(var(--gray-light));
-		padding: 0.75em 1.5em; border-radius: 5px; font-size: 0.95em;
+		padding: 0.75em 1.5em; border-radius: 3px; font-size: 0.95em;
 		cursor: pointer; color: rgb(var(--gray)); font-family: inherit;
 	}
 
 	.results { padding-top: 1em; }
 	.results h2 { margin-bottom: 0.5em; }
 	.total-score { display: flex; align-items: baseline; gap: 0.5em; margin: 1em 0; }
-	#total-score-value { font-size: 3.5em; font-weight: 700; color: var(--accent); line-height: 1; }
+	#total-score-value { font-family: var(--font-serif); font-size: 3.2em; font-weight: 600; color: rgb(var(--black)); line-height: 1; font-variant-numeric: tabular-nums; }
 	.total-score-label { color: rgb(var(--gray)); font-size: 1.1em; }
 	.score-interp {
 		font-size: 1em; line-height: 1.6; margin: 0 0 2em;
-		padding: 1em 1.25em; background: var(--accent-light);
-		border-left: 4px solid var(--accent); border-radius: 4px;
+		padding: 0;
 	}
 	.results-disclaimer {
 		font-size: 0.88em;
@@ -268,7 +267,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		background: none;
 		border: 1px solid rgb(var(--gray-light));
 		padding: 0.6em 1.25em;
-		border-radius: 5px;
+		border-radius: 3px;
 		font-size: 0.95em;
 		cursor: pointer;
 		color: rgb(var(--gray));

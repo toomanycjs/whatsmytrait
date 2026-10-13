@@ -1,224 +1,8 @@
 ---
 import Page from '../../layouts/Page.astro';
+import { GUIDE, KIND_LABEL, QUESTIONNAIRE_GROUPS, TRACKERS } from '../../tools/catalogue';
 
-const questionnaires = [
-	{
-		title: 'ME/CFS screening (DSQ-Brief)',
-		description: 'A 4-question self-check for ME/CFS based on the DePaul Symptom Questionnaire Brief. Asks about fatigue, tiredness after minimal exercise, unrefreshing sleep and memory problems, in under two minutes, with an immediate result.',
-		href: '/tools/dsq-brief/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'DePaul Symptom Questionnaire (DSQ-2)',
-		description: "All 79 DSQ-2 symptom questions, checked against four ME/CFS case definitions (IOM, CCC, ME-ICC, Fukuda) with DePaul's published rules, plus a symptom profile. About 100 answers; progress is saved.",
-		href: '/tools/dsq-2/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Post-exertional malaise (DSQ-PEM)',
-		description: 'The DePaul PEM short form: 10 questions characterising whether your post-activity symptom pattern looks like post-exertional malaise, with recovery time and triggers assessed.',
-		href: '/tools/dsq-pem/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'FUNCAP functional capacity questionnaire',
-		description: 'The patient-informed ME/CFS functional capacity instrument (FUNCAP27): 27 activities across 8 domains, scored by what each activity costs you. Includes a domain profile.',
-		href: '/tools/funcap/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'COMPASS-31',
-		description: 'Composite Autonomic Symptom Score: 31-item autonomic symptom questionnaire covering six domains. The standard screening tool for dysautonomia symptoms.',
-		href: '/tools/compass-31/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Malmö POTS Symptom Score (MAPS)',
-		description: 'The first symptom score designed specifically for POTS: 12 symptoms from the past week rated 0–10, with the validated ≥42 threshold explained. Well suited to weekly tracking.',
-		href: '/tools/malmo-pots-score/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Cognitive Failures Questionnaire (CFQ)',
-		description: 'Broadbent\'s 25-item measure of everyday memory, attention, and action slips: the standard brain fog questionnaire. Scored out of 100 with three subscales and reference values from long COVID and ME/CFS cohorts.',
-		href: '/tools/cognitive-failures-questionnaire/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Vanderbilt Orthostatic Symptom Score (VOSS)',
-		description: 'Nine symptoms rated 0–10 while upright, as used in POTS drug and compression trials. A snapshot of orthostatic symptom burden that pairs with the NASA lean test.',
-		href: '/tools/vanderbilt-orthostatic-symptom-score/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Orthostatic Grading Scale (OGS)',
-		description: 'The Mayo Clinic five-item grading of orthostatic intolerance: frequency, severity, triggers, daily activities, and standing time, scored 0–20 with mild, moderate, and severe bands.',
-		href: '/tools/orthostatic-grading-scale/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Nijmegen Questionnaire',
-		description: '16-item breathing pattern disorder screening tool. Used to identify hyperventilation syndrome and disordered breathing patterns.',
-		href: '/tools/nijmegen/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Chalder Fatigue Scale (CFQ-11)',
-		description: 'The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services. Get your Likert score (0–33) with physical and mental subscales, plus the bimodal score (0–11) and its ≥4 threshold.',
-		href: '/tools/chalder-fatigue-scale/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Fatigue Severity Scale (FSS)',
-		description: '9-item fatigue questionnaire widely used in post-viral and chronic illness research. Simple and quick to complete.',
-		href: '/tools/fss/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Self-Evaluation of Breathing Questionnaire (SEBQ)',
-		description: '25 statements about how your breathing feels, scored out of 75. The breathing-specific companion to the Nijmegen questionnaire, better suited to restricted or effortful breathing patterns.',
-		href: '/tools/self-evaluation-of-breathing-questionnaire/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Epworth Sleepiness Scale',
-		description: '8-item daytime sleepiness questionnaire. Simple, widely used, and commonly searched by people with fatigue-related conditions.',
-		href: '/tools/epworth/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Bell CFIDS Disability Scale',
-		description: 'Functional capacity scale from 0–100, widely referenced in ME/CFS and post-viral communities. Quick self-check for functional status.',
-		href: '/tools/bell-scale/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Post-COVID-19 Functional Status scale (PCFS)',
-		description: 'The standard long COVID functional grading: four quick questions give you a grade from 0 (no limitations) to 4 (severe limitations). Takes under a minute; designed for repeat tracking.',
-		href: '/tools/pcfs/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'RAND-36 health survey (SF-36 items)',
-		description: 'The classic 36-item health-related quality of life survey, scored across eight scales. Compare your profile against published ME/CFS and long COVID cohorts.',
-		href: '/tools/rand-36/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'WHO-5 Well-Being Index',
-		description: 'Five positively-worded questions about the past two weeks, scored 0–100. A light-touch well-being measure that pairs well with symptom and function tracking.',
-		href: '/tools/who-5/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: '2016 ACR Fibromyalgia Survey',
-		description: 'Self-report fibromyalgia screening questionnaire with Widespread Pain Index, Symptom Severity Scale, and FS severity score. Based on the 2016 revised ACR criteria.',
-		href: '/tools/fibromyalgia-survey/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Satisfaction with Life Scale (SWLS)',
-		description: 'Diener\'s five-statement measure of how satisfied you are with your life as a whole, scored 5 to 35 with the standard bands. Under a minute; a stable companion to the WHO-5.',
-		href: '/tools/satisfaction-with-life-scale/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Brief Resilience Scale (BRS)',
-		description: 'Six statements about how quickly you bounce back from stress, scored 1 to 5 with low, normal and high bands. Measures recovery itself, not coping resources; illness lowers it, and it moves as things change.',
-		href: '/tools/brief-resilience-scale/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'AUDIT alcohol screening test',
-		description: 'The WHO\'s ten-question alcohol screen, scored 0 to 40 with the risk zones and a consumption, dependence and harm breakdown. Relevant to sleep, HRV and orthostatic symptoms, and before starting medication.',
-		href: '/tools/audit/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'IPAQ short form',
-		description: 'The International Physical Activity Questionnaire: days and minutes of vigorous activity, moderate activity and walking over the last 7 days, plus sitting time. Gives MET-minutes per week and a category. A record, not a target.',
-		href: '/tools/ipaq-short-form/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Godin-Shephard Leisure-Time Exercise Questionnaire',
-		description: 'Three questions on weekly strenuous, moderate and mild exercise, giving a Leisure Score Index with Godin\'s 2011 bands. One minute; useful for recording what you actually did week to week.',
-		href: '/tools/godin-shephard-leisure-time-exercise-questionnaire/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Beighton Score',
-		description: '9-point self-assessment for generalised joint hypermobility, with an illustration for each manoeuvre and the age-adjusted threshold explained. One component of the 2017 hypermobile EDS criteria.',
-		href: '/tools/beighton-score/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'Five-part questionnaire for hypermobility (5PQ)',
-		description: 'Five yes/no questions that screen for generalised joint hypermobility, including hypermobility you used to have. Two or more "yes" answers is positive; used in the 2017 hEDS criteria when the Beighton score is one point short.',
-		href: '/tools/five-part-questionnaire/',
-		badge: 'Questionnaire',
-	},
-	{
-		title: 'hEDS diagnostic criteria checker (2017)',
-		description: 'Walk through the three criteria for hypermobile Ehlers-Danlos syndrome step by step: Beighton and 5PQ, the 12 Feature A signs, family history, musculoskeletal features, and the exclusions only a clinician can confirm.',
-		href: '/tools/heds-criteria/',
-		badge: 'Criteria checker',
-	},
-];
-
-const guides = [
-	{
-		title: 'Exercise readiness screen',
-		description: 'Three quick checks before starting any movement plan: red flags, post-exertional malaise, and relevant comorbidities. Routes you to the page that fits your situation.',
-		href: '/tools/exercise-readiness/',
-		badge: 'Interactive guide',
-	},
-	{
-		title: 'Pacing and heart rate ceiling',
-		description: 'The energy envelope in plain language, a resting-heart-rate-based ceiling with the arithmetic shown, counter-pressure manoeuvres, and a private session log.',
-		href: '/tools/pacing-and-heart-rate/',
-		badge: 'Interactive guide',
-	},
-	{
-		title: 'Exercise progression for orthostatic intolerance',
-		description: 'A hold-by-default record keeper informed by the CHOP modified Dallas programme and Levine\'s protocol. You pick the tier; it keeps the record and asks how you were 48 hours later.',
-		href: '/tools/exercise-progression/',
-		badge: 'Interactive guide',
-	},
-	{
-		title: 'NASA Lean Test Guide',
-		description: 'Interactive guide and timer for performing a poor man\'s tilt table test at home, with fields to log your HR readings at each stage.',
-		href: '/tools/nasa-lean-test/',
-		badge: 'Interactive guide',
-	},
-	{
-		title: 'Which questionnaire should I take?',
-		description: 'Not sure where to start? A plain-language guide to choosing the right post-viral self-assessment tool for your situation.',
-		href: '/tools/which-questionnaire/',
-		badge: 'Guide',
-	},
-];
-
-const sheets = [
-	{
-		title: 'HRV & Resting Heart Rate Tracker',
-		description: 'Log daily readings in your browser, or import a CSV from Garmin, Oura, Whoop or a spreadsheet. Rolling 7-day and 30-day medians with trend charts. Stored on your device only.',
-		href: '/tools/trackers/hrv-tracker/',
-		badge: 'Interactive tracker',
-	},
-	{
-		title: 'Symptom Diary',
-		description: 'Daily scores for fatigue, breathlessness, head pain, and cognitive function with rolling averages. Useful for identifying patterns and tracking trends.',
-		href: '/tools/trackers/symptom-diary/',
-		badge: 'Google Sheet',
-	},
-	{
-		title: 'Stand Test Logger',
-		description: 'Record and track orthostatic heart rate responses over time. Log HR at baseline, 2 min, 5 min, and 10 min standing.',
-		href: '/tools/trackers/stand-test-logger/',
-		badge: 'Google Sheet',
-	},
-];
+const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 ---
 
 <Page
@@ -237,70 +21,58 @@ const sheets = [
 	}
 	</script>
 	</Fragment>
-			<div class="section-header">
-				<span class="section-label tools">Tools</span>
-				<h1>Tools</h1>
-				<p class="section-intro">
-					Free Google Sheets trackers and interactive versions of validated clinical questionnaires. The questionnaires let you complete them online and get a score with an explanation, something that's surprisingly hard to find for many of these instruments.
-				</p>
-				<div class="disclaimer">
-					<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
-				</div>
-				<p class="saved-results" hidden><a href="/tools/my-results/">Your saved results <span class="saved-count"></span></a></p>
-			</div>
+	<div class="section-header">
+		<span class="section-label tools">Tools</span>
+		<h1>Questionnaires and tools</h1>
+		<p class="section-intro">
+			Interactive versions of validated clinical questionnaires, scored in your browser with the result explained, plus trackers for the numbers worth keeping. Nothing you enter is sent anywhere. {toolCount} questionnaires and guides, grouped by what they measure.
+		</p>
+		<p class="start">
+			Not sure where to begin? <a href={GUIDE.href}>{GUIDE.title}</a>
+			<span class="saved-results" hidden>· <a href="/tools/my-results/">Your saved results <span class="saved-count"></span></a></span>
+		</p>
+		<div class="disclaimer">
+			<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
+		</div>
+	</div>
 
-			<section>
-				<h2>Interactive questionnaires</h2>
-				<ul class="tool-list">
-					{questionnaires.map(tool => (
-						<li>
-							<a href={tool.href} class="tool-card">
-								<div class="tool-meta">
-									<span class="tool-badge">{tool.badge}</span>
-								</div>
-								<h3>{tool.title}</h3>
-								<p>{tool.description}</p>
-							</a>
-						</li>
-					))}
-				</ul>
-			</section>
+	<nav class="contents" aria-label="On this page">
+		<ol>
+			{QUESTIONNAIRE_GROUPS.map((group, i) => (
+				<li><a href={`#group-${i}`}>{group.name}</a></li>
+			))}
+			<li><a href="#trackers">Trackers</a></li>
+		</ol>
+	</nav>
 
-			<section>
-				<h2>Interactive guides</h2>
-				<p class="section-note">Guided tools rather than questionnaires: screens, timers, and record keepers that run entirely in your browser.</p>
-				<ul class="tool-list">
-					{guides.map(tool => (
-						<li>
-							<a href={tool.href} class="tool-card">
-								<div class="tool-meta">
-									<span class="tool-badge">{tool.badge}</span>
-								</div>
-								<h3>{tool.title}</h3>
-								<p>{tool.description}</p>
-							</a>
-						</li>
-					))}
-				</ul>
-			</section>
+	{QUESTIONNAIRE_GROUPS.map((group, i) => (
+		<section class="group" aria-labelledby={`group-${i}`}>
+			<h2 id={`group-${i}`}>{group.name}</h2>
+			<ul class="tool-list">
+				{group.tools.map(tool => (
+					<li class="tool">
+						<h3><a href={tool.href}>{tool.title}</a></h3>
+						{tool.kind !== 'questionnaire' && <span class="kind">{KIND_LABEL[tool.kind]}</span>}
+						<p>{tool.description}</p>
+					</li>
+				))}
+			</ul>
+		</section>
+	))}
 
-			<section>
-				<h2>Trackers</h2>
-				<p class="section-note">The HRV tracker runs in your browser and keeps its data on your device. The others are Google Sheets templates: use File → Make a copy to get your own editable version.</p>
-				<ul class="tool-list">
-					{sheets.map(tool => (
-						<li>
-							<a href={tool.href} class="tool-card">
-								<div class="tool-meta">
-									<span class="tool-badge sheet">{tool.badge}</span>
-								</div>
-								<h3>{tool.title}</h3>
-								<p>{tool.description}</p>
-							</a>
-						</li>
-					))}
-				</ul>
-			</section>
+	<section class="group" aria-labelledby="trackers">
+		<h2 id="trackers">Trackers</h2>
+		<p class="section-note">The HRV tracker runs in your browser and keeps its data on your device. The others are Google Sheets templates: use File → Make a copy to get your own editable version.</p>
+		<ul class="tool-list">
+			{TRACKERS.map(tool => (
+				<li class="tool">
+					<h3><a href={tool.href}>{tool.title}</a></h3>
+					<span class="kind">{KIND_LABEL[tool.kind]}</span>
+					<p>{tool.description}</p>
+				</li>
+			))}
+		</ul>
+	</section>
 </Page>
 
 <script>
@@ -317,78 +89,64 @@ const sheets = [
 <style>
 	.section-header {
 		padding-bottom: 1.5em;
-		border-bottom: 1px solid rgb(var(--gray-light));
-		margin-bottom: 2em;
+		border-bottom: 1px solid rgb(var(--gray-dark));
+		margin-bottom: 1.5em;
 	}
-	.section-header h1 { margin: 0.3em 0 0.3em; }
-	.section-intro { color: rgb(var(--gray)); margin: 0 0 1em; }
-	.saved-results { margin: 1em 0 0; font-weight: 700; }
+	.section-header h1 { margin: 0.2em 0 0.4em; }
+	.section-intro { color: rgb(var(--gray-dark)); margin: 0 0 0.75em; text-wrap: pretty; }
+	.start { margin: 0; font-size: 0.95em; }
+	.saved-results { font-weight: 700; margin-left: 0.35em; }
 	.saved-count { font-weight: 400; color: rgb(var(--gray)); }
+	.section-header .disclaimer { margin-bottom: 0; }
 
-	section { margin-bottom: 3em; }
-	h2 { margin-bottom: 0.25em; }
-	.section-note { color: rgb(var(--gray)); font-size: 0.9em; margin-bottom: 1.25em; }
-
-	.tool-list {
-		list-style: none;
+	/* Contents: a compact numbered list of the groups */
+	.contents { margin-bottom: 2.5em; font-size: 0.9em; }
+	.contents ol {
 		margin: 0;
-		padding: 0;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.75em;
+		padding-left: 1.5em;
+		columns: 2;
+		column-gap: 2em;
 	}
-	.tool-card {
-		display: block;
-		padding: 1.1em 1.25em;
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 6px;
-		text-decoration: none;
-		height: 100%;
-		box-sizing: border-box;
-		transition: border-color 0.15s, box-shadow 0.15s;
+	.contents li { margin-bottom: 0.2em; break-inside: avoid; }
+	.contents a { color: rgb(var(--gray-dark)); }
+	.contents a:hover { color: var(--accent); }
+
+	.group { margin-bottom: 2.75em; }
+	.group h2 {
+		font-size: 1.35em;
+		margin: 0 0 0.25em;
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid rgb(var(--gray-dark));
 	}
-	.tool-card:hover {
-		border-color: var(--accent);
-		box-shadow: 0 0 0 3px var(--accent-light);
+	.section-note { color: rgb(var(--gray)); font-size: 0.9em; margin: 0.5em 0 0.25em; }
+
+	.tool-list { list-style: none; margin: 0; padding: 0; }
+	.tool {
+		padding: 0.9em 0;
+		border-bottom: 1px solid rgb(var(--gray-light));
+		margin: 0;
 	}
-	.tool-meta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: 0.4em;
+	.tool h3 {
+		display: inline;
+		font-size: 1.1em;
+		margin: 0;
 	}
-	.tool-badge {
-		font-size: 0.72em;
-		font-weight: 700;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: var(--tools);
-		background: var(--tools-bg);
-		padding: 0.15em 0.5em;
-		border-radius: 3px;
-	}
-	.tool-badge.sheet {
-		color: var(--testing);
-		background: var(--testing-bg);
-	}
-	.external-icon {
-		font-size: 0.9em;
+	.tool h3 a { color: rgb(var(--black)); text-decoration: none; }
+	.tool h3 a:hover { color: var(--accent); text-decoration: underline; }
+	.kind {
+		font-size: 0.8em;
 		color: rgb(var(--gray));
+		margin-left: 0.5em;
+		white-space: nowrap;
 	}
-	.tool-card h3 {
-		margin: 0 0 0.3em;
-		font-size: 0.98em;
-		color: rgb(var(--black));
-		line-height: 1.3;
-	}
-	.tool-card p {
-		margin: 0;
-		font-size: 0.85em;
+	.tool p {
+		margin: 0.25em 0 0;
+		font-size: 0.9em;
 		color: rgb(var(--gray));
 		line-height: 1.5;
 	}
 
-	@media (max-width: 580px) {
-		.tool-list { grid-template-columns: 1fr; }
+	@media (max-width: 600px) {
+		.contents ol { columns: 1; }
 	}
 </style>

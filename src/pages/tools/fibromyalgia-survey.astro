@@ -468,7 +468,7 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 </script>
 
 <style>
-.layer1-interp { font-size: 1.05rem; line-height: 1.6; margin: 0 0 1.25rem; padding: 0.9rem 1.1rem; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 4px; }
+.layer1-interp { font-size: 1.05rem; line-height: 1.6; margin: 0 0 1.25rem; padding: 0.9rem 1.1rem; background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 3px; }
 /* ── Base ─────────────────────────────────────────────────────────────────── */
 :global(main) {
 	max-width: 680px;
@@ -483,15 +483,8 @@ document.getElementById('restart-btn').addEventListener('click', () => {
 .tool-header { margin-bottom: 2.5rem; }
 
 .section-label {
-	display: inline-block;
-	font-size: 0.75rem;
-	font-weight: 600;
-	letter-spacing: 0.06em;
-	text-transform: uppercase;
-	color: #6b7280;
-	text-decoration: none;
-	margin-bottom: 0.75rem;
-}
+		margin-bottom: 0.35em;
+	}
 .section-label:hover { color: #374151; }
 
 h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 1.2; }
@@ -500,7 +493,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .disclaimer {
 	background: #fefce8;
 	border: 1px solid #fde68a;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 1rem 1.25rem;
 	font-size: 0.9rem;
 	line-height: 1.6;
@@ -534,7 +527,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: #1d4ed8;
 	color: #fff;
 	border: none;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.75rem 1.75rem;
 	font-size: 1rem;
 	font-weight: 600;
@@ -551,7 +544,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: #fff;
 	color: #1d4ed8;
 	border: 2px solid #1d4ed8;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.65rem 1.5rem;
 	font-size: 0.95rem;
 	font-weight: 600;
@@ -565,7 +558,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	background: transparent;
 	color: #6b7280;
 	border: 1px solid #d1d5db;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.65rem 1.5rem;
 	font-size: 0.95rem;
 	cursor: pointer;
@@ -604,15 +597,13 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 
 .region-group {
 	border: 1px solid #e5e7eb;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1rem 1.25rem;
 	margin: 0;
 }
 .region-group legend {
 	font-size: 0.8rem;
 	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.06em;
 	color: #6b7280;
 	padding: 0 0.5rem;
 }
@@ -661,7 +652,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	align-items: flex-start;
 	gap: 0.6rem;
 	padding: 0.5rem 0.75rem;
-	border-radius: 8px;
+	border-radius: 3px;
 	cursor: pointer;
 	font-size: 0.925rem;
 	color: #374151;
@@ -686,7 +677,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .duration-question {
 	background: #f9fafb;
 	border: 1px solid #e5e7eb;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.25rem;
 }
 .duration-prompt {
@@ -714,7 +705,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
    scope attribute, so anchor them to their static containers. */
 .summary-cards :global(.summary-card) {
 	border: 1.5px solid #e5e7eb;
-	border-radius: 12px;
+	border-radius: 3px;
 	padding: 1rem 1.1rem;
 	background: #f9fafb;
 }
@@ -739,15 +730,13 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 	font-size: 0.8rem;
 	font-weight: 600;
 	color: #6b7280;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 	margin-bottom: 0.35rem;
 }
 .summary-cards :global(.card-detail) { font-size: 0.8rem; color: #6b7280; line-height: 1.4; }
 
 .criteria-result { margin-bottom: 1.5rem; }
 .criteria-result :global(.criteria-box) {
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.1rem 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.6;
@@ -766,7 +755,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .interpretation-box {
 	background: #f8fafc;
 	border: 1px solid #e2e8f0;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.1rem 1.25rem;
 	font-size: 0.95rem;
 	line-height: 1.7;
@@ -778,7 +767,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .threshold-box {
 	background: #f9fafb;
 	border: 1px solid #e5e7eb;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 1.1rem 1.25rem;
 	margin-top: 1.5rem;
 }
@@ -805,7 +794,7 @@ h1 { font-size: 2rem; font-weight: 700; margin: 0.25rem 0 0.25rem; line-height: 
 .results-disclaimer {
 	background: #fefce8;
 	border: 1px solid #fde68a;
-	border-radius: 8px;
+	border-radius: 3px;
 	padding: 0.9rem 1.1rem;
 	font-size: 0.875rem;
 	color: #78350f;

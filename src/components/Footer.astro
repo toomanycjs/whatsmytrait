@@ -103,8 +103,8 @@ const nav = NAV.map((n, i) => ({ ...n, href: hrefs[i] }));
 		flex: 1;
 		min-width: 200px;
 		padding: 0.45em 0.75em;
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 4px;
+		border: 1px solid rgb(var(--gray));
+		border-radius: var(--radius);
 		font-size: 0.95em;
 		font-family: inherit;
 		color: rgb(var(--gray-dark));
@@ -119,13 +119,13 @@ const nav = NAV.map((n, i) => ({ ...n, href: hrefs[i] }));
 		background: var(--accent);
 		color: #fff;
 		border: none;
-		border-radius: 4px;
+		border-radius: var(--radius);
 		font-size: 0.95em;
 		font-family: inherit;
 		cursor: pointer;
 	}
 	.signup-form button:hover {
-		opacity: 0.88;
+		background: var(--accent-dark);
 	}
 	.signup-note {
 		margin: 0;

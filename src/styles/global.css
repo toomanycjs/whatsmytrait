@@ -1,6 +1,9 @@
 /*
-  Headaches & Heartbeats — global styles
-  Clean, readable, minimal. No clutter.
+  Post Viral Recovery — global styles
+
+  Reference-site register: a serif for headings, Atkinson Hyperlegible for
+  text and controls, hairline rules instead of boxes, one restrained accent.
+  Section identity is a small coloured kicker, never a filled badge.
 */
 
 :root {
@@ -11,10 +14,12 @@
 	--gray: 90, 108, 124;
 	--gray-light: 226, 232, 238;
 	--gray-dark: 32, 40, 52;
-	--gray-gradient: rgba(var(--gray-light), 40%), #fff;
-	--box-shadow: 0 1px 4px rgba(var(--gray), 15%), 0 4px 16px rgba(var(--gray), 10%);
+	--rule: 1px solid rgb(var(--gray-light));
+	--radius: 3px;
+	--font-text: "Atkinson", "Helvetica Neue", Arial, sans-serif;
+	--font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
 
-	/* Section colours */
+	/* Section colours: used for kickers and thin rules only */
 	--testing: #1e6b3c;
 	--testing-bg: #eaf5ee;
 	--evidence: #3a4fa8;
@@ -39,9 +44,23 @@
 	font-style: normal;
 	font-display: swap;
 }
+@font-face {
+	font-family: "Source Serif 4";
+	src: url("/fonts/source-serif-4-600.woff2") format("woff2");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Source Serif 4";
+	src: url("/fonts/source-serif-4-600-italic.woff2") format("woff2");
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
 
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: var(--font-text);
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -50,7 +69,7 @@ body {
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
 	font-size: 19px;
-	line-height: 1.75;
+	line-height: 1.7;
 }
 
 main {
@@ -61,13 +80,17 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-serif);
+	font-weight: 600;
 	margin: 0 0 0.5rem 0;
 	color: rgb(var(--black));
-	line-height: 1.25;
+	line-height: 1.2;
+	letter-spacing: -0.005em;
+	text-wrap: balance;
 }
-h1 { font-size: 2.4em; }
-h2 { font-size: 1.7em; }
-h3 { font-size: 1.35em; }
+h1 { font-size: 2.4em; letter-spacing: -0.015em; }
+h2 { font-size: 1.65em; }
+h3 { font-size: 1.3em; }
 h4 { font-size: 1.1em; }
 h5 { font-size: 1em; }
 
@@ -87,28 +110,33 @@ p { margin-bottom: 1em; }
 textarea { width: 100%; font-size: 16px; }
 input, select { font-size: 16px; }
 
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 0.5em 0.75em; border-bottom: 1px solid rgb(var(--gray-light)); }
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-variant-numeric: tabular-nums;
+}
+th, td { text-align: left; padding: 0.5em 0.75em; border-bottom: var(--rule); vertical-align: top; }
 th { font-weight: 700; color: rgb(var(--black)); }
+thead th { border-bottom: 1px solid rgb(var(--gray-dark)); }
 
-img { max-width: 100%; height: auto; border-radius: 6px; }
+img { max-width: 100%; height: auto; border-radius: var(--radius); }
 
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
-	border-radius: 3px;
+	border-radius: var(--radius);
 	font-size: 0.9em;
 }
 pre {
 	padding: 1.5em;
-	border-radius: 6px;
+	border-radius: var(--radius);
 	background: rgb(var(--gray-dark));
 	color: #fff;
 }
 pre > code { all: unset; }
 
 blockquote {
-	border-left: 3px solid var(--accent);
+	border-left: 2px solid rgb(var(--gray-dark));
 	padding: 0.25em 0 0.25em 1.25em;
 	margin: 1.5em 0;
 	color: rgb(var(--gray));
@@ -117,7 +145,7 @@ blockquote {
 
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: var(--rule);
 	margin: 2em 0;
 }
 
@@ -131,35 +159,44 @@ li { margin-bottom: 0.4em; }
 	h2 { font-size: 1.4em; }
 }
 
-/* Section labels */
+/* Section kicker: a small coloured word above a heading or beside a list
+   item. Plain text, no fill, so it names the section without decorating it. */
 .section-label {
 	display: inline-block;
-	font-size: 0.7em;
+	font-size: 0.82em;
 	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	padding: 0.2em 0.6em;
-	border-radius: 3px;
+	letter-spacing: 0;
+	text-transform: none;
+	padding: 0;
+	border-radius: 0;
+	background: none;
 	text-decoration: none;
-	vertical-align: middle;
+	vertical-align: baseline;
 }
-.section-label.testing  { color: var(--testing);  background: var(--testing-bg);  }
-.section-label.evidence { color: var(--evidence); background: var(--evidence-bg); }
-.section-label.tools    { color: var(--tools);    background: var(--tools-bg);    }
-.section-label.nhs      { color: var(--nhs);      background: var(--nhs-bg);      }
+a.section-label:hover { text-decoration: underline; }
+.section-label.testing  { color: var(--testing);  }
+.section-label.evidence { color: var(--evidence); }
+.section-label.tools    { color: var(--tools);    }
+.section-label.nhs      { color: var(--nhs);      }
 
-/* Disclaimer box */
+/* Notes and disclaimers: a plain ruled box, no tint, no rail */
 .disclaimer {
-	border: 1px solid rgb(var(--gray-light));
-	border-left: 4px solid var(--accent);
-	background: var(--accent-light);
-	padding: 1em 1.25em;
-	border-radius: 4px;
-	font-size: 0.9em;
+	border: var(--rule);
+	border-radius: var(--radius);
+	background: none;
+	padding: 0.9em 1.1em;
+	font-size: 0.88em;
+	line-height: 1.55;
 	color: rgb(var(--gray-dark));
 	margin: 1.5em 0;
 }
 .disclaimer strong { color: rgb(var(--black)); }
+
+/* Buttons: squarer, solid or outlined, no gradients */
+button, .button {
+	font-family: inherit;
+	border-radius: var(--radius);
+}
 
 /* Accessibility */
 a:focus-visible,
@@ -188,7 +225,7 @@ label:has(> input[type="checkbox"]:focus-visible) {
 	background: var(--accent);
 	color: #fff;
 	padding: 0.6em 1.2em;
-	border-radius: 0 0 6px 0;
+	border-radius: 0 0 var(--radius) 0;
 	font-weight: 700;
 	text-decoration: none;
 }

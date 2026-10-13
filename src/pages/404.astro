@@ -1,0 +1,22 @@
+---
+import Page from '../layouts/Page.astro';
+---
+
+<Page title="Page not found" description="That page does not exist on Post Viral Recovery.">
+	<Fragment slot="head">
+		<meta name="robots" content="noindex" />
+	</Fragment>
+	<div class="not-found">
+		<p class="code">404</p>
+		<h1>Page not found</h1>
+		<p>
+			That address does not exist here, or the page has moved. The questionnaires and trackers are all listed on the
+			<a href="/tools/">tools page</a>, and the <a href="/">home page</a> has everything else.
+		</p>
+	</div>
+</Page>
+
+<style>
+	.not-found { padding: 2em 0 4em; }
+	.code { color: rgb(var(--gray)); font-variant-numeric: tabular-nums; margin: 0 0 0.25em; }
+</style>

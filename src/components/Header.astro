@@ -79,8 +79,10 @@ const hasTranslations = alternates.length > 1;
 		gap: 1em;
 	}
 	.site-title {
-		font-weight: 700;
-		font-size: 1em;
+		font-family: var(--font-serif);
+		font-weight: 600;
+		font-size: 1.2em;
+		letter-spacing: -0.01em;
 		color: rgb(var(--black));
 		text-decoration: none;
 		white-space: nowrap;
@@ -93,21 +95,21 @@ const hasTranslations = alternates.length > 1;
 		align-items: center;
 	}
 	.nav-links :global(a) {
-		padding: 0.4em 0.7em;
+		padding: 0.4em 0.6em;
 		color: rgb(var(--gray));
 		text-decoration: none;
 		font-size: 0.9em;
-		border-radius: 4px;
-		transition: color 0.15s, background 0.15s;
+		line-height: 1;
+		border-bottom: 2px solid transparent;
+		transition: color 0.15s, border-color 0.15s;
 	}
 	.nav-links :global(a:hover) {
 		color: rgb(var(--black));
-		background: rgb(var(--gray-light));
 	}
 	.nav-links :global(a.active) {
-		color: var(--accent);
+		color: rgb(var(--black));
 		font-weight: 700;
-		background: var(--accent-light);
+		border-bottom-color: var(--accent);
 	}
 	/* Desktop: switcher sits in the bar. Mobile: a slim strip under the bar,
 	   visible without opening the menu, since most tool use is on phones. */
@@ -135,7 +137,6 @@ const hasTranslations = alternates.length > 1;
 		width: 22px;
 		height: 2px;
 		background: rgb(var(--gray-dark));
-		border-radius: 2px;
 	}
 	.mobile-menu {
 		border-top: 1px solid rgb(var(--gray-light));
@@ -146,15 +147,14 @@ const hasTranslations = alternates.length > 1;
 	}
 	.mobile-menu[hidden] { display: none; }
 	.mobile-menu a {
-		padding: 0.5em 0.75em;
+		padding: 0.5em 0.25em;
 		color: rgb(var(--gray-dark));
 		text-decoration: none;
-		border-radius: 4px;
 		font-size: 0.95em;
+		border-bottom: 1px solid rgb(var(--gray-light));
 	}
-	.mobile-menu a:hover {
-		background: rgb(var(--gray-light));
-	}
+	.mobile-menu a:last-child { border-bottom: none; }
+	.mobile-menu a:hover { color: var(--accent); }
 	/* The bar is full with six links; below ~820px the switcher moves to the strip. */
 	@media (max-width: 820px) {
 		header :global(.lang-desktop) { display: none; }
