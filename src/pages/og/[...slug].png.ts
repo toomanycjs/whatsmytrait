@@ -7,13 +7,19 @@ import { SITE_TITLE } from '../../consts';
 import { DEFAULT_LOCALE, localeOfId, ui, type Locale } from '../../i18n/config';
 import { listPages } from '../../i18n/registry';
 
+// Share image in the site's own register: serif title, a small coloured
+// section kicker, hairline rules, white ground. Colours are the section
+// tokens from global.css so the card matches the page it links to.
 const SECTION_COLORS: Record<string, string> = {
-	evidence: '#2563eb',
-	testing: '#059669',
-	nhs: '#1d4ed8',
-	tools: '#7c3aed',
+	testing: '#1e6b3c',
+	evidence: '#3a4fa8',
+	tools: '#7a3a8c',
+	nhs: '#b84a1e',
 };
-const DEFAULT_COLOR = '#0d6b74';
+const ACCENT = '#0d6b74';
+const BLACK = '#14181e';
+const GRAY = '#5a6c7c';
+const RULE = '#e2e8ee';
 
 const ENTITIES: Record<string, string> = {
 	'&amp;': '&',
@@ -95,14 +101,29 @@ export async function getStaticPaths() {
 
 type Props = InferGetStaticPathsType<typeof getStaticPaths>['props'];
 
+// Page titles carry an SEO tail after a colon ("COMPASS-31: free online
+// questionnaire with automatic scoring"). On the card the head is the title
+// and the tail becomes a quieter second line, so the image reads like the
+// page's own heading rather than a search snippet.
+function splitTitle(title: string): { head: string; tail?: string } {
+	const m = title.match(/^(.{6,70}?):\s+(.{12,})$/);
+	if (m) return { head: m[1], tail: m[2].charAt(0).toUpperCase() + m[2].slice(1) };
+	if (title === SITE_TITLE) {
+		return { head: title, tail: 'Validated questionnaires, trackers, evidence reviews and NHS guidance for post-viral illness, dysautonomia and ME/CFS' };
+	}
+	return { head: title };
+}
+
 export async function GET({ props }: { props: Props }) {
 	const { title, section, locale } = props;
-	const color = SECTION_COLORS[section] ?? DEFAULT_COLOR;
-	const label = sectionLabel(locale as Locale, section).toUpperCase();
-	const fontSize = title.length > 80 ? 36 : title.length > 50 ? 42 : 48;
+	const color = SECTION_COLORS[section] ?? ACCENT;
+	const label = sectionLabel(locale as Locale, section);
+	const { head, tail } = splitTitle(title);
+	const headSize = head.length > 64 ? 48 : head.length > 40 ? 56 : 66;
 
-	const fontRegular = fs.readFileSync('./public/fonts/atkinson-regular.woff');
-	const fontBold = fs.readFileSync('./public/fonts/atkinson-bold.woff');
+	const serif = fs.readFileSync('./public/fonts/source-serif-4-600.woff');
+	const sansRegular = fs.readFileSync('./public/fonts/atkinson-regular.woff');
+	const sansBold = fs.readFileSync('./public/fonts/atkinson-bold.woff');
 
 	const svg = await satori(
 		{
@@ -113,16 +134,41 @@ export async function GET({ props }: { props: Props }) {
 					height: '100%',
 					display: 'flex',
 					flexDirection: 'column',
-					backgroundColor: '#fafafa',
+					backgroundColor: '#ffffff',
 					fontFamily: 'Atkinson',
+					padding: '56px 72px 48px',
 				},
 				children: [
+					// Kicker row: section name on the left, site name on the right
 					{
 						type: 'div',
 						props: {
-							style: { width: '100%', height: '8px', backgroundColor: color },
+							style: {
+								display: 'flex',
+								justifyContent: 'space-between',
+								alignItems: 'baseline',
+								paddingBottom: '18px',
+								borderBottom: `2px solid ${BLACK}`,
+							},
+							children: [
+								{
+									type: 'div',
+									props: {
+										style: { fontSize: '26px', fontWeight: 700, color },
+										children: label || ' ',
+									},
+								},
+								{
+									type: 'div',
+									props: {
+										style: { fontSize: '28px', fontFamily: 'Source Serif 4', fontWeight: 600, color: BLACK },
+										children: 'Post Viral Recovery',
+									},
+								},
+							],
 						},
 					},
+					// Title block
 					{
 						type: 'div',
 						props: {
@@ -130,75 +176,59 @@ export async function GET({ props }: { props: Props }) {
 								flex: 1,
 								display: 'flex',
 								flexDirection: 'column',
-								justifyContent: 'space-between',
-								padding: '48px 64px 40px',
+								justifyContent: 'center',
+								paddingTop: '28px',
+								paddingBottom: '28px',
 							},
 							children: [
 								{
 									type: 'div',
 									props: {
-										style: { display: 'flex', flexDirection: 'column' },
-										children: [
-											{
-												type: 'div',
-												props: {
-													style: {
-														fontSize: '20px',
-														fontWeight: 700,
-														color,
-														letterSpacing: '0.12em',
-														marginBottom: '28px',
-													},
-													children: label,
-												},
-											},
-											{
-												type: 'div',
-												props: {
-													style: {
-														fontSize: `${fontSize}px`,
-														fontWeight: 700,
-														color: '#1a1a1a',
-														lineHeight: 1.25,
-													},
-													children: title,
-												},
-											},
-										],
-									},
-								},
-								{
-									type: 'div',
-									props: {
 										style: {
-											display: 'flex',
-											alignItems: 'center',
-											justifyContent: 'space-between',
-											borderTop: '2px solid #e5e5e5',
-											paddingTop: '20px',
+											fontFamily: 'Source Serif 4',
+											fontSize: `${headSize}px`,
+											fontWeight: 600,
+											color: BLACK,
+											lineHeight: 1.15,
+											letterSpacing: '-0.01em',
 										},
-										children: [
+										children: head,
+									},
+								},
+								...(tail
+									? [
 											{
 												type: 'div',
 												props: {
 													style: {
-														fontSize: '22px',
-														fontWeight: 700,
-														color: '#444',
+														fontSize: '30px',
+														color: GRAY,
+														lineHeight: 1.35,
+														marginTop: '22px',
 													},
-													children: 'Post Viral Recovery',
+													children: tail,
 												},
 											},
-											{
-												type: 'div',
-												props: {
-													style: { fontSize: '18px', color: '#999' },
-													children: 'postviralrecovery.com',
-												},
-											},
-										],
-									},
-								},
+										]
+									: []),
+							],
+						},
+					},
+					// Footer rule and address
+					{
+						type: 'div',
+						props: {
+							style: {
+								display: 'flex',
+								justifyContent: 'space-between',
+								borderTop: `1px solid ${RULE}`,
+								paddingTop: '18px',
+								fontSize: '22px',
+								color: GRAY,
+							},
+							children: [
+								{ type: 'div', props: { children: 'postviralrecovery.com' } },
+								{ type: 'div', props: { children: section === 'tools' ? 'Free, scored in your browser' : ' ' } },
 							],
 						},
 					},
@@ -209,8 +239,9 @@ export async function GET({ props }: { props: Props }) {
 			width: 1200,
 			height: 630,
 			fonts: [
-				{ name: 'Atkinson', data: fontRegular, weight: 400, style: 'normal' as const },
-				{ name: 'Atkinson', data: fontBold, weight: 700, style: 'normal' as const },
+				{ name: 'Source Serif 4', data: serif, weight: 600, style: 'normal' as const },
+				{ name: 'Atkinson', data: sansRegular, weight: 400, style: 'normal' as const },
+				{ name: 'Atkinson', data: sansBold, weight: 700, style: 'normal' as const },
 			],
 		},
 	);
