@@ -41,5 +41,10 @@ const resolvedOgImage = ogImage ?? new URL(`/og/${slug}.png`, Astro.site).href;
 			<slot />
 		</main>
 		<Footer />
+		<script>
+			// Count each step and the results screen of a tool as a page view.
+			import { observeToolSteps } from '../scripts/pageview';
+			if (location.pathname.includes('/tools/')) observeToolSteps();
+		</script>
 	</body>
 </html>

@@ -49,3 +49,54 @@ export function trackEvent(name: string, params: Record<string, string | number>
 		gtag('event', name, params);
 	} catch { /* analytics must never break the page */ }
 }
+
+// Multi-step tools reveal their pages by toggling the `hidden` attribute on
+// a step container (.step, .flow-step, .screen, .panel) and finally on a
+// results container (#results, #screen-results, .result-panel). Watching
+// those toggles from one place means every tool counts each page and its
+// results screen as a page view without each script having to remember to.
+// Tools that already call trackStep themselves still work: trackStep
+// collapses consecutive calls with the same key.
+const STEP_SELECTOR = '.step, .flow-step, .screen, .panel';
+
+function isResults(el: HTMLElement): boolean {
+	return el.id === 'results' || el.id.startsWith('screen-results') || el.id.startsWith('result-')
+		|| el.classList.contains('results') || el.classList.contains('result-panel');
+}
+
+function stepLabel(el: HTMLElement, n: number): string {
+	const explicit = el.dataset.stepLabel;
+	if (explicit) return explicit;
+	const heading = el.querySelector('h2, h3, legend, .step-kicker, .manoeuvre-step, .flow-question');
+	const text = heading?.textContent?.replace(/\s+/g, ' ').trim();
+	return text && text.length <= 60 ? text : `Step ${n}`;
+}
+
+export function observeToolSteps(root: HTMLElement | null = document.querySelector('main')) {
+	if (!root || typeof MutationObserver === 'undefined') return;
+	// Panels revealed by script on load (a restored result, a first step that
+	// starts hidden) are part of the page view gtag already counted. Only
+	// reveals after the visitor has done something count as new pages.
+	let interacted = false;
+	const markInteracted = () => { interacted = true; };
+	for (const type of ['pointerdown', 'keydown', 'touchstart', 'click']) {
+		window.addEventListener(type, markInteracted, { once: true, capture: true, passive: true });
+	}
+	const observer = new MutationObserver((records) => {
+		if (!interacted) return;
+		for (const r of records) {
+			const el = r.target as HTMLElement;
+			if (!(el instanceof HTMLElement) || el.hidden) continue;
+			if (isResults(el)) {
+				trackStep('results', 'Results');
+				continue;
+			}
+			if (!el.matches(STEP_SELECTOR)) continue;
+			const siblings = Array.from(root.querySelectorAll<HTMLElement>(STEP_SELECTOR)).filter((s) => !isResults(s));
+			const index = siblings.indexOf(el);
+			// Index 0 is the page as loaded, which gtag already counted.
+			if (index > 0) trackStep(index + 1, stepLabel(el, index + 1));
+		}
+	});
+	observer.observe(root, { attributes: true, attributeFilter: ['hidden'], subtree: true });
+}
