@@ -42,7 +42,7 @@ The NHS is not set up to efficiently investigate and manage post-viral condition
 
 This doesn't mean the NHS can't help; it can, once you're in the right place. But getting there requires knowing what you need, framing it in language that gets you referred, and being persistent without being dismissed as anxious or difficult.
 
-I've written about this approach in more detail [here](/nhs/preparing-for-gp-appointment/), specifically for GP appointments, where the most important decisions about what to investigate next get made.
+I've written about this approach in more detail [here](/testing/preparing-for-gp-appointment/), specifically for GP appointments, where the most important decisions about what to investigate next get made.
 
 A few principles:
 - Come with specific, measurable symptoms (not "I feel unwell"), ideally with data
@@ -96,6 +96,6 @@ I'm not a clinician. Everything here is my own experience and reading. For the c
 ## Further reading
 
 - [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
-- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)

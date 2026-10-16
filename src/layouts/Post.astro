@@ -4,6 +4,7 @@ import JsonLd from '../components/JsonLd.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import SpoonRating from '../components/SpoonRating.astro';
 import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
 
 interface Props {
@@ -12,14 +13,15 @@ interface Props {
 	pubDate: Date;
 	updatedDate?: Date;
 	lastModified?: Date;
-	section: 'testing' | 'evidence' | 'tools' | 'nhs';
+	section: 'testing' | 'evidence' | 'tools' | 'low-spoon-cooking';
 	sectionLabel: string;
 	sectionHref: string;
 	series?: string;
 	ogImage?: string;
+	spoons?: number;
 }
 
-const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage } = Astro.props;
+const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage, spoons } = Astro.props;
 
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
 const t = ui(lang);
@@ -56,6 +58,12 @@ const effectiveModified = lastModified ?? updatedDate;
 					</div>
 					<h1>{title}</h1>
 					<p class="post-description">{description}</p>
+					{spoons && (
+						<p class="spoon-line">
+							<SpoonRating spoons={spoons} size="large" decorative />
+							<span>{spoons} out of 5 spoons</span>
+						</p>
+					)}
 					<div class="dates">
 						<FormattedDate date={pubDate} locale={lang} />
 						{updatedDate && (
@@ -101,6 +109,14 @@ const effectiveModified = lastModified ?? updatedDate;
 		margin: 0 0 0.75em;
 		line-height: 1.5;
 		text-wrap: pretty;
+	}
+	.spoon-line {
+		display: flex;
+		align-items: center;
+		gap: 0.75em;
+		margin: 0 0 0.75em;
+		font-weight: 700;
+		color: rgb(var(--gray-dark));
 	}
 	.dates {
 		font-size: 0.88em;

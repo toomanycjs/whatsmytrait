@@ -75,6 +75,6 @@ If NHS waiting times are very long and you have the means, a single private cons
 
 ## Further reading
 
-- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)

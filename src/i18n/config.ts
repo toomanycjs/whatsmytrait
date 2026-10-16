@@ -62,7 +62,7 @@ export function isDefaultLocaleId(id: string): boolean {
 	return localeOfId(id).locale === DEFAULT_LOCALE;
 }
 
-export type Section = 'testing' | 'evidence' | 'tools' | 'nhs';
+export type Section = 'testing' | 'evidence' | 'tools' | 'low-spoon-cooking';
 
 export interface UiStrings {
 	nav: Record<Section | 'about' | 'contact', string>;
@@ -82,7 +82,7 @@ export interface UiStrings {
 
 export const UI: Record<Locale, UiStrings> = {
 	en: {
-		nav: { testing: 'Testing', evidence: 'Evidence', tools: 'Tools', nhs: 'NHS', about: 'About', contact: 'Contact' },
+		nav: { testing: 'Testing', evidence: 'Evidence', tools: 'Tools', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'About', contact: 'Contact' },
 		skipLink: 'Skip to content',
 		mainNav: 'Main',
 		languageLabel: 'Language',
@@ -97,7 +97,7 @@ export const UI: Record<Locale, UiStrings> = {
 		},
 	},
 	de: {
-		nav: { testing: 'Testberichte', evidence: 'Evidenz', tools: 'Tools', nhs: 'NHS', about: 'Über', contact: 'Kontakt' },
+		nav: { testing: 'Testberichte', evidence: 'Evidenz', tools: 'Tools', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'Über', contact: 'Kontakt' },
 		skipLink: 'Zum Inhalt springen',
 		mainNav: 'Hauptnavigation',
 		languageLabel: 'Sprache',
@@ -112,7 +112,7 @@ export const UI: Record<Locale, UiStrings> = {
 		},
 	},
 	nl: {
-		nav: { testing: 'Testverslagen', evidence: 'Onderzoek', tools: 'Tools', nhs: 'NHS', about: 'Over', contact: 'Contact' },
+		nav: { testing: 'Testverslagen', evidence: 'Onderzoek', tools: 'Tools', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'Over', contact: 'Contact' },
 		skipLink: 'Naar de inhoud',
 		mainNav: 'Hoofdnavigatie',
 		languageLabel: 'Taal',
@@ -127,7 +127,7 @@ export const UI: Record<Locale, UiStrings> = {
 		},
 	},
 	it: {
-		nav: { testing: 'Test', evidence: 'Evidenze', tools: 'Strumenti', nhs: 'NHS', about: 'Chi sono', contact: 'Contatti' },
+		nav: { testing: 'Test', evidence: 'Evidenze', tools: 'Strumenti', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'Chi sono', contact: 'Contatti' },
 		skipLink: 'Vai al contenuto',
 		mainNav: 'Navigazione principale',
 		languageLabel: 'Lingua',
@@ -142,7 +142,7 @@ export const UI: Record<Locale, UiStrings> = {
 		},
 	},
 	sv: {
-		nav: { testing: 'Tester', evidence: 'Evidens', tools: 'Verktyg', nhs: 'NHS', about: 'Om', contact: 'Kontakt' },
+		nav: { testing: 'Tester', evidence: 'Evidens', tools: 'Verktyg', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'Om', contact: 'Kontakt' },
 		skipLink: 'Hoppa till innehållet',
 		mainNav: 'Huvudmeny',
 		languageLabel: 'Språk',
@@ -157,7 +157,7 @@ export const UI: Record<Locale, UiStrings> = {
 		},
 	},
 	es: {
-		nav: { testing: 'Pruebas', evidence: 'Evidencia', tools: 'Herramientas', nhs: 'NHS', about: 'Acerca de', contact: 'Contacto' },
+		nav: { testing: 'Pruebas', evidence: 'Evidencia', tools: 'Herramientas', 'low-spoon-cooking': 'Low Spoon Cooking', about: 'Acerca de', contact: 'Contacto' },
 		skipLink: 'Saltar al contenido',
 		mainNav: 'Navegación principal',
 		languageLabel: 'Idioma',

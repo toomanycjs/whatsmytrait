@@ -42,7 +42,7 @@ The more serious considerations are about who should not take it. Ivabradine can
 
 ## How it's prescribed in the UK
 
-Ivabradine is licensed in the UK for heart failure and angina, not for POTS, so its use here is **off-label**. In practice that means it is almost always initiated by a specialist (a cardiologist or an autonomic clinic) rather than started by a GP, with ongoing prescribing sometimes handed to the GP under a shared-care arrangement once you are stable on a dose. If you think ivabradine might suit you, the realistic route is a referral to a clinician who manages POTS, and the [appointment preparation guide](/nhs/preparing-for-gp-appointment/) covers how to frame that conversation, including bringing objective data such as your [NASA lean test](/tools/nasa-lean-test/) results to make the case for rate control concrete.
+Ivabradine is licensed in the UK for heart failure and angina, not for POTS, so its use here is **off-label**. In practice that means it is almost always initiated by a specialist (a cardiologist or an autonomic clinic) rather than started by a GP, with ongoing prescribing sometimes handed to the GP under a shared-care arrangement once you are stable on a dose. If you think ivabradine might suit you, the realistic route is a referral to a clinician who manages POTS, and the [appointment preparation guide](/testing/preparing-for-gp-appointment/) covers how to frame that conversation, including bringing objective data such as your [NASA lean test](/tools/nasa-lean-test/) results to make the case for rate control concrete.
 
 It is worth being clear with yourself about subtype before pushing for it. Ivabradine makes most sense when the dominant problem is tachycardia, and it is the [hyperadrenergic and post-viral patients](/evidence/pots-vs-ist/) in whom the evidence is strongest. If your main issue is blood pooling and low volume, [salt, fluid and compression](/evidence/salt-water-compression-electrolytes/) and possibly fludrocortisone address the underlying problem more directly, and rate control alone may disappoint.
 
@@ -59,4 +59,4 @@ Ivabradine treats the *symptom* (the fast heart) rather than the *cause*, so it 
 - [POTS and IST: what's the difference, and how do you tell?](/evidence/pots-vs-ist/)
 - [The 30 bpm threshold: how POTS is diagnosed](/evidence/30-bpm-threshold-pots/)
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
-- [Preparing for a GP appointment](/nhs/preparing-for-gp-appointment/)
+- [Preparing for a GP appointment](/testing/preparing-for-gp-appointment/)

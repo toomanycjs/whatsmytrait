@@ -104,4 +104,4 @@ Bolton MJ, Chapman BP, Van Marwijk H. Low-dose naltrexone as a treatment for chr
 
 - [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
 - [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
-- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)

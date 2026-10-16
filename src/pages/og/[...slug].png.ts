@@ -14,7 +14,7 @@ const SECTION_COLORS: Record<string, string> = {
 	testing: '#1e6b3c',
 	evidence: '#3a4fa8',
 	tools: '#7a3a8c',
-	nhs: '#b84a1e',
+	'low-spoon-cooking': '#b84a1e',
 };
 const ACCENT = '#0d6b74';
 const BLACK = '#14181e';
@@ -41,7 +41,7 @@ function sectionLabel(locale: Locale, firstSegment: string | undefined): string 
 	switch (firstSegment) {
 		case 'testing': return t.nav.testing;
 		case 'evidence': return t.nav.evidence;
-		case 'nhs': return t.nav.nhs;
+		case 'low-spoon-cooking': return t.nav['low-spoon-cooking'];
 		case 'tools': return t.nav.tools;
 		case 'about': return t.nav.about;
 		case 'contact': return t.nav.contact;
@@ -74,7 +74,7 @@ function staticPages() {
 }
 
 export async function getStaticPaths() {
-	const collections = ['testing', 'evidence', 'nhs'] as const;
+	const collections = ['testing', 'evidence', 'low-spoon-cooking'] as const;
 	const paths = [];
 
 	for (const collection of collections) {
@@ -109,7 +109,7 @@ function splitTitle(title: string): { head: string; tail?: string } {
 	const m = title.match(/^(.{6,70}?):\s+(.{12,})$/);
 	if (m) return { head: m[1], tail: m[2].charAt(0).toUpperCase() + m[2].slice(1) };
 	if (title === SITE_TITLE) {
-		return { head: title, tail: 'Validated questionnaires, trackers, evidence reviews and NHS guidance for post-viral illness, dysautonomia and ME/CFS' };
+		return { head: title, tail: 'Validated questionnaires, trackers, evidence reviews and low spoon recipes for post-viral illness, dysautonomia and ME/CFS' };
 	}
 	return { head: title };
 }

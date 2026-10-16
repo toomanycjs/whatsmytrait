@@ -107,6 +107,6 @@ I'm not a clinician. This is my reading of the evidence as someone living with t
 ## Further reading
 
 - [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
-- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)

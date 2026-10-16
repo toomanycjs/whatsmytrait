@@ -83,7 +83,7 @@ If your standing heart rate rise consistently falls in the 20–29 bpm range wit
 
 **Document with home monitoring**. [Wearable devices](/testing/what-im-tracking-and-why/) that track heart rate throughout the day can build a longitudinal picture. A resting heart rate consistently above 90 bpm and clear HR elevation on movement, documented over weeks, is useful clinical information.
 
-**[Request specialist review](/nhs/preparing-for-gp-appointment/)** framed around orthostatic intolerance and post-viral dysautonomia rather than POTS specifically. A cardiologist or autonomic specialist who understands the spectrum of disease will be more useful than one applying strict diagnostic criteria as a gate.
+**[Request specialist review](/testing/preparing-for-gp-appointment/)** framed around orthostatic intolerance and post-viral dysautonomia rather than POTS specifically. A cardiologist or autonomic specialist who understands the spectrum of disease will be more useful than one applying strict diagnostic criteria as a gate.
 
 ## Summary
 
@@ -107,5 +107,5 @@ Raj SR. Postural tachycardia syndrome (POTS). Circulation. 2013;127(23):2336–2
 
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
-- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)

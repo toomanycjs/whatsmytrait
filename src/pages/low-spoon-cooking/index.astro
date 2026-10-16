@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import { isDefaultLocaleId } from '../../i18n/config';
+import Page from '../../layouts/Page.astro';
+import SectionIndex from '../../components/SectionIndex.astro';
+
+const posts = (await getCollection('low-spoon-cooking', p => !p.data.draft && isDefaultLocaleId(p.id)))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.map(p => ({ ...p, href: `/low-spoon-cooking/${p.id}/` }));
+---
+
+<Page
+	title="Low Spoon Cooking: Post Viral Recovery"
+	description="Low effort, high reward recipes for people with chronic illness or limited capacity, rated from one to five spoons, with UK supermarket costs per portion."
+>
+	<SectionIndex
+		title="Low Spoon Cooking"
+		description="Low effort, high reward recipes"
+		section="low-spoon-cooking"
+		posts={posts}
+	>
+		<div class="section-intro">
+			<p>
+				I'm a huge fan of the Reddit sub <a href="https://www.reddit.com/r/lowspooncooking/" rel="noopener">r/lowspooncooking</a>, which is a cooking subreddit for chronically ill people and those who might struggle for any capacity reason to put a lot of time and effort into their food. In this section of the website, I'll regularly post recipes that are low spoon but high reward.
+			</p>
+			<p>Prices are estimates as of the time of posting, assuming UK supermarket prices.</p>
+			<p>
+				I'll try and make it so that some are suitable for just mild capacity challenges (1 low spoon) through to those that should be doable even with significant capacity challenges (5 low spoons).
+			</p>
+			<p>If you have suggestions or requests, <a href="/contact/">drop me an email</a>.</p>
+		</div>
+	</SectionIndex>
+</Page>
+
+<style>
+	.section-intro { color: rgb(var(--gray-dark)); }
+	.section-intro p { margin: 0 0 0.9em; }
+</style>

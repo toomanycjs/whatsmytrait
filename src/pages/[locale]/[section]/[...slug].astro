@@ -7,11 +7,11 @@ import Post from '../../../layouts/Post.astro';
 import { isLocale, localeOfId, ui, DEFAULT_LOCALE, type Locale } from '../../../i18n/config';
 import { localizedPath } from '../../../i18n/registry';
 
-type Section = 'testing' | 'evidence' | 'nhs';
+type Section = 'testing' | 'evidence' | 'low-spoon-cooking';
 
 export async function getStaticPaths() {
 	// getStaticPaths is hoisted, so the section list must live inside it.
-	const sections: Section[] = ['testing', 'evidence', 'nhs'];
+	const sections: Section[] = ['testing', 'evidence', 'low-spoon-cooking'];
 	const paths = [];
 	for (const section of sections) {
 		const posts = await getCollection(section, (p) => !p.data.draft);

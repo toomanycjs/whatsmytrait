@@ -72,7 +72,7 @@ Low HRV alone doesn't distinguish POTS from IST; both can produce it. But tracki
 
 If hyperadrenergic POTS or a sympathetic overdrive state is suspected, standing and supine plasma norepinephrine levels can be informative. An upright norepinephrine level above 600 pg/ml (and particularly above 1000 pg/ml) suggests a hyperadrenergic state. This is a blood test that can be requested by a GP or specialist, though interpretation requires clinical context.
 
-This test is worth knowing about but isn't routinely done in most NHS pathways. It can help differentiate between POTS subtypes and may influence medication choices, particularly whether a central sympatholytic is appropriate. See [how to prepare for a GP appointment](/nhs/preparing-for-gp-appointment/) for guidance on how to raise these kinds of tests in a primary care setting.
+This test is worth knowing about but isn't routinely done in most NHS pathways. It can help differentiate between POTS subtypes and may influence medication choices, particularly whether a central sympatholytic is appropriate. See [how to prepare for a GP appointment](/testing/preparing-for-gp-appointment/) for guidance on how to raise these kinds of tests in a primary care setting.
 
 ## What the distinction means for treatment
 

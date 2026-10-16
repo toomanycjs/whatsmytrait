@@ -6,16 +6,16 @@ import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { GUIDE, QUESTIONNAIRE_GROUPS, TRACKERS } from '../tools/catalogue';
 
-const [testing, evidence, nhs] = await Promise.all([
+const [testing, evidence, cooking] = await Promise.all([
 	getCollection('testing', p => !p.data.draft && isDefaultLocaleId(p.id)),
 	getCollection('evidence', p => !p.data.draft && isDefaultLocaleId(p.id)),
-	getCollection('nhs', p => !p.data.draft && isDefaultLocaleId(p.id)),
+	getCollection('low-spoon-cooking', p => !p.data.draft && isDefaultLocaleId(p.id)),
 ]);
 
 type PostItem = {
 	id: string;
 	data: { title: string; description: string; pubDate: Date };
-	section: 'testing' | 'evidence' | 'nhs';
+	section: 'testing' | 'evidence' | 'low-spoon-cooking';
 	label: string;
 	href: string;
 };
@@ -23,7 +23,7 @@ type PostItem = {
 const allPosts: PostItem[] = [
 	...testing.map(p => ({ ...p, section: 'testing' as const, label: 'Testing', href: `/testing/${p.id}/` })),
 	...evidence.map(p => ({ ...p, section: 'evidence' as const, label: 'Evidence', href: `/evidence/${p.id}/` })),
-	...nhs.map(p => ({ ...p, section: 'nhs' as const, label: 'NHS', href: `/nhs/${p.id}/` })),
+	...cooking.map(p => ({ ...p, section: 'low-spoon-cooking' as const, label: 'Low Spoon Cooking', href: `/low-spoon-cooking/${p.id}/` })),
 ].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const recentPosts = allPosts.slice(0, 6);
@@ -107,7 +107,7 @@ const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 		<dl class="index">
 			<div class="index-row">
 				<dt><a href="/testing/" class="section-label testing">Testing</a></dt>
-				<dd>Intervention logs: Nurosym, breathing, recumbent exercise, medications and supplements, with heart rate and HRV data where it exists.</dd>
+				<dd>Intervention logs: Nurosym, breathing, recumbent exercise, medications and supplements, with heart rate and HRV data where it exists. Also practical guidance on getting care through the NHS.</dd>
 			</div>
 			<div class="index-row">
 				<dt><a href="/evidence/" class="section-label evidence">Evidence</a></dt>
@@ -118,8 +118,8 @@ const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 				<dd>Interactive versions of validated clinical questionnaires, plus trackers for HRV, symptoms and stand tests.</dd>
 			</div>
 			<div class="index-row">
-				<dt><a href="/nhs/" class="section-label nhs">NHS</a></dt>
-				<dd>Practical guidance on getting appropriate care for post-viral conditions: what to ask for and how to frame it.</dd>
+				<dt><a href="/low-spoon-cooking/" class="section-label low-spoon-cooking">Low Spoon Cooking</a></dt>
+				<dd>Recipes that are low effort but high reward, rated from one to five spoons, with UK supermarket costs per portion.</dd>
 			</div>
 		</dl>
 	</section>

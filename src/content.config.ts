@@ -16,6 +16,8 @@ const postSchema = z.object({
 	// automatically. Set the same translationKey on both when the slugs differ.
 	lang: z.string().optional(),
 	translationKey: z.string().optional(),
+	// Low Spoon Cooking recipes: the 1 to 5 spoon rating shown with the title.
+	spoons: z.number().int().min(1).max(5).optional(),
 });
 
 const testing = defineCollection({
@@ -28,9 +30,9 @@ const evidence = defineCollection({
 	schema: postSchema,
 });
 
-const nhs = defineCollection({
-	loader: glob({ base: './src/content/nhs', pattern: '**/*.{md,mdx}' }),
+const lowSpoonCooking = defineCollection({
+	loader: glob({ base: './src/content/low-spoon-cooking', pattern: '**/*.{md,mdx}' }),
 	schema: postSchema,
 });
 
-export const collections = { testing, evidence, nhs };
+export const collections = { testing, evidence, 'low-spoon-cooking': lowSpoonCooking };

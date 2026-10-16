@@ -4,7 +4,7 @@ description: "The evidence behind the four supplements most commonly recommended
 pubDate: 2026-03-27
 ---
 
-When I was referred to a [headache clinic](/nhs/preparing-for-gp-appointment/), the neurologist listed four supplements alongside the discussion of preventive medication: riboflavin (vitamin B2), magnesium, CoQ10, and vitamin D. These are widely recommended by headache specialist services in the UK and elsewhere, typically as first-line options to try before or alongside prescription preventives.
+When I was referred to a [headache clinic](/testing/preparing-for-gp-appointment/), the neurologist listed four supplements alongside the discussion of preventive medication: riboflavin (vitamin B2), magnesium, CoQ10, and vitamin D. These are widely recommended by headache specialist services in the UK and elsewhere, typically as first-line options to try before or alongside prescription preventives.
 
 This post covers what the evidence actually says about each, what doses the trials used, and the significant caveat that most of the trial evidence comes from episodic migraine rather than the new daily persistent headache pattern I have.
 
@@ -97,5 +97,5 @@ Liampas I, Siokas V, Brotis A, Vikelis M, Dardiotis E. Endogenous melatonin leve
 ## Further reading
 
 - [Amitriptyline, propranolol, and candesartan for chronic headache](/evidence/amitriptyline-propranolol-candesartan/)
-- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)

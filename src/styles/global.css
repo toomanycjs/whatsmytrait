@@ -26,8 +26,8 @@
 	--evidence-bg: #eef0fb;
 	--tools: #7a3a8c;
 	--tools-bg: #f5eef8;
-	--nhs: #b84a1e;
-	--nhs-bg: #fdf0ea;
+	--cooking: #b84a1e;
+	--cooking-bg: #fdf0ea;
 }
 
 @font-face {
@@ -179,7 +179,7 @@ a.section-label:hover { text-decoration: underline; }
 .section-label.testing  { color: var(--testing);  }
 .section-label.evidence { color: var(--evidence); }
 .section-label.tools    { color: var(--tools);    }
-.section-label.nhs      { color: var(--nhs);      }
+.section-label.low-spoon-cooking { color: var(--cooking); }
 
 /* Notes and disclaimers: a plain ruled box, no tint, no rail */
 .disclaimer {
@@ -303,3 +303,8 @@ label:has(> input[type="checkbox"]:focus-visible) {
 	clip-path: inset(50%);
 	white-space: nowrap;
 }
+
+/* Recipe summary table: labels down the left, no header row */
+.at-a-glance th { width: 11em; font-weight: 700; }
+.at-a-glance td .spoons { margin-right: 0.5em; }
+@media (max-width: 600px) { .at-a-glance th { width: 8.5em; } }

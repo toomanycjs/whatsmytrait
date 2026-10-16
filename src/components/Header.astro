@@ -14,7 +14,7 @@ const NAV = [
 	{ path: '/testing/', label: t.nav.testing },
 	{ path: '/evidence/', label: t.nav.evidence },
 	{ path: '/tools/', label: t.nav.tools },
-	{ path: '/nhs/', label: t.nav.nhs },
+	{ path: '/low-spoon-cooking/', label: t.nav['low-spoon-cooking'] },
 	{ path: '/about/', label: t.nav.about },
 	{ path: '/contact/', label: t.nav.contact },
 ];
@@ -95,7 +95,8 @@ const hasTranslations = alternates.length > 1;
 		align-items: center;
 	}
 	.nav-links :global(a) {
-		padding: 0.4em 0.6em;
+		padding: 0.4em 0.5em;
+		white-space: nowrap;
 		color: rgb(var(--gray));
 		text-decoration: none;
 		font-size: 0.9em;
@@ -160,7 +161,9 @@ const hasTranslations = alternates.length > 1;
 		header :global(.lang-desktop) { display: none; }
 		.lang-strip { display: block; }
 	}
-	@media (max-width: 600px) {
+	/* "Low Spoon Cooking" makes the links too long for one line below ~780px,
+	   so the menu button takes over there rather than at phone width. */
+	@media (max-width: 780px) {
 		.nav-links { display: none; }
 		.menu-toggle { display: flex; }
 	}

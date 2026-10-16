@@ -140,13 +140,13 @@ The NHS is not well set up for NDPH. Most GPs have not encountered it. The condi
 
 If you think you have NDPH, these steps may help.
 
-**Start with your GP and bring specific information:** the date your headache started, its daily pattern, associated symptoms, what you have tried, and what has and has not helped. [Preparing for health appointments](/nhs/preparing-for-gp-appointment/) covers this in more detail. Ask explicitly about NDPH. If your GP is not familiar with it, the ICHD-3 criteria (section 4.10) are publicly available and can be shared.
+**Start with your GP and bring specific information:** the date your headache started, its daily pattern, associated symptoms, what you have tried, and what has and has not helped. [Preparing for health appointments](/testing/preparing-for-gp-appointment/) covers this in more detail. Ask explicitly about NDPH. If your GP is not familiar with it, the ICHD-3 criteria (section 4.10) are publicly available and can be shared.
 
 **If the headache is unilateral**, ask about an indomethacin trial to rule out hemicrania continua. This can be prescribed by your GP with a proton pump inhibitor for gastric protection.
 
 **Work through the preventive medication ladder** with your GP or through the National Migraine Centre. Three adequate trials of different preventive classes are needed before secondary care treatments become available.
 
-**If three preventives have failed**, push for a neurology or headache clinic referral. Some neurology services will not accept a referral unless three preventives have been tried, so documenting what you have taken, at what dose, for how long, and why it was stopped is important. [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/) covers the documenting and self-advocacy side of this.
+**If three preventives have failed**, push for a neurology or headache clinic referral. Some neurology services will not accept a referral unless three preventives have been tried, so documenting what you have taken, at what dose, for how long, and why it was stopped is important. [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/) covers the documenting and self-advocacy side of this.
 
 **Consider the National Migraine Centre** as a parallel route. It is a charity that offers specialist headache consultations across the UK, usually by video. Free appointments are available, though the wait is longer; paid consultations are also offered and are significantly cheaper than private neurology. The clinicians are headache specialists who can prescribe the full range of first-line preventives and provide the kind of structured treatment plan that can then be implemented through your GP. Their recommendation letters carry weight with NHS services.
 
@@ -174,7 +174,7 @@ NDPH is relentless in a way that episodic conditions are not. There is no pain-f
 
 The psychological impact is compounded by the diagnostic difficulty. Being told repeatedly that tests are normal, that nothing is wrong, or that the problem is anxiety (it is not, though anxiety can certainly develop secondary to chronic pain) is exhausting and demoralising. Understanding that normal tests do not mean the pain is not real, and that the condition has a recognised diagnostic classification even if it is poorly understood, can help with the sense of legitimacy that many NDPH patients lack.
 
-[Tracking symptoms consistently](/testing/what-im-tracking-and-why/), including headache intensity, triggers, medication use, and autonomic readings like standing heart rate, builds the kind of documented record that is useful both clinically (when advocating for yourself at appointments) and personally (for identifying patterns). The [Fatigue Severity Scale](/tools/fss/) and [COMPASS-31](/tools/compass-31/) are two tools worth completing and bringing to appointments. The NHS navigation guides on this site cover the practical side of [advocating for yourself](/nhs/preparing-for-gp-appointment/) within a system that is not designed for conditions like this.
+[Tracking symptoms consistently](/testing/what-im-tracking-and-why/), including headache intensity, triggers, medication use, and autonomic readings like standing heart rate, builds the kind of documented record that is useful both clinically (when advocating for yourself at appointments) and personally (for identifying patterns). The [Fatigue Severity Scale](/tools/fss/) and [COMPASS-31](/tools/compass-31/) are two tools worth completing and bringing to appointments. The NHS navigation guides on this site cover the practical side of [advocating for yourself](/testing/preparing-for-gp-appointment/) within a system that is not designed for conditions like this.
 
 ## References
 
@@ -208,5 +208,5 @@ National Institute for Health and Care Excellence. Erenumab for preventing migra
 - [Amitriptyline, propranolol, and candesartan for chronic headache](/evidence/amitriptyline-propranolol-candesartan/)
 - [Supplements for chronic headache prevention](/testing/supplements-chronic-headache/)
 - [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
-- [How to prepare for a health appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)

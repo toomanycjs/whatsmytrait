@@ -33,7 +33,7 @@ export interface PageSource extends Variant {
 	source: string;
 }
 
-const SECTIONS = ['testing', 'evidence', 'nhs'] as const;
+const SECTIONS = ['testing', 'evidence', 'low-spoon-cooking'] as const;
 
 // Raw sources, so the key can be read without executing the page. The OG image
 // generator reads titles the same way.

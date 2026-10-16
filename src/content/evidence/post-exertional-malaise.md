@@ -44,7 +44,7 @@ This approach has been comprehensively rejected by ME/CFS patient organisations,
 
 The problem is that GET was designed for a condition that doesn't exist in the way the model assumed. Deconditioning does occur as a secondary consequence of ME/CFS, but it is not the primary mechanism. Pushing through PEM doesn't restore function; it damages it. Multiple large patient surveys found that GET was the most commonly reported harmful intervention in ME/CFS, with significant minorities reporting severe and lasting deterioration following courses of GET.
 
-The [2021 NICE guideline update](/nhs/what-i-wish-id-known-earlier/) removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
+The [2021 NICE guideline update](/testing/what-i-wish-id-known-earlier/) removed GET from its recommendations and explicitly warned against using activity programmes that expect progressive escalation without account for PEM.
 
 This does not mean exercise is contraindicated. It means that the type, intensity, and management of activity must account for PEM in a way that standard rehabilitation frameworks do not. The [review of the CHOP and Levine exercise protocols](/evidence/chop-levine-protocol-pots/) covers what this means for the POTS exercise programmes most often recommended to post-viral patients.
 
@@ -101,6 +101,6 @@ Komaroff AL, Bateman L. Will COVID-19 lead to myalgic encephalomyelitis/chronic 
 ## Further reading
 
 - [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
-- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)
 - [Fatigue Severity Scale (interactive questionnaire)](/tools/fss/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)

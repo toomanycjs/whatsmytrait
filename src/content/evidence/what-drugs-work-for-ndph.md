@@ -64,7 +64,7 @@ The causes are probably varied. Reported triggers include infection, stressful l
 
 On NHS access, NICE criteria for CGRP antibodies and botulinum toxin require a chronic migraine diagnosis plus three failed preventives.
 
-Whether the headache is classed as migrainous NDPH or chronic migraine may affect eligibility (and suitability of treatment), which makes it important to raise with your doctor. Keeping a clear record of what you have tried, at what dose, for how long, and why it stopped is what unlocks the next step; [preparing for a GP appointment](/nhs/preparing-for-gp-appointment/) and [what I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/) cover how to do that.
+Whether the headache is classed as migrainous NDPH or chronic migraine may affect eligibility (and suitability of treatment), which makes it important to raise with your doctor. Keeping a clear record of what you have tried, at what dose, for how long, and why it stopped is what unlocks the next step; [preparing for a GP appointment](/testing/preparing-for-gp-appointment/) and [what I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/) cover how to do that.
 
 Ideally, clinicians will usually treat by phenotype, choosing drugs according to whether the headache looks more like migraine or more like tension-type headache, and then work through the options by trial and error. It's a pragmatic approach rather than a mechanism-guided one. It will stay that way until research separates NDPH into subgroups with identifiable causes.
 
@@ -88,4 +88,4 @@ National Institute for Health and Care Excellence. Erenumab for preventing migra
 - [Amitriptyline, propranolol and candesartan for chronic headache](/evidence/amitriptyline-propranolol-candesartan/)
 - [Supplements for chronic headache prevention](/testing/supplements-chronic-headache/)
 - [What happened to me: a timeline](/testing/what-happened-to-me/)
-- [How to prepare for a GP appointment](/nhs/preparing-for-gp-appointment/)
+- [How to prepare for a GP appointment](/testing/preparing-for-gp-appointment/)

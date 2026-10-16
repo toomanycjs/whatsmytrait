@@ -81,4 +81,4 @@ I'm not a clinician. Nothing here is medical advice. I'm someone three years int
 
 - [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
 - [Long COVID, ME/CFS, POTS, and dysautonomia: making sense of overlapping conditions](/evidence/long-covid-mecfs-pots-dysautonomia/)
-- [What I wish I'd known earlier](/nhs/what-i-wish-id-known-earlier/)
+- [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)

@@ -49,7 +49,7 @@ There is no agreed cut-off, but the results page shows reference points from pub
 
 ## Taking it to your GP
 
-Whichever route you take, bring your results, the date and, for a lean test, the device you used and any heart rate medication you take. Present them as a reason to ask for proper testing rather than as a diagnosis. My guide to [preparing for a GP appointment](/nhs/preparing-for-gp-appointment/) has more on how to get the most from that conversation.
+Whichever route you take, bring your results, the date and, for a lean test, the device you used and any heart rate medication you take. Present them as a reason to ask for proper testing rather than as a diagnosis. My guide to [preparing for a GP appointment](/testing/preparing-for-gp-appointment/) has more on how to get the most from that conversation.
 
 ---
 
