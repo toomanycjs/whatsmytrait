@@ -31,9 +31,6 @@ const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 			Not sure where to begin? <a href={GUIDE.href}>{GUIDE.title}</a>
 			<span class="saved-results" hidden>· <a href="/tools/my-results/">Your saved results <span class="saved-count"></span></a></span>
 		</p>
-		<div class="disclaimer">
-			<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
-		</div>
 	</div>
 
 	<nav class="contents" aria-label="On this page">
@@ -73,6 +70,12 @@ const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 			))}
 		</ul>
 	</section>
+
+	<aside class="tool-foot" aria-label="About these tools">
+		<div class="disclaimer">
+			<strong>Note:</strong> These questionnaires are provided for informational and self-monitoring purposes. They are not diagnostic tools. Scores should be discussed with your doctor or specialist.
+		</div>
+	</aside>
 </Page>
 
 <script>
@@ -97,7 +100,6 @@ const toolCount = QUESTIONNAIRE_GROUPS.reduce((n, g) => n + g.tools.length, 0);
 	.start { margin: 0; font-size: 0.95em; }
 	.saved-results { font-weight: 700; margin-left: 0.35em; }
 	.saved-count { font-weight: 400; color: rgb(var(--gray)); }
-	.section-header .disclaimer { margin-bottom: 0; }
 
 	/* Contents: a compact numbered list of the groups */
 	.contents { margin-bottom: 2.5em; font-size: 0.9em; }

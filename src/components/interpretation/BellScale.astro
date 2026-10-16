@@ -43,9 +43,15 @@ import '../../styles/interpretation.css';
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Bell DS. The measurement of disability. In: <em>The Doctor's Guide to Chronic Fatigue Syndrome</em>. 2nd ed. Perseus Books; 1995. p. 119–31.</li>
-		<li>CD19-B cell depletion in PAIS-ME/CFS patients. <a href={SOURCES.trial.href} rel="noopener">{SOURCES.trial.label}</a> (uses change in Bell score as an outcome).</li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Bell DS. The measurement of disability. In: <em>The Doctor's Guide to Chronic Fatigue Syndrome</em>. 2nd ed. Perseus Books; 1995. p. 119–31.</li>
+				<li>CD19-B cell depletion in PAIS-ME/CFS patients. <a href={SOURCES.trial.href} rel="noopener">{SOURCES.trial.label}</a> (uses change in Bell score as an outcome).</li>
+			</ul>
+		</details>
+	</div>
 </section>

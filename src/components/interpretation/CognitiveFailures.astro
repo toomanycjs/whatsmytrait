@@ -63,16 +63,22 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. The Cognitive Failures Questionnaire (CFQ) and its correlates. <em>Br J Clin Psychol</em> 1982;21(1):1–16. <a href={s.broadbent.href} rel="noopener">DOI</a></li>
-		<li>Rast P, Zimprich D, Van Boxtel M, Jolles J. Factor structure and measurement invariance of the Cognitive Failures Questionnaire across the adult life span. <em>Assessment</em> 2009;16(2):145–158. <a href={s.rast.href} rel="noopener">DOI</a> (item lists as tabulated by Goodman et al. 2022)</li>
-		<li>Goodman ZT, Timpano KR, Llabre MM, Bainter SA. Revisiting the factor structure and construct validity of the Cognitive Failures Questionnaire. <em>Psychol Assess</em> 2022;34(7):671–683. <a href={s.goodman.href} rel="noopener">DOI</a></li>
-		<li>Bland AR, Barraclough M, Trender WR, et al. Profiles of objective and subjective cognitive function in Post-COVID Syndrome, COVID-19 recovered, and COVID-19 naïve individuals. <em>Sci Rep</em> 2024;14:13368. <a href={s.bland.href} rel="noopener">Full text</a></li>
-		<li>Holland J, Brown S, O'Flanagan S, et al. Self-reported immune status and COVID-19 associated subjective cognitive functioning in post-COVID-19 syndrome: examination of an Irish cohort. <em>Brain Behav</em> 2024;14(9):e70027. <a href={s.holland.href} rel="noopener">Full text</a></li>
-		<li>Miskowiak KW, Pedersen JK, Gunnarsson DV, et al. Cognitive impairments among patients in a long-COVID clinic: prevalence, pattern and relation to illness severity, work function and quality of life. <em>J Affect Disord</em> 2023;324:162–169. <a href={s.miskowiak.href} rel="noopener">Full text</a></li>
-		<li>Attree EA, Arroll MA, Dancey CP, et al. Psychosocial factors involved in memory and cognitive failures in people with myalgic encephalomyelitis/chronic fatigue syndrome. <em>Psychol Res Behav Manag</em> 2014;7:67–76. <a href={s.attree.href} rel="noopener">Full text</a></li>
-		<li>Berentschot JC, Bek LM, Drost M, et al. Health outcomes up to 3 years and post-exertional malaise in patients after hospitalization for COVID-19: a multicentre prospective cohort study (CO-FLOW). <em>Lancet Reg Health Eur</em> 2025;53:101290. <a href={s.coflow.href} rel="noopener">Full text</a></li>
-		<li>Bridger RS, et al. Psychometric properties of the Cognitive Failures Questionnaire. <em>Ergonomics</em> 2013;56(10):1515–1524. <a href={s.bridger.href} rel="noopener">DOI</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. The Cognitive Failures Questionnaire (CFQ) and its correlates. <em>Br J Clin Psychol</em> 1982;21(1):1–16. <a href={s.broadbent.href} rel="noopener">DOI</a></li>
+				<li>Rast P, Zimprich D, Van Boxtel M, Jolles J. Factor structure and measurement invariance of the Cognitive Failures Questionnaire across the adult life span. <em>Assessment</em> 2009;16(2):145–158. <a href={s.rast.href} rel="noopener">DOI</a> (item lists as tabulated by Goodman et al. 2022)</li>
+				<li>Goodman ZT, Timpano KR, Llabre MM, Bainter SA. Revisiting the factor structure and construct validity of the Cognitive Failures Questionnaire. <em>Psychol Assess</em> 2022;34(7):671–683. <a href={s.goodman.href} rel="noopener">DOI</a></li>
+				<li>Bland AR, Barraclough M, Trender WR, et al. Profiles of objective and subjective cognitive function in Post-COVID Syndrome, COVID-19 recovered, and COVID-19 naïve individuals. <em>Sci Rep</em> 2024;14:13368. <a href={s.bland.href} rel="noopener">Full text</a></li>
+				<li>Holland J, Brown S, O'Flanagan S, et al. Self-reported immune status and COVID-19 associated subjective cognitive functioning in post-COVID-19 syndrome: examination of an Irish cohort. <em>Brain Behav</em> 2024;14(9):e70027. <a href={s.holland.href} rel="noopener">Full text</a></li>
+				<li>Miskowiak KW, Pedersen JK, Gunnarsson DV, et al. Cognitive impairments among patients in a long-COVID clinic: prevalence, pattern and relation to illness severity, work function and quality of life. <em>J Affect Disord</em> 2023;324:162–169. <a href={s.miskowiak.href} rel="noopener">Full text</a></li>
+				<li>Attree EA, Arroll MA, Dancey CP, et al. Psychosocial factors involved in memory and cognitive failures in people with myalgic encephalomyelitis/chronic fatigue syndrome. <em>Psychol Res Behav Manag</em> 2014;7:67–76. <a href={s.attree.href} rel="noopener">Full text</a></li>
+				<li>Berentschot JC, Bek LM, Drost M, et al. Health outcomes up to 3 years and post-exertional malaise in patients after hospitalization for COVID-19: a multicentre prospective cohort study (CO-FLOW). <em>Lancet Reg Health Eur</em> 2025;53:101290. <a href={s.coflow.href} rel="noopener">Full text</a></li>
+				<li>Bridger RS, et al. Psychometric properties of the Cognitive Failures Questionnaire. <em>Ergonomics</em> 2013;56(10):1515–1524. <a href={s.bridger.href} rel="noopener">DOI</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

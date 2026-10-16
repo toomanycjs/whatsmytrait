@@ -57,11 +57,17 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>van Dixhoorn J, Duivenvoorden HJ. Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome. <em>J Psychosom Res</em> 1985;29(2):199–206. <a href={s.vanDixhoorn1985.href} rel="noopener">Article</a></li>
-		<li>van Dixhoorn J, Folgering H. The Nijmegen Questionnaire and dysfunctional breathing. <em>ERJ Open Res</em> 2015;1:00001-2015. <a href={s.vanDixhoorn2015.href} rel="noopener">Full text</a></li>
-		<li>Thomas M, Bruton A, Ainsworth B. Use of the Nijmegen Questionnaire in asthma. <em>ERJ Open Res</em> 2015;1:00033-2015. <a href={s.thomas2015.href} rel="noopener">Full text</a></li>
-		<li>Bondarenko J, Grillo L, Denton E, Button B, Hew M, Holland A. Breathing pattern disorder: assessment and diagnosis. <em>ERJ Open Res</em> 2026. <a href={s.bondarenko2026.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>van Dixhoorn J, Duivenvoorden HJ. Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome. <em>J Psychosom Res</em> 1985;29(2):199–206. <a href={s.vanDixhoorn1985.href} rel="noopener">Article</a></li>
+				<li>van Dixhoorn J, Folgering H. The Nijmegen Questionnaire and dysfunctional breathing. <em>ERJ Open Res</em> 2015;1:00001-2015. <a href={s.vanDixhoorn2015.href} rel="noopener">Full text</a></li>
+				<li>Thomas M, Bruton A, Ainsworth B. Use of the Nijmegen Questionnaire in asthma. <em>ERJ Open Res</em> 2015;1:00033-2015. <a href={s.thomas2015.href} rel="noopener">Full text</a></li>
+				<li>Bondarenko J, Grillo L, Denton E, Button B, Hew M, Holland A. Breathing pattern disorder: assessment and diagnosis. <em>ERJ Open Res</em> 2026. <a href={s.bondarenko2026.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

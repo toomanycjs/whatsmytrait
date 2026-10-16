@@ -105,12 +105,10 @@ const questions = [
 				<p class="description">
 					Alcohol sits awkwardly with post-viral illness. It worsens sleep quality and lowers overnight HRV, it dilates blood vessels and pulls fluid, which is exactly what someone with POTS is trying to avoid, and hangovers and post-exertional malaise compound each other. Many people find their tolerance collapses after the illness begins. Others lean on alcohol to get to sleep or to cope with a shrunken life. Neither is a moral matter; both are worth knowing about, especially before starting medication. If you track HRV, the <a href="/tools/trackers/hrv-tracker/">HRV tracker</a> will usually show you what a drink costs.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The AUDIT is a screen; a high score is a reason to talk to a clinician, not a diagnosis. Answer for the <strong>past 12 months</strong>. One "drink" means one standard drink of roughly 10 g of alcohol, close to a small glass of wine, half a pint of ordinary-strength beer, or a single measure of spirits; in UK units that is about 1.25 units. Source: Babor TF, Higgins-Biddle JC, Saunders JB, Monteiro MG. <em>AUDIT: The Alcohol Use Disorders Identification Test. Guidelines for use in primary care.</em> 2nd ed. World Health Organization; 2001. Original validation: Saunders JB et al. <em>Addiction.</em> 1993;88(6):791–804. The WHO makes the AUDIT freely available for non-commercial use.
-				</div>
 			</div>
 
 			<form id="audit-form" novalidate>
+				<p class="form-instructions">Answer for the <strong>past 12 months</strong>. One "drink" means one standard drink of roughly 10 g of alcohol, close to a small glass of wine, half a pint of ordinary-strength beer, or a single measure of spirits; in UK units that is about 1.25 units.</p>
 				<p class="form-instructions">Because alcohol use can affect your health and can interfere with certain medications and treatments, it is important to answer honestly. Your answers are never sent anywhere. Your score is saved only in this browser, and you can delete it at any time.</p><!-- REVIEW: updated now that results are saved on the device -->
 
 				<div class="question-grid">
@@ -159,6 +157,13 @@ const questions = [
 			</div>
 
 			<SharedResults toolId="audit" />
+			<aside class="tool-foot" aria-label="About this tool">
+				<div class="disclaimer"><strong>This is not a diagnostic tool.</strong> The AUDIT is a screen; a high score is a reason to talk to a clinician, not a diagnosis.</div>
+				<details class="sources" id="sources">
+					<summary>Sources and licence</summary>
+					<p class="citation">Source: Babor TF, Higgins-Biddle JC, Saunders JB, Monteiro MG. <em>AUDIT: The Alcohol Use Disorders Identification Test. Guidelines for use in primary care.</em> 2nd ed. World Health Organization; 2001. Original validation: Saunders JB et al. <em>Addiction.</em> 1993;88(6):791–804. The WHO makes the AUDIT freely available for non-commercial use.</p>
+				</details>
+			</aside>
 </Page>
 
 <script>
@@ -285,9 +290,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.85em;
-		padding: 0.35em 0.75em;
+		padding: 0.5em 0.85em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 		white-space: nowrap;
 	}

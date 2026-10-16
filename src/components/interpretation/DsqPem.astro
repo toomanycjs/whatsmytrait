@@ -57,10 +57,16 @@ const s = SOURCES;
 		ME/CFS. See <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, including Appendix A (questionnaire) and Appendix B (scoring). <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
-		<li>DePaul University Center for Community Research. DePaul Symptom Questionnaire measures. <a href={s.depaul.href} rel="noopener">{s.depaul.label}</a></li>
-		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, including Appendix A (questionnaire) and Appendix B (scoring). <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
+				<li>DePaul University Center for Community Research. DePaul Symptom Questionnaire measures. <a href={s.depaul.href} rel="noopener">{s.depaul.label}</a></li>
+				<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

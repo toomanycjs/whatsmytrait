@@ -42,10 +42,16 @@ const s = SOURCES;
 		replacing an assessment. See also <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Wolfe F, Clauw DJ, Fitzcharles MA, et al. 2016 revisions to the 2010/2011 fibromyalgia diagnostic criteria. <em>Semin Arthritis Rheum</em> 2016;46(3):319–29. <a href={s.wolfe2016.href} rel="noopener">Article</a></li>
-		<li>Wolfe F, Walitt BT, Rasker JJ, Katz RS, Häuser W. The use of polysymptomatic distress categories in the evaluation of fibromyalgia (FM) and FM severity. <em>J Rheumatol</em> 2015;42(8):1494–501. <a href={s.wolfe2015.href} rel="noopener">Abstract</a></li>
-		<li>National Institute for Health and Care Excellence. Chronic pain (primary and secondary) in over 16s (NG193). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Wolfe F, Clauw DJ, Fitzcharles MA, et al. 2016 revisions to the 2010/2011 fibromyalgia diagnostic criteria. <em>Semin Arthritis Rheum</em> 2016;46(3):319–29. <a href={s.wolfe2016.href} rel="noopener">Article</a></li>
+				<li>Wolfe F, Walitt BT, Rasker JJ, Katz RS, Häuser W. The use of polysymptomatic distress categories in the evaluation of fibromyalgia (FM) and FM severity. <em>J Rheumatol</em> 2015;42(8):1494–501. <a href={s.wolfe2015.href} rel="noopener">Abstract</a></li>
+				<li>National Institute for Health and Care Excellence. Chronic pain (primary and secondary) in over 16s (NG193). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

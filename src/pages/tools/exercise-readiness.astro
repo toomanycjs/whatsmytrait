@@ -53,7 +53,6 @@ const redFlags = [
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Exercise readiness screen</h1>
 				<p class="subtitle">Three quick checks before you start anything</p>
-				<ToolPurpose />
 				<p class="description">
 					Before starting any movement or exercise plan with a post-viral condition, three things are worth checking:
 					red-flag symptoms that need a clinician first, post-exertional malaise (PEM), and a couple of conditions
@@ -198,6 +197,9 @@ const redFlags = [
 				<h3>About this screen</h3>
 				<p>This screen is an information filter, not a medical assessment. It cannot detect problems you did not report, and it does not replace a clinician's judgement. If you are in doubt about your readiness for activity, ask your GP or specialist, and bring your symptom records with you.</p>
 			</div>
+			<aside class="tool-foot" aria-label="About this tool">
+				<ToolPurpose />
+			</aside>
 </Page>
 
 <script>
@@ -348,7 +350,7 @@ if (store.screen) {
 		display: inline-block;
 		width: 1.5em; height: 1.5em; line-height: 1.5em;
 		text-align: center;
-		background: var(--tools-bg); color: var(--tools);
+		background: transparent; color: var(--tools);
 		border-radius: 3px; font-size: 0.85em;
 		margin-right: 0.3em;
 	}
@@ -376,12 +378,12 @@ if (store.screen) {
 		font-size: 0.92em; line-height: 1.5;
 	}
 	.check-row input { margin-top: 0.3em; flex-shrink: 0; }
-	.check-row:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+	.check-row:has(input:checked) { border-color: var(--accent); background: var(--accent); color: #fff; }
 
 	.small-note { font-size: 0.85em; color: rgb(var(--gray)); margin-top: 0.75em; }
 	.pem-found p { margin-bottom: 0.5em; }
 	.stale-note {
-		border: 1px solid #e8c9a0; background: #fdf3e7; color: #9a5b13;
+		border: 1px solid #e8c9a0; background: transparent; color: #9a5b13;
 		border-radius: 3px; padding: 0.7em 1em; font-size: 0.9em; margin: 0.75em 0;
 	}
 
@@ -403,10 +405,10 @@ if (store.screen) {
 	.route-cards :global(.route-badge) {
 		align-self: flex-start;
 		font-size: 0.72em; font-weight: 700;
-		color: var(--accent-dark); background: var(--accent-light);
+		color: var(--accent-dark); background: transparent;
 		padding: 0.15em 0.5em; border-radius: 3px;
 	}
-	.route-cards :global(.route-badge.alt) { color: var(--tools); background: var(--tools-bg); }
+	.route-cards :global(.route-badge.alt) { color: var(--tools); background: transparent; }
 
 	.results-disclaimer {
 		font-size: 0.88em; color: rgb(var(--gray-dark));

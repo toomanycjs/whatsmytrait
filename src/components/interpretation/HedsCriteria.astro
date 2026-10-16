@@ -52,12 +52,18 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
-		<li>The Ehlers-Danlos Society. Diagnostic criteria for hypermobile Ehlers-Danlos syndrome (hEDS) checklist. <a href={s.checklist.href} rel="noopener">Checklist</a></li>
-		<li>Castori M, Tinkle B, Levy H, Grahame R, Malfait F, Hakim A. A framework for the classification of joint hypermobility and related conditions. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):148–157. <a href={s.castori.href} rel="noopener">DOI</a></li>
-		<li>The Ehlers-Danlos Society. What is HSD? <a href={s.hsd.href} rel="noopener">Web page</a></li>
-		<li>The Ehlers-Danlos Society. New global diagnostic criteria for EDS and HSD, 2026. <a href={s.criteria2026.href} rel="noopener">News item</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
+				<li>The Ehlers-Danlos Society. Diagnostic criteria for hypermobile Ehlers-Danlos syndrome (hEDS) checklist. <a href={s.checklist.href} rel="noopener">Checklist</a></li>
+				<li>Castori M, Tinkle B, Levy H, Grahame R, Malfait F, Hakim A. A framework for the classification of joint hypermobility and related conditions. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):148–157. <a href={s.castori.href} rel="noopener">DOI</a></li>
+				<li>The Ehlers-Danlos Society. What is HSD? <a href={s.hsd.href} rel="noopener">Web page</a></li>
+				<li>The Ehlers-Danlos Society. New global diagnostic criteria for EDS and HSD, 2026. <a href={s.criteria2026.href} rel="noopener">News item</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

@@ -73,9 +73,6 @@ const ratings = [
 				<p class="description">
 					In a post-viral illness this is worth measuring because the illness changes it. The original validation included people with chronic pain and cardiac rehabilitation patients, and they scored lower than healthy groups. Slow recovery from stress is a feature of a dysregulated system, not a personal failing, and knowing your number gives you something to compare against as things change. It pairs well with the <a href="/tools/who-5/">WHO-5</a> and the <a href="/tools/satisfaction-with-life-scale/">Satisfaction with Life Scale</a>.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> It measures self-reported recovery from stress. A low score describes your current capacity, which in a chronic illness reflects the illness as much as anything else. Source: Smith BW, Dalen J, Wiggins K, Tooley E, Christopher P, Bernard J. <em>The Brief Resilience Scale: assessing the ability to bounce back.</em> Int J Behav Med. 2008;15(3):194–200. Interpretation bands from Smith BW et al., in <em>Resilience in Children, Adolescents, and Adults</em>, Springer, 2013. The scale is free for non-commercial use and is reproduced here with attribution.
-				</div>
 			</div>
 
 			<form id="brs-form" novalidate>
@@ -125,6 +122,13 @@ const ratings = [
 			</div>
 
 			<SharedResults toolId="brief-resilience-scale" />
+			<aside class="tool-foot" aria-label="About this tool">
+				<div class="disclaimer"><strong>This is not a diagnostic tool.</strong> It measures self-reported recovery from stress. A low score describes your current capacity, which in a chronic illness reflects the illness as much as anything else.</div>
+				<details class="sources" id="sources">
+					<summary>Sources and licence</summary>
+					<p class="citation">Source: Smith BW, Dalen J, Wiggins K, Tooley E, Christopher P, Bernard J. <em>The Brief Resilience Scale: assessing the ability to bounce back.</em> Int J Behav Med. 2008;15(3):194–200. Interpretation bands from Smith BW et al., in <em>Resilience in Children, Adolescents, and Adults</em>, Springer, 2013. The scale is free for non-commercial use and is reproduced here with attribution.</p>
+				</details>
+			</aside>
 </Page>
 
 <script>
@@ -225,9 +229,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.85em;
-		padding: 0.35em 0.75em;
+		padding: 0.5em 0.85em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 		white-space: nowrap;
 	}

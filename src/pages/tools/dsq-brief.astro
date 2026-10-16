@@ -55,9 +55,6 @@ const jsonLd = toolJsonLd('ME/CFS screening (DSQ-Brief)', '/tools/dsq-brief/', F
 				<p class="description">
 					It is intended for anyone with persistent fatigue, a post-viral illness, or suspected ME/CFS who wants a quick, structured self-check before deciding whether to look into things further. It takes under two minutes. Answer each item for how it has been over the <strong>past six months</strong>, and you will get an immediate result with a per-symptom breakdown. No sign-up or email is required, and nothing you enter leaves your device. To characterise your post-activity symptom pattern in more depth, the <a href="/tools/dsq-pem/">DSQ-PEM</a> adds recovery time and triggers; for the complete assessment, take the full <a href="/tools/dsq-2/">DSQ-2</a>.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A screening result reflects self-reported symptoms and is not a diagnosis of ME/CFS or any other condition. The DSQ-Brief is very good at telling ME/CFS apart from health, but less so from other fatiguing illnesses, so a result here is a starting point for a conversation with your doctor, not a conclusion. Based on: Jason LA, Benner S, Furst J, Cathey P. <em>Developing and validating a brief screening scale for ME/CFS.</em> Fatigue: Biomedicine, Health &amp; Behavior. 2023;11(2–4):176–87.
-				</div>
 			</div>
 
 			<form id="dsq-form" novalidate>
@@ -144,7 +141,10 @@ const jsonLd = toolJsonLd('ME/CFS screening (DSQ-Brief)', '/tools/dsq-brief/', F
 
 			<SharedResults toolId="dsq-brief" />
 
-			<DsqBriefInterpretation />
+			<DsqBriefInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> A screening result reflects self-reported symptoms and is not a diagnosis of ME/CFS or any other condition. The DSQ-Brief is very good at telling ME/CFS apart from health, but less so from other fatiguing illnesses, so a result here is a starting point for a conversation with your doctor, not a conclusion.</div>
+				<p class="citation" slot="citation">Based on: Jason LA, Benner S, Furst J, Cathey P. <em>Developing and validating a brief screening scale for ME/CFS.</em> Fatigue: Biomedicine, Health &amp; Behavior. 2023;11(2–4):176–87.</p>
+			</DsqBriefInterpretation>
 </Page>
 
 <script>
@@ -428,7 +428,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.item-table { margin: 1em 0 0.5em; font-size: 0.9em; }
 	.item-table td, .item-table th { padding: 0.5em 0.6em; }
 	/* Injected by script: anchor to the static .item-table container. */
-	.item-table :global(.row-met) { background: #f3faf5; }
+	.item-table :global(.row-met) { background: transparent; }
 	.item-table :global(.met) { color: #1e6b3c; font-weight: 700; white-space: nowrap; }
 	.item-table :global(.notmet) { color: rgb(var(--gray)); white-space: nowrap; }
 	.table-note { font-size: 0.82em; color: rgb(var(--gray)); margin: 0.5em 0 2em; }

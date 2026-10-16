@@ -48,13 +48,6 @@ import Page from '../../../layouts/Page.astro';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>HRV and resting heart rate tracker</h1>
 				<p class="subtitle">Log daily readings, or import them, and see your medians and trends</p>
-				<div class="purpose-box">
-					<p>
-						<strong>This is a record keeper.</strong> It stores your readings, works out rolling medians and draws the trend.
-						It does not interpret them or tell you what to do. Everything you enter stays in this browser on this
-						device and is never sent anywhere.
-					</p>
-				</div>
 			</div>
 
 			<div class="content">
@@ -234,11 +227,18 @@ import Page from '../../../layouts/Page.astro';
 					<p class="note">Pairing this with the <a href="/tools/trackers/symptom-diary/">symptom diary</a> lets you set objective markers against how you actually felt. For the reasoning behind tracking HRV at all, and its limits, see <a href="/evidence/hrv-as-a-tracking-metric/">HRV as a tracking metric</a>.</p>
 				</section>
 
-				<div class="results-disclaimer">
-					<h3>About this page</h3>
+			</div>
+
+			<aside class="tool-foot" aria-label="About this tool">
+				<div class="disclaimer">
+					<p>
+						<strong>This is a record keeper.</strong> It stores your readings, works out rolling medians and draws the trend.
+						It does not interpret them or tell you what to do. Everything you enter stays in this browser on this
+						device and is never sent anywhere.
+					</p>
 					<p>This page keeps your record and does arithmetic on it. It does not diagnose anything, and a change in HRV or resting heart rate on its own does not mean something is wrong or right. If you see a pattern that worries you, the export button gives you a file to take to your clinician.</p>
 				</div>
-			</div>
+			</aside>
 </Page>
 
 <script>

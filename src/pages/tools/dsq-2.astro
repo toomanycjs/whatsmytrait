@@ -41,9 +41,6 @@ const yesNoNot = (q: { options: [number, string][] }) => q.options;
 				<p class="description">
 					It is long: about 100 answers in {totalSteps} short sections. Your answers are saved in your browser as you go, so you can pause and pick up where you left off. Nothing you enter leaves your device, and no sign-up or email is required. If you would like a quick screen first, the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> takes under two minutes, and the <a href="/tools/dsq-pem/">DSQ-PEM</a> focuses on the post-exertional malaise pattern specifically.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> Your results reflect self-reported symptoms and do not constitute a diagnosis. Meeting a case definition here is not the same as receiving a clinical diagnosis, which requires a clinician and the exclusion of other conditions. Discuss your results with your doctor or specialist. Based on: Jason LA, Sunnquist M. <em>The development of the DePaul Symptom Questionnaire.</em> Front Pediatr. 2018;6:330; and Bedree H, Sunnquist M, Jason LA. <em>The DePaul Symptom Questionnaire-2: A Validation Study.</em> Fatigue. 2019;7(3):166–179.
-				</div>
 			</div>
 
 			<div id="resume-banner" class="resume-banner" hidden>
@@ -196,7 +193,10 @@ const yesNoNot = (q: { options: [number, string][] }) => q.options;
 
 			<SharedResults toolId="dsq-2" />
 
-			<Dsq2Interpretation />
+			<Dsq2Interpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> Your results reflect self-reported symptoms and do not constitute a diagnosis. Meeting a case definition here is not the same as receiving a clinical diagnosis, which requires a clinician and the exclusion of other conditions. Discuss your results with your doctor or specialist.</div>
+				<p class="citation" slot="citation">Based on: Jason LA, Sunnquist M. <em>The development of the DePaul Symptom Questionnaire.</em> Front Pediatr. 2018;6:330; and Bedree H, Sunnquist M, Jason LA. <em>The DePaul Symptom Questionnaire-2: A Validation Study.</em> Fatigue. 2019;7(3):166–179.</p>
+			</Dsq2Interpretation>
 </Page>
 
 <script>
@@ -611,15 +611,14 @@ document.getElementById('fresh-btn')?.addEventListener('click', () => { resumeBa
 	.domain-cards :global(.domain-card-interp) { font-size: 0.85em; line-height: 1.5; margin: 0; color: rgb(var(--gray-dark)); }
 
 	/* Case-def cards */
-	.casedef-cards { display: flex; flex-direction: column; gap: 0.6em; }
-	.casedef-cards :global(.casedef-card) { border: 1px solid rgb(var(--gray-light)); border-left-width: 4px; border-radius: 3px; padding: 0.9em 1.2em; }
-	.casedef-cards :global(.casedef-card.met) { border-left-color: #1e6b3c; background: #f3faf5; }
-	.casedef-cards :global(.casedef-card.notmet) { border-left-color: rgb(var(--gray-light)); }
+	.casedef-cards { display: flex; flex-direction: column; border-bottom: 1px solid rgb(var(--gray-light)); }
+	.casedef-cards :global(.casedef-card) { border-top: 1px solid rgb(var(--gray-light)); padding: 0.9em 0; }
+	.casedef-cards :global(.casedef-card.met) { border-top-color: #1e6b3c; }
 	.casedef-cards :global(.casedef-head) { display: flex; align-items: center; justify-content: space-between; gap: 0.75em; margin-bottom: 0.35em; }
 	.casedef-cards :global(.casedef-name) { font-weight: 700; font-size: 0.98em; }
-	.casedef-cards :global(.casedef-badge) { font-size: 0.78em; font-weight: 700; white-space: nowrap; padding: 0.2em 0.6em; border-radius: 3px; }
-	.casedef-cards :global(.casedef-card.met .casedef-badge) { background: #1e6b3c; color: #fff; }
-	.casedef-cards :global(.casedef-card.notmet .casedef-badge) { background: rgb(var(--gray-light)); color: rgb(var(--gray-dark)); }
+	.casedef-cards :global(.casedef-badge) { font-size: 0.85em; font-weight: 700; white-space: nowrap; }
+	.casedef-cards :global(.casedef-card.met .casedef-badge) { color: #1e6b3c; }
+	.casedef-cards :global(.casedef-card.notmet .casedef-badge) { color: rgb(var(--gray)); }
 	.casedef-cards :global(.casedef-req) { font-size: 0.85em; line-height: 1.5; margin: 0; color: rgb(var(--gray-dark)); }
 
 	.results-disclaimer {

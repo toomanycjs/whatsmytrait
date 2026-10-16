@@ -46,9 +46,6 @@ const scaleItems = [
 <p class="description">
   This is a free, interactive version. Select the description that best fits your current situation and see your score immediately. No sign-up or email is required.
 </p>
-<div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> Your score is a self-assessed measure of functional capacity and does not constitute a clinical diagnosis. Discuss your results with your doctor. Based on: Bell DS. <em>The measurement of disability.</em> In: The Doctor's Guide to Chronic Fatigue Syndrome. 2nd ed. Perseus Books; 1995. p. 119–31.
-</div>
 			</div>
 
 			<form id="bell-form" novalidate>
@@ -88,7 +85,10 @@ const scaleItems = [
 
 			<SharedResults toolId="bell-scale" />
 
-			<BellInterpretation />
+			<BellInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> Your score is a self-assessed measure of functional capacity and does not constitute a clinical diagnosis. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Bell DS. <em>The measurement of disability.</em> In: The Doctor's Guide to Chronic Fatigue Syndrome. 2nd ed. Perseus Books; 1995. p. 119–31.</p>
+			</BellInterpretation>
 </Page>
 
 <script>
@@ -190,7 +190,7 @@ const scaleItems = [
 		transition: background 0.1s;
 	}
 	.scale-item:has(input:checked) {
-		background: var(--accent-light);
+		background: transparent;
 		border-radius: 3px;
 		padding-left: 0.5em;
 		padding-right: 0.5em;
@@ -272,7 +272,7 @@ const scaleItems = [
 		line-height: 1.6;
 		margin: 0 0 2em;
 		padding: 1em 1.25em;
-		background: var(--accent-light);
+		background: transparent;
 		border-left: 4px solid var(--accent);
 		border-radius: 3px;
 	}

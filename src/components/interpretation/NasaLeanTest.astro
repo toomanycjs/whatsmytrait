@@ -66,14 +66,20 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Sheldon RS, Grubb BP, Olshansky B, et al. 2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope. <em>Heart Rhythm</em> 2015;12(6):e41–63. <a href={s.sheldon.href} rel="noopener">Full text</a></li>
-		<li>Vernino S, Bourne KM, Stiles LE, et al. Postural orthostatic tachycardia syndrome (POTS): state of the science and clinical care from a 2019 National Institutes of Health expert consensus meeting, part 1. <em>Auton Neurosci</em> 2021;235:102828. <a href={s.vernino.href} rel="noopener">Full text</a></li>
-		<li>Lee J, Vernon SD, Jeys P, et al. Hemodynamics during the 10-minute NASA lean test: evidence of circulatory decompensation in a subset of ME/CFS patients. <em>J Transl Med</em> 2020;18:314. <a href={s.lee.href} rel="noopener">Full text</a></li>
-		<li>Iftekhar N, et al. Normative data for the 10-min lean test in adults without orthostatic intolerance. <em>Front Neurol</em> 2025;16:1625216. <a href={s.iftekhar.href} rel="noopener">Full text</a></li>
-		<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
-		<li>Teuschl Y, Fanciulli A, Pavy-Le Traon A, et al. Is the NASA lean test a suitable tool to diagnose cardiovascular autonomic disorders? <em>Clin Auton Res</em> 2025;35(3):529–531. <a href={s.teuschl.href} rel="noopener">Full text</a></li>
-		<li>Spahic JM, Hamrefors V, Johansson M, et al. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Sheldon RS, Grubb BP, Olshansky B, et al. 2015 Heart Rhythm Society expert consensus statement on the diagnosis and treatment of postural tachycardia syndrome, inappropriate sinus tachycardia, and vasovagal syncope. <em>Heart Rhythm</em> 2015;12(6):e41–63. <a href={s.sheldon.href} rel="noopener">Full text</a></li>
+				<li>Vernino S, Bourne KM, Stiles LE, et al. Postural orthostatic tachycardia syndrome (POTS): state of the science and clinical care from a 2019 National Institutes of Health expert consensus meeting, part 1. <em>Auton Neurosci</em> 2021;235:102828. <a href={s.vernino.href} rel="noopener">Full text</a></li>
+				<li>Lee J, Vernon SD, Jeys P, et al. Hemodynamics during the 10-minute NASA lean test: evidence of circulatory decompensation in a subset of ME/CFS patients. <em>J Transl Med</em> 2020;18:314. <a href={s.lee.href} rel="noopener">Full text</a></li>
+				<li>Iftekhar N, et al. Normative data for the 10-min lean test in adults without orthostatic intolerance. <em>Front Neurol</em> 2025;16:1625216. <a href={s.iftekhar.href} rel="noopener">Full text</a></li>
+				<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
+				<li>Teuschl Y, Fanciulli A, Pavy-Le Traon A, et al. Is the NASA lean test a suitable tool to diagnose cardiovascular autonomic disorders? <em>Clin Auton Res</em> 2025;35(3):529–531. <a href={s.teuschl.href} rel="noopener">Full text</a></li>
+				<li>Spahic JM, Hamrefors V, Johansson M, et al. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

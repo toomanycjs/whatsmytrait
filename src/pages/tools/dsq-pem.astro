@@ -66,9 +66,6 @@ const jsonLd = toolJsonLd('Post-exertional malaise (DSQ-PEM)', '/tools/dsq-pem/'
 				<p class="description">
 					This tool sits between the <a href="/tools/dsq-brief/">4-question DSQ-Brief</a> (a general ME/CFS screen) and the full <a href="/tools/dsq-2/">DSQ-2</a> (a complete symptom assessment). If you want to check whether your post-activity pattern looks like PEM, this is the one to take.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A positive result means your reported pattern is consistent with PEM, not that you have ME/CFS or any other condition. Discuss your results with your doctor. Based on: Cotler J, Holtzman C, Dudun C, Jason LA. <em>A Brief Questionnaire to Assess Post-Exertional Malaise.</em> Diagnostics. 2018;8(3):66. DePaul University makes the DSQ instruments free to use.
-				</div>
 			</div>
 
 			<form id="pem-form" novalidate>
@@ -190,7 +187,10 @@ const jsonLd = toolJsonLd('Post-exertional malaise (DSQ-PEM)', '/tools/dsq-pem/'
 
 			<SharedResults toolId="dsq-pem" />
 
-			<DsqPemInterpretation />
+			<DsqPemInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> A positive result means your reported pattern is consistent with PEM, not that you have ME/CFS or any other condition. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Cotler J, Holtzman C, Dudun C, Jason LA. <em>A Brief Questionnaire to Assess Post-Exertional Malaise.</em> Diagnostics. 2018;8(3):66. DePaul University makes the DSQ instruments free to use.</p>
+			</DsqPemInterpretation>
 </Page>
 
 <script>

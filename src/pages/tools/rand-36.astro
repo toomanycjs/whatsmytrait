@@ -131,9 +131,6 @@ const jsonLd = toolJsonLd('RAND-36 health survey', '/tools/rand-36/', FAQ_ORDER.
 				<p class="description">
 					It takes 5 to 10 minutes. Most questions refer to the <strong>past 4 weeks</strong>. For a fatigue-specific measure, see the <a href="/tools/fss/">Fatigue Severity Scale</a>. For activity-level functional capacity in ME/CFS, see the <a href="/tools/funcap/">FUNCAP questionnaire</a>. For a quick well-being check, see the <a href="/tools/who-5/">WHO-5</a>.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The RAND-36 measures self-reported health-related quality of life; it does not diagnose any condition. Discuss your results with your doctor. Source: RAND 36-Item Health Survey 1.0. RAND surveys are public documents, available without charge. Hays RD, Sherbourne CD, Mazel RM. <em>The RAND 36-Item Health Survey 1.0.</em> Health Econ. 1993;2(3):217–227.
-				</div>
 			</div>
 
 			<form id="rand-form" novalidate>
@@ -185,7 +182,10 @@ const jsonLd = toolJsonLd('RAND-36 health survey', '/tools/rand-36/', FAQ_ORDER.
 
 			<SharedResults toolId="rand-36" />
 
-			<Rand36Interpretation />
+			<Rand36Interpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> The RAND-36 measures self-reported health-related quality of life; it does not diagnose any condition. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Source: RAND 36-Item Health Survey 1.0. RAND surveys are public documents, available without charge. Hays RD, Sherbourne CD, Mazel RM. <em>The RAND 36-Item Health Survey 1.0.</em> Health Econ. 1993;2(3):217–227.</p>
+			</Rand36Interpretation>
 </Page>
 
 <script>
@@ -326,7 +326,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		font-size: 0.92em;
 		font-weight: 700;
 		color: rgb(var(--gray-dark));
-		background: var(--accent-light);
+		background: transparent;
 		border-radius: 3px;
 		padding: 0.8em 1.1em;
 		margin: 0 0 1em;
@@ -347,9 +347,9 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.85em;
-		padding: 0.35em 0.75em;
+		padding: 0.5em 0.85em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 	}
 	.options label:hover { border-color: var(--accent); color: var(--accent); }

@@ -57,10 +57,16 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Krupp LB, LaRocca NG, Muir-Nash J, Steinberg AD. The fatigue severity scale: application to patients with multiple sclerosis and systemic lupus erythematosus. <em>Arch Neurol</em> 1989;46(10):1121–1123. <a href={s.krupp.href} rel="noopener">Article</a></li>
-		<li>Valko PO, Bassetti CL, Bloch KE, Held U, Baumann CR. Validation of the fatigue severity scale in a Swiss cohort. <em>Sleep</em> 2008;31(11):1601–1607. <a href={s.valko.href} rel="noopener">Full text</a></li>
-		<li>Rooney S, McFadyen DA, Wood DL, Moffat DF, Paul PL. Minimally important difference of the fatigue severity scale and modified fatigue impact scale in people with multiple sclerosis. <em>Mult Scler Relat Disord</em> 2019. <a href={s.rooney.href} rel="noopener">Article</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Krupp LB, LaRocca NG, Muir-Nash J, Steinberg AD. The fatigue severity scale: application to patients with multiple sclerosis and systemic lupus erythematosus. <em>Arch Neurol</em> 1989;46(10):1121–1123. <a href={s.krupp.href} rel="noopener">Article</a></li>
+				<li>Valko PO, Bassetti CL, Bloch KE, Held U, Baumann CR. Validation of the fatigue severity scale in a Swiss cohort. <em>Sleep</em> 2008;31(11):1601–1607. <a href={s.valko.href} rel="noopener">Full text</a></li>
+				<li>Rooney S, McFadyen DA, Wood DL, Moffat DF, Paul PL. Minimally important difference of the fatigue severity scale and modified fatigue impact scale in people with multiple sclerosis. <em>Mult Scler Relat Disord</em> 2019. <a href={s.rooney.href} rel="noopener">Article</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

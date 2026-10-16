@@ -46,9 +46,6 @@ const jsonLd = toolJsonLd('Chalder Fatigue Scale', '/tools/chalder-fatigue-scale
 				<p class="description">
 					If your fatigue gets disproportionately worse after activity, the <a href="/tools/dsq-pem/">DSQ-PEM</a> characterises that pattern specifically. The <a href="/tools/fss/">Fatigue Severity Scale</a> measures the impact of fatigue on functioning rather than the symptom itself, and the <a href="/tools/funcap/">FUNCAP</a> profiles what activities cost you.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A high score indicates fatigue as a symptom; it does not tell you the cause, and fatigue has many. The bimodal threshold was derived against a psychiatric interview measure of fatigue, not against any diagnosis. Discuss your results with your doctor. Based on: Chalder T, Berelowitz G, Pawlikowska T, et al. <em>Development of a fatigue scale.</em> J Psychosom Res. 1993;37(2):147–153; and Cella M, Chalder T. <em>Measuring fatigue in clinical and community settings.</em> J Psychosom Res. 2010;69(1):17–22. The Chalder Fatigue Scale is the work of its authors at King's College London; this page provides an interactive scoring aid for personal, non-commercial use.
-				</div>
 			</div>
 
 			<form id="cfq-form" novalidate>
@@ -117,7 +114,10 @@ const jsonLd = toolJsonLd('Chalder Fatigue Scale', '/tools/chalder-fatigue-scale
 
 			<SharedResults toolId="chalder-fatigue-scale" />
 
-			<ChalderInterpretation />
+			<ChalderInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> A high score indicates fatigue as a symptom; it does not tell you the cause, and fatigue has many. The bimodal threshold was derived against a psychiatric interview measure of fatigue, not against any diagnosis. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Chalder T, Berelowitz G, Pawlikowska T, et al. <em>Development of a fatigue scale.</em> J Psychosom Res. 1993;37(2):147–153; and Cella M, Chalder T. <em>Measuring fatigue in clinical and community settings.</em> J Psychosom Res. 2010;69(1):17–22. The Chalder Fatigue Scale is the work of its authors at King's College London; this page provides an interactive scoring aid for personal, non-commercial use.</p>
+			</ChalderInterpretation>
 </Page>
 
 <script>
@@ -237,7 +237,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.section-lead { font-size: 0.88em; color: rgb(var(--gray)); margin: 0 0 0.75em; }
 	.score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75em; margin-bottom: 1.25em; }
 	.score-card { border: 1px solid rgb(var(--gray-light)); border-radius: 3px; padding: 0.9em 1em; }
-	.score-card.highlight { border-color: var(--accent); background: var(--accent-light); }
+	.score-card.highlight { border-color: var(--accent); background: transparent; }
 	.score-value { font-family: var(--font-serif); font-size: 2em; font-weight: 600; color: rgb(var(--black)); line-height: 1.1; font-variant-numeric: tabular-nums; }
 	.score-max { font-size: 0.5em; color: rgb(var(--gray)); font-weight: 400; }
 	.score-label { font-size: 0.82em; color: rgb(var(--gray-dark)); margin-top: 0.3em; line-height: 1.3; }

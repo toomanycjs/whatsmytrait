@@ -55,8 +55,14 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Sommerfelt K, Schei T, Seton KA, Carding SR. Assessing functional capacity in myalgic encephalopathy/chronic fatigue syndrome: a patient-informed questionnaire. <em>J Clin Med</em> 2024;13(12):3486. <a href={s.sommerfelt.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Sommerfelt K, Schei T, Seton KA, Carding SR. Assessing functional capacity in myalgic encephalopathy/chronic fatigue syndrome: a patient-informed questionnaire. <em>J Clin Med</em> 2024;13(12):3486. <a href={s.sommerfelt.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

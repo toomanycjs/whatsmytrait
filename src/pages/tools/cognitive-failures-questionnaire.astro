@@ -62,9 +62,6 @@ const jsonLd = toolJsonLd('Cognitive Failures Questionnaire', '/tools/cognitive-
 				<p class="description">
 					The questionnaire is presented in two pages of 12–13 items. If mental fatigue rather than lapses is your main concern, the <a href="/tools/chalder-fatigue-scale/">Chalder Fatigue Scale</a> has a mental fatigue subscale, and the <a href="/tools/dsq-pem/">DSQ-PEM</a> characterises symptoms that worsen after cognitive effort.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The CFQ records self-reported lapses; it does not assess cognitive function and cannot diagnose cognitive impairment or any condition. Scores rise with fatigue, stress, and low mood as well as with neurological causes. Discuss your results with your doctor. Based on: Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. <em>The Cognitive Failures Questionnaire (CFQ) and its correlates.</em> Br J Clin Psychol. 1982;21(1):1–16. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.
-				</div>
 			</div>
 
 			<form id="cfq-form" novalidate>
@@ -126,7 +123,10 @@ const jsonLd = toolJsonLd('Cognitive Failures Questionnaire', '/tools/cognitive-
 
 			<SharedResults toolId="cognitive-failures-questionnaire" />
 
-			<CognitiveFailuresInterpretation />
+			<CognitiveFailuresInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> The CFQ records self-reported lapses; it does not assess cognitive function and cannot diagnose cognitive impairment or any condition. Scores rise with fatigue, stress, and low mood as well as with neurological causes. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Broadbent DE, Cooper PF, FitzGerald P, Parkes KR. <em>The Cognitive Failures Questionnaire (CFQ) and its correlates.</em> Br J Clin Psychol. 1982;21(1):1–16. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.</p>
+			</CognitiveFailuresInterpretation>
 </Page>
 
 <script>

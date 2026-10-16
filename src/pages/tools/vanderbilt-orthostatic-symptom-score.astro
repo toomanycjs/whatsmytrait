@@ -38,9 +38,6 @@ const items = [
 				<p class="description">
 					Unlike the weekly <a href="/tools/malmo-pots-score/">Malmö POTS score</a> or the broader <a href="/tools/compass-31/">COMPASS-31</a>, the VOSS is a snapshot. In trials it is completed at the end of a 10-minute stand or tilt, which makes it a natural companion to the <a href="/tools/nasa-lean-test/">NASA lean test</a>: rate your symptoms at the end of the standing phase and you have a symptom number to sit alongside the heart-rate numbers. Rated lying down and again after standing, the difference shows how much standing itself drives your symptoms. If you are trying to work out whether you might have POTS, <a href="/testing/do-i-have-pots/">Do I have POTS?</a> explains how these tools fit together.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The VOSS has no validated cut-off and no formal validation study; it is used in research as a change measure. Healthy people report symptoms after a prolonged tilt too, so a non-zero score is expected. It cannot tell POTS apart from other causes of orthostatic symptoms. Discuss your results with your doctor. Based on: Raj SR, Black BK, Biaggioni I, Harris PA, Robertson D. <em>Acetylcholinesterase inhibition improves tachycardia in postural tachycardia syndrome.</em> Circulation. 2005;111(21):2734–2740; and Raj SR, et al. <em>Propranolol decreases tachycardia and improves symptoms in POTS: less is more.</em> Circulation. 2009;120(9):725–734. Instruction wording on this page is our own; the score is described in those papers rather than distributed as a form.
-				</div>
 			</div>
 
 			<form id="voss-form" novalidate>
@@ -93,7 +90,10 @@ const items = [
 
 			<SharedResults toolId="vanderbilt-orthostatic-symptom-score" />
 
-			<VossInterpretation />
+			<VossInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> The VOSS has no validated cut-off and no formal validation study; it is used in research as a change measure. Healthy people report symptoms after a prolonged tilt too, so a non-zero score is expected. It cannot tell POTS apart from other causes of orthostatic symptoms. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Raj SR, Black BK, Biaggioni I, Harris PA, Robertson D. <em>Acetylcholinesterase inhibition improves tachycardia in postural tachycardia syndrome.</em> Circulation. 2005;111(21):2734–2740; and Raj SR, et al. <em>Propranolol decreases tachycardia and improves symptoms in POTS: less is more.</em> Circulation. 2009;120(9):725–734. Instruction wording on this page is our own; the score is described in those papers rather than distributed as a form.</p>
+			</VossInterpretation>
 </Page>
 
 <script>
@@ -225,10 +225,11 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.symptom-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
 
 	.radio-options { display: flex; flex-direction: column; gap: 0.5em; }
-	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.92em; line-height: 1.4; }
+	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; position: relative; }
 	.radio-label:hover { border-color: var(--accent); }
-	.radio-label:has(input:checked) { background: var(--accent); border-color: var(--accent); }
-	.radio-label input { margin-top: 0.25em; }
+	.radio-label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+	.radio-label:has(input:checked) :is(strong, .pts, .muted, small) { color: #fff; }
+	.radio-label input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 
 	.segmented { display: grid; grid-template-columns: repeat(11, 1fr); gap: 0.3em; max-width: 32em; }
 	.segmented label { position: relative; display: flex; align-items: center; justify-content: center; font-size: 0.88em; padding: 0.45em 0; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; transition: background 0.1s, border-color 0.1s; }

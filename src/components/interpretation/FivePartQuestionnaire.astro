@@ -66,11 +66,17 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Hakim AJ, Grahame R. A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain. <em>Int J Clin Pract</em> 2003;57(3):163–166. <a href={s.hakim.href} rel="noopener">PubMed</a></li>
-		<li>Glans M, Humble MB, Elwin M, Bejerot S. Self-rated joint hypermobility: the five-part questionnaire evaluated in a Swedish non-clinical adult population. <em>BMC Musculoskelet Disord</em> 2020;21:174. <a href={s.glans.href} rel="noopener">Full text</a></li>
-		<li>Schlager A, Ahlqvist K, Pingel R, et al. Validity of the self-reported five-part questionnaire as an assessment of generalized joint hypermobility in early pregnancy. <em>BMC Musculoskelet Disord</em> 2020;21:514. <a href={s.schlager.href} rel="noopener">Full text</a></li>
-		<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Hakim AJ, Grahame R. A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain. <em>Int J Clin Pract</em> 2003;57(3):163–166. <a href={s.hakim.href} rel="noopener">PubMed</a></li>
+				<li>Glans M, Humble MB, Elwin M, Bejerot S. Self-rated joint hypermobility: the five-part questionnaire evaluated in a Swedish non-clinical adult population. <em>BMC Musculoskelet Disord</em> 2020;21:174. <a href={s.glans.href} rel="noopener">Full text</a></li>
+				<li>Schlager A, Ahlqvist K, Pingel R, et al. Validity of the self-reported five-part questionnaire as an assessment of generalized joint hypermobility in early pregnancy. <em>BMC Musculoskelet Disord</em> 2020;21:514. <a href={s.schlager.href} rel="noopener">Full text</a></li>
+				<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

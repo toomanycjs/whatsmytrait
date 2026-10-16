@@ -74,9 +74,6 @@ const ratings = [
 <p class="description">
   This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
 </p>
-<div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> Your score reflects self-reported likelihood of dozing and does not constitute a diagnosis. Discuss results with your doctor. Based on: Johns MW. A new method for measuring daytime sleepiness: the Epworth Sleepiness Scale. Sleep. 1991;14(6):540–545.
-</div>
 			</div>
 
 			<form id="epworth-form" novalidate>
@@ -149,6 +146,13 @@ const ratings = [
 			</div>
 
 			<SharedResults toolId="epworth" />
+			<aside class="tool-foot" aria-label="About this tool">
+				<div class="disclaimer"><strong>This is not a diagnostic tool.</strong> Your score reflects self-reported likelihood of dozing and does not constitute a diagnosis. Discuss results with your doctor.</div>
+				<details class="sources" id="sources">
+					<summary>Sources and licence</summary>
+					<p class="citation">Based on: Johns MW. A new method for measuring daytime sleepiness: the Epworth Sleepiness Scale. Sleep. 1991;14(6):540–545.</p>
+				</details>
+			</aside>
 </Page>
 
 <script>
@@ -275,9 +279,9 @@ const ratings = [
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.88em;
-		padding: 0.35em 0.65em;
+		padding: 0.5em 0.8em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 		white-space: nowrap;
 	}

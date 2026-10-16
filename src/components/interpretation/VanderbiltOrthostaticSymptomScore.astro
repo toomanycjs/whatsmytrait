@@ -62,12 +62,18 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Raj SR, Black BK, Biaggioni I, Harris PA, Robertson D. Acetylcholinesterase inhibition improves tachycardia in postural tachycardia syndrome. <em>Circulation</em> 2005;111(21):2734–2740. <a href={s.raj2005.href} rel="noopener">Article</a></li>
-		<li>Raj SR, Black BK, Biaggioni I, et al. Propranolol decreases tachycardia and improves symptoms in the postural tachycardia syndrome: less is more. <em>Circulation</em> 2009;120(9):725–734. <a href={s.raj2009.href} rel="noopener">Full text</a></li>
-		<li>Stick M, et al. Deep abdominal breathing reduces heart rate and symptoms during orthostatic challenge in patients with postural orthostatic tachycardia syndrome. <em>Eur J Neurol</em> 2024;31:e16402. <a href={s.stick.href} rel="noopener">Full text</a></li>
-		<li>Bourne KM, et al. Abdominal-only compression garments reduce orthostatic tachycardia and improve symptoms in patients with postural orthostatic tachycardia syndrome. <em>Can J Cardiol</em> 2026;42(6):1320. <a href={s.bourne.href} rel="noopener">Full text</a></li>
-		<li>Pereira TJ, Edgell H. N95 masks increase brain blood velocity and parasympathetic outflow, yet worsen orthostatic symptoms in a healthy cohort. <em>Physiol Rep</em> 2025;13:e70402. <a href={s.pereira.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Raj SR, Black BK, Biaggioni I, Harris PA, Robertson D. Acetylcholinesterase inhibition improves tachycardia in postural tachycardia syndrome. <em>Circulation</em> 2005;111(21):2734–2740. <a href={s.raj2005.href} rel="noopener">Article</a></li>
+				<li>Raj SR, Black BK, Biaggioni I, et al. Propranolol decreases tachycardia and improves symptoms in the postural tachycardia syndrome: less is more. <em>Circulation</em> 2009;120(9):725–734. <a href={s.raj2009.href} rel="noopener">Full text</a></li>
+				<li>Stick M, et al. Deep abdominal breathing reduces heart rate and symptoms during orthostatic challenge in patients with postural orthostatic tachycardia syndrome. <em>Eur J Neurol</em> 2024;31:e16402. <a href={s.stick.href} rel="noopener">Full text</a></li>
+				<li>Bourne KM, et al. Abdominal-only compression garments reduce orthostatic tachycardia and improve symptoms in patients with postural orthostatic tachycardia syndrome. <em>Can J Cardiol</em> 2026;42(6):1320. <a href={s.bourne.href} rel="noopener">Full text</a></li>
+				<li>Pereira TJ, Edgell H. N95 masks increase brain blood velocity and parasympathetic outflow, yet worsen orthostatic symptoms in a healthy cohort. <em>Physiol Rep</em> 2025;13:e70402. <a href={s.pereira.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

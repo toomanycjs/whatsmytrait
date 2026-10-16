@@ -56,10 +56,16 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Beighton P, Solomon L, Soskolne CL. Articular mobility in an African population. <em>Ann Rheum Dis</em> 1973;32(5):413–418. <a href={s.beighton.href} rel="noopener">DOI</a></li>
-		<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
-		<li>Juul-Kristensen B, Schmedling K, Rombaut L, Lund H, Engelbert RH. Measurement properties of clinical assessment methods for classifying generalized joint hypermobility: a systematic review. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):116–147. <a href={s.juul.href} rel="noopener">DOI</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Beighton P, Solomon L, Soskolne CL. Articular mobility in an African population. <em>Ann Rheum Dis</em> 1973;32(5):413–418. <a href={s.beighton.href} rel="noopener">DOI</a></li>
+				<li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):8–26. <a href={s.malfait.href} rel="noopener">DOI</a></li>
+				<li>Juul-Kristensen B, Schmedling K, Rombaut L, Lund H, Engelbert RH. Measurement properties of clinical assessment methods for classifying generalized joint hypermobility: a systematic review. <em>Am J Med Genet C Semin Med Genet</em> 2017;175(1):116–147. <a href={s.juul.href} rel="noopener">DOI</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

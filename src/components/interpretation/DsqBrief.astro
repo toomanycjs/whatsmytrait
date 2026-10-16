@@ -59,12 +59,18 @@ const s = SOURCES;
 		on its own. See <a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Jason LA, Benner S, Furst J, Cathey P. Developing and validating a brief screening scale for ME/CFS. <em>Fatigue: Biomedicine, Health &amp; Behavior</em> 2023;11(2–4):176–87. <a href={s.jason2023.href} rel="noopener">Article (paywalled)</a></li>
-		<li>ME Research UK. Can a brief screening scale accurately detect ME/CFS? Research summary. <a href={s.meResearch.href} rel="noopener">{s.meResearch.label}</a></li>
-		<li>DePaul University. DePaul Symptom Questionnaire – Brief. <a href={s.form.href} rel="noopener">{s.form.label}</a></li>
-		<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, Appendix B. <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
-		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Jason LA, Benner S, Furst J, Cathey P. Developing and validating a brief screening scale for ME/CFS. <em>Fatigue: Biomedicine, Health &amp; Behavior</em> 2023;11(2–4):176–87. <a href={s.jason2023.href} rel="noopener">Article (paywalled)</a></li>
+				<li>ME Research UK. Can a brief screening scale accurately detect ME/CFS? Research summary. <a href={s.meResearch.href} rel="noopener">{s.meResearch.label}</a></li>
+				<li>DePaul University. DePaul Symptom Questionnaire – Brief. <a href={s.form.href} rel="noopener">{s.form.label}</a></li>
+				<li>Cotler J, Holtzman C, Dudun C, Jason LA. A brief questionnaire to assess post-exertional malaise. <em>Diagnostics</em> 2018;8(3):66, Appendix B. <a href={s.cotler2018.href} rel="noopener">Full text</a></li>
+				<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

@@ -64,9 +64,6 @@ const jsonLd = toolJsonLd('hEDS diagnostic criteria', '/tools/heds-criteria/', F
 				<p class="description">
 					Joint hypermobility is common in people with POTS and other forms of dysautonomia, and a hypermobility assessment is a reasonable part of a post-viral work-up when joints, skin, or pain fit the picture. If you only want the hypermobility score, use the <a href="/tools/beighton-score/">Beighton tool</a>; if you completed it recently on this device, this page will offer to reuse your score.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> It reproduces published diagnostic criteria so you can see how your own history maps onto them. Several items need physical examination, an echocardiogram, or genetic testing, and Criterion 3 requires a clinician to exclude other conditions. Meeting the pattern here does not mean you have hEDS; not meeting it does not rule out a hypermobility-related condition. The 2017 criteria are the current published international criteria. The Ehlers-Danlos Society has announced that revised criteria for all EDS types and HSD are due for publication in December 2026, with care pathways to follow in 2027; this page will be revised when they appear. Wording here is paraphrased from: Malfait F, Francomano C, Byers P, et al. <em>The 2017 international classification of the Ehlers-Danlos syndromes.</em> Am J Med Genet C Semin Med Genet. 2017;175(1):8–26, and the <a href="https://www.ehlers-danlos.com/heds-diagnostic-checklist/" rel="noopener">Ehlers-Danlos Society diagnostic checklist</a>.
-				</div>
 			</div>
 
 			<form id="heds-form" novalidate>
@@ -247,7 +244,10 @@ const jsonLd = toolJsonLd('hEDS diagnostic criteria', '/tools/heds-criteria/', F
 
 			<SharedResults toolId="heds-criteria" />
 
-			<HedsInterpretation />
+			<HedsInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> It reproduces published diagnostic criteria so you can see how your own history maps onto them. Several items need physical examination, an echocardiogram, or genetic testing, and Criterion 3 requires a clinician to exclude other conditions. Meeting the pattern here does not mean you have hEDS; not meeting it does not rule out a hypermobility-related condition. The 2017 criteria are the current published international criteria. The Ehlers-Danlos Society has announced that revised criteria for all EDS types and HSD are due for publication in December 2026, with care pathways to follow in 2027; this page will be revised when they appear.</div>
+				<p class="citation" slot="citation">Wording here is paraphrased from: Malfait F, Francomano C, Byers P, et al. <em>The 2017 international classification of the Ehlers-Danlos syndromes.</em> Am J Med Genet C Semin Med Genet. 2017;175(1):8–26, and the <a href="https://www.ehlers-danlos.com/heds-diagnostic-checklist/" rel="noopener">Ehlers-Danlos Society diagnostic checklist</a>.</p>
+			</HedsInterpretation>
 </Page>
 
 <script>
@@ -583,15 +583,16 @@ showStep(0);
 	.q-text { margin: 0 0 0.7em; font-weight: 700; font-size: 0.95em; line-height: 1.4; }
 	.q-note { font-size: 0.86em; color: rgb(var(--gray)); margin: 0 0 0.7em; line-height: 1.5; }
 	.q-note a { color: var(--accent); }
-	.tag { display: inline-block; font-size: 0.72em; font-weight: 700; color: var(--tools); background: var(--tools-bg); padding: 0.1em 0.5em; border-radius: 3px; vertical-align: middle; margin-left: 0.3em; }
+	.tag { display: inline-block; font-size: 0.72em; font-weight: 700; color: var(--tools); background: transparent; padding: 0.1em 0.5em; border-radius: 3px; vertical-align: middle; margin-left: 0.3em; }
 	.subblock { border-left: 4px solid var(--accent); padding-left: 1em; margin: 1.25em 0; }
 	.subblock h3 { margin-top: 0.25em; }
 
 	.radio-options { display: flex; flex-direction: column; gap: 0.5em; }
-	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.92em; line-height: 1.4; }
+	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; position: relative; }
 	.radio-label:hover { border-color: var(--accent); }
-	.radio-label:has(input:checked) { background: var(--accent); border-color: var(--accent); }
-	.radio-label input { margin-top: 0.25em; }
+	.radio-label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+	.radio-label:has(input:checked) :is(strong, .pts, .muted, small) { color: #fff; }
+	.radio-label input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 
 	.segmented { display: grid; gap: 0.3em; }
 	.segmented.ten { grid-template-columns: repeat(10, 1fr); max-width: 30em; }
@@ -618,11 +619,11 @@ showStep(0);
 	.criteria-cards :global(.ccard h3) { font-size: 1em; margin: 0.3em 0 0.4em; }
 	.criteria-cards :global(.ccard p) { margin: 0; color: rgb(var(--gray-dark)); }
 	.criteria-cards :global(.ccard-status) { font-size: 0.75em; font-weight: 700; }
-	.criteria-cards :global(.ccard-met) { border-color: #1e6b3c; background: #eaf5ee; }
+	.criteria-cards :global(.ccard-met) { border-color: #1e6b3c; background: transparent; }
 	.criteria-cards :global(.ccard-met .ccard-status) { color: #1e6b3c; }
-	.criteria-cards :global(.ccard-notmet) { border-color: #b84a1e; background: #fdf0ea; }
+	.criteria-cards :global(.ccard-notmet) { border-color: #b84a1e; background: transparent; }
 	.criteria-cards :global(.ccard-notmet .ccard-status) { color: #b84a1e; }
-	.criteria-cards :global(.ccard-open) { border-color: #7a3a8c; background: #f5eef8; }
+	.criteria-cards :global(.ccard-open) { border-color: #7a3a8c; background: transparent; }
 	.criteria-cards :global(.ccard-open .ccard-status) { color: #7a3a8c; }
 
 	.detail { font-size: 0.92em; }

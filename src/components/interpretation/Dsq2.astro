@@ -54,11 +54,17 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Jason LA, Sunnquist M. The development of the DePaul Symptom Questionnaire: original, expanded, brief, and pediatric versions. <em>Front Pediatr</em> 2018;6:330, including Supplementary Data Sheet 2 (case-definition scoring rules). <a href={s.jason2018.href} rel="noopener">Article</a></li>
-		<li>Bedree H, Sunnquist M, Jason LA. The DePaul Symptom Questionnaire-2: a validation study. <em>Fatigue</em> 2019;7(3):166–79. <a href={s.bedree2019.href} rel="noopener">Full text</a></li>
-		<li>RAND Corporation. 36-Item Short Form Survey: scoring instructions. <a href={s.rand.href} rel="noopener">{s.rand.label}</a></li>
-		<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Jason LA, Sunnquist M. The development of the DePaul Symptom Questionnaire: original, expanded, brief, and pediatric versions. <em>Front Pediatr</em> 2018;6:330, including Supplementary Data Sheet 2 (case-definition scoring rules). <a href={s.jason2018.href} rel="noopener">Article</a></li>
+				<li>Bedree H, Sunnquist M, Jason LA. The DePaul Symptom Questionnaire-2: a validation study. <em>Fatigue</em> 2019;7(3):166–79. <a href={s.bedree2019.href} rel="noopener">Full text</a></li>
+				<li>RAND Corporation. 36-Item Short Form Survey: scoring instructions. <a href={s.rand.href} rel="noopener">{s.rand.label}</a></li>
+				<li>National Institute for Health and Care Excellence. Myalgic encephalomyelitis (or encephalopathy)/chronic fatigue syndrome: diagnosis and management (NG206). 2021. <a href={s.nice.href} rel="noopener">Guideline</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

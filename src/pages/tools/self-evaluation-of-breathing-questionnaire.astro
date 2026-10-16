@@ -66,9 +66,6 @@ const jsonLd = toolJsonLd('Self-Evaluation of Breathing Questionnaire', '/tools/
 				<p class="description">
 					The questionnaire is presented in two pages of 12–13 statements and takes about five minutes. If you have not done the <a href="/tools/nijmegen/">Nijmegen questionnaire</a>, the two together give a fuller picture: the Nijmegen for the systemic symptoms of over-breathing, the SEBQ for the breathing sensations themselves.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> Breathlessness has many causes, including cardiac and lung disease that need investigation in their own right. A high SEBQ score suggests that assessment of breathing pattern by a respiratory physiotherapist may be worthwhile; it does not establish a diagnosis of breathing pattern disorder or exclude anything else. Discuss your results with your doctor. Based on: Courtney R, Greenwood KM. <em>Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ).</em> Int J Osteopath Med. 2009;12(4):121–127; and Mitchell AJ, Bacon CJ, Moran RW. <em>Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score.</em> Appl Psychophysiol Biofeedback. 2016;41(1):111–120. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.
-				</div>
 			</div>
 
 			<form id="sebq-form" novalidate>
@@ -121,7 +118,10 @@ const jsonLd = toolJsonLd('Self-Evaluation of Breathing Questionnaire', '/tools/
 
 			<SharedResults toolId="self-evaluation-of-breathing-questionnaire" />
 
-			<SebqInterpretation />
+			<SebqInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> Breathlessness has many causes, including cardiac and lung disease that need investigation in their own right. A high SEBQ score suggests that assessment of breathing pattern by a respiratory physiotherapist may be worthwhile; it does not establish a diagnosis of breathing pattern disorder or exclude anything else. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Courtney R, Greenwood KM. <em>Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ).</em> Int J Osteopath Med. 2009;12(4):121–127; and Mitchell AJ, Bacon CJ, Moran RW. <em>Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score.</em> Appl Psychophysiol Biofeedback. 2016;41(1):111–120. The questionnaire is the work of its authors; this page is an interactive scoring aid for personal, non-commercial use.</p>
+			</SebqInterpretation>
 </Page>
 
 <script>

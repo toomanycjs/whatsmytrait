@@ -87,9 +87,6 @@ const items = [
 				<p class="description">
 					The OGS describes your usual pattern, which makes it a good baseline and monthly tracking measure. The <a href="/tools/vanderbilt-orthostatic-symptom-score/">Vanderbilt Orthostatic Symptom Score</a> is the complementary snapshot rated while standing, the <a href="/tools/malmo-pots-score/">Malmö POTS score</a> covers the past week, and the <a href="/tools/nasa-lean-test/">NASA lean test</a> records the heart-rate data that a POTS or orthostatic hypotension diagnosis actually needs. For how to use them together to check for POTS at home, see <a href="/testing/do-i-have-pots/">Do I have POTS?</a>
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The scale measures the burden of orthostatic symptoms regardless of cause. It cannot distinguish POTS from orthostatic hypotension, deconditioning, medication effects, or other conditions. Discuss your results with your doctor. Based on: Schrezenmaier C, Gehrking JA, Hines SM, Low PA, Benrud-Larson LM, Sandroni P. <em>Evaluation of orthostatic hypotension: relationship of a new self-report instrument to laboratory-based measures.</em> Mayo Clin Proc. 2005;80(3):330–334. The scale is the work of its authors at the Mayo Clinic; this page is an interactive scoring aid for personal, non-commercial use.
-				</div>
 			</div>
 
 			<form id="ogs-form" novalidate>
@@ -132,7 +129,10 @@ const items = [
 
 			<SharedResults toolId="orthostatic-grading-scale" />
 
-			<OgsInterpretation />
+			<OgsInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> The scale measures the burden of orthostatic symptoms regardless of cause. It cannot distinguish POTS from orthostatic hypotension, deconditioning, medication effects, or other conditions. Discuss your results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Schrezenmaier C, Gehrking JA, Hines SM, Low PA, Benrud-Larson LM, Sandroni P. <em>Evaluation of orthostatic hypotension: relationship of a new self-report instrument to laboratory-based measures.</em> Mayo Clin Proc. 2005;80(3):330–334. The scale is the work of its authors at the Mayo Clinic; this page is an interactive scoring aid for personal, non-commercial use.</p>
+			</OgsInterpretation>
 </Page>
 
 <script>
@@ -233,10 +233,11 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.num { color: rgb(var(--gray)); margin-right: 0.3em; }
 
 	.radio-options { display: flex; flex-direction: column; gap: 0.4em; }
-	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.55em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; }
+	.radio-label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; position: relative; }
 	.radio-label:hover { border-color: var(--accent); }
-	.radio-label:has(input:checked) { background: var(--accent-light); border-color: var(--accent); }
-	.radio-label input { margin-top: 0.25em; flex-shrink: 0; }
+	.radio-label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; }
+	.radio-label:has(input:checked) :is(strong, .pts, .muted, small) { color: #fff; }
+	.radio-label input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 	.pts { display: inline-block; min-width: 1.4em; font-weight: 700; color: var(--accent); }
 
 	.form-footer { display: flex; gap: 1em; padding: 1.5em 0 1em; }

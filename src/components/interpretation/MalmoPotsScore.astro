@@ -62,9 +62,15 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Spahic JM, Hamrefors V, Johansson M, Ricci F, Melander O, Sutton R, Fedorowski A. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
-		<li>Stick M, et al. Deep abdominal breathing reduces heart rate and symptoms during orthostatic challenge in patients with postural orthostatic tachycardia syndrome. <em>Eur J Neurol</em> 2024;31:e16402. <a href={s.stick.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Spahic JM, Hamrefors V, Johansson M, Ricci F, Melander O, Sutton R, Fedorowski A. Malmö POTS symptom score: assessing symptom burden in postural orthostatic tachycardia syndrome. <em>J Intern Med</em> 2023;293(1):91–99. <a href={s.spahic.href} rel="noopener">Full text</a></li>
+				<li>Stick M, et al. Deep abdominal breathing reduces heart rate and symptoms during orthostatic challenge in patients with postural orthostatic tachycardia syndrome. <em>Eur J Neurol</em> 2024;31:e16402. <a href={s.stick.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

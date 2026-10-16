@@ -58,7 +58,6 @@ const tiers = [
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Exercise progression for orthostatic intolerance</h1>
 				<p class="subtitle">Learning from the CHOP modified Dallas programme and Levine's published protocol</p>
-				<ToolPurpose />
 			</div>
 
 			<!-- Gates -->
@@ -99,12 +98,15 @@ const tiers = [
 					<p class="sources">
 						For a fuller plain-language review of these programmes, see <a href="/evidence/chop-levine-protocol-pots/">the CHOP and Levine protocols: what the evidence shows</a>.
 					</p>
-					<p class="sources">
-						Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/21690484/" rel="noopener">Fu, Levine et al., Hypertension 2011</a> ·
-						<a href="https://pubmed.ncbi.nlm.nih.gov/26690066/" rel="noopener">George et al., community implementation, 2016</a> ·
-						<a href="https://www.dysautonomiainternational.org/pdf/CHOP_Modified_Dallas_POTS_Exercise_Program.pdf" rel="noopener">Dysautonomia International: CHOP modified Dallas programme (PDF)</a>.
-						This page describes those sources in its own words and reproduces nothing from them.
-					</p>
+					<details class="sources">
+						<summary>Sources</summary>
+						<ul>
+							<li><a href="https://pubmed.ncbi.nlm.nih.gov/21690484/" rel="noopener">Fu, Levine et al., Hypertension 2011</a></li>
+							<li><a href="https://pubmed.ncbi.nlm.nih.gov/26690066/" rel="noopener">George et al., community implementation, 2016</a></li>
+							<li><a href="https://www.dysautonomiainternational.org/pdf/CHOP_Modified_Dallas_POTS_Exercise_Program.pdf" rel="noopener">Dysautonomia International: CHOP modified Dallas programme (PDF)</a></li>
+						</ul>
+						<p>This page describes those sources in its own words and reproduces nothing from them.</p>
+					</details>
 				</div>
 
 				<section>
@@ -275,6 +277,9 @@ const tiers = [
 					</tbody>
 				</table>
 			</div>
+			<aside class="tool-foot" aria-label="About this tool">
+				<ToolPurpose />
+			</aside>
 </Page>
 
 <script>
@@ -555,11 +560,11 @@ if (!gates.content.hidden) {
 	.storage-note { font-size: 0.85em; color: rgb(var(--gray)); margin-bottom: 1em; }
 
 	.banner {
-		border: 1px solid #e8c9a0; background: #fdf3e7; color: #9a5b13;
+		border: 1px solid #e8c9a0; background: transparent; color: #9a5b13;
 		border-radius: 3px; padding: 0.8em 1.1em; font-size: 0.92em; margin-bottom: 1.25em;
 	}
 	.banner :global(a) { color: inherit; font-weight: 700; }
-	.banner.info { border-color: rgb(var(--gray-light)); background: var(--accent-light); color: rgb(var(--gray-dark)); }
+	.banner.info { border-color: rgb(var(--gray-light)); background: transparent; color: rgb(var(--gray-dark)); }
 
 	.evidence-box {
 		border: 1px solid rgb(var(--gray-light));
@@ -586,7 +591,7 @@ if (!gates.content.hidden) {
 	.tier-head strong { flex: 1; }
 	.tier-num {
 		width: 1.7em; height: 1.7em; line-height: 1.7em; text-align: center;
-		background: var(--tools-bg); color: var(--tools);
+		background: transparent; color: var(--tools);
 		border-radius: 3px; font-weight: 700; flex-shrink: 0;
 	}
 	.tier-card.active .tier-num { background: var(--accent); color: #fff; }
@@ -611,7 +616,7 @@ if (!gates.content.hidden) {
 
 	.followups :global(.fu-card) {
 		border: 1px solid var(--accent); border-radius: 3px;
-		padding: 1em 1.2em; margin-bottom: 0.75em; background: var(--accent-light);
+		padding: 1em 1.2em; margin-bottom: 0.75em; background: transparent;
 	}
 	.followups :global(.fu-card p) { margin: 0 0 0.6em; font-size: 0.95em; }
 	.followups :global(.fu-verdicts) { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 0.6em; }

@@ -29,9 +29,6 @@ const jsonLd = toolJsonLd('Post-COVID-19 Functional Status scale', '/tools/pcfs/
 				<p class="description">
 					Want more detail? The <a href="/tools/funcap/">FUNCAP questionnaire</a> profiles what 27 specific activities cost you, and the <a href="/tools/bell-scale/">Bell scale</a> gives a 0–100 functional rating. If your symptoms flare after activity, see the <a href="/tools/dsq-pem/">post-exertional malaise questionnaire</a>.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> The PCFS grades the functional impact you report; it does not diagnose long COVID or measure symptom severity. Discuss your grade with your doctor. Based on: Klok FA, Boon GJAM, Barco S, et al. <em>The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19.</em> Eur Respir J. 2020;56:2001494 (CC BY-NC 4.0).
-				</div>
 			</div>
 
 			<div id="flow" class="flow">
@@ -84,7 +81,10 @@ const jsonLd = toolJsonLd('Post-COVID-19 Functional Status scale', '/tools/pcfs/
 
 			<SharedResults toolId="pcfs" />
 
-			<PcfsInterpretation />
+			<PcfsInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> The PCFS grades the functional impact you report; it does not diagnose long COVID or measure symptom severity. Discuss your grade with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Klok FA, Boon GJAM, Barco S, et al. <em>The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19.</em> Eur Respir J. 2020;56:2001494 (CC BY-NC 4.0).</p>
+			</PcfsInterpretation>
 </Page>
 
 <script>

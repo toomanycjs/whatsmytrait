@@ -109,6 +109,8 @@ p { margin-bottom: 1em; }
 
 textarea { width: 100%; font-size: 16px; }
 input, select { font-size: 16px; }
+/* Form controls default to the system font; make them use the site's. */
+input, select, textarea, button { font-family: inherit; }
 
 table {
 	width: 100%;
@@ -191,6 +193,50 @@ a.section-label:hover { text-decoration: underline; }
 	margin: 1.5em 0;
 }
 .disclaimer strong { color: rgb(var(--black)); }
+
+/* Foot of a tool page: the disclaimer, then sources and licence folded away.
+   Sits last on the page so the tool itself comes first. */
+.tool-foot {
+	margin: 3em 0 0;
+	padding-top: 1.5em;
+	border-top: 1px solid rgb(var(--gray-dark));
+}
+.tool-foot .disclaimer { margin: 0 0 1em; }
+.disclaimer p { margin: 0 0 0.6em; }
+.disclaimer p:last-child { margin-bottom: 0; }
+
+details.sources {
+	border-top: var(--rule);
+	border-bottom: var(--rule);
+	font-size: 0.88em;
+	color: rgb(var(--gray-dark));
+}
+details.sources > summary {
+	cursor: pointer;
+	padding: 0.7em 0;
+	font-weight: 700;
+	color: rgb(var(--black));
+	list-style: none;
+	display: flex;
+	align-items: baseline;
+	gap: 0.5em;
+}
+details.sources > summary::-webkit-details-marker { display: none; }
+details.sources > summary::before {
+	content: "+";
+	display: inline-block;
+	width: 1em;
+	font-weight: 400;
+	color: rgb(var(--gray));
+}
+details.sources[open] > summary::before { content: "−"; }
+details.sources > summary:hover { color: var(--accent); }
+details.sources > :not(summary) { margin: 0 0 1em 1.5em; line-height: 1.55; }
+details.sources ul { padding-left: 1.2em; }
+details.sources li { margin-bottom: 0.5em; }
+details.sources .interp-sources { font-size: 1em; color: inherit; }
+details.sources p { line-height: 1.55; }
+.interpretation details.sources { margin-top: 0; }
 
 /* Buttons: squarer, solid or outlined, no gradients */
 button, .button {

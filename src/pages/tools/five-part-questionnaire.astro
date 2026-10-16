@@ -37,9 +37,6 @@ const jsonLd = toolJsonLd('Five-part questionnaire (5PQ)', '/tools/five-part-que
 				<p class="description">
 					It takes under a minute. If you screen positive, the next steps are the <a href="/tools/beighton-score/">Beighton score</a> for today's joint range and, if hEDS is a question, the <a href="/tools/heds-criteria/">2017 hEDS criteria checker</a>, which uses both.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> A positive screen suggests generalised joint hypermobility is likely; it does not diagnose hypermobile EDS, a hypermobility spectrum disorder, or anything else. The original studies were in women attending hypermobility clinics, and later studies outside clinics found lower specificity (75% in Swedish adults, 62% in pregnant women), so false positives are common. It has not been validated in children. Discuss your result with your doctor. Based on: Hakim AJ, Grahame R. <em>A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain.</em> Int J Clin Pract. 2003;57(3):163–166.
-				</div>
 			</div>
 
 			<form id="fpq-form" novalidate>
@@ -81,7 +78,10 @@ const jsonLd = toolJsonLd('Five-part questionnaire (5PQ)', '/tools/five-part-que
 
 			<SharedResults toolId="five-part-questionnaire" />
 
-			<FivePartInterpretation />
+			<FivePartInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> A positive screen suggests generalised joint hypermobility is likely; it does not diagnose hypermobile EDS, a hypermobility spectrum disorder, or anything else. The original studies were in women attending hypermobility clinics, and later studies outside clinics found lower specificity (75% in Swedish adults, 62% in pregnant women), so false positives are common. It has not been validated in children. Discuss your result with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Hakim AJ, Grahame R. <em>A simple questionnaire to detect hypermobility: an adjunct to the assessment of patients with diffuse musculoskeletal pain.</em> Int J Clin Pract. 2003;57(3):163–166.</p>
+			</FivePartInterpretation>
 </Page>
 
 <script>

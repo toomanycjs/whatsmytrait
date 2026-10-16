@@ -49,11 +49,17 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Klok FA, Boon GJAM, Barco S, et al. The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19. <em>Eur Respir J</em> 2020;56(1):2001494. <a href={s.klok2020.href} rel="noopener">Full text</a></li>
-		<li>Post-COVID-19 Functional Status Scale manual, version 2. July 2020. <a href={s.manual.href} rel="noopener">{s.manual.label}</a></li>
-		<li>Machado FVC, Meys R, Delbressine JM, et al. Construct validity of the Post-COVID-19 Functional Status Scale in adult subjects with COVID-19. <em>Health Qual Life Outcomes</em> 2021;19:40. <a href={s.machado2021.href} rel="noopener">Full text</a></li>
-		<li>de Jong CMM, Le YNJ, Boon GJAM, Barco S, Klok FA, Siegerink B. Eight lessons from 2 years of use of the Post-COVID-19 Functional Status scale. <em>Eur Respir J</em> 2023;61(5):2300416. <a href={s.dejong2023.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Klok FA, Boon GJAM, Barco S, et al. The Post-COVID-19 Functional Status scale: a tool to measure functional status over time after COVID-19. <em>Eur Respir J</em> 2020;56(1):2001494. <a href={s.klok2020.href} rel="noopener">Full text</a></li>
+				<li>Post-COVID-19 Functional Status Scale manual, version 2. July 2020. <a href={s.manual.href} rel="noopener">{s.manual.label}</a></li>
+				<li>Machado FVC, Meys R, Delbressine JM, et al. Construct validity of the Post-COVID-19 Functional Status Scale in adult subjects with COVID-19. <em>Health Qual Life Outcomes</em> 2021;19:40. <a href={s.machado2021.href} rel="noopener">Full text</a></li>
+				<li>de Jong CMM, Le YNJ, Boon GJAM, Barco S, Klok FA, Siegerink B. Eight lessons from 2 years of use of the Post-COVID-19 Functional Status scale. <em>Eur Respir J</em> 2023;61(5):2300416. <a href={s.dejong2023.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

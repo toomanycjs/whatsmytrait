@@ -59,9 +59,6 @@ const frequencies = [
 <p class="description">
   This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
 </p>
-<div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> A score above the threshold suggests that further clinical assessment of breathing pattern may be worthwhile; it does not establish a diagnosis. Breathing symptoms can have multiple causes. Discuss results with your doctor. Based on: van Dixhoorn J, Duivenvoorden HJ. <em>Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome.</em> J Psychosom Res. 1985;29(2):199–206.
-</div>
 			</div>
 
 			<form id="nijmegen-form" novalidate>
@@ -123,7 +120,10 @@ const frequencies = [
 
 			<SharedResults toolId="nijmegen" />
 
-			<NijmegenInterpretation />
+			<NijmegenInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> A score above the threshold suggests that further clinical assessment of breathing pattern may be worthwhile; it does not establish a diagnosis. Breathing symptoms can have multiple causes. Discuss results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: van Dixhoorn J, Duivenvoorden HJ. <em>Efficacy of Nijmegen Questionnaire in recognition of the hyperventilation syndrome.</em> J Psychosom Res. 1985;29(2):199–206.</p>
+			</NijmegenInterpretation>
 </Page>
 
 <script>
@@ -247,9 +247,9 @@ const frequencies = [
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.88em;
-		padding: 0.35em 0.65em;
+		padding: 0.5em 0.8em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 		white-space: nowrap;
 	}

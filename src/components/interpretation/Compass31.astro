@@ -62,12 +62,18 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. COMPASS 31: a refined and abbreviated Composite Autonomic Symptom Score. <em>Mayo Clin Proc</em> 2012;87(12):1196–201. <a href={s.sletten.href} rel="noopener">Full text</a></li>
-		<li>Okdahl T, et al. Supplementary material 3: COMPASS-31 items and scoring algorithm. <em>BMJ Open</em> 2021;11:e038677. <a href={s.okdahl.href} rel="noopener">Article</a></li>
-		<li>Treister R, O'Neil K, Downs HM, Oaklander AL. Validation of the Composite Autonomic Symptom Scale 31 (COMPASS-31) in patients with and without small fiber polyneuropathy. <em>Eur J Neurol</em> 2015;22(7):1124–30. <a href={s.treister.href} rel="noopener">Article</a></li>
-		<li>Larsen NW, et al. Characterization of autonomic symptom burden in long COVID: a global survey of 2,314 adults. <em>Front Neurol</em> 2022;13:1012668. <a href={s.larsen.href} rel="noopener">Article</a></li>
-		<li>Blitshteyn S, et al. Sexual dysfunction in postural orthostatic tachycardia syndrome (POTS): a cross-sectional, case-control study. <em>J Clin Med</em> 2024;13(8):2274. <a href={s.blitshteyn.href} rel="noopener">Article</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. COMPASS 31: a refined and abbreviated Composite Autonomic Symptom Score. <em>Mayo Clin Proc</em> 2012;87(12):1196–201. <a href={s.sletten.href} rel="noopener">Full text</a></li>
+				<li>Okdahl T, et al. Supplementary material 3: COMPASS-31 items and scoring algorithm. <em>BMJ Open</em> 2021;11:e038677. <a href={s.okdahl.href} rel="noopener">Article</a></li>
+				<li>Treister R, O'Neil K, Downs HM, Oaklander AL. Validation of the Composite Autonomic Symptom Scale 31 (COMPASS-31) in patients with and without small fiber polyneuropathy. <em>Eur J Neurol</em> 2015;22(7):1124–30. <a href={s.treister.href} rel="noopener">Article</a></li>
+				<li>Larsen NW, et al. Characterization of autonomic symptom burden in long COVID: a global survey of 2,314 adults. <em>Front Neurol</em> 2022;13:1012668. <a href={s.larsen.href} rel="noopener">Article</a></li>
+				<li>Blitshteyn S, et al. Sexual dysfunction in postural orthostatic tachycardia syndrome (POTS): a cross-sectional, case-control study. <em>J Clin Med</em> 2024;13(8):2274. <a href={s.blitshteyn.href} rel="noopener">Article</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

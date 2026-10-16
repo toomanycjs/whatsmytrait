@@ -203,9 +203,6 @@ const jsonLd = {
 <p class="description">
   This is a free, interactive version. Complete it below and receive your weighted score immediately, broken down by domain. No sign-up or email is required.
 </p>
-<div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> Your score reflects self-reported symptom severity and does not constitute a diagnosis of any condition. Scores should be discussed with your doctor or specialist. Based on: Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. <em>COMPASS 31: a refined and abbreviated composite autonomic symptom score.</em> Mayo Clin Proc. 2012;87(12):1196–1201.
-</div>
 			</div>
 
 			<form id="compass-form" novalidate>
@@ -267,7 +264,10 @@ const jsonLd = {
 
 			<SharedResults toolId="compass-31" />
 
-			<Compass31Interpretation />
+			<Compass31Interpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> Your score reflects self-reported symptom severity and does not constitute a diagnosis of any condition. Scores should be discussed with your doctor or specialist.</div>
+				<p class="citation" slot="citation">Based on: Sletten DM, Suarez GA, Low PA, Mandrekar J, Singer W. <em>COMPASS 31: a refined and abbreviated composite autonomic symptom score.</em> Mayo Clin Proc. 2012;87(12):1196–1201.</p>
+			</Compass31Interpretation>
 
 			<script type="application/json" id="compass-config" set:html={JSON.stringify(clientConfig)}></script>
 </Page>
@@ -470,25 +470,12 @@ applySkips();
 	.question:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 	.q-text { margin: 0 0 0.75em; font-weight: 700; font-size: 0.95em; line-height: 1.45; }
 	.options { display: flex; flex-direction: column; gap: 0.4em; }
-	.options label {
-		display: flex;
-		align-items: baseline;
-		gap: 0.6em;
-		cursor: pointer;
-		font-size: 0.9em;
-		padding: 0.3em 0.5em;
-		border-radius: 3px;
-		transition: background 0.1s;
-	}
-	.options label:hover { background: rgb(var(--gray-light)); }
-	.options input[type="radio"], .options input[type="checkbox"] { flex-shrink: 0; margin: 0; }
+	.options label { display: flex; align-items: flex-start; gap: 0.6em; padding: 0.6em 0.8em; border: 1px solid rgb(var(--gray-light)); border-radius: 3px; cursor: pointer; font-size: 0.9em; line-height: 1.4; position: relative; }
+	.options label:hover { border-color: var(--accent); }
+	.options input[type="radio"], .options input[type="checkbox"] { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 	.question[hidden] { display: none; }
 	.form-instructions { color: rgb(var(--gray)); font-size: 0.95em; margin: 0 0 1.5em; }
-	.options label:has(input:checked) {
-		background: var(--accent-light);
-		color: var(--accent-dark);
-		font-weight: 700;
-	}
+	.options label:has(input:checked) { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
 
 	/* Form footer */
 	.form-footer {

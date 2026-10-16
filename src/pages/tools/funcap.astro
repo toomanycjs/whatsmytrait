@@ -125,9 +125,6 @@ const clientConfig = {
 				<p class="description">
 					For a quick single-number check you can repeat often, use the <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a>. For ME/CFS symptom screening, use the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, simpler grading.
 				</p>
-				<div class="disclaimer">
-					<strong>This is not a diagnostic tool.</strong> FUNCAP measures functional capacity; it does not diagnose ME/CFS or any other condition. Discuss your results with your doctor or specialist. Based on: Sommerfelt K, Schei T, Seton KA, Carding SR. <em>Assessing Functional Capacity in ME/CFS: A Patient-Informed Questionnaire.</em> J Clin Med. 2024;13(12):3486 (CC BY 4.0). See <a href="https://www.funcap.no" rel="noopener">funcap.no</a> for the authors' resources.
-				</div>
 			</div>
 
 			<form id="funcap-form" novalidate>
@@ -189,7 +186,10 @@ const clientConfig = {
 
 			<SharedResults toolId="funcap" />
 
-			<FuncapInterpretation />
+			<FuncapInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> FUNCAP measures functional capacity; it does not diagnose ME/CFS or any other condition. Discuss your results with your doctor or specialist.</div>
+				<p class="citation" slot="citation">Based on: Sommerfelt K, Schei T, Seton KA, Carding SR. <em>Assessing Functional Capacity in ME/CFS: A Patient-Informed Questionnaire.</em> J Clin Med. 2024;13(12):3486 (CC BY 4.0). See <a href="https://www.funcap.no" rel="noopener">funcap.no</a> for the authors' resources.</p>
+			</FuncapInterpretation>
 
 			<script type="application/json" id="funcap-config" set:html={JSON.stringify(clientConfig)}></script>
 </Page>
@@ -326,7 +326,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 	.domain h2 { font-size: 1.15em; margin: 0 0 0.6em; }
 	.domain-letter {
 		display: inline-block;
-		background: var(--tools-bg);
+		background: transparent;
 		color: var(--tools);
 		font-size: 0.8em;
 		font-weight: 700;
@@ -407,7 +407,7 @@ document.getElementById('back-btn')?.addEventListener('click', () => {
 		display: inline-block;
 		width: 1.6em; height: 1.6em; line-height: 1.6em;
 		text-align: center;
-		background: var(--tools-bg); color: var(--tools);
+		background: transparent; color: var(--tools);
 		border-radius: 3px; font-weight: 700; font-size: 0.85em;
 		margin-right: 0.4em;
 	}

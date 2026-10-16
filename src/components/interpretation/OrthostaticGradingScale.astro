@@ -65,14 +65,20 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Schrezenmaier C, Gehrking JA, Hines SM, Low PA, Benrud-Larson LM, Sandroni P. Evaluation of orthostatic hypotension: relationship of a new self-report instrument to laboratory-based measures. <em>Mayo Clin Proc</em> 2005;80(3):330–334. <a href={s.schrezenmaier.href} rel="noopener">Article</a></li>
-		<li>Słomko J, et al. Autonomic phenotypes in chronic fatigue syndrome (CFS) are associated with illness severity: a cluster analysis. <em>J Clin Med</em> 2020;9(8):2531. <a href={s.slomko.href} rel="noopener">Full text</a></li>
-		<li>Knoop I, et al. Validation of symptom measures in patients under investigation for postural orthostatic tachycardia syndrome (POTS): the Orthostatic Grading Scale (OGS) and the Symptom Screen for Small-fiber Polyneuropathy (SSS). <em>Auton Neurosci</em> 2023. <a href={s.knoop.href} rel="noopener">Article</a></li>
-		<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
-		<li>Peebles KC, et al. The prevalence and impact of orthostatic intolerance in young women across the hypermobility spectrum. <em>Am J Med Genet A</em> 2022;188(6):1761. <a href={s.peebles.href} rel="noopener">Full text</a></li>
-		<li>McDonald C, Koshi S, Busner L, Kavi L, Newton JL. Postural tachycardia syndrome is associated with significant symptoms and functional impairment predominantly affecting young women: a UK perspective. <em>BMJ Open</em> 2014;4:e004127. <a href={s.mcdonald.href} rel="noopener">Full text</a></li>
-		<li>Domingo JC, et al. Association of circulating biomarkers with illness severity measures differentiates myalgic encephalomyelitis/chronic fatigue syndrome and post-COVID-19 condition: a prospective pilot cohort study. <em>J Transl Med</em> 2024;22:343. <a href={s.domingo.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Schrezenmaier C, Gehrking JA, Hines SM, Low PA, Benrud-Larson LM, Sandroni P. Evaluation of orthostatic hypotension: relationship of a new self-report instrument to laboratory-based measures. <em>Mayo Clin Proc</em> 2005;80(3):330–334. <a href={s.schrezenmaier.href} rel="noopener">Article</a></li>
+				<li>Słomko J, et al. Autonomic phenotypes in chronic fatigue syndrome (CFS) are associated with illness severity: a cluster analysis. <em>J Clin Med</em> 2020;9(8):2531. <a href={s.slomko.href} rel="noopener">Full text</a></li>
+				<li>Knoop I, et al. Validation of symptom measures in patients under investigation for postural orthostatic tachycardia syndrome (POTS): the Orthostatic Grading Scale (OGS) and the Symptom Screen for Small-fiber Polyneuropathy (SSS). <em>Auton Neurosci</em> 2023. <a href={s.knoop.href} rel="noopener">Article</a></li>
+				<li>Issa A, et al. Autonomic dysfunction in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): findings from the Multi-Site Clinical Assessment of ME/CFS (MCAM) study in the USA. <em>J Clin Med</em> 2025;14(17):6269. <a href={s.issa.href} rel="noopener">Full text</a></li>
+				<li>Peebles KC, et al. The prevalence and impact of orthostatic intolerance in young women across the hypermobility spectrum. <em>Am J Med Genet A</em> 2022;188(6):1761. <a href={s.peebles.href} rel="noopener">Full text</a></li>
+				<li>McDonald C, Koshi S, Busner L, Kavi L, Newton JL. Postural tachycardia syndrome is associated with significant symptoms and functional impairment predominantly affecting young women: a UK perspective. <em>BMJ Open</em> 2014;4:e004127. <a href={s.mcdonald.href} rel="noopener">Full text</a></li>
+				<li>Domingo JC, et al. Association of circulating biomarkers with illness severity measures differentiates myalgic encephalomyelitis/chronic fatigue syndrome and post-COVID-19 condition: a prospective pilot cohort study. <em>J Transl Med</em> 2024;22:343. <a href={s.domingo.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

@@ -50,11 +50,17 @@ const s = SOURCES;
 		<a href="/nhs/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
 
-	<h3 id="sources">Sources</h3>
-	<ul class="interp-sources">
-		<li>Courtney R, Greenwood KM. Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ). <em>Int J Osteopath Med</em> 2009;12(4):121–127. <a href={s.courtney2009.href} rel="noopener">Article</a></li>
-		<li>Mitchell AJ, Bacon CJ, Moran RW. Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score: a symptoms-based measure of dysfunctional breathing. <em>Appl Psychophysiol Biofeedback</em> 2016;41(1):111–120. <a href={s.mitchell2016.href} rel="noopener">Article</a></li>
-		<li>Kiesel K, Rhodes T, Mueller J, Waninger A, Butler R. Development of a screening protocol to identify individuals with dysfunctional breathing. <em>Int J Sports Phys Ther</em> 2017;12(5):774–786. <a href={s.kiesel2017.href} rel="noopener">Full text</a></li>
-		<li>Bondarenko J, Grillo L, Denton E, Button B, Hew M, Holland A. Breathing pattern disorder: assessment and diagnosis. <em>ERJ Open Res</em> 2026. <a href={s.bondarenko2026.href} rel="noopener">Full text</a></li>
-	</ul>
+	<div class="tool-foot">
+		<slot name="disclaimer" />
+		<details class="sources" id="sources">
+			<summary>Sources and licence</summary>
+			<slot name="citation" />
+			<ul class="interp-sources">
+				<li>Courtney R, Greenwood KM. Preliminary investigation of a measure of dysfunctional breathing symptoms: the Self Evaluation of Breathing Questionnaire (SEBQ). <em>Int J Osteopath Med</em> 2009;12(4):121–127. <a href={s.courtney2009.href} rel="noopener">Article</a></li>
+				<li>Mitchell AJ, Bacon CJ, Moran RW. Reliability and determinants of Self-Evaluation of Breathing Questionnaire (SEBQ) score: a symptoms-based measure of dysfunctional breathing. <em>Appl Psychophysiol Biofeedback</em> 2016;41(1):111–120. <a href={s.mitchell2016.href} rel="noopener">Article</a></li>
+				<li>Kiesel K, Rhodes T, Mueller J, Waninger A, Butler R. Development of a screening protocol to identify individuals with dysfunctional breathing. <em>Int J Sports Phys Ther</em> 2017;12(5):774–786. <a href={s.kiesel2017.href} rel="noopener">Full text</a></li>
+				<li>Bondarenko J, Grillo L, Denton E, Button B, Hew M, Holland A. Breathing pattern disorder: assessment and diagnosis. <em>ERJ Open Res</em> 2026. <a href={s.bondarenko2026.href} rel="noopener">Full text</a></li>
+			</ul>
+		</details>
+	</div>
 </section>

@@ -54,9 +54,6 @@ const jsonLd = toolJsonLd('Fatigue Severity Scale', '/tools/fss/', FAQ_ORDER.map
 <p class="description">
   This is a free, interactive version. Complete it below and receive your score immediately. No sign-up or email is required.
 </p>
-<div class="disclaimer">
-  <strong>This is not a diagnostic tool.</strong> Your score reflects self-reported fatigue impact and does not constitute a diagnosis of any condition. Discuss results with your doctor. Based on: Krupp LB, LaRocca NG, Muir-Nash J, Steinberg AD. The fatigue severity scale. Application to patients with multiple sclerosis and systemic lupus erythematosus. Arch Neurol. 1989;46(10):1121–1123.
-</div>
 			</div>
 
 			<form id="fss-form" novalidate>
@@ -116,7 +113,10 @@ const jsonLd = toolJsonLd('Fatigue Severity Scale', '/tools/fss/', FAQ_ORDER.map
 
 			<SharedResults toolId="fss" />
 
-			<FssInterpretation />
+			<FssInterpretation>
+				<div class="disclaimer" slot="disclaimer"><strong>This is not a diagnostic tool.</strong> Your score reflects self-reported fatigue impact and does not constitute a diagnosis of any condition. Discuss results with your doctor.</div>
+				<p class="citation" slot="citation">Based on: Krupp LB, LaRocca NG, Muir-Nash J, Steinberg AD. The fatigue severity scale. Application to patients with multiple sclerosis and systemic lupus erythematosus. Arch Neurol. 1989;46(10):1121–1123.</p>
+			</FssInterpretation>
 </Page>
 
 <script>
@@ -239,9 +239,9 @@ const jsonLd = toolJsonLd('Fatigue Severity Scale', '/tools/fss/', FAQ_ORDER.map
 		gap: 0.4em;
 		cursor: pointer;
 		font-size: 0.88em;
-		padding: 0.35em 0.65em;
+		padding: 0.5em 0.8em;
 		border: 1px solid rgb(var(--gray-light));
-		border-radius: 20px;
+		border-radius: 3px;
 		transition: background 0.1s, border-color 0.1s;
 		white-space: nowrap;
 	}
