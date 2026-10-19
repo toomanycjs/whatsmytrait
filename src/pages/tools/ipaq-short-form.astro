@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -29,52 +30,36 @@ const activities = [
 		met: 3.3,
 	},
 ];
+
+const faqs = [
+	{
+		q: "What is the IPAQ short form?",
+		a: "The International Physical Activity Questionnaire short form is a seven-item measure of physical activity over the last 7 days, developed by an international group in the late 1990s and validated across 12 countries. It asks about days and minutes of vigorous activity, moderate activity and walking, plus time spent sitting. The answers are converted to MET-minutes per week and a category of low, moderate or high activity. It is free to use."
+	},
+	{
+		q: "What do MET-minutes mean?",
+		a: "A MET is a multiple of resting energy expenditure. The IPAQ assigns walking 3.3 METs, moderate activity 4 METs and vigorous activity 8 METs, and multiplies each by the minutes per day and days per week. A total of 600 MET-minutes a week corresponds roughly to the public-health guideline of 150 minutes of moderate activity."
+	},
+	{
+		q: "Is a low IPAQ category a bad result if I have a post-viral condition?",
+		a: "Not in itself. The categories were built for the general population. In ME/CFS, POTS and long COVID with post-exertional malaise, the safe level of activity is whatever does not trigger a crash, and the low category is where many people need to be. The value of the questionnaire is as a record over time and as an honest account of activity for a clinician, including sitting time, which the other measures ignore."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="IPAQ short form: free online physical activity questionnaire with scoring"
-	description="Complete the International Physical Activity Questionnaire (IPAQ) short form online and get your MET-minutes per week and activity category instantly. Seven questions about the last 7 days. Free, no sign-up required."
+	breadcrumb="IPAQ short form"
+	faqs={faqs}
+	title="IPAQ short form: free physical activity questionnaire"
+	description="Free IPAQ short form with an instant score, no sign-up. Seven questions about the last 7 days give your MET-minutes per week and your activity category."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "IPAQ short form", "item": "https://www.postviralrecovery.com/tools/ipaq-short-form/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the IPAQ short form?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The International Physical Activity Questionnaire short form is a seven-item measure of physical activity over the last 7 days, developed by an international group in the late 1990s and validated across 12 countries. It asks about days and minutes of vigorous activity, moderate activity and walking, plus time spent sitting. The answers are converted to MET-minutes per week and a category of low, moderate or high activity. It is free to use."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What do MET-minutes mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A MET is a multiple of resting energy expenditure. The IPAQ assigns walking 3.3 METs, moderate activity 4 METs and vigorous activity 8 METs, and multiplies each by the minutes per day and days per week. A total of 600 MET-minutes a week corresponds roughly to the public-health guideline of 150 minutes of moderate activity."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Is a low IPAQ category a bad result if I have a post-viral condition?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Not in itself. The categories were built for the general population. In ME/CFS, POTS and long COVID with post-exertional malaise, the safe level of activity is whatever does not trigger a crash, and the low category is where many people need to be. The value of the questionnaire is as a record over time and as an honest account of activity for a clinician, including sitting time, which the other measures ignore."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>IPAQ short form</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Seven questions about the last 7 days, scored in MET-minutes per week</p>
 				<p class="description">
 					The International Physical Activity Questionnaire was developed in the late 1990s by a group of researchers convened by the World Health Organization, to give a comparable measure of physical activity across countries. The short form asks about the last 7 days: how many days and how long you did vigorous activity, moderate activity and walking, and how long you spent sitting on a weekday. It was validated in 12 countries and is one of the most used physical activity questionnaires in research. Its scoring converts your answers to MET-minutes per week and a category of low, moderate or high.

@@ -90,3 +90,4 @@ Davenport TE, Stevens SR, VanNess MJ, et al. Conceptual model for physical thera
 - [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
 - [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)
 - [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)

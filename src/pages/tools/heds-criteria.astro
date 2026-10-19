@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import HedsInterpretation from '../../components/interpretation/HedsCriteria.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/heds-criteria.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const featureA = [
 	{ id: 'a1', text: 'Unusually soft or velvety skin', clinical: false },
@@ -41,19 +41,22 @@ const prerequisites = [
 	{ id: 'p3', text: 'Exclusion of alternative diagnoses that may also involve joint hypermobility through low muscle tone or connective tissue laxity, such as neuromuscular disorders (e.g. Bethlem myopathy), other hereditary connective tissue disorders (other EDS types, Loeys-Dietz syndrome, Marfan syndrome), and skeletal dysplasias (e.g. osteogenesis imperfecta)' },
 ];
 
-const jsonLd = toolJsonLd('hEDS diagnostic criteria', '/tools/heds-criteria/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="hEDS diagnostic criteria"
+	faqs={faqs}
 	title="hEDS diagnostic criteria (2017): free interactive checklist"
-	description="Walk through the 2017 international diagnostic criteria for hypermobile Ehlers-Danlos syndrome step by step: Beighton score and the five-part questionnaire, the 12 Feature A signs, family history, musculoskeletal features, and the three exclusion prerequisites. Free, private, and clearly not a diagnosis."
+	description="Free hEDS criteria checklist with an instant result, no sign-up. Step through the 2017 hypermobile Ehlers-Danlos criteria; a guide, not a diagnosis."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>hEDS diagnostic criteria checker</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">The 2017 international criteria for hypermobile Ehlers-Danlos syndrome, one criterion at a time</p>
 				<p class="description">
 					Hypermobile Ehlers-Danlos syndrome (hEDS) is diagnosed clinically against the criteria published by the International Consortium on the Ehlers-Danlos Syndromes in 2017. There is no genetic test. The criteria are usually distributed as a one-page PDF checklist written for clinicians. This page walks through the same three criteria interactively, in plain language, showing you at each step which items you meet, which you do not, and which can only be settled by a doctor. Notably, POTS, fatigue, and gut symptoms are common alongside hEDS but are not part of the criteria.

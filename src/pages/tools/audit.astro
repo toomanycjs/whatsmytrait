@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -52,52 +53,36 @@ const questions = [
 		options: yesNo,
 	},
 ];
+
+const faqs = [
+	{
+		q: "What is the AUDIT?",
+		a: "The Alcohol Use Disorders Identification Test is a ten-question screen developed by the World Health Organization in the 1980s and 1990s to pick up hazardous and harmful drinking before it causes lasting damage. It covers how much you drink, signs of dependence, and problems caused by drinking, and gives a score from 0 to 40. It is the most widely validated alcohol screen in the world and is used across the NHS."
+	},
+	{
+		q: "What AUDIT score is a problem?",
+		a: "A score of 0 to 7 is low risk. 8 to 15 indicates hazardous or increasing-risk drinking, where brief advice is recommended. 16 to 19 indicates harmful or higher-risk drinking, where a fuller assessment is recommended. 20 or more suggests possible dependence, where referral to specialist support is recommended. Women, older adults and people who are ill may be affected at lower scores."
+	},
+	{
+		q: "Why is an alcohol screen on a post-viral illness site?",
+		a: "Alcohol interacts with almost everything these conditions affect: sleep quality, heart rate variability, blood volume and orthostatic tolerance, and post-exertional recovery. Many people with ME/CFS, POTS or long COVID find they no longer tolerate alcohol at all, while others use it to sleep or to cope. An honest score is a useful baseline for a conversation with a clinician, particularly when medications are being considered."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="AUDIT alcohol screening test"
+	faqs={faqs}
 	title="AUDIT alcohol screening test: free online with scoring"
-	description="Complete the WHO Alcohol Use Disorders Identification Test (AUDIT) online and get your score out of 40 with the risk zones explained. Ten questions, two minutes. Free, no sign-up required."
+	description="Free online AUDIT alcohol screening test with an instant score out of 40, no sign-up. Ten WHO questions, two minutes, with the risk zones explained."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "AUDIT alcohol screening test", "item": "https://www.postviralrecovery.com/tools/audit/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the AUDIT?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The Alcohol Use Disorders Identification Test is a ten-question screen developed by the World Health Organization in the 1980s and 1990s to pick up hazardous and harmful drinking before it causes lasting damage. It covers how much you drink, signs of dependence, and problems caused by drinking, and gives a score from 0 to 40. It is the most widely validated alcohol screen in the world and is used across the NHS."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What AUDIT score is a problem?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 0 to 7 is low risk. 8 to 15 indicates hazardous or increasing-risk drinking, where brief advice is recommended. 16 to 19 indicates harmful or higher-risk drinking, where a fuller assessment is recommended. 20 or more suggests possible dependence, where referral to specialist support is recommended. Women, older adults and people who are ill may be affected at lower scores."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Why is an alcohol screen on a post-viral illness site?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Alcohol interacts with almost everything these conditions affect: sleep quality, heart rate variability, blood volume and orthostatic tolerance, and post-exertional recovery. Many people with ME/CFS, POTS or long COVID find they no longer tolerate alcohol at all, while others use it to sleep or to cope. An honest score is a useful baseline for a conversation with a clinician, particularly when medications are being considered."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>AUDIT: Alcohol Use Disorders Identification Test</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Ten questions about drinking over the past year, scored 0–40</p>
 				<p class="description">
 					The AUDIT was developed by the World Health Organization as a screen for drinking that is risky before it becomes damaging. Its ten questions cover three things: how much and how often you drink, early signs of dependence, and harm that drinking has already caused. It was validated across six countries and is now the standard alcohol screen in UK primary care and NHS services. It takes about two minutes.

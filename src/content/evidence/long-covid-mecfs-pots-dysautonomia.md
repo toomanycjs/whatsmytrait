@@ -25,7 +25,7 @@ Within the long COVID umbrella, certain patterns appear repeatedly:
 
 ### ME/CFS
 
-Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a specific clinical syndrome defined by a characteristic symptom pattern, the most diagnostically specific of which is post-exertional malaise (PEM). ME/CFS is not a long COVID term; it pre-dates COVID by decades, but a significant proportion of people with severe long COVID meet ME/CFS diagnostic criteria.
+Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a specific clinical syndrome defined by a characteristic symptom pattern, the most diagnostically specific of which is post-exertional malaise (PEM), which the [DSQ-PEM questionnaire](/tools/dsq-pem/) can help you put into words. ME/CFS is not a long COVID term; it pre-dates COVID by decades, but a significant proportion of people with severe long COVID meet ME/CFS diagnostic criteria.
 
 The formal diagnostic criteria for ME/CFS (the 2015 Institute of Medicine criteria are the most widely used) require:
 - Substantial reduction in activity from pre-illness baseline
@@ -37,7 +37,7 @@ ME/CFS has historically been mismanaged and under-recognised. It's now understoo
 
 ### POTS
 
-Postural orthostatic tachycardia syndrome (POTS) is diagnosed when heart rate increases by at least 30 bpm on standing (sustained for 10 minutes), without significant orthostatic hypotension, accompanied by symptoms of orthostatic intolerance. It's a specific physiological diagnosis, not an umbrella term.
+Postural orthostatic tachycardia syndrome (POTS) is diagnosed when heart rate increases by at least 30 bpm on standing (sustained for 10 minutes), without significant orthostatic hypotension, accompanied by symptoms of orthostatic intolerance. It's a specific physiological diagnosis, not an umbrella term. The [NASA lean test](/tools/nasa-lean-test/) lets you measure the standing heart rate rise at home, and the [Malmö POTS Symptom Score](/tools/malmo-pots-score/) records how much the symptoms affect you.
 
 POTS can occur in the context of ME/CFS, long COVID, or independently. It has its own diagnostic criteria and its own treatment pathways. Many people with long COVID develop what is recognised as POTS; others have sub-threshold orthostatic tachycardia that doesn't meet criteria but causes identical symptoms.
 
@@ -118,3 +118,6 @@ Komaroff AL, Bateman L. Will COVID-19 lead to myalgic encephalomyelitis/chronic 
 - [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
 - [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
 - [What happened to me: a timeline](/testing/what-happened-to-me/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)

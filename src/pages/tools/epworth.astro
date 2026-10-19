@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -20,47 +21,32 @@ const ratings = [
 	{ value: 2, label: 'Moderate chance' },
 	{ value: 3, label: 'High chance' },
 ];
+
+const faqs = [
+	{
+		q: "What is a normal Epworth Sleepiness Scale score?",
+		a: "A score of 0–10 is considered normal daytime sleepiness. A score of 11 or above is the standard threshold for excessive daytime sleepiness."
+	},
+	{
+		q: "What does an Epworth score above 10 mean?",
+		a: "A score of 11 or above suggests excessive daytime sleepiness and may warrant discussion with your doctor, particularly if you have other symptoms such as loud snoring or unrefreshing sleep."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Epworth Sleepiness Scale: free online test with instant score"
-	description="Complete the Epworth Sleepiness Scale online and get your score instantly. A free, interactive version of the 8-item daytime sleepiness questionnaire, with your total out of 24 and the interpretation thresholds explained."
+	breadcrumb="Epworth Sleepiness Scale"
+	faqs={faqs}
+	title="Epworth Sleepiness Scale: free online test, instant score"
+	description="Free Epworth Sleepiness Scale with an instant score, no sign-up. Eight questions on daytime sleepiness, totalled out of 24 with the thresholds explained."
 >
-	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Epworth Sleepiness Scale", "item": "https://www.postviralrecovery.com/tools/epworth/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Epworth Sleepiness Scale score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 0–10 is considered normal daytime sleepiness. A score of 11 or above is the standard threshold for excessive daytime sleepiness."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What does an Epworth score above 10 mean?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A score of 11 or above suggests excessive daytime sleepiness and may warrant discussion with your doctor, particularly if you have other symptoms such as loud snoring or unrefreshing sleep."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-	</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Epworth Sleepiness Scale</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">ESS: Daytime Sleepiness Questionnaire</p>
 				<p class="description">
   The Epworth Sleepiness Scale (ESS) is an 8-item questionnaire that measures your general level of daytime sleepiness. It was developed by Dr Murray Johns in 1991 and is one of the most widely used instruments in sleep medicine. Each item describes a situation in which you might doze off, and you rate the likelihood on a scale from 0 (would never doze) to 3 (high chance of dozing). Your total score ranges from 0 to 24.

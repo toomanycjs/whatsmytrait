@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import ChalderInterpretation from '../../components/interpretation/ChalderFatigueScale.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/chalder-fatigue-scale.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const usual = ['Less than usual', 'No more than usual', 'More than usual', 'Much more than usual'];
 const memory = ['Better than usual', 'No worse than usual', 'Worse than usual', 'Much worse than usual'];
@@ -23,19 +23,22 @@ const items = [
 	{ id: 'c11', text: 'How is your memory?', group: 'mental', options: memory },
 ];
 
-const jsonLd = toolJsonLd('Chalder Fatigue Scale', '/tools/chalder-fatigue-scale/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Chalder Fatigue Scale (CFQ-11): free online calculator with Likert and bimodal scoring"
-	description="Complete the 11-item Chalder Fatigue Questionnaire and get your Likert score (0–33), physical and mental subscales, and bimodal score (0–11) with the ≥4 case threshold explained. The fatigue measure used across UK ME/CFS and long COVID services. Free, instant, no sign-up."
+	breadcrumb="Chalder Fatigue Scale"
+	faqs={faqs}
+	title="Chalder Fatigue Scale (CFQ-11): free online calculator"
+	description="Free Chalder Fatigue Scale with an instant score, no sign-up. Get your Likert (0 to 33) and bimodal scores, physical and mental subscales included."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services</p>
 				<p class="description">
 					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics, and has been used in long COVID studies. <!-- REVIEW: unsourced claim softened --> It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.

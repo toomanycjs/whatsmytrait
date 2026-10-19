@@ -1,27 +1,30 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import NasaLeanTestInterpretation from '../../components/interpretation/NasaLeanTest.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/nasa-lean-test.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('NASA Lean Test', '/tools/nasa-lean-test/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="NASA Lean Test"
+	faqs={faqs}
 	title="NASA lean test: free at-home tilt table test with timer"
-	description="Do the NASA lean test (the poor man's tilt table test) at home with a guided timer and heart rate logging at each stage. Free and interactive, with your orthostatic heart rate change calculated and the POTS thresholds explained."
+	description="Free NASA lean test with an instant score, no sign-up. A guided 10-minute timer logs your heart rate at each stage and checks it against POTS thresholds."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 
 			<!-- ─── SETUP SCREEN ─────────────────────────────────────────── -->
 			<div id="screen-setup" class="screen">
 				<div class="tool-header">
 					<a href="/tools/" class="section-label tools">Tools</a>
 					<h1>NASA Lean Test</h1>
+					<LastReviewed date={lastReviewed} />
 					<p class="subtitle">Orthostatic Intolerance Protocol</p>
 				</div>
 

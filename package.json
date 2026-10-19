@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "lastmod": "node scripts/lastmod.mjs",
     "test": "vitest run"
   },
   "dependencies": {

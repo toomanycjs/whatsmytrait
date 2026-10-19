@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import Rand36Interpretation from '../../components/interpretation/Rand36.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/rand-36.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const OPTION_SETS: Record<string, string[]> = {
 	genhealth: ['Excellent', 'Very good', 'Good', 'Fair', 'Poor'],
@@ -108,19 +108,22 @@ const sections: { stem: string; note?: string; set: string; questions: Q[] }[] =
 	},
 ];
 
-const jsonLd = toolJsonLd('RAND-36 health survey', '/tools/rand-36/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="RAND-36 health survey (SF-36 items): free online version with scoring"
-	description="Complete the RAND 36-Item Health Survey online for free and get all eight scale scores instantly: physical functioning, role limitations, energy, emotional well-being, social functioning, pain, and general health."
+	breadcrumb="RAND-36 health survey"
+	faqs={faqs}
+	title="RAND-36 health survey (SF-36 items): free online scoring"
+	description="Free RAND-36 health survey with an instant score, no sign-up. Get all eight scale scores, from physical functioning and energy to pain and general health."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>RAND-36 health survey</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">The RAND 36-Item Health Survey 1.0: the same items as the SF-36</p>
 				<p class="description">
 					The 36-Item Short Form Survey came out of the RAND Medical Outcomes Study. It is one of the most widely used measures of health-related quality of life in the world. The same 36 questions exist in two forms: the commercially licensed SF-36, and the <strong>RAND-36</strong>, which RAND publishes as a public document, available without charge. This page uses the RAND version and its official scoring.

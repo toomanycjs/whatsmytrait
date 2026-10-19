@@ -1,12 +1,12 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import OgsInterpretation from '../../components/interpretation/OrthostaticGradingScale.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/orthostatic-grading-scale.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Orthostatic Grading Scale', '/tools/orthostatic-grading-scale/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 
 const items = [
 	{
@@ -65,18 +65,21 @@ const items = [
 		],
 	},
 ];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Orthostatic Grading Scale (OGS): free online orthostatic intolerance questionnaire"
-	description="Complete the five-item Orthostatic Grading Scale from the Mayo Clinic and get your score out of 20 instantly, with the published thresholds and reference values from POTS, ME/CFS, long COVID and hypermobility studies. Free, quick, no sign-up."
+	breadcrumb="Orthostatic Grading Scale"
+	faqs={faqs}
+	title="Orthostatic Grading Scale (OGS): free online questionnaire"
+	description="Free Orthostatic Grading Scale with an instant score, no sign-up. Five Mayo Clinic questions scored out of 20, with reference values from POTS and ME/CFS."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Orthostatic Grading Scale (OGS)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Five questions grading how much standing up costs you, scored 0–20</p>
 				<p class="description">
 					The Orthostatic Grading Scale was developed at the Mayo Clinic's autonomic laboratory by Schrezenmaier, Low, Sandroni and colleagues and published in 2005. It was designed to put a number on orthostatic intolerance in the way a clinician would take a history: how <strong>often</strong> symptoms happen on standing, how <strong>severe</strong> they are, what <strong>conditions</strong> bring them on, how much they interfere with <strong>daily activities</strong>, and how long you can <strong>stand</strong> before they start. Each of the five items scores 0–4, for a total of 0–20.

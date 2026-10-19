@@ -1,12 +1,12 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import VossInterpretation from '../../components/interpretation/VanderbiltOrthostaticSymptomScore.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/vanderbilt-orthostatic-symptom-score.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Vanderbilt Orthostatic Symptom Score', '/tools/vanderbilt-orthostatic-symptom-score/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 
 const items = [
 	{ id: 'clouding', text: 'Mental clouding (brain fog, difficulty thinking clearly)' },
@@ -19,18 +19,21 @@ const items = [
 	{ id: 'lightheaded', text: 'Lightheadedness' },
 	{ id: 'nausea', text: 'Nausea' },
 ];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Vanderbilt Orthostatic Symptom Score (VOSS): free online POTS symptom rating"
-	description="Rate the nine VOSS symptoms from 0 to 10 while upright and get your Vanderbilt Orthostatic Symptom Score (0–90) instantly, with reference values from POTS trials and healthy controls. The standing symptom score used in Vanderbilt and Calgary POTS studies. Free, no sign-up."
+	breadcrumb="Vanderbilt Orthostatic Symptom Score"
+	faqs={faqs}
+	title="Vanderbilt Orthostatic Symptom Score (VOSS): free test"
+	description="Free Vanderbilt Orthostatic Symptom Score (VOSS) with an instant score, no sign-up. Rate nine standing symptoms out of 90, with POTS reference values."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Vanderbilt Orthostatic Symptom Score (VOSS)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Nine symptoms rated 0–10 while upright: the standing symptom score from POTS trials</p>
 				<p class="description">
 					The Vanderbilt Orthostatic Symptom Score comes from the Vanderbilt Autonomic Dysfunction Center, where Satish Raj and colleagues used it in POTS drug studies from 2005 onwards. It has since been used in the Calgary compression garment trial, exercise studies in post-COVID POTS, and a growing list of others. You rate nine symptoms from <strong>0 (absent)</strong> to <strong>10 (the worst you have experienced)</strong> for how you feel <strong>right now</strong>. The total runs from 0 to 90.

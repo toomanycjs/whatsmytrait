@@ -22,22 +22,38 @@ const s = SOURCES;
 	</p>
 	<p>{FAQ.pots.a}</p>
 
-	<h3 id="score-bands">Score bands</h3>
+	<h3 id="score-bands">COMPASS-31 score interpretation</h3>
 	<p>{FAQ.normal.a}</p>
 	<p>Instead there are reference points from individual studies:</p>
-	<table class="interp-table">
-		<caption>COMPASS-31 scores reported in published studies</caption>
-		<thead>
-			<tr><th scope="col">Score</th><th scope="col">What the study found</th><th scope="col">Source</th></tr>
-		</thead>
-		<tbody>
-			<tr><th scope="row">10</th><td>Screening cut-off for small fibre neuropathy: caught 93% of cases, but also flagged most people without it</td><td><a href={s.treister.href} rel="noopener">Treister 2015</a></td></tr>
-			<tr><th scope="row">20</th><td>Threshold for moderate to severe symptoms; 66% of 2,314 adults with long COVID scored above it</td><td><a href={s.larsen.href} rel="noopener">Larsen 2022</a></td></tr>
-			<tr><th scope="row">30</th><td>Best cut-off for separating biopsy-confirmed small fibre neuropathy from none</td><td><a href={s.treister.href} rel="noopener">Treister 2015</a></td></tr>
-			<tr><th scope="row">55.3</th><td>Average among 160 women with POTS in an online survey</td><td><a href={s.blitshteyn.href} rel="noopener">Blitshteyn 2024</a></td></tr>
-		</tbody>
-	</table>
+	<nav class="score-jump" aria-label="Jump to a COMPASS-31 score">
+		<ul>
+			<li><a href="#compass-31-score-10">10</a></li>
+			<li><a href="#compass-31-score-20">20</a></li>
+			<li><a href="#compass-31-score-30">30</a></li>
+			<li><a href="#compass-31-score-pots">POTS average</a></li>
+		</ul>
+	</nav>
+
+	<h4 id="compass-31-score-10">What a COMPASS-31 score of 10 means</h4>
+	<p>
+		10 was tested as a screening cut-off for small fibre neuropathy. It caught 93% of cases, but also flagged most people
+		without it (<a href={s.treister.href} rel="noopener">Treister 2015</a>).
+	</p>
+
+	<h4 id="compass-31-score-20">What a COMPASS-31 score of 20 means</h4>
+	<p>
+		One long COVID study used 20 as the threshold for moderate to severe autonomic symptoms; 66% of 2,314 adults with long
+		COVID scored above it (<a href={s.larsen.href} rel="noopener">Larsen 2022</a>).
+	</p>
+
+	<h4 id="compass-31-score-30">What a COMPASS-31 score of 30 means</h4>
 	<p>{FAQ.score30.a}</p>
+
+	<h4 id="compass-31-score-pots">How your score compares with POTS</h4>
+	<p>
+		The average score was 55.3 among 160 women with POTS in an online survey
+		(<a href={s.blitshteyn.href} rel="noopener">Blitshteyn 2024</a>).
+	</p>
 
 	<h3 id="change">What a change in score means</h3>
 	<p>{FAQ.change.a}</p>

@@ -36,6 +36,17 @@ export const REFERENCE = [
 	{ domain: 'Total', mecfs: '3.3', healthy: '5.8' },
 ];
 
+/** The 0 to 6 answer scale, used by the form and the score interpretation. */
+export const SCALE = [
+	{ value: 0, label: 'I cannot do this' },
+	{ value: 1, label: 'My capacity will be severely reduced for at least three days' },
+	{ value: 2, label: 'I can do little else on the same day and for one to two days afterwards' },
+	{ value: 3, label: 'I can do little else on the same day' },
+	{ value: 4, label: 'I must limit other activities on the same day' },
+	{ value: 5, label: 'This rarely affects other activities' },
+	{ value: 6, label: 'Unproblematic – does not affect other activities' },
+];
+
 export const FAQ = {
 	measures: {
 		q: 'What is the FUNCAP questionnaire?',

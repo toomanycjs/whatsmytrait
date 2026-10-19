@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import SebqInterpretation from '../../components/interpretation/SelfEvaluationOfBreathing.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/self-evaluation-of-breathing-questionnaire.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const options = [
 	{ short: 'Never / not true at all', value: 0 },
@@ -43,19 +43,22 @@ const items = [
 
 const pages = [items.slice(0, 13), items.slice(13)];
 
-const jsonLd = toolJsonLd('Self-Evaluation of Breathing Questionnaire', '/tools/self-evaluation-of-breathing-questionnaire/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Self-Evaluation of Breathing Questionnaire (SEBQ): free online breathing pattern disorder questionnaire"
-	description="Complete the 25-item Self-Evaluation of Breathing Questionnaire and get your SEBQ score out of 75 instantly, with the proposed threshold of 25 and reference values explained. The companion to the Nijmegen questionnaire for breathing pattern disorder. Free, no sign-up."
+	breadcrumb="Self-Evaluation of Breathing Questionnaire"
+	faqs={faqs}
+	title="SEBQ: free breathing pattern disorder questionnaire"
+	description="Free SEBQ (Self-Evaluation of Breathing Questionnaire) with an instant score, no sign-up. 25 questions scored out of 75, threshold of 25 explained."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
-				<h1>Self-Evaluation of Breathing Questionnaire (SEBQ)</h1>
+				<h1>SEBQ: Self-Evaluation of Breathing Questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">25 statements about how your breathing feels: the breathing-specific companion to the Nijmegen questionnaire</p>
 				<p class="description">
 					The Self-Evaluation of Breathing Questionnaire was developed by osteopath and breathing researcher Rosalba Courtney with Kenneth Greenwood and first published in 2009 as a 17-item version; the 25-item version here is the one used in later studies. <!-- REVIEW: header copy corrected against sources --> Where the <a href="/tools/nijmegen/">Nijmegen questionnaire</a> was written for hyperventilation and includes tingling, palpitations, and anxiety, the SEBQ asks only about breathing: whether it feels shallow, restricted, effortful, irregular, or unsatisfying. That makes it better at picking up the sense of restricted, effortful breathing, which the Nijmegen largely misses.

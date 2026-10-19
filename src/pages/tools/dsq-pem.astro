@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import DsqPemInterpretation from '../../components/interpretation/DsqPem.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/dsq-pem.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const freqOptions = [
 	{ value: 0, label: 'None of the time' },
@@ -39,19 +39,22 @@ const durationOptions = [
 	'24 hours or more',
 ];
 
-const jsonLd = toolJsonLd('Post-exertional malaise (DSQ-PEM)', '/tools/dsq-pem/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Post-exertional malaise test: free DSQ-PEM questionnaire with scoring"
-	description="Check for post-exertional malaise (PEM) with the DePaul Symptom Questionnaire PEM short form. 10 questions, immediate scored result, with the ME/CFS thresholds explained. Free, no sign-up."
+	breadcrumb="Post-exertional malaise (DSQ-PEM)"
+	faqs={faqs}
+	title="Post-exertional malaise test: free DSQ-PEM questionnaire"
+	description="Free post-exertional malaise (PEM) test with an instant score, no sign-up. The 10-question DePaul DSQ-PEM short form, with the ME/CFS thresholds explained."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Post-exertional malaise questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">DSQ-PEM: the DePaul post-exertional malaise short form</p>
 				<p class="description">
 					<!-- REVIEW: rewritten to match the NICE NG206 description of PEM; the unsourced long COVID clause was removed. -->

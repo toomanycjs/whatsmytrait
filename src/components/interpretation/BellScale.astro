@@ -1,7 +1,7 @@
 ---
 // REVIEW: Layer 2 interpretation for the Bell scale, drafted for Craig's review.
 // FAQ answers come from bell-scale.content.ts and are shown word for word.
-import { FAQ, SOURCES } from '../../tools/bell-scale.content';
+import { FAQ, LEVELS, SOURCES } from '../../tools/bell-scale.content';
 import '../../styles/interpretation.css';
 ---
 
@@ -17,9 +17,19 @@ import '../../styles/interpretation.css';
 		we have not found a published study of its measurement properties.
 	</p>
 
-	<h3 id="score-bands">Score bands</h3>
+	<h3 id="score-bands">Bell score interpretation</h3>
 	<p>{FAQ.bands.a}</p>
-	<p>{FAQ.score40.a}</p>
+	<nav class="score-jump" aria-label="Jump to a Bell score">
+		<ul>
+			{LEVELS.map(l => <li><a href={`#bell-score-${l.value}`}>{l.value}</a></li>)}
+		</ul>
+	</nav>
+	{LEVELS.map(l => (
+		<Fragment>
+			<h4 id={`bell-score-${l.value}`}>What a Bell score of {l.value} means</h4>
+			<p>{l.value === 40 ? FAQ.score40.a : l.description}</p>
+		</Fragment>
+	))}
 
 	<h3 id="change">What a change in score means</h3>
 	<p>{FAQ.change.a}</p>

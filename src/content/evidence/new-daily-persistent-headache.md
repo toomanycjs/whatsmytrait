@@ -78,9 +78,9 @@ The complicating factor with NDPH is that medication overuse may have developed 
 
 One small consolation for NDPH patients: because acute painkillers are generally ineffective for the constant background pain, many NDPH patients use less acute medication than chronic migraine patients, making medication overuse less common in this group.
 
-## Treatments
+## How is NDPH treated?
 
-There are no randomised controlled trials of any treatment specifically for NDPH. Every treatment used for NDPH is borrowed from migraine or tension-type headache management, based on the assumption that shared mechanisms justify shared treatments. This is a reasonable approach, but it means that the evidence base is indirect, and response rates in NDPH are generally lower than in the conditions the treatments were designed for.
+There are no randomised controlled trials of any treatment specifically for NDPH. Every treatment used for NDPH is borrowed from migraine or tension-type headache management, based on the assumption that shared mechanisms justify shared treatments. This is a reasonable approach, but it means that the evidence base is indirect, and response rates in NDPH are generally lower than in the conditions the treatments were designed for. For a drug-by-drug look at that evidence, see [what drugs work for NDPH](/evidence/what-drugs-work-for-ndph/).
 
 ### Preventive medications
 
@@ -150,13 +150,15 @@ If you think you have NDPH, these steps may help.
 
 **Consider the National Migraine Centre** as a parallel route. It is a charity that offers specialist headache consultations across the UK, usually by video. Free appointments are available, though the wait is longer; paid consultations are also offered and are significantly cheaper than private neurology. The clinicians are headache specialists who can prescribe the full range of first-line preventives and provide the kind of structured treatment plan that can then be implemented through your GP. Their recommendation letters carry weight with NHS services.
 
-## Prognosis
+## Does new daily persistent headache ever go away?
 
 The evidence on NDPH prognosis is limited, drawn from small studies at specialist centres, and hard to generalise to any individual case.
 
 Early studies by Vanast found that 78% of patients were pain-free within 24 months without treatment, but subsequent research from specialist headache centres (which inevitably see the most difficult cases) has been less encouraging. Robbins et al. found that 76% of their 71 patients had the persisting subtype, with continuous headache from onset. About 15% had a remitting course, and 8% had a relapsing-remitting pattern. A Japanese study of 30 patients found that treatment was judged "not effective" in 50% of cases. It is difficult to know how representative these numbers are, since people whose headaches resolve may never reach specialist services and therefore never appear in the data.
 
 Some studies suggest that an identifiable trigger (particularly a post-infectious onset) and early treatment within the first 6 to 12 months may be associated with better outcomes. An Italian paediatric study found higher initial response rates in children than in adults, though some later relapsed. But these findings come from small, often retrospective studies, and it would be wrong to read them as confident predictions.
+
+### Is there a cure for NDPH?
 
 What can reasonably be said is that NDPH is widely described in the literature as one of the most treatment-resistant primary headache disorders, and that many patients try multiple medications without finding significant relief. Some patients do improve over time, whether through treatment, natural history, or both. The honest position is that the trajectory is uncertain for any individual, and the evidence base is not strong enough to offer reliable prognostic guidance. That uncertainty is difficult to live with, but it also means that negative outcomes are not guaranteed.
 

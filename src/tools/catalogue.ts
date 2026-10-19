@@ -44,7 +44,7 @@ export const QUESTIONNAIRE_GROUPS: ToolGroup[] = [
 		tools: [
 			{ title: 'FUNCAP functional capacity questionnaire', short: 'FUNCAP', href: '/tools/funcap/', kind: 'questionnaire', description: 'The patient-informed ME/CFS functional capacity instrument (FUNCAP27): 27 activities across 8 domains, scored by what each activity costs you. Includes a domain profile.' },
 			{ title: 'Post-COVID-19 Functional Status scale (PCFS)', short: 'PCFS', href: '/tools/pcfs/', kind: 'questionnaire', description: 'The standard long COVID functional grading: four quick questions give you a grade from 0 (no limitations) to 4 (severe limitations). Takes under a minute; designed for repeat tracking.' },
-			{ title: 'Bell CFIDS Disability Scale', short: 'Bell scale', href: '/tools/bell-scale/', kind: 'questionnaire', description: 'Functional capacity scale from 0–100, widely referenced in ME/CFS and post-viral communities. Quick self-check for functional status.' },
+			{ title: 'Bell score (Bell CFIDS Disability Scale)', short: 'Bell score', href: '/tools/bell-scale/', kind: 'questionnaire', description: 'Functional capacity score from 0 to 100, widely referenced in ME/CFS and post-viral communities. Quick self-check for functional status.' },
 			{ title: 'RAND-36 health survey (SF-36 items)', short: 'RAND-36', href: '/tools/rand-36/', kind: 'questionnaire', description: 'The classic 36-item health-related quality of life survey, scored across eight scales. Compare your profile against published ME/CFS and long COVID cohorts.' },
 		],
 	},

@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import DsqBriefInterpretation from '../../components/interpretation/DsqBrief.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/dsq-brief.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const freqOptions = [
 	{ value: 0, short: 'None of the time', full: 'None of the time' },
@@ -31,19 +31,22 @@ const items = [
 	{ id: 'memory', text: 'Problems remembering things' },
 ];
 
-const jsonLd = toolJsonLd('ME/CFS screening (DSQ-Brief)', '/tools/dsq-brief/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="ME/CFS screening questionnaire: free 4-question self-check based on the DePaul Symptom Questionnaire"
-	description="A free, quick ME/CFS screening tool based on the DePaul Symptom Questionnaire Brief. Answer 4 questions and get an immediate result. No sign-up required."
+	breadcrumb="ME/CFS screening (DSQ-Brief)"
+	faqs={faqs}
+	title="ME/CFS screening questionnaire: free 4-question self-check"
+	description="Free ME/CFS screening questionnaire with an instant score, no sign-up. Four questions from the DePaul Symptom Questionnaire Brief, in under two minutes."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>ME/CFS screening questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">The DSQ-Brief: a 4-item self-check</p>
 				<p class="description">
 					This is a free, interactive version of the <strong>DSQ-Brief</strong>, a short screening scale for myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS) developed by Leonard Jason and colleagues at DePaul University and published in 2023. It was drawn from the much longer DePaul Symptom Questionnaire: the authors picked the four symptom questions that identify people who meet the Institute of Medicine (IOM) case definition for ME/CFS.

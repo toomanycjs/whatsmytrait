@@ -22,6 +22,8 @@ The key features of PEM:
 
 **Not normal tiredness**: PEM is categorically different from the fatigue of a hard day's work or even the fatigue of overtraining in a healthy athlete. Rest resolves normal fatigue. Rest only partially resolves PEM, and the timing doesn't follow normal recovery curves.
 
+If you are not sure whether your own crashes fit this pattern, the [DSQ-PEM questionnaire](/tools/dsq-pem/) asks the DePaul Symptom Questionnaire's ten questions about post-exertional malaise, including how long recovery takes, and scores them against the ME/CFS thresholds.
+
 ## What's happening physiologically
 
 The biology of PEM is increasingly well understood, though not yet fully explained:
@@ -104,3 +106,4 @@ Komaroff AL, Bateman L. Will COVID-19 lead to myalgic encephalomyelitis/chronic 
 - [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)
 - [Fatigue Severity Scale (interactive questionnaire)](/tools/fss/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)

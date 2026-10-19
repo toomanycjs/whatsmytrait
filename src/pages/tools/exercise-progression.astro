@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ToolPurpose from '../../components/ToolPurpose.astro';
 
@@ -11,52 +12,36 @@ const tiers = [
 	{ n: 5, name: 'Upright, short bouts', desc: 'Short bouts of walking or gentle elliptical work, broken up with recovery.' },
 	{ n: 6, name: 'Upright, sustained', desc: 'Longer walking or elliptical sessions. The end of the published calendars, not a requirement.' },
 ];
+
+const faqs = [
+	{
+		q: "Why does this tool never advance me automatically?",
+		a: "A paper exercise calendar advances whether or not your body kept up, and in post-viral conditions that is exactly the wrong default. Here, repeating a week is the normal outcome, and moving up a tier is always an explicit choice you make, only unlockable after a completed week whose 48-hour checks showed no symptom rise."
+	},
+	{
+		q: "What is the evidence behind recumbent exercise programmes for POTS?",
+		a: "The strongest published work comes from Levine and colleagues, whose three-month programmes starting with recumbent modes improved fitness and symptoms in many participants. The studies are small, largely uncontrolled, and used selected patients. The Children's Hospital of Philadelphia adaptation is widely circulated but has never been separately validated. This page explains that structure; it does not prescribe it."
+	},
+	{
+		q: "Why is this page gated behind a readiness screen?",
+		a: "Because progressive exercise assumes post-exertional malaise is absent. If PEM is present, structured progression can cause prolonged worsening, so the readiness screen routes to pacing instead. The gate also checks red-flag symptoms that need a clinician before any plan."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Exercise progression for orthostatic intolerance: a cautious, self-paced record keeper"
-	description="A hold-by-default exercise progression tool for POTS and orthostatic intolerance, informed by the CHOP modified Dallas programme and Levine's published protocol. You pick the tier, the tool keeps the record and never advances you on its own."
+	breadcrumb="Exercise progression"
+	faqs={faqs}
+	title="Exercise progression for orthostatic intolerance: free tool"
+	description="Free, private exercise progression record for POTS, no sign-up. You choose each tier; it never moves you up on its own, and repeating a week is normal."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Exercise progression", "item": "https://www.postviralrecovery.com/tools/exercise-progression/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "Why does this tool never advance me automatically?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A paper exercise calendar advances whether or not your body kept up, and in post-viral conditions that is exactly the wrong default. Here, repeating a week is the normal outcome, and moving up a tier is always an explicit choice you make, only unlockable after a completed week whose 48-hour checks showed no symptom rise."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is the evidence behind recumbent exercise programmes for POTS?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The strongest published work comes from Levine and colleagues, whose three-month programmes starting with recumbent modes improved fitness and symptoms in many participants. The studies are small, largely uncontrolled, and used selected patients. The Children's Hospital of Philadelphia adaptation is widely circulated but has never been separately validated. This page explains that structure; it does not prescribe it."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Why is this page gated behind a readiness screen?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Because progressive exercise assumes post-exertional malaise is absent. If PEM is present, structured progression can cause prolonged worsening, so the readiness screen routes to pacing instead. The gate also checks red-flag symptoms that need a clinician before any plan."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Exercise progression for orthostatic intolerance</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Learning from the CHOP modified Dallas programme and Levine's published protocol</p>
 			</div>
 

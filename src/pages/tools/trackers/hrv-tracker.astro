@@ -1,52 +1,37 @@
 ---
+import LastReviewed from '../../../components/LastReviewed.astro';
 import Page from '../../../layouts/Page.astro';
+
+const faqs = [
+	{
+		q: "Where is my HRV data stored?",
+		a: "In your browser's local storage on the device you are using. Nothing is sent to this site or anywhere else. Clearing browser data or switching devices loses the record, so export a CSV now and then."
+	},
+	{
+		q: "Do I have to type in months of old readings?",
+		a: "No. The rolling medians and charts work from the day you start. If you already have history, most wearable dashboards can export a CSV, and the page imports it directly."
+	},
+	{
+		q: "Why medians rather than averages?",
+		a: "HRV readings are skewed and one unusual night can drag an average a long way. A median is far less affected by single outliers, which makes it a better picture of where you actually are."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Free HRV and resting heart rate tracker: log daily readings, see medians and trends"
-	description="A free HRV and resting heart rate tracker that runs in your browser. Log daily readings or import a CSV from Garmin, Oura, Whoop, Apple Health or a spreadsheet. Rolling medians and trend charts, stored on your device only."
+	breadcrumb="HRV and resting heart rate tracker"
+	faqs={faqs}
+	title="Free HRV and resting heart rate tracker with trends"
+	description="Free HRV and resting heart rate tracker, no sign-up, with instant trend charts. Log readings or import Garmin, Oura or Whoop data; it stays on your device."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "HRV and resting heart rate tracker", "item": "https://www.postviralrecovery.com/tools/trackers/hrv-tracker/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "Where is my HRV data stored?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "In your browser's local storage on the device you are using. Nothing is sent to this site or anywhere else. Clearing browser data or switching devices loses the record, so export a CSV now and then."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Do I have to type in months of old readings?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. The rolling medians and charts work from the day you start. If you already have history, most wearable dashboards can export a CSV, and the page imports it directly."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Why medians rather than averages?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "HRV readings are skewed and one unusual night can drag an average a long way. A median is far less affected by single outliers, which makes it a better picture of where you actually are."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-		</script>
-	</Fragment>
 
 			<div class="page-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>HRV and resting heart rate tracker</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Log daily readings, or import them, and see your medians and trends</p>
 			</div>
 

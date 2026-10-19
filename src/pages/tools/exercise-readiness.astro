@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ToolPurpose from '../../components/ToolPurpose.astro';
 
@@ -11,47 +12,32 @@ const redFlags = [
 	'Cardiac findings after COVID-19 (such as myocarditis or pericarditis) that have not been signed off as resolved',
 	'If you have a pulse oximeter: oxygen saturation that drops on exertion',
 ];
+
+const faqs = [
+	{
+		q: "Why screen before exercising with a post-viral condition?",
+		a: "Two reasons. First, a small number of symptoms (chest pain on exertion, exertional fainting, unresolved cardiac findings) need a clinician's review before any activity plan. Second, if you have post-exertional malaise (PEM), activity that exceeds your capacity can trigger prolonged worsening, so pacing is the safer starting point and structured exercise progression is not recommended."
+	},
+	{
+		q: "What happens if I screen positive for PEM?",
+		a: "You are pointed to the pacing and heart rate guide rather than the exercise progression guide. That is not a downgrade. For people with PEM, staying inside the energy envelope is the approach with the least risk of harm, and gentle movement without progression targets is still possible on good days."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Exercise readiness screen for post-viral illness: red flags and PEM check"
-	description="A short screen to take before starting any exercise with a post-viral condition. Checks red flags, post-exertional malaise, and relevant comorbidities, then points you to the safer starting place. Free, private, no sign-up."
+	breadcrumb="Exercise readiness screen"
+	faqs={faqs}
+	title="Exercise readiness screen for post-viral illness: PEM check"
+	description="Free exercise readiness screen with an instant result, no sign-up. Checks red flags and post-exertional malaise first, then points you to a safe start."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Exercise readiness screen", "item": "https://www.postviralrecovery.com/tools/exercise-readiness/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "Why screen before exercising with a post-viral condition?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Two reasons. First, a small number of symptoms (chest pain on exertion, exertional fainting, unresolved cardiac findings) need a clinician's review before any activity plan. Second, if you have post-exertional malaise (PEM), activity that exceeds your capacity can trigger prolonged worsening, so pacing is the safer starting point and structured exercise progression is not recommended."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What happens if I screen positive for PEM?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "You are pointed to the pacing and heart rate guide rather than the exercise progression guide. That is not a downgrade. For people with PEM, staying inside the energy envelope is the approach with the least risk of harm, and gentle movement without progression targets is still possible on good days."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Exercise readiness screen</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Three quick checks before you start anything</p>
 				<p class="description">
 					Before starting any movement or exercise plan with a post-viral condition, three things are worth checking:

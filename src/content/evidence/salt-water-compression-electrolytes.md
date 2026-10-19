@@ -95,3 +95,5 @@ Boris JR, Bernadzikowski T. Demographics and comorbidities of patients with post
 - [How to increase salt intake: a practical guide](/testing/how-to-increase-salt-intake/)
 - [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)

@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -20,52 +21,36 @@ const ratings = [
 	{ value: 4, label: 'Agree' },
 	{ value: 5, label: 'Strongly agree' },
 ];
+
+const faqs = [
+	{
+		q: "What does the Brief Resilience Scale measure?",
+		a: "The BRS measures resilience in its original sense: the ability to bounce back or recover from stress. It was published by Bruce Smith and colleagues in 2008 and deliberately does not measure the resources that help people cope, such as optimism or social support, only the recovery itself. Six items, half of them reverse-worded, give a mean score from 1 to 5."
+	},
+	{
+		q: "What is a normal Brief Resilience Scale score?",
+		a: "The authors' bands are 1.00 to 2.99 low resilience, 3.00 to 4.30 normal, and 4.31 to 5.00 high. Averages in general and student samples sit around 3.5 to 3.9. People with chronic illness and chronic pain tend to score lower, which the scale's authors noted in the original validation."
+	},
+	{
+		q: "Does a low resilience score mean I am not coping well enough?",
+		a: "No. The BRS asks how quickly you recover from stress, and a body that is already under the load of a post-viral illness recovers more slowly from everything, including stress. A low score describes that state; it is not a verdict on effort or character. The scale has been shown to improve when circumstances and support improve."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="Brief Resilience Scale"
+	faqs={faqs}
 	title="Brief Resilience Scale (BRS): free online test with scoring"
-	description="Complete the Brief Resilience Scale online and get your score from 1 to 5 with the low, normal and high bands explained. Six questions about bouncing back from stress. Free, no sign-up required."
+	description="Free Brief Resilience Scale with an instant score, no sign-up. Six questions about bouncing back from stress, scored 1 to 5 with the bands explained."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Brief Resilience Scale", "item": "https://www.postviralrecovery.com/tools/brief-resilience-scale/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What does the Brief Resilience Scale measure?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The BRS measures resilience in its original sense: the ability to bounce back or recover from stress. It was published by Bruce Smith and colleagues in 2008 and deliberately does not measure the resources that help people cope, such as optimism or social support, only the recovery itself. Six items, half of them reverse-worded, give a mean score from 1 to 5."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Brief Resilience Scale score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The authors' bands are 1.00 to 2.99 low resilience, 3.00 to 4.30 normal, and 4.31 to 5.00 high. Averages in general and student samples sit around 3.5 to 3.9. People with chronic illness and chronic pain tend to score lower, which the scale's authors noted in the original validation."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Does a low resilience score mean I am not coping well enough?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. The BRS asks how quickly you recover from stress, and a body that is already under the load of a post-viral illness recovers more slowly from everything, including stress. A low score describes that state; it is not a verdict on effort or character. The scale has been shown to improve when circumstances and support improve."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Brief Resilience Scale (BRS)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Six statements about bouncing back from stress, scored 1–5</p>
 				<p class="description">
 					The Brief Resilience Scale was published by Bruce Smith and colleagues in 2008 to measure one specific thing: how well you recover from stress. Most "resilience" questionnaires mix that up with the resources that help, such as optimism, purpose or a supportive family. The BRS leaves those out on purpose, so the score tells you about the bounce-back itself. It has six statements, half of them worded in reverse, and takes about a minute.

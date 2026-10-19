@@ -1,12 +1,12 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import NijmegenInterpretation from '../../components/interpretation/Nijmegen.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/nijmegen.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Nijmegen Questionnaire', '/tools/nijmegen/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 
 const questions = [
 	'Chest pain',
@@ -34,18 +34,21 @@ const frequencies = [
 	{ value: 3, label: 'Often' },
 	{ value: 4, label: 'Very often' },
 ];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="Nijmegen Questionnaire"
+	faqs={faqs}
 	title="Nijmegen questionnaire: free online version, instant scoring"
-	description="Complete the Nijmegen questionnaire online and get your score instantly. A free, interactive version of the breathing pattern questionnaire used to screen for hyperventilation syndrome, with your result explained. No sign-up, no PDF to print."
+	description="Free Nijmegen questionnaire with an instant score, no sign-up. The 16-item breathing pattern screen for hyperventilation syndrome, with results explained."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Nijmegen Questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Breathing Pattern Disorder Screening</p>
 				<p class="description">
   The Nijmegen questionnaire is a 16-item self-report screening tool for hyperventilation syndrome and breathing pattern disorder. <!-- REVIEW: corrected authorship and threshold wording --> It was developed in the Netherlands by van Doorn, Colla and Folgering, validated by van Dixhoorn and Duivenvoorden in 1985, and is still widely used in research and clinical practice. Each item asks how often you experience a particular symptom on a scale from 0 (never) to 4 (very often), producing a total score between 0 and 64.

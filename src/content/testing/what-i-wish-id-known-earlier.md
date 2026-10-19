@@ -99,3 +99,5 @@ I'm not a clinician. Everything here is my own experience and reading. For the c
 - [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [Plain-language guide to post-viral autonomic dysfunction](/evidence/plain-language-guide-post-viral-autonomic-dysfunction/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)

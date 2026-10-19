@@ -34,6 +34,21 @@ Across the trial and clinic literature the pattern is consistent. **Ivabradine i
 
 A few practical points that recur in the patient and clinic literature: take it with food, avoid grapefruit (it raises drug levels), and expect any benefit to show quickly, often within days rather than weeks, which is unusual and makes it relatively easy to judge whether it is working for you. Because it is metabolised through the same liver pathway as several other drugs, the interaction list matters, so a pharmacist check against your other medications is worth doing.
 
+<!--
+PLACEHOLDER for Craig to fill in before publishing (hidden until then).
+Search demand: "how long does ivabradine take to work" ranks around position 25.
+Suggested heading:
+
+## How long does ivabradine take to work?
+
+Draft from the sources already cited on this page only, for example:
+- the 2026 post-COVID POTS cohort (symptom improvement reported within seven days)
+- the Taub trial (titration schedule and when heart rate and symptoms were measured)
+- the "often within days rather than weeks" point in the Dosing section above
+Two or three sentences, with the usual caution that the fast-response data is observational.
+Delete this comment once the section is written.
+-->
+
 ## Side effects and who should avoid it
 
 Ivabradine is generally well tolerated. In the pooled case-series data, of 124 patients assessed only 3 stopped because of side effects. The most common are mild: dizziness, nausea, headache, fatigue, and a distinctive **visual symptom called phosphenes**, brief flashes or halos of brightness, which arise because the same I-f current exists in the retina. Phosphenes are usually mild and often settle, but they are the side effect most specific to this drug and worth knowing about in advance so they don't alarm you.
@@ -60,3 +75,5 @@ Ivabradine treats the *symptom* (the fast heart) rather than the *cause*, so it 
 - [The 30 bpm threshold: how POTS is diagnosed](/evidence/30-bpm-threshold-pots/)
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
 - [Preparing for a GP appointment](/testing/preparing-for-gp-appointment/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)

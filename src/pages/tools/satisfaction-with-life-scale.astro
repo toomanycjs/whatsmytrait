@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -20,52 +21,36 @@ const ratings = [
 	{ value: 2, label: 'Disagree' },
 	{ value: 1, label: 'Strongly disagree' },
 ];
+
+const faqs = [
+	{
+		q: "What is the Satisfaction with Life Scale?",
+		a: "The SWLS is a five-item measure of how satisfied a person is with their life as a whole, published by Ed Diener and colleagues in 1985. You rate five statements from strongly disagree to strongly agree, giving a total between 5 and 35. It is one of the most widely used well-being measures in psychology and is free to use."
+	},
+	{
+		q: "What is a normal Satisfaction with Life Scale score?",
+		a: "Diener's bands are: 31 to 35 extremely satisfied, 26 to 30 satisfied, 21 to 25 slightly satisfied, 20 neutral, 15 to 19 slightly dissatisfied, 10 to 14 dissatisfied, and 5 to 9 extremely dissatisfied. Most people in Western general-population samples score between 21 and 30."
+	},
+	{
+		q: "How is the SWLS different from the WHO-5?",
+		a: "The WHO-5 asks how you have felt over the past two weeks, so it moves with mood, sleep and symptoms. The SWLS asks for a considered judgement of your life as a whole, with no time frame, so it is more stable and reflects how well your life matches what you want from it. In a long illness the two can diverge: a poor fortnight need not change how you judge your life, and the reverse."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Satisfaction with Life Scale (SWLS): free online test with scoring"
-	description="Complete the Satisfaction with Life Scale online and get your score out of 35 with Diener's interpretation bands. Five questions, under a minute. Free, no sign-up required."
+	breadcrumb="Satisfaction with Life Scale"
+	faqs={faqs}
+	title="Satisfaction with Life Scale (SWLS): free online test"
+	description="Free Satisfaction with Life Scale with an instant score, no sign-up. Five questions, under a minute, scored out of 35 with Diener's interpretation bands."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Satisfaction with Life Scale", "item": "https://www.postviralrecovery.com/tools/satisfaction-with-life-scale/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the Satisfaction with Life Scale?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The SWLS is a five-item measure of how satisfied a person is with their life as a whole, published by Ed Diener and colleagues in 1985. You rate five statements from strongly disagree to strongly agree, giving a total between 5 and 35. It is one of the most widely used well-being measures in psychology and is free to use."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "What is a normal Satisfaction with Life Scale score?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "Diener's bands are: 31 to 35 extremely satisfied, 26 to 30 satisfied, 21 to 25 slightly satisfied, 20 neutral, 15 to 19 slightly dissatisfied, 10 to 14 dissatisfied, and 5 to 9 extremely dissatisfied. Most people in Western general-population samples score between 21 and 30."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is the SWLS different from the WHO-5?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "The WHO-5 asks how you have felt over the past two weeks, so it moves with mood, sleep and symptoms. The SWLS asks for a considered judgement of your life as a whole, with no time frame, so it is more stable and reflects how well your life matches what you want from it. In a long illness the two can diverge: a poor fortnight need not change how you judge your life, and the reverse."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Satisfaction with Life Scale (SWLS)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Five statements about your life as a whole, scored 5–35</p>
 				<p class="description">
 					The Satisfaction with Life Scale was developed by Ed Diener and colleagues in 1985 to measure the cognitive side of well-being: not how you feel today, but your own judgement of how your life is going, measured against your own standards rather than anyone else's. It has five statements, takes under a minute, and has been used in thousands of studies across ages, cultures and health conditions. Diener released it into the public domain.

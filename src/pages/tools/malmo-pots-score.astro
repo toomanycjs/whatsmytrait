@@ -1,12 +1,12 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import MalmoPotsInterpretation from '../../components/interpretation/MalmoPotsScore.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/malmo-pots-score.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Malmö POTS Symptom Score', '/tools/malmo-pots-score/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 
 const items = [
 	{ id: 'dizziness', text: 'Dizziness or light-headedness', group: 'cardiac' },
@@ -22,18 +22,21 @@ const items = [
 	{ id: 'fatigue', text: 'Fatigue', group: 'noncardiac' },
 	{ id: 'insomnia', text: 'Insomnia (difficulty sleeping)', group: 'noncardiac' },
 ];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Malmö POTS Symptom Score (MAPS): free online POTS symptom questionnaire"
-	description="Rate 12 POTS symptoms from the past week and get your Malmö POTS Score (0–120) instantly, with the validated ≥42 threshold explained. Free, no sign-up, useful for tracking symptom burden over time."
+	breadcrumb="Malmö POTS Symptom Score"
+	faqs={faqs}
+	title="Malmö POTS Symptom Score (MAPS): free online questionnaire"
+	description="Free Malmö POTS Symptom Score with an instant score, no sign-up. Rate 12 POTS symptoms from the past week, scored out of 120 with the 42 threshold."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Malmö POTS Symptom Score</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">MAPS: a 12-symptom score for POTS symptom burden, past 7 days</p>
 				<p class="description">
 					The Malmö POTS Symptom Score (MAPS) was developed at Lund University and published in the <em>Journal of Internal Medicine</em> in 2023. It is the first self-rating score designed specifically for POTS. You rate 12 common symptoms (five cardiac, seven non-cardiac) from <strong>0 (no symptoms)</strong> to <strong>10 (very pronounced)</strong> for the <strong>past 7 days</strong>. The total runs from 0 to 120.

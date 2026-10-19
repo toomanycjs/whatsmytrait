@@ -109,3 +109,4 @@ Raj SR. Postural tachycardia syndrome (POTS). Circulation. 2013;127(23):2336–2
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
 - [How to prepare for a health appointment](/testing/preparing-for-gp-appointment/)
 - [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)

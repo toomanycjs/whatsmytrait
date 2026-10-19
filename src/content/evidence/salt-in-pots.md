@@ -152,3 +152,4 @@ Two practical takeaways are worth holding on to. First, **salt is a companion to
 - [POTS and IST: what's the difference, does it matter, and how do you tell?](/evidence/pots-vs-ist/)
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)

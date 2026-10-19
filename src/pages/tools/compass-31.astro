@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -156,37 +157,24 @@ const domains: Domain[] = [
 // Serialised for the client-side scoring script.
 const clientConfig = { domains };
 
-// Breadcrumb plus FAQPage. FAQ answers are rendered word for word in the
-// "Understanding your COMPASS-31 score" section, so schema and page match.
-const jsonLd = {
-	'@context': 'https://schema.org',
-	'@graph': [
-		{
-			'@type': 'BreadcrumbList',
-			itemListElement: [
-				{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.postviralrecovery.com/' },
-				{ '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.postviralrecovery.com/tools/' },
-				{ '@type': 'ListItem', position: 3, name: 'COMPASS-31', item: 'https://www.postviralrecovery.com/tools/compass-31/' },
-			],
-		},
-		{
-			'@type': 'FAQPage',
-			mainEntity: FAQ_ORDER.map(k => ({ '@type': 'Question', name: FAQ[k].q, acceptedAnswer: { '@type': 'Answer', text: FAQ[k].a } })),
-		},
-	],
-};
+// FAQ answers are rendered word for word in the "Understanding your
+// COMPASS-31 score" section, so schema and page match.
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="COMPASS-31: free online questionnaire with automatic scoring"
-	description="Complete the COMPASS-31 autonomic symptom questionnaire online and get your weighted score instantly, across all six domains. Free and interactive, with the scoring done for you and your result explained. No PDF, no sign-up."
+	breadcrumb="COMPASS-31 questionnaire"
+	faqs={faqs}
+	title="COMPASS-31 questionnaire: free online test and score"
+	description="Free COMPASS-31 questionnaire with an instant score, no sign-up. Get your weighted autonomic symptom score out of 100, all six domains, explained."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
-				<h1>COMPASS-31</h1>
+				<h1>COMPASS-31 questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Composite Autonomic Symptom Score</p>
 				<p class="description">
   The COMPASS-31 (Composite Autonomic Symptom Score) is a 31-item self-report questionnaire that measures the severity of autonomic symptoms across six domains: orthostatic intolerance, vasomotor function, secretomotor function, gastrointestinal symptoms, bladder function, and pupillomotor function. It was developed at the Mayo Clinic and published by Sletten and colleagues in 2012 as a shorter, more practical version of the original 169-item Autonomic Symptom Profile.

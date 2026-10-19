@@ -6,6 +6,8 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import SpoonRating from '../components/SpoonRating.astro';
 import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
+import { articleNode, breadcrumbList, crumbsFor } from '../lib/schema';
+import { lastmodByPath } from '../lib/lastmod.mjs';
 
 interface Props {
 	title: string;
@@ -29,23 +31,19 @@ const slug = Astro.url.pathname.replace(/^\//, '').replace(/\/$/, '');
 const generatedOgImage = new URL(`/og/${slug}.png`, Astro.site).href;
 const resolvedOgImage = ogImage ?? generatedOgImage;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-const schemaType = section === 'evidence' ? 'MedicalWebPage' as const : 'BlogPosting' as const;
-const effectiveModified = lastModified ?? updatedDate;
+// Frontmatter first, then the git date from src/data/lastmod.json, as in the sitemap.
+const sitemapDate = lastmodByPath().get(Astro.url.pathname);
+const effectiveModified = lastModified ?? updatedDate ?? (sitemapDate ? new Date(sitemapDate) : undefined);
+const schemaNodes = [
+	articleNode({ section, title, description, pubDate, modified: effectiveModified, url: canonicalURL, image: resolvedOgImage, lang }),
+	breadcrumbList(crumbsFor(Astro.url.pathname, title, { [section]: sectionLabel })),
+];
 ---
 
 <html lang={lang}>
 	<head>
 		<BaseHead title={title} description={description} ogImage={resolvedOgImage} ogType="article" />
-		<JsonLd
-			type={schemaType}
-			title={title}
-			description={description}
-			pubDate={pubDate}
-			updatedDate={effectiveModified}
-			url={canonicalURL}
-			image={resolvedOgImage}
-			lang={lang}
-		/>
+		<JsonLd nodes={schemaNodes} />
 	</head>
 	<body>
 		<Header />

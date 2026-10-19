@@ -154,3 +154,4 @@ Kaczmarek K, et al. Baseline intrinsic heart rate and response to ivabradine tre
 - [Salt, water, compression, and electrolytes: what the evidence says](/evidence/salt-water-compression-electrolytes/)
 - [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
+- [Malmö POTS Symptom Score: track symptom burden over time](/tools/malmo-pots-score/)

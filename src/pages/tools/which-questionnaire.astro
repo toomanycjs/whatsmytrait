@@ -1,28 +1,21 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-13';
 ---
 
 <Page
-	title="Which questionnaire should I take? A guide to post-viral self-assessment tools"
-	description="Not sure which symptom questionnaire is right for you? A plain-language guide to the DSQ-2, DSQ-PEM, COMPASS-31, Malmö POTS score, VOSS, Orthostatic Grading Scale, FUNCAP, PCFS, RAND-36, Chalder Fatigue Scale, Nijmegen, SEBQ, Cognitive Failures Questionnaire, Beighton, 5PQ, hEDS criteria, Epworth, Bell scale, WHO-5, and NASA lean test."
+	breadcrumb="Which questionnaire?"
+	title="Which questionnaire should I take? Post-viral tools guide"
+	description="Free guide to choosing a questionnaire, each with an instant score and no sign-up: ME/CFS, POTS, fatigue, breathing, brain fog, hypermobility and more."
 >
-	<Fragment slot="head">
-	<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "BreadcrumbList",
-	  "itemListElement": [
-	    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	    {"@type": "ListItem", "position": 3, "name": "Which questionnaire?", "item": "https://www.postviralrecovery.com/tools/which-questionnaire/"}
-	  ]
-	}
-	</script>
-	</Fragment>
 			<div class="page-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Which questionnaire should I take?</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">A guide to post-viral self-assessment tools</p>
 			</div>
 
@@ -54,7 +47,7 @@ import Page from '../../layouts/Page.astro';
 				<p class="go"><a href="/tools/epworth/">Epworth Sleepiness Scale</a></p>
 
 				<h2>If you want to measure your functional capacity</h2>
-				<p>Three tools at three levels of detail. The <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a> gives you a single score from 0 to 100 in under a minute, so it suits regular tracking. The <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> grades the impact on your daily life from 0 to 4 via four quick questions; it is the standard measure in long COVID research. The <a href="/tools/funcap/">FUNCAP questionnaire</a>, developed by and for people with ME/CFS, profiles what 27 specific activities cost you. It is the most detailed of the three and the most useful for disability paperwork.</p>
+				<p>Three tools at three levels of detail. The <a href="/tools/bell-scale/">Bell score</a> (Bell CFIDS Disability Scale) gives you a single score from 0 to 100 in under a minute, so it suits regular tracking. The <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> grades the impact on your daily life from 0 to 4 via four quick questions; it is the standard measure in long COVID research. The <a href="/tools/funcap/">FUNCAP questionnaire</a>, developed by and for people with ME/CFS, profiles what 27 specific activities cost you. It is the most detailed of the three and the most useful for disability paperwork.</p>
 				<p class="go"><a href="/tools/bell-scale/">Bell scale (quickest)</a> &nbsp;·&nbsp; <a href="/tools/pcfs/">PCFS (long COVID standard)</a> &nbsp;·&nbsp; <a href="/tools/funcap/">FUNCAP (most detailed)</a></p>
 
 				<h2>If you suspect POTS or orthostatic intolerance</h2>

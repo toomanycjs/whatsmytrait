@@ -1,0 +1,22 @@
+---
+// "Last reviewed" line under a tool page's heading. The date is the
+// `lastReviewed` constant in the page's frontmatter, which also feeds the
+// sitemap's lastmod (see scripts/lastmod.mjs).
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	date: string;
+}
+
+const { date } = Astro.props;
+---
+
+<p class="last-reviewed">Last reviewed <FormattedDate date={new Date(date)} /></p>
+
+<style>
+	.last-reviewed {
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.75em;
+	}
+</style>

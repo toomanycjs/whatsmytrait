@@ -1,20 +1,12 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import FuncapInterpretation from '../../components/interpretation/Funcap.astro';
-import { FAQ, FAQ_ORDER } from '../../tools/funcap.content';
-import { toolJsonLd } from '../../tools/jsonld';
+import { FAQ, FAQ_ORDER, SCALE } from '../../tools/funcap.content';
 
-const scaleOptions = [
-	{ value: 0, label: 'I cannot do this' },
-	{ value: 1, label: 'My capacity will be severely reduced for at least three days' },
-	{ value: 2, label: 'I can do little else on the same day and for one to two days afterwards' },
-	{ value: 3, label: 'I can do little else on the same day' },
-	{ value: 4, label: 'I must limit other activities on the same day' },
-	{ value: 5, label: 'This rarely affects other activities' },
-	{ value: 6, label: 'Unproblematic – does not affect other activities' },
-];
+const scaleOptions = SCALE;
 
 const domains = [
 	{
@@ -94,24 +86,27 @@ const domains = [
 	},
 ];
 
-const jsonLd = toolJsonLd('FUNCAP functional capacity questionnaire', '/tools/funcap/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 
 const clientConfig = {
 	domains: domains.map(d => ({ key: d.key, name: d.name, items: d.items.map(it => ({ id: it.id, text: it.text })) })),
 	labels: scaleOptions.map(o => o.label),
 };
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="FUNCAP functional capacity questionnaire for ME/CFS: free online version with scoring"
-	description="Complete the FUNCAP27 functional capacity questionnaire online for free. A patient-informed ME/CFS instrument covering 8 activity domains, with automatic scoring and a domain profile. No sign-up required."
+	breadcrumb="FUNCAP functional capacity questionnaire"
+	faqs={faqs}
+	title="FUNCAP score: free ME/CFS functional capacity questionnaire"
+	description="Free FUNCAP questionnaire with an instant score, no sign-up. The FUNCAP27 measures ME/CFS functional capacity across 8 activity domains, with a profile."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>FUNCAP functional capacity questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">FUNCAP27: a patient-informed measure of what activity costs you</p>
 				<p class="description">
 					FUNCAP is a functional capacity questionnaire built for ME/CFS. It was created by researchers working with the Norwegian ME Association, shaped by feedback from thousands of patients, and validated in more than 2,600 people with ME/CFS. It was published open access in 2024.
@@ -123,7 +118,7 @@ const clientConfig = {
 					This is the short <strong>FUNCAP27</strong> version: 27 activities in eight groups, each scored 0 to 6 for an average day over the <strong>past month</strong>. It takes 5 to 10 minutes. You get an overall score, a profile by activity group, and a list of your most costly activities. Your answers stay on your device. No sign-up is needed.
 				</p>
 				<p class="description">
-					For a quick single-number check you can repeat often, use the <a href="/tools/bell-scale/">Bell CFIDS Disability Scale</a>. For ME/CFS symptom screening, use the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, simpler grading.
+					For a quick single-number check you can repeat often, use the <a href="/tools/bell-scale/">Bell score</a>. For ME/CFS symptom screening, use the <a href="/tools/dsq-brief/">DSQ-Brief</a> or the full <a href="/tools/dsq-2/">DSQ-2</a>. If your illness followed COVID-19, the <a href="/tools/pcfs/">Post-COVID-19 Functional Status scale</a> is a quicker, simpler grading.
 				</p>
 			</div>
 

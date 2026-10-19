@@ -1,15 +1,20 @@
 ---
+import LastReviewed from '../../../components/LastReviewed.astro';
 import Page from '../../../layouts/Page.astro';
 
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Free stand test logger: track orthostatic heart rate over time"
-	description="A free Google Sheets template for logging NASA lean test and active stand test results over time. Record heart rate at baseline, 2, 5, and 10 minutes standing. Track your orthostatic response."
+	title="Free stand test logger: track orthostatic heart rate"
+	description="Free Google Sheets stand test logger, no sign-up. Record NASA lean test heart rates at 0, 2, 5 and 10 minutes and track your orthostatic response."
 >
 			<div class="page-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Stand test logger</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Free Google Sheets template for tracking orthostatic heart rate over time</p>
 			</div>
 

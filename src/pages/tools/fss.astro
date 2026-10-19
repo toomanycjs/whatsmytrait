@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import FssInterpretation from '../../components/interpretation/Fss.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/fss.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const questions = [
 	'My motivation is lower when I am fatigued.',
@@ -28,19 +28,22 @@ const ratings = [
 	{ value: 7, label: 'Strongly agree' },
 ];
 
-const jsonLd = toolJsonLd('Fatigue Severity Scale', '/tools/fss/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Fatigue Severity Scale: free online FSS test with scoring"
-	description="Complete the Fatigue Severity Scale (FSS) online and get your score instantly. A free, interactive version of the 9-item questionnaire, with your average score calculated and the interpretation thresholds explained. No sign-up needed."
+	breadcrumb="Fatigue Severity Scale (FSS)"
+	faqs={faqs}
+	title="Fatigue Severity Scale (FSS): free online test with scoring"
+	description="Free Fatigue Severity Scale (FSS) test with an instant score, no sign-up. Nine questions, your average score worked out, and the thresholds explained."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
-				<h1>Fatigue Severity Scale</h1>
+				<h1>Fatigue Severity Scale (FSS)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">FSS: Self-Report Fatigue Questionnaire</p>
 				<p class="description">
   The Fatigue Severity Scale (FSS) is a 9-item questionnaire that measures the impact of fatigue on daily functioning. It was developed by Krupp and colleagues in 1989 and has become one of the most widely used fatigue instruments in clinical research and practice. Each item is a statement about fatigue, and you rate your agreement on a scale from 1 (strongly disagree) to 7 (strongly agree). Your score is the mean of all nine items.

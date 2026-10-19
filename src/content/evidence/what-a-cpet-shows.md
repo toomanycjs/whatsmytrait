@@ -96,3 +96,4 @@ Mancini DM, Brunjes DL, Lala A, et al. Use of cardiopulmonary stress testing for
 - [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
 - [Post-exertional malaise: what it is and why pushing through makes it worse](/evidence/post-exertional-malaise/)
 - [Breathing pattern disorder vs autonomic breathlessness](/evidence/breathing-pattern-disorder-vs-autonomic-breathlessness/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)

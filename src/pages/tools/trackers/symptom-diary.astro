@@ -1,15 +1,20 @@
 ---
+import LastReviewed from '../../../components/LastReviewed.astro';
 import Page from '../../../layouts/Page.astro';
 
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-13';
 ---
 
 <Page
-	title="Free post-viral symptom diary: Google Sheets template with rolling averages"
-	description="A free Google Sheets symptom diary for tracking fatigue, breathlessness, head pain, and cognitive function daily. Automatic rolling averages and trend charts. Designed for post-viral and chronic illness tracking."
+	title="Free post-viral symptom diary: Google Sheets template"
+	description="Free Google Sheets symptom diary, no sign-up. Track fatigue, breathlessness, head pain and thinking each day, with rolling averages and trend charts."
 >
 			<div class="page-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Post-viral symptom diary</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Free Google Sheets template with rolling averages</p>
 			</div>
 

@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import Dsq2Interpretation from '../../components/interpretation/Dsq2.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/dsq-2.content';
-import { toolJsonLd } from '../../tools/jsonld';
 import {
 	FREQ_OPTIONS, HOURS_QUESTIONS, HOURS_STEM, ILLNESS_QUESTIONS, Q63A, RAND_ITEMS, SEV_OPTIONS, SYMPTOM_SECTIONS, SYMPTOMS,
 } from '../../tools/dsq-2.items';
@@ -13,21 +13,24 @@ import {
 // wording, the non-symptom questions the case-definition rules use, and the
 // RAND-36 items for the SF-36 subscales. Scoring lives in dsq-2.scoring.ts.
 
-const jsonLd = toolJsonLd('DePaul Symptom Questionnaire (DSQ-2)', '/tools/dsq-2/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
 const totalSteps = SYMPTOM_SECTIONS.length + 2;
 const yesNoNot = (q: { options: [number, string][] }) => q.options;
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="DePaul Symptom Questionnaire (DSQ-2): free online ME/CFS symptom assessment with scoring"
-	description="Complete all 79 symptom questions of the DePaul Symptom Questionnaire-2 online for free, scored against four ME/CFS case definitions with DePaul's published rules. No sign-up required."
+	breadcrumb="DePaul Symptom Questionnaire (DSQ-2)"
+	faqs={faqs}
+	title="DSQ-2 DePaul Symptom Questionnaire: free ME/CFS check"
+	description="Free DePaul Symptom Questionnaire (DSQ-2) with an instant score, no sign-up. All 79 symptom questions, checked against four ME/CFS case definitions."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>DePaul Symptom Questionnaire (DSQ-2)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">All 79 symptom questions, scored against four ME/CFS case definitions</p>
 				<p class="description">
 					The DSQ-2 is a self-report questionnaire developed by Leonard Jason and colleagues at DePaul University to assess the symptoms of myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS). It is the revised version of the original DePaul Symptom Questionnaire, with extra symptoms covering the newer case definitions. It is one of the standard research instruments in ME/CFS, and it is free to use.

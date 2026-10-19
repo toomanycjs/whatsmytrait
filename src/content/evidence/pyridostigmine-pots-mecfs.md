@@ -108,3 +108,5 @@ Thieben MJ, Sandroni P, Sletten DM, et al. Postural orthostatic tachycardia synd
 - [Ivabradine for post-viral autonomic dysfunction](/evidence/ivabradine-post-viral/)
 - [What a CPET shows and why it matters](/evidence/what-a-cpet-shows/)
 - [Recumbent exercise: staying active without crashing](/testing/recumbent-exercise/)
+- [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)

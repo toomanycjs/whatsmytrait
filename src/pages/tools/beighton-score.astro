@@ -1,36 +1,39 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import BeightonInterpretation from '../../components/interpretation/BeightonScore.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/beighton-score.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Beighton Score', '/tools/beighton-score/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
+	breadcrumb="Beighton score"
+	faqs={faqs}
 	title="Beighton score: free online hypermobility test with scoring"
-	description="Work through the nine Beighton score manoeuvres with an illustration for each and get your score out of 9 instantly. Free and interactive, with the age-adjusted threshold for generalised joint hypermobility explained."
+	description="Free hypermobility test with an instant score, no sign-up. Work through the five Beighton manoeuvres, each illustrated, and see your score out of 9."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">
 				<div class="tool-header">
 					<a href="/tools/" class="section-label tools">Tools</a>
-					<h1>Beighton Score</h1>
+					<h1>Beighton score: hypermobility test</h1>
+					<LastReviewed date={lastReviewed} />
 					<p class="subtitle">9-point self-assessment for generalised joint hypermobility</p>
 				</div>
 
 				<div class="setup-content">
 					<h2>What the Beighton score measures</h2>
-					<p>The Beighton score is the standard 9-point scale for <strong>generalised joint hypermobility</strong> &mdash; joints that move beyond the usual range. It checks five manoeuvres: four are scored on both sides of the body (1 point per side) and one is scored once, giving a total out of 9.</p>
+					<p>The Beighton score is the standard hypermobility test: a 9-point scale for <strong>generalised joint hypermobility</strong>, meaning joints that move beyond the usual range. It checks five manoeuvres: four are scored on both sides of the body (1 point per side) and one is scored once, giving a total out of 9.</p>
 					<p>The cut-off that suggests generalised joint hypermobility depends on your age, because joints naturally stiffen over time: <strong>6 or more for pre-pubertal children and adolescents, 5 or more from puberty to age 50, and 4 or more over 50</strong> (2017 international criteria). <!-- REVIEW: thresholds reworded to match Malfait et al. 2017 --> The Beighton score is one component of the 2017 international criteria for hypermobile EDS, and is also used when assessing hypermobility spectrum disorders. If your score lands one point below the cut-off, the <a href="/tools/five-part-questionnaire/">five-part questionnaire</a> can make up the difference under those criteria, and the <a href="/tools/heds-criteria/">hEDS criteria checker</a> walks through all three criteria using your score from here.</p>
 
-					<h2>How to complete it</h2>
+					<h2>How to do the hypermobility test at home</h2>
 					<ul>
 						<li>The assessment takes 3&ndash;5 minutes. Each manoeuvre has an illustration showing the position that scores a point.</li>
 						<li>Move each joint <strong>passively and gently</strong> &mdash; use your other hand to move the finger or thumb rather than forcing it. <strong>Do not force any joint, and stop if anything hurts.</strong></li>

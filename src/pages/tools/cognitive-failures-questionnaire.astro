@@ -1,10 +1,10 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import CognitiveFailuresInterpretation from '../../components/interpretation/CognitiveFailures.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/cognitive-failures-questionnaire.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
 const options = ['Never', 'Very rarely', 'Occasionally', 'Quite often', 'Very often'];
 
@@ -38,19 +38,22 @@ const items = [
 
 const pages = [items.slice(0, 13), items.slice(13)];
 
-const jsonLd = toolJsonLd('Cognitive Failures Questionnaire', '/tools/cognitive-failures-questionnaire/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Cognitive Failures Questionnaire (CFQ): free online brain fog questionnaire with scoring"
-	description="Complete Broadbent's 25-item Cognitive Failures Questionnaire and get your score out of 100 instantly, with forgetfulness, distractibility and false triggering subscales and reference values from healthy adults, long COVID, and ME/CFS studies. The standard measure of everyday cognitive lapses. Free, no sign-up."
+	breadcrumb="Cognitive Failures Questionnaire"
+	faqs={faqs}
+	title="Cognitive Failures Questionnaire (CFQ): free brain fog test"
+	description="Free Cognitive Failures Questionnaire with an instant score, no sign-up. 25 questions on everyday lapses, scored out of 100, with brain fog norms."
 >
-	<Fragment slot="head">
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Cognitive Failures Questionnaire (CFQ)</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Broadbent's 25-item measure of everyday memory, attention, and action slips: the standard brain fog questionnaire</p>
 				<p class="description">
 					Brain fog is one of the most common complaints in long COVID and ME/CFS, and one of the hardest to put a number on. The Cognitive Failures Questionnaire, published by Donald Broadbent and colleagues in 1982, is a widely used self-report measure of everyday cognitive lapses: forgetting why you walked into a room, reading a paragraph and taking nothing in, losing your thread mid-sentence. You rate how often 25 such lapses have happened over the <strong>past six months</strong>, from <strong>0 (never)</strong> to <strong>4 (very often)</strong>, for a total of 0–100.

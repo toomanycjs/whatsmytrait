@@ -1,7 +1,7 @@
 ---
 // REVIEW: Layer 2 interpretation for FUNCAP27, drafted for Craig's review.
 // FAQ answers come from funcap.content.ts and are shown word for word.
-import { FAQ, REFERENCE, SOURCES } from '../../tools/funcap.content';
+import { FAQ, REFERENCE, SCALE, SOURCES } from '../../tools/funcap.content';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -17,8 +17,17 @@ const s = SOURCES;
 		The longer FUNCAP55 is meant for diagnosis and disability assessment; this short FUNCAP27 is for follow-up and research.
 	</p>
 
-	<h3 id="score-bands">Score bands</h3>
+	<h3 id="score-bands">FUNCAP score interpretation</h3>
 	<p>{FAQ.normal.a}</p>
+	<nav class="score-jump" aria-label="Jump to a FUNCAP score topic">
+		<ul>
+			<li><a href="#funcap-score-averages">Averages</a></li>
+			<li><a href="#funcap-score-3">Score of 3</a></li>
+			<li><a href="#funcap-score-scale">Scores 0 to 6</a></li>
+		</ul>
+	</nav>
+
+	<h4 id="funcap-score-averages">Average FUNCAP scores in ME/CFS and healthy people</h4>
 	<table class="interp-table">
 		<caption>Average FUNCAP27 scores in the validation study</caption>
 		<thead>
@@ -28,7 +37,15 @@ const s = SOURCES;
 			{REFERENCE.map(r => <tr><th scope="row">{r.domain}</th><td>{r.mecfs}</td><td>{r.healthy}</td></tr>)}
 		</tbody>
 	</table>
+
+	<h4 id="funcap-score-3">What a FUNCAP score of 3 means</h4>
 	<p>{FAQ.score3.a}</p>
+
+	<h4 id="funcap-score-scale">What each FUNCAP score from 0 to 6 means</h4>
+	<p>Your total is the average of the eight domain scores, so it reads against the same scale as each answer:</p>
+	<ul>
+		{SCALE.map(o => <li><strong>{o.value}</strong>: {o.label}</li>)}
+	</ul>
 
 	<h3 id="change">What a change in score means</h3>
 	<p>{FAQ.change.a}</p>

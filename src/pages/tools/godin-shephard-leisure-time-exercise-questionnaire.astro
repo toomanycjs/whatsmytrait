@@ -1,4 +1,5 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
@@ -26,52 +27,36 @@ const categories = [
 		weight: 3,
 	},
 ];
+
+const faqs = [
+	{
+		q: "What is the Godin-Shephard Leisure-Time Exercise Questionnaire?",
+		a: "A three-question measure of how many times a week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time, published by Gaston Godin and Roy Shephard in 1985. The counts are weighted by intensity and added to give a Leisure Score Index. It is one of the shortest validated physical activity questionnaires and is free to use."
+	},
+	{
+		q: "How is the Godin-Shephard score interpreted?",
+		a: "In Godin's 2011 update, only the strenuous and moderate counts are used for the health classification: 9 times strenuous plus 5 times moderate. A score of 24 or more is classed as active, 14 to 23 as moderately active, and under 14 as insufficiently active. The traditional total also adds 3 times the mild count."
+	},
+	{
+		q: "Is a low score bad if I have ME/CFS or POTS?",
+		a: "No. The bands were built for the general population, where more exercise is nearly always better. In conditions with post-exertional malaise, the right amount of exercise is the amount that does not cause a crash, and for many people that is little or none. The score is useful as a record of what you actually did, not as a target."
+	}
+];
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Godin-Shephard Leisure-Time Exercise Questionnaire: free online with scoring"
-	description="Complete the Godin-Shephard Leisure-Time Exercise Questionnaire online and get your Leisure Score Index instantly, with the active, moderately active and insufficiently active bands explained. Three questions, one minute. Free."
+	breadcrumb="Godin-Shephard Leisure-Time Exercise Questionnaire"
+	faqs={faqs}
+	title="Godin-Shephard exercise questionnaire: free online scoring"
+	description="Free Godin-Shephard Leisure-Time Exercise Questionnaire with an instant score, no sign-up. Three questions, one minute, with the activity bands explained."
 >
-	<Fragment slot="head">
-			<script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@graph": [
-	    {
-	      "@type": "BreadcrumbList",
-	      "itemListElement": [
-	        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.postviralrecovery.com/"},
-	        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.postviralrecovery.com/tools/"},
-	        {"@type": "ListItem", "position": 3, "name": "Godin-Shephard Leisure-Time Exercise Questionnaire", "item": "https://www.postviralrecovery.com/tools/godin-shephard-leisure-time-exercise-questionnaire/"}
-	      ]
-	    },
-	    {
-	      "@type": "FAQPage",
-	      "mainEntity": [
-	        {
-	          "@type": "Question",
-	          "name": "What is the Godin-Shephard Leisure-Time Exercise Questionnaire?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "A three-question measure of how many times a week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time, published by Gaston Godin and Roy Shephard in 1985. The counts are weighted by intensity and added to give a Leisure Score Index. It is one of the shortest validated physical activity questionnaires and is free to use."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "How is the Godin-Shephard score interpreted?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "In Godin's 2011 update, only the strenuous and moderate counts are used for the health classification: 9 times strenuous plus 5 times moderate. A score of 24 or more is classed as active, 14 to 23 as moderately active, and under 14 as insufficiently active. The traditional total also adds 3 times the mild count."}
-	        },
-	        {
-	          "@type": "Question",
-	          "name": "Is a low score bad if I have ME/CFS or POTS?",
-	          "acceptedAnswer": {"@type": "Answer", "text": "No. The bands were built for the general population, where more exercise is nearly always better. In conditions with post-exertional malaise, the right amount of exercise is the amount that does not cause a crash, and for many people that is little or none. The score is useful as a record of what you actually did, not as a target."}
-	        }
-	      ]
-	    }
-	  ]
-	}
-			</script>
-	</Fragment>
 			<div class="tool-header">
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Godin-Shephard Leisure-Time Exercise Questionnaire</h1>
+				<LastReviewed date={lastReviewed} />
 				<p class="subtitle">Three questions about a typical week, scored as a Leisure Score Index</p>
 				<p class="description">
 					Published by Gaston Godin and Roy Shephard in 1985, this is one of the shortest physical activity questionnaires in use. It asks how many times in a typical week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time. The counts are weighted by intensity and added up. It has been validated against fitness testing and accelerometers and is widely used in research, including in cancer and cardiac populations, because it takes about a minute.

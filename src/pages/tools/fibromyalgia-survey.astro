@@ -1,27 +1,30 @@
 ---
+import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import FibromyalgiaInterpretation from '../../components/interpretation/FibromyalgiaSurvey.astro';
 import { FAQ, FAQ_ORDER } from '../../tools/fibromyalgia-survey.content';
-import { toolJsonLd } from '../../tools/jsonld';
 
-const jsonLd = toolJsonLd('Fibromyalgia Survey', '/tools/fibromyalgia-survey/', FAQ_ORDER.map(k => FAQ[k]));
+const faqs = FAQ_ORDER.map(k => FAQ[k]);
+
+// Shown under the heading and used as the sitemap lastmod.
+const lastReviewed = '2026-10-16';
 ---
 
 <Page
-	title="Fibromyalgia test: free online 2016 ACR survey, instant scoring"
-	description="A free interactive version of the 2016 ACR fibromyalgia survey. Tick your pain areas and rate your symptoms to get your Widespread Pain Index, Symptom Severity score and total fibromyalgia severity score, with the criteria thresholds explained."
+	breadcrumb="Fibromyalgia Survey"
+	faqs={faqs}
+	title="Fibromyalgia test: free 2016 ACR survey with instant score"
+	description="Free fibromyalgia test with an instant score, no sign-up. The 2016 ACR survey gives your Widespread Pain Index, Symptom Severity and total severity score."
 >
-	<Fragment slot="head">
-	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-	</Fragment>
 
 			<!-- INTRO SCREEN -->
 			<div id="screen-intro" class="screen">
 				<div class="tool-header">
 					<a href="/tools/" class="section-label tools">Tools</a>
 					<h1>2016 ACR Fibromyalgia Survey</h1>
+					<LastReviewed date={lastReviewed} />
 					<p class="subtitle">Self-report screening questionnaire</p>
 				</div>
 

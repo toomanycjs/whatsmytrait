@@ -70,7 +70,7 @@ Standard blood tests (full blood count, metabolic panel, thyroid, inflammatory m
 The tests come back normal because they're measuring the wrong things. A full blood count doesn't measure autonomic function. Thyroid function tests don't detect small fibre neuropathy. CRP and ESR are measures of acute systemic inflammation, the kind that accompanies infection. The kind of low-grade, persistent neuroinflammation and immune dysregulation seen in ME/CFS and long COVID doesn't necessarily show up on these tests.
 
 The investigations that are abnormal in post-viral autonomic dysfunction are different:
-- Active stand test or tilt table test: often shows orthostatic tachycardia
+- Active stand test or tilt table test: often shows orthostatic tachycardia (the [NASA lean test](/tools/nasa-lean-test/) is a version you can do at home)
 - Heart rate variability (HRV): typically reduced
 - CPET: typically shows reduced VO2max and early anaerobic threshold
 - Skin biopsy: may show small fibre neuropathy
@@ -110,3 +110,5 @@ I'm not a clinician. This is my reading of the evidence as someone living with t
 - [What I wish I'd known earlier](/testing/what-i-wish-id-known-earlier/)
 - [COMPASS-31 autonomic symptom questionnaire](/tools/compass-31/)
 - [What I'm tracking and why](/testing/what-im-tracking-and-why/)
+- [NASA lean test: monitor your orthostatic response](/tools/nasa-lean-test/)
+- [DSQ-PEM: post-exertional malaise questionnaire](/tools/dsq-pem/)
