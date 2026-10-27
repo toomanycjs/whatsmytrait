@@ -3,8 +3,53 @@ title: "Low spoon slow cooker gammon and lentil stew"
 description: "A small gammon joint, frozen veg base and a bag of lentils or split peas go into the slow cooker with no frying. Shred the gammon at the end, stir in frozen spinach, and you've got six thick, salty, freezable portions."
 pubDate: 2026-10-22
 spoons: 4
+recipe:
+  prepMinutes: 20
+  cookMinutes: 540
+  yield: "about 6 portions"
+  category: "Main course"
+  cuisine: "British"
+  keywords: ["slow cooker", "gammon", "lentils", "batch cooking", "low spoon", "freezer friendly"]
+  ingredients:
+    - heading: "The base"
+      items:
+        - "1 small gammon joint, smoked or unsmoked, around 600g (Sainsbury's gammon joint, £4.75 for 600g)"
+        - "about 500g frozen onion, carrot and celery mix, which is half a bag (Sainsbury's classic vegetable base mix, £2 for 1kg)"
+        - "garlic purée from a tube, a good squeeze or two"
+        - "2 bay leaves"
+        - "plenty of black pepper"
+    - heading: "The bulk"
+      intro: "400 to 500g of any one, or any mix, of:"
+      items:
+        - "red split lentils (Laila red split lentils, £2 for 1kg)"
+        - "yellow split peas (Sainsbury's dried yellow split peas, £1.30 for 500g)"
+        - "moong dal (split mung beans), from the world foods aisle"
+      note: "Use 400g for a small slow cooker or a soupier stew, and 500g for a big slow cooker or a thicker, gloopier one. Red lentils and moong dal break down into a smooth, thick stew; split peas hold a bit more texture."
+    - heading: "The liquid"
+      items:
+        - "1 or 2 regular stock cubes, chicken or vegetable (Sainsbury's stock cubes, £1.10 for 10)"
+        - "1.5 to 2 litres of hot water"
+    - heading: "The greens"
+      items:
+        - "about 250g frozen chopped spinach, a few handfuls of blocks (Sainsbury's chopped spinach, £1.60 for 900g)"
+    - heading: "Optional"
+      items:
+        - "1 tsp mustard powder"
+        - "a handful of parsley, chopped and stirred through at the end, if you can be bothered (frozen chopped parsley saves you the knife)"
+  steps:
+    - "Take the gammon out of its packaging and netting/string."
+    - "Put the gammon in the slow cooker and tip in the veg base mix, garlic, pulses, bay leaves, mustard powder (if using) and a good grind of black pepper."
+    - "Crumble the stock cubes straight into the pot, then pour in the hot water until the gammon is covered, or as close as you can get. Give it a single stir and put the lid on."
+    - "Cook on low for 7 to 9 hours. If you're around, check once or twice and top up with water if it's looking dry, but it'll be fine."
+    - "With about half an hour to go, lift the gammon out onto a plate with a big spoon or tongs. Stir the frozen spinach into the pot and put the lid back on."
+    - "Pull the gammon apart with two forks, discarding any fat you don't want. Sit down for this if you can."
+    - "Stir the shredded gammon back into the pot and cook for the remaining half hour, until the spinach is hot through. Fish out the bay leaves, stir in the parsley if using, and taste before adding any salt."
+    - "Serve with crusty bread or toast, or just on its own."
+    - "Add/take away anything you like. Root veg, go for it. Leeks, go for it. Chop fresh veg, go for it. Whatever works."
 ---
 import SpoonRating from '../../components/SpoonRating.astro';
+import RecipeIngredients from '../../components/RecipeIngredients.astro';
+import RecipeMethod from '../../components/RecipeMethod.astro';
 
 This is a cousin of my [lentil stew](/low-spoon-cooking/slow-cooker-lentil-stew/), with a small gammon joint doing most of the flavour work. Everything except the spinach goes into the slow cooker in one go: no frying, no chopping and no browning. By the end of the day the gammon is falling apart and the lentils have broken down into something thick and comforting. The main effort is pulling the gammon apart with two forks, and then the washing up.
 
@@ -38,49 +83,11 @@ Yellow split peas are the cheapest option for the pulses. Red lentils cost a lit
 
 Prices are Sainsbury's online prices at the time of posting.
 
-### The base
-
-- 1 small gammon joint, smoked or unsmoked, around 600g (Sainsbury's gammon joint, £4.75 for 600g)
-- about 500g frozen onion, carrot and celery mix, which is half a bag (Sainsbury's classic vegetable base mix, £2 for 1kg)
-- garlic purée from a tube, a good squeeze or two
-- 2 bay leaves
-- plenty of black pepper
-
-### The bulk
-
-400 to 500g of any one, or any mix, of:
-
-- red split lentils (Laila red split lentils, £2 for 1kg)
-- yellow split peas (Sainsbury's dried yellow split peas, £1.30 for 500g)
-- moong dal (split mung beans), from the world foods aisle
-
-Use 400g for a small slow cooker or a soupier stew, and 500g for a big slow cooker or a thicker, gloopier one. Red lentils and moong dal break down into a smooth, thick stew; split peas hold a bit more texture.
-
-### The liquid
-
-- 1 or 2 regular stock cubes, chicken or vegetable (Sainsbury's stock cubes, £1.10 for 10)
-- 1.5 to 2 litres of hot water
-
-### The greens
-
-- about 250g frozen chopped spinach, a few handfuls of blocks (Sainsbury's chopped spinach, £1.60 for 900g)
-
-### Optional
-
-- 1 tsp mustard powder
-- a handful of parsley, chopped and stirred through at the end, if you can be bothered (frozen chopped parsley saves you the knife)
+<RecipeIngredients groups={frontmatter.recipe.ingredients} />
 
 ## Method
 
-1. Take the gammon out of its packaging and netting/string.
-2. Put the gammon in the slow cooker and tip in the veg base mix, garlic, pulses, bay leaves, mustard powder (if using) and a good grind of black pepper.
-3. Crumble the stock cubes straight into the pot, then pour in the hot water until the gammon is covered, or as close as you can get. Give it a single stir and put the lid on.
-4. Cook on low for 7 to 9 hours. If you're around, check once or twice and top up with water if it's looking dry, but it'll be fine.
-5. With about half an hour to go, lift the gammon out onto a plate with a big spoon or tongs. Stir the frozen spinach into the pot and put the lid back on.
-6. Pull the gammon apart with two forks, discarding any fat you don't want. Sit down for this if you can.
-7. Stir the shredded gammon back into the pot and cook for the remaining half hour, until the spinach is hot through. Fish out the bay leaves, stir in the parsley if using, and taste before adding any salt.
-8. Serve with crusty bread or toast, or just on its own.
-9. Add/take away anything you like. Root veg, go for it. Leeks, go for it. Chop fresh veg, go for it. Whatever works.
+<RecipeMethod steps={frontmatter.recipe.steps} />
 
 ## Freezing and reheating
 

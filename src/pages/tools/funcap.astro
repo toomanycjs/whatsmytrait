@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -107,6 +108,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>FUNCAP functional capacity questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">FUNCAP27: a patient-informed measure of what activity costs you</p>
 				<p class="description">
 					FUNCAP is a functional capacity questionnaire built for ME/CFS. It was created by researchers working with the Norwegian ME Association, shaped by feedback from thousands of patients, and validated in more than 2,600 people with ME/CFS. It was published open access in 2024.

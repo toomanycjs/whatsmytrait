@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -30,6 +31,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Five-part questionnaire for hypermobility (5PQ)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Five yes/no questions that pick up hypermobility, including hypermobility you used to have</p>
 				<p class="description">
 					The five-part questionnaire was published by Alan Hakim and Rodney Grahame in 2003 as a quick way to identify generalised joint hypermobility without a physical examination. It asks five yes/no questions, and <strong>two or more "yes" answers</strong> is a positive screen. In the original study of 212 hypermobile women attending London clinics and 57 healthy volunteers it had a sensitivity of <strong>84%</strong> and a specificity of <strong>89%</strong>; a second clinic group gave 84% and 80%. <!-- REVIEW: wording checked against the Hakim and Grahame 2003 abstract -->

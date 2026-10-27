@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -57,6 +58,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Godin-Shephard Leisure-Time Exercise Questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Three questions about a typical week, scored as a Leisure Score Index</p>
 				<p class="description">
 					Published by Gaston Godin and Roy Shephard in 1985, this is one of the shortest physical activity questionnaires in use. It asks how many times in a typical week you do strenuous, moderate and mild exercise for more than 15 minutes in your free time. The counts are weighted by intensity and added up. It has been validated against fitness testing and accelerometers and is widely used in research, including in cancer and cardiac populations, because it takes about a minute.

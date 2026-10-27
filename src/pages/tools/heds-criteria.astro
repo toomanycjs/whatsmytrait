@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -57,6 +58,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>hEDS diagnostic criteria checker</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote text="Free online checklist with an instant result. No sign-up needed." />
 				<p class="subtitle">The 2017 international criteria for hypermobile Ehlers-Danlos syndrome, one criterion at a time</p>
 				<p class="description">
 					Hypermobile Ehlers-Danlos syndrome (hEDS) is diagnosed clinically against the criteria published by the International Consortium on the Ehlers-Danlos Syndromes in 2017. There is no genetic test. The criteria are usually distributed as a one-page PDF checklist written for clinicians. This page walks through the same three criteria interactively, in plain language, showing you at each step which items you meet, which you do not, and which can only be settled by a doctor. Notably, POTS, fatigue, and gut symptoms are common alongside hEDS but are not part of the criteria.

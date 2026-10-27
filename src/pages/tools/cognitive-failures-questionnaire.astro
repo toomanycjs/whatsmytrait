@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -54,6 +55,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Cognitive Failures Questionnaire (CFQ)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Broadbent's 25-item measure of everyday memory, attention, and action slips: the standard brain fog questionnaire</p>
 				<p class="description">
 					Brain fog is one of the most common complaints in long COVID and ME/CFS, and one of the hardest to put a number on. The Cognitive Failures Questionnaire, published by Donald Broadbent and colleagues in 1982, is a widely used self-report measure of everyday cognitive lapses: forgetting why you walked into a room, reading a paragraph and taking nothing in, losing your thread mid-sentence. You rate how often 25 such lapses have happened over the <strong>past six months</strong>, from <strong>0 (never)</strong> to <strong>4 (very often)</strong>, for a total of 0–100.

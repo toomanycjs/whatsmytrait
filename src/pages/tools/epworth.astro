@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -47,6 +48,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Epworth Sleepiness Scale</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">ESS: Daytime Sleepiness Questionnaire</p>
 				<p class="description">
   The Epworth Sleepiness Scale (ESS) is an 8-item questionnaire that measures your general level of daytime sleepiness. It was developed by Dr Murray Johns in 1991 and is one of the most widely used instruments in sleep medicine. Each item describes a situation in which you might doze off, and you rate the likelihood on a scale from 0 (would never doze) to 3 (high chance of dozing). Your total score ranges from 0 to 24.

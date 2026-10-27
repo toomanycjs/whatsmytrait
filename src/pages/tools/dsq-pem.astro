@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -55,6 +56,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Post-exertional malaise questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">DSQ-PEM: the DePaul post-exertional malaise short form</p>
 				<p class="description">
 					<!-- REVIEW: rewritten to match the NICE NG206 description of PEM; the unsourced long COVID clause was removed. -->

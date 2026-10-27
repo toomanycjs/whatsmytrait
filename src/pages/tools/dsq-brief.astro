@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -47,6 +48,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>ME/CFS screening questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">The DSQ-Brief: a 4-item self-check</p>
 				<p class="description">
 					This is a free, interactive version of the <strong>DSQ-Brief</strong>, a short screening scale for myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS) developed by Leonard Jason and colleagues at DePaul University and published in 2023. It was drawn from the much longer DePaul Symptom Questionnaire: the authors picked the four symptom questions that identify people who meet the Institute of Medicine (IOM) case definition for ME/CFS.

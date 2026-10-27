@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -37,6 +38,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Malmö POTS Symptom Score</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">MAPS: a 12-symptom score for POTS symptom burden, past 7 days</p>
 				<p class="description">
 					The Malmö POTS Symptom Score (MAPS) was developed at Lund University and published in the <em>Journal of Internal Medicine</em> in 2023. It is the first self-rating score designed specifically for POTS. You rate 12 common symptoms (five cardiac, seven non-cardiac) from <strong>0 (no symptoms)</strong> to <strong>10 (very pronounced)</strong> for the <strong>past 7 days</strong>. The total runs from 0 to 120.

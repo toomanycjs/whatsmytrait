@@ -18,6 +18,31 @@ const postSchema = z.object({
 	translationKey: z.string().optional(),
 	// Low Spoon Cooking recipes: the 1 to 5 spoon rating shown with the title.
 	spoons: z.number().int().min(1).max(5).optional(),
+	// Low Spoon Cooking recipes: ingredients, method, times and yield. Rendered
+	// on the page by RecipeIngredients and RecipeMethod and output as Recipe
+	// JSON-LD by the Post layout. See src/lib/recipe.ts.
+	recipe: z
+		.object({
+			prepMinutes: z.number().int().nonnegative(),
+			cookMinutes: z.number().int().nonnegative(),
+			yield: z.string(),
+			image: z.string().optional(),
+			category: z.string().optional(),
+			cuisine: z.string().optional(),
+			keywords: z.array(z.string()).optional(),
+			ingredients: z.array(
+				z.object({
+					heading: z.string().optional(),
+					intro: z.string().optional(),
+					items: z.array(z.string()).min(1),
+					note: z.string().optional(),
+				}),
+			).min(1),
+			steps: z.array(
+				z.union([z.string(), z.object({ text: z.string(), options: z.array(z.string()).optional() })]),
+			).min(1),
+		})
+		.optional(),
 });
 
 const testing = defineCollection({

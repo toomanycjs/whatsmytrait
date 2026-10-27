@@ -1,0 +1,25 @@
+---
+// Renders a recipe's numbered method from its frontmatter (see
+// src/lib/recipe.ts). Use in a recipe's MDX body as
+// <RecipeMethod steps={frontmatter.recipe.steps} />
+import { asStep, inline, type Step } from '../lib/recipe';
+
+interface Props {
+	steps: (string | Step)[];
+}
+
+const steps = Astro.props.steps.map(asStep);
+---
+
+<ol>
+	{steps.map((s) => (
+		<li>
+			<Fragment set:html={inline(s.text)} />
+			{s.options && (
+				<ul>
+					{s.options.map((o) => <li set:html={inline(o)} />)}
+				</ul>
+			)}
+		</li>
+	))}
+</ol>

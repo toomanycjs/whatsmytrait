@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ToolPurpose from '../../components/ToolPurpose.astro';
@@ -33,6 +34,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Pacing and heart rate ceiling</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote text="Free online guide with a private log. No sign-up needed." />
 				<p class="subtitle">Stability first: the energy envelope, a heart rate guardrail, and a private log</p>
 				<p class="description">
 					For most people with a post-viral condition, this page is the right starting point, and for many it is the

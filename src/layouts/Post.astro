@@ -6,7 +6,8 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import SpoonRating from '../components/SpoonRating.astro';
 import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
-import { articleNode, breadcrumbList, crumbsFor } from '../lib/schema';
+import { articleNode, breadcrumbList, crumbsFor, recipeNode } from '../lib/schema';
+import type { RecipeData } from '../lib/recipe';
 import { lastmodByPath } from '../lib/lastmod.mjs';
 
 interface Props {
@@ -21,9 +22,11 @@ interface Props {
 	series?: string;
 	ogImage?: string;
 	spoons?: number;
+	/** Low Spoon Cooking only: makes the page's main node a Recipe instead of a BlogPosting. */
+	recipe?: RecipeData;
 }
 
-const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage, spoons } = Astro.props;
+const { title, description, pubDate, updatedDate, lastModified, section, sectionLabel, sectionHref, series, ogImage, spoons, recipe } = Astro.props;
 
 const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
 const t = ui(lang);
@@ -34,8 +37,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 // Frontmatter first, then the git date from src/data/lastmod.json, as in the sitemap.
 const sitemapDate = lastmodByPath().get(Astro.url.pathname);
 const effectiveModified = lastModified ?? updatedDate ?? (sitemapDate ? new Date(sitemapDate) : undefined);
+const articleInput = { section, title, description, pubDate, modified: effectiveModified, url: canonicalURL, image: resolvedOgImage, lang };
 const schemaNodes = [
-	articleNode({ section, title, description, pubDate, modified: effectiveModified, url: canonicalURL, image: resolvedOgImage, lang }),
+	recipe ? recipeNode(articleInput, recipe) : articleNode(articleInput),
 	breadcrumbList(crumbsFor(Astro.url.pathname, title, { [section]: sectionLabel })),
 ];
 ---

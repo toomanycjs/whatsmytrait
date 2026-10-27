@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -31,6 +32,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>DePaul Symptom Questionnaire (DSQ-2)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">All 79 symptom questions, scored against four ME/CFS case definitions</p>
 				<p class="description">
 					The DSQ-2 is a self-report questionnaire developed by Leonard Jason and colleagues at DePaul University to assess the symptoms of myalgic encephalomyelitis / chronic fatigue syndrome (ME/CFS). It is the revised version of the original DePaul Symptom Questionnaire, with extra symptoms covering the newer case definitions. It is one of the standard research instruments in ME/CFS, and it is free to use.

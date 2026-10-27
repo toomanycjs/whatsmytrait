@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -50,6 +51,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>WHO-5 Well-Being Index</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Five questions about the past two weeks, scored 0–100</p>
 				<p class="description">
 					The WHO-5 is a five-question measure of well-being, in use since 1998 and now one of the most widely applied well-being scales in the world. The World Health Organization holds the copyright and makes it freely available. All five statements are positively worded. It asks how often you have felt good over the <strong>past two weeks</strong>, not how bad things have been.

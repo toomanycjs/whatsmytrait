@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -60,6 +61,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>IPAQ short form</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Seven questions about the last 7 days, scored in MET-minutes per week</p>
 				<p class="description">
 					The International Physical Activity Questionnaire was developed in the late 1990s by a group of researchers convened by the World Health Organization, to give a comparable measure of physical activity across countries. The short form asks about the last 7 days: how many days and how long you did vigorous activity, moderate activity and walking, and how long you spent sitting on a weekday. It was validated in 12 countries and is one of the most used physical activity questionnaires in research. Its scoring converts your answers to MET-minutes per week and a category of low, moderate or high.

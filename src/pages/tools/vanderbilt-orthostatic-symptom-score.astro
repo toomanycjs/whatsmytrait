@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -34,6 +35,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Vanderbilt Orthostatic Symptom Score (VOSS)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Nine symptoms rated 0–10 while upright: the standing symptom score from POTS trials</p>
 				<p class="description">
 					The Vanderbilt Orthostatic Symptom Score comes from the Vanderbilt Autonomic Dysfunction Center, where Satish Raj and colleagues used it in POTS drug studies from 2005 onwards. It has since been used in the Calgary compression garment trial, exercise studies in post-COVID POTS, and a growing list of others. You rate nine symptoms from <strong>0 (absent)</strong> to <strong>10 (the worst you have experienced)</strong> for how you feel <strong>right now</strong>. The total runs from 0 to 90.

@@ -3,8 +3,38 @@ title: "Low spoon gnocchi, spinach and feta tray bake"
 description: "One lined tray, no boiling and almost no chopping. Shop gnocchi roasts straight from the packet with peppers, tomatoes and a whole block of feta, then a bag of spinach wilts in at the end."
 pubDate: 2026-10-19
 spoons: 3
+recipe:
+  prepMinutes: 10
+  cookMinutes: 30
+  yield: "3 portions, or 2 big ones"
+  category: "Main course"
+  cuisine: "Mediterranean"
+  keywords: ["gnocchi", "feta", "tray bake", "one tray", "vegetarian", "low spoon"]
+  ingredients:
+    - heading: "The tray"
+      items:
+        - "500g pack of fresh gnocchi (Sainsbury's fresh gnocchi, £2.25)"
+        - "about 250g frozen sliced mixed peppers, which is half a bag (Sainsbury's sliced mixed peppers, 99p for 500g)"
+        - "300g cherry tomatoes (Sainsbury's, £1)"
+        - "200g block of feta (Sainsbury's Greek feta, £2.25)"
+        - "2 tbsp olive oil"
+        - "1 tsp garlic purée from a tube"
+        - "1 tsp dried oregano"
+        - "salt and black pepper"
+        - "a pinch of chilli flakes, if you like"
+    - heading: "The greens"
+      items:
+        - "260g bag of young spinach (Sainsbury's young spinach, £1.35). Any size bag works; the bigger the better."
+  steps:
+    - "Put the oven on to 200°C fan (220°C, gas 7) and line your biggest baking tray with foil or baking paper."
+    - "Tip the gnocchi, frozen peppers and tomatoes onto the tray and break up any gnocchi that are stuck together. Add the oil, garlic, oregano, salt and pepper, mix with your hands or a spoon, and spread it out in one layer as best you can."
+    - "Sit the block of feta in the middle. Roast for 25 minutes, until the gnocchi are golden in places and the tomatoes have burst. Go and sit down."
+    - "Take the tray out, pile the spinach on top and leave it for a minute to start collapsing, then stir it through. If some is still raw, put the tray back in for 3 to 5 minutes."
+    - "Squash the feta and some of the tomatoes with the back of a spoon and stir everything together into a sauce. Serve."
 ---
 import SpoonRating from '../../components/SpoonRating.astro';
+import RecipeIngredients from '../../components/RecipeIngredients.astro';
+import RecipeMethod from '../../components/RecipeMethod.astro';
 
 This is my go-to for days when I can manage a bit of standing but not a proper cook. Shop gnocchi doesn't need boiling first: it goes straight onto the tray and comes out crisp on the outside and soft in the middle. The feta goes in as a whole block and turns into a salty, creamy sauce when you squash it into the burst tomatoes. A whole bag of spinach looks like far too much, but it collapses to almost nothing on the hot tray.
 
@@ -37,29 +67,11 @@ If the gnocchi is on Nectar price (£1.75 rather than £2.25), it drops to about
 
 Prices are Sainsbury's online prices at the time of posting.
 
-### The tray
-
-- 500g pack of fresh gnocchi (Sainsbury's fresh gnocchi, £2.25)
-- about 250g frozen sliced mixed peppers, which is half a bag (Sainsbury's sliced mixed peppers, 99p for 500g)
-- 300g cherry tomatoes (Sainsbury's, £1)
-- 200g block of feta (Sainsbury's Greek feta, £2.25)
-- 2 tbsp olive oil
-- 1 tsp garlic purée from a tube
-- 1 tsp dried oregano
-- salt and black pepper
-- a pinch of chilli flakes, if you like
-
-### The greens
-
-- 260g bag of young spinach (Sainsbury's young spinach, £1.35). Any size bag works; the bigger the better.
+<RecipeIngredients groups={frontmatter.recipe.ingredients} />
 
 ## Method
 
-1. Put the oven on to 200°C fan (220°C, gas 7) and line your biggest baking tray with foil or baking paper.
-2. Tip the gnocchi, frozen peppers and tomatoes onto the tray and break up any gnocchi that are stuck together. Add the oil, garlic, oregano, salt and pepper, mix with your hands or a spoon, and spread it out in one layer as best you can.
-3. Sit the block of feta in the middle. Roast for 25 minutes, until the gnocchi are golden in places and the tomatoes have burst. Go and sit down.
-4. Take the tray out, pile the spinach on top and leave it for a minute to start collapsing, then stir it through. If some is still raw, put the tray back in for 3 to 5 minutes.
-5. Squash the feta and some of the tomatoes with the back of a spoon and stir everything together into a sauce. Serve.
+<RecipeMethod steps={frontmatter.recipe.steps} />
 
 If bending down to the oven is hard work, pull up a chair or a low stool for steps 3 and 4. A full tray is heavier than it looks, so use a proper oven glove.
 

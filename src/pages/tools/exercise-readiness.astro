@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ToolPurpose from '../../components/ToolPurpose.astro';
@@ -38,6 +39,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Exercise readiness screen</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote text="Free online screen with an instant result. No sign-up needed." />
 				<p class="subtitle">Three quick checks before you start anything</p>
 				<p class="description">
 					Before starting any movement or exercise plan with a post-viral condition, three things are worth checking:

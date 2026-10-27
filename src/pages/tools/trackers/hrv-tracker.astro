@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../../components/FreeToolNote.astro';
 import LastReviewed from '../../../components/LastReviewed.astro';
 import Page from '../../../layouts/Page.astro';
 
@@ -32,6 +33,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>HRV and resting heart rate tracker</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote text="Free online tracker. No sign-up needed, and your readings stay on this device." />
 				<p class="subtitle">Log daily readings, or import them, and see your medians and trends</p>
 			</div>
 

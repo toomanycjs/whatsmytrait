@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -44,6 +45,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Fatigue Severity Scale (FSS)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">FSS: Self-Report Fatigue Questionnaire</p>
 				<p class="description">
   The Fatigue Severity Scale (FSS) is a 9-item questionnaire that measures the impact of fatigue on daily functioning. It was developed by Krupp and colleagues in 1989 and has become one of the most widely used fatigue instruments in clinical research and practice. Each item is a statement about fatigue, and you rate your agreement on a scale from 1 (strongly disagree) to 7 (strongly agree). Your score is the mean of all nine items.

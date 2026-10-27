@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -124,6 +125,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>RAND-36 health survey</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">The RAND 36-Item Health Survey 1.0: the same items as the SF-36</p>
 				<p class="description">
 					The 36-Item Short Form Survey came out of the RAND Medical Outcomes Study. It is one of the most widely used measures of health-related quality of life in the world. The same 36 questions exist in two forms: the commercially licensed SF-36, and the <strong>RAND-36</strong>, which RAND publishes as a public document, available without charge. This page uses the RAND version and its official scoring.

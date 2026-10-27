@@ -3,8 +3,41 @@ title: "One spoon pouch rice with sardines or tuna and peas"
 description: "A microwave pouch of rice, a ring-pull tin of fish and a handful of frozen peas. Five minutes, one bowl and around 30g of protein."
 pubDate: 2026-10-19
 spoons: 1
+recipe:
+  prepMinutes: 2
+  cookMinutes: 3
+  yield: "1 portion"
+  category: "Main course"
+  keywords: ["microwave", "pouch rice", "sardines", "tuna", "store cupboard", "low spoon"]
+  ingredients:
+    - heading: "The base"
+      items:
+        - "1 × 250g pouch of microwave basmati rice (Sainsbury's microwave rice basmati, 55p)"
+        - "a big handful of frozen peas, about 80g (Sainsbury's garden peas, £2.80 for 1.81kg, so about 12p)"
+    - heading: "The fish"
+      intro: "Either:"
+      items:
+        - "1 × 120g tin of sardines in tomato sauce (Sainsbury's, 60p)"
+    - intro: "Or:"
+      items:
+        - "1 × 145g tin of tuna chunks in spring water (Sainsbury's, 65p)"
+        - "a splash of soy sauce, or a squeeze of mayo or sriracha"
+    - heading: "Optional extras"
+      items:
+        - "black pepper or chilli flakes"
+        - "a squeeze of lemon juice from a bottle"
+  steps:
+    - "Tip the peas into a microwaveable bowl with a splash of water. Squeeze the rice pouch to break up the grains, then tip the rice on top of the peas."
+    - "Cover loosely with a microwave cover or a sheet of kitchen paper and microwave on full power for 3 minutes (800W), until everything is piping hot. Give it a stir halfway if you can, but it's not essential."
+    - text: "Open the tin."
+      options:
+        - "**Sardines:** tip the whole lot, sauce and all, over the rice and break them up with your fork."
+        - "**Tuna:** drain it over the sink (pressing the lid down onto the tuna squeezes out most of the water), fork it over the rice and add your soy sauce or mayo."
+    - "If you like the fish warm, put the bowl back in for 30 to 60 seconds. Otherwise, eat it as it is."
 ---
 import SpoonRating from '../../components/SpoonRating.astro';
+import RecipeIngredients from '../../components/RecipeIngredients.astro';
+import RecipeMethod from '../../components/RecipeMethod.astro';
 
 This is what I make when there's almost nothing left in the tank. It's barely cooking: a pouch of rice, a tin of fish and some frozen peas, all done in one bowl in the microwave. It's still a proper meal with plenty of protein, and everything in it keeps for months in the cupboard or freezer, so it's there on the days you can't get to the shops. Sardines in tomato sauce bring their own sauce; tuna wants a splash of soy sauce or a squeeze of mayo.
 
@@ -37,35 +70,11 @@ The pouch says it serves two, but as a whole meal I eat the lot.
 
 Prices are Sainsbury's online prices at the time of posting.
 
-### The base
-
-- 1 × 250g pouch of microwave basmati rice (Sainsbury's microwave rice basmati, 55p)
-- a big handful of frozen peas, about 80g (Sainsbury's garden peas, £2.80 for 1.81kg, so about 12p)
-
-### The fish
-
-Either:
-
-- 1 × 120g tin of sardines in tomato sauce (Sainsbury's, 60p)
-
-Or:
-
-- 1 × 145g tin of tuna chunks in spring water (Sainsbury's, 65p)
-- a splash of soy sauce, or a squeeze of mayo or sriracha
-
-### Optional extras
-
-- black pepper or chilli flakes
-- a squeeze of lemon juice from a bottle
+<RecipeIngredients groups={frontmatter.recipe.ingredients} />
 
 ## Method
 
-1. Tip the peas into a microwaveable bowl with a splash of water. Squeeze the rice pouch to break up the grains, then tip the rice on top of the peas.
-2. Cover loosely with a microwave cover or a sheet of kitchen paper and microwave on full power for 3 minutes (800W), until everything is piping hot. Give it a stir halfway if you can, but it's not essential.
-3. Open the tin.
-   - **Sardines:** tip the whole lot, sauce and all, over the rice and break them up with your fork.
-   - **Tuna:** drain it over the sink (pressing the lid down onto the tuna squeezes out most of the water), fork it over the rice and add your soy sauce or mayo.
-4. If you like the fish warm, put the bowl back in for 30 to 60 seconds. Otherwise, eat it as it is.
+<RecipeMethod steps={frontmatter.recipe.steps} />
 
 ## Storing leftovers
 

@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -83,6 +84,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>AUDIT: Alcohol Use Disorders Identification Test</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Ten questions about drinking over the past year, scored 0–40</p>
 				<p class="description">
 					The AUDIT was developed by the World Health Organization as a screen for drinking that is risky before it becomes damaging. Its ten questions cover three things: how much and how often you drink, early signs of dependence, and harm that drinking has already caused. It was validated across six countries and is now the standard alcohol screen in UK primary care and NHS services. It takes about two minutes.

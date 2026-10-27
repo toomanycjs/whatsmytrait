@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 
@@ -16,6 +17,7 @@ const lastReviewed = '2026-10-13';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Which questionnaire should I take?</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote text="Free online guide to the questionnaires on this site. None of them needs a sign-up." />
 				<p class="subtitle">A guide to post-viral self-assessment tools</p>
 			</div>
 

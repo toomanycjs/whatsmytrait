@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -175,6 +176,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>COMPASS-31 questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Composite Autonomic Symptom Score</p>
 				<p class="description">
   The COMPASS-31 (Composite Autonomic Symptom Score) is a 31-item self-report questionnaire that measures the severity of autonomic symptoms across six domains: orthostatic intolerance, vasomotor function, secretomotor function, gastrointestinal symptoms, bladder function, and pupillomotor function. It was developed at the Mayo Clinic and published by Sletten and colleagues in 2012 as a shorter, more practical version of the original 169-item Autonomic Symptom Profile.

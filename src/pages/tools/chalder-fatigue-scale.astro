@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -39,6 +40,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Chalder Fatigue Scale (CFQ-11)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">The 11-item fatigue questionnaire used across UK ME/CFS and long COVID services</p>
 				<p class="description">
 					The Chalder Fatigue Questionnaire was developed at King's College London and published by Trudie Chalder and colleagues in 1993. The 11-item version is the fatigue measure you are most likely to meet in UK research and in NHS ME/CFS and long COVID clinics, and has been used in long COVID studies. <!-- REVIEW: unsourced claim softened --> It asks about <strong>physical fatigue</strong> (7 items) and <strong>mental fatigue</strong> (4 items) over the <strong>past month</strong>, and if you have been tired for longer than that, compared with how you felt when you were last well.

@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -25,6 +26,7 @@ const lastReviewed = '2026-10-16';
 					<a href="/tools/" class="section-label tools">Tools</a>
 					<h1>NASA Lean Test</h1>
 					<LastReviewed date={lastReviewed} />
+					<FreeToolNote text="Free online test with a guided timer and an instant result. No sign-up needed." />
 					<p class="subtitle">Orthostatic Intolerance Protocol</p>
 				</div>
 

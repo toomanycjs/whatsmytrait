@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -51,6 +52,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Satisfaction with Life Scale (SWLS)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Five statements about your life as a whole, scored 5–35</p>
 				<p class="description">
 					The Satisfaction with Life Scale was developed by Ed Diener and colleagues in 1985 to measure the cognitive side of well-being: not how you feel today, but your own judgement of how your life is going, measured against your own standards rather than anyone else's. It has five statements, takes under a minute, and has been used in thousands of studies across ages, cultures and health conditions. Diener released it into the public domain.

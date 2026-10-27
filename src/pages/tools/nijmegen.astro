@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -49,6 +50,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Nijmegen Questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Breathing Pattern Disorder Screening</p>
 				<p class="description">
   The Nijmegen questionnaire is a 16-item self-report screening tool for hyperventilation syndrome and breathing pattern disorder. <!-- REVIEW: corrected authorship and threshold wording --> It was developed in the Netherlands by van Doorn, Colla and Folgering, validated by van Dixhoorn and Duivenvoorden in 1985, and is still widely used in research and clinical practice. Each item asks how often you experience a particular symptom on a scale from 0 (never) to 4 (very often), producing a total score between 0 and 64.

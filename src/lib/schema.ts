@@ -5,6 +5,7 @@
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { DEFAULT_LOCALE, isLocale } from '../i18n/config';
+import { asStep, duration, plain, type RecipeData } from './recipe';
 
 export const SITE = 'https://www.postviralrecovery.com';
 
@@ -97,6 +98,41 @@ export function articleNode(a: ArticleInput): Node {
 		publisher,
 	};
 	if (a.section === 'evidence') node.lastReviewed = modified;
+	return node;
+}
+
+/**
+ * Low Spoon Cooking posts are a Recipe rather than a BlogPosting. The
+ * ingredients and steps are the same frontmatter the page renders, so the
+ * markup always matches the visible text, which Google requires.
+ */
+export function recipeNode(a: ArticleInput, r: RecipeData): Node {
+	const modified = (a.modified ?? a.pubDate).toISOString();
+	const node: Node = {
+		'@type': 'Recipe',
+		name: a.title,
+		description: a.description,
+		inLanguage: a.lang,
+		datePublished: a.pubDate.toISOString(),
+		dateModified: modified,
+		image: r.image ? abs(r.image) : a.image,
+		mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
+		author,
+		publisher,
+		recipeYield: r.yield,
+		prepTime: duration(r.prepMinutes),
+		cookTime: duration(r.cookMinutes),
+		totalTime: duration(r.prepMinutes + r.cookMinutes),
+		recipeIngredient: r.ingredients.flatMap((g) => g.items.map(plain)),
+		recipeInstructions: r.steps.map(asStep).map((step, i) => ({
+			'@type': 'HowToStep',
+			position: i + 1,
+			text: plain([step.text, ...(step.options ?? [])].join(' ')),
+		})),
+	};
+	if (r.category) node.recipeCategory = r.category;
+	if (r.cuisine) node.recipeCuisine = r.cuisine;
+	if (r.keywords?.length) node.keywords = r.keywords.join(', ');
 	return node;
 }
 

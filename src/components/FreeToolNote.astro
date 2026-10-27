@@ -1,0 +1,22 @@
+---
+// One plain sentence under a tool's heading saying it is free, online and
+// needs no sign-up. Searchers (and AI search follow-ups such as "is there a
+// free online version?") look for exactly this, so it belongs in the opening
+// text rather than only in the meta description. Pass `text` where the
+// default wording does not fit the tool.
+interface Props {
+	text?: string;
+}
+
+const { text = 'Free online questionnaire with an instant score. No sign-up needed.' } = Astro.props;
+---
+
+<p class="tool-access">{text}</p>
+
+<style>
+	.tool-access {
+		font-size: 0.95em;
+		color: rgb(var(--gray-dark));
+		margin: 0 0 0.75em;
+	}
+</style>

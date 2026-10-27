@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -51,6 +52,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>Brief Resilience Scale (BRS)</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">Six statements about bouncing back from stress, scored 1–5</p>
 				<p class="description">
 					The Brief Resilience Scale was published by Bruce Smith and colleagues in 2008 to measure one specific thing: how well you recover from stress. Most "resilience" questionnaires mix that up with the resources that help, such as optimism, purpose or a supportive family. The BRS leaves those out on purpose, so the score tells you about the bounce-back itself. It has six statements, half of them worded in reverse, and takes about a minute.

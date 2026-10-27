@@ -1,4 +1,5 @@
 ---
+import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
@@ -59,6 +60,7 @@ const lastReviewed = '2026-10-16';
 				<a href="/tools/" class="section-label tools">Tools</a>
 				<h1>SEBQ: Self-Evaluation of Breathing Questionnaire</h1>
 				<LastReviewed date={lastReviewed} />
+				<FreeToolNote />
 				<p class="subtitle">25 statements about how your breathing feels: the breathing-specific companion to the Nijmegen questionnaire</p>
 				<p class="description">
 					The Self-Evaluation of Breathing Questionnaire was developed by osteopath and breathing researcher Rosalba Courtney with Kenneth Greenwood and first published in 2009 as a 17-item version; the 25-item version here is the one used in later studies. <!-- REVIEW: header copy corrected against sources --> Where the <a href="/tools/nijmegen/">Nijmegen questionnaire</a> was written for hyperventilation and includes tingling, palpitations, and anxiety, the SEBQ asks only about breathing: whether it feels shallow, restricted, effortful, irregular, or unsatisfying. That makes it better at picking up the sense of restricted, effortful breathing, which the Nijmegen largely misses.
