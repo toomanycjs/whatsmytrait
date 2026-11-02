@@ -3,6 +3,7 @@
 // FAQ answers come from self-evaluation-of-breathing-questionnaire.content.ts
 // and are shown word for word (they also feed the page's FAQPage JSON-LD).
 import { FAQ, SOURCES } from '../../tools/self-evaluation-of-breathing-questionnaire.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -49,6 +50,8 @@ const s = SOURCES;
 		the score. See
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/self-evaluation-of-breathing-questionnaire/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

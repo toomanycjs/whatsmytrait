@@ -2,6 +2,7 @@
 import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
+import ResultLinks from '../../components/ResultLinks.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import DsqPemInterpretation from '../../components/interpretation/DsqPem.astro';
@@ -181,9 +182,13 @@ const lastReviewed = '2026-10-16';
 				<div class="results-disclaimer">
 					<!-- REVIEW: the scoring explanation and next steps moved to the "Understanding your DSQ-PEM result" section below; the unsourced claim about ordinary fatigue resolving within a few hours was removed. -->
 					<p>How the result is worked out, and what to take to your GP, is explained <a href="#understanding-dsq-pem">below the results</a>.</p>
-					<p>Your headline result is saved on this device only, never sent anywhere, so that the <a href="/tools/exercise-readiness/">exercise readiness screen</a> can pick it up automatically.</p>
+					<!-- With PEM indicated, resultLinks.ts swaps in the second line, which leaves out the exercise link. -->
+					<p data-exercise-link>Your headline result is saved on this device only, never sent anywhere, so that the <a href="/tools/exercise-readiness/">exercise readiness screen</a> can pick it up automatically.</p>
+					<p data-exercise-alt hidden>Your headline result is saved on this device only, never sent anywhere.</p>
 					<p><strong>This is not a diagnosis.</strong> It reflects the symptom pattern you have reported. Discuss your results with your doctor or specialist.</p>
 				</div>
+
+				<ResultLinks toolId="dsq-pem" />
 
 				<ScoreHistory toolId="dsq-pem" toolName="DSQ-PEM" />
 

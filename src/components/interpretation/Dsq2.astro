@@ -2,6 +2,7 @@
 // REVIEW: Layer 2 interpretation for the DSQ-2, drafted for Craig's review.
 // FAQ answers come from dsq-2.content.ts and are shown word for word.
 import { DEFINITIONS, FAQ, SOURCES } from '../../tools/dsq-2.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -53,6 +54,8 @@ const s = SOURCES;
 		the NICE criteria, but your answers cover the same symptoms. See also
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/dsq-2/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

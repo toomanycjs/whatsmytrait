@@ -2,6 +2,7 @@
 import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
+import ResultLinks from '../../components/ResultLinks.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import BellInterpretation from '../../components/interpretation/BellScale.astro';
@@ -69,6 +70,8 @@ const lastReviewed = '2026-10-16';
 				</div>
 				<p id="score-description" class="score-description-text"></p>
 				<p id="score-neighbours" class="score-neighbours"></p>
+
+				<ResultLinks toolId="bell-scale" />
 
 				<ScoreHistory toolId="bell-scale" toolName="Bell scale" />
 

@@ -2,6 +2,7 @@
 import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
+import ResultLinks from '../../components/ResultLinks.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import FssInterpretation from '../../components/interpretation/Fss.astro';
@@ -110,6 +111,8 @@ const lastReviewed = '2026-10-16';
 						</tr>
 					</tfoot>
 				</table>
+
+				<ResultLinks toolId="fss" />
 
 				<ScoreHistory toolId="fss" toolName="FSS" />
 

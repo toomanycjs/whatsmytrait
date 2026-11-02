@@ -2,6 +2,7 @@
 // REVIEW: Layer 2 interpretation for the DSQ-Brief, drafted for Craig's review.
 // FAQ answers come from dsq-brief.content.ts and are shown word for word.
 import { ACCURACY, FAQ, SOURCES } from '../../tools/dsq-brief.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -58,6 +59,8 @@ const s = SOURCES;
 		and an assessment for other causes. A positive screen is a reason to ask for that assessment, not evidence of ME/CFS
 		on its own. See <a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/dsq-brief/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

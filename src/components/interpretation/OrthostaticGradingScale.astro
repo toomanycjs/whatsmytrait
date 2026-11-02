@@ -4,6 +4,7 @@
 // from orthostatic-grading-scale.content.ts and are shown word for word (they
 // also feed the page's FAQPage JSON-LD).
 import { FAQ, REFERENCE, SOURCES } from '../../tools/orthostatic-grading-scale.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 
 const s = SOURCES;
@@ -64,6 +65,8 @@ const s = SOURCES;
 		heart rate check. It does not show what is causing the symptoms. See
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/orthostatic-grading-scale/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

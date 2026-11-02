@@ -1,0 +1,53 @@
+---
+// "Related questionnaires" and "Further reading" for a tool page, from
+// src/tools/related.ts. Sits at the end of the "Understanding your score"
+// section, before the disclaimer and sources. Names come from the tool
+// catalogue and post titles; an href with nothing behind it fails the build.
+import { getEntry } from 'astro:content';
+import { ALL_TOOLS } from '../tools/catalogue';
+import { RELATED } from '../tools/related';
+import '../styles/related.css';
+
+interface Props {
+	/** The tool page's own path, e.g. "/tools/bell-scale/". */
+	path: string;
+}
+
+const { path } = Astro.props;
+const entry = RELATED[path];
+if (!entry) throw new Error(`RelatedTools: no entry in src/tools/related.ts for ${path}`);
+
+function toolTitle(href: string): string {
+	const tool = ALL_TOOLS.find(t => t.href === href);
+	if (!tool) throw new Error(`RelatedTools: ${href} (on ${path}) is not in the tool catalogue`);
+	return tool.title;
+}
+
+async function pageTitle(href: string): Promise<string> {
+	const m = href.match(/^\/(testing|evidence)\/([^/]+)\/$/);
+	if (!m) return toolTitle(href);
+	const post = await getEntry(m[1] as 'testing' | 'evidence', m[2]);
+	if (!post || post.data.draft) throw new Error(`RelatedTools: ${href} (on ${path}) is not a published post`);
+	return post.data.title;
+}
+
+const questionnaires = entry.questionnaires.map(q => ({ ...q, title: toolTitle(q.href) }));
+const reading = await Promise.all(entry.reading.map(async href => ({ href, title: await pageTitle(href) })));
+---
+
+<div class="related-tools">
+	<h3 id="related-questionnaires">Related questionnaires</h3>
+	<ul class="related-list">
+		{questionnaires.map(q => (
+			<li><a href={q.href}>{q.title}</a><span class="related-note">{q.note}</span></li>
+		))}
+	</ul>
+	{reading.length > 0 && (
+		<Fragment>
+			<h4 id="further-reading">Further reading</h4>
+			<ul class="related-reading">
+				{reading.map(r => <li><a href={r.href}>{r.title}</a></li>)}
+			</ul>
+		</Fragment>
+	)}
+</div>

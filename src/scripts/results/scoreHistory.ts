@@ -8,6 +8,7 @@ import { trackEvent } from '../pageview';
 import { buildReminder, googleCalendarUrl, toIcs } from './calendar';
 import { csvFilename, decodeShare, shareUrl, toCsv, toText } from './export';
 import { comparisonSentence, defaultSummary, findBand, formatDate, formatTotal, outcomeText, roundedDiff, changeText } from './format';
+import { applyResultLinks } from './resultLinks';
 import { deleteEntry, deleteTool, isAvailable, localIso, newId, readTool, saveEntry } from './resultsStore';
 import type { ResultEntry, ScoreResult, ToolConfig } from './types';
 
@@ -229,7 +230,7 @@ export interface ScoreHistoryController {
 
 export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 	const root = document.querySelector<HTMLElement>(`.score-history[data-tool="${cfg.id}"]`);
-	if (!root) return { latest: () => null, record: () => {}, startNew: () => {} };
+	if (!root) return { latest: () => null, record: r => applyResultLinks(cfg.id, r), startNew: () => {} };
 
 	const q = <T extends HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
 	const notice = q('.sh-notice');
@@ -351,6 +352,8 @@ export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 			return prev[prev.length - 1] ?? null;
 		},
 		record(r) {
+			// Before the save, so the links still appear when storage is unavailable.
+			applyResultLinks(cfg.id, r);
 			if (!available) return;
 			const entry: ResultEntry = {
 				id: sessionId ?? newId(),

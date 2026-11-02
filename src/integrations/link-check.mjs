@@ -1,6 +1,7 @@
 // Fails the build if any page links to a retired /nhs/ URL, a /nhs/ page is
-// built again, or an internal link drops its trailing slash. vercel.json
-// redirects all three, but internal links should never rely on a redirect.
+// built again, an internal link drops its trailing slash, or an internal page
+// link has no built page behind it. vercel.json redirects the first three, but
+// internal links should never rely on a redirect.
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -16,6 +17,8 @@ function htmlFiles(dir) {
 // Root-relative hrefs whose last segment has no file extension and no trailing slash.
 const NO_SLASH = /href="(\/(?:[^"#?/.]+\/)*[^"#?/.]+)(?:[#?][^"]*)?"/g;
 const NHS = /href="(?:https:\/\/www\.postviralrecovery\.com)?(\/nhs\/[^"]*)"/g;
+// Root-relative page links with a trailing slash, before any #fragment or ?query.
+const PAGE = /href="(\/(?:[^"#?/.]+\/)*)(?:[#?][^"]*)?"/g;
 
 export default function linkCheck() {
 	return {
@@ -24,17 +27,20 @@ export default function linkCheck() {
 			'astro:build:done': ({ dir, logger }) => {
 				const root = fileURLToPath(dir);
 				const problems = [];
-				for (const file of htmlFiles(root)) {
+				const files = htmlFiles(root);
+				const built = new Set(files.map((f) => '/' + f.slice(root.length).replace(/\\/g, '/').replace(/^\/|index\.html$/g, '')));
+				for (const file of files) {
 					const page = '/' + file.slice(root.length).replace(/\\/g, '/').replace(/^\/|index\.html$/g, '');
 					if (page.startsWith('/nhs/')) problems.push(`${page} is built, but /nhs/ is retired`);
 					const html = readFileSync(file, 'utf8');
 					for (const [, href] of html.matchAll(NHS)) problems.push(`${page} links to ${href}`);
 					for (const [, href] of html.matchAll(NO_SLASH)) problems.push(`${page} links to ${href} without a trailing slash`);
+					for (const [, href] of html.matchAll(PAGE)) if (!built.has(href) && !href.startsWith('/nhs/')) problems.push(`${page} links to ${href}, which is not a built page`);
 				}
 				if (problems.length) {
 					throw new Error(`link check failed:\n  ${problems.join('\n  ')}`);
 				}
-				logger.info('no /nhs/ links or slashless internal links');
+				logger.info('no /nhs/ links, slashless internal links or links to missing pages');
 			},
 		},
 	};

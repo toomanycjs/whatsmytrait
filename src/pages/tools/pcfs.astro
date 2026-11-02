@@ -2,6 +2,7 @@
 import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
+import ResultLinks from '../../components/ResultLinks.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import PcfsInterpretation from '../../components/interpretation/Pcfs.astro';
@@ -78,6 +79,8 @@ const lastReviewed = '2026-10-16';
 					<span id="grade-name" class="total-score-label"></span>
 				</div>
 				<p id="grade-desc" class="score-interp"></p>
+				<ResultLinks toolId="pcfs" />
+
 				<ScoreHistory toolId="pcfs" toolName="PCFS scale" />
 				<div class="results-buttons">
 					<button type="button" id="restart-btn" class="back-btn">Start again</button>

@@ -4,6 +4,7 @@
 // from beighton-score.content.ts and are shown word for word (they also feed
 // the page's FAQPage JSON-LD).
 import { CUTOFFS, FAQ, SOURCES } from '../../tools/beighton-score.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 
 const s = SOURCES;
@@ -55,6 +56,8 @@ const s = SOURCES;
 		rheumatology; on its own it diagnoses nothing. See also
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/beighton-score/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

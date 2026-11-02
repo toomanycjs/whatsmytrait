@@ -2,6 +2,7 @@
 // REVIEW: Layer 2 interpretation for the DSQ-PEM, drafted for Craig's review.
 // FAQ answers come from dsq-pem.content.ts and are shown word for word.
 import { DURATION, FAQ, SOURCES } from '../../tools/dsq-pem.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -56,6 +57,8 @@ const s = SOURCES;
 		exercise therapy (recommendation 1.11.14). A positive result is a reason to discuss pacing; it cannot confirm
 		ME/CFS. See <a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/dsq-pem/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

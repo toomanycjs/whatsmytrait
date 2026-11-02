@@ -3,6 +3,7 @@
 // Craig's review. FAQ answers come from nijmegen.content.ts and are shown word
 // for word (they also feed the page's FAQPage JSON-LD).
 import { FAQ, REFERENCE, SOURCES } from '../../tools/nijmegen.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -56,6 +57,8 @@ const s = SOURCES;
 		breathlessness, or breathlessness with chest pain, needs a medical assessment whatever the score. See
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/nijmegen/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

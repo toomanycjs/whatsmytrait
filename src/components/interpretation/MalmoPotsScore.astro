@@ -4,6 +4,7 @@
 // from malmo-pots-score.content.ts and are shown word for word (they also feed
 // the page's FAQPage JSON-LD).
 import { FAQ, REFERENCE, SOURCES } from '../../tools/malmo-pots-score.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 
 const s = SOURCES;
@@ -61,6 +62,8 @@ const s = SOURCES;
 		check, alongside any lean test readings, but is not evidence of a diagnosis. See
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/malmo-pots-score/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

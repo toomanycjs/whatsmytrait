@@ -2,6 +2,7 @@
 import FreeToolNote from '../../components/FreeToolNote.astro';
 import LastReviewed from '../../components/LastReviewed.astro';
 import Page from '../../layouts/Page.astro';
+import ResultLinks from '../../components/ResultLinks.astro';
 import ScoreHistory from '../../components/ScoreHistory.astro';
 import SharedResults from '../../components/SharedResults.astro';
 import FuncapInterpretation from '../../components/interpretation/Funcap.astro';
@@ -175,6 +176,8 @@ const lastReviewed = '2026-10-16';
 				<h3>Your most costly activities</h3>
 				<p class="section-lead">Activities you rated 0–2: things you cannot do, or that leave you able to do little else for a day or more.</p>
 				<ul id="costly-list" class="costly-list"></ul>
+
+				<ResultLinks toolId="funcap" />
 
 				<ScoreHistory toolId="funcap" toolName="FUNCAP27" />
 

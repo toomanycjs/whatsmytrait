@@ -2,6 +2,7 @@
 // REVIEW: Layer 2 interpretation for FUNCAP27, drafted for Craig's review.
 // FAQ answers come from funcap.content.ts and are shown word for word.
 import { FAQ, REFERENCE, SCALE, SOURCES } from '../../tools/funcap.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 const s = SOURCES;
 ---
@@ -71,6 +72,8 @@ const s = SOURCES;
 		clinical guidance at <a href={s.funcapNo.href} rel="noopener">funcap.no</a>. See also
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/funcap/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />

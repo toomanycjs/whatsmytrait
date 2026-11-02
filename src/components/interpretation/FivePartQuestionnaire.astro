@@ -4,6 +4,7 @@
 // FAQ answers come from five-part-questionnaire.content.ts and are shown word
 // for word (they also feed the page's FAQPage JSON-LD).
 import { ACCURACY, FAQ, SOURCES } from '../../tools/five-part-questionnaire.content';
+import RelatedTools from '../RelatedTools.astro';
 import '../../styles/interpretation.css';
 
 const s = SOURCES;
@@ -65,6 +66,8 @@ const s = SOURCES;
 		checklist</a> applies both scores together. See also
 		<a href="/testing/preparing-for-gp-appointment/">preparing for a GP appointment</a>.
 	</p>
+
+	<RelatedTools path="/tools/five-part-questionnaire/" />
 
 	<div class="tool-foot">
 		<slot name="disclaimer" />
