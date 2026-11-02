@@ -4,6 +4,7 @@
   "redirects": [
     { "source": "/tools/trackers/medication-log/", "destination": "/tools/", "permanent": true },
     { "source": "/tools/trackers/", "destination": "/tools/", "permanent": true },
+    { "source": "/tools/epworth/", "destination": "/tools/", "permanent": true },
     { "source": "/nhs/", "destination": "/testing/", "permanent": true },
     { "source": "/nhs/:slug/", "destination": "/testing/:slug/", "permanent": true }
   ]

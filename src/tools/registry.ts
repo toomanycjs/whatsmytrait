@@ -12,7 +12,6 @@ import { compass31 } from './compass-31';
 import { dsq2 } from './dsq-2';
 import { dsqBrief } from './dsq-brief';
 import { dsqPem } from './dsq-pem';
-import { epworth } from './epworth';
 import { fibromyalgiaSurvey } from './fibromyalgia-survey';
 import { fivePartQuestionnaire } from './five-part-questionnaire';
 import { fss } from './fss';
@@ -34,7 +33,7 @@ import { who5 } from './who-5';
 export const TOOL_CONFIGS: ToolConfig[] = [
 	dsqBrief, dsq2, dsqPem, funcap, compass31, malmoPotsScore, cognitiveFailuresQuestionnaire,
 	vanderbiltOrthostaticSymptomScore, orthostaticGradingScale, nijmegen, chalderFatigueScale, fss,
-	selfEvaluationOfBreathingQuestionnaire, epworth, bellScale, pcfs, rand36, who5, fibromyalgiaSurvey,
+	selfEvaluationOfBreathingQuestionnaire, bellScale, pcfs, rand36, who5, fibromyalgiaSurvey,
 	satisfactionWithLifeScale, briefResilienceScale, audit, ipaqShortForm, godinShephard, beightonScore,
 	fivePartQuestionnaire, hedsCriteria, nasaLeanTest,
 ];

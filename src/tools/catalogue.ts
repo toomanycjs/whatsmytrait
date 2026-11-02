@@ -66,10 +66,9 @@ export const QUESTIONNAIRE_GROUPS: ToolGroup[] = [
 		],
 	},
 	{
-		name: 'Brain fog, sleep and pain',
+		name: 'Brain fog and pain',
 		tools: [
 			{ title: 'Cognitive Failures Questionnaire (CFQ)', short: 'Cognitive Failures Questionnaire', href: '/tools/cognitive-failures-questionnaire/', kind: 'questionnaire', description: "Broadbent's 25-item measure of everyday memory, attention, and action slips: the standard brain fog questionnaire. Scored out of 100 with three subscales and reference values from long COVID and ME/CFS cohorts." },
-			{ title: 'Epworth Sleepiness Scale', short: 'Epworth Sleepiness Scale', href: '/tools/epworth/', kind: 'questionnaire', description: '8-item daytime sleepiness questionnaire. Simple, widely used, and commonly searched by people with fatigue-related conditions.' },
 			{ title: '2016 ACR Fibromyalgia Survey', short: 'Fibromyalgia survey', href: '/tools/fibromyalgia-survey/', kind: 'questionnaire', description: 'Self-report fibromyalgia screening questionnaire with Widespread Pain Index, Symptom Severity Scale, and FS severity score. Based on the 2016 revised ACR criteria.' },
 		],
 	},
