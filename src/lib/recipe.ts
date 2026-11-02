@@ -61,6 +61,17 @@ export function plain(md: string): string {
 
 export const asStep = (s: string | Step): Step => (typeof s === 'string' ? { text: s } : s);
 
+/** Fragment id of a method step on the page, from its 0-based index: step-1, step-2... */
+export const stepId = (i: number) => `step-${i + 1}`;
+
+/**
+ * A short name for a step, for JSON-LD: its first sentence, cut at a colon,
+ * e.g. "Tip everything into the slow cooker".
+ */
+export function stepName(text: string): string {
+	return plain(text).split(/(?<=[.!?])\s/)[0].split(':')[0].replace(/[.!?]$/, '').trim();
+}
+
 /** Minutes to an ISO 8601 duration, e.g. 540 → PT9H. */
 export function duration(minutes: number): string {
 	const h = Math.floor(minutes / 60);

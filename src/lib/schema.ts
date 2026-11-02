@@ -5,7 +5,7 @@
 
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { DEFAULT_LOCALE, isLocale } from '../i18n/config';
-import { asStep, duration, plain, type RecipeData } from './recipe';
+import { asStep, duration, plain, stepId, stepName, type RecipeData } from './recipe';
 
 export const SITE = 'https://www.postviralrecovery.com';
 
@@ -127,7 +127,9 @@ export function recipeNode(a: ArticleInput, r: RecipeData): Node {
 		recipeInstructions: r.steps.map(asStep).map((step, i) => ({
 			'@type': 'HowToStep',
 			position: i + 1,
+			name: stepName(step.text),
 			text: plain([step.text, ...(step.options ?? [])].join(' ')),
+			url: `${a.url}#${stepId(i)}`,
 		})),
 	};
 	if (r.category) node.recipeCategory = r.category;
