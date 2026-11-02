@@ -8,6 +8,7 @@ import { trackEvent } from '../pageview';
 import { buildReminder, googleCalendarUrl, toIcs } from './calendar';
 import { csvFilename, decodeShare, shareUrl, toCsv, toText } from './export';
 import { comparisonSentence, defaultSummary, findBand, formatDate, formatTotal, outcomeText, roundedDiff, changeText } from './format';
+import { printSummary } from './clinicianSummary';
 import { applyResultLinks } from './resultLinks';
 import { deleteEntry, deleteTool, isAvailable, localIso, newId, readTool, saveEntry } from './resultsStore';
 import type { ResultEntry, ScoreResult, ToolConfig } from './types';
@@ -252,8 +253,18 @@ export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 	let sessionId: string | null = null;
 	let viewedTracked = false;
 	const unshared = new Set<string>();
+	// The result on screen, for the clinician summary; kept even when it cannot be saved.
+	let current: { date: string; result: ScoreResult } | null = null;
 
 	const entries = () => (available ? readTool(cfg.id) : []);
+
+	root.querySelector('.cs-print')?.addEventListener('click', () => {
+		const all = entries();
+		// Falls back to the latest saved result if none was produced on this visit.
+		const last = all[all.length - 1];
+		const shown = current ?? (last ? { date: last.date, result: last } : null);
+		if (shown) printSummary(root, cfg, { ...shown, entries: all, currentId: current ? sessionId : last.id }, renderChart);
+	});
 
 	function setNotice(text: string, withUndo = false) {
 		notice.replaceChildren();
@@ -354,12 +365,13 @@ export function mountScoreHistory(cfg: ToolConfig): ScoreHistoryController {
 		record(r) {
 			// Before the save, so the links still appear when storage is unavailable.
 			applyResultLinks(cfg.id, r);
+			current = { date: localIso(), result: r };
 			if (!available) return;
 			const entry: ResultEntry = {
 				id: sessionId ?? newId(),
 				tool: cfg.id,
 				toolVersion: cfg.version,
-				date: localIso(),
+				date: current.date,
 				total: r.total,
 				subscores: r.subscores,
 				band: r.band ?? findBand(cfg, r.total)?.label ?? null,

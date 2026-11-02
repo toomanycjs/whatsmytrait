@@ -5,6 +5,7 @@
 // score breakdown; the page's script calls mountScoreHistory(config) and then
 // controller.record(result) when a score is produced. The reminder row works
 // even when localStorage is unavailable; everything else stays hidden then.
+import ClinicianSummary from './ClinicianSummary.astro';
 import '../styles/score-history.css';
 
 interface Props {
@@ -50,6 +51,8 @@ const icsLabel = monthly ? 'Add a monthly reminder (.ics)' : `Add a reminder eve
 		</div>
 		<p class="sh-export-status" role="status"></p>
 	</div>
+
+	<ClinicianSummary toolId={toolId} path={`/tools/${toolId}/`} />
 
 	<p class="sh-my-results" hidden><a href="/tools/my-results/">See all your saved results</a></p>
 

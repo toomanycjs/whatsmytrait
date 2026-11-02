@@ -1,0 +1,88 @@
+/* "Summary for your clinician": on-screen controls in the results panel, and
+   the print-only sheet. Global, because the sheet's contents are built by
+   script and moved to the end of <body> before printing.
+
+   Printing: clinicianSummary.ts sets html[data-print="summary"] just before
+   window.print() and clears it on afterprint. In that mode only the sheet
+   prints; an ordinary Ctrl+P still prints the page as before. Sized for the
+   smaller of A4 and US Letter (210 x 279 mm) so one layout fits both. */
+
+.cs-controls { margin: 1.75em 0 0; padding-top: 1.25em; border-top: var(--rule); }
+.cs-controls h3 { margin: 0 0 0.3em; font-size: 1.05em; }
+.cs-lead, .cs-note { font-size: 0.9em; color: rgb(var(--gray-dark)); margin: 0 0 0.75em; line-height: 1.5; }
+.cs-note { color: rgb(var(--gray)); margin-top: 0.4em; }
+.cs-fields { display: flex; flex-wrap: wrap; gap: 0.75em 1.25em; }
+.cs-fields label { display: flex; flex-direction: column; gap: 0.25em; font-size: 0.9em; font-weight: 700; }
+.cs-fields input { font: inherit; font-weight: 400; padding: 0.4em 0.55em; border: 1px solid rgb(var(--gray-light)); border-radius: var(--radius); min-width: 14em; }
+.cs-optional { font-weight: 400; color: rgb(var(--gray)); }
+
+.cs-sheet { display: none; }
+
+@media print {
+	@page { margin: 12mm; }
+
+	.cs-controls { display: none !important; }
+
+	html[data-print='summary'],
+	html[data-print='summary'] body { background: #fff !important; color: #000 !important; margin: 0; padding: 0; }
+	html[data-print='summary'] body > *:not(.cs-sheet) { display: none !important; }
+	html[data-print='summary'] .cs-sheet { display: block; }
+
+	.cs-sheet {
+		color-scheme: light;
+		color: #000;
+		background: #fff;
+		font-family: 'Atkinson', Arial, sans-serif;
+		font-size: 9.5pt;
+		line-height: 1.35;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+	.cs-sheet * { color: #000 !important; background: transparent !important; }
+	.cs-sheet p { margin: 0 0 1.2mm; }
+	.cs-sheet h2 {
+		font-family: 'Source Serif 4', Georgia, serif;
+		font-size: 11pt;
+		margin: 3.5mm 0 1.5mm;
+		padding-bottom: 0.8mm;
+		border-bottom: 0.4pt solid #000;
+		break-after: avoid;
+	}
+
+	.cs-head { display: flex; justify-content: space-between; gap: 6mm; padding-bottom: 2mm; border-bottom: 1.2pt solid #000; }
+	.cs-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 15pt; font-weight: 600; line-height: 1.2; margin: 0 0 1mm !important; }
+	.cs-sub { font-size: 10pt; margin: 0 !important; }
+	.cs-meta { margin: 0; display: grid; gap: 1mm; min-width: 62mm; font-size: 9pt; }
+	.cs-meta div { display: flex; gap: 2mm; align-items: baseline; }
+	.cs-meta dt { font-weight: 700; min-width: 24mm; }
+	.cs-meta dd { margin: 0; flex: 1; border-bottom: 0.4pt solid #000; min-height: 4mm; }
+
+	.cs-total { font-size: 13pt; font-weight: 700; margin: 0 0 1.5mm !important; }
+	.cs-result { display: grid; grid-template-columns: 1fr 100mm; gap: 6mm; align-items: start; }
+	.cs-outcome { font-size: 9pt; }
+	.cs-small { font-size: 8.5pt; }
+	.cs-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 0 0 1.5mm; break-inside: avoid; }
+	.cs-table th, .cs-table td { border: 0.4pt solid #000; padding: 0.4mm 1.5mm; text-align: left; vertical-align: top; }
+	.cs-table thead th { border-bottom: 0.8pt solid #000; }
+	.cs-history { font-size: 8.5pt; }
+	.cs-table td.num, .cs-table th.num { text-align: right; }
+
+	.cs-sheet .sh-chart { display: block; width: 100%; max-width: 85mm; height: auto; margin: 1mm 0 0; }
+	.cs-sheet .sh-chart .sh-grid { stroke: #000 !important; stroke-width: 0.5; }
+	.cs-sheet .sh-chart .sh-line { fill: none; stroke: #000 !important; stroke-width: 2; }
+	.cs-sheet .sh-chart .sh-point { fill: #000 !important; }
+	.cs-sheet .sh-chart .sh-axis, .cs-sheet .sh-chart .sh-value { fill: #000 !important; }
+
+	.cs-about { font-size: 9pt; }
+	.cs-ref { font-size: 8.5pt; }
+
+	.cs-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; margin-top: 4mm; padding-top: 2mm; border-top: 1.2pt solid #000; break-inside: avoid; }
+	.cs-caveat { font-weight: 700; }
+	.cs-url { font-size: 9pt; word-break: break-all; }
+	.cs-qr { width: 22mm; height: 22mm; flex: none; }
+	.cs-qr svg { width: 100%; height: 100%; display: block; }
+}
+
+@media print {
+	.cs-sheet [hidden] { display: none !important; }
+}
