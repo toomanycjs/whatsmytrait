@@ -121,7 +121,7 @@ const lastReviewed = '2026-10-16';
 				<div class="results-disclaimer">
 					<h3>Understanding your result</h3>
 					<p>Each kind of activity is converted to MET-minutes: minutes per day, multiplied by days per week, multiplied by an intensity weight of <strong>3.3</strong> for walking, <strong>4.0</strong> for moderate activity and <strong>8.0</strong> for vigorous activity. The three are added to give a weekly total. Following the IPAQ scoring guidelines, any activity under 10 minutes a day is treated as 0, and each activity is capped at 180 minutes a day before scoring, so a single very long day does not swamp the week.</p>
-					<p>The categories are: <strong>high</strong>, meaning vigorous activity on at least 3 days reaching 1500 MET-minutes, or any combination on all 7 days reaching 3000 MET-minutes; <strong>moderate</strong>, meaning vigorous activity of at least 20 minutes on 3 or more days, or moderate activity or walking of at least 30 minutes on 5 or more days, or any combination on 5 or more days reaching 600 MET-minutes; and <strong>low</strong> for everything else. The 600 figure corresponds roughly to the 150-minutes-a-week public-health guideline.</p>
+					<p>The categories are: <strong>high</strong>, meaning vigorous activity on at least 3 days with a total across all activity of at least 1500 MET-minutes, or any combination on all 7 days reaching 3000 MET-minutes; <strong>moderate</strong>, meaning vigorous activity of at least 20 minutes on 3 or more days, or moderate activity or walking of at least 30 minutes on 5 or more days, or any combination on 5 or more days reaching 600 MET-minutes; and <strong>low</strong> for everything else. The 600 figure corresponds roughly to the 150-minutes-a-week public-health guideline.</p>
 					<p>Those categories were designed for healthy populations. In ME/CFS, POTS or long COVID with post-exertional malaise, a low category is frequently the correct and safe level, and pushing toward "moderate" is how many people crash. Read the number as a description of last week, compare it with your own earlier weeks, and set it next to how you felt afterwards. Sitting time is reported separately and is not part of the activity score; in orthostatic conditions, time spent sitting or lying is often a deliberate management choice.</p>
 					<!-- When a saved DSQ-PEM, Bell or FUNCAP result points to PEM or low function, resultLinks.ts swaps in the second line. -->
 					<p data-exercise-link><strong>This is not an exercise prescription.</strong> If you are considering changing your activity level, start with the <a href="/tools/exercise-readiness/">readiness screen</a> and the <a href="/tools/pacing-and-heart-rate/">pacing guide</a>, and let your clinician's advice outrank any questionnaire.</p>
@@ -205,7 +205,8 @@ form.addEventListener('submit', (e) => {
 
 	let category: string;
 	if (rawTotalMinutes > 960) category = 'not assigned';
-	else if ((vig.days >= 3 && vig.met >= 1500) || (anyDays >= 7 && total >= 3000)) category = 'high';
+	// Both "high" criteria use total MET-minutes across all activity (IPAQ guidelines 2005, section 5.3).
+	else if ((vig.days >= 3 && total >= 1500) || (anyDays >= 7 && total >= 3000)) category = 'high';
 	else if (
 		(vig.days >= 3 && vig.scoredMins >= 20) ||
 		thirtyMinDays >= 5 ||
@@ -240,6 +241,7 @@ form.addEventListener('submit', (e) => {
 	history.record({
 		total,
 		subscores: { vigorous: vig.met, moderate: mod.met, walking: walk.met, sitting },
+		band: category,
 		summary: category === 'not assigned'
 			? `IPAQ ${total} MET-minutes per week (category not assigned: over 16 hours a day reported)`
 			: `IPAQ ${total} MET-minutes per week, ${category} activity category`,

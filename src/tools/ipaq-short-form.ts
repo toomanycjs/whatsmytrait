@@ -4,7 +4,8 @@ import type { ToolConfig } from '../scripts/results/types';
 
 export const ipaqShortForm: ToolConfig = {
 	id: 'ipaq-short-form',
-	version: '1',
+	// 2: the first "high" criterion uses total MET-minutes, not vigorous alone, per the 2005 guidelines (November 2026).
+	version: '2',
 	name: 'IPAQ',
 	path: '/tools/ipaq-short-form/',
 	totalMin: 0,
