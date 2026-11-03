@@ -15,6 +15,7 @@ export * from './score';
 export * from './percentile';
 export * from './plan';
 export * from './attempt';
+export * from './strip';
 export * from './types';
 export * from './store';
 export * from './share';
