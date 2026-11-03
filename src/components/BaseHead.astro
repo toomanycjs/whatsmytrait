@@ -1,92 +1,44 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
+// Metadata for every page. No analytics, no third-party scripts, no cookies:
+// nothing here runs in the visitor's browser except the page itself.
 import '../styles/global.css';
-import type { ImageMetadata } from 'astro';
-import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
-import { DEFAULT_LOCALE, OG_LOCALES, isLocale } from '../i18n/config';
-import { getAlternates } from '../i18n/registry';
 
 interface Props {
 	title: string;
 	description: string;
-	image?: ImageMetadata;
 	ogImage?: string;
 	ogType?: 'website' | 'article';
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const { title, description, image = FallbackImage, ogImage, ogType = 'website' } = Astro.props;
-const resolvedOgImage = ogImage ?? new URL(image.src, Astro.site).href;
-
-// Language of this page comes from the URL (unprefixed = English). The
-// alternates list is every language version of this page, itself included,
-// or empty when it has no translations; hreflang is only emitted for pages
-// that have them, and x-default always points at the English version.
-const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
-const alternates = await getAlternates(Astro.url.pathname);
-const xDefault = alternates.find((a) => a.locale === DEFAULT_LOCALE) ?? alternates[0];
-const absolute = (path: string) => new URL(path, Astro.site).href;
+const { title, description, ogImage, ogType = 'website' } = Astro.props;
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
-/>
 <meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content="#0d6b74" />
 
-<!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/source-serif-4-600.woff2" as="font" type="font/woff2" crossorigin />
-
-<!-- Canonical URL: always this page itself, never the English version -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Language alternates (only on pages that have translations) -->
-{alternates.map((a) => <link rel="alternate" hreflang={a.locale} href={absolute(a.path)} />)}
-{xDefault && <link rel="alternate" hreflang="x-default" href={absolute(xDefault.path)} />}
-
-<!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
 <meta property="og:site_name" content={SITE_TITLE} />
-<meta property="og:locale" content={OG_LOCALES[lang]} />
-{alternates.filter((a) => a.locale !== lang).map((a) => <meta property="og:locale:alternate" content={OG_LOCALES[a.locale]} />)}
+<meta property="og:locale" content="en_GB" />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={resolvedOgImage} />
-<meta property="og:image:alt" content={title} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:alt" content={title} />}
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={resolvedOgImage} />
-<meta property="twitter:image:alt" content={title} />
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPW7P1MJJ4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VPW7P1MJJ4');
-</script>
+{ogImage && <meta property="twitter:image" content={ogImage} />}
+{ogImage && <meta property="twitter:image:alt" content={title} />}

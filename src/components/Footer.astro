@@ -1,139 +1,19 @@
 ---
-import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
-import { localizedPath } from '../i18n/registry';
+// One plain statement of what the site is, the trust links from src/consts.ts,
+// and the year. No email box: nothing is collected.
+import { FOOTER_NAV, SITE_TITLE } from '../consts';
 
-const today = new Date();
-const locale = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
-const t = ui(locale);
-
-const NAV = [
-	{ path: '/testing/', label: t.nav.testing },
-	{ path: '/evidence/', label: t.nav.evidence },
-	{ path: '/tools/', label: t.nav.tools },
-	{ path: '/low-spoon-cooking/', label: t.nav['low-spoon-cooking'] },
-	{ path: '/about/', label: t.nav.about },
-	{ path: '/contact/', label: t.nav.contact },
-];
-const hrefs = await Promise.all(NAV.map((n) => localizedPath(locale, n.path)));
-const nav = NAV.map((n, i) => ({ ...n, href: hrefs[i] }));
+const year = new Date().getFullYear();
 ---
 
 <footer>
 	<div class="footer-inner">
-		<p class="tagline">{t.footer.tagline}</p>
-		<p class="disclaimer-note">{t.footer.disclaimer}</p>
-		<div class="signup-block">
-			<p class="signup-label">{t.footer.signupLabel}</p>
-			<form
-				action="https://buttondown.email/api/emails/embed-subscribe/postviralrecovery"
-				method="post"
-				target="popupwindow"
-				class="signup-form"
-			>
-				<input type="email" name="email" placeholder={t.footer.emailPlaceholder} required />
-				<button type="submit">{t.footer.subscribe}</button>
-			</form>
-			<p class="signup-note">{t.footer.signupNote}</p>
-		</div>
-		<nav class="footer-links">
-			{nav.map((n) => <a href={n.href}>{n.label}</a>)}
-		</nav>
-		<p class="copyright">&copy; {today.getFullYear()} Post Viral Recovery</p>
+		<p class="tagline">Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
+		{FOOTER_NAV.length > 0 && (
+			<nav class="footer-links" aria-label="Site">
+				{FOOTER_NAV.map((n) => <a href={n.path}>{n.label}</a>)}
+			</nav>
+		)}
+		<p class="copyright">&copy; {year} {SITE_TITLE}</p>
 	</div>
 </footer>
-
-<style>
-	footer {
-		border-top: 1px solid rgb(var(--gray-light));
-		margin-top: 4em;
-		padding: 2.5em 1em;
-		color: rgb(var(--gray));
-		font-size: 0.88em;
-	}
-	.footer-inner {
-		width: 740px;
-		max-width: calc(100% - 2em);
-		margin: auto;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5em;
-	}
-	.tagline {
-		font-weight: 700;
-		color: rgb(var(--gray-dark));
-		margin: 0;
-	}
-	.disclaimer-note {
-		margin: 0;
-		line-height: 1.5;
-	}
-	.footer-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.25em 1em;
-		margin: 0.5em 0 0;
-	}
-	.footer-links a {
-		color: rgb(var(--gray));
-		text-decoration: none;
-	}
-	.footer-links a:hover {
-		color: var(--accent);
-		text-decoration: underline;
-	}
-	.signup-block {
-		border-top: 1px solid rgb(var(--gray-light));
-		margin-top: 0.75em;
-		padding-top: 1.25em;
-		display: flex;
-		flex-direction: column;
-		gap: 0.4em;
-	}
-	.signup-label {
-		margin: 0;
-		font-weight: 600;
-		color: rgb(var(--gray-dark));
-	}
-	.signup-form {
-		display: flex;
-		gap: 0.5em;
-		flex-wrap: wrap;
-	}
-	.signup-form input[type="email"] {
-		flex: 1;
-		min-width: 200px;
-		padding: 0.45em 0.75em;
-		border: 1px solid rgb(var(--gray));
-		border-radius: var(--radius);
-		font-size: 0.95em;
-		font-family: inherit;
-		color: rgb(var(--gray-dark));
-		background: #fff;
-	}
-	.signup-form input[type="email"]:focus {
-		outline: 2px solid var(--accent);
-		border-color: transparent;
-	}
-	.signup-form button {
-		padding: 0.45em 1.1em;
-		background: var(--accent);
-		color: #fff;
-		border: none;
-		border-radius: var(--radius);
-		font-size: 0.95em;
-		font-family: inherit;
-		cursor: pointer;
-	}
-	.signup-form button:hover {
-		background: var(--accent-dark);
-	}
-	.signup-note {
-		margin: 0;
-		font-size: 0.82em;
-		color: rgb(var(--gray));
-	}
-	.copyright {
-		margin: 0.25em 0 0;
-		font-size: 0.9em;
-	}
-</style>

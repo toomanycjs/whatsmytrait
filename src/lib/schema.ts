@@ -1,13 +1,9 @@
 // Structured data for every page, built in the layouts from props and
-// frontmatter so no page hand-writes JSON-LD. Page.astro adds the
-// breadcrumb, any FAQ, and the WebSite node on the homepage; Post.astro adds
-// the article node. Each page outputs one @graph.
+// frontmatter so no page hand-writes JSON-LD. Page.astro adds the breadcrumb,
+// any FAQ, and the WebSite node on the homepage; article pages add the Article
+// node. Each page outputs one @graph. No AggregateRating, no review markup.
 
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { DEFAULT_LOCALE, isLocale } from '../i18n/config';
-import { asStep, duration, plain, stepId, stepName, type RecipeData } from './recipe';
-
-export const SITE = 'https://www.postviralrecovery.com';
+import { SECTIONS, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
 
 type Node = Record<string, unknown>;
 
@@ -21,21 +17,16 @@ export interface Crumb {
 	path: string;
 }
 
-const abs = (path: string) => new URL(path, SITE).href;
+const abs = (path: string) => new URL(path, SITE_URL).href;
 
-/**
- * Home > Section > Page, matching the section label shown above each page's
- * heading. Paths with no index of their own (/tools/trackers/) are skipped.
- */
-export function crumbsFor(pathname: string, name: string, sectionLabels: Record<string, string>): Crumb[] {
+/** Home > Section > Page. */
+export function crumbsFor(pathname: string, name: string): Crumb[] {
 	const segs = pathname.split('/').filter(Boolean);
-	let prefix = '';
-	if (segs[0] && isLocale(segs[0]) && segs[0] !== DEFAULT_LOCALE) prefix = `/${segs.shift()}`;
-	const crumbs: Crumb[] = [{ name: 'Home', path: `${prefix}/` }];
+	const crumbs: Crumb[] = [{ name: 'Home', path: '/' }];
 	if (segs.length === 0) return crumbs;
 	const section = segs[0];
-	if (segs.length > 1 && sectionLabels[section]) {
-		crumbs.push({ name: sectionLabels[section], path: `${prefix}/${section}/` });
+	if (segs.length > 1 && SECTIONS[section]) {
+		crumbs.push({ name: SECTIONS[section], path: `/${section}/` });
 	}
 	crumbs.push({ name, path: pathname });
 	return crumbs;
@@ -56,86 +47,43 @@ export function faqPage(faqs: FaqPair[]): Node {
 	};
 }
 
-const author = { '@type': 'Person', name: 'Craig Johnson', url: `${SITE}/about/` };
-const publisher = { '@type': 'Organization', '@id': `${SITE}/#publisher`, name: SITE_TITLE, url: `${SITE}/` };
+const publisher = { '@type': 'Organization', '@id': `${SITE_URL}/#publisher`, name: SITE_TITLE, url: `${SITE_URL}/` };
 
-export function websiteNode(lang: string): Node {
+export function websiteNode(): Node {
 	return {
 		'@type': 'WebSite',
-		'@id': `${SITE}/#website`,
+		'@id': `${SITE_URL}/#website`,
 		name: SITE_TITLE,
-		url: `${SITE}/`,
+		url: `${SITE_URL}/`,
 		description: SITE_DESCRIPTION,
-		inLanguage: lang,
+		inLanguage: 'en-GB',
 		publisher,
 	};
 }
 
 export interface ArticleInput {
-	section: string;
 	title: string;
 	description: string;
 	pubDate: Date;
 	modified?: Date;
 	url: string;
 	image: string;
-	lang: string;
 }
 
-/** Evidence reviews are both an Article and a MedicalWebPage; everything else is a BlogPosting. */
+/** Guides and compare pages are Articles. */
 export function articleNode(a: ArticleInput): Node {
-	const modified = (a.modified ?? a.pubDate).toISOString();
-	const node: Node = {
-		'@type': a.section === 'evidence' ? ['Article', 'MedicalWebPage'] : 'BlogPosting',
+	return {
+		'@type': 'Article',
 		headline: a.title,
 		description: a.description,
-		inLanguage: a.lang,
+		inLanguage: 'en-GB',
 		datePublished: a.pubDate.toISOString(),
-		dateModified: modified,
+		dateModified: (a.modified ?? a.pubDate).toISOString(),
 		image: a.image,
 		mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
-		author,
+		author: publisher,
 		publisher,
 	};
-	if (a.section === 'evidence') node.lastReviewed = modified;
-	return node;
-}
-
-/**
- * Low Spoon Cooking posts are a Recipe rather than a BlogPosting. The
- * ingredients and steps are the same frontmatter the page renders, so the
- * markup always matches the visible text, which Google requires.
- */
-export function recipeNode(a: ArticleInput, r: RecipeData): Node {
-	const modified = (a.modified ?? a.pubDate).toISOString();
-	const node: Node = {
-		'@type': 'Recipe',
-		name: a.title,
-		description: a.description,
-		inLanguage: a.lang,
-		datePublished: a.pubDate.toISOString(),
-		dateModified: modified,
-		image: r.image ? abs(r.image) : a.image,
-		mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
-		author,
-		publisher,
-		recipeYield: r.yield,
-		prepTime: duration(r.prepMinutes),
-		cookTime: duration(r.cookMinutes),
-		totalTime: duration(r.prepMinutes + r.cookMinutes),
-		recipeIngredient: r.ingredients.flatMap((g) => g.items.map(plain)),
-		recipeInstructions: r.steps.map(asStep).map((step, i) => ({
-			'@type': 'HowToStep',
-			position: i + 1,
-			name: stepName(step.text),
-			text: plain([step.text, ...(step.options ?? [])].join(' ')),
-			url: `${a.url}#${stepId(i)}`,
-		})),
-	};
-	if (r.category) node.recipeCategory = r.category;
-	if (r.cuisine) node.recipeCuisine = r.cuisine;
-	if (r.keywords?.length) node.keywords = r.keywords.join(', ');
-	return node;
 }
 
 export function graph(nodes: Node[]) {

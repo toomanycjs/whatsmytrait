@@ -1,54 +1,44 @@
 ---
-// Shared shell for every static page. Owns the <html lang>, the head
-// (metadata, canonical, hreflang, Open Graph), the header with its language
-// switcher, the footer and the structured data (breadcrumb on every page,
-// FAQPage when `faqs` is passed, WebSite on the homepage), so a page only
-// supplies its title, description, and content. Anything else for <head>
-// goes in the "head" slot.
-//
-// A translated page is a sibling file under a locale folder
-// (src/pages/de/tools/compass-31.astro) that uses this same layout; the
-// language comes from the URL, and hreflang/switcher wiring is automatic.
-// Pass `translationKey` only when translated slugs differ from the English one.
+// Shared shell for every page. Owns the <html lang>, the head (metadata,
+// canonical, Open Graph), the header, the footer and the structured data
+// (breadcrumb on every page, FAQPage when `faqs` is passed, WebSite on the
+// homepage), so a page only supplies its title, description and content.
+// Anything else for <head> goes in the "head" slot.
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import JsonLd from '../components/JsonLd.astro';
-import { DEFAULT_LOCALE, isLocale, ui } from '../i18n/config';
 import { breadcrumbList, crumbsFor, faqPage, websiteNode, type FaqPair } from '../lib/schema';
 
 interface Props {
 	title: string;
 	description: string;
-	/** Override the generated /og/<path>.png image. */
+	/** Override the generated /og/<path>.png image; an empty string sends none. */
 	ogImage?: string;
 	ogType?: 'website' | 'article';
-	/** Shared key linking this page with its translations; defaults to the English path. Read from source by the registry. */
-	translationKey?: string;
 	/** Name of this page in the breadcrumb; defaults to the title up to its first colon. */
 	breadcrumb?: string;
 	/** Questions and answers shown on the page, output as FAQPage. */
 	faqs?: FaqPair[];
-	/** False for pages that should carry no structured data (404, personal results). */
+	/** False for pages that should carry no structured data (404). */
 	structuredData?: boolean;
 }
 
 const { title, description, ogImage, ogType, breadcrumb, faqs, structuredData = true } = Astro.props;
-const lang = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'home';
-const resolvedOgImage = ogImage ?? new URL(`/og/${slug}.png`, Astro.site).href;
+const resolvedOgImage = ogImage === '' ? undefined : (ogImage ?? new URL(`/og/${slug}.png`, Astro.site).href);
 
-const crumbs = crumbsFor(Astro.url.pathname, breadcrumb ?? title.split(':')[0].trim(), ui(lang).nav);
+const crumbs = crumbsFor(Astro.url.pathname, breadcrumb ?? title.split(':')[0].trim());
 const schemaNodes = !structuredData
 	? []
 	: [
-			crumbs.length === 1 ? websiteNode(lang) : breadcrumbList(crumbs),
+			crumbs.length === 1 ? websiteNode() : breadcrumbList(crumbs),
 			...(faqs?.length ? [faqPage(faqs)] : []),
 		];
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="en-GB">
 	<head>
 		<BaseHead title={title} description={description} ogImage={resolvedOgImage} ogType={ogType} />
 		<JsonLd nodes={schemaNodes} />
@@ -60,10 +50,5 @@ const schemaNodes = !structuredData
 			<slot />
 		</main>
 		<Footer />
-		<script>
-			// Count each step and the results screen of a tool as a page view.
-			import { observeToolSteps } from '../scripts/pageview';
-			if (location.pathname.includes('/tools/')) observeToolSteps();
-		</script>
 	</body>
 </html>

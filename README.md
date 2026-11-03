@@ -1,62 +1,27 @@
-# Astro Starter Kit: Blog
+# Free psychometric tests site
 
-```sh
-npm create astro@latest -- --template blog
-```
+A static Astro site of free, open personality and interest tests. Every instrument is free for any use, scored on the person's own device, shown against published norms, with its reliability stated. No sign-up, no email capture, no tracking.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The site name and domain are placeholders until the owner decides them: see `SITE_TITLE` and `SITE_URL` in `src/consts.ts` and the `site` setting in `astro.config.mjs`.
 
-Features:
+## Layout
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- `packages/instruments`: the pure engine (load an instrument file, render it, score a response set, look up percentiles) and the instrument data files.
+- `src`: the Astro site. Layouts, components, pages and content collections.
+- `docs`: the design direction and the owner's written decisions.
+- `design`: the style tile, the source of truth for the visual design once approved.
+- `scripts`: build-time checks.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | Action |
+| :-- | :-- |
+| `npm install` | Install dependencies (npm workspaces) |
+| `npm run dev` | Start the dev server at `localhost:4321` |
+| `npm run build` | Build to `./dist/` |
+| `npm run preview` | Preview the build |
+| `npm test` | Run the vitest suites |
+| `npm run check` | Orphan, sources, licence and wordlist checks |
+| `npm run lastmod` | Refresh `src/data/lastmod.json` from git dates |
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+See `CLAUDE.md` for the rules that apply to every change.
