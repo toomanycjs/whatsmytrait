@@ -30,7 +30,9 @@ Results are scored and stored on the person's device. No sign-up, no email captu
 - Lighthouse 95+ on mobile for home, a test page and a trait page.
 
 ## Commands
-- npm run dev, npm run build, npm test, npm run check (orphans, sources, licences, spelling), npm run lighthouse
+- npm run dev, npm run build, npm test (vitest), npm run e2e (Playwright full run of every test page),
+  npm run typecheck, npm run check (wordlist, and on dist: orphans, sources boxes, licence lines, titles, trademarks),
+  npm run lighthouse (mobile, four pages, 95 or above), npm run a11y (axe on every page). Build before check, lighthouse and a11y.
 - This repository uses npm workspaces, not pnpm.
 
 ## Owner decisions

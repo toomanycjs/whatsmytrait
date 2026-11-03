@@ -20,8 +20,14 @@ The site name and domain are placeholders until the owner decides them: see `SIT
 | `npm run dev` | Start the dev server at `localhost:4321` |
 | `npm run build` | Build to `./dist/` |
 | `npm run preview` | Preview the build |
-| `npm test` | Run the vitest suites |
-| `npm run check` | Orphan, sources, licence and wordlist checks |
+| `npm test` | Run the vitest suites (engine, every instrument file against its key) |
+| `npm run e2e` | Playwright: a full keyboard run of every test page |
+| `npm run typecheck` | `astro check` |
+| `npm run check` | Wordlist, and on the built site: orphans, sources boxes, licence lines, titles, trademarks |
+| `npm run lighthouse` | Lighthouse on a throttled mobile profile for home, a test page before and after, a trait page |
+| `npm run a11y` | axe-core on every built page |
 | `npm run lastmod` | Refresh `src/data/lastmod.json` from git dates |
+
+Norm tables are regenerated with `python -I scripts/norms/<id>.py <input file>` from the datasets in the gitignored `data-raw/` folder (see the methodology page for sources and hashes).
 
 See `CLAUDE.md` for the rules that apply to every change.

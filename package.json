@@ -19,7 +19,8 @@
     "typecheck": "astro check",
     "e2e": "playwright test",
     "check": "node scripts/check.mjs",
-    "lighthouse": "node scripts/lighthouse.mjs"
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "a11y": "node scripts/a11y.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.2",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@playwright/test": "^1.64.1",
+    "axe-core": "^4.14.0",
     "ical.js": "^2.2.1",
     "lighthouse": "^13.6.0",
     "typescript": "^6.0.3",
