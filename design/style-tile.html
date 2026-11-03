@@ -25,69 +25,83 @@ a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1p
 a:hover { text-decoration-thickness: 2px; }
 small, .small { font-size: var(--small); line-height: 1.45; }
 .quiet { color: var(--quiet); }
-em { font-style: italic; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-.wrap { max-width: var(--plate); margin: 0 auto; padding: 0 var(--s3); }
-.prose { max-width: var(--measure); }
-section.tile { padding: var(--s6) 0; border-top: 1px solid var(--hair); }
-section.tile:first-of-type { border-top: 0; }
-.tile-label { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); }
+/* The grid: a margin column and a main column. */
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--s3); }
+.row { display: grid; grid-template-columns: var(--margin-col) minmax(0, 1fr); column-gap: var(--s5); align-items: start; }
+.aside { font-size: var(--small); color: var(--quiet); }
+.aside p { margin: 0 0 var(--s1); }
+.main { max-width: var(--measure); min-width: 0; }
+.main.wide { max-width: none; }
+@media (max-width: 760px) {
+	.row { grid-template-columns: 1fr; row-gap: var(--s2); }
+}
 
-/* Nav and footer */
-header.site { border-bottom: 1px solid var(--hair); }
-header.site .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s2) var(--s4); padding-top: var(--s4); padding-bottom: var(--s3); }
-.site-title { font-weight: 600; text-decoration: none; font-size: var(--body); }
+/* Masthead and footer */
+.mast { border-bottom: 1px solid var(--hair); padding: var(--s4) 0 var(--s3); }
+.mast .row { align-items: baseline; }
+.site-title { font-weight: 600; font-size: var(--body); color: var(--ink); text-decoration: none; }
 .site-title:hover { text-decoration: underline; }
-nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); }
-nav.main a { text-decoration: none; color: var(--quiet); }
-nav.main a:hover, nav.main a[aria-current] { color: var(--ink); text-decoration: underline; }
-@media (max-width: 600px) { nav.main ul { gap: var(--s2) var(--s3); } }
-footer.site { border-top: 1px solid var(--hair); margin-top: 0; }
-footer.site .wrap { padding-top: var(--s4); padding-bottom: var(--s5); font-size: var(--small); color: var(--quiet); }
+nav.main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); }
+nav.main-nav a { text-decoration: none; color: var(--quiet); }
+nav.main-nav a:hover, nav.main-nav a[aria-current] { color: var(--ink); text-decoration: underline; }
+@media (max-width: 760px) {
+	.mast .row { grid-template-columns: 1fr; row-gap: var(--s2); }
+	nav.main-nav ul { gap: var(--s2) var(--s3); font-size: var(--small); }
+}
+footer.site { border-top: 1px solid var(--hair); padding: var(--s4) 0 var(--s6); font-size: var(--small); color: var(--quiet); }
 footer.site p { margin: 0 0 var(--s2); }
 footer.site nav { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); margin-bottom: var(--s2); }
 footer.site a { color: var(--quiet); }
 
-/* Swatches */
-.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: var(--s3); list-style: none; padding: 0; margin: 0 0 var(--s4); }
-.swatch { font-size: var(--small); }
-.swatch i { display: block; height: 3.5rem; border: 1px solid var(--hair); margin-bottom: var(--s1); }
-.swatch b { font-weight: 600; display: block; }
-.hues { display: flex; gap: var(--s3); flex-wrap: wrap; font-size: var(--small); }
-.hues span { display: inline-flex; align-items: center; gap: var(--s2); }
-.hues i { display: inline-block; width: 2.5rem; height: 2px; }
+/* Tile scaffolding: a label for each composed page, outside the design. */
+.tile-label { font-size: var(--small); color: var(--quiet); padding: var(--s5) 0 var(--s3); border-top: 1px solid var(--hair); }
+.tile-label:first-child { border-top: 0; }
 
-/* Type specimen */
-.spec { display: grid; grid-template-columns: 7rem 1fr; gap: var(--s2) var(--s3); align-items: baseline; }
-.spec dt { font-size: var(--small); color: var(--quiet); margin: 0; }
-.spec dd { margin: 0; }
-table.pct { border-collapse: collapse; margin: var(--s4) 0 0; font-size: var(--body); }
-table.pct th, table.pct td { text-align: left; padding: var(--s2) var(--s4) var(--s2) 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
-table.pct th { font-weight: 600; }
-table.pct td.n, table.pct th.n { text-align: right; }
+/* Page head: section name and facts in the margin column; on phones the facts drop under the text. */
+.page-head { padding: var(--s6) 0 var(--s5); }
+.page-head .row { grid-template-areas: "side main" "facts main"; }
+.page-head .aside { grid-area: side; }
+.page-head .main { grid-area: main; }
+.page-head .facts { grid-area: facts; font-size: var(--small); color: var(--quiet); }
+@media (max-width: 760px) {
+	.page-head .row { grid-template-areas: "side" "main" "facts"; }
+	.page-head .facts { margin-top: var(--s4); max-width: 24rem; }
+}
+.section-name { margin: 0 0 var(--s4); }
+.section-name a { color: var(--quiet); text-decoration: none; }
+.section-name a:hover { text-decoration: underline; }
+.subtitle { font-size: var(--body); color: var(--quiet); margin: var(--s2) 0 var(--s4); }
+.meta { display: grid; grid-template-columns: auto 1fr; column-gap: var(--s3); margin: 0; }
+.meta dt { color: var(--quiet); padding: var(--s1) 0; border-top: 1px solid var(--hair); }
+.meta dd { margin: 0; color: var(--ink); padding: var(--s1) 0; border-top: 1px solid var(--hair); font-variant-numeric: tabular-nums; }
+.meta dt:first-of-type, .meta dd:first-of-type { border-top: 0; }
+@media (max-width: 760px) { .meta { grid-template-columns: auto auto; column-gap: var(--s4); row-gap: 0; } }
 
 /* Buttons */
-.btn { display: inline-block; font: inherit; font-weight: 600; padding: 0.7em 1.25em; border: 1.5px solid var(--ink); border-radius: 3px; background: var(--ink); color: var(--page); text-decoration: none; cursor: pointer; line-height: 1.2; }
+.btn { display: inline-block; font: inherit; font-weight: 600; padding: 0.7em 1.25em; border: 1.5px solid var(--ink); background: var(--ink); color: var(--page); text-decoration: none; cursor: pointer; line-height: 1.2; white-space: nowrap; }
 .btn:hover { background: var(--page); color: var(--ink); }
 .btn.secondary { background: transparent; color: var(--ink); }
 .btn.secondary:hover { background: var(--panel); }
 .actions { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: center; }
 .under-button { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
+.links { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: var(--s3) 0 0; font-size: var(--small); }
 
-/* Plate */
-.plate { background: var(--panel); padding: var(--s5) var(--s4); }
-.plate-note { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); }
-.links { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: var(--s3) 0 0; }
-@media (max-width: 600px) { .plate { padding: var(--s4) var(--s3); margin: 0 calc(-1 * var(--s3)); border-radius: 0; } }
+/* Plate: a full-bleed band of Panel with the grid inside. */
+.plate { background: var(--panel); padding: var(--s5) 0; }
+.plate-head { padding-bottom: var(--s3); }
+.plate-head h2 { margin-bottom: var(--s1); }
+.plate-note { font-size: var(--small); color: var(--quiet); margin: 0; }
+.plate .result { padding: var(--s4) 0; border-top: 1px solid var(--hair); }
+.plate .result:first-of-type { border-top: 0; }
+.scale-name { font-size: var(--body); font-weight: 600; color: var(--ink); }
+.scale-raw { font-variant-numeric: tabular-nums; }
+.means { margin: var(--s2) 0 0; max-width: var(--measure); }
+.plate-foot { padding-top: var(--s4); border-top: 1px solid var(--hair); }
 
 /* Strips */
-.strip { margin: 0 0 var(--s4); }
-.strip-domain { margin-bottom: var(--s5); }
-.strip-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s1); }
-.strip-name { font-weight: 600; }
-.strip-facet .strip-name { font-weight: 400; font-size: var(--small); }
 .strip-plot { position: relative; }
 .strip svg { display: block; width: 100%; }
 .strip-domain svg { height: 40px; }
@@ -103,11 +117,17 @@ table.pct td.n, table.pct th.n { text-align: right; }
 .strip-facet .pct { font-size: var(--small); }
 .strip-axis { display: flex; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: 2px; }
 .strip-key { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
-.strip-means { margin: calc(-1 * var(--s3)) 0 var(--s5); max-width: var(--measure); }
-.strip-means em { font-style: italic; }
-.facets { padding-left: var(--s4); margin: calc(-1 * var(--s3)) 0 var(--s5); }
-.facets .strip-facet { margin-bottom: var(--s3); }
-.facets h3 { margin: 0 0 var(--s3); font-size: var(--small); font-weight: 600; }
+
+/* Facets: small multiples in a name/strip grid under the domain. */
+.facets { margin-top: var(--s4); display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: var(--s3); row-gap: var(--s2); align-items: center; }
+.facets .facet { display: contents; }
+.facet-name { font-size: var(--small); color: var(--quiet); }
+.facets .strip-facet { margin: 0; }
+.facets .strip-axis { display: none; }
+@media (max-width: 760px) {
+	.facets { grid-template-columns: 1fr; row-gap: var(--s1); }
+	.facet-name { margin-top: var(--s2); }
+}
 
 /* Draw-in: once, 200ms, respects reduced motion. */
 @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -117,45 +137,59 @@ table.pct td.n, table.pct th.n { text-align: right; }
 @media (prefers-reduced-motion: reduce) { .strip * { animation: none !important; } }
 
 /* Question screen */
-.progress { height: 2px; background: var(--hair); margin: 0 0 var(--s4); }
+.progress { height: 2px; background: var(--hair); margin: 0 0 var(--s2); }
 .progress i { display: block; height: 100%; width: 20%; background: var(--ink); }
-.progress-text { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); display: flex; justify-content: space-between; gap: var(--s3); }
-.item { padding: 0 0 var(--s5); margin: 0; }
-.item-text { margin: 0 0 var(--s3); padding-left: 1.8em; text-indent: -1.8em; }
-.item-n { display: inline-block; width: 1.8em; color: var(--quiet); font-variant-numeric: tabular-nums; text-indent: 0; }
-.options { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s2); }
+.screen-head { font-size: var(--small); color: var(--quiet); padding-bottom: var(--s4); }
+.screen-head p { margin: 0; }
+.q { padding: var(--s4) 0; }
+.q-n { font-size: var(--heading); line-height: 1; color: var(--quiet); font-variant-numeric: tabular-nums; }
+.q-text { margin: 0 0 var(--s3); }
+.cells { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.cell { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--s1); min-height: 3.25rem; padding: var(--s2) var(--s1); border-left: 1px solid var(--hair); cursor: pointer; text-align: center; }
+.cell:first-child { border-left: 0; }
+.cell input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.cell-n { font-weight: 600; line-height: 1; }
+.cell-label { font-size: var(--small); line-height: 1.25; color: var(--quiet); }
+.cell:hover { background: var(--page); }
+.cell:has(input:checked) { background: var(--ink); color: var(--page); }
+.cell:has(input:checked) .cell-label { color: var(--page); }
+.cell:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: -3px; }
 .ends { display: none; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: var(--s1); }
-.opt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--s1); min-height: 3rem; padding: var(--s2) var(--s1); border: 1.5px solid var(--hair); background: var(--page); cursor: pointer; text-align: center; }
-.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-.opt-n { font-weight: 600; font-size: var(--body); line-height: 1; }
-.opt-label { font-size: var(--small); line-height: 1.25; color: var(--quiet); }
-.opt:hover { border-color: var(--ink); }
-.opt:has(input:checked) { background: var(--ink); border-color: var(--ink); color: var(--page); }
-.opt:has(input:checked) .opt-label { color: var(--page); }
-.opt:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
-@media (max-width: 700px) {
+.screen-foot { padding-top: var(--s4); border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3); }
+.keys { font-size: var(--small); color: var(--quiet); }
+@media (max-width: 760px) {
 	.ends { display: flex; }
 	.keys { display: none; }
-	.opt-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-	.opt { min-height: 3rem; justify-content: center; }
+	.cell-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.cell { justify-content: center; }
+	.q-n { font-size: var(--small); }
 }
-.screen-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3); padding-top: var(--s4); border-top: 1px solid var(--hair); }
-.screen-foot .btn { white-space: nowrap; }
-.keys { font-size: var(--small); color: var(--quiet); }
-.table-scroll { overflow-x: auto; }
 
-/* Glyph */
-.glyph { width: 3rem; height: 3rem; }
+/* Appendix: tokens and type */
+.appendix { padding: var(--s5) 0 var(--s6); }
+.appendix .row { padding: var(--s3) 0; border-top: 1px solid var(--hair); }
+.swatches { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s4); list-style: none; padding: 0; margin: 0; font-size: var(--small); }
+.swatch { display: flex; align-items: center; gap: var(--s2); }
+.swatch i { display: inline-block; width: 2rem; height: 2rem; border: 1px solid var(--hair); }
+.hues { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); font-size: var(--small); }
+.hues span { display: inline-flex; align-items: center; gap: var(--s2); }
+.hues i { display: inline-block; width: 2rem; height: 2px; }
+.spec > * { margin: 0 0 var(--s2); }
+table.pct { border-collapse: collapse; }
+table.pct th, table.pct td { text-align: left; padding: var(--s1) var(--s4) var(--s1) 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
+table.pct th { font-weight: 600; }
+table.pct .n { text-align: right; }
+.glyph { width: 2.5rem; height: 2.5rem; vertical-align: middle; margin-right: var(--s3); }
 .glyph rect { fill: var(--ink); }
 .glyph .m { fill: var(--marker); stroke: var(--ink); stroke-width: 1; }
 </style>
 </head>
 <body>
 
-<header class="site">
-	<div class="wrap">
+<header class="mast">
+	<div class="wrap row">
 		<a class="site-title" href="#">Personality Tests</a>
-		<nav class="main" aria-label="Main">
+		<nav class="main-nav" aria-label="Main">
 			<ul>
 				<li><a href="#" aria-current="page">Tests</a></li>
 				<li><a href="#">Traits</a></li>
@@ -167,68 +201,61 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 </header>
 
-<main class="wrap">
+<main>
 
-<section class="tile">
-	<p class="tile-label">Style tile. Tokens, type, one results plate, one question screen, the nav and the footer. The norm distribution drawn here is synthetic and labelled as such; real strips use committed norm tables.</p>
-	<ul class="swatches">
-		<li class="swatch"><i style="background:var(--page)"></i><b>Page</b> #F2F4F1</li>
-		<li class="swatch"><i style="background:var(--panel)"></i><b>Panel</b> #E3E8E1</li>
-		<li class="swatch"><i style="background:var(--ink)"></i><b>Ink</b> #23282D</li>
-		<li class="swatch"><i style="background:var(--quiet)"></i><b>Quiet</b> #55606A</li>
-		<li class="swatch"><i style="background:var(--marker)"></i><b>Marker</b> #F2C230</li>
-		<li class="swatch"><i style="background:var(--band-mid)"></i><b>Band</b> Ink 8%, 16%</li>
-	</ul>
-	<p class="hues">
-		<span><i style="background:var(--hue-openness)"></i>Openness</span>
-		<span><i style="background:var(--hue-conscientiousness)"></i>Conscientiousness</span>
-		<span><i style="background:var(--hue-extraversion)"></i>Extraversion</span>
-		<span><i style="background:var(--hue-agreeableness)"></i>Agreeableness</span>
-		<span><i style="background:var(--hue-stability)"></i>Emotional stability</span>
-	</p>
-</section>
+<div class="wrap"><p class="tile-label">Style tile, page one: the top of a test page.</p></div>
 
-<section class="tile">
-	<dl class="spec">
-		<dt>Display 40</dt><dd><h1>Introvert or extrovert?</h1></dd>
-		<dt>Heading 26</dt><dd><h2>Understanding your scores</h2></dd>
-		<dt>Body 18</dt><dd class="prose">The IPIP Extraversion scale has 20 items and takes about three minutes. It is scored on your device and compared with a published sample of 3,467 adults. Links are <a href="#">underlined, not arrowed</a>.</dd>
-		<dt>Italic</dt><dd><em>You tend to seek company and conversation more than most people do.</em></dd>
-		<dt>Small 14</dt><dd class="small quiet">Source: Goldberg (1992), Psychological Assessment, 4(1), 26-42. Public domain (IPIP).</dd>
-	</dl>
-	<div class="table-scroll"><table class="pct">
-		<thead><tr><th>Scale</th><th class="n">Score out of 120</th><th class="n">Percentile</th></tr></thead>
-		<tbody>
-			<tr><td>Openness</td><td class="n">108</td><td class="n">97</td></tr>
-			<tr><td>Conscientiousness</td><td class="n">78</td><td class="n">33</td></tr>
-			<tr><td>Extraversion</td><td class="n">91</td><td class="n">83</td></tr>
-			<tr><td>Agreeableness</td><td class="n">80</td><td class="n">25</td></tr>
-			<tr><td>Emotional stability</td><td class="n">50</td><td class="n">10</td></tr>
-		</tbody>
-	</table></div>
-	<div class="actions" style="margin-top:var(--s4)">
-		<a class="btn" href="#">Start the test</a>
-		<a class="btn secondary" href="#">Save as PDF</a>
-		<a class="btn secondary" href="#">Copy as text</a>
+<section class="page-head">
+	<div class="wrap row">
+		<div class="aside">
+			<p class="section-name"><a href="#">Tests</a></p>
+		</div>
+		<div class="main">
+			<h1>Introvert or extrovert?</h1>
+			<p class="subtitle">IPIP Extraversion scale, 20 items, 3 minutes</p>
+			<p>Extraversion is the tendency to seek company, conversation and stimulation. This scale asks how accurately twenty short statements describe you, scores them on your device, and shows where you fall among 3,467 adults who answered the same items.</p>
+			<div class="actions"><a class="btn" href="#">Start the test</a></div>
+			<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+		</div>
+		<div class="facts">
+			<dl class="meta">
+				<dt>Items</dt><dd>20</dd>
+				<dt>Time</dt><dd>3 minutes</dd>
+				<dt>Norms</dt><dd>3,467 adults</dd>
+				<dt>Reliability</dt><dd>0.91</dd>
+				<dt>Licence</dt><dd>Public domain</dd>
+			</dl>
+		</div>
 	</div>
-	<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
 </section>
 
-<section class="tile">
-	<p class="tile-label">Results plate</p>
-	<div class="plate">
-		<h2 style="margin-bottom:var(--s2)">Your results</h2>
-		<p class="plate-note">IPIP-NEO-120, compared with all adults in the norm sample. Saved on this device on 3 November 2026. Curve height shows how common each score is.</p>
+<div class="wrap"><p class="tile-label">Page two: results.</p></div>
+
+<section class="plate">
+	<div class="wrap">
+		<div class="row plate-head">
+			<div class="aside"><p>Saved on this device<br />3 November 2026</p></div>
+			<div class="main wide">
+				<h2>Your results</h2>
+				<p class="plate-note">IPIP-NEO-120, compared with all adults in the norm sample. Curve height shows how common each score is.</p>
+			</div>
+		</div>
 		
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Openness</span></figcaption>
+<div class="row result">
+	<div class="aside">
+		<p class="scale-name">Openness</p>
+		<p class="scale-raw">108 of 120</p>
+	</div>
+	<div class="main wide">
+		
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="You scored 108 out of 120, the 97th percentile for openness.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-openness"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,34.0 L137.5,34.0 L143.8,34.0 L150.0,34.0 L156.3,34.0 L162.5,34.0 L168.8,34.0 L175.0,33.1 L181.3,33.1 L187.5,33.1 L193.8,33.1 L200.0,33.1 L206.3,32.2 L212.5,32.2 L218.8,31.3 L225.0,31.3 L231.3,30.4 L237.5,29.5 L243.8,29.5 L250.0,28.6 L256.3,27.7 L262.5,26.8 L268.8,25.0 L275.0,24.1 L281.3,23.1 L287.5,21.3 L293.8,20.4 L300.0,18.6 L306.3,16.8 L312.5,15.9 L318.8,14.1 L325.0,12.3 L331.3,11.4 L337.5,9.6 L343.8,8.7 L350.0,7.8 L356.3,6.0 L362.5,6.0 L368.8,6.0 L375.0,6.0 L381.3,6.0 L387.5,6.0 L393.8,6.0 L400.0,6.0 L406.3,6.0 L412.5,6.0 L418.8,6.0 L425.0,7.8 L431.3,8.7 L437.5,9.6 L443.8,11.4 L450.0,12.3 L456.3,14.1 L462.5,15.9 L468.8,16.8 L475.0,18.6 L481.3,20.4 L487.5,21.3 L493.8,23.1 L500.0,24.1 L506.3,25.0 L512.5,26.8 L518.8,27.7 L525.0,28.6 L531.3,29.5 L537.5,29.5 L543.8,30.4 L550.0,31.3 L556.3,31.3 L562.5,32.2 L568.8,32.2 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-openness-domain"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,34.0 L137.5,34.0 L143.8,34.0 L150.0,34.0 L156.3,34.0 L162.5,34.0 L168.8,34.0 L175.0,33.1 L181.3,33.1 L187.5,33.1 L193.8,33.1 L200.0,33.1 L206.3,32.2 L212.5,32.2 L218.8,31.3 L225.0,31.3 L231.3,30.4 L237.5,29.5 L243.8,29.5 L250.0,28.6 L256.3,27.7 L262.5,26.8 L268.8,25.0 L275.0,24.1 L281.3,23.1 L287.5,21.3 L293.8,20.4 L300.0,18.6 L306.3,16.8 L312.5,15.9 L318.8,14.1 L325.0,12.3 L331.3,11.4 L337.5,9.6 L343.8,8.7 L350.0,7.8 L356.3,6.0 L362.5,6.0 L368.8,6.0 L375.0,6.0 L381.3,6.0 L387.5,6.0 L393.8,6.0 L400.0,6.0 L406.3,6.0 L412.5,6.0 L418.8,6.0 L425.0,7.8 L431.3,8.7 L437.5,9.6 L443.8,11.4 L450.0,12.3 L456.3,14.1 L462.5,15.9 L468.8,16.8 L475.0,18.6 L481.3,20.4 L487.5,21.3 L493.8,23.1 L500.0,24.1 L506.3,25.0 L512.5,26.8 L518.8,27.7 L525.0,28.6 L531.3,29.5 L537.5,29.5 L543.8,30.4 L550.0,31.3 L556.3,31.3 L562.5,32.2 L568.8,32.2 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-openness)" x="0" y="6" width="337.5" height="28" />
-			<rect class="iqr" clip-path="url(#clip-openness)" x="337.5" y="6" width="100.0" height="28" />
-			<rect class="density" clip-path="url(#clip-openness)" x="437.5" y="6" width="162.5" height="28" />
+			<rect class="density" clip-path="url(#clip-openness-domain)" x="0" y="6" width="337.5" height="28" />
+			<rect class="iqr" clip-path="url(#clip-openness-domain)" x="337.5" y="6" width="100.0" height="28" />
+			<rect class="density" clip-path="url(#clip-openness-domain)" x="437.5" y="6" width="162.5" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-openness)" />
 		</svg>
 		
@@ -237,18 +264,27 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	
-</figure>
-<p class="strip-means"><em>You tend to enjoy new ideas and ways of doing things more than most people do.</em></p>
+</div>
+		<p class="means"><em>You tend to enjoy new ideas and ways of doing things more than most people do.</em></p>
+		
+	</div>
+</div>
 
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Conscientiousness</span></figcaption>
+<div class="row result">
+	<div class="aside">
+		<p class="scale-name">Conscientiousness</p>
+		<p class="scale-raw">78 of 120</p>
+	</div>
+	<div class="main wide">
+		
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="You scored 78 out of 120, the 33rd percentile for conscientiousness.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-conscientiousness"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,33.1 L137.5,33.1 L143.8,33.1 L150.0,33.1 L156.3,33.1 L162.5,33.1 L168.8,32.2 L175.0,32.2 L181.3,32.2 L187.5,31.3 L193.8,31.3 L200.0,30.3 L206.3,30.3 L212.5,29.4 L218.8,28.5 L225.0,27.6 L231.3,27.6 L237.5,26.7 L243.8,25.8 L250.0,24.9 L256.3,23.9 L262.5,22.1 L268.8,21.2 L275.0,20.3 L281.3,19.4 L287.5,18.5 L293.8,16.6 L300.0,15.7 L306.3,14.8 L312.5,13.9 L318.8,13.0 L325.0,12.1 L331.3,11.1 L337.5,10.2 L343.8,9.3 L350.0,9.3 L356.3,8.4 L362.5,8.4 L368.8,8.4 L375.0,7.5 L381.3,8.4 L387.5,8.4 L393.8,8.4 L400.0,9.3 L406.3,9.3 L412.5,10.2 L418.8,11.1 L425.0,12.1 L431.3,13.0 L437.5,13.9 L443.8,14.8 L450.0,15.7 L456.3,16.6 L462.5,18.5 L468.8,19.4 L475.0,20.3 L481.3,21.2 L487.5,22.1 L493.8,23.9 L500.0,24.9 L506.3,25.8 L512.5,26.7 L518.8,27.6 L525.0,27.6 L531.3,28.5 L537.5,29.4 L543.8,30.3 L550.0,30.3 L556.3,31.3 L562.5,31.3 L568.8,32.2 L575.0,32.2 L581.3,32.2 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-conscientiousness-domain"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,33.1 L137.5,33.1 L143.8,33.1 L150.0,33.1 L156.3,33.1 L162.5,33.1 L168.8,32.2 L175.0,32.2 L181.3,32.2 L187.5,31.3 L193.8,31.3 L200.0,30.3 L206.3,30.3 L212.5,29.4 L218.8,28.5 L225.0,27.6 L231.3,27.6 L237.5,26.7 L243.8,25.8 L250.0,24.9 L256.3,23.9 L262.5,22.1 L268.8,21.2 L275.0,20.3 L281.3,19.4 L287.5,18.5 L293.8,16.6 L300.0,15.7 L306.3,14.8 L312.5,13.9 L318.8,13.0 L325.0,12.1 L331.3,11.1 L337.5,10.2 L343.8,9.3 L350.0,9.3 L356.3,8.4 L362.5,8.4 L368.8,8.4 L375.0,7.5 L381.3,8.4 L387.5,8.4 L393.8,8.4 L400.0,9.3 L406.3,9.3 L412.5,10.2 L418.8,11.1 L425.0,12.1 L431.3,13.0 L437.5,13.9 L443.8,14.8 L450.0,15.7 L456.3,16.6 L462.5,18.5 L468.8,19.4 L475.0,20.3 L481.3,21.2 L487.5,22.1 L493.8,23.9 L500.0,24.9 L506.3,25.8 L512.5,26.7 L518.8,27.6 L525.0,27.6 L531.3,28.5 L537.5,29.4 L543.8,30.3 L550.0,30.3 L556.3,31.3 L562.5,31.3 L568.8,32.2 L575.0,32.2 L581.3,32.2 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-conscientiousness)" x="0" y="6" width="318.8" height="28" />
-			<rect class="iqr" clip-path="url(#clip-conscientiousness)" x="318.8" y="6" width="112.5" height="28" />
-			<rect class="density" clip-path="url(#clip-conscientiousness)" x="431.3" y="6" width="168.8" height="28" />
+			<rect class="density" clip-path="url(#clip-conscientiousness-domain)" x="0" y="6" width="318.8" height="28" />
+			<rect class="iqr" clip-path="url(#clip-conscientiousness-domain)" x="318.8" y="6" width="112.5" height="28" />
+			<rect class="density" clip-path="url(#clip-conscientiousness-domain)" x="431.3" y="6" width="168.8" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-conscientiousness)" />
 		</svg>
 		
@@ -257,18 +293,27 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	
-</figure>
-<p class="strip-means"><em>You are a little less organised and persistent than most people.</em></p>
+</div>
+		<p class="means"><em>You are a little less organised and persistent than most people.</em></p>
+		
+	</div>
+</div>
 
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Extraversion</span></figcaption>
+<div class="row result">
+	<div class="aside">
+		<p class="scale-name">Extraversion</p>
+		<p class="scale-raw">91 of 120</p>
+	</div>
+	<div class="main wide">
+		
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="You scored 91 out of 120, the 83rd percentile for extraversion.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-extraversion"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,33.1 L56.3,33.1 L62.5,33.1 L68.8,33.1 L75.0,33.1 L81.3,33.1 L87.5,33.1 L93.8,32.2 L100.0,32.2 L106.3,32.2 L112.5,31.3 L118.8,31.3 L125.0,31.3 L131.3,30.4 L137.5,30.4 L143.8,29.5 L150.0,29.5 L156.3,28.6 L162.5,27.6 L168.8,27.6 L175.0,26.7 L181.3,25.8 L187.5,24.9 L193.8,24.0 L200.0,24.0 L206.3,23.1 L212.5,22.2 L218.8,21.3 L225.0,20.4 L231.3,19.5 L237.5,18.6 L243.8,17.7 L250.0,16.7 L256.3,15.8 L262.5,14.9 L268.8,14.9 L275.0,14.0 L281.3,13.1 L287.5,13.1 L293.8,12.2 L300.0,12.2 L306.3,11.3 L312.5,11.3 L318.8,11.3 L325.0,11.3 L331.3,11.3 L337.5,11.3 L343.8,11.3 L350.0,12.2 L356.3,12.2 L362.5,13.1 L368.8,13.1 L375.0,14.0 L381.3,14.9 L387.5,14.9 L393.8,15.8 L400.0,16.7 L406.3,17.7 L412.5,18.6 L418.8,19.5 L425.0,20.4 L431.3,21.3 L437.5,22.2 L443.8,23.1 L450.0,24.0 L456.3,24.0 L462.5,24.9 L468.8,25.8 L475.0,26.7 L481.3,27.6 L487.5,27.6 L493.8,28.6 L500.0,29.5 L506.3,29.5 L512.5,30.4 L518.8,30.4 L525.0,31.3 L531.3,31.3 L537.5,31.3 L543.8,32.2 L550.0,32.2 L556.3,32.2 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-extraversion-domain"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,33.1 L56.3,33.1 L62.5,33.1 L68.8,33.1 L75.0,33.1 L81.3,33.1 L87.5,33.1 L93.8,32.2 L100.0,32.2 L106.3,32.2 L112.5,31.3 L118.8,31.3 L125.0,31.3 L131.3,30.4 L137.5,30.4 L143.8,29.5 L150.0,29.5 L156.3,28.6 L162.5,27.6 L168.8,27.6 L175.0,26.7 L181.3,25.8 L187.5,24.9 L193.8,24.0 L200.0,24.0 L206.3,23.1 L212.5,22.2 L218.8,21.3 L225.0,20.4 L231.3,19.5 L237.5,18.6 L243.8,17.7 L250.0,16.7 L256.3,15.8 L262.5,14.9 L268.8,14.9 L275.0,14.0 L281.3,13.1 L287.5,13.1 L293.8,12.2 L300.0,12.2 L306.3,11.3 L312.5,11.3 L318.8,11.3 L325.0,11.3 L331.3,11.3 L337.5,11.3 L343.8,11.3 L350.0,12.2 L356.3,12.2 L362.5,13.1 L368.8,13.1 L375.0,14.0 L381.3,14.9 L387.5,14.9 L393.8,15.8 L400.0,16.7 L406.3,17.7 L412.5,18.6 L418.8,19.5 L425.0,20.4 L431.3,21.3 L437.5,22.2 L443.8,23.1 L450.0,24.0 L456.3,24.0 L462.5,24.9 L468.8,25.8 L475.0,26.7 L481.3,27.6 L487.5,27.6 L493.8,28.6 L500.0,29.5 L506.3,29.5 L512.5,30.4 L518.8,30.4 L525.0,31.3 L531.3,31.3 L537.5,31.3 L543.8,32.2 L550.0,32.2 L556.3,32.2 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-extraversion)" x="0" y="6" width="256.3" height="28" />
-			<rect class="iqr" clip-path="url(#clip-extraversion)" x="256.3" y="6" width="137.5" height="28" />
-			<rect class="density" clip-path="url(#clip-extraversion)" x="393.8" y="6" width="206.3" height="28" />
+			<rect class="density" clip-path="url(#clip-extraversion-domain)" x="0" y="6" width="256.3" height="28" />
+			<rect class="iqr" clip-path="url(#clip-extraversion-domain)" x="256.3" y="6" width="137.5" height="28" />
+			<rect class="density" clip-path="url(#clip-extraversion-domain)" x="393.8" y="6" width="206.3" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-extraversion)" />
 		</svg>
 		
@@ -277,19 +322,19 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	
-</figure>
-<p class="strip-means"><em>You tend to seek company and conversation more than most people do.</em></p>
-<div class="facets"><h3>Facets of extraversion</h3>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Friendliness</span></figcaption>
+</div>
+		<p class="means"><em>You tend to seek company and conversation more than most people do.</em></p>
+		
+		<div class="facets">
+			<div class="facet"><span class="facet-name">Friendliness</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 17 out of 20, the 91st percentile for friendliness.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-friendliness"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-friendliness-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-friendliness)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-friendliness)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-friendliness)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-friendliness-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-friendliness-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-friendliness-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -298,17 +343,15 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Gregariousness</span></figcaption>
+</div></div><div class="facet"><span class="facet-name">Gregariousness</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 14 out of 20, the 63rd percentile for gregariousness.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-gregariousness"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-gregariousness-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-gregariousness)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-gregariousness)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-gregariousness)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-gregariousness-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-gregariousness-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-gregariousness-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -317,17 +360,15 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Assertiveness</span></figcaption>
+</div></div><div class="facet"><span class="facet-name">Assertiveness</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 12 out of 20, the 37th percentile for assertiveness.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-assertiveness"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-assertiveness-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-assertiveness)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-assertiveness)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-assertiveness)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-assertiveness-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-assertiveness-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-assertiveness-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -336,17 +377,15 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Activity level</span></figcaption>
+</div></div><div class="facet"><span class="facet-name">Activity level</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 15 out of 20, the 75th percentile for activity level.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-activity-level"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-activity-level-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-activity-level)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-activity-level)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-activity-level)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-activity-level-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-activity-level-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-activity-level-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -355,17 +394,15 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Excitement-seeking</span></figcaption>
+</div></div><div class="facet"><span class="facet-name">Excitement-seeking</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 11 out of 20, the 26th percentile for excitement-seeking.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-excitement-seeking"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-excitement-seeking-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-excitement-seeking)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-excitement-seeking)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-excitement-seeking)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-excitement-seeking-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-excitement-seeking-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-excitement-seeking-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -374,17 +411,15 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
-
-<figure class="strip strip-facet">
-	<figcaption class="strip-head"><span class="strip-name">Cheerfulness</span></figcaption>
+</div></div><div class="facet"><span class="facet-name">Cheerfulness</span>
+<div class="strip strip-facet">
 	<div class="strip-plot" role="img" aria-label="You scored 16 out of 20, the 84th percentile for cheerfulness.">
 		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-cheerfulness"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-cheerfulness-facet"><path d="M0.0,22 L0.0,21.9 L37.5,21.6 L75.0,21.2 L112.5,20.4 L150.0,19.0 L187.5,17.0 L225.0,14.6 L262.5,12.3 L300.0,10.5 L337.5,9.9 L375.0,10.5 L412.5,12.3 L450.0,14.6 L487.5,17.0 L525.0,19.0 L562.5,20.4 L600.0,21.2 L600.0,22 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
-			<rect class="density" clip-path="url(#clip-cheerfulness)" x="0" y="6" width="262.5" height="16" />
-			<rect class="iqr" clip-path="url(#clip-cheerfulness)" x="262.5" y="6" width="150.0" height="16" />
-			<rect class="density" clip-path="url(#clip-cheerfulness)" x="412.5" y="6" width="187.5" height="16" />
+			<rect class="density" clip-path="url(#clip-cheerfulness-facet)" x="0" y="6" width="262.5" height="16" />
+			<rect class="iqr" clip-path="url(#clip-cheerfulness-facet)" x="262.5" y="6" width="150.0" height="16" />
+			<rect class="density" clip-path="url(#clip-cheerfulness-facet)" x="412.5" y="6" width="187.5" height="16" />
 			
 		</svg>
 		
@@ -393,18 +428,26 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>4</span><span>20</span></div>
 	
-</figure>
+</div></div>
+		</div>
+	</div>
 </div>
 
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Agreeableness</span></figcaption>
+<div class="row result">
+	<div class="aside">
+		<p class="scale-name">Agreeableness</p>
+		<p class="scale-raw">80 of 120</p>
+	</div>
+	<div class="main wide">
+		
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="You scored 80 out of 120, the 25th percentile for agreeableness.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-agreeableness"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,34.0 L137.5,34.0 L143.8,34.0 L150.0,34.0 L156.3,34.0 L162.5,34.0 L168.8,34.0 L175.0,34.0 L181.3,34.0 L187.5,33.1 L193.8,33.1 L200.0,33.1 L206.3,33.1 L212.5,33.1 L218.8,32.2 L225.0,32.2 L231.3,31.3 L237.5,31.3 L243.8,30.4 L250.0,29.5 L256.3,29.5 L262.5,28.6 L268.8,27.7 L275.0,26.8 L281.3,24.9 L287.5,24.0 L293.8,23.1 L300.0,21.3 L306.3,20.4 L312.5,18.6 L318.8,16.8 L325.0,15.9 L331.3,14.1 L337.5,12.3 L343.8,11.3 L350.0,9.5 L356.3,8.6 L362.5,7.7 L368.8,6.0 L375.0,6.0 L381.3,6.0 L387.5,6.0 L393.8,6.0 L400.0,6.0 L406.3,6.0 L412.5,6.0 L418.8,6.0 L425.0,6.0 L431.3,6.0 L437.5,7.7 L443.8,8.6 L450.0,9.5 L456.3,11.3 L462.5,12.3 L468.8,14.1 L475.0,15.9 L481.3,16.8 L487.5,18.6 L493.8,20.4 L500.0,21.3 L506.3,23.1 L512.5,24.0 L518.8,24.9 L525.0,26.8 L531.3,27.7 L537.5,28.6 L543.8,29.5 L550.0,29.5 L556.3,30.4 L562.5,31.3 L568.8,31.3 L575.0,32.2 L581.3,32.2 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-agreeableness-domain"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,34.0 L56.3,34.0 L62.5,34.0 L68.8,34.0 L75.0,34.0 L81.3,34.0 L87.5,34.0 L93.8,34.0 L100.0,34.0 L106.3,34.0 L112.5,34.0 L118.8,34.0 L125.0,34.0 L131.3,34.0 L137.5,34.0 L143.8,34.0 L150.0,34.0 L156.3,34.0 L162.5,34.0 L168.8,34.0 L175.0,34.0 L181.3,34.0 L187.5,33.1 L193.8,33.1 L200.0,33.1 L206.3,33.1 L212.5,33.1 L218.8,32.2 L225.0,32.2 L231.3,31.3 L237.5,31.3 L243.8,30.4 L250.0,29.5 L256.3,29.5 L262.5,28.6 L268.8,27.7 L275.0,26.8 L281.3,24.9 L287.5,24.0 L293.8,23.1 L300.0,21.3 L306.3,20.4 L312.5,18.6 L318.8,16.8 L325.0,15.9 L331.3,14.1 L337.5,12.3 L343.8,11.3 L350.0,9.5 L356.3,8.6 L362.5,7.7 L368.8,6.0 L375.0,6.0 L381.3,6.0 L387.5,6.0 L393.8,6.0 L400.0,6.0 L406.3,6.0 L412.5,6.0 L418.8,6.0 L425.0,6.0 L431.3,6.0 L437.5,7.7 L443.8,8.6 L450.0,9.5 L456.3,11.3 L462.5,12.3 L468.8,14.1 L475.0,15.9 L481.3,16.8 L487.5,18.6 L493.8,20.4 L500.0,21.3 L506.3,23.1 L512.5,24.0 L518.8,24.9 L525.0,26.8 L531.3,27.7 L537.5,28.6 L543.8,29.5 L550.0,29.5 L556.3,30.4 L562.5,31.3 L568.8,31.3 L575.0,32.2 L581.3,32.2 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-agreeableness)" x="0" y="6" width="350.0" height="28" />
-			<rect class="iqr" clip-path="url(#clip-agreeableness)" x="350.0" y="6" width="100.0" height="28" />
-			<rect class="density" clip-path="url(#clip-agreeableness)" x="450.0" y="6" width="150.0" height="28" />
+			<rect class="density" clip-path="url(#clip-agreeableness-domain)" x="0" y="6" width="350.0" height="28" />
+			<rect class="iqr" clip-path="url(#clip-agreeableness-domain)" x="350.0" y="6" width="100.0" height="28" />
+			<rect class="density" clip-path="url(#clip-agreeableness-domain)" x="450.0" y="6" width="150.0" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-agreeableness)" />
 		</svg>
 		
@@ -413,18 +456,27 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	
-</figure>
-<p class="strip-means"><em>You are a little less inclined than most people to put others first.</em></p>
+</div>
+		<p class="means"><em>You are a little less inclined than most people to put others first.</em></p>
+		
+	</div>
+</div>
 
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Emotional stability</span></figcaption>
+<div class="row result">
+	<div class="aside">
+		<p class="scale-name">Emotional stability</p>
+		<p class="scale-raw">50 of 120</p>
+	</div>
+	<div class="main wide">
+		
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="You scored 50 out of 120, the 10th percentile for emotional stability.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-emotional-stability"><path d="M0.0,34 L0.0,34.0 L6.3,33.1 L12.5,33.1 L18.8,33.1 L25.0,33.1 L31.3,33.1 L37.5,33.1 L43.8,33.1 L50.0,33.1 L56.3,32.2 L62.5,32.2 L68.8,32.2 L75.0,32.2 L81.3,31.3 L87.5,31.3 L93.8,30.4 L100.0,30.4 L106.3,30.4 L112.5,29.5 L118.8,29.5 L125.0,28.5 L131.3,27.6 L137.5,27.6 L143.8,26.7 L150.0,25.8 L156.3,25.8 L162.5,24.9 L168.8,24.0 L175.0,23.1 L181.3,22.2 L187.5,22.2 L193.8,21.3 L200.0,20.4 L206.3,19.5 L212.5,18.5 L218.8,17.6 L225.0,17.6 L231.3,16.7 L237.5,15.8 L243.8,15.8 L250.0,14.9 L256.3,14.0 L262.5,14.0 L268.8,13.1 L275.0,13.1 L281.3,13.1 L287.5,13.1 L293.8,13.1 L300.0,12.2 L306.3,13.1 L312.5,13.1 L318.8,13.1 L325.0,13.1 L331.3,13.1 L337.5,14.0 L343.8,14.0 L350.0,14.9 L356.3,15.8 L362.5,15.8 L368.8,16.7 L375.0,17.6 L381.3,17.6 L387.5,18.5 L393.8,19.5 L400.0,20.4 L406.3,21.3 L412.5,22.2 L418.8,22.2 L425.0,23.1 L431.3,24.0 L437.5,24.9 L443.8,25.8 L450.0,25.8 L456.3,26.7 L462.5,27.6 L468.8,27.6 L475.0,28.5 L481.3,29.5 L487.5,29.5 L493.8,30.4 L500.0,30.4 L506.3,30.4 L512.5,31.3 L518.8,31.3 L525.0,32.2 L531.3,32.2 L537.5,32.2 L543.8,32.2 L550.0,33.1 L556.3,33.1 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,34.0 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-emotional-stability-domain"><path d="M0.0,34 L0.0,34.0 L6.3,33.1 L12.5,33.1 L18.8,33.1 L25.0,33.1 L31.3,33.1 L37.5,33.1 L43.8,33.1 L50.0,33.1 L56.3,32.2 L62.5,32.2 L68.8,32.2 L75.0,32.2 L81.3,31.3 L87.5,31.3 L93.8,30.4 L100.0,30.4 L106.3,30.4 L112.5,29.5 L118.8,29.5 L125.0,28.5 L131.3,27.6 L137.5,27.6 L143.8,26.7 L150.0,25.8 L156.3,25.8 L162.5,24.9 L168.8,24.0 L175.0,23.1 L181.3,22.2 L187.5,22.2 L193.8,21.3 L200.0,20.4 L206.3,19.5 L212.5,18.5 L218.8,17.6 L225.0,17.6 L231.3,16.7 L237.5,15.8 L243.8,15.8 L250.0,14.9 L256.3,14.0 L262.5,14.0 L268.8,13.1 L275.0,13.1 L281.3,13.1 L287.5,13.1 L293.8,13.1 L300.0,12.2 L306.3,13.1 L312.5,13.1 L318.8,13.1 L325.0,13.1 L331.3,13.1 L337.5,14.0 L343.8,14.0 L350.0,14.9 L356.3,15.8 L362.5,15.8 L368.8,16.7 L375.0,17.6 L381.3,17.6 L387.5,18.5 L393.8,19.5 L400.0,20.4 L406.3,21.3 L412.5,22.2 L418.8,22.2 L425.0,23.1 L431.3,24.0 L437.5,24.9 L443.8,25.8 L450.0,25.8 L456.3,26.7 L462.5,27.6 L468.8,27.6 L475.0,28.5 L481.3,29.5 L487.5,29.5 L493.8,30.4 L500.0,30.4 L506.3,30.4 L512.5,31.3 L518.8,31.3 L525.0,32.2 L531.3,32.2 L537.5,32.2 L543.8,32.2 L550.0,33.1 L556.3,33.1 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,34.0 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-emotional-stability)" x="0" y="6" width="231.3" height="28" />
-			<rect class="iqr" clip-path="url(#clip-emotional-stability)" x="231.3" y="6" width="137.5" height="28" />
-			<rect class="density" clip-path="url(#clip-emotional-stability)" x="368.8" y="6" width="231.3" height="28" />
+			<rect class="density" clip-path="url(#clip-emotional-stability-domain)" x="0" y="6" width="231.3" height="28" />
+			<rect class="iqr" clip-path="url(#clip-emotional-stability-domain)" x="231.3" y="6" width="137.5" height="28" />
+			<rect class="density" clip-path="url(#clip-emotional-stability-domain)" x="368.8" y="6" width="231.3" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-stability)" />
 		</svg>
 		
@@ -433,19 +485,26 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	
-</figure>
-<p class="strip-means"><em>You tend to feel stress and low mood more readily than most people do.</em></p>
-		<p class="plate-note">Two attempts, or two people, on one strip: the earlier one is an outline.</p>
+</div>
+		<p class="means"><em>You tend to feel stress and low mood more readily than most people do.</em></p>
 		
-<figure class="strip strip-domain">
-	<figcaption class="strip-head"><span class="strip-name">Extraversion</span></figcaption>
+	</div>
+</div>
+		<div class="row result">
+			<div class="aside">
+				<p class="scale-name">Extraversion</p>
+				<p class="scale-raw">Two attempts</p>
+			</div>
+			<div class="main wide">
+				
+<div class="strip strip-domain">
 	<div class="strip-plot" role="img" aria-label="14 October: 70 out of 120, the 35th percentile. today: 91 out of 120, the 83rd percentile for extraversion.">
 		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
-			<defs><clipPath id="clip-extraversion"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,33.1 L56.3,33.1 L62.5,33.1 L68.8,33.1 L75.0,33.1 L81.3,33.1 L87.5,33.1 L93.8,32.2 L100.0,32.2 L106.3,32.2 L112.5,31.3 L118.8,31.3 L125.0,31.3 L131.3,30.4 L137.5,30.4 L143.8,29.5 L150.0,29.5 L156.3,28.6 L162.5,27.6 L168.8,27.6 L175.0,26.7 L181.3,25.8 L187.5,24.9 L193.8,24.0 L200.0,24.0 L206.3,23.1 L212.5,22.2 L218.8,21.3 L225.0,20.4 L231.3,19.5 L237.5,18.6 L243.8,17.7 L250.0,16.7 L256.3,15.8 L262.5,14.9 L268.8,14.9 L275.0,14.0 L281.3,13.1 L287.5,13.1 L293.8,12.2 L300.0,12.2 L306.3,11.3 L312.5,11.3 L318.8,11.3 L325.0,11.3 L331.3,11.3 L337.5,11.3 L343.8,11.3 L350.0,12.2 L356.3,12.2 L362.5,13.1 L368.8,13.1 L375.0,14.0 L381.3,14.9 L387.5,14.9 L393.8,15.8 L400.0,16.7 L406.3,17.7 L412.5,18.6 L418.8,19.5 L425.0,20.4 L431.3,21.3 L437.5,22.2 L443.8,23.1 L450.0,24.0 L456.3,24.0 L462.5,24.9 L468.8,25.8 L475.0,26.7 L481.3,27.6 L487.5,27.6 L493.8,28.6 L500.0,29.5 L506.3,29.5 L512.5,30.4 L518.8,30.4 L525.0,31.3 L531.3,31.3 L537.5,31.3 L543.8,32.2 L550.0,32.2 L556.3,32.2 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
+			<defs><clipPath id="clip-extraversion-domain-two"><path d="M0.0,34 L0.0,34.0 L6.3,34.0 L12.5,34.0 L18.8,34.0 L25.0,34.0 L31.3,34.0 L37.5,34.0 L43.8,34.0 L50.0,33.1 L56.3,33.1 L62.5,33.1 L68.8,33.1 L75.0,33.1 L81.3,33.1 L87.5,33.1 L93.8,32.2 L100.0,32.2 L106.3,32.2 L112.5,31.3 L118.8,31.3 L125.0,31.3 L131.3,30.4 L137.5,30.4 L143.8,29.5 L150.0,29.5 L156.3,28.6 L162.5,27.6 L168.8,27.6 L175.0,26.7 L181.3,25.8 L187.5,24.9 L193.8,24.0 L200.0,24.0 L206.3,23.1 L212.5,22.2 L218.8,21.3 L225.0,20.4 L231.3,19.5 L237.5,18.6 L243.8,17.7 L250.0,16.7 L256.3,15.8 L262.5,14.9 L268.8,14.9 L275.0,14.0 L281.3,13.1 L287.5,13.1 L293.8,12.2 L300.0,12.2 L306.3,11.3 L312.5,11.3 L318.8,11.3 L325.0,11.3 L331.3,11.3 L337.5,11.3 L343.8,11.3 L350.0,12.2 L356.3,12.2 L362.5,13.1 L368.8,13.1 L375.0,14.0 L381.3,14.9 L387.5,14.9 L393.8,15.8 L400.0,16.7 L406.3,17.7 L412.5,18.6 L418.8,19.5 L425.0,20.4 L431.3,21.3 L437.5,22.2 L443.8,23.1 L450.0,24.0 L456.3,24.0 L462.5,24.9 L468.8,25.8 L475.0,26.7 L481.3,27.6 L487.5,27.6 L493.8,28.6 L500.0,29.5 L506.3,29.5 L512.5,30.4 L518.8,30.4 L525.0,31.3 L531.3,31.3 L537.5,31.3 L543.8,32.2 L550.0,32.2 L556.3,32.2 L562.5,33.1 L568.8,33.1 L575.0,33.1 L581.3,33.1 L587.5,33.1 L593.8,33.1 L600.0,33.1 L600.0,34 Z" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
-			<rect class="density" clip-path="url(#clip-extraversion)" x="0" y="6" width="256.3" height="28" />
-			<rect class="iqr" clip-path="url(#clip-extraversion)" x="256.3" y="6" width="137.5" height="28" />
-			<rect class="density" clip-path="url(#clip-extraversion)" x="393.8" y="6" width="206.3" height="28" />
+			<rect class="density" clip-path="url(#clip-extraversion-domain-two)" x="0" y="6" width="256.3" height="28" />
+			<rect class="iqr" clip-path="url(#clip-extraversion-domain-two)" x="256.3" y="6" width="137.5" height="28" />
+			<rect class="density" clip-path="url(#clip-extraversion-domain-two)" x="393.8" y="6" width="206.3" height="28" />
 			<rect x="0" y="34" width="600" height="2" fill="var(--hue-extraversion)" />
 		</svg>
 		<span class="marker marker-outline" style="left:47.92%"></span><span class="pct pct-second" style="left:47.92%">35th</span>
@@ -454,170 +513,256 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	</div>
 	<div class="strip-axis"><span>24</span><span>120</span></div>
 	<p class="strip-key">Outline: 14 October, 35th. Filled: today, 83rd.</p>
-</figure>
-		<div class="actions" style="margin-top:var(--s4)">
-			<a class="btn secondary" href="#">Copy as text</a>
-			<a class="btn secondary" href="#">Save as PDF</a>
-			<a class="btn secondary" href="#">Start again</a>
+</div>
+			</div>
 		</div>
-		<p class="links"><a href="#">Share a comparison link</a><a href="#">Set a retake reminder</a></p>
+		<div class="row plate-foot">
+			<div class="aside"></div>
+			<div class="main wide">
+				<div class="actions">
+					<a class="btn secondary" href="#">Copy as text</a>
+					<a class="btn secondary" href="#">Save as PDF</a>
+					<a class="btn secondary" href="#">Start again</a>
+				</div>
+				<p class="links"><a href="#">Share a comparison link</a><a href="#">Set a retake reminder</a></p>
+			</div>
+		</div>
 	</div>
 </section>
 
-<section class="tile">
-	<p class="tile-label">Question screen</p>
-	<div class="plate">
+<div class="wrap"><p class="tile-label">Page three: a question screen.</p></div>
+
+<section class="plate">
+	<div class="wrap">
 		<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="10" aria-label="Progress"><i></i></div>
-		<p class="progress-text"><span>Screen 1 of 5</span><span>10 of 50 answered</span></p>
+		<div class="row screen-head">
+			<div class="aside"><p>Screen 1 of 5</p></div>
+			<div class="main wide"><p>10 of 50 answered. Rate how accurately each statement describes you.</p></div>
+		</div>
 		<form>
 			
-<div class="item" role="group" aria-labelledby="q1-text">
-	<p class="item-text" id="q1-text"><span class="item-n">1</span>Am the life of the party.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q1" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q1" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q1" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q1" value="4" checked aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q1" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q1-text">
+	<div class="aside"><span class="q-n">01</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q1-text">Am the life of the party.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q1" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q1" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q1" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q1" value="4" checked aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q1" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q2-text">
-	<p class="item-text" id="q2-text"><span class="item-n">2</span>Feel little concern for others.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q2" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q2" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q2" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q2" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q2" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q2-text">
+	<div class="aside"><span class="q-n">02</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q2-text">Feel little concern for others.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q2" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q2" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q2" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q2" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q2" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q3-text">
-	<p class="item-text" id="q3-text"><span class="item-n">3</span>Am always prepared.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q3" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q3" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q3" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q3" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q3" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q3-text">
+	<div class="aside"><span class="q-n">03</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q3-text">Am always prepared.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q3" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q3" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q3" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q3" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q3" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q4-text">
-	<p class="item-text" id="q4-text"><span class="item-n">4</span>Get stressed out easily.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q4" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q4" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q4" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q4" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q4" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q4-text">
+	<div class="aside"><span class="q-n">04</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q4-text">Get stressed out easily.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q4" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q4" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q4" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q4" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q4" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q5-text">
-	<p class="item-text" id="q5-text"><span class="item-n">5</span>Have a rich vocabulary.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q5" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q5" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q5" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q5" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q5" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q5-text">
+	<div class="aside"><span class="q-n">05</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q5-text">Have a rich vocabulary.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q5" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q5" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q5" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q5" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q5" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q6-text">
-	<p class="item-text" id="q6-text"><span class="item-n">6</span>Don't talk a lot.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q6" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q6" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q6" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q6" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q6" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q6-text">
+	<div class="aside"><span class="q-n">06</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q6-text">Don't talk a lot.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q6" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q6" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q6" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q6" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q6" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q7-text">
-	<p class="item-text" id="q7-text"><span class="item-n">7</span>Am interested in people.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q7" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q7" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q7" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q7" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q7" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q7-text">
+	<div class="aside"><span class="q-n">07</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q7-text">Am interested in people.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q7" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q7" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q7" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q7" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q7" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q8-text">
-	<p class="item-text" id="q8-text"><span class="item-n">8</span>Leave my belongings around.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q8" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q8" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q8" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q8" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q8" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q8-text">
+	<div class="aside"><span class="q-n">08</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q8-text">Leave my belongings around.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q8" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q8" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q8" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q8" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q8" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q9-text">
-	<p class="item-text" id="q9-text"><span class="item-n">9</span>Am relaxed most of the time.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q9" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q9" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q9" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q9" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q9" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q9-text">
+	<div class="aside"><span class="q-n">09</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q9-text">Am relaxed most of the time.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q9" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q9" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q9" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q9" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q9" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
 
-<div class="item" role="group" aria-labelledby="q10-text">
-	<p class="item-text" id="q10-text"><span class="item-n">10</span>Have difficulty understanding abstract ideas.</p>
-	<div class="options">
-		<label class="opt"><input type="radio" name="q10" value="1" aria-label="Very inaccurate" /><span class="opt-n">1</span><span class="opt-label">Very inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q10" value="2" aria-label="Moderately inaccurate" /><span class="opt-n">2</span><span class="opt-label">Moderately inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q10" value="3" aria-label="Neither accurate nor inaccurate" /><span class="opt-n">3</span><span class="opt-label">Neither accurate nor inaccurate</span></label>
-		<label class="opt"><input type="radio" name="q10" value="4" aria-label="Moderately accurate" /><span class="opt-n">4</span><span class="opt-label">Moderately accurate</span></label>
-		<label class="opt"><input type="radio" name="q10" value="5" aria-label="Very accurate" /><span class="opt-n">5</span><span class="opt-label">Very accurate</span></label>
+<div class="row q" role="group" aria-labelledby="q10-text">
+	<div class="aside"><span class="q-n">10</span></div>
+	<div class="main wide">
+		<p class="q-text" id="q10-text">Have difficulty understanding abstract ideas.</p>
+		<div class="cells">
+			<label class="cell"><input type="radio" name="q10" value="1" aria-label="Very inaccurate" /><span class="cell-n">1</span><span class="cell-label">Very inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q10" value="2" aria-label="Moderately inaccurate" /><span class="cell-n">2</span><span class="cell-label">Moderately inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q10" value="3" aria-label="Neither accurate nor inaccurate" /><span class="cell-n">3</span><span class="cell-label">Neither accurate nor inaccurate</span></label>
+			<label class="cell"><input type="radio" name="q10" value="4" aria-label="Moderately accurate" /><span class="cell-n">4</span><span class="cell-label">Moderately accurate</span></label>
+			<label class="cell"><input type="radio" name="q10" value="5" aria-label="Very accurate" /><span class="cell-n">5</span><span class="cell-label">Very accurate</span></label>
+		</div>
+		<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 	</div>
-	<div class="ends" aria-hidden="true"><span>Very inaccurate</span><span>Very accurate</span></div>
 </div>
-			<div class="screen-foot">
-				<span class="keys">Keys 1 to 5 answer, Enter continues.</span>
-				<button type="button" class="btn">Next screen</button>
+			<div class="row">
+				<div class="aside"></div>
+				<div class="main wide screen-foot">
+					<span class="keys">Keys 1 to 5 answer, Enter continues.</span>
+					<button type="button" class="btn">Next screen</button>
+				</div>
 			</div>
 		</form>
 	</div>
 </section>
 
-<section class="tile">
-	<p class="tile-label">Glyphs: five strips for the Big Five, one for a single trait.</p>
-	<div class="actions">
-		<svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
-			<rect x="4" y="7" width="40" height="2"/><rect x="4" y="15" width="40" height="2"/><rect x="4" y="23" width="40" height="2"/><rect x="4" y="31" width="40" height="2"/><rect x="4" y="39" width="40" height="2"/>
-			<rect class="m" x="30" y="4" width="4" height="8" rx="1"/><rect class="m" x="14" y="12" width="4" height="8" rx="1"/><rect class="m" x="36" y="20" width="4" height="8" rx="1"/><rect class="m" x="22" y="28" width="4" height="8" rx="1"/><rect class="m" x="10" y="36" width="4" height="8" rx="1"/>
-		</svg>
-		<svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
-			<rect x="4" y="23" width="40" height="2"/><rect class="m" x="30" y="17" width="4" height="14" rx="1"/>
-		</svg>
+<div class="wrap"><p class="tile-label">Appendix: tokens, type and glyphs.</p></div>
+
+<section class="appendix">
+	<div class="wrap">
+		<div class="row">
+			<div class="aside">Colour</div>
+			<div class="main wide">
+				<ul class="swatches">
+					<li class="swatch"><i style="background:var(--page)"></i>Page #F2F4F1</li>
+					<li class="swatch"><i style="background:var(--panel)"></i>Panel #E3E8E1</li>
+					<li class="swatch"><i style="background:var(--ink)"></i>Ink #23282D</li>
+					<li class="swatch"><i style="background:var(--quiet)"></i>Quiet #55606A</li>
+					<li class="swatch"><i style="background:var(--marker)"></i>Marker #F2C230</li>
+					<li class="swatch"><i style="background:var(--band-mid)"></i>Band, Ink 8% and 16%</li>
+				</ul>
+				<p class="hues" style="margin-top:var(--s3)">
+					<span><i style="background:var(--hue-openness)"></i>Openness</span>
+					<span><i style="background:var(--hue-conscientiousness)"></i>Conscientiousness</span>
+					<span><i style="background:var(--hue-extraversion)"></i>Extraversion</span>
+					<span><i style="background:var(--hue-agreeableness)"></i>Agreeableness</span>
+					<span><i style="background:var(--hue-stability)"></i>Emotional stability</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="aside">Type</div>
+			<div class="main spec">
+				<h1>Display 40, tight</h1>
+				<h2>Heading 26</h2>
+				<p>Body 18 on 1.55, Familjen Grotesk, one family for everything. Links are <a href="#">underlined, not arrowed</a>.</p>
+				<p><em>Italic has one job: the plain-language sentence under each result.</em></p>
+				<p class="small quiet">Small 14 in Quiet for meta, axis labels and the sources box.</p>
+				<table class="pct">
+					<thead><tr><th>Scale</th><th class="n">Score</th><th class="n">Percentile</th></tr></thead>
+					<tbody><tr><td>Openness</td><td class="n">108</td><td class="n">97</td></tr><tr><td>Conscientiousness</td><td class="n">78</td><td class="n">33</td></tr><tr><td>Extraversion</td><td class="n">91</td><td class="n">83</td></tr><tr><td>Agreeableness</td><td class="n">80</td><td class="n">25</td></tr><tr><td>Emotional stability</td><td class="n">50</td><td class="n">10</td></tr></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="aside">Glyphs</div>
+			<div class="main wide">
+				<svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
+					<rect x="4" y="7" width="40" height="2"/><rect x="4" y="15" width="40" height="2"/><rect x="4" y="23" width="40" height="2"/><rect x="4" y="31" width="40" height="2"/><rect x="4" y="39" width="40" height="2"/>
+					<rect class="m" x="30" y="4" width="4" height="8" rx="1"/><rect class="m" x="14" y="12" width="4" height="8" rx="1"/><rect class="m" x="36" y="20" width="4" height="8" rx="1"/><rect class="m" x="22" y="28" width="4" height="8" rx="1"/><rect class="m" x="10" y="36" width="4" height="8" rx="1"/>
+				</svg><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
+					<rect x="4" y="23" width="40" height="2"/><rect class="m" x="30" y="17" width="4" height="14" rx="1"/>
+				</svg><span class="small quiet">Five strips for the Big Five, one for a single trait.</span>
+			</div>
+		</div>
 	</div>
 </section>
 
 </main>
 
 <footer class="site">
-	<div class="wrap">
-		<p>Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
-		<nav aria-label="Site"><a href="#">Methodology</a><a href="#">Licences</a><a href="#">About</a><a href="#">Privacy</a><a href="#">For teachers and researchers</a></nav>
-		<p>&copy; 2026 Personality Tests</p>
+	<div class="wrap row">
+		<div class="aside"><p>Personality Tests</p></div>
+		<div class="main">
+			<p>Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
+			<nav aria-label="Site"><a href="#">Methodology</a><a href="#">Licences</a><a href="#">About</a><a href="#">Privacy</a><a href="#">For teachers and researchers</a></nav>
+			<p>&copy; 2026 Personality Tests</p>
+		</div>
 	</div>
 </footer>
 

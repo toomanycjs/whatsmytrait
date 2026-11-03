@@ -1,3 +1,6 @@
+# downloaded datasets the norms tables are generated from (see scripts/norms)
+data-raw/
+
 # build output
 dist/
 .output/

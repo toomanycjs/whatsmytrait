@@ -28,7 +28,8 @@
 	--small: 0.875rem;   /* 14px */
 
 	--measure: 66ch;
-	--plate: 44rem;
+	--container: 62rem;
+	--margin-col: 10rem;
 
 	--s1: 0.25rem;
 	--s2: 0.5rem;

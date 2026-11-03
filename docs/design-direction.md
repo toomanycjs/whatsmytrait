@@ -55,13 +55,15 @@ H3 is Body size at weight 600. There is no H4; a page that needs one is structur
 
 ## Layout
 
-A single left-aligned column for reading (66ch), widening to a plate for the test and the results (a Panel block, `max-width: 44rem`). Structure is shown with space and one hairline rule weight, not boxes. Sections are not numbered unless they are a sequence. Links are underlined, not arrowed.
+The page is composed on a reference-work grid, not stacked in one column. A container of 62rem holds two columns: a margin column of 10rem on the left and a main column on the right, with a 2rem gutter. The margin column carries what a well-made reference book puts in its margin: the section name beside the H1, the instrument's facts (items, minutes, norm sample, reliability) beside the opening paragraph, the scale name and raw score beside each strip, the item number beside each question, the site name in the masthead and footer. The main column carries the reading text at a measure of 66ch, and widens to the full main width for the test and the results. On screens under 760px the margin column stacks above the main column as a small label, so nothing is lost.
 
-Spacing scale, in rem: 0.25, 0.5, 1, 1.5, 2, 3, 4.5. Sections are separated by 3; a page's top padding is 4.5 on desktop, 2 on phones. The page has a 16 px side gutter at phone width and no horizontal scroll.
+The results and the test sit on a plate: a full-bleed band of Panel across the viewport, with the grid continuing inside it. Structure is shown with space and one hairline rule weight, not boxes: rows on a plate are separated by hairlines across the full grid width; options are cells in one ruled row, not boxes. Nothing has a radius except the marker. Sections are not numbered unless they are a sequence. Links are underlined, not arrowed.
 
-Nav: the site name on the left, five section links on the right, one hairline under. Nothing sticky. On phones the links wrap to a second row; there is no hamburger.
+Spacing scale, in rem: 0.25, 0.5, 1, 1.5, 2, 3, 4.5. Rows on a plate are 1.5 apart; sections are 3 apart; a page's top padding is 4.5 on desktop, 2 on phones. The page has a 16 px side gutter at phone width and no horizontal scroll.
 
-Footer: one sentence, the trust links, the year. One hairline above.
+Masthead: the site name in the margin column, the five section links in the main column, one hairline under spanning the whole container. Nothing sticky. On phones the links stay on one row at Small size; there is no hamburger.
+
+Footer: the site name in the margin column; one sentence, the trust links and the year in the main column. One hairline above.
 
 ## The strip
 
