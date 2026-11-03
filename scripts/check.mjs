@@ -24,7 +24,8 @@ const BANNED = [
 	'disorder', 'depress', 'anxiety', 'medical', 'illness', 'treatment', 'therapy',
 ];
 // The adjective in the patience test's question is not the clinical noun.
-const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose', 'do not diagnose', 'never diagnoses', 'how patient', 'patient person', 'more patient', 'less patient'];
+// "clinical sites" is the owner's own wording on the About page.
+const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose', 'do not diagnose', 'never diagnoses', 'how patient', 'patient person', 'more patient', 'less patient', 'clinical sites'];
 // Published scale names inside an approved instrument's data file. The
 // IPIP-NEO-120 is an approved inventory and names two of its thirty facets
 // Anxiety and Depression; they are trait facets of Neuroticism, kept as the

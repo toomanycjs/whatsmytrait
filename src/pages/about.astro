@@ -1,32 +1,15 @@
 ---
+// The owner's own words, set on 3 November 2026.
 import LongForm from '../layouts/LongForm.astro';
-import { SITE_TITLE } from '../consts';
 
-const sections = [
-	{ id: 'who', title: 'Who built it' },
-	{ id: 'why-free', title: 'Why it is free' },
-	{ id: 'never', title: 'What it will never do' },
-];
+const sections = [{ id: 'about', title: 'About' }];
 ---
 
-<LongForm title="About: who built this, why it is free, what it never does" description="Who built the site, why every test is free and open, and the things it will never do: collect email addresses, sell results, screen candidates or tell you something is wrong with you." heading="About" subtitle="Who built it, why it is free, and what it will never do" sections={sections}>
-	<section id="who">
-		<h2>Who built it</h2>
-		<p>{SITE_TITLE} is built and maintained by one person, in the UK, who was tired of personality quizzes that end in an email form and hide where their questions came from. The site is a reference work that happens to be interactive: every test is a published instrument, scored on your device, compared with a named sample, with its reliability stated and its paper cited.</p>
-	</section>
-	<section id="why-free">
-		<h2>Why it is free</h2>
-		<p>Because the instruments are. The International Personality Item Pool, the TIPI, the Rosenberg scale and the O*NET profiler were released by their authors for anyone to use, and the only honest thing to do with public-domain science is to keep it public. There is nothing to sell: no premium report, no coaching, no data.</p>
-	</section>
-	<section id="never">
-		<h2>What it will never do</h2>
-		<ul>
-			<li>Collect email addresses, or ask for one.</li>
-			<li>Sell, share or even receive results. Scoring happens in your browser and nothing is sent here.</li>
-			<li>Help an employer screen candidates. The site measures how people see themselves, for themselves.</li>
-			<li>Tell you something is wrong with you. Results describe tendencies and are not a diagnosis of anything.</li>
-			<li>Invent a norm, a reliability figure or a sample size. Missing data is stated as missing.</li>
-			<li>Colour a score as good or bad.</li>
-		</ul>
+<LongForm title="About What's My Trait" description="What's My Trait shows you the best validated surveys around the world: free, interactive, scored on your own device, with the original work behind each one signposted." heading="About" subtitle="Why this site exists" sections={sections}>
+	<section id="about">
+		<h2>About</h2>
+		<p>What's My Trait shows you the best validated surveys around the world. We got bored of personality quizzes that end with email forms, or endless amounts of data and faff, or clinical sites that leave you with a 20 page PDF.</p>
+		<p>Every test here is free to use and can be completed interactively at home on your phone or desktop. Any data inputted is only stored on your local device. It isn't stored by me or anybody else.</p>
+		<p>You'll get your results, some simple support to interpret them, and signposted to the original work behind the survey. Hope you enjoy.</p>
 	</section>
 </LongForm>
