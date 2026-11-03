@@ -27,12 +27,13 @@ Results are scored and stored on the person's device. No sign-up, no email captu
 - Every instrument is a JSON file with source, licence, items, scoring and norms. Adding a test = file + page.
 - Tests: vitest for scoring against worked examples; Playwright for one full run of each test;
   a build check for orphan pages, missing sources boxes and missing licence lines.
-- Lighthouse 95+ on mobile for home, a test page and a trait page.
+- Lighthouse on mobile for home, a test page and a trait page: accessibility and best practices 95+,
+  performance 80+ (the Google Analytics tag costs the score; owner's choice, docs/decisions/0004-analytics.md).
 
 ## Commands
 - npm run dev, npm run build, npm test (vitest), npm run e2e (Playwright full run of every test page),
   npm run typecheck, npm run check (wordlist, and on dist: orphans, sources boxes, licence lines, titles, trademarks),
-  npm run lighthouse (mobile, four pages, 95 or above), npm run a11y (axe on every page). Build before check, lighthouse and a11y.
+  npm run lighthouse (mobile, four pages, performance 80 or above, the rest 95), npm run a11y (axe on every page). Build before check, lighthouse and a11y.
 - This repository uses npm workspaces, not pnpm.
 
 ## Owner decisions
