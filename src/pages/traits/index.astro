@@ -1,0 +1,26 @@
+---
+import Page from '../../layouts/Page.astro';
+import { SIBLINGS } from '../../traits/citations';
+---
+
+<Page title="The Big Five traits explained, one page each" description="What each of the five broad personality traits is, what high and low look like in daily life, what the research finds, and where people fall." breadcrumb="Traits">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Traits</p></div>
+			<div class="main">
+				<h1>Traits</h1>
+				<p class="subtitle">The five domains, with their facets to follow</p>
+				<p>Each page says what the trait is, what it does not mean before what it does, what high and low look like in daily life, what the research finds it predicts with the papers cited, and where people fall. If you have taken a test on this device, your marker is drawn on.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>The Big Five</h2></div>
+			<div class="main">
+				<ul>{SIBLINGS.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+				<p><a href="/tests/big-five/">Take the Big Five test</a></p>
+			</div>
+		</div>
+	</section>
+</Page>

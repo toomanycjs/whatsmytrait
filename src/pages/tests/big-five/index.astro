@@ -1,0 +1,16 @@
+---
+import data from '@site/instruments/data/ipip-neo-120.json';
+import normsData from '@site/instruments/data/norms/ipip-neo-120.json';
+import TestPage from '../../../layouts/TestPage.astro';
+import { bigFive } from '../../../tests/big-five';
+
+// Read by src/lib/lastmod.mjs for the sitemap.
+export const lastReviewed = '2026-11-03';
+---
+
+<TestPage content={bigFive} data={data} normsData={normsData}>
+	<p slot="intro">The Big Five are the five broad traits that personality research keeps finding: neuroticism, extraversion, openness, agreeableness and conscientiousness. This inventory measures each with six facets, so it can say not just how extraverted you are but whether that comes from warmth, sociability, assertiveness, pace, thrill-seeking or cheerfulness. It is the public-domain IPIP-NEO-120, scored on your device and compared with a sample of over 400,000 people.</p>
+	<Fragment slot="limits">
+		<p>Limits worth knowing: this is a self-report, so it measures how you see yourself. Four-item facets are short, and several have alphas below 0.70, so a facet score moves more between attempts than a domain score does. The comparison sample answered online, is young on average, and is not a representative sample of any country.</p>
+	</Fragment>
+</TestPage>

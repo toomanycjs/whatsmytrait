@@ -1,0 +1,27 @@
+---
+import ipip120 from '@site/instruments/data/ipip-neo-120.json';
+import ipip120Norms from '@site/instruments/data/norms/ipip-neo-120.json';
+import ipip50 from '@site/instruments/data/ipip-50.json';
+import ipip50Norms from '@site/instruments/data/norms/ipip-50.json';
+import TraitPage from '../../layouts/TraitPage.astro';
+import { agreeableness } from '../../traits/agreeableness';
+import { conscientiousness } from '../../traits/conscientiousness';
+import { extraversion } from '../../traits/extraversion';
+import { neuroticism } from '../../traits/neuroticism';
+import { openness } from '../../traits/openness';
+
+export function getStaticPaths() {
+	return [openness, conscientiousness, extraversion, agreeableness, neuroticism].map((content) => ({
+		params: { slug: content.path.replace(/^\/traits\/|\/$/g, '') },
+		props: { content },
+	}));
+}
+
+const { content } = Astro.props;
+const data = {
+	'ipip-neo-120': { instrument: ipip120, norms: ipip120Norms },
+	'ipip-50': { instrument: ipip50, norms: ipip50Norms },
+};
+---
+
+<TraitPage content={content} data={data} />

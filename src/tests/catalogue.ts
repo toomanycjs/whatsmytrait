@@ -19,6 +19,7 @@ export const TEST_GROUPS: TestGroup[] = [
 	{
 		name: 'Who am I',
 		tests: [
+			{ title: 'The Big Five, with the facets', href: '/tests/big-five/', items: 120, minutes: 12, why: 'Five traits and thirty facets, against a sample of over 400,000 people.' },
 			{ title: 'The Big Five in five minutes', href: '/tests/big-five/short/', items: 50, minutes: 5, why: 'The five broad traits, against a sample of over 600,000 people.' },
 		],
 	},

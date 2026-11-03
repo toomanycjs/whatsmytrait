@@ -20,6 +20,12 @@ const BANNED = [
 	'disorder', 'depress', 'anxiety', 'medical', 'illness', 'treatment', 'therapy',
 ];
 const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose', 'do not diagnose', 'never diagnoses'];
+// Published scale names inside an approved instrument's data file. The
+// IPIP-NEO-120 is an approved inventory and names two of its thirty facets
+// Anxiety and Depression; they are trait facets of Neuroticism, kept as the
+// authors name them (docs/decisions/0003-published-facet-names.md). Only the
+// exact name line in a data file is allowed; the words stay banned in copy.
+const ALLOWED_DATA_LINES = ['"name": "anxiety"', '"name": "depression"'];
 
 function walk(dir) {
 	let out = [];
@@ -39,6 +45,7 @@ for (const root of ROOTS) {
 		const lines = readFileSync(file, 'utf8').split(/\r?\n/);
 		lines.forEach((line, i) => {
 			let text = line.toLowerCase();
+			if (file.includes('data') && file.endsWith('.json') && ALLOWED_DATA_LINES.some((l) => text.includes(l))) return;
 			for (const phrase of ALLOWED_PHRASES) text = text.split(phrase).join('');
 			for (const word of BANNED) {
 				if (text.includes(word)) problems.push(`${file}:${i + 1}: "${word}" in: ${line.trim().slice(0, 100)}`);

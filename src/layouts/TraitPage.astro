@@ -1,0 +1,159 @@
+---
+// The trait template: what the trait is; high and low in daily life; the
+// facets; what the research says it predicts, cited; what it does not mean;
+// the population strips with the reader's own marker if a result is saved;
+// the test button; the sibling traits; sources.
+import { loadInstrument, loadNorms, scaleRange, strip, type Instrument, type NormTable } from '@site/instruments';
+import Page from './Page.astro';
+import type { TraitContent } from '../traits/content';
+
+interface Props {
+	content: TraitContent;
+	/** Instrument data and norms by instrument id, for every strip on the page. */
+	data: Record<string, { instrument: unknown; norms?: unknown }>;
+}
+
+const { content, data } = Astro.props;
+const loaded: Record<string, { instrument: Instrument; norms: NormTable | null }> = {};
+for (const [id, d] of Object.entries(data)) {
+	const instrument = loadInstrument(d.instrument);
+	loaded[id] = { instrument, norms: d.norms ? loadNorms(d.norms, instrument) : null };
+}
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+const strips = content.strips.map((s) => {
+	const { instrument, norms } = loaded[s.instrument];
+	const group = s.group ?? 'all';
+	const scale = instrument.scales.find((x) => x.id === s.scale);
+	if (!scale) throw new Error(`trait page ${content.path}: no scale ${s.scale} in ${s.instrument}`);
+	const { min, max } = scaleRange(instrument, s.scale);
+	const hasNorms = !!norms && !!norms.groups[group]?.scales[s.scale];
+	const html = strip({ name: scale.name, min, max, ...(hasNorms ? { norms: norms!, scale: s.scale, group } : {}) });
+	const n = hasNorms ? norms!.groups[group].n : 0;
+	return { ...s, group, min, max, html, n, scaleName: scale.name, instrumentName: instrument.name, sourceName: norms?.source.name ?? null, items: instrument.items.filter((it) => it.scale === s.scale || (scale.facets ?? []).includes(it.scale)).length };
+});
+
+const clientData = {
+	strips: strips.map((s) => ({ instrument: s.instrument, scale: s.scale, group: s.group, min: s.max === undefined ? 0 : s.min, max: s.max, name: s.scaleName })),
+	norms: Object.fromEntries(Object.entries(loaded).map(([id, l]) => [id, l.norms])),
+};
+const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
+const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.findIndex((x) => x.label === c.label) === i);
+---
+
+<Page title={content.title} description={content.description} breadcrumb={content.breadcrumb}>
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name"><a href="/traits/">Traits</a></p></div>
+			<div class="main">
+				<h1>{content.name}</h1>
+				<p class="subtitle">{content.subtitle}</p>
+				<p>{content.summary}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>What it does not mean</h2></div>
+			<div class="main">
+				{content.notMean.map((p) => <p>{p}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>High and low in daily life</h2></div>
+			<div class="main">
+				<p><strong>High.</strong> {content.high}</p>
+				<p><strong>Low.</strong> {content.low}</p>
+			</div>
+		</div>
+	</section>
+
+	{content.facets.length > 0 && (
+		<section class="section">
+			<div class="wrap row">
+				<div class="aside"><h2>Facets</h2></div>
+				<div class="main">
+					<ul>
+						{content.facets.map((f) => <li>{f.href ? <a href={f.href}>{f.name}</a> : <strong>{f.name}</strong>}: {f.line}</li>)}
+					</ul>
+				</div>
+			</div>
+		</section>
+	)}
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>What the research says it predicts</h2></div>
+			<div class="main">
+				{content.predicts.map((p) => <p>{p.text} <span class="quiet">({p.cite.label})</span></p>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="plate" data-trait-strips>
+		<div class="wrap">
+			<div class="row plate-head">
+				<div class="aside"><p>Where people fall</p></div>
+				<div class="main wide">
+					<h2>The spread of scores</h2>
+					<p class="plate-note">Curve height shows how common each score is; the darker middle holds half of all people. If you have taken a test on this device, your marker is drawn on.</p>
+				</div>
+			</div>
+			{strips.map((s, i) => (
+				<div class="row result" data-strip-index={i}>
+					<div class="aside">
+						<p class="scale-name">{s.label}</p>
+						<p class="scale-raw">{s.n ? `${fmt(s.n)} people` : 'no published norms'}</p>
+					</div>
+					<div class="main wide">
+						<div data-strip-plot><Fragment set:html={s.html} /></div>
+						<p class="status" data-strip-note></p>
+						<p class="small"><a href={s.testHref}>Take this test</a></p>
+					</div>
+				</div>
+			))}
+			<div class="row plate-foot">
+				<div class="aside"></div>
+				<div class="main wide">
+					<div class="actions"><a class="btn" href={content.test.href}>{content.test.label}</a></div>
+					<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>The other traits</h2></div>
+			<div class="main">
+				<ul>{content.siblings.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				{citations.map((c) => <p>{c.reference}{c.doi && <Fragment> <a href={`https://doi.org/${c.doi}`} rel="noopener">doi:{c.doi}</a></Fragment>}</p>)}
+				{Object.values(loaded).map(({ instrument, norms }) => (
+					<Fragment>
+						<p>Instrument: {instrument.name}. {instrument.source.paper}.{instrument.source.doi && <Fragment> <a href={`https://doi.org/${instrument.source.doi}`} rel="noopener">doi:{instrument.source.doi}</a></Fragment>} Key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>.</p>
+						{norms && <p>Norms: {norms.source.name}, <a href={norms.source.url} rel="noopener">{norms.source.url}</a>.</p>}
+						<p data-licence-line>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a></p>
+					</Fragment>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<script type="application/json" data-trait-data set:html={clientJson} />
+	<script>
+		import { mountTraitMarkers } from '../scripts/trait-markers';
+		mountTraitMarkers();
+	</script>
+</Page>
