@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Style tile</title>
+<link rel="stylesheet" href="tokens.css" />
+<style>
+@font-face { font-family: "Familjen Grotesk"; src: url("../public/fonts/familjen-grotesk-latin-wght-normal.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Familjen Grotesk"; src: url("../public/fonts/familjen-grotesk-latin-wght-italic.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: swap; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+	margin: 0; background: var(--page); color: var(--ink);
+	font-family: var(--font); font-size: var(--body); line-height: 1.55;
+	font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { margin: 0; font-weight: 600; text-wrap: balance; }
+h1 { font-size: var(--display); line-height: 1.1; letter-spacing: -0.015em; }
+h2 { font-size: var(--heading); line-height: 1.2; letter-spacing: -0.01em; }
+h3 { font-size: var(--body); line-height: 1.3; }
+p { margin: 0 0 var(--s3); }
+a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+small, .small { font-size: var(--small); line-height: 1.45; }
+.quiet { color: var(--quiet); }
+em { font-style: italic; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { max-width: var(--plate); margin: 0 auto; padding: 0 var(--s3); }
+.prose { max-width: var(--measure); }
+section.tile { padding: var(--s6) 0; border-top: 1px solid var(--hair); }
+section.tile:first-of-type { border-top: 0; }
+.tile-label { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); }
+
+/* Nav and footer */
+header.site { border-bottom: 1px solid var(--hair); }
+header.site .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s2) var(--s4); padding-top: var(--s4); padding-bottom: var(--s3); }
+.site-title { font-weight: 600; text-decoration: none; font-size: var(--body); }
+.site-title:hover { text-decoration: underline; }
+nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); }
+nav.main a { text-decoration: none; color: var(--quiet); }
+nav.main a:hover, nav.main a[aria-current] { color: var(--ink); text-decoration: underline; }
+footer.site { border-top: 1px solid var(--hair); margin-top: var(--s6); }
+footer.site .wrap { padding-top: var(--s4); padding-bottom: var(--s5); font-size: var(--small); color: var(--quiet); }
+footer.site p { margin: 0 0 var(--s2); }
+footer.site nav { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); margin-bottom: var(--s2); }
+footer.site a { color: var(--quiet); }
+
+/* Swatches */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: var(--s3); list-style: none; padding: 0; margin: 0 0 var(--s4); }
+.swatch { font-size: var(--small); }
+.swatch i { display: block; height: 3.5rem; border: 1px solid var(--hair); margin-bottom: var(--s1); }
+.swatch b { font-weight: 600; display: block; }
+.hues { display: flex; gap: var(--s3); flex-wrap: wrap; font-size: var(--small); }
+.hues span { display: inline-flex; align-items: center; gap: var(--s2); }
+.hues i { display: inline-block; width: 2.5rem; height: 2px; }
+
+/* Type specimen */
+.spec { display: grid; grid-template-columns: 7rem 1fr; gap: var(--s2) var(--s3); align-items: baseline; }
+.spec dt { font-size: var(--small); color: var(--quiet); margin: 0; }
+.spec dd { margin: 0; }
+table.pct { border-collapse: collapse; margin: var(--s4) 0 0; font-size: var(--body); }
+table.pct th, table.pct td { text-align: left; padding: var(--s2) var(--s4) var(--s2) 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
+table.pct th { font-weight: 600; }
+table.pct td.n, table.pct th.n { text-align: right; }
+
+/* Buttons */
+.btn { display: inline-block; font: inherit; font-weight: 600; padding: 0.7em 1.25em; border: 1.5px solid var(--ink); border-radius: 3px; background: var(--ink); color: var(--page); text-decoration: none; cursor: pointer; line-height: 1.2; }
+.btn:hover { background: var(--page); color: var(--ink); }
+.btn.secondary { background: transparent; color: var(--ink); }
+.btn.secondary:hover { background: var(--panel); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: center; }
+.under-button { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
+
+/* Plate */
+.plate { background: var(--panel); padding: var(--s5) var(--s4); border-radius: 4px; }
+@media (max-width: 600px) { .plate { padding: var(--s4) var(--s3); margin: 0 calc(-1 * var(--s3)); border-radius: 0; } }
+
+/* Strips */
+.strip { margin: 0 0 var(--s4); }
+.strip-domain { margin-bottom: var(--s5); }
+.strip-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s1); }
+.strip-name { font-weight: 600; }
+.strip-facet .strip-name { font-weight: 400; font-size: var(--small); }
+.strip-plot { position: relative; }
+.strip svg { display: block; width: 100%; }
+.strip-domain svg { height: 40px; }
+.strip-facet svg { height: 28px; }
+.strip .baseline { stroke: var(--hair); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.strip .density { fill: var(--band); }
+.strip .iqr { fill: var(--band); }
+.strip .marker { position: absolute; top: 1px; bottom: 1px; width: 10px; margin-left: -5px; border-radius: 3px; background: var(--marker); border: 1.5px solid var(--ink); }
+.strip .marker-outline { background: transparent; }
+.strip .pct { position: absolute; top: 50%; transform: translateY(-50%); margin-left: 12px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1; white-space: nowrap; }
+.strip .pct-left { margin-left: 0; transform: translate(calc(-100% - 12px), -50%); }
+.strip-facet .pct { font-size: var(--small); }
+.strip-axis { display: flex; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: 2px; }
+.strip-means { margin: calc(-1 * var(--s3)) 0 var(--s5); max-width: var(--measure); }
+.strip-means em { font-style: italic; }
+.facets { padding-left: var(--s4); margin: 0 0 var(--s5); }
+.facets .strip-facet { margin-bottom: var(--s3); }
+.facets h3 { margin: 0 0 var(--s3); font-size: var(--small); font-weight: 400; color: var(--quiet); }
+
+/* Draw-in: once, 200ms, respects reduced motion. */
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+.strip svg { transform-origin: 0 50%; animation: draw 200ms ease-out both; }
+.strip .marker, .strip .pct { animation: appear 200ms ease-out 150ms both; }
+@media (prefers-reduced-motion: reduce) { .strip * { animation: none !important; } }
+
+/* Question screen */
+.progress { height: 2px; background: var(--hair); margin: 0 0 var(--s4); }
+.progress i { display: block; height: 100%; width: 20%; background: var(--ink); }
+.progress-text { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); display: flex; justify-content: space-between; gap: var(--s3); }
+.legend { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); display: none; }
+.item { padding: var(--s4) 0; margin: 0; border-top: 1px solid var(--hair); }
+.item-text { margin: 0 0 var(--s3); }
+.item-n { display: inline-block; min-width: 1.6em; color: var(--quiet); font-variant-numeric: tabular-nums; }
+.options { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s2); }
+.opt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--s1); min-height: 3rem; padding: var(--s2) var(--s1); border: 1.5px solid var(--hair); border-radius: 3px; background: var(--page); cursor: pointer; text-align: center; }
+.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.opt-n { font-weight: 600; font-size: var(--body); line-height: 1; }
+.opt-label { font-size: var(--small); line-height: 1.25; color: var(--quiet); }
+.opt:hover { border-color: var(--ink); }
+.opt:has(input:checked) { background: var(--ink); border-color: var(--ink); color: var(--page); }
+.opt:has(input:checked) .opt-label { color: var(--page); }
+.opt:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 700px) {
+	.legend { display: block; }
+	.opt-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.opt { min-height: 3rem; justify-content: center; }
+}
+.screen-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3); padding-top: var(--s4); border-top: 1px solid var(--hair); }
+.screen-foot .btn { white-space: nowrap; }
+.keys { font-size: var(--small); color: var(--quiet); }
+.table-scroll { overflow-x: auto; }
+
+/* Glyph */
+.glyph { width: 3rem; height: 3rem; }
+.glyph rect { fill: var(--ink); }
+.glyph .m { fill: var(--marker); stroke: var(--ink); stroke-width: 1; }
+</style>
+</head>
+<body>
+
+<header class="site">
+	<div class="wrap">
+		<a class="site-title" href="#">Personality Tests</a>
+		<nav class="main" aria-label="Main">
+			<ul>
+				<li><a href="#" aria-current="page">Tests</a></li>
+				<li><a href="#">Traits</a></li>
+				<li><a href="#">Careers</a></li>
+				<li><a href="#">Compare</a></li>
+				<li><a href="#">Guides</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<main class="wrap">
+
+<section class="tile">
+	<p class="tile-label">Style tile. Tokens, type, one results plate, one question screen, the nav and the footer. The norm distribution drawn here is synthetic and labelled as such; real strips use committed norm tables.</p>
+	<ul class="swatches">
+		<li class="swatch"><i style="background:var(--page)"></i><b>Page</b> #F2F4F1</li>
+		<li class="swatch"><i style="background:var(--panel)"></i><b>Panel</b> #E3E8E1</li>
+		<li class="swatch"><i style="background:var(--ink)"></i><b>Ink</b> #23282D</li>
+		<li class="swatch"><i style="background:var(--quiet)"></i><b>Quiet</b> #55606A</li>
+		<li class="swatch"><i style="background:var(--marker)"></i><b>Marker</b> #F2C230</li>
+		<li class="swatch"><i style="background:var(--band-mid)"></i><b>Band</b> Ink 8%, 16%</li>
+	</ul>
+	<p class="hues">
+		<span><i style="background:var(--hue-openness)"></i>Openness</span>
+		<span><i style="background:var(--hue-conscientiousness)"></i>Conscientiousness</span>
+		<span><i style="background:var(--hue-extraversion)"></i>Extraversion</span>
+		<span><i style="background:var(--hue-agreeableness)"></i>Agreeableness</span>
+		<span><i style="background:var(--hue-stability)"></i>Emotional stability</span>
+	</p>
+</section>
+
+<section class="tile">
+	<dl class="spec">
+		<dt>Display 40</dt><dd><h1>Introvert or extrovert?</h1></dd>
+		<dt>Heading 26</dt><dd><h2>Understanding your scores</h2></dd>
+		<dt>Body 18</dt><dd class="prose">The IPIP Extraversion scale has 20 items and takes about three minutes. It is scored on your device and compared with a published sample of 3,467 adults. Links are <a href="#">underlined, not arrowed</a>.</dd>
+		<dt>Italic</dt><dd><em>You tend to seek company and conversation more than most people do.</em></dd>
+		<dt>Small 14</dt><dd class="small quiet">Source: Goldberg (1992), Psychological Assessment, 4(1), 26-42. Public domain (IPIP).</dd>
+	</dl>
+	<div class="table-scroll"><table class="pct">
+		<thead><tr><th>Scale</th><th class="n">Score</th><th class="n">Percentile</th><th class="n">Alpha</th></tr></thead>
+		<tbody>
+			<tr><td>Extraversion</td><td class="n">38</td><td class="n">81</td><td class="n">0.87</td></tr>
+			<tr><td>Agreeableness</td><td class="n">33</td><td class="n">24</td><td class="n">0.82</td></tr>
+			<tr><td>Conscientiousness</td><td class="n">30</td><td class="n">7</td><td class="n">0.79</td></tr>
+			<tr><td>Emotional stability</td><td class="n">18</td><td class="n">100</td><td class="n">0.86</td></tr>
+		</tbody>
+	</table></div>
+	<div class="actions" style="margin-top:var(--s4)">
+		<a class="btn" href="#">Start the test</a>
+		<a class="btn secondary" href="#">Save as PDF</a>
+		<a class="btn secondary" href="#">Copy as text</a>
+	</div>
+	<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+</section>
+
+<section class="tile">
+	<p class="tile-label">Results plate</p>
+	<div class="plate">
+		<h2 style="margin-bottom:var(--s2)">Your results</h2>
+		<p class="small quiet" style="margin-bottom:var(--s5)">IPIP-NEO-120, compared with all adults in the norm sample. Saved on this device on 3 November 2026.</p>
+		
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Openness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 41 out of 50, the 80th percentile for openness.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-openness"><path d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,34.0 L60.0,34.0 L75.0,34.0 L90.0,34.0 L105.0,34.0 L120.0,33.6 L135.0,33.6 L150.0,33.2 L165.0,32.7 L180.0,32.3 L195.0,31.5 L210.0,30.2 L225.0,29.0 L240.0,26.9 L255.0,24.8 L270.0,22.7 L285.0,19.8 L300.0,17.3 L315.0,14.4 L330.0,11.9 L345.0,9.3 L360.0,7.7 L375.0,6.4 L390.0,6.0 L405.0,6.4 L420.0,7.7 L435.0,9.3 L450.0,11.9 L465.0,14.4 L480.0,17.3 L495.0,19.8 L510.0,22.7 L525.0,24.8 L540.0,26.9 L555.0,29.0 L570.0,30.2 L585.0,31.5 L600.0,32.3 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,34.0 L60.0,34.0 L75.0,34.0 L90.0,34.0 L105.0,34.0 L120.0,33.6 L135.0,33.6 L150.0,33.2 L165.0,32.7 L180.0,32.3 L195.0,31.5 L210.0,30.2 L225.0,29.0 L240.0,26.9 L255.0,24.8 L270.0,22.7 L285.0,19.8 L300.0,17.3 L315.0,14.4 L330.0,11.9 L345.0,9.3 L360.0,7.7 L375.0,6.4 L390.0,6.0 L405.0,6.4 L420.0,7.7 L435.0,9.3 L450.0,11.9 L465.0,14.4 L480.0,17.3 L495.0,19.8 L510.0,22.7 L525.0,24.8 L540.0,26.9 L555.0,29.0 L570.0,30.2 L585.0,31.5 L600.0,32.3 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-openness)" x="330.0" y="6" width="120.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-openness)" />
+		</svg>
+		
+		<span class="marker" style="left:77.50%"></span>
+		<span class="pct" style="left:77.50%">80th</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+<p class="strip-means"><em>You tend to enjoy new ideas and ways of doing things more than most people do.</em></p>
+
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Conscientiousness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 30 out of 50, the 29th percentile for conscientiousness.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-conscientiousness"><path d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,33.5 L60.0,33.5 L75.0,33.5 L90.0,33.0 L105.0,32.5 L120.0,32.0 L135.0,31.1 L150.0,30.1 L165.0,29.1 L180.0,27.6 L195.0,25.6 L210.0,23.7 L225.0,21.7 L240.0,19.3 L255.0,16.8 L270.0,14.4 L285.0,12.4 L300.0,9.9 L315.0,8.5 L330.0,7.0 L345.0,6.0 L360.0,6.0 L375.0,6.0 L390.0,7.0 L405.0,8.5 L420.0,9.9 L435.0,12.4 L450.0,14.4 L465.0,16.8 L480.0,19.3 L495.0,21.7 L510.0,23.7 L525.0,25.6 L540.0,27.6 L555.0,29.1 L570.0,30.1 L585.0,31.1 L600.0,32.0 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,33.5 L60.0,33.5 L75.0,33.5 L90.0,33.0 L105.0,32.5 L120.0,32.0 L135.0,31.1 L150.0,30.1 L165.0,29.1 L180.0,27.6 L195.0,25.6 L210.0,23.7 L225.0,21.7 L240.0,19.3 L255.0,16.8 L270.0,14.4 L285.0,12.4 L300.0,9.9 L315.0,8.5 L330.0,7.0 L345.0,6.0 L360.0,6.0 L375.0,6.0 L390.0,7.0 L405.0,8.5 L420.0,9.9 L435.0,12.4 L450.0,14.4 L465.0,16.8 L480.0,19.3 L495.0,21.7 L510.0,23.7 L525.0,25.6 L540.0,27.6 L555.0,29.1 L570.0,30.1 L585.0,31.1 L600.0,32.0 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-conscientiousness)" x="285.0" y="6" width="150.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-conscientiousness)" />
+		</svg>
+		
+		<span class="marker" style="left:50.00%"></span>
+		<span class="pct" style="left:50.00%">29th</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+<p class="strip-means"><em>You are about as organised and persistent as most people.</em></p>
+
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Extraversion</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 38 out of 50, the 81st percentile for extraversion.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-extraversion"><path d="M0.0,34 L0.0,32.9 L15.0,32.9 L30.0,32.3 L45.0,31.8 L60.0,31.2 L75.0,30.1 L90.0,29.0 L105.0,27.8 L120.0,26.7 L135.0,25.0 L150.0,23.4 L165.0,21.1 L180.0,18.9 L195.0,17.2 L210.0,15.0 L225.0,12.7 L240.0,11.0 L255.0,9.4 L270.0,7.7 L285.0,7.1 L300.0,6.0 L315.0,6.0 L330.0,6.0 L345.0,7.1 L360.0,7.7 L375.0,9.4 L390.0,11.0 L405.0,12.7 L420.0,15.0 L435.0,17.2 L450.0,18.9 L465.0,21.1 L480.0,23.4 L495.0,25.0 L510.0,26.7 L525.0,27.8 L540.0,29.0 L555.0,30.1 L570.0,31.2 L585.0,31.8 L600.0,32.3 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,32.9 L15.0,32.9 L30.0,32.3 L45.0,31.8 L60.0,31.2 L75.0,30.1 L90.0,29.0 L105.0,27.8 L120.0,26.7 L135.0,25.0 L150.0,23.4 L165.0,21.1 L180.0,18.9 L195.0,17.2 L210.0,15.0 L225.0,12.7 L240.0,11.0 L255.0,9.4 L270.0,7.7 L285.0,7.1 L300.0,6.0 L315.0,6.0 L330.0,6.0 L345.0,7.1 L360.0,7.7 L375.0,9.4 L390.0,11.0 L405.0,12.7 L420.0,15.0 L435.0,17.2 L450.0,18.9 L465.0,21.1 L480.0,23.4 L495.0,25.0 L510.0,26.7 L525.0,27.8 L540.0,29.0 L555.0,30.1 L570.0,31.2 L585.0,31.8 L600.0,32.3 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-extraversion)" x="240.0" y="6" width="150.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-extraversion)" />
+		</svg>
+		
+		<span class="marker" style="left:70.00%"></span>
+		<span class="pct" style="left:70.00%">81st</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+<p class="strip-means"><em>You tend to seek company and conversation more than most people do.</em></p>
+
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Agreeableness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 33 out of 50, the 25th percentile for agreeableness.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-agreeableness"><path d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,34.0 L60.0,34.0 L75.0,34.0 L90.0,34.0 L105.0,34.0 L120.0,34.0 L135.0,33.6 L150.0,33.6 L165.0,33.2 L180.0,32.7 L195.0,32.3 L210.0,31.5 L225.0,30.2 L240.0,29.0 L255.0,26.9 L270.0,24.8 L285.0,22.7 L300.0,19.8 L315.0,17.3 L330.0,14.4 L345.0,11.9 L360.0,9.3 L375.0,7.7 L390.0,6.4 L405.0,6.0 L420.0,6.4 L435.0,7.7 L450.0,9.3 L465.0,11.9 L480.0,14.4 L495.0,17.3 L510.0,19.8 L525.0,22.7 L540.0,24.8 L555.0,26.9 L570.0,29.0 L585.0,30.2 L600.0,31.5 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,34.0 L15.0,34.0 L30.0,34.0 L45.0,34.0 L60.0,34.0 L75.0,34.0 L90.0,34.0 L105.0,34.0 L120.0,34.0 L135.0,33.6 L150.0,33.6 L165.0,33.2 L180.0,32.7 L195.0,32.3 L210.0,31.5 L225.0,30.2 L240.0,29.0 L255.0,26.9 L270.0,24.8 L285.0,22.7 L300.0,19.8 L315.0,17.3 L330.0,14.4 L345.0,11.9 L360.0,9.3 L375.0,7.7 L390.0,6.4 L405.0,6.0 L420.0,6.4 L435.0,7.7 L450.0,9.3 L465.0,11.9 L480.0,14.4 L495.0,17.3 L510.0,19.8 L525.0,22.7 L540.0,24.8 L555.0,26.9 L570.0,29.0 L585.0,30.2 L600.0,31.5 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-agreeableness)" x="345.0" y="6" width="120.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-agreeableness)" />
+		</svg>
+		
+		<span class="marker" style="left:57.50%"></span>
+		<span class="pct" style="left:57.50%">25th</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+<p class="strip-means"><em>You are a little less inclined than most people to put others first.</em></p>
+
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Emotional stability</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 18 out of 50, the 8th percentile for emotional stability.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-emotional-stability"><path d="M0.0,34 L0.0,32.3 L15.0,31.8 L30.0,31.2 L45.0,30.1 L60.0,29.0 L75.0,27.8 L90.0,26.7 L105.0,25.0 L120.0,23.4 L135.0,21.1 L150.0,18.9 L165.0,17.2 L180.0,15.0 L195.0,12.7 L210.0,11.0 L225.0,9.4 L240.0,7.7 L255.0,7.1 L270.0,6.0 L285.0,6.0 L300.0,6.0 L315.0,7.1 L330.0,7.7 L345.0,9.4 L360.0,11.0 L375.0,12.7 L390.0,15.0 L405.0,17.2 L420.0,18.9 L435.0,21.1 L450.0,23.4 L465.0,25.0 L480.0,26.7 L495.0,27.8 L510.0,29.0 L525.0,30.1 L540.0,31.2 L555.0,31.8 L570.0,32.3 L585.0,32.9 L600.0,32.9 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,32.3 L15.0,31.8 L30.0,31.2 L45.0,30.1 L60.0,29.0 L75.0,27.8 L90.0,26.7 L105.0,25.0 L120.0,23.4 L135.0,21.1 L150.0,18.9 L165.0,17.2 L180.0,15.0 L195.0,12.7 L210.0,11.0 L225.0,9.4 L240.0,7.7 L255.0,7.1 L270.0,6.0 L285.0,6.0 L300.0,6.0 L315.0,7.1 L330.0,7.7 L345.0,9.4 L360.0,11.0 L375.0,12.7 L390.0,15.0 L405.0,17.2 L420.0,18.9 L435.0,21.1 L450.0,23.4 L465.0,25.0 L480.0,26.7 L495.0,27.8 L510.0,29.0 L525.0,30.1 L540.0,31.2 L555.0,31.8 L570.0,32.3 L585.0,32.9 L600.0,32.9 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-emotional-stability)" x="210.0" y="6" width="150.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-stability)" />
+		</svg>
+		
+		<span class="marker" style="left:20.00%"></span>
+		<span class="pct" style="left:20.00%">8th</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+<p class="strip-means"><em>You tend to feel stress and low mood more readily than most people do.</em></p>
+		<div class="facets">
+			<h3>Facets of extraversion</h3>
+			
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Friendliness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 17 out of 20, the 91st percentile for friendliness.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-friendliness"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-friendliness)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:81.25%"></span>
+		<span class="pct" style="left:81.25%">91st</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Gregariousness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 14 out of 20, the 63rd percentile for gregariousness.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-gregariousness"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-gregariousness)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:62.50%"></span>
+		<span class="pct" style="left:62.50%">63rd</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Assertiveness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 12 out of 20, the 37th percentile for assertiveness.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-assertiveness"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-assertiveness)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:50.00%"></span>
+		<span class="pct" style="left:50.00%">37th</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Activity level</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 15 out of 20, the 75th percentile for activity level.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-activity-level"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-activity-level)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:68.75%"></span>
+		<span class="pct" style="left:68.75%">75th</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Excitement-seeking</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 11 out of 20, the 26th percentile for excitement-seeking.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-excitement-seeking"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-excitement-seeking)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:43.75%"></span>
+		<span class="pct" style="left:43.75%">26th</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+
+<figure class="strip strip-facet">
+	<figcaption class="strip-head"><span class="strip-name">Cheerfulness</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 16 out of 20, the 84th percentile for cheerfulness.">
+		<svg viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-cheerfulness"><path d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="22" y2="22" />
+			<path class="density" d="M0.0,22 L0.0,21.8 L37.5,21.6 L75.0,21.0 L112.5,19.8 L150.0,18.0 L187.5,15.4 L225.0,12.3 L262.5,9.2 L300.0,6.9 L337.5,6.0 L375.0,6.9 L412.5,9.2 L450.0,12.3 L487.5,15.4 L525.0,18.0 L562.5,19.8 L600.0,21.0 L600.0,22 Z" />
+			<rect class="iqr" clip-path="url(#clip-cheerfulness)" x="262.5" y="6" width="150.0" height="16" />
+			
+		</svg>
+		
+		<span class="marker" style="left:75.00%"></span>
+		<span class="pct" style="left:75.00%">84th</span>
+	</div>
+	<div class="strip-axis"><span>4</span><span>20</span></div>
+</figure>
+		</div>
+		<p class="small quiet">Two attempts, or two people, on one strip: the second marker is an outline.</p>
+		
+<figure class="strip strip-domain">
+	<figcaption class="strip-head"><span class="strip-name">Extraversion, 14 October and today</span></figcaption>
+	<div class="strip-plot" role="img" aria-label="You scored 38 out of 50, the 81st percentile for extraversion, 14 october and today.">
+		<svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
+			<defs><clipPath id="clip-extraversion-october-and-today"><path d="M0.0,34 L0.0,32.9 L15.0,32.9 L30.0,32.3 L45.0,31.8 L60.0,31.2 L75.0,30.1 L90.0,29.0 L105.0,27.8 L120.0,26.7 L135.0,25.0 L150.0,23.4 L165.0,21.1 L180.0,18.9 L195.0,17.2 L210.0,15.0 L225.0,12.7 L240.0,11.0 L255.0,9.4 L270.0,7.7 L285.0,7.1 L300.0,6.0 L315.0,6.0 L330.0,6.0 L345.0,7.1 L360.0,7.7 L375.0,9.4 L390.0,11.0 L405.0,12.7 L420.0,15.0 L435.0,17.2 L450.0,18.9 L465.0,21.1 L480.0,23.4 L495.0,25.0 L510.0,26.7 L525.0,27.8 L540.0,29.0 L555.0,30.1 L570.0,31.2 L585.0,31.8 L600.0,32.3 L600.0,34 Z" /></clipPath></defs>
+			<line class="baseline" x1="0" x2="600" y1="34" y2="34" />
+			<path class="density" d="M0.0,34 L0.0,32.9 L15.0,32.9 L30.0,32.3 L45.0,31.8 L60.0,31.2 L75.0,30.1 L90.0,29.0 L105.0,27.8 L120.0,26.7 L135.0,25.0 L150.0,23.4 L165.0,21.1 L180.0,18.9 L195.0,17.2 L210.0,15.0 L225.0,12.7 L240.0,11.0 L255.0,9.4 L270.0,7.7 L285.0,7.1 L300.0,6.0 L315.0,6.0 L330.0,6.0 L345.0,7.1 L360.0,7.7 L375.0,9.4 L390.0,11.0 L405.0,12.7 L420.0,15.0 L435.0,17.2 L450.0,18.9 L465.0,21.1 L480.0,23.4 L495.0,25.0 L510.0,26.7 L525.0,27.8 L540.0,29.0 L555.0,30.1 L570.0,31.2 L585.0,31.8 L600.0,32.3 L600.0,34 Z" />
+			<rect class="iqr" clip-path="url(#clip-extraversion-october-and-today)" x="240.0" y="6" width="150.0" height="28" />
+			<rect x="0" y="34" width="600" height="2" fill="var(--hue-extraversion)" />
+		</svg>
+		<span class="marker marker-outline" style="left:47.50%"></span>
+		<span class="marker" style="left:70.00%"></span>
+		<span class="pct" style="left:70.00%">81st</span>
+	</div>
+	<div class="strip-axis"><span>10</span><span>50</span></div>
+</figure>
+		<div class="actions" style="margin-top:var(--s4)">
+			<a class="btn secondary" href="#">Copy as text</a>
+			<a class="btn secondary" href="#">Save as PDF</a>
+			<a class="btn secondary" href="#">Share a comparison link</a>
+			<a class="btn secondary" href="#">Set a retake reminder</a>
+			<a class="btn secondary" href="#">Start again</a>
+		</div>
+	</div>
+</section>
+
+<section class="tile">
+	<p class="tile-label">Question screen</p>
+	<div class="plate">
+		<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="10" aria-label="Progress"><i></i></div>
+		<p class="progress-text"><span>Screen 1 of 5</span><span>10 of 50 answered</span></p>
+		<p class="legend">1 Very Inaccurate, 2 Moderately Inaccurate, 3 Neither Accurate Nor Inaccurate, 4 Moderately Accurate, 5 Very Accurate</p>
+		<form>
+			
+<div class="item" role="group" aria-labelledby="q1-text">
+	<p class="item-text" id="q1-text"><span class="item-n">1</span> Am the life of the party.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q1" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q1" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q1" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q1" value="4" checked /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q1" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q2-text">
+	<p class="item-text" id="q2-text"><span class="item-n">2</span> Feel little concern for others.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q2" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q2" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q2" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q2" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q2" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q3-text">
+	<p class="item-text" id="q3-text"><span class="item-n">3</span> Am always prepared.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q3" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q3" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q3" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q3" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q3" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q4-text">
+	<p class="item-text" id="q4-text"><span class="item-n">4</span> Get stressed out easily.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q4" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q4" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q4" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q4" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q4" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q5-text">
+	<p class="item-text" id="q5-text"><span class="item-n">5</span> Have a rich vocabulary.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q5" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q5" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q5" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q5" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q5" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q6-text">
+	<p class="item-text" id="q6-text"><span class="item-n">6</span> Don't talk a lot.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q6" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q6" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q6" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q6" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q6" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q7-text">
+	<p class="item-text" id="q7-text"><span class="item-n">7</span> Am interested in people.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q7" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q7" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q7" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q7" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q7" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q8-text">
+	<p class="item-text" id="q8-text"><span class="item-n">8</span> Leave my belongings around.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q8" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q8" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q8" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q8" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q8" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q9-text">
+	<p class="item-text" id="q9-text"><span class="item-n">9</span> Am relaxed most of the time.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q9" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q9" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q9" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q9" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q9" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+
+<div class="item" role="group" aria-labelledby="q10-text">
+	<p class="item-text" id="q10-text"><span class="item-n">10</span> Have difficulty understanding abstract ideas.</p>
+	<div class="options">
+		<label class="opt"><input type="radio" name="q10" value="1" /><span class="opt-n">1</span><span class="opt-label">Very Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q10" value="2" /><span class="opt-n">2</span><span class="opt-label">Moderately Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q10" value="3" /><span class="opt-n">3</span><span class="opt-label">Neither Accurate Nor Inaccurate</span></label>
+		<label class="opt"><input type="radio" name="q10" value="4" /><span class="opt-n">4</span><span class="opt-label">Moderately Accurate</span></label>
+		<label class="opt"><input type="radio" name="q10" value="5" /><span class="opt-n">5</span><span class="opt-label">Very Accurate</span></label>
+	</div>
+</div>
+			<div class="screen-foot">
+				<span class="keys">Keys 1 to 5 answer, Enter continues.</span>
+				<button type="button" class="btn">Next screen</button>
+			</div>
+		</form>
+	</div>
+</section>
+
+<section class="tile">
+	<p class="tile-label">Glyphs: five strips for the Big Five, one for a single trait.</p>
+	<div class="actions">
+		<svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
+			<rect x="4" y="7" width="40" height="2"/><rect x="4" y="15" width="40" height="2"/><rect x="4" y="23" width="40" height="2"/><rect x="4" y="31" width="40" height="2"/><rect x="4" y="39" width="40" height="2"/>
+			<rect class="m" x="30" y="4" width="4" height="8" rx="1"/><rect class="m" x="14" y="12" width="4" height="8" rx="1"/><rect class="m" x="36" y="20" width="4" height="8" rx="1"/><rect class="m" x="22" y="28" width="4" height="8" rx="1"/><rect class="m" x="10" y="36" width="4" height="8" rx="1"/>
+		</svg>
+		<svg class="glyph" viewBox="0 0 48 48" aria-hidden="true">
+			<rect x="4" y="23" width="40" height="2"/><rect class="m" x="30" y="17" width="4" height="14" rx="1"/>
+		</svg>
+	</div>
+</section>
+
+</main>
+
+<footer class="site">
+	<div class="wrap">
+		<p>Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
+		<nav aria-label="Site"><a href="#">Methodology</a><a href="#">Licences</a><a href="#">About</a><a href="#">Privacy</a><a href="#">For teachers and researchers</a></nav>
+		<p>&copy; 2026 Personality Tests</p>
+	</div>
+</footer>
+
+</body>
+</html>

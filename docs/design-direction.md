@@ -71,7 +71,7 @@ The results visual language, which is the product. Drawn in SVG by the engine, n
 - The marker is a vertical lozenge, Marker fill, Ink edge, 10 px wide and the band's full height plus 4 px top and bottom. The number sits to its right in Body size, Ink, tabular.
 - The band is 28 px tall on a domain strip and 16 px on a facet strip. Facets are small multiples of the same strip under their domain, indented, labelled in Small.
 - A domain strip has its domain hue as a 2 px band along the bottom edge. Facets have none.
-- Axis: 0 and 100 in Small Quiet at the ends, nothing in between. The strip's text equivalent is in the markup: You scored at the 72nd percentile for extraversion.
+- The horizontal axis is the raw score, lowest possible at the left and highest at the right, because a distribution drawn on a percentile axis is flat by definition. The density band is the share of the norm group at each raw score; the middle 50% runs from the 25th to the 75th percentile score; the marker sits at the person's raw score and is labelled with their percentile. Axis: the lowest and highest possible raw scores in Small Quiet at the ends, nothing in between. The strip's text equivalent is in the markup: You scored 38 out of 50, the 72nd percentile for extraversion.
 - A scale without norms draws the same strip over the raw range with no density band, and the page says why.
 - A trait page draws the strip with no marker unless a saved result exists; then the marker and a one-line note (Your score from 14 October sits here).
 - Two people or two attempts on one strip: two markers, the second an Ink outline with no fill, labelled.
