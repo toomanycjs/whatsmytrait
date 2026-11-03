@@ -6,6 +6,6 @@ The brief said no analytics at launch and, if counts were wanted later, a cookie
 
 Later the same day the owner asked for Google Analytics as well (measurement id G-HCF4G9DD98, in `src/consts.ts`). It is loaded in Google's consent mode with every storage type denied by default and no banner: GA4 then receives cookieless pings, sets no cookies and reports modelled traffic with less detail (no returning-visitor counts). This keeps the site's no-cookie promise. If the owner wants full GA4 data, a consent banner is required in the UK before analytics storage is granted; that would be a further decision. The gtag script is a third-party script from googletagmanager.com, a departure from the brief's rule, made at the owner's request and stated on the privacy page.
 
-Enabling it is a toggle on the Vercel project (Analytics tab); the script is harmless until then.
+Later the owner said they were not interested in Vercel Web Analytics, so its script was removed and Google Analytics is the only counting.
 
 Search Console is verified by a DNS record or an HTML tag, both of which need a token from the owner's Google account; the sitemap to submit is https://www.whatsmytrait.com/sitemap-index.xml.

@@ -43,9 +43,6 @@ const { title, description, ogImage, ogType = 'website' } = Astro.props;
 {ogImage && <meta property="twitter:image" content={ogImage} />}
 {ogImage && <meta property="twitter:image:alt" content={title} />}
 
-<!-- Page counts: Vercel Web Analytics, which sets no cookies and identifies no one (docs/decisions/0004-analytics.md). The privacy page says so. -->
-<script is:inline defer src="/_vercel/insights/script.js"></script>
-
-<!-- Google Analytics 4 in consent mode with every storage type denied: it sends cookieless pings, sets no cookies and needs no banner. Nothing about answers or results is ever sent (the test scripts never call gtag). -->
+<!-- Google Analytics 4 (docs/decisions/0004-analytics.md; the privacy page says so) in consent mode with every storage type denied: it sends cookieless pings, sets no cookies and needs no banner. Nothing about answers or results is ever sent (the test scripts never call gtag). -->
 <script is:inline set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{anonymize_ip:true});`} />
 <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
