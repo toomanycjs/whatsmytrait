@@ -1,8 +1,8 @@
-# Free psychometric tests site
+# What's My Trait
 
 A static Astro site of free, open personality and interest tests. Every instrument is free for any use, scored on the person's own device, shown against published norms, with its reliability stated. No sign-up, no email capture, no tracking.
 
-The site name and domain are placeholders until the owner decides them: see `SITE_TITLE` and `SITE_URL` in `src/consts.ts` and the `site` setting in `astro.config.mjs`.
+Live at https://whatsmytrait.com once deployed. The name and domain are set in `src/consts.ts` and `astro.config.mjs`.
 
 ## Layout
 

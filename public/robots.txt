@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://personality-tests.example/sitemap-index.xml
+Sitemap: https://whatsmytrait.com/sitemap-index.xml

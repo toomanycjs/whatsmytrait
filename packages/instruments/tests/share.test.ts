@@ -17,7 +17,7 @@ describe('text export', () => {
 			'Big Five results', '',
 			'2 July 2026: Big Five 34 out of 100',
 			'5 October 2026: Big Five 23.4 out of 100 – ünïcode', '',
-			'Source: https://personality-tests.example/tests/big-five/',
+			'Source: https://whatsmytrait.com/tests/big-five/',
 		].join('\n'));
 	});
 });
@@ -42,7 +42,7 @@ describe('CSV export', () => {
 describe('share links', () => {
 	it('round-trips through the fragment', () => {
 		const url = shareUrl(cfg, entries);
-		expect(url.startsWith('https://personality-tests.example/tests/big-five/#r=')).toBe(true);
+		expect(url.startsWith('https://whatsmytrait.com/tests/big-five/#r=')).toBe(true);
 		const decoded = decodeShare(new URL(url).hash, 'big-five')!;
 		expect(decoded.map(({ id, ...rest }) => rest)).toEqual(entries.map(({ id, ...rest }) => rest));
 	});

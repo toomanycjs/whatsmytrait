@@ -79,11 +79,11 @@ export function toIcs(r: Reminder, uid: string, now = new Date()): string {
 	const lines = [
 		'BEGIN:VCALENDAR',
 		'VERSION:2.0',
-		'PRODID:-//Personality Tests//Retake reminder//EN',
+		"PRODID:-//What's My Trait//Retake reminder//EN",
 		'CALSCALE:GREGORIAN',
 		'METHOD:PUBLISH',
 		'BEGIN:VEVENT',
-		`UID:${uid}@personality-tests.example`,
+		`UID:${uid}@whatsmytrait.com`,
 		`DTSTAMP:${utcStamp(now)}`,
 		`DTSTART:${floating(r.start)}`,
 		`DTEND:${floating(r.end)}`,

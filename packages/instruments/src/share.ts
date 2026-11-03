@@ -5,8 +5,8 @@ import { formatDate, formatNumber, outcomeText } from './format';
 import { isValidEntry, MAX_PER_TOOL } from './store';
 import type { ResultEntry, ToolConfig } from './types';
 
-/** Placeholder until the owner chooses the domain; mirrors SITE_URL in the site's src/consts.ts. */
-export const SITE = 'https://personality-tests.example';
+/** Mirrors SITE_URL in the site's src/consts.ts. */
+export const SITE = 'https://whatsmytrait.com';
 
 /** Longest fragment payload accepted when decoding a share link. */
 export const MAX_SHARE_CHARS = 20000;

@@ -1,4 +1,4 @@
-# Project: free psychometric tests site
+# Project: What's My Trait, a free psychometric tests site
 
 ## What this is
 A static Astro site of free, open personality and interest tests. Every instrument is free for any use.
@@ -37,7 +37,7 @@ Results are scored and stored on the person's device. No sign-up, no email captu
 
 ## Owner decisions
 Recorded in docs/decisions/. In force at the time of writing:
-- Site name and domain are placeholders (src/consts.ts, astro.config.mjs) until the owner decides them.
+- Site name What's My Trait, domain https://whatsmytrait.com (src/consts.ts, astro.config.mjs).
 - Light mode only at launch.
 - HEXACO and the 16-factor test are held back from the first release.
 - The for-teachers-and-researchers page is printable HTML only, no generated PDFs.

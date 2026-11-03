@@ -1,10 +1,9 @@
-// Site-wide constants. The name and domain are placeholders until the owner
-// decides them (docs/decisions/0001-first-release-scope.md); change them here
-// and in astro.config.mjs, nowhere else. The .example top-level domain is
-// reserved for placeholders.
+// Site-wide constants. The name and domain were chosen by the owner on
+// 3 November 2026 (docs/decisions/0001-first-release-scope.md); change them
+// here and in astro.config.mjs, nowhere else.
 
-export const SITE_TITLE = 'Personality Tests';
-export const SITE_URL = 'https://personality-tests.example';
+export const SITE_TITLE = "What's My Trait";
+export const SITE_URL = 'https://whatsmytrait.com';
 export const SITE_DESCRIPTION =
 	'Free personality and interest tests from published, openly licensed instruments. Scored on your device, shown against real norms, with the reliability stated.';
 

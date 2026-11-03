@@ -7,9 +7,8 @@ import indexNow from './src/integrations/indexnow.mjs';
 import linkCheck from './src/integrations/link-check.mjs';
 import { lastmodByPath } from './src/lib/lastmod.mjs';
 
-// Placeholder until the owner chooses the domain. Keep in step with
-// SITE_URL in src/consts.ts (astro.config cannot import TypeScript).
-const SITE_URL = 'https://personality-tests.example';
+// Keep in step with SITE_URL in src/consts.ts (astro.config cannot import TypeScript).
+const SITE_URL = 'https://whatsmytrait.com';
 
 // https://astro.build/config
 export default defineConfig({
