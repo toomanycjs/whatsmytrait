@@ -1,0 +1,421 @@
+{
+	"id": "onet-ip-short",
+	"version": 1,
+	"name": "O*NET Interest Profiler Short Form",
+	"shortName": "O*NET IP Short Form",
+	"items_note": "The 60 activities copied character for character from the paper-and-pencil O*NET Interest Profiler Short Form (Interest_Profiler.pdf, v1), 3 November 2026, in the order the form prints them: each interest area's ten activities in turn, reading across the form's two columns row by row. No wording has been changed. The form is a check box per activity; the site presents the same check box.",
+	"source": {
+		"paper": "Rounds, J., Su, R., Lewis, P., & Rivkin, D. (2010). O*NET Interest Profiler Short Form psychometric characteristics: Summary. National Center for O*NET Development",
+		"keyUrl": "https://www.onetcenter.org/dl_tools/ipsf/Interest_Profiler.pdf",
+		"itemsUrl": "https://www.onetcenter.org/IPSF.html",
+		"scoringUrl": "https://www.onetcenter.org/dl_files/IPSF_Psychometric.pdf",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Creative Commons Attribution-NoDerivatives 4.0 (CC BY-ND 4.0), for copying the tool without modification. This page includes information from the O*NET Career Exploration Tools by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA). Used under the CC BY-ND 4.0 license. O*NET® is a trademark of USDOL/ETA.",
+		"url": "https://www.onetcenter.org/license_tools.html",
+		"credit": "This page includes information from the O*NET Career Exploration Tools by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA). Used under the CC BY-ND 4.0 license. O*NET® is a trademark of USDOL/ETA."
+	},
+	"instructions": "Read the 60 work activities below. Place a check in the box by the activities you would like to do. Do not think about how much education/training is needed or how much money you will make!",
+	"response": {
+		"type": "check",
+		"points": 2,
+		"labels": [
+			"Not checked",
+			"Would like to do"
+		]
+	},
+	"scales": [
+		{
+			"id": "R",
+			"name": "Realistic"
+		},
+		{
+			"id": "I",
+			"name": "Investigative"
+		},
+		{
+			"id": "A",
+			"name": "Artistic"
+		},
+		{
+			"id": "S",
+			"name": "Social"
+		},
+		{
+			"id": "E",
+			"name": "Enterprising"
+		},
+		{
+			"id": "C",
+			"name": "Conventional"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Build kitchen cabinets",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Lay brick or tile",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Repair household appliances",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Raise fish in a fish hatchery",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Assemble electronic parts",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Drive a truck to deliver packages to offices and homes",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Test the quality of parts before shipment",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Repair and install locks",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Set up and operate machines to make products",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Put out forest fires",
+			"scale": "R",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Develop a new medicine",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Study ways to reduce water pollution",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Conduct chemical experiments",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Study the movement of planets",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Examine blood samples using a microscope",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Investigate the cause of a fire",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Develop a way to better predict the weather",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Work in a biology lab",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Invent a replacement for sugar",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Do laboratory tests to identify diseases",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Write books or plays",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Play a musical instrument",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Compose or arrange music",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Draw pictures",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Create special effects for movies",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Paint sets for plays",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Write scripts for movies or television shows",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Perform jazz or tap dance",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Sing in a band",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Edit movies",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Teach an individual an exercise routine",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Help people with personal or emotional problems",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Give career guidance to people",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Perform rehabilitation therapy",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Do volunteer work at a non-profit organization",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Teach children how to play sports",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Teach sign language to people who are deaf or hard of hearing",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "Help conduct a group therapy session",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Take care of children at a day-care center",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 40,
+			"text": "Teach a high-school class",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 41,
+			"text": "Buy and sell stocks and bonds",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Manage a retail store",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Operate a beauty salon or barber shop",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Manage a department within a large company",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 45,
+			"text": "Start your own business",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 46,
+			"text": "Negotiate business contracts",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Represent a client in a lawsuit",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Market a new line of clothing",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 49,
+			"text": "Sell merchandise at a department store",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 50,
+			"text": "Manage a clothing store",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 51,
+			"text": "Develop a spreadsheet using computer software",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 52,
+			"text": "Proofread records or forms",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 53,
+			"text": "Install software across computers on a large network",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 54,
+			"text": "Operate a calculator",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 55,
+			"text": "Keep shipping and receiving records",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 56,
+			"text": "Calculate the wages of employees",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 57,
+			"text": "Inventory supplies using a hand-held computer",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 58,
+			"text": "Record rent payments",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 59,
+			"text": "Keep inventory records",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 60,
+			"text": "Stamp, sort, and distribute mail for an organization",
+			"scale": "C",
+			"key": 1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null
+}

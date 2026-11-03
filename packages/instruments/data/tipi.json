@@ -1,0 +1,132 @@
+{
+	"id": "tipi",
+	"version": 1,
+	"name": "Ten-Item Personality Inventory",
+	"shortName": "TIPI",
+	"items_note": "Items, response options and scoring copied from the TIPI PDF on the Gosling lab page (tipi.pdf), 3 November 2026. Each scale is the average of two items, one reverse scored.",
+	"source": {
+		"paper": "Gosling, S. D., Rentfrow, P. J., & Swann, W. B., Jr. (2003). A very brief measure of the Big-Five personality domains. Journal of Research in Personality, 37(6), 504-528",
+		"doi": "10.1016/S0092-6566(03)00046-1",
+		"keyUrl": "https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/",
+		"itemsUrl": "https://gosling.psy.utexas.edu/wp-content/uploads/2014/09/tipi.pdf",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Free for any use. The author states on the TIPI page that anyone can use it for any purpose and need not ask permission.",
+		"url": "https://gosling.psy.utexas.edu/scales-weve-developed/ten-item-personality-measure-tipi/",
+		"credit": "Ten-Item Personality Inventory (TIPI), Gosling, Rentfrow and Swann (2003)"
+	},
+	"instructions": "Here are a number of personality traits that may or may not apply to you. Please write a number next to each statement to indicate the extent to which you agree or disagree with that statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other. I see myself as:",
+	"response": {
+		"type": "likert",
+		"points": 7,
+		"labels": [
+			"Disagree strongly",
+			"Disagree moderately",
+			"Disagree a little",
+			"Neither agree nor disagree",
+			"Agree a little",
+			"Agree moderately",
+			"Agree strongly"
+		]
+	},
+	"scales": [
+		{
+			"id": "E",
+			"name": "Extraversion"
+		},
+		{
+			"id": "A",
+			"name": "Agreeableness"
+		},
+		{
+			"id": "C",
+			"name": "Conscientiousness"
+		},
+		{
+			"id": "S",
+			"name": "Emotional stability",
+			"publishedName": "Emotional Stability"
+		},
+		{
+			"id": "O",
+			"name": "Openness to experiences",
+			"publishedName": "Openness to Experiences"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Extraverted, enthusiastic.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Critical, quarrelsome.",
+			"scale": "A",
+			"key": -1
+		},
+		{
+			"n": 3,
+			"text": "Dependable, self-disciplined.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Anxious, easily upset.",
+			"scale": "S",
+			"key": -1
+		},
+		{
+			"n": 5,
+			"text": "Open to new experiences, complex.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Reserved, quiet.",
+			"scale": "E",
+			"key": -1
+		},
+		{
+			"n": 7,
+			"text": "Sympathetic, warm.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Disorganized, careless.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 9,
+			"text": "Calm, emotionally stable.",
+			"scale": "S",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Conventional, uncreative.",
+			"scale": "O",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "mean",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"E": 0.68,
+		"A": 0.4,
+		"C": 0.5,
+		"S": 0.73,
+		"O": 0.45
+	},
+	"reliabilitySource": "Coefficient alpha per scale from Gosling, Rentfrow and Swann (2003), Table 1 (N = 1,813). The same table gives six-week test-retest reliabilities of .77, .71, .76, .70 and .62. Two-item scales are expected to have low alpha; the authors recommend judging the TIPI by its test-retest reliability and its correlations with longer Big Five measures."
+}

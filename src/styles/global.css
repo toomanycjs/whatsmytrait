@@ -203,6 +203,14 @@ label:has(> input[type="checkbox"]:focus-visible) { outline: 3px solid var(--ink
 .cell:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: -3px; }
 label.cell:has(> input[type="radio"]:focus-visible) { outline-offset: -3px; }
 .ends { display: none; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: var(--s1); }
+/* A check box per item, for instruments published as a tick list. */
+.check { display: grid; grid-template-columns: 1.5rem 1fr; column-gap: var(--s3); align-items: start; cursor: pointer; min-height: 2.75rem; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.check-box { display: block; width: 1.5rem; height: 1.5rem; border: 1.5px solid var(--ink); background: var(--page); margin-top: 0.1em; }
+.check:has(input:checked) .check-box { background: var(--ink); box-shadow: inset 0 0 0 3px var(--page); }
+.check:has(input:focus-visible) .check-box { outline: 3px solid var(--ink); outline-offset: 2px; }
+.check .q-text { margin: 0; }
+.q .check + .cells { display: none; }
 .screen-foot { padding-top: var(--s4); border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3); }
 .keys { font-size: var(--small); color: var(--quiet); }
 .resume { padding: var(--s3) 0 var(--s4); }

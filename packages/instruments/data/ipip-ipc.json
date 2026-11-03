@@ -1,0 +1,272 @@
+{
+	"id": "ipip-ipc",
+	"version": 1,
+	"name": "IPIP Interpersonal Circumplex",
+	"shortName": "IPIP-IPC",
+	"items_note": "Items and their numbers (the administration order) copied from https://ipip.ori.org/newIPIP-IPCScoringKey.htm, 3 November 2026. The key page prints the items without a full stop; they are reproduced as printed. All 32 items are positively keyed.",
+	"source": {
+		"paper": "Markey, P. M., & Markey, C. N. (2009). A brief assessment of the interpersonal circumplex: The IPIP-IPC. Assessment, 16(4), 352-361",
+		"doi": "10.1177/1073191109340382",
+		"keyUrl": "https://ipip.ori.org/newIPIP-IPCScoringKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "PA",
+			"name": "Assured-dominant",
+			"publishedName": "PA (Assured-Dominant)"
+		},
+		{
+			"id": "BC",
+			"name": "Arrogant-calculating",
+			"publishedName": "BC (Arrogant-Calculating)"
+		},
+		{
+			"id": "DE",
+			"name": "Cold-hearted",
+			"publishedName": "DE (Cold-Hearted)"
+		},
+		{
+			"id": "FG",
+			"name": "Aloof-introverted",
+			"publishedName": "FG (Aloof-Introverted)"
+		},
+		{
+			"id": "HI",
+			"name": "Unassured-submissive",
+			"publishedName": "HI (Unassured-Submissive)"
+		},
+		{
+			"id": "JK",
+			"name": "Unassuming-ingenuous",
+			"publishedName": "JK (Unassuming-Ingenuous)"
+		},
+		{
+			"id": "LM",
+			"name": "Warm-agreeable",
+			"publishedName": "LM (Warm-Agreeable)"
+		},
+		{
+			"id": "NO",
+			"name": "Gregarious-extraverted",
+			"publishedName": "NO (Gregarious-Extraverted)"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Am quiet around strangers",
+			"scale": "FG",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Speak softly",
+			"scale": "HI",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Tolerate a lot from others",
+			"scale": "JK",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Am interested in people",
+			"scale": "LM",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Feel comfortable around people",
+			"scale": "NO",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Demand to be the center of interest",
+			"scale": "PA",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Cut others to pieces",
+			"scale": "BC",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Believe people should fend for themselves",
+			"scale": "DE",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Am a very private person",
+			"scale": "FG",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Let others finish what they are saying",
+			"scale": "HI",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Take things as they come",
+			"scale": "JK",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Reassure others",
+			"scale": "LM",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Start conversations",
+			"scale": "NO",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Do most of the talking",
+			"scale": "PA",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Contradict others",
+			"scale": "BC",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Don't fall for sob-stories",
+			"scale": "DE",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Don't talk a lot",
+			"scale": "FG",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Seldom toot my own horn",
+			"scale": "HI",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Think of others first",
+			"scale": "JK",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Inquire about others' well-being",
+			"scale": "LM",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Talk to a lot of different people at parties",
+			"scale": "NO",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Speak loudly",
+			"scale": "PA",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Snap at people",
+			"scale": "BC",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Don't put a lot of thought into things",
+			"scale": "DE",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Have little to say",
+			"scale": "FG",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Dislike being the center of attention",
+			"scale": "HI",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Seldom stretch the truth",
+			"scale": "JK",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Get along well with others",
+			"scale": "LM",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Love large parties",
+			"scale": "NO",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Demand attention",
+			"scale": "PA",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Have a sharp tongue",
+			"scale": "BC",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Am not interested in other people's problems",
+			"scale": "DE",
+			"key": 1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null
+}

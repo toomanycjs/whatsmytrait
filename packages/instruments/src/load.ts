@@ -33,9 +33,11 @@ export function loadInstrument(data: unknown): Instrument {
 	if (!isRecord(licence) || !isString(licence.text) || !isString(licence.url)) fail(id, 'licence needs text and url');
 
 	const response = data.response;
-	if (!isRecord(response) || response.type !== 'likert') fail(id, 'response.type must be likert');
+	if (!isRecord(response) || (response.type !== 'likert' && response.type !== 'check')) fail(id, 'response.type must be likert or check');
 	const points = response.points;
 	if (!Number.isInteger(points) || (points as number) < 2) fail(id, 'response.points must be an integer of 2 or more');
+	if (response.type === 'check' && points !== 2) fail(id, 'a check response has 2 points');
+	if (response.highFirst !== undefined && typeof response.highFirst !== 'boolean') fail(id, 'response.highFirst must be true or false');
 	if (!Array.isArray(response.labels) || response.labels.length !== points || !response.labels.every(isString)) {
 		fail(id, `response.labels must have exactly ${points} labels`);
 	}
@@ -119,7 +121,7 @@ export function loadInstrument(data: unknown): Instrument {
 			accessed: source.accessed as string,
 		},
 		licence: { text: licence.text, url: licence.url },
-		response: { type: 'likert', points: points as number, labels: response.labels as string[] },
+		response: { type: response.type, points: points as number, labels: response.labels as string[], ...(response.highFirst ? { highFirst: true } : {}) },
 		scales,
 		items,
 		scoring: { method: scoring.method, reverse: 'points+1-x' },

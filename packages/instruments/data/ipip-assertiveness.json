@@ -1,0 +1,107 @@
+{
+	"id": "ipip-assertiveness",
+	"version": 1,
+	"name": "Assertiveness",
+	"items_note": "Items copied from https://ipip.ori.org/newNEOKey.htm, 3 November 2026, +keyed items first as the key page lists them.",
+	"source": {
+		"paper": "Goldberg, L. R. (1999). A broad-bandwidth, public-domain, personality inventory measuring the lower-level facets of several five-factor models. In I. Mervielde, I. Deary, F. De Fruyt, & F. Ostendorf (Eds.), Personality psychology in Europe, Vol. 7 (pp. 7-28). Tilburg University Press",
+		"keyUrl": "https://ipip.ori.org/newNEOKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "T",
+			"name": "Assertiveness",
+			"publishedName": "E3: Assertiveness (IPIP-NEO facet)"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Take charge.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Try to lead others.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Can talk others into doing things.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Seek to influence others.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Take control of things.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Wait for others to lead the way.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 7,
+			"text": "Keep in the background.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 8,
+			"text": "Have little to say.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 9,
+			"text": "Don't like to draw attention to myself.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 10,
+			"text": "Hold back my opinions.",
+			"scale": "T",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"T": 0.84
+	},
+	"reliabilitySource": "Coefficient alpha as given on the key page, https://ipip.ori.org/newNEOKey.htm, accessed 3 November 2026."
+}

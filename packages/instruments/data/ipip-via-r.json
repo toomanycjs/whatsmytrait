@@ -1,0 +1,762 @@
+{
+	"id": "ipip-via-r",
+	"version": 1,
+	"name": "IPIP-VIA-R",
+	"shortName": "IPIP-VIA-R",
+	"items_note": "Items copied from https://ipip.ori.org/IPIP-VIA-R_Key.html, 3 November 2026. The key page lists items by scale without an administration order; the items here are interleaved across the scales in round-robin order. The key page prints \"Weigh the pro's and the con's .\" with a space before the full stop; that space is dropped. Scale names on the site are the short forms of the published names, which are kept in publishedName.",
+	"source": {
+		"paper": "Bluemke, M., Partsch, M. V., Saucier, G., & Lechner, C. M. (2021). Measuring cross-cultural supermodel strengths in a balanced way: The IPIP-VIA-R short scales. Assessment (as cited on the IPIP key page)",
+		"keyUrl": "https://ipip.ori.org/IPIP-VIA-R_Key.html",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "APP",
+			"name": "Appreciation of beauty",
+			"publishedName": "Appreciation of Beauty [APP]"
+		},
+		{
+			"id": "LOV",
+			"name": "Capacity for love",
+			"publishedName": "Capacity for Love [CAP (new: LOV)]"
+		},
+		{
+			"id": "TEA",
+			"name": "Teamwork",
+			"publishedName": "Citizenship/Teamwork [CIT (new: TEA)]"
+		},
+		{
+			"id": "CUR",
+			"name": "Curiosity",
+			"publishedName": "Curiosity [CUR]"
+		},
+		{
+			"id": "EQU",
+			"name": "Fairness",
+			"publishedName": "Equity/Fairness [EQU]"
+		},
+		{
+			"id": "FOR",
+			"name": "Forgiveness",
+			"publishedName": "Forgiveness/Mercy [FOR]"
+		},
+		{
+			"id": "GRA",
+			"name": "Gratitude",
+			"publishedName": "Gratitude [GRA]"
+		},
+		{
+			"id": "HOP",
+			"name": "Hope",
+			"publishedName": "Hope/Optimism [HOP]"
+		},
+		{
+			"id": "HUM",
+			"name": "Humour",
+			"publishedName": "Humor/Playfulness [HUM]"
+		},
+		{
+			"id": "PEV",
+			"name": "Perseverance",
+			"publishedName": "Industry/Perseverance/Persistence [IND (new: PEV)]"
+		},
+		{
+			"id": "INT",
+			"name": "Honesty",
+			"publishedName": "Integrity/Honesty/Authenticity [INT]"
+		},
+		{
+			"id": "JUD",
+			"name": "Judgment",
+			"publishedName": "Judgment/Open-mindedness [JUD]"
+		},
+		{
+			"id": "KIN",
+			"name": "Kindness",
+			"publishedName": "Kindness/Generosity [KIN]"
+		},
+		{
+			"id": "LEA",
+			"name": "Leadership",
+			"publishedName": "Leadership [LEA]"
+		},
+		{
+			"id": "LER",
+			"name": "Love of learning",
+			"publishedName": "Love of Learning [LOV (new: LER)]"
+		},
+		{
+			"id": "MOD",
+			"name": "Modesty",
+			"publishedName": "Modesty/Humility [MOD]"
+		},
+		{
+			"id": "ORI",
+			"name": "Creativity",
+			"publishedName": "Originality/Creativity [ORI]"
+		},
+		{
+			"id": "PER",
+			"name": "Perspective",
+			"publishedName": "Perspective/Wisdom [PER]"
+		},
+		{
+			"id": "PRU",
+			"name": "Prudence",
+			"publishedName": "Prudence [PRU]"
+		},
+		{
+			"id": "REG",
+			"name": "Self-regulation",
+			"publishedName": "Self-regulation/Self-control [SEL (new: REG)]"
+		},
+		{
+			"id": "SIQ",
+			"name": "Social intelligence",
+			"publishedName": "Social/Personal/Emotional Intelligence [SOC (new: SIQ)]"
+		},
+		{
+			"id": "SPI",
+			"name": "Spirituality",
+			"publishedName": "Spirituality/Religiousness [SPI]"
+		},
+		{
+			"id": "VAL",
+			"name": "Bravery",
+			"publishedName": "Valor/Bravery/Courage [VAL]"
+		},
+		{
+			"id": "ZES",
+			"name": "Zest",
+			"publishedName": "Zest/Enthusiasm/Vitality [ZES]"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Feel it's important to live in a world of beauty.",
+			"scale": "APP",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Know that there are people in my life who care as much for me as for themselves.",
+			"scale": "LOV",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Am an extremely loyal person.",
+			"scale": "TEA",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Am excited by many different activities.",
+			"scale": "CUR",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Treat all people equally.",
+			"scale": "EQU",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Try to respond with understanding when someone treats me badly.",
+			"scale": "FOR",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Express my thanks to those who care about me.",
+			"scale": "GRA",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Can find the positive in what seems negative to others.",
+			"scale": "HOP",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Use laughter to brighten the days of others.",
+			"scale": "HUM",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Don't quit a task before it is finished.",
+			"scale": "PEV",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Am trusted to keep secrets.",
+			"scale": "INT",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Weigh the pro's and the con's.",
+			"scale": "JUD",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Am never too busy to help a friend.",
+			"scale": "KIN",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Am good at helping people work well together.",
+			"scale": "LEA",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Am a true life-long learner.",
+			"scale": "LER",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Don't brag about my accomplishments.",
+			"scale": "MOD",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Come up with new ways to do things.",
+			"scale": "ORI",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Have a mature view on life.",
+			"scale": "PER",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Believe it is always better to be safe than sorry.",
+			"scale": "PRU",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Am a highly disciplined person.",
+			"scale": "REG",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Am good at sensing what others are feeling.",
+			"scale": "SIQ",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Am a spiritual person.",
+			"scale": "SPI",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Have taken frequent stands in the face of strong opposition.",
+			"scale": "VAL",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Awaken with a sense of excitement about the day's possibilities.",
+			"scale": "ZES",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Experience deep emotions when I see beautiful things.",
+			"scale": "APP",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Can express love to someone else.",
+			"scale": "LOV",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Support my teammates or fellow group members.",
+			"scale": "TEA",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Can find something of interest in any situation.",
+			"scale": "CUR",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Believe that everyone's rights are equally important.",
+			"scale": "EQU",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Allow others to make a fresh start.",
+			"scale": "FOR",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Am an extremely grateful person.",
+			"scale": "GRA",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Remain hopeful despite challenges.",
+			"scale": "HOP",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Keep my sense of humor even in gloomy situations.",
+			"scale": "HUM",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Finish things despite obstacles in the way.",
+			"scale": "PEV",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Keep my promises.",
+			"scale": "INT",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Am valued by my friends for my good judgment.",
+			"scale": "JUD",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Go out of my way to cheer up people who appear down.",
+			"scale": "KIN",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "Am told that I am a strong but fair leader.",
+			"scale": "LEA",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Am thrilled when I learn something new.",
+			"scale": "LER",
+			"key": 1
+		},
+		{
+			"n": 40,
+			"text": "Would never be described as arrogant.",
+			"scale": "MOD",
+			"key": 1
+		},
+		{
+			"n": 41,
+			"text": "Am an original thinker.",
+			"scale": "ORI",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Am considered to be a wise person.",
+			"scale": "PER",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Make careful choices.",
+			"scale": "PRU",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Forego things that are bad for me in the long run even if they make me feel good in the short run.",
+			"scale": "REG",
+			"key": 1
+		},
+		{
+			"n": 45,
+			"text": "Know what to say to make people feel good.",
+			"scale": "SIQ",
+			"key": 1
+		},
+		{
+			"n": 46,
+			"text": "Believe that each person has a purpose in life.",
+			"scale": "SPI",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Don't hesitate to express an unpopular opinion.",
+			"scale": "VAL",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Look forward to each new day.",
+			"scale": "ZES",
+			"key": 1
+		},
+		{
+			"n": 49,
+			"text": "Am rarely aware of the natural beauty in the environment.",
+			"scale": "APP",
+			"key": -1
+		},
+		{
+			"n": 50,
+			"text": "Do not easily share my feelings with others.",
+			"scale": "LOV",
+			"key": -1
+		},
+		{
+			"n": 51,
+			"text": "Am not good at working with a group.",
+			"scale": "TEA",
+			"key": -1
+		},
+		{
+			"n": 52,
+			"text": "Am not all that curious about the world.",
+			"scale": "CUR",
+			"key": -1
+		},
+		{
+			"n": 53,
+			"text": "Take advantage of others.",
+			"scale": "EQU",
+			"key": -1
+		},
+		{
+			"n": 54,
+			"text": "Hold grudges.",
+			"scale": "FOR",
+			"key": -1
+		},
+		{
+			"n": 55,
+			"text": "Feel no gratitude to others.",
+			"scale": "GRA",
+			"key": -1
+		},
+		{
+			"n": 56,
+			"text": "Expect the worst.",
+			"scale": "HOP",
+			"key": -1
+		},
+		{
+			"n": 57,
+			"text": "Am not known for my sense of humor.",
+			"scale": "HUM",
+			"key": -1
+		},
+		{
+			"n": 58,
+			"text": "Don't finish what I start.",
+			"scale": "PEV",
+			"key": -1
+		},
+		{
+			"n": 59,
+			"text": "Lie to get myself out of trouble.",
+			"scale": "INT",
+			"key": -1
+		},
+		{
+			"n": 60,
+			"text": "Don't tend to think things through critically.",
+			"scale": "JUD",
+			"key": -1
+		},
+		{
+			"n": 61,
+			"text": "Get impatient when others talk to me about their problems.",
+			"scale": "KIN",
+			"key": -1
+		},
+		{
+			"n": 62,
+			"text": "Have difficulty getting others to work together.",
+			"scale": "LEA",
+			"key": -1
+		},
+		{
+			"n": 63,
+			"text": "Don't like to learn new things.",
+			"scale": "LER",
+			"key": -1
+		},
+		{
+			"n": 64,
+			"text": "Like to stand out in a crowd.",
+			"scale": "MOD",
+			"key": -1
+		},
+		{
+			"n": 65,
+			"text": "Am not considered to have new and different ideas.",
+			"scale": "ORI",
+			"key": -1
+		},
+		{
+			"n": 66,
+			"text": "Am not good at figuring out what really matters.",
+			"scale": "PER",
+			"key": -1
+		},
+		{
+			"n": 67,
+			"text": "Act before thinking through the consequences.",
+			"scale": "PRU",
+			"key": -1
+		},
+		{
+			"n": 68,
+			"text": "Let myself be taken over by urges to spend or eat too much.",
+			"scale": "REG",
+			"key": -1
+		},
+		{
+			"n": 69,
+			"text": "Don't know how to handle myself in a new social situation.",
+			"scale": "SIQ",
+			"key": -1
+		},
+		{
+			"n": 70,
+			"text": "Feel that life has no meaning.",
+			"scale": "SPI",
+			"key": -1
+		},
+		{
+			"n": 71,
+			"text": "Do not stand up for my beliefs.",
+			"scale": "VAL",
+			"key": -1
+		},
+		{
+			"n": 72,
+			"text": "Am described as grumpy.",
+			"scale": "ZES",
+			"key": -1
+		},
+		{
+			"n": 73,
+			"text": "Fail to notice beauty until others comment on it.",
+			"scale": "APP",
+			"key": -1
+		},
+		{
+			"n": 74,
+			"text": "Have difficulty accepting love from anyone.",
+			"scale": "LOV",
+			"key": -1
+		},
+		{
+			"n": 75,
+			"text": "Prefer to do everything alone.",
+			"scale": "TEA",
+			"key": -1
+		},
+		{
+			"n": 76,
+			"text": "Have few interests.",
+			"scale": "CUR",
+			"key": -1
+		},
+		{
+			"n": 77,
+			"text": "Treat others differently if I don't like them.",
+			"scale": "EQU",
+			"key": -1
+		},
+		{
+			"n": 78,
+			"text": "Find it hard to forgive others.",
+			"scale": "FOR",
+			"key": -1
+		},
+		{
+			"n": 79,
+			"text": "Find few things in my life to be grateful for.",
+			"scale": "GRA",
+			"key": -1
+		},
+		{
+			"n": 80,
+			"text": "Often think about the possibility of negative outcomes that are not likely to occur.",
+			"scale": "HOP",
+			"key": -1
+		},
+		{
+			"n": 81,
+			"text": "Am not fun to be with.",
+			"scale": "HUM",
+			"key": -1
+		},
+		{
+			"n": 82,
+			"text": "Give up easily.",
+			"scale": "PEV",
+			"key": -1
+		},
+		{
+			"n": 83,
+			"text": "Cheat on people who have trusted me.",
+			"scale": "INT",
+			"key": -1
+		},
+		{
+			"n": 84,
+			"text": "Don't think about different possibilities when making decisions.",
+			"scale": "JUD",
+			"key": -1
+		},
+		{
+			"n": 85,
+			"text": "Am only kind to others if they have been kind to me.",
+			"scale": "KIN",
+			"key": -1
+		},
+		{
+			"n": 86,
+			"text": "Am not good at taking charge of a group.",
+			"scale": "LEA",
+			"key": -1
+		},
+		{
+			"n": 87,
+			"text": "Don't read nonfiction books for fun.",
+			"scale": "LER",
+			"key": -1
+		},
+		{
+			"n": 88,
+			"text": "Like to talk about myself.",
+			"scale": "MOD",
+			"key": -1
+		},
+		{
+			"n": 89,
+			"text": "Have no special urge to do something original.",
+			"scale": "ORI",
+			"key": -1
+		},
+		{
+			"n": 90,
+			"text": "Am rarely consulted for advice by others.",
+			"scale": "PER",
+			"key": -1
+		},
+		{
+			"n": 91,
+			"text": "Like taking risks.",
+			"scale": "PRU",
+			"key": -1
+		},
+		{
+			"n": 92,
+			"text": "Give in to my urges.",
+			"scale": "REG",
+			"key": -1
+		},
+		{
+			"n": 93,
+			"text": "Have trouble guessing how others will react.",
+			"scale": "SIQ",
+			"key": -1
+		},
+		{
+			"n": 94,
+			"text": "Do not believe in a universal power or a God.",
+			"scale": "SPI",
+			"key": -1
+		},
+		{
+			"n": 95,
+			"text": "Don't speak my mind freely when there might be negative results.",
+			"scale": "VAL",
+			"key": -1
+		},
+		{
+			"n": 96,
+			"text": "Don't have much energy.",
+			"scale": "ZES",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"APP": 0.54,
+		"LOV": 0.61,
+		"TEA": 0.57,
+		"CUR": 0.56,
+		"EQU": 0.63,
+		"FOR": 0.56,
+		"GRA": 0.63,
+		"HOP": 0.6,
+		"HUM": 0.61,
+		"PEV": 0.63,
+		"INT": 0.67,
+		"JUD": 0.55,
+		"KIN": 0.59,
+		"LEA": 0.57,
+		"LER": 0.55,
+		"MOD": 0.54,
+		"ORI": 0.62,
+		"PER": 0.56,
+		"PRU": 0.45,
+		"REG": 0.42,
+		"SIQ": 0.63,
+		"SPI": 0.57,
+		"VAL": 0.54,
+		"ZES": 0.62
+	},
+	"reliabilitySource": "Coefficient alpha per scale for the UK sample (n = 474) from the IPIP key page, which gives Germany/UK figures for alpha, McDonald's omega and two-to-three-week test-retest reliability. The authors say alpha understates the reliability of these balanced four-item scales and recommend omega."
+}

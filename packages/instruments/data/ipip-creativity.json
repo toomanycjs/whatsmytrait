@@ -1,0 +1,95 @@
+{
+	"id": "ipip-creativity",
+	"version": 1,
+	"name": "Creativity",
+	"items_note": "Items copied from https://ipip.ori.org/newVIAKey.htm, 3 November 2026, +keyed items first as the key page lists them. The key page lists two further items as omitted from the scale; they are not included.",
+	"source": {
+		"paper": "IPIP scales measuring constructs similar to those in the Values in Action Inventory of Strengths (Peterson & Seligman, 2004), International Personality Item Pool",
+		"keyUrl": "https://ipip.ori.org/newVIAKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "T",
+			"name": "Creativity",
+			"publishedName": "Originality/Creativity [Ori], IPIP-VIA scale"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Am able to come up with new and different ideas.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Like to think of new ways to do things.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Come up with new ways to do things.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Am an original thinker.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Have an imagination that stretches beyond that of my friends.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Don't pride myself on being original.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 7,
+			"text": "Am not considered to have new and different ideas.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 8,
+			"text": "Have no special urge to do something original.",
+			"scale": "T",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"T": 0.85
+	},
+	"reliabilitySource": "Coefficient alpha as given on the key page, https://ipip.ori.org/newVIAKey.htm, accessed 3 November 2026."
+}

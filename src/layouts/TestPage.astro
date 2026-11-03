@@ -96,13 +96,19 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 							<div class="row q" role="group" aria-labelledby={`q${item.n}-text`} data-item={item.n}>
 								<div class="aside"><span class="q-n">{String(item.n).padStart(2, '0')}</span></div>
 								<div class="main wide">
-									<p class="q-text" id={`q${item.n}-text`}>{item.text}</p>
-									<div class="cells">
-										{labels.map((label, k) => (
-											<label class="cell"><input type="radio" name={`q${item.n}`} value={k + 1} aria-label={label} /><span class="cell-n">{k + 1}</span><span class="cell-label">{label}</span></label>
-										))}
-									</div>
-									<div class="ends" aria-hidden="true"><span>{labels[0]}</span><span>{labels[labels.length - 1]}</span></div>
+									{instrument.response.type === 'check' ? (
+										<label class="check"><input type="checkbox" name={`q${item.n}`} value="2" /><span class="check-box" aria-hidden="true"></span><span class="q-text" id={`q${item.n}-text`}>{item.text}</span></label>
+									) : (
+										<Fragment>
+											<p class="q-text" id={`q${item.n}-text`}>{item.text}</p>
+											<div class="cells">
+												{labels.map((label, k) => (
+													<label class="cell"><input type="radio" name={`q${item.n}`} value={k + 1} aria-label={label} /><span class="cell-n">{k + 1}</span><span class="cell-label">{label}</span></label>
+												))}
+											</div>
+											<div class="ends" aria-hidden="true"><span>{labels[0]}</span><span>{labels[labels.length - 1]}</span></div>
+										</Fragment>
+									)}
 								</div>
 							</div>
 						))}
@@ -112,7 +118,7 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 					<div class="aside"></div>
 					<div class="main wide">
 						<div class="screen-foot">
-							<span class="keys">Keys 1 to 5 answer, Enter continues.</span>
+							<span class="keys">{instrument.response.type === 'check' ? 'Space ticks a box, Enter continues.' : `Keys 1 to ${instrument.response.points} answer, Enter continues.`}</span>
 							<div class="actions">
 								<button type="button" class="btn secondary" data-back hidden>Back</button>
 								<button type="button" class="btn" data-next>Next screen</button>

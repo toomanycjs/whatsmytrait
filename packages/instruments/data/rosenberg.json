@@ -1,0 +1,103 @@
+{
+	"id": "rosenberg",
+	"version": 1,
+	"name": "Rosenberg Self-Esteem Scale",
+	"shortName": "RSES",
+	"items_note": "Items and response options copied from the scale image on the University of Maryland Department of Sociology page, 3 November 2026. The published form presents Strongly agree first, so response.highFirst is true. The site scores options 1 to 4, giving 10 to 40, one of the options the page describes; the page's 0 to 30 scoring is the same minus 10.",
+	"source": {
+		"paper": "Rosenberg, M. (1965). Society and the adolescent self-image. Princeton, NJ: Princeton University Press",
+		"keyUrl": "https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale",
+		"itemsUrl": "https://socy.umd.edu/sites/socy.umd.edu/files/Rosenberg%20SE%20Scale.jpg",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain. The University of Maryland Department of Sociology states that the scale may be used without charge and without notifying the department, including translations or adaptations, consistent with traditional scholarly attribution.",
+		"url": "https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale",
+		"credit": "Rosenberg Self-Esteem Scale, Morris Rosenberg (1965)"
+	},
+	"instructions": "Below is a list of statements dealing with your general feelings about yourself. If you strongly agree, circle SA. If you agree with the statement, circle A. If you disagree, circle D. If you strongly disagree, circle SD.",
+	"response": {
+		"type": "likert",
+		"points": 4,
+		"labels": [
+			"Strongly agree",
+			"Agree",
+			"Disagree",
+			"Strongly disagree"
+		],
+		"highFirst": true
+	},
+	"scales": [
+		{
+			"id": "SE",
+			"name": "Self-esteem"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "I feel that I'm a person of worth, at least on an equal plane with others.",
+			"scale": "SE",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "I feel that I have a number of good qualities.",
+			"scale": "SE",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "All in all, I am inclined to feel that I am a failure.",
+			"scale": "SE",
+			"key": -1
+		},
+		{
+			"n": 4,
+			"text": "I am able to do things as well as most other people.",
+			"scale": "SE",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "I feel I do not have much to be proud of.",
+			"scale": "SE",
+			"key": -1
+		},
+		{
+			"n": 6,
+			"text": "I take a positive attitude toward myself.",
+			"scale": "SE",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "On the whole, I am satisfied with myself.",
+			"scale": "SE",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "I wish I could have more respect for myself.",
+			"scale": "SE",
+			"key": -1
+		},
+		{
+			"n": 9,
+			"text": "I certainly feel useless at times.",
+			"scale": "SE",
+			"key": -1
+		},
+		{
+			"n": 10,
+			"text": "At times I think I am no good at all.",
+			"scale": "SE",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null
+}

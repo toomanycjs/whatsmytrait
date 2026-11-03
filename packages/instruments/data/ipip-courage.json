@@ -1,0 +1,107 @@
+{
+	"id": "ipip-courage",
+	"version": 1,
+	"name": "Courage",
+	"items_note": "Items copied from https://ipip.ori.org/newVIAKey.htm, 3 November 2026, +keyed items first as the key page lists them. The key page lists one further item as omitted from the scale; it is not included.",
+	"source": {
+		"paper": "IPIP scales measuring constructs similar to those in the Values in Action Inventory of Strengths (Peterson & Seligman, 2004), International Personality Item Pool",
+		"keyUrl": "https://ipip.ori.org/newVIAKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "T",
+			"name": "Courage",
+			"publishedName": "Valor/Bravery/Courage [Val], IPIP-VIA scale"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Have taken frequent stands in the face of strong opposition.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Don't hesitate to express an unpopular opinion.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Call for action while others talk.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Can face my fears.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Speak up in protest when I hear someone say mean things.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Am a brave person.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Avoid dealing with uncomfortable emotions.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 8,
+			"text": "Avoid dealing with awkward situations.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 9,
+			"text": "Do not stand up for my beliefs.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 10,
+			"text": "Don't speak my mind freely when there might be negative results.",
+			"scale": "T",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"T": 0.75
+	},
+	"reliabilitySource": "Coefficient alpha as given on the key page, https://ipip.ori.org/newVIAKey.htm, accessed 3 November 2026."
+}

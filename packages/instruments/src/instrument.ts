@@ -22,11 +22,14 @@ export interface InstrumentLicence {
 }
 
 export interface ResponseScale {
-	type: 'likert';
+	/** likert: one of `points` options per item. check: one box per item, checked or not (points is 2). */
+	type: 'likert' | 'check';
 	/** Number of response options; values run 1..points. */
 	points: number;
-	/** One label per option, lowest first, exactly as published. */
+	/** One label per option in the published presentation order, exactly as published. */
 	labels: string[];
+	/** True when the first option is the highest-scoring one (a scale published as Strongly agree first). */
+	highFirst?: boolean;
 }
 
 export interface Scale {

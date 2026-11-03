@@ -4,13 +4,23 @@
 
 import type { Instrument, Item, Responses, ScaleScore, ScoreResultSet } from './instrument';
 
-/** The keyed value of one response: x for a +keyed item, points+1-x for a -keyed one. */
+/**
+ * The keyed value of one response. For a likert scale: x for a +keyed item,
+ * points+1-x for a -keyed one, where x counts from the lowest-scoring option
+ * (so a scale published with its highest option first is flipped first). For
+ * a check box: 1 when checked (response 2), 0 when not, inverted for a -keyed item.
+ */
 export function itemValue(instrument: Instrument, item: Item, response: number): number {
-	const { points } = instrument.response;
+	const { points, type, highFirst } = instrument.response;
 	if (!Number.isInteger(response) || response < 1 || response > points) {
 		throw new RangeError(`item ${item.n}: response ${response} is not between 1 and ${points}`);
 	}
-	return item.key === 1 ? response : points + 1 - response;
+	if (type === 'check') {
+		const checked = response === 2 ? 1 : 0;
+		return item.key === 1 ? checked : 1 - checked;
+	}
+	const x = highFirst ? points + 1 - response : response;
+	return item.key === 1 ? x : points + 1 - x;
 }
 
 /** The items that count towards a scale: its own, or for a domain of facets, every facet's. */
@@ -24,7 +34,8 @@ export function itemsForScale(instrument: Instrument, scaleId: string): Item[] {
 /** Lowest and highest possible raw score for a scale. */
 export function scaleRange(instrument: Instrument, scaleId: string): { min: number; max: number } {
 	const n = itemsForScale(instrument, scaleId).length;
-	const { points } = instrument.response;
+	const { points, type } = instrument.response;
+	if (type === 'check') return instrument.scoring.method === 'mean' ? { min: 0, max: 1 } : { min: 0, max: n };
 	if (instrument.scoring.method === 'mean') return { min: 1, max: points };
 	return { min: n, max: n * points };
 }

@@ -80,8 +80,16 @@ export function mountTest() {
 
 	// ── Reading and writing answers ──
 	const inputsFor = (n: number) => Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="q${n}"]`));
+	const isCheck = instrument.response.type === 'check';
 	function readForm() {
 		for (const key of Object.keys(responses)) delete responses[Number(key)];
+		if (isCheck) {
+			// A box left empty is an answer (not checked), so every item is always answered.
+			for (const inp of form.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) {
+				responses[Number(inp.name.slice(1))] = inp.checked ? 2 : 1;
+			}
+			return;
+		}
 		for (const inp of form.querySelectorAll<HTMLInputElement>('input[type="radio"]:checked')) {
 			responses[Number(inp.name.slice(1))] = Number(inp.value);
 		}
@@ -89,8 +97,10 @@ export function mountTest() {
 	function writeForm() {
 		form.reset();
 		for (const [n, v] of Object.entries(responses)) {
-			const inp = form.querySelector<HTMLInputElement>(`input[name="q${n}"][value="${v}"]`);
-			if (inp) inp.checked = true;
+			const inp = isCheck
+				? form.querySelector<HTMLInputElement>(`input[name="q${n}"]`)
+				: form.querySelector<HTMLInputElement>(`input[name="q${n}"][value="${v}"]`);
+			if (inp) inp.checked = isCheck ? v === 2 : true;
 		}
 	}
 	const answeredCount = () => Object.keys(responses).length;
@@ -105,7 +115,8 @@ export function mountTest() {
 	const nextBtn = q<HTMLButtonElement>('[data-next]')!;
 
 	function updateProgress() {
-		const n = answeredCount();
+		if (isCheck) readForm();
+		const n = isCheck ? Math.min(total, screen * 10) : answeredCount();
 		fill.style.width = `${(n / total) * 100}%`;
 		bar.setAttribute('aria-valuenow', String(n));
 		answeredLabel.textContent = `${n} of ${total} answered`;
@@ -115,6 +126,7 @@ export function mountTest() {
 		screen = Math.max(1, Math.min(i, screensEls.length));
 		for (const s of screensEls) s.hidden = Number(s.dataset.screen) !== screen;
 		screenLabel.textContent = `Screen ${screen} of ${screensEls.length}`;
+		if (isCheck) updateProgress();
 		backBtn.hidden = screen === 1;
 		nextBtn.textContent = screen === screensEls.length ? 'See my results' : 'Next screen';
 		status.textContent = '';
@@ -145,7 +157,7 @@ export function mountTest() {
 
 	form.addEventListener('change', (e) => {
 		const target = e.target as HTMLInputElement;
-		if (target?.type !== 'radio') return;
+		if (target?.type !== 'radio' && target?.type !== 'checkbox') return;
 		readForm();
 		target.closest('[data-item]')?.classList.remove('missing');
 		updateProgress();

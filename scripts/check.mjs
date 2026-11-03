@@ -45,7 +45,11 @@ for (const root of ROOTS) {
 		const lines = readFileSync(file, 'utf8').split(/\r?\n/);
 		lines.forEach((line, i) => {
 			let text = line.toLowerCase();
-			if (file.includes('data') && file.endsWith('.json') && ALLOWED_DATA_LINES.some((l) => text.includes(l))) return;
+			if (file.includes('data') && file.endsWith('.json')) {
+				// Items are the instrument's own words, copied verbatim; the rule is for the site's copy.
+				if (/^\s*"text":/.test(line) || /^\s*"instructions":/.test(line)) return;
+				if (ALLOWED_DATA_LINES.some((l) => text.includes(l))) return;
+			}
 			for (const phrase of ALLOWED_PHRASES) text = text.split(phrase).join('');
 			for (const word of BANNED) {
 				if (text.includes(word)) problems.push(`${file}:${i + 1}: "${word}" in: ${line.trim().slice(0, 100)}`);
