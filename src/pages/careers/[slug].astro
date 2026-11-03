@@ -1,0 +1,15 @@
+---
+import CareerTypePage from '../../layouts/CareerTypePage.astro';
+import { CAREER_TYPES } from '../../careers/registry';
+
+export function getStaticPaths() {
+	return CAREER_TYPES.map((content) => ({
+		params: { slug: content.path.replace(/^\/careers\/|\/$/g, '') },
+		props: { content },
+	}));
+}
+
+const { content } = Astro.props;
+---
+
+<CareerTypePage content={content} />

@@ -10,7 +10,7 @@ export const neuroticism: TraitContent = {
 	breadcrumb: 'Neuroticism',
 	summary: 'Neuroticism is how readily negative feelings arise and how long they last: worry, irritation, low mood, self-consciousness and the sense of being overwhelmed. Emotional stability is the same scale read from the other end. High scorers feel setbacks keenly and take longer to settle; low scorers stay calm and recover quickly. It is a tendency everyone has to some degree, and the average person sits in the middle.',
 	notMean: [
-		'A high score is not a diagnosis of anything, and the scale is not a screening tool. It describes how often and how strongly feelings arise in ordinary life, measured by self-report, across a whole population. Most people with high scores live ordinary lives, and sensitivity brings its own strengths: noticing problems early, taking care, feeling for others.',
+		'A high score is not a diagnosis of anything, and the scale does not test for any condition. It describes how often and how strongly feelings arise in ordinary life, measured by self-report, across a whole population. Most people with high scores live ordinary lives, and sensitivity brings its own strengths: noticing problems early, taking care, feeling for others.',
 		'A low score is not coldness. People low on neuroticism have the full range of emotions; they return to baseline faster.',
 	],
 	high: 'People high on neuroticism say they worry about things, get irritated easily, often feel blue, find it difficult to approach others, go on binges and panic easily. In daily life that shows as careful planning for what might go wrong, sensitivity to criticism, moods that others can read, and a slow recovery after a bad day.',

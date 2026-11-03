@@ -1,0 +1,72 @@
+---
+// The career type template: what the type is; the activities it describes;
+// twenty UK job titles mapped from O*NET occupations, each linking to the
+// National Careers Service profile; which other types combine with it; the
+// test button; the O*NET credit line.
+import Page from './Page.astro';
+import { NCS, ONET_CREDIT, type CareerTypeContent } from '../careers/content';
+
+interface Props {
+	content: CareerTypeContent;
+}
+
+const { content } = Astro.props;
+---
+
+<Page title={content.title} description={content.description} breadcrumb={content.breadcrumb}>
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p></div>
+			<div class="main">
+				<h1>{content.name}</h1>
+				<p class="subtitle">{content.subtitle}</p>
+				<p>{content.summary}</p>
+				<div class="actions"><a class="btn" href="/tests/career-interests/">Take the interests test</a></div>
+				<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>The activities it describes</h2></div>
+			<div class="main">
+				<ul>{content.activities.map((a) => <li>{a}</li>)}</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Twenty UK jobs</h2><p>Each links to its National Careers Service profile, with pay, hours and routes in.</p></div>
+			<div class="main wide">
+				<div class="table-scroll"><table class="jobs">
+					<thead><tr><th>UK job title</th><th>Mapped from the O*NET occupation</th></tr></thead>
+					<tbody>
+						{content.jobs.map((j) => <tr><td><a href={`${NCS}${j.ncs}`} rel="noopener">{j.title}</a></td><td class="quiet">{j.onet}</td></tr>)}
+					</tbody>
+				</table></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Types that combine with it</h2></div>
+			<div class="main">
+				<ul>{content.combines.map((c) => <li><a href={c.path}>{c.name}</a> ({content.code}{c.code}): {c.line}</li>)}</ul>
+				<p>Your three highest areas make your code; the <a href="/careers/">careers index</a> maps the commonest codes to jobs.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				<p>Interest types from Holland's RIASEC model as used by the O*NET Interest Profiler; UK job titles mapped by hand from O*NET occupations with this type as the first letter of their interest code, and linked to the National Careers Service (Department for Education) job profiles.</p>
+				<p data-licence-line>{ONET_CREDIT} <a href="https://www.onetcenter.org/license_tools.html" rel="noopener">O*NET Career Exploration Tools licence</a>.</p>
+			</div>
+		</div>
+	</section>
+</Page>

@@ -1,0 +1,18 @@
+---
+import TestPage from '../../layouts/TestPage.astro';
+import { TESTS } from '../../tests/registry';
+
+export function getStaticPaths() {
+	return TESTS.map((t) => ({
+		params: { slug: t.content.path.replace(/^\/tests\/|\/$/g, '') },
+		props: { test: t },
+	}));
+}
+
+const { test } = Astro.props;
+---
+
+<TestPage content={test.content} data={test.data} normsData={test.normsData}>
+	<p slot="intro">{test.intro}</p>
+	<p slot="limits">{test.limits}</p>
+</TestPage>

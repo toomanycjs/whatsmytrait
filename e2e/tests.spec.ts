@@ -7,6 +7,18 @@ import { expect, test, type Page } from '@playwright/test';
 const TESTS = [
 	{ path: '/tests/big-five/short/', items: 50, domains: 5, facets: 0 },
 	{ path: '/tests/big-five/', items: 120, domains: 5, facets: 30 },
+	{ path: '/tests/quick/', items: 10, domains: 5, facets: 0 },
+	{ path: '/tests/self-esteem/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/introvert-or-extrovert/', items: 20, domains: 1, facets: 0 },
+	{ path: '/tests/assertiveness/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/patience/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/curiosity/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/perseverance/', items: 8, domains: 1, facets: 0 },
+	{ path: '/tests/orderliness/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/creativity/', items: 8, domains: 1, facets: 0 },
+	{ path: '/tests/courage/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/trust/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/emotional-stability/', items: 20, domains: 1, facets: 0 },
 ];
 
 async function answerScreen(page: Page, count: number, key: string) {
@@ -30,7 +42,8 @@ for (const t of TESTS) {
 		await expect(results).toBeVisible();
 		await expect(results.locator('.result .strip-domain')).toHaveCount(t.domains);
 		await expect(results.locator('.result .strip-facet')).toHaveCount(t.facets);
-		await expect(results.locator('.strip-domain .pct').first()).toHaveText(/^\d+(st|nd|rd|th)$/);
+		if (t.path.startsWith('/tests/big-five')) await expect(results.locator('.strip-domain .pct').first()).toHaveText(/^\d+(st|nd|rd|th)$/);
+		else await expect(results.locator('.strip-no-norms')).toHaveCount(t.domains);
 		await expect(results.locator('.means em')).toHaveCount(t.domains);
 
 		// The result is restored from this device on reload.
@@ -45,6 +58,22 @@ for (const t of TESTS) {
 		await expect(page.locator('[data-answered]')).toHaveText(`0 of ${t.items} answered`);
 	});
 }
+
+test('the career interests check list counts ticks per area', async ({ page }) => {
+	await page.goto('/tests/career-interests/');
+	await page.getByRole('button', { name: 'Start the test' }).click();
+	// Tick every item on screen 1 (the ten realistic activities) and nothing else.
+	for (let n = 1; n <= 10; n++) await page.locator(`label.check:has(input[name="q${n}"])`).click();
+	for (let s = 1; s <= 6; s++) {
+		await expect(page.locator('[data-screen-label]')).toHaveText(`Screen ${s} of 6`);
+		await page.keyboard.press('Enter');
+	}
+	const results = page.locator('[data-results]');
+	await expect(results).toBeVisible();
+	await expect(results.locator('.result')).toHaveCount(6);
+	await expect(results.locator('.result').first().locator('.scale-raw')).toHaveText('10 of 10');
+	await expect(results.locator('.result').nth(1).locator('.scale-raw')).toHaveText('0 of 10');
+});
 
 test('an unanswered item stops the screen and names it', async ({ page }) => {
 	await page.goto('/tests/big-five/short/');

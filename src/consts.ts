@@ -21,6 +21,7 @@ export const SECTIONS: Record<string, string> = {
 export const NAV: { path: string; label: string }[] = [
 	{ path: '/tests/', label: 'Tests' },
 	{ path: '/traits/', label: 'Traits' },
+	{ path: '/careers/', label: 'Careers' },
 ];
 
 /** Footer links. Empty until the trust pages exist. */

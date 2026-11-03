@@ -1,0 +1,48 @@
+---
+// The careers index: the six interest types, and the commonest three-letter
+// codes mapped to UK jobs as those pages are written.
+import Page from '../../layouts/Page.astro';
+import { CAREER_TYPES } from '../../careers/registry';
+import { ONET_CREDIT } from '../../careers/content';
+---
+
+<Page title="Holland codes and UK jobs: the six interest types" description="The six interest types from the O*NET Interest Profiler, each with twenty UK job titles linked to National Careers Service profiles, and how the types combine into a code." breadcrumb="Careers">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Careers</p></div>
+			<div class="main">
+				<h1>Careers</h1>
+				<p class="subtitle">Six interest types, mapped to UK jobs</p>
+				<p>The interests test counts how many activities you would like in six areas. Your three highest, in order, are your code: someone who likes investigating, then making, then helping has the code IAS. Each type page says what the type is, lists twenty UK jobs mapped from O*NET occupations with links to the National Careers Service, and says which other types it combines with.</p>
+				<div class="actions"><a class="btn" href="/tests/career-interests/">Take the interests test</a></div>
+				<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>The six types</h2></div>
+			<div class="main">
+				<ul>
+					{CAREER_TYPES.map((t) => <li><a href={t.path}>{t.name}</a><span class="quiet"> ({t.code}). {t.subtitle}.</span></li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Reading a code</h2></div>
+			<div class="main">
+				<p>Adjacent types on Holland's hexagon (R, I, A, S, E, C, round and back to R) go together more often than opposite ones, so RI, SE and AS codes are common and RS or IE codes are rarer. A code describes what you would enjoy, not what you should do: the job you take also depends on what you are good at, what is available and what it pays, none of which an interest test measures.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				<p data-licence-line>{ONET_CREDIT} <a href="https://www.onetcenter.org/license_tools.html" rel="noopener">O*NET Career Exploration Tools licence</a>. UK job profiles are from the <a href="https://nationalcareers.service.gov.uk/" rel="noopener">National Careers Service</a>.</p>
+			</div>
+		</div>
+	</section>
+</Page>

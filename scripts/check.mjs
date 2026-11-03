@@ -19,7 +19,8 @@ const BANNED = [
 	'symptom', 'clinical', 'clinician', 'patient', 'diagnos', 'severity', 'screener', 'screening',
 	'disorder', 'depress', 'anxiety', 'medical', 'illness', 'treatment', 'therapy',
 ];
-const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose', 'do not diagnose', 'never diagnoses'];
+// The adjective in the patience test's question is not the clinical noun.
+const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose', 'do not diagnose', 'never diagnoses', 'how patient', 'patient person', 'more patient', 'less patient'];
 // Published scale names inside an approved instrument's data file. The
 // IPIP-NEO-120 is an approved inventory and names two of its thirty facets
 // Anxiety and Depression; they are trait facets of Neuroticism, kept as the
@@ -50,6 +51,8 @@ for (const root of ROOTS) {
 				if (/^\s*"text":/.test(line) || /^\s*"instructions":/.test(line)) return;
 				if (ALLOWED_DATA_LINES.some((l) => text.includes(l))) return;
 			}
+			// The two published facet names where a page lists the facets (decision 0003).
+			if (/name['"]?:\s*['"](anxiety|depression)['"]/i.test(line)) return;
 			for (const phrase of ALLOWED_PHRASES) text = text.split(phrase).join('');
 			for (const word of BANNED) {
 				if (text.includes(word)) problems.push(`${file}:${i + 1}: "${word}" in: ${line.trim().slice(0, 100)}`);

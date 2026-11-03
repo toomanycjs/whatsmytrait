@@ -11,7 +11,7 @@ export const conscientiousness: TraitContent = {
 	summary: 'Conscientiousness is the tendency to be organised, persistent, careful and dutiful: to plan, to finish, to keep things in order and to think before acting. It is the Big Five trait with the broadest record of predicting how people do at work and how long they live, and the one most people wish they had more of.',
 	notMean: [
 		'A high score is not a verdict on talent, and a low score is not laziness. The scale measures how people organise their effort, not how much they have or how good the result is. Many low scorers do excellent work when it interests them, in bursts, late.',
-		'It is not the same as anxiety about getting things wrong. A very conscientious person can be relaxed; the trait is about habits of order and persistence, not worry.',
+		'It is not the same as worrying about getting things wrong. A very conscientious person can be relaxed; the trait is about habits of order and persistence, not worry.',
 	],
 	high: 'People high on conscientiousness say they are always prepared, like to tidy up, keep their promises, work hard, carry out their plans and avoid rash decisions. In daily life that shows as punctuality, lists, tidy spaces, a steady pace, and a reputation for reliability. The costs are a difficulty relaxing, delegating or improvising.',
 	low: 'People low on conscientiousness say they leave a mess, break rules, waste time, do just enough to get by and jump into things without thinking. In daily life that shows as flexibility, spontaneity, last-minute finishes, and a tolerance for clutter that would bother others. The costs are missed deadlines and the irritation of more orderly people.',

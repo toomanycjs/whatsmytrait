@@ -1,0 +1,161 @@
+// The six interest types. Each page: what the type is, the activities it
+// describes, twenty UK job titles mapped from O*NET occupations whose
+// interest code starts with the type, each linking to the National Careers
+// Service profile (every slug checked to return 200 on 3 November 2026), and
+// which other types combine with it.
+import type { CareerTypeContent } from './content';
+
+const T = {
+	R: { code: 'R', name: 'Realistic', path: '/careers/realistic/' },
+	I: { code: 'I', name: 'Investigative', path: '/careers/investigative/' },
+	A: { code: 'A', name: 'Artistic', path: '/careers/artistic/' },
+	S: { code: 'S', name: 'Social', path: '/careers/social/' },
+	E: { code: 'E', name: 'Enterprising', path: '/careers/enterprising/' },
+	C: { code: 'C', name: 'Conventional', path: '/careers/conventional/' },
+};
+
+export const realistic: CareerTypeContent = {
+	code: 'R', path: T.R.path,
+	title: 'Realistic careers: hands-on jobs in the UK for the practical type',
+	description: 'What the realistic interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
+	name: 'Realistic', subtitle: 'The doers: tools, machines, plants, animals and physical work', breadcrumb: 'Realistic',
+	summary: 'Realistic interests are for work with things you can touch: building, repairing, operating, growing and moving. People high on this type like practical problems with visible results, prefer doing to discussing, and are usually happiest outdoors or in a workshop rather than at a desk. It is the type most men score highest on, and the one with the widest range of routes in without a degree.',
+	activities: ['Building and repairing with tools and machines', 'Operating vehicles, plant and equipment', 'Growing plants and keeping animals', 'Physical work outdoors or on site', 'Testing, installing and maintaining things', 'Responding to fires and emergencies'],
+	jobs: [
+		{ title: 'Electrician', ncs: 'electrician', onet: 'Electricians' },
+		{ title: 'Plumber', ncs: 'plumber', onet: 'Plumbers, Pipefitters, and Steamfitters' },
+		{ title: 'Carpenter', ncs: 'carpenter', onet: 'Carpenters' },
+		{ title: 'Bricklayer', ncs: 'bricklayer', onet: 'Brickmasons and Blockmasons' },
+		{ title: 'Welder', ncs: 'welder', onet: 'Welders, Cutters, Solderers, and Brazers' },
+		{ title: 'Large goods vehicle driver', ncs: 'large-goods-vehicle-driver', onet: 'Heavy and Tractor-Trailer Truck Drivers' },
+		{ title: 'Firefighter', ncs: 'firefighter', onet: 'Firefighters' },
+		{ title: 'Farmer', ncs: 'farmer', onet: 'Farmers, Ranchers, and Other Agricultural Managers' },
+		{ title: 'Gardener', ncs: 'gardener', onet: 'Landscaping and Groundskeeping Workers' },
+		{ title: 'Locksmith', ncs: 'locksmith', onet: 'Locksmiths and Safe Repairers' },
+		{ title: 'CNC machinist', ncs: 'cnc-machinist', onet: 'Computer Numerically Controlled Tool Operators' },
+		{ title: 'Plasterer', ncs: 'plasterer', onet: 'Plasterers and Stucco Masons' },
+		{ title: 'Roofer', ncs: 'roofer', onet: 'Roofers' },
+		{ title: 'Train driver', ncs: 'train-driver', onet: 'Locomotive Engineers' },
+		{ title: 'Forklift driver', ncs: 'forklift-driver', onet: 'Industrial Truck and Tractor Operators' },
+		{ title: 'Scaffolder', ncs: 'scaffolder', onet: 'Structural Iron and Steel Workers' },
+		{ title: 'Tree surgeon', ncs: 'tree-surgeon', onet: 'Tree Trimmers and Pruners' },
+		{ title: 'Gas service technician', ncs: 'gas-service-technician', onet: 'Heating, Air Conditioning, and Refrigeration Mechanics and Installers' },
+		{ title: 'Painter and decorator', ncs: 'painter-and-decorator', onet: 'Painters, Construction and Maintenance' },
+		{ title: 'Construction plant operator', ncs: 'construction-plant-operator', onet: 'Operating Engineers and Other Construction Equipment Operators' },
+	],
+	combines: [
+		{ ...T.I, line: 'practical work that needs understanding, such as engineering technicians and electronics.' },
+		{ ...T.C, line: 'practical work to a procedure, such as quality control and plant operation.' },
+		{ ...T.S, line: 'practical work for people, such as paramedics and sports coaching.' },
+	],
+};
+
+export const investigative: CareerTypeContent = {
+	code: 'I', path: T.I.path,
+	title: 'Investigative careers: UK jobs for people who like finding out',
+	description: 'What the investigative interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
+	name: 'Investigative', subtitle: 'The thinkers: research, analysis and working out how things work', breadcrumb: 'Investigative',
+	summary: 'Investigative interests are for work that involves observing, measuring, analysing and solving problems: science, medicine, data and software. People high on this type like understanding why, prefer ideas and evidence to persuasion, and are patient with detail when it leads somewhere. Most routes in run through further study, though not all.',
+	activities: ['Running experiments and tests', 'Analysing data and finding patterns', 'Diagnosing what is wrong and why', 'Studying the natural world', 'Writing software and modelling', 'Reading and keeping up with research'],
+	jobs: [
+		{ title: 'GP', ncs: 'gp', onet: 'Family Medicine Physicians' },
+		{ title: 'Hospital doctor', ncs: 'hospital-doctor', onet: 'Physicians, All Other' },
+		{ title: 'Pharmacist', ncs: 'pharmacist', onet: 'Pharmacists' },
+		{ title: 'Biomedical scientist', ncs: 'biomedical-scientist', onet: 'Medical Scientists, Except Epidemiologists' },
+		{ title: 'Chemist', ncs: 'chemist', onet: 'Chemists' },
+		{ title: 'Data scientist', ncs: 'data-scientist', onet: 'Data Scientists' },
+		{ title: 'Software developer', ncs: 'software-developer', onet: 'Software Developers' },
+		{ title: 'Laboratory technician', ncs: 'laboratory-technician', onet: 'Chemical Technicians' },
+		{ title: 'Meteorologist', ncs: 'meteorologist', onet: 'Atmospheric and Space Scientists' },
+		{ title: 'Forensic scientist', ncs: 'forensic-scientist', onet: 'Forensic Science Technicians' },
+		{ title: 'Environmental consultant', ncs: 'environmental-consultant', onet: 'Environmental Scientists and Specialists, Including Health' },
+		{ title: 'Research scientist', ncs: 'research-scientist', onet: 'Biochemists and Biophysicists' },
+		{ title: 'Economist', ncs: 'economist', onet: 'Economists' },
+		{ title: 'Dentist', ncs: 'dentist', onet: 'Dentists, General' },
+		{ title: 'Vet', ncs: 'vet', onet: 'Veterinarians' },
+		{ title: 'Microbiologist', ncs: 'microbiologist', onet: 'Microbiologists' },
+		{ title: 'Physicist', ncs: 'physicist', onet: 'Physicists' },
+		{ title: 'Geoscientist', ncs: 'geoscientist', onet: 'Geoscientists, Except Hydrologists and Geographers' },
+		{ title: 'Clinical scientist', ncs: 'clinical-scientist', onet: 'Medical Scientists, Except Epidemiologists' },
+		{ title: 'Food scientist', ncs: 'food-scientist', onet: 'Food Scientists and Technologists' },
+	],
+	combines: [
+		{ ...T.R, line: 'finding out by doing, such as engineering and field science.' },
+		{ ...T.A, line: 'finding out and making, such as architecture and games programming.' },
+		{ ...T.S, line: 'finding out for people, such as medicine and the health professions.' },
+	],
+};
+
+export const social: CareerTypeContent = {
+	code: 'S', path: T.S.path,
+	title: 'Social careers: UK jobs for people who like helping and teaching',
+	description: 'What the social interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
+	name: 'Social', subtitle: 'The helpers: teaching, caring, guiding and treating', breadcrumb: 'Social',
+	summary: 'Social interests are for work whose point is other people\'s learning, health or wellbeing: teaching, nursing, care, counselling, coaching. People high on this type like working with others towards something that matters to them, and tend to find a day of pure analysis or pure selling flat. It is the type most women score highest on, and it covers the largest share of UK jobs.',
+	activities: ['Teaching and training', 'Caring for and treating people', 'Counselling, guiding and advising', 'Working with children and young people', 'Coaching and supporting', 'Organising people around a shared purpose'],
+	jobs: [
+		{ title: 'Primary school teacher', ncs: 'primary-school-teacher', onet: 'Elementary School Teachers, Except Special Education' },
+		{ title: 'Secondary school teacher', ncs: 'secondary-school-teacher', onet: 'Secondary School Teachers, Except Special and Career/Technical Education' },
+		{ title: 'Social worker', ncs: 'social-worker', onet: 'Child, Family, and School Social Workers' },
+		{ title: 'Counsellor', ncs: 'counsellor', onet: 'Counselors, All Other' },
+		{ title: 'Physiotherapist', ncs: 'physiotherapist', onet: 'Physical Therapists' },
+		{ title: 'Occupational therapist', ncs: 'occupational-therapist', onet: 'Occupational Therapists' },
+		{ title: 'Careers adviser', ncs: 'careers-adviser', onet: 'Educational, Guidance, and Career Counselors and Advisors' },
+		{ title: 'Teaching assistant', ncs: 'teaching-assistant', onet: 'Teaching Assistants, Except Postsecondary' },
+		{ title: 'Youth worker', ncs: 'youth-worker', onet: 'Social and Human Service Assistants' },
+		{ title: 'Care worker', ncs: 'care-worker', onet: 'Home Health and Personal Care Aides' },
+		{ title: 'Childminder', ncs: 'childminder', onet: 'Childcare Workers' },
+		{ title: 'Nursery worker', ncs: 'nursery-worker', onet: 'Childcare Workers' },
+		{ title: 'Early years teacher', ncs: 'early-years-teacher', onet: 'Preschool Teachers, Except Special Education' },
+		{ title: 'Personal trainer', ncs: 'personal-trainer', onet: 'Exercise Trainers and Group Fitness Instructors' },
+		{ title: 'Speech and language therapist', ncs: 'speech-and-language-therapist', onet: 'Speech-Language Pathologists' },
+		{ title: 'Paramedic', ncs: 'paramedic', onet: 'Paramedics' },
+		{ title: 'Midwife', ncs: 'midwife', onet: 'Nurse Midwives' },
+		{ title: 'Sports coach', ncs: 'sports-coach', onet: 'Coaches and Scouts' },
+		{ title: 'Dietitian', ncs: 'dietitian', onet: 'Dietitians and Nutritionists' },
+		{ title: 'British Sign Language interpreter', ncs: 'british-sign-language-interpreter', onet: 'Interpreters and Translators' },
+	],
+	combines: [
+		{ ...T.I, line: 'helping through knowledge, such as the health professions.' },
+		{ ...T.A, line: 'helping through expression, such as drama and music teaching.' },
+		{ ...T.E, line: 'helping by organising and leading, such as headship and charity management.' },
+	],
+};
+
+export const conventional: CareerTypeContent = {
+	code: 'C', path: T.C.path,
+	title: 'Conventional careers: UK jobs for people who like order and accuracy',
+	description: 'What the conventional interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
+	name: 'Conventional', subtitle: 'The organisers: records, procedures, numbers and getting details right', breadcrumb: 'Conventional',
+	summary: 'Conventional interests are for work with clear procedures and standards: keeping records, handling money, organising information, making systems run. People high on this type like knowing what good looks like, prefer order to improvisation, and take satisfaction in accuracy. The name is Holland\'s and says nothing about the person; the type runs through finance, administration, law and logistics.',
+	activities: ['Keeping accurate records and accounts', 'Following and improving procedures', 'Handling money, claims and payroll', 'Organising files, data and inventory', 'Checking and proofreading', 'Running the systems an organisation depends on'],
+	jobs: [
+		{ title: 'Accounting technician', ncs: 'accounting-technician', onet: 'Bookkeeping, Accounting, and Auditing Clerks' },
+		{ title: 'Bookkeeper', ncs: 'bookkeeper', onet: 'Bookkeeping, Accounting, and Auditing Clerks' },
+		{ title: 'Payroll administrator', ncs: 'payroll-administrator', onet: 'Payroll and Timekeeping Clerks' },
+		{ title: 'Legal secretary', ncs: 'legal-secretary', onet: 'Legal Secretaries and Administrative Assistants' },
+		{ title: 'Office manager', ncs: 'office-manager', onet: 'First-Line Supervisors of Office and Administrative Support Workers' },
+		{ title: 'Admin assistant', ncs: 'admin-assistant', onet: 'Office Clerks, General' },
+		{ title: 'Proofreader', ncs: 'proofreader', onet: 'Proofreaders and Copy Markers' },
+		{ title: 'Auditor', ncs: 'auditor', onet: 'Accountants and Auditors' },
+		{ title: 'Tax adviser', ncs: 'tax-adviser', onet: 'Tax Preparers' },
+		{ title: 'Stock control assistant', ncs: 'stock-control-assistant', onet: 'Stockers and Order Fillers' },
+		{ title: 'Credit controller', ncs: 'credit-controller', onet: 'Bill and Account Collectors' },
+		{ title: 'Insurance claims handler', ncs: 'insurance-claims-handler', onet: 'Insurance Claims and Policy Processing Clerks' },
+		{ title: 'Librarian', ncs: 'librarian', onet: 'Librarians and Media Collections Specialists' },
+		{ title: 'Archivist', ncs: 'archivist', onet: 'Archivists' },
+		{ title: 'Paralegal', ncs: 'paralegal', onet: 'Paralegals and Legal Assistants' },
+		{ title: 'Database administrator', ncs: 'database-administrator', onet: 'Database Administrators' },
+		{ title: 'Mortgage adviser', ncs: 'mortgage-adviser', onet: 'Loan Officers' },
+		{ title: 'Finance officer', ncs: 'finance-officer', onet: 'Financial Clerks, All Other' },
+		{ title: 'Licensed conveyancer', ncs: 'licensed-conveyancer', onet: 'Title Examiners, Abstractors, and Searchers' },
+		{ title: 'Medical secretary', ncs: 'medical-secretary', onet: 'Medical Secretaries and Administrative Assistants' },
+	],
+	combines: [
+		{ ...T.E, line: 'order in the service of business, such as finance and management accounting.' },
+		{ ...T.R, line: 'order with things, such as logistics and quality control.' },
+		{ ...T.I, line: 'order with information, such as data administration and compliance.' },
+	],
+};
+
+export { T as TYPES };
