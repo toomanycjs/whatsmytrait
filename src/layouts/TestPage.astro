@@ -143,6 +143,9 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 				<div class="main wide">
 					<h2>Your results</h2>
 					<p class="plate-note" data-results-note></p>
+					{norms && Object.keys(norms.groups).length > 1 && (
+						<p class="plate-pick"><label>Compare with <select data-group>{Object.entries(norms.groups).map(([id, g]) => <option value={id} selected={id === group}>{g.label}, {fmt(g.n)} people</option>)}</select></label></p>
+					)}
 				</div>
 			</div>
 			<div data-results-rows></div>

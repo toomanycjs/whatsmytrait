@@ -2,8 +2,8 @@ import type { TestContent } from './content';
 
 // Twenty-four strengths, each with a short description of high and low.
 // Shorter than the template's usual 80 to 120 words per scale: twenty-four
-// scales at that length would bury the results. The strengths index, when
-// written, carries the longer entries.
+// scales at that length would bury the results. The strengths index
+// (src/pages/strengths/index.astro) carries the longer entries.
 const s = (name: string, low: string, mid: string, high: string, highText: string, lowText: string) => ({ name, means: { low, mid, high }, high: highText, low: lowText });
 
 export const characterStrengths: TestContent = {
@@ -44,7 +44,7 @@ export const characterStrengths: TestContent = {
 	related: [
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Most strengths map onto one or two Big Five traits.' },
 		{ href: '/tests/perseverance/', title: 'Do I finish what I start?', note: 'The perseverance strength with ten items.' },
-		{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+		{ href: '/strengths/', title: 'The 24 character strengths', note: 'Each strength, its published name, its items and what high and low look like.' },
 	],
 	faqs: [
 		{ q: 'What are signature strengths?', a: 'The handful of strengths, usually the top five, that come most naturally to you and that you feel most yourself using. Read your strips from the top: the strengths with the highest markers are your candidates. The order among the top few is more trustworthy than any single score.' },

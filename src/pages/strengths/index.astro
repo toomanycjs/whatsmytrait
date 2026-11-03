@@ -1,0 +1,90 @@
+---
+// The strengths index: the twenty-four character strengths the character
+// strengths test measures, one entry each: the name the site uses, the
+// published name, the virtue it is classed under, its four items, and what
+// high and low look like. Copy for high and low is the test page's, so the
+// two never drift; the items are the public-domain IPIP-VIA-R items.
+import Page from '../../layouts/Page.astro';
+import { loadInstrument } from '@site/instruments';
+import viaData from '@site/instruments/data/ipip-via-r.json';
+import { characterStrengths } from '../../tests/character-strengths';
+
+const instrument = loadInstrument(viaData);
+const copy = characterStrengths.scales;
+
+// Peterson and Seligman's six virtues and the strengths classed under each
+// (Character Strengths and Virtues, 2004).
+const VIRTUES: { name: string; line: string; ids: string[] }[] = [
+	{ name: 'Wisdom', line: 'Strengths of knowing: taking in ideas and using them.', ids: ['ORI', 'CUR', 'JUD', 'LER', 'PER'] },
+	{ name: 'Courage', line: 'Strengths of will: carrying on when it is hard.', ids: ['VAL', 'PEV', 'INT', 'ZES'] },
+	{ name: 'Humanity', line: 'Strengths of tending to other people.', ids: ['LOV', 'KIN', 'SIQ'] },
+	{ name: 'Justice', line: 'Strengths of living in a group.', ids: ['TEA', 'EQU', 'LEA'] },
+	{ name: 'Temperance', line: 'Strengths that hold excess back.', ids: ['FOR', 'MOD', 'PRU', 'REG'] },
+	{ name: 'Transcendence', line: 'Strengths that connect to something larger.', ids: ['APP', 'GRA', 'HOP', 'HUM', 'SPI'] },
+];
+
+const scale = (id: string) => instrument.scales.find((s) => s.id === id)!;
+const items = (id: string) => instrument.items.filter((i) => i.scale === id);
+const published = (id: string) => (scale(id).publishedName ?? scale(id).name).replace(/\s*\[.*\]$/, '');
+const slug = (id: string) => copy[id].name!.toLowerCase().replace(/[^a-z]+/g, '-');
+---
+
+<Page title="The 24 character strengths, one entry each" description="Each of the twenty-four character strengths the free 96-item test measures: its published name, the virtue it sits under, its four items, and what high and low look like." breadcrumb="Strengths">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Strengths</p></div>
+			<div class="main">
+				<h1>The 24 character strengths</h1>
+				<p class="subtitle">Six virtues, twenty-four strengths, four items each</p>
+				<p>Peterson and Seligman's classification sorts twenty-four strengths of character under six virtues. The free test here is the IPIP-VIA-R, a public-domain set of twenty-four four-item scales built to measure constructs similar to those strengths. Each entry below gives the name the site uses, the published name, the four items, and what a high and a low score look like. Your signature strengths are the handful with the highest markers on your results.</p>
+				<div class="actions"><a class="btn" href="/tests/character-strengths/">Take the character strengths test</a></div>
+				<p class="under-button">96 items, 10 minutes, scored on your device.</p>
+			</div>
+		</div>
+	</section>
+
+	{VIRTUES.map((v) => (
+		<section class="section" id={v.name.toLowerCase()}>
+			<div class="wrap row">
+				<div class="aside"><h2>{v.name}</h2><p class="quiet">{v.line}</p></div>
+				<div class="main">
+					{v.ids.map((id) => (
+						<Fragment>
+							<h3 id={slug(id)}>{copy[id].name}</h3>
+							<p class="small quiet">Published as {published(id)}.</p>
+							<ul class="small">{items(id).map((i) => <li><em>{i.text}</em>{i.key < 0 && <span class="quiet"> (reversed)</span>}</li>)}</ul>
+							<p><strong>High.</strong> {copy[id].high}</p>
+							<p><strong>Low.</strong> {copy[id].low}</p>
+						</Fragment>
+					))}
+				</div>
+			</div>
+		</section>
+	))}
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Reading a result</h2></div>
+			<div class="main">
+				<ul>
+					<li><a href="/guides/the-24-character-strengths-explained/">What are the 24 character strengths?</a></li>
+					<li><a href="/guides/how-to-find-your-signature-strengths/">How do I find my signature strengths?</a></li>
+					<li><a href="/guides/character-strengths-and-the-big-five/">How do character strengths relate to the Big Five?</a></li>
+					<li><a href="/guides/strengths-for-a-cv/">Which strengths should I put on a CV?</a></li>
+				</ul>
+				<p>No norm sample is published for these scales, so the test shows each strength against its possible range of 4 to 20 and gives no percentile. Four items per strength is short: the order of your top few is more stable than any single score.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				<p>Classification: Peterson, C., &amp; Seligman, M. E. P. (2004). Character strengths and virtues: A handbook and classification. Oxford University Press and American Psychological Association. <a href="https://www.viacharacter.org/" rel="noopener">viacharacter.org</a>.</p>
+				<p>Instrument: {instrument.name}. {instrument.source.paper}. Items from <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>, checked {instrument.source.accessed}.</p>
+				<p data-licence-line>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a>{instrument.licence.credit && <Fragment> Credit: {instrument.licence.credit}.</Fragment>}</p>
+			</div>
+		</div>
+	</section>
+</Page>

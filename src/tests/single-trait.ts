@@ -20,6 +20,8 @@ export interface SingleTraitSpec {
 	testRetest: string;
 	/** Two or three test-specific questions; the common ones are added. */
 	faqs: FaqPair[];
+	/** The guide written for this test. */
+	guide?: { href: string; title: string; note?: string };
 }
 
 export function singleTrait(spec: SingleTraitSpec): TestContent {
@@ -36,7 +38,7 @@ export function singleTrait(spec: SingleTraitSpec): TestContent {
 		related: [
 			{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'The wider picture: five traits and thirty facets.' },
 			{ href: spec.traitPath, title: spec.traitTitle, note: 'What the parent trait is and what the research finds.' },
-			{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+			spec.guide ?? { href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
 		],
 		faqs: [
 			...spec.faqs,

@@ -24,7 +24,7 @@ export const selfEsteem: TestContent = {
 	related: [
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Self-esteem relates most to neuroticism and extraversion.' },
 		{ href: '/traits/neuroticism/', title: 'Neuroticism explained', note: 'The trait most closely tied to self-esteem.' },
-		{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+		{ href: '/guides/what-a-rosenberg-score-means/', title: 'What does a Rosenberg self-esteem score mean?', note: 'How the scale is built and what a score does not mean.' },
 	],
 	faqs: [
 		{ q: 'What does a Rosenberg score mean?', a: 'Scored one to four per item, the scale runs from 10 to 40; the scale\'s owner also describes scoring from 0 to 30, which is the same minus ten. Higher means higher self-esteem. The owner publishes no percentile norms and says that norms for a sample like yours have to be found in the research literature, so the site draws your score against the possible range and does not invent a comparison.' },

@@ -7,6 +7,7 @@ const ipipAlpha = (a: string) => `The IPIP key page gives coefficient alpha of $
 export const introvertOrExtrovert = singleTrait({
 	instrument: 'ipip-extraversion-20',
 	slug: 'introvert-or-extrovert',
+	guide: { href: '/guides/introversion-is-not-shyness/', title: 'Is introversion the same as shyness?', note: 'The guide written for this test.' },
 	title: 'Introvert or extrovert? A free 20-item test, 3 minutes',
 	description: 'Am I an introvert or an extrovert? Twenty public-domain statements scored on your device in three minutes, with the result shown on a strip.',
 	question: 'Introvert or extrovert?',
@@ -35,6 +36,7 @@ export const introvertOrExtrovert = singleTrait({
 export const assertiveness = singleTrait({
 	instrument: 'ipip-assertiveness',
 	slug: 'assertiveness',
+	guide: { href: '/guides/what-assertiveness-is-and-is-not/', title: 'What is assertiveness, and what is it not?', note: 'The guide written for this test.' },
 	title: 'How assertive am I? A free 10-item test, 2 minutes',
 	description: 'How assertive are you? Ten public-domain statements from the IPIP-NEO assertiveness facet, scored on your device in two minutes.',
 	question: 'How assertive am I?',
@@ -62,6 +64,7 @@ export const assertiveness = singleTrait({
 export const patience = singleTrait({
 	instrument: 'ipip-patience',
 	slug: 'patience',
+	guide: { href: '/guides/patience-as-a-trait/', title: 'Is patience a personality trait?', note: 'The guide written for this test.' },
 	title: 'How patient am I? A free 10-item test, 2 minutes',
 	description: 'How patient are you? Ten public-domain statements from the IPIP patience scale, scored on your device in two minutes.',
 	question: 'How patient am I?',
@@ -89,6 +92,7 @@ export const patience = singleTrait({
 export const curiosity = singleTrait({
 	instrument: 'ipip-curiosity',
 	slug: 'curiosity',
+	guide: { href: '/guides/curiosity-and-openness/', title: 'How does curiosity relate to openness?', note: 'The guide written for this test.' },
 	title: 'How curious am I? A free 10-item test, 2 minutes',
 	description: 'How curious are you? Ten public-domain statements from the IPIP curiosity scale, scored on your device in two minutes.',
 	question: 'How curious am I?',
@@ -116,6 +120,7 @@ export const curiosity = singleTrait({
 export const perseverance = singleTrait({
 	instrument: 'ipip-perseverance',
 	slug: 'perseverance',
+	guide: { href: '/guides/perseverance-and-conscientiousness/', title: 'How does perseverance relate to conscientiousness?', note: 'The guide written for this test.' },
 	title: 'How much perseverance do I have? Free 8-item test',
 	description: 'Do you finish what you start? Eight public-domain statements from the IPIP perseverance scale, scored on your device in two minutes.',
 	question: 'Do I finish what I start?',
@@ -143,6 +148,7 @@ export const perseverance = singleTrait({
 export const orderliness = singleTrait({
 	instrument: 'ipip-orderliness',
 	slug: 'orderliness',
+	guide: { href: '/guides/orderliness-and-perfectionism/', title: 'Is orderliness the same as perfectionism?', note: 'The guide written for this test.' },
 	title: 'How orderly am I? A free 10-item test, 2 minutes',
 	description: 'How orderly are you, and is it perfectionism? Ten public-domain statements from the IPIP-NEO orderliness facet, scored on your device.',
 	question: 'How orderly am I?',
@@ -170,6 +176,7 @@ export const orderliness = singleTrait({
 export const creativity = singleTrait({
 	instrument: 'ipip-creativity',
 	slug: 'creativity',
+	guide: { href: '/guides/creativity-as-a-trait/', title: 'Is creativity a personality trait?', note: 'The guide written for this test.' },
 	title: 'How creative am I? A free 8-item test, 2 minutes',
 	description: 'How creative are you, as a trait? Eight public-domain statements from the IPIP originality and creativity scale, scored on your device.',
 	question: 'How creative am I?',
@@ -197,6 +204,7 @@ export const creativity = singleTrait({
 export const courage = singleTrait({
 	instrument: 'ipip-courage',
 	slug: 'courage',
+	guide: { href: '/guides/courage-as-a-trait/', title: 'Is courage a personality trait?', note: 'The guide written for this test.' },
 	title: 'How courageous am I? A free 10-item test, 2 minutes',
 	description: 'Do you speak up and face what is uncomfortable? Ten public-domain statements from the IPIP courage scale, scored on your device.',
 	question: 'How courageous am I?',
@@ -224,6 +232,7 @@ export const courage = singleTrait({
 export const trust = singleTrait({
 	instrument: 'ipip-trust',
 	slug: 'trust',
+	guide: { href: '/guides/trust-and-agreeableness/', title: 'How does trust relate to agreeableness?', note: 'The guide written for this test.' },
 	title: 'How trusting am I? A free 10-item test, 2 minutes',
 	description: 'Do you assume people mean well, or suspect hidden motives? Ten public-domain statements from the IPIP-NEO trust facet, scored on your device.',
 	question: 'How trusting am I?',
@@ -251,6 +260,7 @@ export const trust = singleTrait({
 export const emotionalStability = singleTrait({
 	instrument: 'ipip-emotional-stability-20',
 	slug: 'emotional-stability',
+	guide: { href: '/guides/emotional-stability-explained/', title: 'What is emotional stability?', note: 'The guide written for this test.' },
 	title: 'How emotionally stable am I? A free 20-item test',
 	description: 'How steady are your moods? Twenty public-domain statements from the IPIP emotional stability markers, scored on your device in three minutes.',
 	question: 'How emotionally stable am I?',

@@ -134,6 +134,8 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 .plate-head { padding-bottom: var(--s3); }
 .plate-head h2 { margin-bottom: var(--s1); }
 .plate-note { font-size: var(--small); color: var(--quiet); margin: 0; }
+.plate-pick { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
+.plate-pick select { font-size: var(--small); color: var(--ink); background: var(--page); border: 1px solid var(--hair); padding: 0.25em 0.5em; margin-left: 0.25em; max-width: 100%; }
 .plate .result { padding: var(--s4) 0; border-top: 1px solid var(--hair); }
 .plate .result:first-of-type { border-top: 0; }
 .scale-name { font-size: var(--body); font-weight: 600; color: var(--ink); }

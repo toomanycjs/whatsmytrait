@@ -36,7 +36,7 @@ export const careerInterests: TestContent = {
 	related: [
 		{ href: '/careers/', title: 'The six interest types and UK jobs', note: 'What each type is and the jobs that fit it.' },
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Personality and interests are related but different.' },
-		{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+		{ href: '/careers/codes/', title: 'Twenty Holland codes and UK jobs', note: 'Find your code and the jobs that carry it.' },
 	],
 	faqs: [
 		{ q: 'What is a Holland code?', a: 'Your three highest interest areas, in order, written as their initials: RIA, SEC and so on. It comes from John Holland\'s model of six vocational interest types, which O*NET uses to describe over 900 occupations. The career pages on this site map the twenty commonest codes to UK job titles.' },

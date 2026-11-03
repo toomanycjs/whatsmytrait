@@ -59,7 +59,15 @@ export function mountTest() {
 	const dataEl = document.querySelector<HTMLScriptElement>('script[data-test-data]');
 	if (!dataEl) return;
 	const data = JSON.parse(dataEl.textContent ?? '{}') as TestData;
-	const { instrument, norms, group } = data;
+	const { instrument, norms } = data;
+	// The norms group being compared against. The page's default, unless the
+	// person picked another group on this device earlier (stored per instrument).
+	let group = data.group;
+	const GROUP_KEY = `tests:norms-group:${instrument.id}`;
+	try {
+		const chosen = localStorage.getItem(GROUP_KEY);
+		if (chosen && norms?.groups[chosen]) group = chosen;
+	} catch { /* storage unavailable */ }
 	const q = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel);
 	const testEl = q('[data-test]')!;
 	const resultsEl = q('[data-results]')!;
@@ -257,8 +265,8 @@ export function mountTest() {
 	const resultsStatus = q('[data-results-status]')!;
 	let current: ResultEntry | null = null;
 
-	const hasNorms = !!norms && !!norms.groups[group];
-	const pct = (id: string, raw: number) => (hasNorms && norms!.groups[group].scales[id] ? percentile(norms!, id, group, raw) : null);
+	const hasNorms = () => !!norms && !!norms.groups[group];
+	const pct = (id: string, raw: number) => (hasNorms() && norms!.groups[group].scales[id] ? percentile(norms!, id, group, raw) : null);
 	const range = (id: string) => {
 		const r = score(instrument, {}).scales[id];
 		return { min: r.min, max: r.max };
@@ -277,7 +285,7 @@ export function mountTest() {
 		return strip({
 			name: data.names[id] ?? instrument.scales.find((s) => s.id === id)?.name ?? id,
 			min, max, raw, size, hue,
-			...(hasNorms && norms!.groups[group].scales[id] ? { norms: norms!, scale: id, group } : {}),
+			...(hasNorms() && norms!.groups[group].scales[id] ? { norms: norms!, scale: id, group } : {}),
 			...(second ? { second: second.raw, secondLabel: second.label, firstLabel: 'today' } : {}),
 		});
 	}
@@ -290,7 +298,11 @@ export function mountTest() {
 		N: 'var(--hue-stability)', S: 'var(--hue-stability)',
 	};
 
-	function renderResults(entry: ResultEntry, compare?: { entry: ResultEntry; label: string }) {
+	type Compare = { entry: ResultEntry; label: string };
+	let lastRender: { entry: ResultEntry; compare?: Compare; prefix: string } | null = null;
+
+	function renderResults(entry: ResultEntry, compare?: Compare, prefix = '') {
+		lastRender = { entry, compare, prefix };
 		rowsEl.replaceChildren();
 		const domains = instrument.scales.filter((s) => !s.parent);
 		for (const d of domains) {
@@ -331,10 +343,22 @@ export function mountTest() {
 			rowsEl.append(row);
 		}
 		whenEl.textContent = `Saved on this device, ${formatDate(entry.date)}`;
-		noteEl.textContent = hasNorms
+		noteEl.textContent = prefix + (hasNorms()
 			? `${data.name}, compared with ${norms!.groups[group].n.toLocaleString('en-GB')} people (${norms!.groups[group].label.toLowerCase()}). Curve height shows how common each score is.`
-			: `${data.name}. No published norms exist for this test, so the marker shows your raw score against the possible range.`;
+			: `${data.name}. No published norms exist for this test, so the marker shows your raw score against the possible range.`);
 		resultsEl.hidden = false;
+	}
+
+	// The group picker: redraw the same results against another group.
+	const groupSel = q<HTMLSelectElement>('[data-group]');
+	if (groupSel) {
+		groupSel.value = group;
+		groupSel.addEventListener('change', () => {
+			if (!norms?.groups[groupSel.value]) return;
+			group = groupSel.value;
+			try { localStorage.setItem(GROUP_KEY, group); } catch { /* storage unavailable */ }
+			if (lastRender) renderResults(lastRender.entry, lastRender.compare, lastRender.prefix);
+		});
 	}
 
 	function finish() {
@@ -411,21 +435,18 @@ export function mountTest() {
 		const theirs = shared[shared.length - 1];
 		if (latest) {
 			current = latest;
-			renderResults(latest, { entry: theirs, label: `shared, ${formatDate(theirs.date)}` });
-			noteEl.textContent = `Your results (filled markers) beside the shared results from ${formatDate(theirs.date)} (outline markers). ${noteEl.textContent}`;
+			renderResults(latest, { entry: theirs, label: `shared, ${formatDate(theirs.date)}` }, `Your results (filled markers) beside the shared results from ${formatDate(theirs.date)} (outline markers). `);
 		} else {
 			current = null;
-			renderResults(theirs);
+			renderResults(theirs, undefined, "These are someone else's results, opened from a link. Take the test to see yours beside them. ");
 			whenEl.textContent = `Shared results, ${formatDate(theirs.date)}`;
-			noteEl.textContent = `These are someone else's results, opened from a link. Take the test to see yours beside them. ${noteEl.textContent}`;
 		}
 		resultsEl.scrollIntoView({ block: 'start' });
 	} else if (latest) {
 		current = latest;
 		// The change view: the previous attempt on the same strips as an outline marker.
 		const previous = saved.length >= 2 ? saved[saved.length - 2] : null;
-		renderResults(latest, previous ? { entry: previous, label: formatDate(previous.date) } : undefined);
-		if (previous) noteEl.textContent = `Filled markers are your latest attempt; outline markers are your attempt from ${formatDate(previous.date)}. ${noteEl.textContent}`;
+		renderResults(latest, previous ? { entry: previous, label: formatDate(previous.date) } : undefined, previous ? `Filled markers are your latest attempt; outline markers are your attempt from ${formatDate(previous.date)}. ` : '');
 		q('[data-start]')!.textContent = 'Take the test again';
 	}
 }

@@ -37,7 +37,7 @@ export const emotionalIntelligence: TestContent = {
 	related: [
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Several components overlap with agreeableness and neuroticism.' },
 		{ href: '/tests/interpersonal-style/', title: 'What is my interpersonal style?', note: 'How you come across to others.' },
-		{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+		{ href: '/guides/what-an-eq-score-can-tell-you/', title: 'What can an EQ score tell you, and what can it not?', note: 'Trait emotional intelligence, read plainly.' },
 	],
 	faqs: [
 		{ q: 'What is the difference between trait and ability emotional intelligence?', a: 'Trait emotional intelligence is how people describe their own emotional style, measured by self-report like this test. Ability emotional intelligence is how well people actually perceive and reason about emotions, measured with tasks that have right answers. The two correlate only weakly. This test measures the first.' },

@@ -1,0 +1,65 @@
+---
+// Twenty three-letter interest codes, each with one line on what it means
+// and up to five UK jobs mapped from O*NET occupations with that code,
+// linking to National Careers Service profiles. The selection method is in
+// src/careers/codes.ts.
+import Page from '../../layouts/Page.astro';
+import { HOLLAND_CODES, ONET_BROWSE } from '../../careers/codes';
+import { NCS, ONET_CREDIT } from '../../careers/content';
+import { CAREER_TYPES } from '../../careers/registry';
+
+const typeName = Object.fromEntries(CAREER_TYPES.map((t) => [t.code, t.name]));
+const spell = (code: string) => code.split('').map((c) => typeName[c].toLowerCase()).join(', ');
+---
+
+<Page title="Holland codes: twenty three-letter codes and UK jobs" description="Twenty three-letter interest codes from the O*NET Interest Profiler, what each combination means, and up to five UK jobs for each, linked to National Careers Service profiles." breadcrumb="Codes">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p></div>
+			<div class="main">
+				<h1>Twenty Holland codes and UK jobs</h1>
+				<p class="subtitle">Your three highest interest areas, in order</p>
+				<p>The interests test gives you a three-letter code: your three highest areas, highest first. O*NET describes over 900 occupations with the same codes. The twenty below are the codes that the most O*NET occupations carry, grouped by first letter, each with one line on what the combination means and UK jobs mapped from O*NET occupations with that exact code.</p>
+				<p>If your code is not here, read the page for your first letter and then your second: the first letter says most about the work, and the order of the second and third matters less than the letters themselves.</p>
+				<div class="actions"><a class="btn" href="/tests/career-interests/">Take the interests test</a></div>
+				<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+
+	{HOLLAND_CODES.map((c) => (
+		<section class="section" id={c.code.toLowerCase()}>
+			<div class="wrap row">
+				<div class="aside"><h2>{c.code}</h2><p class="quiet">{spell(c.code)}</p></div>
+				<div class="main">
+					<p>{c.code}: {c.line}</p>
+					<ul>
+						{c.jobs.map((j) => <li><a href={`${NCS}${j.ncs}`} rel="noopener">{j.title}</a><span class="quiet"> {j.onet}</span></li>)}
+					</ul>
+				</div>
+			</div>
+		</section>
+	))}
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>The six types</h2></div>
+			<div class="main">
+				<ul>
+					{CAREER_TYPES.map((t) => <li><a href={t.path}>{t.name}</a><span class="quiet"> ({t.code}). {t.subtitle}.</span></li>)}
+				</ul>
+				<p><a href="/guides/holland-codes-explained/">Holland codes explained</a><span class="quiet"> Where the six types come from and how a code is read.</span></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				<p>Interest codes from Holland's RIASEC model as used by the O*NET Interest Profiler. The twenty codes are those carried by the most occupations on O*NET OnLine's <a href={ONET_BROWSE} rel="noopener">browse by interests</a> pages, read on 3 November 2026: 923 occupations listed, of which 490 carry a three-letter code. Codes that tied for the last places were chosen by which had UK job profiles to show. The counts describe O*NET's occupation list, not how common each code is among people, so they are not shown. UK job titles are mapped by hand from O*NET occupations with that code and link to the National Careers Service (Department for Education) job profiles; every address was checked against the service's own sitemap on 3 November 2026.</p>
+				<p data-licence-line>{ONET_CREDIT} <a href="https://www.onetcenter.org/license_tools.html" rel="noopener">O*NET Career Exploration Tools licence</a>.</p>
+			</div>
+		</div>
+	</section>
+</Page>
