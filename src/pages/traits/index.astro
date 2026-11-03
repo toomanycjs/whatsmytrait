@@ -1,25 +1,43 @@
 ---
+// The traits index: the five domains, each with its six facets and the
+// one-line description the domain page gives each facet.
 import Page from '../../layouts/Page.astro';
-import { SIBLINGS } from '../../traits/citations';
+import { agreeableness } from '../../traits/agreeableness';
+import { conscientiousness } from '../../traits/conscientiousness';
+import { extraversion } from '../../traits/extraversion';
+import { neuroticism } from '../../traits/neuroticism';
+import { openness } from '../../traits/openness';
+
+const domains = [openness, conscientiousness, extraversion, agreeableness, neuroticism];
+const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 ---
 
-<Page title="The Big Five traits explained, one page each" description="What each of the five broad personality traits is, what high and low look like in daily life, what the research finds, and where people fall." breadcrumb="Traits">
+<Page title="The Big Five traits and their thirty facets, one page each" description="What each of the five broad personality traits and their thirty facets is, what high and low look like in daily life, what the research finds, and where people fall." breadcrumb="Traits">
 	<section class="page-head">
 		<div class="wrap row">
 			<div class="aside"><p class="section-name">Traits</p></div>
 			<div class="main">
 				<h1>Traits</h1>
-				<p class="subtitle">The five domains, with their facets to follow</p>
-				<p>Each page says what the trait is, what it does not mean before what it does, what high and low look like in daily life, what the research finds it predicts with the papers cited, and where people fall. If you have taken a test on this device, your marker is drawn on.</p>
+				<p class="subtitle">The five domains and their thirty facets</p>
+				<p>Each page says what the trait is, what it does not mean before what it does, what high and low look like in daily life, what the research finds it predicts with the papers cited, and where people fall. If you have taken a test on this device, your marker is drawn on. The facets are the six narrower scales inside each domain of the 120-item Big Five test.</p>
 			</div>
 		</div>
 	</section>
+	{domains.map((d) => (
+		<section class="section">
+			<div class="wrap row">
+				<div class="aside"><h2><a href={d.path}>{d.name}</a></h2></div>
+				<div class="main">
+					<ul>{d.facets.map((f) => <li><a href={f.href}>{f.name}</a><span class="quiet"> {sentence(f.line)}</span></li>)}</ul>
+				</div>
+			</div>
+		</section>
+	))}
 	<section class="section">
 		<div class="wrap row">
-			<div class="aside"><h2>The Big Five</h2></div>
+			<div class="aside"><h2>Take the test</h2></div>
 			<div class="main">
-				<ul>{SIBLINGS.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
-				<p><a href="/tests/big-five/">Take the Big Five test</a></p>
+				<p><a href="/tests/big-five/">Take the Big Five test</a><span class="quiet"> 120 items, 12 minutes, every domain and facet against a sample of over 400,000 people.</span></p>
 			</div>
 		</div>
 	</section>

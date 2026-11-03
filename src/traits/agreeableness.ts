@@ -16,12 +16,12 @@ export const agreeableness: TraitContent = {
 	high: 'People high on agreeableness say they trust others, love to help, sympathise with those worse off, avoid fights and do not think highly of themselves. In daily life that shows as being the one others confide in, giving way in arguments, finding it hard to refuse, and assuming good intentions until proved otherwise.',
 	low: 'People low on agreeableness say they distrust people, are indifferent to others\' feelings, love a good fight, think highly of themselves and use others for their own ends. In daily life that shows as blunt feedback, hard negotiation, scepticism of motives, comfort with conflict, and a small number of relationships that run deep.',
 	facets: [
-		{ name: 'Trust', line: 'assuming good intentions in others.' },
-		{ name: 'Morality', line: 'straightforwardness and not using people.' },
-		{ name: 'Altruism', line: 'wanting to help.' },
-		{ name: 'Cooperation', line: 'avoiding conflict and getting along.' },
-		{ name: 'Modesty', line: 'not thinking oneself better than others.' },
-		{ name: 'Sympathy', line: 'feeling for people who are worse off.' },
+		{ name: 'Trust', line: 'assuming good intentions in others.', href: '/traits/trust/' },
+		{ name: 'Morality', line: 'straightforwardness and not using people.', href: '/traits/morality/' },
+		{ name: 'Altruism', line: 'wanting to help.', href: '/traits/altruism/' },
+		{ name: 'Cooperation', line: 'avoiding conflict and getting along.', href: '/traits/cooperation/' },
+		{ name: 'Modesty', line: 'not thinking oneself better than others.', href: '/traits/modesty/' },
+		{ name: 'Sympathy', line: 'feeling for people who are worse off.', href: '/traits/sympathy/' },
 	],
 	predicts: [
 		{ text: 'Agreeableness predicts relationship satisfaction, less conflict with partners and peers, and volunteering, with small to moderate effects.', cite: CITE.ozer2006 },

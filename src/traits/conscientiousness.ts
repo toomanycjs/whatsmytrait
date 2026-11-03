@@ -16,12 +16,12 @@ export const conscientiousness: TraitContent = {
 	high: 'People high on conscientiousness say they are always prepared, like to tidy up, keep their promises, work hard, carry out their plans and avoid rash decisions. In daily life that shows as punctuality, lists, tidy spaces, a steady pace, and a reputation for reliability. The costs are a difficulty relaxing, delegating or improvising.',
 	low: 'People low on conscientiousness say they leave a mess, break rules, waste time, do just enough to get by and jump into things without thinking. In daily life that shows as flexibility, spontaneity, last-minute finishes, and a tolerance for clutter that would bother others. The costs are missed deadlines and the irritation of more orderly people.',
 	facets: [
-		{ name: 'Self-efficacy', line: 'confidence in one\'s ability to get things done.' },
-		{ name: 'Orderliness', line: 'liking for tidiness and things in their place.' },
-		{ name: 'Dutifulness', line: 'keeping promises and following rules.' },
-		{ name: 'Achievement-striving', line: 'working hard and aiming high.' },
-		{ name: 'Self-discipline', line: 'starting tasks and carrying them through.' },
-		{ name: 'Cautiousness', line: 'thinking before acting.' },
+		{ name: 'Self-efficacy', line: 'confidence in one\'s ability to get things done.', href: '/traits/self-efficacy/' },
+		{ name: 'Orderliness', line: 'liking for tidiness and things in their place.', href: '/traits/orderliness/' },
+		{ name: 'Dutifulness', line: 'keeping promises and following rules.', href: '/traits/dutifulness/' },
+		{ name: 'Achievement-striving', line: 'working hard and aiming high.', href: '/traits/achievement-striving/' },
+		{ name: 'Self-discipline', line: 'starting tasks and carrying them through.', href: '/traits/self-discipline/' },
+		{ name: 'Cautiousness', line: 'thinking before acting.', href: '/traits/cautiousness/' },
 	],
 	predicts: [
 		{ text: 'Conscientiousness is the one Big Five trait that predicts job performance across occupational groups, with a modest but consistent effect.', cite: CITE.barrick1991 },

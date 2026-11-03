@@ -9,9 +9,10 @@ import { conscientiousness } from '../../traits/conscientiousness';
 import { extraversion } from '../../traits/extraversion';
 import { neuroticism } from '../../traits/neuroticism';
 import { openness } from '../../traits/openness';
+import { FACETS } from '../../traits/facets';
 
 export function getStaticPaths() {
-	return [openness, conscientiousness, extraversion, agreeableness, neuroticism].map((content) => ({
+	return [openness, conscientiousness, extraversion, agreeableness, neuroticism, ...FACETS].map((content) => ({
 		params: { slug: content.path.replace(/^\/traits\/|\/$/g, '') },
 		props: { content },
 	}));

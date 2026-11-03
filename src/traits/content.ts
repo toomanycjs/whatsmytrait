@@ -36,6 +36,8 @@ export interface TraitContent {
 	low: string;
 	/** The facets, one line each (for a domain), or the parent (for a facet). */
 	facets: { name: string; line: string; href?: string }[];
+	/** Heading over the facets list; "Facets" unless set. */
+	facetsHeading?: string;
 	/** What the research says it predicts, each with its citation. */
 	predicts: { text: string; cite: Citation }[];
 	/** What it does not mean. Written before what it does. */
@@ -46,4 +48,6 @@ export interface TraitContent {
 	test: { href: string; label: string };
 	/** Sibling traits. */
 	siblings: { href: string; title: string }[];
+	/** Heading over the siblings list; "The other traits" unless set. */
+	siblingsHeading?: string;
 }

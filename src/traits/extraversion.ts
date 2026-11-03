@@ -16,12 +16,12 @@ export const extraversion: TraitContent = {
 	high: 'People high on extraversion say they make friends easily, love large parties, take charge, are always on the go, seek adventure and radiate joy. In daily life that shows as a wide circle, a liking for doing things with others, speaking before thinking, and energy that rises in a busy room and falls when alone for long.',
 	low: 'People low on extraversion say they prefer to be alone, avoid crowds, wait for others to lead the way, like to take it easy and keep others at a distance. In daily life that shows as a small circle of close friends, time alone to recover from social effort, careful speech, and no wish to be the centre of attention.',
 	facets: [
-		{ name: 'Friendliness', line: 'warmth and ease with other people.' },
-		{ name: 'Gregariousness', line: 'liking for crowds and company.' },
-		{ name: 'Assertiveness', line: 'taking charge and speaking up.' },
-		{ name: 'Activity level', line: 'pace of life and keeping busy.' },
-		{ name: 'Excitement-seeking', line: 'appetite for thrills and risk.' },
-		{ name: 'Cheerfulness', line: 'how readily joy and enthusiasm arise.' },
+		{ name: 'Friendliness', line: 'warmth and ease with other people.', href: '/traits/friendliness/' },
+		{ name: 'Gregariousness', line: 'liking for crowds and company.', href: '/traits/gregariousness/' },
+		{ name: 'Assertiveness', line: 'taking charge and speaking up.', href: '/traits/assertiveness/' },
+		{ name: 'Activity level', line: 'pace of life and keeping busy.', href: '/traits/activity-level/' },
+		{ name: 'Excitement-seeking', line: 'appetite for thrills and risk.', href: '/traits/excitement-seeking/' },
+		{ name: 'Cheerfulness', line: 'how readily joy and enthusiasm arise.', href: '/traits/cheerfulness/' },
 	],
 	predicts: [
 		{ text: 'Extraversion is the Big Five trait most strongly linked to who emerges as a leader and how effective leaders are rated, with a moderate effect.', cite: CITE.judge2002 },

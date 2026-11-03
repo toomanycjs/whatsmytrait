@@ -16,12 +16,12 @@ export const openness: TraitContent = {
 	high: 'People high on openness say they have a vivid imagination, love to read challenging material, see beauty where others do not, prefer variety to routine and experience their emotions intensely. In daily life that shows as a wide range of interests, a taste for art, music and ideas, boredom with repetition, and a readiness to question conventions, including political ones.',
 	low: 'People low on openness say they prefer to stick with what they know, dislike changes, avoid philosophical discussions and have little interest in art museums or poetry. In daily life that shows as settled habits, practical judgement, a liking for clear rules and familiar places, and impatience with speculation. Many low scorers are expert at the concrete work they have chosen.',
 	facets: [
-		{ name: 'Imagination', line: 'how much a person lives in fantasy and daydream rather than only in the concrete present.' },
-		{ name: 'Artistic interests', line: 'liking for art, music, poetry and beauty.' },
-		{ name: 'Emotionality', line: 'how strongly feelings are experienced and noticed.' },
-		{ name: 'Adventurousness', line: 'preference for variety and new experiences over routine.' },
-		{ name: 'Intellect', line: 'enjoyment of ideas, abstract discussion and challenging reading.' },
-		{ name: 'Liberalism', line: 'readiness to question convention and authority.' },
+		{ name: 'Imagination', line: 'how much a person lives in fantasy and daydream rather than only in the concrete present.', href: '/traits/imagination/' },
+		{ name: 'Artistic interests', line: 'liking for art, music, poetry and beauty.', href: '/traits/artistic-interests/' },
+		{ name: 'Emotionality', line: 'how strongly feelings are experienced and noticed.', href: '/traits/emotionality/' },
+		{ name: 'Adventurousness', line: 'preference for variety and new experiences over routine.', href: '/traits/adventurousness/' },
+		{ name: 'Intellect', line: 'enjoyment of ideas, abstract discussion and challenging reading.', href: '/traits/intellect/' },
+		{ name: 'Liberalism', line: 'readiness to question convention and authority.', href: '/traits/liberalism/' },
 	],
 	predicts: [
 		{ text: 'Across the Big Five, openness has the weakest links to health, work and relationship outcomes; its clearest correlates are political attitudes, creative and artistic pursuits, and the breadth of a person\'s interests.', cite: CITE.ozer2006 },

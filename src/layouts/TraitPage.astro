@@ -75,7 +75,7 @@ const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.
 	{content.facets.length > 0 && (
 		<section class="section">
 			<div class="wrap row">
-				<div class="aside"><h2>Facets</h2></div>
+				<div class="aside"><h2>{content.facetsHeading ?? 'Facets'}</h2></div>
 				<div class="main">
 					<ul>
 						{content.facets.map((f) => <li>{f.href ? <a href={f.href}>{f.name}</a> : <strong>{f.name}</strong>}: {f.line}</li>)}
@@ -128,7 +128,7 @@ const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.
 
 	<section class="section">
 		<div class="wrap row">
-			<div class="aside"><h2>The other traits</h2></div>
+			<div class="aside"><h2>{content.siblingsHeading ?? 'The other traits'}</h2></div>
 			<div class="main">
 				<ul>{content.siblings.map((s) => <li><a href={s.href}>{s.title}</a></li>)}</ul>
 			</div>

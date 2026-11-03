@@ -42,6 +42,8 @@ export async function getStaticPaths() {
 	for (const c of [bigFive, bigFiveShort]) paths.push({ params: { slug: c.path.replace(/^\/|\/$/g, '') }, props: { title: c.question, section: 'tests' } });
 	const { SIBLINGS } = await import('../../traits/citations');
 	for (const s of SIBLINGS) paths.push({ params: { slug: s.href.replace(/^\/|\/$/g, '') }, props: { title: s.title, section: 'traits' } });
+	const { FACETS } = await import('../../traits/facets');
+	for (const f of FACETS) paths.push({ params: { slug: f.path.replace(/^\/|\/$/g, '') }, props: { title: f.name, section: 'traits' } });
 	const { CAREER_TYPES } = await import('../../careers/registry');
 	for (const c of CAREER_TYPES) paths.push({ params: { slug: c.path.replace(/^\/|\/$/g, '') }, props: { title: `${c.name} careers`, section: 'careers' } });
 	for (const e of await getCollection('guides', (x) => !x.data.draft)) paths.push({ params: { slug: `guides/${e.id}` }, props: { title: e.data.question ?? e.data.title, section: 'guides' } });
