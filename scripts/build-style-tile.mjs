@@ -10,17 +10,17 @@
 import { writeFileSync } from 'node:fs';
 
 // ── Synthetic norm data for the tile only ──
-// A sum of ten 5-point items, 10 to 50, roughly bell-shaped around `mean`.
-function synthetic(mean, sd, n = 1000) {
+// A summed scale from `min` to `max`, roughly bell-shaped around `mean`.
+function synthetic(min, max, mean, sd, n = 1000) {
 	const counts = [];
 	let total = 0;
-	for (let s = 10; s <= 50; s++) {
+	for (let s = min; s <= max; s++) {
 		const z = (s - mean) / sd;
 		const c = Math.round((n / (sd * 2.5)) * Math.exp(-0.5 * z * z));
 		counts.push(c);
 		total += c;
 	}
-	return { min: 10, counts, n: total };
+	return { min, counts, n: total };
 }
 
 function percentile(norms, raw) {
@@ -48,7 +48,8 @@ const ordinal = (n) => {
 
 // ── The strip ──
 // width 600 units; the band spans the raw range; marker at the raw score.
-function strip({ name, min, max, norms, raw, hue, size = 'domain', second }) {
+// Mirrors packages/instruments/src/strip.ts; that module is the implementation.
+function strip({ name, min, max, norms, raw, hue, size = 'domain', second, caption }) {
 	const W = 600;
 	const H = size === 'domain' ? 28 : 16;
 	const PAD = 6; // marker overhang
@@ -56,22 +57,29 @@ function strip({ name, min, max, norms, raw, hue, size = 'domain', second }) {
 	const x = (score) => ((score - min) / (max - min)) * W;
 	const pct = percentile(norms, raw);
 	const q1 = scoreAt(norms, 25), q3 = scoreAt(norms, 75);
-	const peak = Math.max(...norms.counts) / norms.n;
+	// Curve height is relative to a flat distribution over the same scores:
+	// a score three times as common as the flat share fills the band, so
+	// spread is comparable between strips of the same instrument.
+	const flat = 1 / norms.counts.length;
+	const h = (c) => Math.min(H, ((c / norms.n) / (flat * 3)) * H);
 
-	// Density as an area under a line, one point per score, scaled to the band height.
-	const pts = norms.counts.map((c, k) => `${x(norms.min + k).toFixed(1)},${(top + H - (c / norms.n / peak) * H).toFixed(1)}`);
+	const pts = norms.counts.map((c, k) => `${x(norms.min + k).toFixed(1)},${(top + H - h(c)).toFixed(1)}`);
 	const area = `M${x(min).toFixed(1)},${top + H} L${pts.join(' L')} L${x(max).toFixed(1)},${top + H} Z`;
 
 	const label = `${ordinal(pct)}`;
 	const left = (score) => `${(((score - min) / (max - min)) * 100).toFixed(2)}%`;
-	const labelRight = (raw - min) / (max - min) < 0.85;
+	const side = (score) => ((score - min) / (max - min) < 0.85 ? '' : ' pct-left');
 	const hueBar = hue && size === 'domain' ? `<rect x="0" y="${top + H}" width="${W}" height="2" fill="${hue}" />` : '';
 	const clipId = `clip-${name.toLowerCase().replace(/[^a-z]+/g, '-')}`;
-	const text = `You scored ${raw} out of ${max}, the ${label} percentile for ${name.toLowerCase()}.`;
+	const secondPct = second ? ordinal(percentile(norms, second.raw)) : '';
+	const text = second
+		? `${second.label}: ${second.raw} out of ${max}, the ${secondPct} percentile. ${caption ?? 'Today'}: ${raw} out of ${max}, the ${label} percentile for ${name.toLowerCase()}.`
+		: `You scored ${raw} out of ${max}, the ${label} percentile for ${name.toLowerCase()}.`;
 
-	// The SVG holds only the band (density, middle 50%, baseline, hue), so it
-	// can stretch to any width. The marker and its number are HTML, positioned
-	// by percentage, so they stay the same size on a phone as on a laptop.
+	// The SVG holds only the band (density in three clipped pieces so the
+	// middle 50% is the band-mid token and nothing is layered, baseline, hue),
+	// so it can stretch to any width. The markers and their numbers are HTML,
+	// positioned by percentage, so they stay the same size on a phone as on a laptop.
 	return `
 <figure class="strip strip-${size}">
 	<figcaption class="strip-head"><span class="strip-name">${name}</span></figcaption>
@@ -79,50 +87,54 @@ function strip({ name, min, max, norms, raw, hue, size = 'domain', second }) {
 		<svg viewBox="0 0 ${W} ${H + PAD * 2}" preserveAspectRatio="none" aria-hidden="true">
 			<defs><clipPath id="${clipId}"><path d="${area}" /></clipPath></defs>
 			<line class="baseline" x1="0" x2="${W}" y1="${top + H}" y2="${top + H}" />
-			<path class="density" d="${area}" />
+			<rect class="density" clip-path="url(#${clipId})" x="0" y="${top}" width="${x(q1).toFixed(1)}" height="${H}" />
 			<rect class="iqr" clip-path="url(#${clipId})" x="${x(q1).toFixed(1)}" y="${top}" width="${(x(q3) - x(q1)).toFixed(1)}" height="${H}" />
+			<rect class="density" clip-path="url(#${clipId})" x="${x(q3).toFixed(1)}" y="${top}" width="${(W - x(q3)).toFixed(1)}" height="${H}" />
 			${hueBar}
 		</svg>
-		${second ? `<span class="marker marker-outline" style="left:${left(second.raw)}"></span>` : ''}
+		${second ? `<span class="marker marker-outline" style="left:${left(second.raw)}"></span><span class="pct pct-second${side(second.raw)}" style="left:${left(second.raw)}">${secondPct}</span>` : ''}
 		<span class="marker" style="left:${left(raw)}"></span>
-		<span class="pct${labelRight ? '' : ' pct-left'}" style="left:${left(raw)}">${label}</span>
+		<span class="pct${side(raw)}" style="left:${left(raw)}">${label}</span>
 	</div>
 	<div class="strip-axis"><span>${min}</span><span>${max}</span></div>
+	${second ? `<p class="strip-key">Outline: ${second.label}, ${secondPct}. Filled: ${caption ?? 'today'}, ${label}.</p>` : ''}
 </figure>`;
 }
 
-// Results plate data: Big Five, with facets under one domain.
-const E = synthetic(31, 8), A = synthetic(37, 6), C = synthetic(34, 7), S = synthetic(29, 8), I = synthetic(36, 6);
+// Results plate data: one named instrument, the IPIP-NEO-120, whose domains
+// have 24 items (24 to 120) and whose facets have 4 (4 to 20). Facets sit
+// under their own domain. The specimen table is generated from the same data.
+const E = synthetic(24, 120, 76, 16), A = synthetic(24, 120, 88, 12), C = synthetic(24, 120, 84, 14), S = synthetic(24, 120, 72, 17), I = synthetic(24, 120, 86, 12);
 const domains = [
-	{ name: 'Openness', norms: I, raw: 41, hue: 'var(--hue-openness)', means: 'You tend to enjoy new ideas and ways of doing things more than most people do.' },
-	{ name: 'Conscientiousness', norms: C, raw: 30, hue: 'var(--hue-conscientiousness)', means: 'You are about as organised and persistent as most people.' },
-	{ name: 'Extraversion', norms: E, raw: 38, hue: 'var(--hue-extraversion)', means: 'You tend to seek company and conversation more than most people do.' },
-	{ name: 'Agreeableness', norms: A, raw: 33, hue: 'var(--hue-agreeableness)', means: 'You are a little less inclined than most people to put others first.' },
-	{ name: 'Emotional stability', norms: S, raw: 18, hue: 'var(--hue-stability)', means: 'You tend to feel stress and low mood more readily than most people do.' },
+	{ name: 'Openness', norms: I, raw: 108, hue: 'var(--hue-openness)', means: 'You tend to enjoy new ideas and ways of doing things more than most people do.' },
+	{ name: 'Conscientiousness', norms: C, raw: 78, hue: 'var(--hue-conscientiousness)', means: 'You are a little less organised and persistent than most people.' },
+	{ name: 'Extraversion', norms: E, raw: 91, hue: 'var(--hue-extraversion)', means: 'You tend to seek company and conversation more than most people do.' },
+	{ name: 'Agreeableness', norms: A, raw: 80, hue: 'var(--hue-agreeableness)', means: 'You are a little less inclined than most people to put others first.' },
+	{ name: 'Emotional stability', norms: S, raw: 50, hue: 'var(--hue-stability)', means: 'You tend to feel stress and low mood more readily than most people do.' },
 ];
 const facets = [
 	{ name: 'Friendliness', raw: 17 }, { name: 'Gregariousness', raw: 14 }, { name: 'Assertiveness', raw: 12 },
 	{ name: 'Activity level', raw: 15 }, { name: 'Excitement-seeking', raw: 11 }, { name: 'Cheerfulness', raw: 16 },
-].map((f) => {
-	// A sum of four items, 4 to 20, bell-shaped around 13.
-	const counts = [];
-	for (let s = 4; s <= 20; s++) counts.push(Math.round(400 * Math.exp(-0.5 * ((s - 13) / 3) ** 2)));
-	return { ...f, norms: { min: 4, counts, n: counts.reduce((a, b) => a + b, 0) } };
-});
+].map((f) => ({ ...f, norms: synthetic(4, 20, 13, 3) }));
+const tableRows = domains.map((d) => `<tr><td>${d.name}</td><td class="n">${d.raw}</td><td class="n">${Math.round(percentile(d.norms, d.raw))}</td></tr>`).join('\n\t\t\t');
 
 const items = [
 	'Am the life of the party.', 'Feel little concern for others.', 'Am always prepared.', 'Get stressed out easily.',
 	'Have a rich vocabulary.', "Don't talk a lot.", 'Am interested in people.', 'Leave my belongings around.',
 	'Am relaxed most of the time.', 'Have difficulty understanding abstract ideas.',
 ];
-const labels = ['Very Inaccurate', 'Moderately Inaccurate', 'Neither Accurate Nor Inaccurate', 'Moderately Accurate', 'Very Accurate'];
+// The published labels are title case; the page shows them in sentence case.
+// Only letter case changes, never a word.
+const sentence = (s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+const labels = ['Very Inaccurate', 'Moderately Inaccurate', 'Neither Accurate Nor Inaccurate', 'Moderately Accurate', 'Very Accurate'].map(sentence);
 
 const question = (text, i) => `
 <div class="item" role="group" aria-labelledby="q${i + 1}-text">
-	<p class="item-text" id="q${i + 1}-text"><span class="item-n">${i + 1}</span> ${text}</p>
+	<p class="item-text" id="q${i + 1}-text"><span class="item-n">${i + 1}</span>${text}</p>
 	<div class="options">
-		${labels.map((l, k) => `<label class="opt"><input type="radio" name="q${i + 1}" value="${k + 1}"${i === 0 && k === 3 ? ' checked' : ''} /><span class="opt-n">${k + 1}</span><span class="opt-label">${l}</span></label>`).join('\n\t\t')}
+		${labels.map((l, k) => `<label class="opt"><input type="radio" name="q${i + 1}" value="${k + 1}"${i === 0 && k === 3 ? ' checked' : ''} aria-label="${l}" /><span class="opt-n">${k + 1}</span><span class="opt-label">${l}</span></label>`).join('\n\t\t')}
 	</div>
+	<div class="ends" aria-hidden="true"><span>${labels[0]}</span><span>${labels[4]}</span></div>
 </div>`;
 
 const html = `<!doctype html>
@@ -145,7 +157,7 @@ body {
 }
 h1, h2, h3 { margin: 0; font-weight: 600; text-wrap: balance; }
 h1 { font-size: var(--display); line-height: 1.1; letter-spacing: -0.015em; }
-h2 { font-size: var(--heading); line-height: 1.2; letter-spacing: -0.01em; }
+h2 { font-size: var(--heading); line-height: 1.2; }
 h3 { font-size: var(--body); line-height: 1.3; }
 p { margin: 0 0 var(--s3); }
 a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
@@ -170,7 +182,8 @@ header.site .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justi
 nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); }
 nav.main a { text-decoration: none; color: var(--quiet); }
 nav.main a:hover, nav.main a[aria-current] { color: var(--ink); text-decoration: underline; }
-footer.site { border-top: 1px solid var(--hair); margin-top: var(--s6); }
+@media (max-width: 600px) { nav.main ul { gap: var(--s2) var(--s3); } }
+footer.site { border-top: 1px solid var(--hair); margin-top: 0; }
 footer.site .wrap { padding-top: var(--s4); padding-bottom: var(--s5); font-size: var(--small); color: var(--quiet); }
 footer.site p { margin: 0 0 var(--s2); }
 footer.site nav { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); margin-bottom: var(--s2); }
@@ -203,7 +216,9 @@ table.pct td.n, table.pct th.n { text-align: right; }
 .under-button { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
 
 /* Plate */
-.plate { background: var(--panel); padding: var(--s5) var(--s4); border-radius: 4px; }
+.plate { background: var(--panel); padding: var(--s5) var(--s4); }
+.plate-note { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); }
+.links { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: var(--s3) 0 0; }
 @media (max-width: 600px) { .plate { padding: var(--s4) var(--s3); margin: 0 calc(-1 * var(--s3)); border-radius: 0; } }
 
 /* Strips */
@@ -218,18 +233,20 @@ table.pct td.n, table.pct th.n { text-align: right; }
 .strip-facet svg { height: 28px; }
 .strip .baseline { stroke: var(--hair); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .strip .density { fill: var(--band); }
-.strip .iqr { fill: var(--band); }
+.strip .iqr { fill: var(--band-mid); }
 .strip .marker { position: absolute; top: 1px; bottom: 1px; width: 10px; margin-left: -5px; border-radius: 3px; background: var(--marker); border: 1.5px solid var(--ink); }
 .strip .marker-outline { background: transparent; }
-.strip .pct { position: absolute; top: 50%; transform: translateY(-50%); margin-left: 12px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1; white-space: nowrap; }
+.strip .pct { position: absolute; top: 50%; transform: translateY(-50%); margin-left: 12px; font-variant-numeric: tabular-nums; line-height: 1; white-space: nowrap; }
 .strip .pct-left { margin-left: 0; transform: translate(calc(-100% - 12px), -50%); }
+.strip .pct-second { color: var(--quiet); }
 .strip-facet .pct { font-size: var(--small); }
 .strip-axis { display: flex; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: 2px; }
+.strip-key { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
 .strip-means { margin: calc(-1 * var(--s3)) 0 var(--s5); max-width: var(--measure); }
 .strip-means em { font-style: italic; }
-.facets { padding-left: var(--s4); margin: 0 0 var(--s5); }
+.facets { padding-left: var(--s4); margin: calc(-1 * var(--s3)) 0 var(--s5); }
 .facets .strip-facet { margin-bottom: var(--s3); }
-.facets h3 { margin: 0 0 var(--s3); font-size: var(--small); font-weight: 400; color: var(--quiet); }
+.facets h3 { margin: 0 0 var(--s3); font-size: var(--small); font-weight: 600; }
 
 /* Draw-in: once, 200ms, respects reduced motion. */
 @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -242,12 +259,12 @@ table.pct td.n, table.pct th.n { text-align: right; }
 .progress { height: 2px; background: var(--hair); margin: 0 0 var(--s4); }
 .progress i { display: block; height: 100%; width: 20%; background: var(--ink); }
 .progress-text { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); display: flex; justify-content: space-between; gap: var(--s3); }
-.legend { font-size: var(--small); color: var(--quiet); margin: 0 0 var(--s4); display: none; }
-.item { padding: var(--s4) 0; margin: 0; border-top: 1px solid var(--hair); }
-.item-text { margin: 0 0 var(--s3); }
-.item-n { display: inline-block; min-width: 1.6em; color: var(--quiet); font-variant-numeric: tabular-nums; }
+.item { padding: 0 0 var(--s5); margin: 0; }
+.item-text { margin: 0 0 var(--s3); padding-left: 1.8em; text-indent: -1.8em; }
+.item-n { display: inline-block; width: 1.8em; color: var(--quiet); font-variant-numeric: tabular-nums; text-indent: 0; }
 .options { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s2); }
-.opt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--s1); min-height: 3rem; padding: var(--s2) var(--s1); border: 1.5px solid var(--hair); border-radius: 3px; background: var(--page); cursor: pointer; text-align: center; }
+.ends { display: none; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: var(--s1); }
+.opt { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--s1); min-height: 3rem; padding: var(--s2) var(--s1); border: 1.5px solid var(--hair); background: var(--page); cursor: pointer; text-align: center; }
 .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 .opt-n { font-weight: 600; font-size: var(--body); line-height: 1; }
 .opt-label { font-size: var(--small); line-height: 1.25; color: var(--quiet); }
@@ -256,7 +273,8 @@ table.pct td.n, table.pct th.n { text-align: right; }
 .opt:has(input:checked) .opt-label { color: var(--page); }
 .opt:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
 @media (max-width: 700px) {
-	.legend { display: block; }
+	.ends { display: flex; }
+	.keys { display: none; }
 	.opt-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 	.opt { min-height: 3rem; justify-content: center; }
 }
@@ -318,12 +336,9 @@ table.pct td.n, table.pct th.n { text-align: right; }
 		<dt>Small 14</dt><dd class="small quiet">Source: Goldberg (1992), Psychological Assessment, 4(1), 26-42. Public domain (IPIP).</dd>
 	</dl>
 	<div class="table-scroll"><table class="pct">
-		<thead><tr><th>Scale</th><th class="n">Score</th><th class="n">Percentile</th><th class="n">Alpha</th></tr></thead>
+		<thead><tr><th>Scale</th><th class="n">Score out of 120</th><th class="n">Percentile</th></tr></thead>
 		<tbody>
-			<tr><td>Extraversion</td><td class="n">38</td><td class="n">81</td><td class="n">0.87</td></tr>
-			<tr><td>Agreeableness</td><td class="n">33</td><td class="n">24</td><td class="n">0.82</td></tr>
-			<tr><td>Conscientiousness</td><td class="n">30</td><td class="n">7</td><td class="n">0.79</td></tr>
-			<tr><td>Emotional stability</td><td class="n">18</td><td class="n">100</td><td class="n">0.86</td></tr>
+			${tableRows}
 		</tbody>
 	</table></div>
 	<div class="actions" style="margin-top:var(--s4)">
@@ -338,21 +353,18 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	<p class="tile-label">Results plate</p>
 	<div class="plate">
 		<h2 style="margin-bottom:var(--s2)">Your results</h2>
-		<p class="small quiet" style="margin-bottom:var(--s5)">IPIP-NEO-120, compared with all adults in the norm sample. Saved on this device on 3 November 2026.</p>
-		${domains.map((d) => strip({ name: d.name, min: 10, max: 50, norms: d.norms, raw: d.raw, hue: d.hue }) + `\n<p class="strip-means"><em>${d.means}</em></p>`).join('\n')}
-		<div class="facets">
-			<h3>Facets of extraversion</h3>
-			${facets.map((f) => strip({ name: f.name, min: 4, max: 20, norms: f.norms, raw: f.raw, size: 'facet' })).join('\n')}
-		</div>
-		<p class="small quiet">Two attempts, or two people, on one strip: the second marker is an outline.</p>
-		${strip({ name: 'Extraversion, 14 October and today', min: 10, max: 50, norms: E, raw: 38, hue: 'var(--hue-extraversion)', second: { raw: 29 } })}
+		<p class="plate-note">IPIP-NEO-120, compared with all adults in the norm sample. Saved on this device on 3 November 2026. Curve height shows how common each score is.</p>
+		${domains.map((d) => strip({ name: d.name, min: 24, max: 120, norms: d.norms, raw: d.raw, hue: d.hue })
+			+ `\n<p class="strip-means"><em>${d.means}</em></p>`
+			+ (d.name === 'Extraversion' ? `\n<div class="facets"><h3>Facets of extraversion</h3>\n${facets.map((f) => strip({ name: f.name, min: 4, max: 20, norms: f.norms, raw: f.raw, size: 'facet' })).join('\n')}\n</div>` : '')).join('\n')}
+		<p class="plate-note">Two attempts, or two people, on one strip: the earlier one is an outline.</p>
+		${strip({ name: 'Extraversion', min: 24, max: 120, norms: E, raw: 91, hue: 'var(--hue-extraversion)', second: { raw: 70, label: '14 October' }, caption: 'today' })}
 		<div class="actions" style="margin-top:var(--s4)">
 			<a class="btn secondary" href="#">Copy as text</a>
 			<a class="btn secondary" href="#">Save as PDF</a>
-			<a class="btn secondary" href="#">Share a comparison link</a>
-			<a class="btn secondary" href="#">Set a retake reminder</a>
 			<a class="btn secondary" href="#">Start again</a>
 		</div>
+		<p class="links"><a href="#">Share a comparison link</a><a href="#">Set a retake reminder</a></p>
 	</div>
 </section>
 
@@ -361,7 +373,6 @@ table.pct td.n, table.pct th.n { text-align: right; }
 	<div class="plate">
 		<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="10" aria-label="Progress"><i></i></div>
 		<p class="progress-text"><span>Screen 1 of 5</span><span>10 of 50 answered</span></p>
-		<p class="legend">1 Very Inaccurate, 2 Moderately Inaccurate, 3 Neither Accurate Nor Inaccurate, 4 Moderately Accurate, 5 Very Accurate</p>
 		<form>
 			${items.map(question).join('\n')}
 			<div class="screen-foot">

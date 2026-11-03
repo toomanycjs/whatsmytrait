@@ -34,8 +34,9 @@ describe('strip markup', () => {
 		const html = strip({ ...base, raw: 3, hue: 'var(--hue-extraversion)' });
 		expect(html).toContain('<figure class="strip strip-domain">');
 		expect(html).toContain('aria-label="You scored 3 out of 5, the 50th percentile for extraversion."');
-		expect(html).toContain('<path class="density"');
+		expect(html.match(/class="density" clip-path="url\(#clip-e-all\)"/g)).toHaveLength(2);
 		expect(html).toContain('class="iqr" clip-path="url(#clip-e-all)"');
+		expect(html).not.toContain('<path class');
 		expect(html).toContain('fill="var(--hue-extraversion)"');
 		expect(html).toContain('<span class="marker" style="left:50.00%"></span>');
 		expect(html).toContain('<span class="pct" style="left:50.00%">50th</span>');
@@ -43,10 +44,13 @@ describe('strip markup', () => {
 		expect(html).not.toContain('<text');
 	});
 
-	it('draws a second marker as an outline and omits the hue on facets', () => {
-		const html = strip({ ...base, raw: 3, second: 4, size: 'facet', hue: 'red' });
+	it('draws a second marker as an outline with its own percentile and a key, and omits the hue on facets', () => {
+		const html = strip({ ...base, raw: 3, second: 4, secondLabel: '14 October', size: 'facet', hue: 'red' });
 		expect(html).toContain('strip-facet');
 		expect(html).toContain('<span class="marker marker-outline" style="left:75.00%"></span>');
+		expect(html).toContain('<span class="pct pct-second" style="left:75.00%">80th</span>');
+		expect(html).toContain('<p class="strip-key">Outline: 14 October, 80th. Filled: today, 50th.</p>');
+		expect(html).toContain('aria-label="14 October: 4 out of 5, the 80th percentile. Today: 3 out of 5, the 50th percentile for extraversion."');
 		expect(html).not.toContain('fill="red"');
 	});
 
