@@ -1,0 +1,1016 @@
+{
+	"id": "ipip-neo-120",
+	"version": 1,
+	"name": "IPIP-NEO-120",
+	"shortName": "IPIP-NEO-120",
+	"items_note": "Items copied character for character from Johnson's IPIP-NEO-ItemKey.xls (OSF component ycvdk, sha256 d3f962e46b412151a2df571ebb5902bc0967c864ec5e05ab0a46d254dc0b52a0) by scripts/instruments/ipip-neo-120-from-key.py on 3 November 2026, in the Short# administration order. Facet names are the authors' own. One item (O6, item 58) reads \"right or wrong\" in the spreadsheet and \"right and wrong\" on the IPIP key page; the key page wording is used. tests/ipip-neo-120.test.ts asserts the file against the key page.",
+	"source": {
+		"paper": "Johnson, J. A. (2014). Measuring thirty facets of the Five Factor Model with a 120-item public domain inventory: Development of the IPIP-NEO-120. Journal of Research in Personality, 51, 78-89",
+		"doi": "10.1016/j.jrp.2014.05.003",
+		"keyUrl": "https://ipip.ori.org/30FacetNEO-PI-RItems.htm",
+		"itemsUrl": "https://osf.io/ycvdk/",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-03"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/; IPIP-NEO-120 by John A. Johnson"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "N",
+			"name": "Neuroticism",
+			"facets": [
+				"N1",
+				"N2",
+				"N3",
+				"N4",
+				"N5",
+				"N6"
+			]
+		},
+		{
+			"id": "E",
+			"name": "Extraversion",
+			"facets": [
+				"E1",
+				"E2",
+				"E3",
+				"E4",
+				"E5",
+				"E6"
+			]
+		},
+		{
+			"id": "O",
+			"name": "Openness to experience",
+			"facets": [
+				"O1",
+				"O2",
+				"O3",
+				"O4",
+				"O5",
+				"O6"
+			]
+		},
+		{
+			"id": "A",
+			"name": "Agreeableness",
+			"facets": [
+				"A1",
+				"A2",
+				"A3",
+				"A4",
+				"A5",
+				"A6"
+			]
+		},
+		{
+			"id": "C",
+			"name": "Conscientiousness",
+			"facets": [
+				"C1",
+				"C2",
+				"C3",
+				"C4",
+				"C5",
+				"C6"
+			]
+		},
+		{
+			"id": "N1",
+			"name": "Anxiety",
+			"parent": "N"
+		},
+		{
+			"id": "N2",
+			"name": "Anger",
+			"parent": "N"
+		},
+		{
+			"id": "N3",
+			"name": "Depression",
+			"parent": "N"
+		},
+		{
+			"id": "N4",
+			"name": "Self-Consciousness",
+			"parent": "N"
+		},
+		{
+			"id": "N5",
+			"name": "Immoderation",
+			"parent": "N"
+		},
+		{
+			"id": "N6",
+			"name": "Vulnerability",
+			"parent": "N"
+		},
+		{
+			"id": "E1",
+			"name": "Friendliness",
+			"parent": "E"
+		},
+		{
+			"id": "E2",
+			"name": "Gregariousness",
+			"parent": "E"
+		},
+		{
+			"id": "E3",
+			"name": "Assertiveness",
+			"parent": "E"
+		},
+		{
+			"id": "E4",
+			"name": "Activity Level",
+			"parent": "E"
+		},
+		{
+			"id": "E5",
+			"name": "Excitement-Seeking",
+			"parent": "E"
+		},
+		{
+			"id": "E6",
+			"name": "Cheerfulness",
+			"parent": "E"
+		},
+		{
+			"id": "O1",
+			"name": "Imagination",
+			"parent": "O"
+		},
+		{
+			"id": "O2",
+			"name": "Artistic Interests",
+			"parent": "O"
+		},
+		{
+			"id": "O3",
+			"name": "Emotionality",
+			"parent": "O"
+		},
+		{
+			"id": "O4",
+			"name": "Adventurousness",
+			"parent": "O"
+		},
+		{
+			"id": "O5",
+			"name": "Intellect",
+			"parent": "O"
+		},
+		{
+			"id": "O6",
+			"name": "Liberalism",
+			"parent": "O"
+		},
+		{
+			"id": "A1",
+			"name": "Trust",
+			"parent": "A"
+		},
+		{
+			"id": "A2",
+			"name": "Morality",
+			"parent": "A"
+		},
+		{
+			"id": "A3",
+			"name": "Altruism",
+			"parent": "A"
+		},
+		{
+			"id": "A4",
+			"name": "Cooperation",
+			"parent": "A"
+		},
+		{
+			"id": "A5",
+			"name": "Modesty",
+			"parent": "A"
+		},
+		{
+			"id": "A6",
+			"name": "Sympathy",
+			"parent": "A"
+		},
+		{
+			"id": "C1",
+			"name": "Self-Efficacy",
+			"parent": "C"
+		},
+		{
+			"id": "C2",
+			"name": "Orderliness",
+			"parent": "C"
+		},
+		{
+			"id": "C3",
+			"name": "Dutifulness",
+			"parent": "C"
+		},
+		{
+			"id": "C4",
+			"name": "Achievement-Striving",
+			"parent": "C"
+		},
+		{
+			"id": "C5",
+			"name": "Self-Discipline",
+			"parent": "C"
+		},
+		{
+			"id": "C6",
+			"name": "Cautiousness",
+			"parent": "C"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Worry about things.",
+			"scale": "N1",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Make friends easily.",
+			"scale": "E1",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Have a vivid imagination.",
+			"scale": "O1",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Trust others.",
+			"scale": "A1",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Complete tasks successfully.",
+			"scale": "C1",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Get angry easily.",
+			"scale": "N2",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Love large parties.",
+			"scale": "E2",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Believe in the importance of art.",
+			"scale": "O2",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Use others for my own ends.",
+			"scale": "A2",
+			"key": -1
+		},
+		{
+			"n": 10,
+			"text": "Like to tidy up.",
+			"scale": "C2",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Often feel blue.",
+			"scale": "N3",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Take charge.",
+			"scale": "E3",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Experience my emotions intensely.",
+			"scale": "O3",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Love to help others.",
+			"scale": "A3",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Keep my promises.",
+			"scale": "C3",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Find it difficult to approach others.",
+			"scale": "N4",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Am always busy.",
+			"scale": "E4",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Prefer variety to routine.",
+			"scale": "O4",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Love a good fight.",
+			"scale": "A4",
+			"key": -1
+		},
+		{
+			"n": 20,
+			"text": "Work hard.",
+			"scale": "C4",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Go on binges.",
+			"scale": "N5",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Love excitement.",
+			"scale": "E5",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Love to read challenging material.",
+			"scale": "O5",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Believe that I am better than others.",
+			"scale": "A5",
+			"key": -1
+		},
+		{
+			"n": 25,
+			"text": "Am always prepared.",
+			"scale": "C5",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Panic easily.",
+			"scale": "N6",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Radiate joy.",
+			"scale": "E6",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Tend to vote for liberal political candidates.",
+			"scale": "O6",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Sympathize with the homeless.",
+			"scale": "A6",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Jump into things without thinking.",
+			"scale": "C6",
+			"key": -1
+		},
+		{
+			"n": 31,
+			"text": "Fear for the worst.",
+			"scale": "N1",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Feel comfortable around people.",
+			"scale": "E1",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Enjoy wild flights of fantasy.",
+			"scale": "O1",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Believe that others have good intentions.",
+			"scale": "A1",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Excel in what I do.",
+			"scale": "C1",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Get irritated easily.",
+			"scale": "N2",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Talk to a lot of different people at parties.",
+			"scale": "E2",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "See beauty in things that others might not notice.",
+			"scale": "O2",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Cheat to get ahead.",
+			"scale": "A2",
+			"key": -1
+		},
+		{
+			"n": 40,
+			"text": "Often forget to put things back in their proper place.",
+			"scale": "C2",
+			"key": -1
+		},
+		{
+			"n": 41,
+			"text": "Dislike myself.",
+			"scale": "N3",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Try to lead others.",
+			"scale": "E3",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Feel others' emotions.",
+			"scale": "O3",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Am concerned about others.",
+			"scale": "A3",
+			"key": 1
+		},
+		{
+			"n": 45,
+			"text": "Tell the truth.",
+			"scale": "C3",
+			"key": 1
+		},
+		{
+			"n": 46,
+			"text": "Am afraid to draw attention to myself.",
+			"scale": "N4",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Am always on the go.",
+			"scale": "E4",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Prefer to stick with things that I know.",
+			"scale": "O4",
+			"key": -1
+		},
+		{
+			"n": 49,
+			"text": "Yell at people.",
+			"scale": "A4",
+			"key": -1
+		},
+		{
+			"n": 50,
+			"text": "Do more than what's expected of me.",
+			"scale": "C4",
+			"key": 1
+		},
+		{
+			"n": 51,
+			"text": "Rarely overindulge.",
+			"scale": "N5",
+			"key": -1
+		},
+		{
+			"n": 52,
+			"text": "Seek adventure.",
+			"scale": "E5",
+			"key": 1
+		},
+		{
+			"n": 53,
+			"text": "Avoid philosophical discussions.",
+			"scale": "O5",
+			"key": -1
+		},
+		{
+			"n": 54,
+			"text": "Think highly of myself.",
+			"scale": "A5",
+			"key": -1
+		},
+		{
+			"n": 55,
+			"text": "Carry out my plans.",
+			"scale": "C5",
+			"key": 1
+		},
+		{
+			"n": 56,
+			"text": "Become overwhelmed by events.",
+			"scale": "N6",
+			"key": 1
+		},
+		{
+			"n": 57,
+			"text": "Have a lot of fun.",
+			"scale": "E6",
+			"key": 1
+		},
+		{
+			"n": 58,
+			"text": "Believe that there is no absolute right and wrong.",
+			"scale": "O6",
+			"key": 1
+		},
+		{
+			"n": 59,
+			"text": "Feel sympathy for those who are worse off than myself.",
+			"scale": "A6",
+			"key": 1
+		},
+		{
+			"n": 60,
+			"text": "Make rash decisions.",
+			"scale": "C6",
+			"key": -1
+		},
+		{
+			"n": 61,
+			"text": "Am afraid of many things.",
+			"scale": "N1",
+			"key": 1
+		},
+		{
+			"n": 62,
+			"text": "Avoid contacts with others.",
+			"scale": "E1",
+			"key": -1
+		},
+		{
+			"n": 63,
+			"text": "Love to daydream.",
+			"scale": "O1",
+			"key": 1
+		},
+		{
+			"n": 64,
+			"text": "Trust what people say.",
+			"scale": "A1",
+			"key": 1
+		},
+		{
+			"n": 65,
+			"text": "Handle tasks smoothly.",
+			"scale": "C1",
+			"key": 1
+		},
+		{
+			"n": 66,
+			"text": "Lose my temper.",
+			"scale": "N2",
+			"key": 1
+		},
+		{
+			"n": 67,
+			"text": "Prefer to be alone.",
+			"scale": "E2",
+			"key": -1
+		},
+		{
+			"n": 68,
+			"text": "Do not like poetry.",
+			"scale": "O2",
+			"key": -1
+		},
+		{
+			"n": 69,
+			"text": "Take advantage of others.",
+			"scale": "A2",
+			"key": -1
+		},
+		{
+			"n": 70,
+			"text": "Leave a mess in my room.",
+			"scale": "C2",
+			"key": -1
+		},
+		{
+			"n": 71,
+			"text": "Am often down in the dumps.",
+			"scale": "N3",
+			"key": 1
+		},
+		{
+			"n": 72,
+			"text": "Take control of things.",
+			"scale": "E3",
+			"key": 1
+		},
+		{
+			"n": 73,
+			"text": "Rarely notice my emotional reactions.",
+			"scale": "O3",
+			"key": -1
+		},
+		{
+			"n": 74,
+			"text": "Am indifferent to the feelings of others.",
+			"scale": "A3",
+			"key": -1
+		},
+		{
+			"n": 75,
+			"text": "Break rules.",
+			"scale": "C3",
+			"key": -1
+		},
+		{
+			"n": 76,
+			"text": "Only feel comfortable with friends.",
+			"scale": "N4",
+			"key": 1
+		},
+		{
+			"n": 77,
+			"text": "Do a lot in my spare time.",
+			"scale": "E4",
+			"key": 1
+		},
+		{
+			"n": 78,
+			"text": "Dislike changes.",
+			"scale": "O4",
+			"key": -1
+		},
+		{
+			"n": 79,
+			"text": "Insult people.",
+			"scale": "A4",
+			"key": -1
+		},
+		{
+			"n": 80,
+			"text": "Do just enough work to get by.",
+			"scale": "C4",
+			"key": -1
+		},
+		{
+			"n": 81,
+			"text": "Easily resist temptations.",
+			"scale": "N5",
+			"key": -1
+		},
+		{
+			"n": 82,
+			"text": "Enjoy being reckless.",
+			"scale": "E5",
+			"key": 1
+		},
+		{
+			"n": 83,
+			"text": "Have difficulty understanding abstract ideas.",
+			"scale": "O5",
+			"key": -1
+		},
+		{
+			"n": 84,
+			"text": "Have a high opinion of myself.",
+			"scale": "A5",
+			"key": -1
+		},
+		{
+			"n": 85,
+			"text": "Waste my time.",
+			"scale": "C5",
+			"key": -1
+		},
+		{
+			"n": 86,
+			"text": "Feel that I'm unable to deal with things.",
+			"scale": "N6",
+			"key": 1
+		},
+		{
+			"n": 87,
+			"text": "Love life.",
+			"scale": "E6",
+			"key": 1
+		},
+		{
+			"n": 88,
+			"text": "Tend to vote for conservative political candidates.",
+			"scale": "O6",
+			"key": -1
+		},
+		{
+			"n": 89,
+			"text": "Am not interested in other people's problems.",
+			"scale": "A6",
+			"key": -1
+		},
+		{
+			"n": 90,
+			"text": "Rush into things.",
+			"scale": "C6",
+			"key": -1
+		},
+		{
+			"n": 91,
+			"text": "Get stressed out easily.",
+			"scale": "N1",
+			"key": 1
+		},
+		{
+			"n": 92,
+			"text": "Keep others at a distance.",
+			"scale": "E1",
+			"key": -1
+		},
+		{
+			"n": 93,
+			"text": "Like to get lost in thought.",
+			"scale": "O1",
+			"key": 1
+		},
+		{
+			"n": 94,
+			"text": "Distrust people.",
+			"scale": "A1",
+			"key": -1
+		},
+		{
+			"n": 95,
+			"text": "Know how to get things done.",
+			"scale": "C1",
+			"key": 1
+		},
+		{
+			"n": 96,
+			"text": "Am not easily annoyed.",
+			"scale": "N2",
+			"key": -1
+		},
+		{
+			"n": 97,
+			"text": "Avoid crowds.",
+			"scale": "E2",
+			"key": -1
+		},
+		{
+			"n": 98,
+			"text": "Do not enjoy going to art museums.",
+			"scale": "O2",
+			"key": -1
+		},
+		{
+			"n": 99,
+			"text": "Obstruct others' plans.",
+			"scale": "A2",
+			"key": -1
+		},
+		{
+			"n": 100,
+			"text": "Leave my belongings around.",
+			"scale": "C2",
+			"key": -1
+		},
+		{
+			"n": 101,
+			"text": "Feel comfortable with myself.",
+			"scale": "N3",
+			"key": -1
+		},
+		{
+			"n": 102,
+			"text": "Wait for others to lead the way.",
+			"scale": "E3",
+			"key": -1
+		},
+		{
+			"n": 103,
+			"text": "Don't understand people who get emotional.",
+			"scale": "O3",
+			"key": -1
+		},
+		{
+			"n": 104,
+			"text": "Take no time for others.",
+			"scale": "A3",
+			"key": -1
+		},
+		{
+			"n": 105,
+			"text": "Break my promises.",
+			"scale": "C3",
+			"key": -1
+		},
+		{
+			"n": 106,
+			"text": "Am not bothered by difficult social situations.",
+			"scale": "N4",
+			"key": -1
+		},
+		{
+			"n": 107,
+			"text": "Like to take it easy.",
+			"scale": "E4",
+			"key": -1
+		},
+		{
+			"n": 108,
+			"text": "Am attached to conventional ways.",
+			"scale": "O4",
+			"key": -1
+		},
+		{
+			"n": 109,
+			"text": "Get back at others.",
+			"scale": "A4",
+			"key": -1
+		},
+		{
+			"n": 110,
+			"text": "Put little time and effort into my work.",
+			"scale": "C4",
+			"key": -1
+		},
+		{
+			"n": 111,
+			"text": "Am able to control my cravings.",
+			"scale": "N5",
+			"key": -1
+		},
+		{
+			"n": 112,
+			"text": "Act wild and crazy.",
+			"scale": "E5",
+			"key": 1
+		},
+		{
+			"n": 113,
+			"text": "Am not interested in theoretical discussions.",
+			"scale": "O5",
+			"key": -1
+		},
+		{
+			"n": 114,
+			"text": "Boast about my virtues.",
+			"scale": "A5",
+			"key": -1
+		},
+		{
+			"n": 115,
+			"text": "Have difficulty starting tasks.",
+			"scale": "C5",
+			"key": -1
+		},
+		{
+			"n": 116,
+			"text": "Remain calm under pressure.",
+			"scale": "N6",
+			"key": -1
+		},
+		{
+			"n": 117,
+			"text": "Look at the bright side of life.",
+			"scale": "E6",
+			"key": 1
+		},
+		{
+			"n": 118,
+			"text": "Believe that we should be tough on crime.",
+			"scale": "O6",
+			"key": -1
+		},
+		{
+			"n": 119,
+			"text": "Try not to think about the needy.",
+			"scale": "A6",
+			"key": -1
+		},
+		{
+			"n": 120,
+			"text": "Act without thinking.",
+			"scale": "C6",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": {
+		"source": "Johnson IPIP-NEO-120 public dataset, OSF component wxvth (IPIP120.dat, N = 619,150)",
+		"groups": [
+			"all",
+			"age-18-24",
+			"age-25-34",
+			"age-35-44",
+			"age-45-54",
+			"age-55-plus",
+			"uk"
+		],
+		"file": "norms/ipip-neo-120.json"
+	},
+	"reliability": {
+		"N1": 0.78,
+		"N2": 0.87,
+		"N3": 0.85,
+		"N4": 0.7,
+		"N5": 0.69,
+		"N6": 0.76,
+		"E1": 0.81,
+		"E2": 0.79,
+		"E3": 0.85,
+		"E4": 0.69,
+		"E5": 0.73,
+		"E6": 0.79,
+		"O1": 0.74,
+		"O2": 0.74,
+		"O3": 0.65,
+		"O4": 0.7,
+		"O5": 0.73,
+		"O6": 0.63,
+		"A1": 0.85,
+		"A2": 0.74,
+		"A3": 0.73,
+		"A4": 0.71,
+		"A5": 0.73,
+		"A6": 0.72,
+		"C1": 0.77,
+		"C2": 0.83,
+		"C3": 0.67,
+		"C4": 0.79,
+		"C5": 0.71,
+		"C6": 0.88
+	},
+	"reliabilitySource": "Coefficient alpha per facet from the IPIP key page (https://ipip.ori.org/30FacetNEO-PI-RItems.htm, internet sample N = 619,150), accessed 3 November 2026. The key page gives no domain alphas; the norms file records domain alphas computed from the same public dataset by scripts/norms/ipip-neo-120.py."
+}

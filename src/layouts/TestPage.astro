@@ -1,0 +1,253 @@
+---
+// The test template. A test page is content (src/tests/<slug>.ts) plus data
+// (packages/instruments/data/<id>.json); this layout owns the markup, in
+// the order the brief fixes: question and subtitle; one paragraph and the
+// start button; the test; results; understanding your scores; how reliable
+// is this test; related; FAQ; sources and licence.
+import { loadInstrument, loadNorms, minutes, screens, type Instrument, type NormTable } from '@site/instruments';
+import Page from './Page.astro';
+import type { TestContent } from '../tests/content';
+
+interface Props {
+	content: TestContent;
+	data: unknown;
+	normsData?: unknown;
+}
+
+const { content, data, normsData } = Astro.props;
+const instrument: Instrument = loadInstrument(data);
+const norms: NormTable | null = normsData ? loadNorms(normsData, instrument) : null;
+const group = content.normsGroup ?? 'all';
+const normGroup = norms ? norms.groups[group] : null;
+const mins = minutes(instrument);
+const screenList = screens(instrument);
+const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+const labels = instrument.response.labels.map(sentence);
+const domains = instrument.scales.filter((s) => !s.parent);
+const copyFor = (id: string) => content.scales[id];
+const published = Object.entries(instrument.reliability ?? {});
+const alphaRange = published.length
+	? (() => { const v = published.map(([, a]) => a); return `${Math.min(...v).toFixed(2)} to ${Math.max(...v).toFixed(2)}`; })()
+	: 'not published';
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+// Everything the client needs, embedded once. Norms are the whole table so
+// a later group picker needs no extra request.
+const clientData = {
+	instrument,
+	norms,
+	group,
+	path: content.path,
+	name: instrument.name,
+	means: Object.fromEntries(Object.entries(content.scales).map(([id, c]) => [id, c.means])),
+	names: Object.fromEntries(Object.entries(content.scales).map(([id, c]) => [id, c.name ?? instrument.scales.find((s) => s.id === id)?.name])),
+};
+const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
+---
+
+<Page title={content.title} description={content.description} breadcrumb={content.breadcrumb} faqs={content.faqs}>
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside">
+				<p class="section-name"><a href="/tests/">Tests</a></p>
+			</div>
+			<div class="main">
+				<h1>{content.question}</h1>
+				<p class="subtitle">{content.subtitle}</p>
+				<slot name="intro" />
+				<div class="actions" data-start-actions>
+					<button type="button" class="btn" data-start>Start the test</button>
+				</div>
+				<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+			</div>
+			<div class="facts">
+				<dl class="meta">
+					<dt>Items</dt><dd>{instrument.items.length}</dd>
+					<dt>Time</dt><dd>{mins} {mins === 1 ? 'minute' : 'minutes'}</dd>
+					<dt>Norms</dt><dd>{normGroup ? `${fmt(normGroup.n)} people` : 'none published'}</dd>
+					<dt>Reliability</dt><dd>{alphaRange}</dd>
+					<dt>Licence</dt><dd>{instrument.licence.text.split(' (')[0].split('.')[0]}</dd>
+				</dl>
+			</div>
+		</div>
+	</section>
+
+	<section class="plate" id="test" hidden data-test>
+		<div class="wrap">
+			<div class="resume row" data-resume hidden>
+				<div class="aside"><p>Saved attempt</p></div>
+				<div class="main wide">
+					<p>You started this test earlier on this device and your answers were kept. Carry on where you left off, or start again.</p>
+					<div class="actions">
+						<button type="button" class="btn" data-resume-continue>Carry on</button>
+						<button type="button" class="btn secondary" data-resume-restart>Start again</button>
+					</div>
+				</div>
+			</div>
+			<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax={instrument.items.length} aria-valuenow="0" aria-label="Progress"><i data-progress-fill></i></div>
+			<div class="row screen-head">
+				<div class="aside"><p><span data-screen-label>Screen 1 of {screenList.length}</span></p></div>
+				<div class="main wide"><p><span data-answered>0 of {instrument.items.length} answered</span>. {instrument.instructions ?? 'Rate how accurately each statement describes you.'}</p></div>
+			</div>
+			<form data-form novalidate>
+				{screenList.map((screen) => (
+					<div class="screen" data-screen={screen.index} hidden={screen.index !== 1}>
+						{screen.items.map((item) => (
+							<div class="row q" role="group" aria-labelledby={`q${item.n}-text`} data-item={item.n}>
+								<div class="aside"><span class="q-n">{String(item.n).padStart(2, '0')}</span></div>
+								<div class="main wide">
+									<p class="q-text" id={`q${item.n}-text`}>{item.text}</p>
+									<div class="cells">
+										{labels.map((label, k) => (
+											<label class="cell"><input type="radio" name={`q${item.n}`} value={k + 1} aria-label={label} /><span class="cell-n">{k + 1}</span><span class="cell-label">{label}</span></label>
+										))}
+									</div>
+									<div class="ends" aria-hidden="true"><span>{labels[0]}</span><span>{labels[labels.length - 1]}</span></div>
+								</div>
+							</div>
+						))}
+					</div>
+				))}
+				<div class="row">
+					<div class="aside"></div>
+					<div class="main wide">
+						<div class="screen-foot">
+							<span class="keys">Keys 1 to 5 answer, Enter continues.</span>
+							<div class="actions">
+								<button type="button" class="btn secondary" data-back hidden>Back</button>
+								<button type="button" class="btn" data-next>Next screen</button>
+							</div>
+						</div>
+						<p class="status" role="status" data-test-status></p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<section class="plate" id="results" hidden data-results>
+		<div class="wrap">
+			<div class="row plate-head">
+				<div class="aside"><p data-results-when></p></div>
+				<div class="main wide">
+					<h2>Your results</h2>
+					<p class="plate-note" data-results-note></p>
+				</div>
+			</div>
+			<div data-results-rows></div>
+			<div class="row plate-foot">
+				<div class="aside"></div>
+				<div class="main wide">
+					<div class="actions">
+						<button type="button" class="btn secondary" data-copy>Copy as text</button>
+						<button type="button" class="btn secondary" data-print>Save as PDF</button>
+						<button type="button" class="btn secondary" data-restart>Start again</button>
+					</div>
+					<p class="links">
+						<button type="button" class="link-btn" data-share>Share a comparison link</button>
+						<button type="button" class="link-btn" data-reminder-ics>Set a retake reminder</button>
+						<a data-reminder-google href="https://calendar.google.com/calendar/render" target="_blank" rel="noopener">Add to Google Calendar</a>
+					</p>
+					<p class="status" role="status" data-results-status></p>
+					<p class="small quiet" data-privacy>Your answers and results are stored only in this browser, on this device. Nothing is sent to us. A share link carries your scores in the link itself.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="understanding">
+		<div class="wrap row">
+			<div class="aside"><h2>Understanding your scores</h2></div>
+			<div class="main">
+				<slot name="understanding-intro" />
+				{domains.map((d) => {
+					const c = copyFor(d.id);
+					if (!c) return null;
+					const name = c.name ?? d.name;
+					return (
+						<Fragment>
+							<h3 id={`scale-${d.id.toLowerCase()}`}>{name}</h3>
+							<p><strong>High.</strong> {c.high}</p>
+							<p><strong>Low.</strong> {c.low}</p>
+							{c.traitPath && <p><a href={c.traitPath}>More about {name.toLowerCase()}</a></p>}
+						</Fragment>
+					);
+				})}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="reliability">
+		<div class="wrap row">
+			<div class="aside"><h2>How reliable is this test</h2></div>
+			<div class="main">
+				{published.length > 0 ? (
+					<Fragment>
+						<p>Internal consistency (coefficient alpha) per scale, as published:</p>
+						<div class="table-scroll"><table>
+							<thead><tr><th>Scale</th><th class="n">Alpha</th></tr></thead>
+							<tbody>
+								{published.filter(([id]) => !instrument.scales.find((s) => s.id === id)?.parent).map(([id, a]) => (
+									<tr><td>{copyFor(id)?.name ?? instrument.scales.find((s) => s.id === id)?.name}</td><td class="n">{a.toFixed(2)}</td></tr>
+								))}
+							</tbody>
+						</table></div>
+						{instrument.reliabilitySource && <p class="small quiet">{instrument.reliabilitySource}</p>}
+					</Fragment>
+				) : (
+					<p>No reliability figures are published for this instrument.</p>
+				)}
+				{normGroup && norms ? (
+					<p>Percentiles compare you with {fmt(normGroup.n)} people ({normGroup.label.toLowerCase()}) in {norms.source.name}. {norms.source.notes}</p>
+				) : (
+					<p>No published norms exist for this instrument, so the results show raw scores against the possible range and no percentiles.</p>
+				)}
+				<p>{content.testRetest}</p>
+				<slot name="limits" />
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="related">
+		<div class="wrap row">
+			<div class="aside"><h2>Related tests and comparisons</h2></div>
+			<div class="main">
+				<ul>
+					{content.related.map((r) => <li><a href={r.href}>{r.title}</a>{r.note && <span class="quiet"> {r.note}</span>}</li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section faq" id="faq">
+		<div class="wrap row">
+			<div class="aside"><h2>Questions people ask</h2></div>
+			<div class="main">
+				{content.faqs.map((f) => (
+					<Fragment>
+						<h3>{f.q}</h3>
+						<p>{f.a}</p>
+					</Fragment>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section sources" id="sources" data-sources-box>
+		<div class="wrap row">
+			<div class="aside"><h2>Sources and licence</h2></div>
+			<div class="main">
+				<p>Instrument: {instrument.name}. {instrument.source.paper}.{instrument.source.doi && <Fragment> <a href={`https://doi.org/${instrument.source.doi}`} rel="noopener">doi:{instrument.source.doi}</a></Fragment>}</p>
+				<p>Scoring key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>{instrument.source.itemsUrl && <Fragment>, items from <a href={instrument.source.itemsUrl} rel="noopener">{instrument.source.itemsUrl}</a></Fragment>}, checked {instrument.source.accessed}.</p>
+				{norms && <p>Norms: {norms.source.name}, <a href={norms.source.url} rel="noopener">{norms.source.url}</a>, generated {norms.source.generated} by {norms.source.script}.</p>}
+				<p data-licence-line>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a>{instrument.licence.credit && <Fragment> Credit: {instrument.licence.credit}.</Fragment>}</p>
+			</div>
+		</div>
+	</section>
+
+	<script type="application/json" data-test-data set:html={clientJson} />
+	<script>
+		import { mountTest } from '../scripts/test-runner';
+		mountTest();
+	</script>
+</Page>

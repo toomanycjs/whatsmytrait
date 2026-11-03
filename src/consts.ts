@@ -17,8 +17,8 @@ export const SECTIONS: Record<string, string> = {
 	guides: 'Guides',
 };
 
-/** Header links. Empty until the section index pages are built; the link check fails on links to missing pages. */
-export const NAV: { path: string; label: string }[] = [];
+/** Header links. A section joins the nav once its index page exists; the link check fails on links to missing pages. */
+export const NAV: { path: string; label: string }[] = [{ path: '/tests/', label: 'Tests' }];
 
 /** Footer links. Empty until the trust pages exist. */
 export const FOOTER_NAV: { path: string; label: string }[] = [];

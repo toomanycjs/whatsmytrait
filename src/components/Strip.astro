@@ -1,0 +1,12 @@
+---
+// A strip rendered at build time by the engine's strip(): population strips
+// on trait pages, and any strip whose score is known at build. Results pages
+// render their strips on the client from the same function.
+import { strip, type StripInput } from '@site/instruments';
+
+type Props = StripInput;
+
+const html = strip(Astro.props);
+---
+
+<Fragment set:html={html} />

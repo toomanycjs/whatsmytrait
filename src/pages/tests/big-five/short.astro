@@ -1,0 +1,16 @@
+---
+import data from '@site/instruments/data/ipip-50.json';
+import normsData from '@site/instruments/data/norms/ipip-50.json';
+import TestPage from '../../../layouts/TestPage.astro';
+import { bigFiveShort } from '../../../tests/big-five-short';
+
+// Shown nowhere yet; read by src/lib/lastmod.mjs for the sitemap.
+export const lastReviewed = '2026-11-03';
+---
+
+<TestPage content={bigFiveShort} data={data} normsData={normsData}>
+	<p slot="intro">The Big Five are the five broad traits that personality research keeps finding when people describe themselves and each other: how outgoing, how warm, how organised, how steady and how curious you are. These fifty statements are Goldberg's public-domain markers of those traits. Rate how accurately each describes you and you will see where you fall on each, against a published sample.</p>
+	<Fragment slot="limits">
+		<p>Limits worth knowing: this is a self-report, so it measures how you see yourself, and it uses ten items per trait, so it cannot separate the facets within a trait (the 120-item version does). The comparison sample answered online and is not a representative sample of any country.</p>
+	</Fragment>
+</TestPage>

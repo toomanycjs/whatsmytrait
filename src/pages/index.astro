@@ -1,12 +1,51 @@
 ---
-// Placeholder home page so the build has one route through the layout.
-// The real home page (two sentences, three tests, the guide questions) is
-// built against the approved style tile.
+// Home: what the site is in two sentences, the three most-taken tests, and
+// the questions the guides answer. No hero image.
 import Page from '../layouts/Page.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { ALL_TESTS } from '../tests/catalogue';
+
+const featured = ALL_TESTS.slice(0, 3);
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION} ogImage="">
-	<h1>{SITE_TITLE}</h1>
-	<p>{SITE_DESCRIPTION}</p>
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Free, open, scored on your device</p></div>
+			<div class="main">
+				<h1>Where you fall, and how you know</h1>
+				<p class="subtitle">Personality and interest tests from published, openly licensed instruments</p>
+				<p>Every test here is a published instrument that is free for any use, scored in your browser and shown against real norms with its reliability stated. No sign-up, no email, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Most taken</h2></div>
+			<div class="main">
+				<ul>
+					{featured.map((t) => (
+						<li><a href={t.href}>{t.title}</a><span class="quiet"> {t.items} items, {t.minutes} minutes. {t.why}</span></li>
+					))}
+				</ul>
+				<p><a href="/tests/">All tests</a></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Questions the guides answer</h2></div>
+			<div class="main">
+				<p class="quiet">The guides are being written. Each answers one question in its first two sentences, then shows the evidence.</p>
+				<ul>
+					<li>What a percentile means on a personality test</li>
+					<li>Can personality change</li>
+					<li>Introvert, extrovert, ambivert: where the line is</li>
+					<li>What a low agreeableness score does and does not mean</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 </Page>

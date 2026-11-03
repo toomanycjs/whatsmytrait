@@ -1,18 +1,20 @@
 ---
-// Skip link, site name and the section links from src/consts.ts. Unstyled
-// until the style tile is approved; the structure is what the tile dresses.
+// Masthead: skip link, the site name in the margin column, the section links
+// in the main column, one hairline under. Nothing sticky, no hamburger.
 import { NAV, SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header>
+<header class="mast">
 	<a href="#main" class="skip-link">Skip to content</a>
-	<nav aria-label="Main">
+	<div class="wrap row">
 		<a href="/" class="site-title">{SITE_TITLE}</a>
 		{NAV.length > 0 && (
-			<ul class="nav-links">
-				{NAV.map((n) => <li><HeaderLink href={n.path}>{n.label}</HeaderLink></li>)}
-			</ul>
+			<nav class="main-nav" aria-label="Main">
+				<ul>
+					{NAV.map((n) => <li><HeaderLink href={n.path}>{n.label}</HeaderLink></li>)}
+				</ul>
+			</nav>
 		)}
-	</nav>
+	</div>
 </header>

@@ -134,5 +134,11 @@ export interface NormTable {
 		script: string;
 		notes?: string;
 	};
+	/** Figures the generating script computed from the same rows, kept apart from published figures. */
+	computed?: {
+		/** Cronbach's alpha per scale. */
+		alpha: Record<string, number>;
+		note: string;
+	};
 	groups: Record<string, GroupNorms>;
 }

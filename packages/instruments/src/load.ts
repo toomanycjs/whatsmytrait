@@ -172,10 +172,22 @@ export function loadNorms(data: unknown, instrument: Instrument): NormTable {
 		for (const g of instrument.norms.groups) if (!groups[g]) fail(id, `instrument lists norms group ${g}, which the norms file lacks`);
 	}
 	const src = source as Record<string, string>;
-	return {
+	const table: NormTable = {
 		instrument: id,
 		version: instrument.version,
 		source: { name: src.name, url: src.url, inputSha256: src.inputSha256, generated: src.generated, script: src.script, ...(src.notes ? { notes: src.notes } : {}) },
 		groups,
 	};
+	if (data.computed !== undefined) {
+		const c = data.computed;
+		if (!isRecord(c) || !isRecord(c.alpha) || !isString(c.note)) fail(id, 'norms computed needs alpha and note');
+		const alpha: Record<string, number> = {};
+		for (const [k, v] of Object.entries(c.alpha)) {
+			if (!instrument.scales.some((x) => x.id === k)) fail(id, `computed alpha names unknown scale ${k}`);
+			if (typeof v !== 'number') fail(id, `computed alpha for ${k} must be a number`);
+			alpha[k] = v;
+		}
+		table.computed = { alpha, note: c.note };
+	}
+	return table;
 }

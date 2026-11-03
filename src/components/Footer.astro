@@ -1,19 +1,22 @@
 ---
-// One plain statement of what the site is, the trust links from src/consts.ts,
-// and the year. No email box: nothing is collected.
+// Footer: the site name in the margin column; one sentence, the trust links
+// and the year in the main column. No email box: nothing is collected.
 import { FOOTER_NAV, SITE_TITLE } from '../consts';
 
 const year = new Date().getFullYear();
 ---
 
-<footer>
-	<div class="footer-inner">
-		<p class="tagline">Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
-		{FOOTER_NAV.length > 0 && (
-			<nav class="footer-links" aria-label="Site">
-				{FOOTER_NAV.map((n) => <a href={n.path}>{n.label}</a>)}
-			</nav>
-		)}
-		<p class="copyright">&copy; {year} {SITE_TITLE}</p>
+<footer class="site-footer">
+	<div class="wrap row">
+		<div class="aside"><p>{SITE_TITLE}</p></div>
+		<div class="main">
+			<p>Free, open tests. Scored on your device. Results describe tendencies and are not a diagnosis.</p>
+			{FOOTER_NAV.length > 0 && (
+				<nav aria-label="Site">
+					{FOOTER_NAV.map((n) => <a href={n.path}>{n.label}</a>)}
+				</nav>
+			)}
+			<p>&copy; {year} {SITE_TITLE}</p>
+		</div>
 	</div>
 </footer>

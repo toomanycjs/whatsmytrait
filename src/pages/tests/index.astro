@@ -1,0 +1,38 @@
+---
+// The tests index, grouped by what people want to know. Each entry has its
+// items, minutes and a one-line reason to take it. Tests are added here as
+// their pages are built.
+import Page from '../../layouts/Page.astro';
+import { TEST_GROUPS } from '../../tests/catalogue';
+---
+
+<Page title="Free personality and interest tests, scored on your device" description="Every test here comes from a published, openly licensed instrument, is scored in your browser, and shows your percentile against real norms." breadcrumb="Tests">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Tests</p></div>
+			<div class="main">
+				<h1>Tests</h1>
+				<p class="subtitle">Grouped by what you want to know</p>
+				<p>Every test comes from a published instrument that is free for any use. It is scored on your device, compared with real norms where they exist, and its reliability is stated on the page. No sign-up, no email, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+	{TEST_GROUPS.map((g) => (
+		<section class="section">
+			<div class="wrap row">
+				<div class="aside"><h2>{g.name}</h2></div>
+				<div class="main">
+					{g.tests.length === 0 && <p class="quiet">Coming next.</p>}
+					<ul>
+						{g.tests.map((t) => (
+							<li>
+								<a href={t.href}>{t.title}</a>
+								<span class="quiet"> {t.items} items, {t.minutes} {t.minutes === 1 ? 'minute' : 'minutes'}. {t.why}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</section>
+	))}
+</Page>

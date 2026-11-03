@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Pure library for the site's tests: load an instrument file, render it, score a response set, look up percentiles. No DOM in scoring.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./data/*": "./data/*"
   }
 }
