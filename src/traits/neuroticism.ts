@@ -16,9 +16,9 @@ export const neuroticism: TraitContent = {
 	high: 'People high on neuroticism say they worry about things, get irritated easily, often feel blue, find it difficult to approach others, go on binges and panic easily. In daily life that shows as careful planning for what might go wrong, sensitivity to criticism, moods that others can read, and a slow recovery after a bad day.',
 	low: 'People low on neuroticism say they are not easily annoyed, feel comfortable with themselves, are not bothered by difficult social situations, resist temptations easily and remain calm under pressure. In daily life that shows as being the steady one in a crisis, not dwelling on what went wrong, and sleeping soundly.',
 	facets: [
-		{ name: 'Anxiety', line: 'how readily worry and apprehension arise.', href: '/traits/anxiety/' },
+		{ name: 'Worry', line: 'how readily worry and apprehension arise.', href: '/traits/worry/' },
 		{ name: 'Anger', line: 'how readily irritation and temper arise.', href: '/traits/anger/' },
-		{ name: 'Depression', line: 'how readily low mood and discouragement arise.', href: '/traits/depression/' },
+		{ name: 'Low mood', line: 'how readily low mood and discouragement arise.', href: '/traits/low-mood/' },
 		{ name: 'Self-consciousness', line: 'discomfort under other people\'s attention.', href: '/traits/self-consciousness/' },
 		{ name: 'Immoderation', line: 'difficulty resisting cravings and urges.', href: '/traits/immoderation/' },
 		{ name: 'Vulnerability', line: 'feeling overwhelmed under pressure.', href: '/traits/vulnerability/' },

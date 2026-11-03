@@ -18,8 +18,10 @@ export const DOMAINS: Record<DomainId, { name: string; href: string }> = {
 export interface FacetSpec {
 	/** Scale id in the IPIP-NEO-120 data file: N1 to C6. */
 	id: string;
-	/** The authors' name for the facet, in sentence case. */
+	/** The name the site uses for the facet, in sentence case: the authors' own unless publishedName is set. */
 	name: string;
+	/** The authors' name, when the site uses a plainer one for the page (docs/decisions/0003-published-facet-names.md). */
+	publishedName?: string;
 	domain: DomainId;
 	/** What the facet is, in one paragraph. */
 	summary: string;
@@ -46,7 +48,7 @@ export function facet(spec: FacetSpec, all: FacetSpec[]): TraitContent {
 		title: `${spec.name}: what a high or low score means`,
 		description: `What the ${lower} facet of ${domainLower} is, what high and low scores look like day to day, what the research finds it predicts, and where people fall.`,
 		name: spec.name,
-		subtitle: `A facet of ${domainLower}. Four items in the IPIP-NEO-120.`,
+		subtitle: spec.publishedName ? `A facet of ${domainLower}, published as ${spec.publishedName}. Four items in the IPIP-NEO-120.` : `A facet of ${domainLower}. Four items in the IPIP-NEO-120.`,
 		breadcrumb: spec.name,
 		summary: spec.summary,
 		notMean: [...spec.notMean, SHORT_SCALE],
@@ -55,7 +57,7 @@ export function facet(spec: FacetSpec, all: FacetSpec[]): TraitContent {
 		facetsHeading: 'Parent domain',
 		facets: [{ name: domain.name, line: `the broad trait this facet belongs to, with five sibling facets.`, href: domain.href }],
 		predicts: spec.predicts,
-		strips: [{ instrument: 'ipip-neo-120', scale: spec.id, group: 'all', label: `IPIP-NEO-120, ${lower}, 4 items`, testHref: '/tests/big-five/' }],
+		strips: [{ instrument: 'ipip-neo-120', scale: spec.id, group: 'all', label: `IPIP-NEO-120, ${lower}, 4 items`, testHref: '/tests/big-five/', name: spec.name }],
 		test: { href: '/tests/big-five/', label: 'Take the Big Five test' },
 		siblingsHeading: `The other facets of ${domainLower}`,
 		siblings,

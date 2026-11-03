@@ -11,6 +11,8 @@ export const bigFive: TestContent = {
 	subtitle: 'IPIP-NEO-120, 120 items, 12 minutes',
 	breadcrumb: 'Big Five',
 	normsGroup: 'all',
+	minutes: 12,
+	scaleNames: { N1: 'Worry', N3: 'Low mood' },
 	scales: {
 		N: {
 			means: {

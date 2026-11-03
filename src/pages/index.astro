@@ -1,21 +1,38 @@
 ---
 // Home: what the site is in two sentences, the three most-taken tests, and
 // the questions the guides answer. No hero image.
+import { loadInstrument, loadNorms, scaleRange, scoreAtPercentile, strip } from '@site/instruments';
+import ipip120 from '@site/instruments/data/ipip-neo-120.json';
+import ipip120Norms from '@site/instruments/data/norms/ipip-neo-120.json';
 import Page from '../layouts/Page.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { ALL_TESTS } from '../tests/catalogue';
 
 const featured = ALL_TESTS.slice(0, 3);
+
+// A sample strip above the fold: extraversion on the 120-item test, with a
+// marker at the 68th percentile of everyone in the norm sample, so the one
+// element every result is built from is visible before anyone takes a test.
+const instrument = loadInstrument(ipip120);
+const norms = loadNorms(ipip120Norms, instrument);
+const { min, max } = scaleRange(instrument, 'E');
+const sampleRaw = scoreAtPercentile(norms, 'E', 'all', 68);
+const sampleStrip = strip({ name: 'Extraversion', min, max, raw: sampleRaw, size: 'domain', hue: 'var(--hue-extraversion)', norms, scale: 'E', group: 'all' });
+const sampleN = norms.groups.all.n.toLocaleString('en-GB');
 ---
 
-<Page title={SITE_TITLE} description={SITE_DESCRIPTION} ogImage="">
+<Page title={`${SITE_TITLE}: free personality tests on your device`} description={SITE_DESCRIPTION}>
 	<section class="page-head">
 		<div class="wrap row">
 			<div class="aside"><p class="section-name">Free, open, scored on your device</p></div>
 			<div class="main">
-				<h1>Where you fall, and how you know</h1>
-				<p class="subtitle">Personality and interest tests from published, openly licensed instruments</p>
+				<h1>Free personality and interest tests</h1>
+				<p class="subtitle">Where you fall, and how you know</p>
 				<p>Every test here is a published instrument that is free for any use, scored in your browser and shown against real norms with its reliability stated. No sign-up, no email, nothing stored online.</p>
+				<div class="sample">
+					<Fragment set:html={sampleStrip} />
+					<p class="small quiet">A sample result: extraversion on the 120-item Big Five, {sampleRaw} of {max}, the 68th percentile of {sampleN} people. Curve height shows how common each score is; the darker middle holds half of all people.</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -26,7 +43,7 @@ const featured = ALL_TESTS.slice(0, 3);
 			<div class="main">
 				<ul>
 					{featured.map((t) => (
-						<li><a href={t.href}>{t.title}</a><span class="quiet"> {t.items} items, {t.minutes} minutes. {t.why}</span></li>
+						<li><a href={t.href}>{t.title}</a><span class="quiet"> {t.items} items, {t.minutes} {t.minutes === 1 ? 'minute' : 'minutes'}. {t.why}</span></li>
 					))}
 				</ul>
 				<p><a href="/tests/">All tests</a></p>

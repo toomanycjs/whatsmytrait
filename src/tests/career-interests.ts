@@ -12,6 +12,7 @@ export const careerInterests: TestContent = {
 	question: 'What kind of work would I enjoy?',
 	subtitle: 'O*NET Interest Profiler Short Form, 60 items, 5 minutes',
 	breadcrumb: 'Career interests',
+	minutes: 5,
 	scales: {
 		R: area('Realistic', 'Few of the hands-on, practical activities appealed to you.', 'Some of the hands-on, practical activities appealed to you.', 'Most of the hands-on, practical activities appealed to you.',
 			'A high realistic score means you ticked most of the activities involving tools, machines, plants, animals and physical work: building, repairing, operating, growing. People with realistic interests tend to like practical problems with visible results and to prefer doing to discussing. Realistic jobs span the trades, engineering, agriculture, transport and the emergency services.',

@@ -19,6 +19,8 @@ export interface TraitStrip {
 	label: string;
 	/** Test page that produces a score on this strip. */
 	testHref: string;
+	/** Name shown on the strip, when it differs from the instrument's scale name. */
+	name?: string;
 }
 
 export interface TraitContent {

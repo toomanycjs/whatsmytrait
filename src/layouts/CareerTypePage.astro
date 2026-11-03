@@ -4,6 +4,7 @@
 // National Careers Service profile; which other types combine with it; the
 // test button; the O*NET credit line.
 import Page from './Page.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
 import { NCS, ONET_CREDIT, type CareerTypeContent } from '../careers/content';
 
 interface Props {
@@ -59,6 +60,8 @@ const { content } = Astro.props;
 			</div>
 		</div>
 	</section>
+
+	<RelatedGuides href={content.path} />
 
 	<section class="section sources" data-sources-box>
 		<div class="wrap row">

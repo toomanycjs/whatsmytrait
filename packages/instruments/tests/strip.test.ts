@@ -40,7 +40,7 @@ describe('strip markup', () => {
 		expect(html).toContain('fill="var(--hue-extraversion)"');
 		expect(html).toContain('<span class="marker" style="left:50.00%"></span>');
 		expect(html).toContain('<span class="pct" style="left:50.00%">50th</span>');
-		expect(html).toContain('<div class="strip-axis"><span>1</span><span>5</span></div>');
+		expect(html).not.toContain('strip-axis');
 		expect(html).not.toContain('<text');
 	});
 

@@ -69,6 +69,16 @@ export function sourcePages() {
 		pages.push({ path, file: posix(file), date: reviewed?.[1] });
 	}
 
+	// Test pages come from content files under src/tests, built by one dynamic
+	// route: each file's `path: '/tests/.../'` or `slug: '...'` names its page.
+	for (const file of walk('src/tests').filter((f) => f.endsWith('.ts'))) {
+		const text = readFileSync(file, 'utf8');
+		const paths = new Set();
+		for (const m of text.matchAll(/path: '(\/tests\/[^']+\/)'/g)) paths.add(m[1]);
+		for (const m of text.matchAll(/slug: '([^']+)'/g)) paths.add(`/tests/${m[1]}/`);
+		for (const path of paths) pages.push({ path, file: posix(file) });
+	}
+
 	return pages;
 }
 

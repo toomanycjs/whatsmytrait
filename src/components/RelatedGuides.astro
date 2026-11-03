@@ -1,0 +1,34 @@
+---
+// Every guide and comparison that points at this page: the one its test
+// button goes to, one of its three related links, or the strip's test. Built
+// from the articles' own frontmatter, so a new guide links back from the
+// pages it cites without anyone editing them.
+import { getCollection } from 'astro:content';
+
+interface Props {
+	/** The page's own path, with slashes. */
+	href: string;
+	heading?: string;
+}
+
+const { href, heading = 'Guides that cover this' } = Astro.props;
+const entries = [
+	...(await getCollection('guides', (e) => !e.data.draft)),
+	...(await getCollection('compare', (e) => !e.data.draft)),
+];
+const hits = entries
+	.filter((e) => e.data.test.href === href || e.data.strip?.testHref === href || e.data.related.some((r) => r.href === href))
+	.map((e) => ({ href: `/${e.collection}/${e.id}/`, title: e.data.question ?? e.data.title }))
+	.sort((a, b) => a.title.localeCompare(b.title));
+---
+
+{hits.length > 0 && (
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>{heading}</h2></div>
+			<div class="main">
+				<ul>{hits.map((h) => <li><a href={h.href}>{h.title}</a></li>)}</ul>
+			</div>
+		</div>
+	</section>
+)}

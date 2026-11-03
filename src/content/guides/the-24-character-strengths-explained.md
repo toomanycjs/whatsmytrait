@@ -13,8 +13,8 @@ related:
   - href: /guides/character-strengths-and-the-big-five/
     title: Character strengths and the Big Five
     note: How the 24 map onto the five traits.
-  - href: /guides/strengths-for-a-cv/
-    title: Which strengths to put on a CV
+  - href: /strengths/
+    title: The 24 character strengths, one entry each
 sources:
   - reference: "Peterson, C., & Seligman, M. E. P. (2004). Character strengths and virtues: A handbook and classification. Oxford University Press."
     url: https://www.viacharacter.org/

@@ -10,6 +10,7 @@ export const interpersonalStyle: TestContent = {
 	question: 'What is my interpersonal style?',
 	subtitle: 'IPIP Interpersonal Circumplex, 32 items, 3 minutes',
 	breadcrumb: 'Interpersonal style',
+	minutes: 3,
 	scales: {
 		PA: o('Assured-dominant', 'You rarely demand attention or do most of the talking.', 'You take the floor about as often as most people.', 'You tend to take the floor and demand to be noticed.',
 			'People who score high say they demand attention, do most of the talking and speak loudly. In daily life that shows as leading conversations and expecting to be heard. On the circumplex this is the top: pure dominance, neither warm nor cold.',

@@ -1,5 +1,16 @@
 {
   "framework": "astro",
   "trailingSlash": true,
-  "redirects": []
+  "redirects": [
+    {
+      "source": "/traits/anxiety/",
+      "destination": "/traits/worry/",
+      "permanent": true
+    },
+    {
+      "source": "/traits/depression/",
+      "destination": "/traits/low-mood/",
+      "permanent": true
+    }
+  ]
 }

@@ -58,7 +58,7 @@ for (const root of ROOTS) {
 				if (/^\s*"text":/.test(line) || /^\s*"instructions":/.test(line)) return;
 				if (ALLOWED_DATA_LINES.some((l) => text.includes(l))) return;
 			}
-			if (/name['"]?:\s*['"](anxiety|depression)['"]/i.test(line)) return;
+			if (/(name|publishedName)['"]?:\s*['"](anxiety|depression)['"]/i.test(line)) return;
 			if (file.endsWith('check.mjs')) return;
 			// Job titles are the National Careers Service's and O*NET's own names, not the site's copy.
 			if (file.replace(/\\/g, '/').includes('src/careers/') && /\{\s*title:/.test(line)) return;

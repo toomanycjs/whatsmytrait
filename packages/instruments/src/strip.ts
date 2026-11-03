@@ -135,7 +135,6 @@ export function strip(input: StripInput): string {
 		`<figure class="strip strip-${size}${input.norms ? '' : ' strip-no-norms'}">`,
 		`<figcaption class="strip-head"><span class="strip-name">${escapeHtml(input.name)}</span></figcaption>`,
 		`<div class="strip-plot" role="img" aria-label="${escapeHtml(text)}">${band(input, size)}${second}${marker}${label}</div>`,
-		`<div class="strip-axis"><span>${input.min}</span><span>${input.max}</span></div>`,
 		key,
 		`</figure>`,
 	].join('');

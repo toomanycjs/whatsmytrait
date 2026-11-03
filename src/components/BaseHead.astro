@@ -1,6 +1,7 @@
 ---
-// Metadata for every page. No analytics, no third-party scripts, no cookies:
-// nothing here runs in the visitor's browser except the page itself.
+// Metadata for every page. The only third-party script is the Google
+// Analytics tag at the end, in consent mode with storage denied (no cookies);
+// nothing else here runs in the visitor's browser except the page itself.
 import '../styles/global.css';
 import { GA_MEASUREMENT_ID, SITE_TITLE } from '../consts';
 
@@ -18,6 +19,8 @@ const { title, description, ogImage, ogType = 'website' } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preload" href="/fonts/familjen-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/familjen-grotesk-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 

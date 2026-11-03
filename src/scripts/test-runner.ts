@@ -345,7 +345,7 @@ export function mountTest() {
 		whenEl.textContent = `Saved on this device, ${formatDate(entry.date)}`;
 		noteEl.textContent = prefix + (hasNorms()
 			? `${data.name}, compared with ${norms!.groups[group].n.toLocaleString('en-GB')} people (${norms!.groups[group].label.toLowerCase()}). Curve height shows how common each score is.`
-			: `${data.name}. No published norms exist for this test, so the marker shows your raw score against the possible range.`);
+			: `${data.name}. No norm sample is published for this test, so there is no percentile: the marker shows your raw score against the possible range, where the left end is disagreeing with every statement and the right end agreeing with every one, and the middle is neither on balance.`);
 		resultsEl.hidden = false;
 	}
 

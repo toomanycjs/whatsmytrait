@@ -24,7 +24,12 @@ export function scaleNorms(table: NormTable, scale: string, group: string): Scal
 	return s;
 }
 
-/** Percentile rank, 0 to 100, of a raw score against a group. */
+/**
+ * Percentile rank of a raw score against a group, held between 1 and 99: a
+ * rank of 0 would claim nobody scored lower and 100 that nobody scored
+ * higher, which the mid-rank definition never shows for a score in the
+ * table, and rounding at the extremes must not either.
+ */
 export function percentile(table: NormTable, scale: string, group: string, raw: number): number {
 	const norms = scaleNorms(table, scale, group);
 	const n = norms.counts.reduce((a, b) => a + b, 0);
@@ -33,8 +38,8 @@ export function percentile(table: NormTable, scale: string, group: string, raw: 
 	let below = 0;
 	for (let k = 0; k < Math.min(i, norms.counts.length); k++) below += norms.counts[k];
 	const at = i >= 0 && i < norms.counts.length ? norms.counts[i] : 0;
-	if (i < 0) return 0;
-	return ((below + at / 2) / n) * 100;
+	if (i < 0) return 1;
+	return Math.min(99, Math.max(1, ((below + at / 2) / n) * 100));
 }
 
 /** The raw score at a given percentile (0 to 100): the smallest score whose cumulative share reaches it. */

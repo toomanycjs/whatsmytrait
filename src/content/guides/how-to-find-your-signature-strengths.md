@@ -13,9 +13,9 @@ related:
   - href: /guides/strengths-for-a-cv/
     title: Which strengths to put on a CV
     note: Signature strengths in plain words.
-  - href: /guides/can-personality-change/
-    title: Can personality change?
-    note: How stable a profile like this is.
+  - href: /strengths/
+    title: The 24 character strengths, one entry each
+    note: Every strength with its items and what high and low look like.
 sources:
   - reference: "Peterson, C., & Seligman, M. E. P. (2004). Character strengths and virtues: A handbook and classification. Oxford University Press."
     url: https://www.viacharacter.org/

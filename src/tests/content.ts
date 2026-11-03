@@ -34,6 +34,10 @@ export interface TestContent {
 	breadcrumb: string;
 	/** The norms group to compare against by default. */
 	normsGroup?: string;
+	/** Minutes the test takes, as the subtitle and the catalogue state it; defaults to one per ten items. */
+	minutes?: number;
+	/** Names shown for scales that have no copy of their own (facets), where the site's name differs from the data file's. */
+	scaleNames?: Record<string, string>;
 	/** Scales shown on the results page, in order. Facets are drawn under their domain automatically. */
 	scales: Record<string, ScaleCopy>;
 	/** A short note on test-retest reliability, or that none is published. */

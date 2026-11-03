@@ -12,6 +12,7 @@ export interface SingleTraitSpec {
 	question: string;
 	subtitle: string;
 	breadcrumb: string;
+	minutes: number;
 	scale: ScaleCopy;
 	/** The parent trait's page. */
 	traitPath: string;
@@ -32,6 +33,7 @@ export function singleTrait(spec: SingleTraitSpec): TestContent {
 		description: spec.description,
 		question: spec.question,
 		subtitle: spec.subtitle,
+		minutes: spec.minutes,
 		breadcrumb: spec.breadcrumb,
 		scales: { T: { ...spec.scale, traitPath: spec.traitPath } },
 		testRetest: spec.testRetest,

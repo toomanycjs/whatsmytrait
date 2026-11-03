@@ -33,4 +33,5 @@ export const FOOTER_NAV: { path: string; label: string }[] = [
 	{ path: '/licences/', label: 'Licences' },
 	{ path: '/about/', label: 'About' },
 	{ path: '/privacy/', label: 'Privacy' },
+	{ path: '/for-teachers-and-researchers/', label: 'Teachers and researchers' },
 ];

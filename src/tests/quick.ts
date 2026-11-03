@@ -12,6 +12,7 @@ export const quick: TestContent = {
 	question: 'The Big Five in one minute',
 	subtitle: 'Ten-Item Personality Inventory, 10 items, 1 minute',
 	breadcrumb: 'Quick test',
+	minutes: 1,
 	scales: {
 		E: tipiScale('Extraversion', 'You rate yourself as more reserved than extraverted.', 'You rate yourself as neither especially extraverted nor reserved.', 'You rate yourself as extraverted and enthusiastic.',
 			'A high score means you agreed that extraverted and enthusiastic describes you and disagreed that reserved and quiet does. With two items the scale can only place you roughly; the fifty-item test is far more precise and the trait page explains what extraversion covers.',

@@ -4,7 +4,7 @@ import { CITE } from './citations';
 
 export const FACETS_N: FacetSpec[] = [
 	{
-		id: 'N1', name: 'Anxiety', domain: 'N',
+		id: 'N1', name: 'Worry', publishedName: 'Anxiety', domain: 'N',
 		summary: 'The first facet of neuroticism is how readily worry and apprehension arise: whether a person tends to fear the worst, to feel stressed by ordinary pressures and to carry a list of things that might go wrong. It is a tendency everyone has in some degree, and most people sit in the middle of the range.',
 		notMean: [
 			'A high score is not a diagnosis, and the scale does not test for any condition. It records how often a person says they worry and feel under stress, compared with a large sample of other people, and nothing more. Many high scorers are careful planners whose worry does useful work.',
@@ -34,7 +34,7 @@ export const FACETS_N: FacetSpec[] = [
 		],
 	},
 	{
-		id: 'N3', name: 'Depression', domain: 'N',
+		id: 'N3', name: 'Low mood', publishedName: 'Depression', domain: 'N',
 		summary: 'The third facet of neuroticism is how readily low mood and discouragement arise: whether a person often feels blue, is hard on themselves and struggles to feel comfortable in their own skin. It is a trait facet scored across a whole population, where most people sit in the middle.',
 		notMean: [
 			'A high score is not a diagnosis, and the scale does not test for any condition. It records how often a person says they feel low and how they feel about themselves, compared with a large sample of other people. It is a tendency, not a state, and a score is a comparison, not a verdict.',

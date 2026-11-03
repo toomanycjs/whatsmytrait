@@ -134,6 +134,8 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 .plate-head { padding-bottom: var(--s3); }
 .plate-head h2 { margin-bottom: var(--s1); }
 .plate-note { font-size: var(--small); color: var(--quiet); margin: 0; }
+.sample { margin-top: var(--s4); }
+.sample .strip { margin: 0; }
 .plate-pick { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
 .plate-pick select { font-size: var(--small); color: var(--ink); background: var(--page); border: 1px solid var(--hair); padding: 0.25em 0.5em; margin-left: 0.25em; max-width: 100%; }
 .plate .result { padding: var(--s4) 0; border-top: 1px solid var(--hair); }
@@ -160,7 +162,6 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 .strip .pct-left { margin-left: 0; transform: translate(calc(-100% - 12px), -50%); }
 .strip .pct-second { color: var(--quiet); }
 .strip-facet .pct { font-size: var(--small); }
-.strip-axis { display: flex; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: 2px; }
 .strip-key { font-size: var(--small); color: var(--quiet); margin: var(--s2) 0 0; }
 .strip-no-norms .strip-plot::after { content: ""; }
 
@@ -169,7 +170,6 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 .facets .facet { display: contents; }
 .facet-name { font-size: var(--small); color: var(--quiet); }
 .facets .strip-facet { margin: 0; }
-.facets .strip-axis { display: none; }
 @media (max-width: 760px) {
 	.facets { grid-template-columns: 1fr; row-gap: var(--s1); }
 	.facet-name { margin-top: var(--s2); }

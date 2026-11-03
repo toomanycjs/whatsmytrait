@@ -10,6 +10,7 @@ export const emotionalIntelligence: TestContent = {
 	question: 'How do I handle emotions?',
 	subtitle: 'IPIP emotional intelligence components, 68 items, 7 minutes',
 	breadcrumb: 'Emotional intelligence',
+	minutes: 7,
 	scales: {
 		PE: c('Positive expressivity', 'You tend to keep happy feelings to yourself.', 'You show happiness about as openly as most people.', 'You tend to show happiness and affection openly.',
 			'People who score high say they express affection physically, laugh out loud, hug close friends and show their feelings when happy. In daily life that shows as warmth that is easy to read, laughter that others catch, and no hesitation in saying what someone means to them. It is about expression, not how much is felt.',

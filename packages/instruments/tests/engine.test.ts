@@ -118,9 +118,9 @@ describe('percentiles', () => {
 		expect(percentile(table, 'X', 'all', 5)).toBe(95);
 	});
 
-	it('clamps scores outside the table', () => {
-		expect(percentile(table, 'X', 'all', 0)).toBe(0);
-		expect(percentile(table, 'X', 'all', 9)).toBe(100);
+	it('clamps scores outside the table, and never shows 0 or 100', () => {
+		expect(percentile(table, 'X', 'all', 0)).toBe(1);
+		expect(percentile(table, 'X', 'all', 9)).toBe(99);
 	});
 
 	it('finds the score at a percentile and the middle 50%', () => {

@@ -8,6 +8,7 @@ export const selfEsteem: TestContent = {
 	question: 'How is my self-esteem?',
 	subtitle: 'Rosenberg Self-Esteem Scale, 10 items, 2 minutes',
 	breadcrumb: 'Self-esteem',
+	minutes: 2,
 	scales: {
 		SE: {
 			name: 'Self-esteem',

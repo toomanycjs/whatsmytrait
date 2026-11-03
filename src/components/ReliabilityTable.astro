@@ -1,0 +1,24 @@
+---
+// A reliability table for a test page: one row per scale, with the published
+// coefficient alpha and, kept apart, the alpha computed from the norm sample.
+interface Row { id: string; name: string; published?: number; computed?: number }
+interface Props {
+	rows: Row[];
+	hasPublished: boolean;
+	hasComputed: boolean;
+}
+const { rows, hasPublished, hasComputed } = Astro.props;
+---
+
+<div class="table-scroll"><table>
+	<thead><tr><th>Scale</th>{hasPublished && <th class="n">Published</th>}{hasComputed && <th class="n">From the norm sample</th>}</tr></thead>
+	<tbody>
+		{rows.map((r) => (
+			<tr>
+				<td>{r.name}</td>
+				{hasPublished && <td class="n">{r.published === undefined ? 'not published' : r.published.toFixed(2)}</td>}
+				{hasComputed && <td class="n">{r.computed === undefined ? '' : r.computed.toFixed(2)}</td>}
+			</tr>
+		))}
+	</tbody>
+</table></div>

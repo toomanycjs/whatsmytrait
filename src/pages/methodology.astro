@@ -51,6 +51,7 @@ const sections = [
 					<thead><tr><th>Group</th><th class="n">People</th></tr></thead>
 					<tbody>{Object.values(norms!.groups).map((g) => <tr><td>{g.label}</td><td class="n">{fmt(g.n)}</td></tr>)}</tbody>
 				</table></div>
+				{Object.keys(norms!.groups).some((k) => k.startsWith('age-')) && <p class="small quiet">The age bands cover people aged 18 and over who gave an age; the rest of the sample gave no age or one under 18 and are in the everyone group only, which is why the bands sum to fewer than the whole.</p>}
 			</Fragment>
 		))}
 	</section>
@@ -92,6 +93,7 @@ const sections = [
 
 	<section id="storage">
 		<h2>What is stored where</h2>
-		<p>Responses and results are stored only in the browser's local storage on the device used, under versioned keys, so a changed instrument file never mis-scores an old attempt. Nothing is sent to this site: there is no server-side scoring, no account, no analytics and no cookies. A share link encodes the scores in the link itself, after the hash, which browsers never send to a server; whoever receives the link sees the scores. Deleting the browser's site data deletes everything.</p>
+		<p>Responses and results are stored only in the browser's local storage on the device used, under versioned keys, so a changed instrument file never mis-scores an old attempt. Nothing about answers or results is sent to this site: there is no server-side scoring, no account and no cookies. Page views are counted with Google Analytics in its consent mode with storage denied, as the <a href="/privacy/">privacy page</a> says. A share link encodes the scores in the link itself, after the hash, which browsers never send to a server; whoever receives the link sees the scores. Deleting the browser's site data deletes everything.</p>
+		<p>Teachers and researchers: the <a href="/for-teachers-and-researchers/">page for teachers and researchers</a> says how to use the instruments in teaching or research, with the licence for each, and how to cite the site and the instruments.</p>
 	</section>
 </LongForm>

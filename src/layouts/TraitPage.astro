@@ -5,6 +5,7 @@
 // the test button; the sibling traits; sources.
 import { loadInstrument, loadNorms, scaleRange, strip, type Instrument, type NormTable } from '@site/instruments';
 import Page from './Page.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
 import type { TraitContent } from '../traits/content';
 
 interface Props {
@@ -28,9 +29,9 @@ const strips = content.strips.map((s) => {
 	if (!scale) throw new Error(`trait page ${content.path}: no scale ${s.scale} in ${s.instrument}`);
 	const { min, max } = scaleRange(instrument, s.scale);
 	const hasNorms = !!norms && !!norms.groups[group]?.scales[s.scale];
-	const html = strip({ name: scale.name, min, max, ...(hasNorms ? { norms: norms!, scale: s.scale, group } : {}) });
+	const html = strip({ name: s.name ?? scale.name, min, max, ...(hasNorms ? { norms: norms!, scale: s.scale, group } : {}) });
 	const n = hasNorms ? norms!.groups[group].n : 0;
-	return { ...s, group, min, max, html, n, scaleName: scale.name, instrumentName: instrument.name, sourceName: norms?.source.name ?? null, items: instrument.items.filter((it) => it.scale === s.scale || (scale.facets ?? []).includes(it.scale)).length };
+	return { ...s, group, min, max, html, n, scaleName: s.name ?? scale.name, instrumentName: instrument.name, sourceName: norms?.source.name ?? null, items: instrument.items.filter((it) => it.scale === s.scale || (scale.facets ?? []).includes(it.scale)).length };
 });
 
 const clientData = {
@@ -134,6 +135,8 @@ const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.
 			</div>
 		</div>
 	</section>
+
+	<RelatedGuides href={content.path} />
 
 	<section class="section sources" data-sources-box>
 		<div class="wrap row">

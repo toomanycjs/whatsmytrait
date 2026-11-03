@@ -11,6 +11,7 @@ export const bigFiveShort: TestContent = {
 	subtitle: 'IPIP Big-Five Factor Markers, 50 items, 5 minutes',
 	breadcrumb: 'Big Five, short',
 	normsGroup: 'all',
+	minutes: 5,
 	scales: {
 		E: {
 			means: {

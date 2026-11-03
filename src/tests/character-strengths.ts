@@ -14,6 +14,7 @@ export const characterStrengths: TestContent = {
 	question: 'What are my character strengths?',
 	subtitle: 'IPIP-VIA-R, 96 items, 10 minutes',
 	breadcrumb: 'Character strengths',
+	minutes: 10,
 	scales: {
 		APP: s('Appreciation of beauty', 'You rarely notice beauty until it is pointed out.', 'You notice beauty about as much as most people.', 'You are moved by beauty and seek it out.', 'You feel it is important to live in a world of beauty and experience deep emotions when you see beautiful things.', 'You are rarely aware of natural beauty and tend to notice it only when others comment.'),
 		LOV: s('Capacity for love', 'You find it hard to share feelings or accept love.', 'You give and accept love about as easily as most people.', 'You express love easily and know you are cared for.', 'You can express love to someone else and know there are people who care for you as much as for themselves.', 'You do not easily share your feelings and find it difficult to accept love from anyone.'),

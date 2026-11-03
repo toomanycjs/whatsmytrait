@@ -6,6 +6,9 @@
 // is this test; related; FAQ; sources and licence.
 import { loadInstrument, loadNorms, minutes, screens, type Instrument, type NormTable } from '@site/instruments';
 import Page from './Page.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
+import ReliabilityTable from '../components/ReliabilityTable.astro';
+import { lastmodByPath } from '../lib/lastmod.mjs';
 import type { TestContent } from '../tests/content';
 
 interface Props {
@@ -19,16 +22,31 @@ const instrument: Instrument = loadInstrument(data);
 const norms: NormTable | null = normsData ? loadNorms(normsData, instrument) : null;
 const group = content.normsGroup ?? 'all';
 const normGroup = norms ? norms.groups[group] : null;
-const mins = minutes(instrument);
+const mins = content.minutes ?? minutes(instrument);
+const updated = lastmodByPath().get(content.path) as string | undefined;
+const longDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); };
 const screenList = screens(instrument);
 const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 const labels = instrument.response.labels.map(sentence);
 const domains = instrument.scales.filter((s) => !s.parent);
 const copyFor = (id: string) => content.scales[id];
+// Names shown for every scale: the content's copy name, else the content's
+// override for facets, else the data file's name.
+const names: Record<string, string> = Object.fromEntries(instrument.scales.map((s) => [s.id, copyFor(s.id)?.name ?? content.scaleNames?.[s.id] ?? s.name]));
 const published = Object.entries(instrument.reliability ?? {});
 const alphaRange = published.length
-	? (() => { const v = published.map(([, a]) => a); return `${Math.min(...v).toFixed(2)} to ${Math.max(...v).toFixed(2)}`; })()
+	? (() => { const v = published.map(([, a]) => a); const lo = Math.min(...v).toFixed(2); const hi = Math.max(...v).toFixed(2); return lo === hi ? lo : `${lo} to ${hi}`; })()
 	: 'not published';
+// Reliability rows: published alpha and, kept apart, alpha the norms script
+// computed from the norm sample. Domains first; facets in a folded table.
+const computed = norms?.computed?.alpha ?? {};
+const rel = instrument.reliability ?? {};
+const relRow = (s: Instrument['scales'][number]) => ({ id: s.id, name: names[s.id], published: rel[s.id], computed: computed[s.id] });
+const domainRows = domains.map(relRow).filter((r) => r.published !== undefined || r.computed !== undefined);
+const facetRows = instrument.scales.filter((s) => s.parent).map(relRow).filter((r) => r.published !== undefined || r.computed !== undefined);
+const hasComputed = [...domainRows, ...facetRows].some((r) => r.computed !== undefined);
+const hasPublished = [...domainRows, ...facetRows].some((r) => r.published !== undefined);
+
 const fmt = (n: number) => n.toLocaleString('en-GB');
 
 // Everything the client needs, embedded once. Norms are the whole table so
@@ -40,7 +58,7 @@ const clientData = {
 	path: content.path,
 	name: instrument.name,
 	means: Object.fromEntries(Object.entries(content.scales).map(([id, c]) => [id, c.means])),
-	names: Object.fromEntries(Object.entries(content.scales).map(([id, c]) => [id, c.name ?? instrument.scales.find((s) => s.id === id)?.name])),
+	names,
 };
 const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 ---
@@ -55,6 +73,7 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 		<div class="wrap row">
 			<div class="aside">
 				<p class="section-name"><a href="/tests/">Tests</a></p>
+				{updated && <p>Updated {longDate(updated)}</p>}
 			</div>
 			<div class="main">
 				<h1>{content.question}</h1>
@@ -195,18 +214,18 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 		<div class="wrap row">
 			<div class="aside"><h2>How reliable is this test</h2></div>
 			<div class="main">
-				{published.length > 0 ? (
+				{domainRows.length > 0 || facetRows.length > 0 ? (
 					<Fragment>
-						<p>Internal consistency (coefficient alpha) per scale, as published:</p>
-						<div class="table-scroll"><table>
-							<thead><tr><th>Scale</th><th class="n">Alpha</th></tr></thead>
-							<tbody>
-								{published.filter(([id]) => !instrument.scales.find((s) => s.id === id)?.parent).map(([id, a]) => (
-									<tr><td>{copyFor(id)?.name ?? instrument.scales.find((s) => s.id === id)?.name}</td><td class="n">{a.toFixed(2)}</td></tr>
-								))}
-							</tbody>
-						</table></div>
+						<p>Internal consistency (coefficient alpha) per scale{hasPublished && hasComputed ? ': the published figure, and the figure computed from the norm sample by the script that built the norm table, kept apart' : hasComputed ? ', computed from the norm sample by the script that built the norm table' : ', as published'}:</p>
+						{domainRows.length > 0 && <ReliabilityTable rows={domainRows} hasPublished={hasPublished} hasComputed={hasComputed} />}
+						{facetRows.length > 0 && (
+							<details>
+								<summary>{facetRows.length} facet scales</summary>
+								<ReliabilityTable rows={facetRows} hasPublished={hasPublished} hasComputed={hasComputed} />
+							</details>
+						)}
 						{instrument.reliabilitySource && <p class="small quiet">{instrument.reliabilitySource}</p>}
+						{hasComputed && norms?.computed?.note && <p class="small quiet">{norms.computed.note}</p>}
 					</Fragment>
 				) : (
 					<p>No reliability figures are published for this instrument.</p>
@@ -232,6 +251,8 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 			</div>
 		</div>
 	</section>
+
+	<RelatedGuides href={content.path} />
 
 	<section class="section faq" id="faq">
 		<div class="wrap row">
