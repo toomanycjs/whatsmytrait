@@ -44,6 +44,8 @@ export default function indexNow({ key }) {
 				try {
 					await writeFile(path.join(distDir, `${key}.txt`), key);
 
+					/** @type {Record<string, string>} */
+
 					const manifest = {};
 					for (const file of await htmlFiles(distDir)) {
 						const rel = path.relative(distDir, file).split(path.sep).join('/');
@@ -68,6 +70,8 @@ export default function indexNow({ key }) {
 						return;
 					}
 
+					/** @type {Record<string, string>} */
+
 					let previous = {};
 					try {
 						const res = await fetch(new URL(`/${MANIFEST}`, site), { signal: AbortSignal.timeout(10_000) });
@@ -78,7 +82,7 @@ export default function indexNow({ key }) {
 							logger.warn(`no previous manifest on the live site (HTTP ${res.status}); treating all pages as new`);
 						}
 					} catch (err) {
-						logger.warn(`could not fetch previous manifest (${err.message}); treating all pages as new`);
+						logger.warn(`could not fetch previous manifest (${err instanceof Error ? err.message : String(err)}); treating all pages as new`);
 					}
 
 					const changed = Object.keys(manifest).filter((url) => previous[url] !== manifest[url]);
@@ -112,7 +116,7 @@ export default function indexNow({ key }) {
 							logger.warn(`IndexNow submission failed: HTTP ${res.status} ${body}`);
 						}
 					} catch (err) {
-						logger.warn(`IndexNow submission failed: ${err.message}`);
+						logger.warn(`IndexNow submission failed: ${err instanceof Error ? err.message : String(err)}`);
 					}
 				} finally {
 					await closeConnectionPool();
@@ -129,7 +133,9 @@ export default function indexNow({ key }) {
  */
 async function closeConnectionPool() {
 	try {
-		await globalThis[Symbol.for('undici.globalDispatcher.1')]?.close?.();
+		/** @type {any} */
+		const g = globalThis;
+		await g[Symbol.for('undici.globalDispatcher.1')]?.close?.();
 	} catch {
 		// nothing to close, or a Node version that manages the pool differently
 	}

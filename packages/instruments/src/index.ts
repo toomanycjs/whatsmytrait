@@ -1,10 +1,20 @@
-// Public API of the instruments package. The site imports from here only.
+// Public API of the instruments package. The site imports from here only;
+// nothing in the site reaches into these modules directly.
 //
-// Step 1 of the build carries over the pure parts of the previous engine:
-// the versioned localStorage store, the share link and text/CSV export, the
-// retake reminder and the formatting helpers. Step 2 adds load, render,
-// score and percentile and tidies this surface.
+//   loadInstrument(json)              validate a data file
+//   loadNorms(json, instrument)       validate a norms file against it
+//   score(instrument, responses)      raw score per scale, no DOM
+//   percentile(norms, scale, group, raw)
+//   screens(instrument)               items ten to a screen, published order
+//   readAttempt / saveAttempt         autosave and resume, versioned key
+//   store, share, calendar, format    saved results, share links, reminders
 
+export * from './instrument';
+export * from './load';
+export * from './score';
+export * from './percentile';
+export * from './plan';
+export * from './attempt';
 export * from './types';
 export * from './store';
 export * from './share';

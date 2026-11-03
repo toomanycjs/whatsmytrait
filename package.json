@@ -16,6 +16,7 @@
     "astro": "astro",
     "lastmod": "node scripts/lastmod.mjs",
     "test": "vitest run",
+    "typecheck": "astro check",
     "check": "node scripts/check.mjs",
     "lighthouse": "node scripts/lighthouse.mjs"
   },
@@ -23,12 +24,15 @@
     "@astrojs/mdx": "^5.0.2",
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
+    "@fontsource-variable/familjen-grotesk": "^5.3.0",
     "astro": "^6.0.8",
     "satori": "^0.26.0",
     "sharp": "^0.34.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.12",
     "ical.js": "^2.2.1",
+    "typescript": "^6.0.3",
     "vitest": "^5.0.3"
   }
 }
