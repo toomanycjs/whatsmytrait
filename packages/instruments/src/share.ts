@@ -6,7 +6,7 @@ import { isValidEntry, MAX_PER_TOOL } from './store';
 import type { ResultEntry, ToolConfig } from './types';
 
 /** Mirrors SITE_URL in the site's src/consts.ts. */
-export const SITE = 'https://whatsmytrait.com';
+export const SITE = 'https://www.whatsmytrait.com';
 
 /** Longest fragment payload accepted when decoding a share link. */
 export const MAX_SHARE_CHARS = 20000;

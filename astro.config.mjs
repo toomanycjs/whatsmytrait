@@ -8,7 +8,7 @@ import linkCheck from './src/integrations/link-check.mjs';
 import { lastmodByPath } from './src/lib/lastmod.mjs';
 
 // Keep in step with SITE_URL in src/consts.ts (astro.config cannot import TypeScript).
-const SITE_URL = 'https://whatsmytrait.com';
+const SITE_URL = 'https://www.whatsmytrait.com';
 
 // https://astro.build/config
 export default defineConfig({

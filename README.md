@@ -2,7 +2,7 @@
 
 A static Astro site of free, open personality and interest tests. Every instrument is free for any use, scored on the person's own device, shown against published norms, with its reliability stated. No sign-up, no email capture, no tracking.
 
-Live at https://whatsmytrait.com once deployed. The name and domain are set in `src/consts.ts` and `astro.config.mjs`.
+Live at https://www.whatsmytrait.com once deployed. The name and domain are set in `src/consts.ts` and `astro.config.mjs`.
 
 ## Layout
 

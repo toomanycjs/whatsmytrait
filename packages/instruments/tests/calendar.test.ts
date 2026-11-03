@@ -4,7 +4,7 @@ import { buildReminder, foldLine, googleCalendarUrl, toIcs } from '../src/calend
 import type { ToolConfig } from '../src/types';
 
 const cfg: ToolConfig = { id: 'big-five', version: '2', name: 'Big Five', path: '/tests/big-five/', reminderMonths: 1, subscores: [] };
-const URL_WITH_UTM = 'https://whatsmytrait.com/tests/big-five/?utm_source=calendar&utm_medium=reminder&utm_campaign=retake';
+const URL_WITH_UTM = 'https://www.whatsmytrait.com/tests/big-five/?utm_source=calendar&utm_medium=reminder&utm_campaign=retake';
 
 describe('reminder event', () => {
 	it('starts one month out at 10:00 for 15 minutes, day clamped to 28', () => {

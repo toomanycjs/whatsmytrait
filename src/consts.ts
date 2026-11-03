@@ -3,7 +3,7 @@
 // here and in astro.config.mjs, nowhere else.
 
 export const SITE_TITLE = "What's My Trait";
-export const SITE_URL = 'https://whatsmytrait.com';
+export const SITE_URL = 'https://www.whatsmytrait.com';
 export const SITE_DESCRIPTION =
 	'Free personality and interest tests from published, openly licensed instruments. Scored on your device, shown against real norms, with the reliability stated.';
 

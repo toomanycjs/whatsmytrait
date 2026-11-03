@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://whatsmytrait.com/sitemap-index.xml
+Sitemap: https://www.whatsmytrait.com/sitemap-index.xml
