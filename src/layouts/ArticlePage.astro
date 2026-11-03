@@ -3,7 +3,7 @@
 // first two sentences of the body, the evidence with citations, an optional
 // population strip with the reader's marker, the test button, three
 // hand-picked links, the sources box, and Article structured data.
-import type { CollectionEntry } from 'astro:content';
+import { render, type CollectionEntry } from 'astro:content';
 import { loadInstrument, loadNorms, scaleRange, strip } from '@site/instruments';
 import { SITE_URL } from '../consts';
 import { articleNode } from '../lib/schema';
@@ -40,7 +40,7 @@ if (d.strip && DATA[d.strip.instrument]) {
 	stripHtml = strip({ name: scale.name, min, max, norms, scale: scale.id, group: 'all' });
 	stripClient = { strips: [{ instrument: instrument.id, scale: scale.id, group: 'all', min, max, name: scale.name }], norms: { [instrument.id]: norms } };
 }
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Page title={d.title} description={d.description} breadcrumb={d.question ?? d.title} ogType="article">

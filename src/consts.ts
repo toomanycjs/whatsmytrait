@@ -22,6 +22,8 @@ export const NAV: { path: string; label: string }[] = [
 	{ path: '/tests/', label: 'Tests' },
 	{ path: '/traits/', label: 'Traits' },
 	{ path: '/careers/', label: 'Careers' },
+	{ path: '/compare/', label: 'Compare' },
+	{ path: '/guides/', label: 'Guides' },
 ];
 
 /** Footer links: the trust pages. */
