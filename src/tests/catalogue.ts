@@ -24,6 +24,9 @@ export const TEST_GROUPS: TestGroup[] = [
 			{ title: 'The Big Five in one minute', href: '/tests/quick/', items: 10, minutes: 1, why: 'A rough position on all five traits when you have no time.' },
 			{ title: 'Introvert or extrovert?', href: '/tests/introvert-or-extrovert/', items: 20, minutes: 3, why: 'Where you sit on the one scale everyone asks about.' },
 			{ title: 'How is my self-esteem?', href: '/tests/self-esteem/', items: 10, minutes: 2, why: 'The Rosenberg scale, the standard measure of global self-worth.' },
+			{ title: 'What are my character strengths?', href: '/tests/character-strengths/', items: 96, minutes: 10, why: 'Twenty-four strengths, so your signature strengths stand out.' },
+			{ title: 'How do I handle emotions?', href: '/tests/emotional-intelligence/', items: 68, minutes: 7, why: 'Seven components of trait emotional intelligence.' },
+			{ title: 'What is my interpersonal style?', href: '/tests/interpersonal-style/', items: 32, minutes: 3, why: 'How you come across: eight styles on a circle of warmth and dominance.' },
 		],
 	},
 	{

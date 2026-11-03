@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+
+const entries = (await getCollection('compare', (e) => !e.data.draft)).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Page title="Compare: the Big Five against other personality tests" description="Plain verdicts on how the Big Five compares with other personality tests, including where the Big Five itself is weak." breadcrumb="Compare">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Compare</p></div>
+			<div class="main">
+				<h1>Compare</h1>
+				<p class="subtitle">One test against another, with a verdict</p>
+				<p>Each comparison gives a plain verdict in its first paragraph, a table of what each test measures, how it is scored, its reliability and who owns it, where each is weak, and which to take for which purpose. This is the only part of the site where trademarked test names appear.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>All comparisons</h2></div>
+			<div class="main">
+				<ul>{entries.map((e) => <li><a href={`/compare/${e.id}/`}>{e.data.question ?? e.data.title}</a><span class="quiet"> {e.data.description}</span></li>)}</ul>
+			</div>
+		</div>
+	</section>
+</Page>

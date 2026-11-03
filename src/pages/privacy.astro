@@ -1,0 +1,29 @@
+---
+import LongForm from '../layouts/LongForm.astro';
+
+const sections = [
+	{ id: 'device', title: 'Your answers stay on your device' },
+	{ id: 'share', title: 'Share links carry your scores' },
+	{ id: 'nothing', title: 'Nothing is sent to this site' },
+	{ id: 'delete', title: 'Deleting your results' },
+];
+---
+
+<LongForm title="Privacy: responses and results stay in your browser" description="Responses and results are stored only in this browser; a share link contains your scores in the link itself; nothing is sent to the site. No cookies, no analytics, no accounts." heading="Privacy" subtitle="In plain words" sections={sections}>
+	<section id="device">
+		<h2>Your answers stay on your device</h2>
+		<p>When you take a test, your answers and your results are stored only in this browser, on this device, in its local storage. They are not sent to this site or to anyone else. If you use another browser or device, they will not be there.</p>
+	</section>
+	<section id="share">
+		<h2>Share links carry your scores</h2>
+		<p>If you choose to share a comparison link, your scores are written into the link itself, after the # sign. Anyone who opens the link can see those scores, so share it only with people you want to see them. Browsers do not send the part of a link after the # sign to any server, so this site never receives it.</p>
+	</section>
+	<section id="nothing">
+		<h2>Nothing is sent to this site</h2>
+		<p>There are no accounts, no email forms, no cookies and no analytics. The site is static files; opening a page fetches the page and nothing else about you is recorded by this site. The hosting provider sees the ordinary web request, as any host does.</p>
+	</section>
+	<section id="delete">
+		<h2>Deleting your results</h2>
+		<p>Every test page has a start again button, and the results plate says where the saved result came from. To remove everything at once, clear this site's data in your browser settings; that deletes every result and every saved attempt, and nothing can bring them back, because no copy exists anywhere else.</p>
+	</section>
+</LongForm>

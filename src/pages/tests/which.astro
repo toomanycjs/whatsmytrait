@@ -1,0 +1,109 @@
+---
+// Which test should I take: a three-question router. Three choices, each
+// narrowing the list; the answer is a link, not a verdict.
+import Page from '../../layouts/Page.astro';
+
+const faqs = [
+	{ q: 'Which personality test is the most accurate?', a: 'Among free tests, the 120-item Big Five test on this site, because it has the most items, scores thirty facets, and compares you with a published sample of over 400,000 people. Accuracy in self-report also depends on answering as you are rather than as you would like to be.' },
+	{ q: 'Which test is quickest?', a: 'The ten-item quick test takes about a minute and gives a rough position on all five traits. The single-trait tests take two or three minutes each.' },
+	{ q: 'Which test helps with a career decision?', a: 'The career interests test, which counts your interest in six kinds of work activity and maps your three highest to UK jobs. It says what you would enjoy, not what you should do.' },
+];
+---
+
+<Page title="Which personality test should I take? A three-question guide" description="Three questions that point you to the right free test on this site: how much time you have, what you want to know, and whether you want a comparison with other people." breadcrumb="Which test" faqs={faqs}>
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name"><a href="/tests/">Tests</a></p></div>
+			<div class="main">
+				<h1>Which test should I take?</h1>
+				<p class="subtitle">Three questions, then a link</p>
+				<p>Answer the three questions and the right test appears. Every test here is free, scored on your device and taken from a published instrument.</p>
+			</div>
+		</div>
+	</section>
+	<section class="plate" data-router>
+		<div class="wrap">
+			<div class="row q" role="group" aria-labelledby="w1">
+				<div class="aside"><span class="q-n">01</span></div>
+				<div class="main wide">
+					<p class="q-text" id="w1">What do you want to know?</p>
+					<div class="cells cells-3">
+						<label class="cell"><input type="radio" name="want" value="self" /><span class="cell-label">Who I am</span></label>
+						<label class="cell"><input type="radio" name="want" value="work" /><span class="cell-label">What work suits me</span></label>
+						<label class="cell"><input type="radio" name="want" value="one" /><span class="cell-label">One trait in particular</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row q" role="group" aria-labelledby="w2">
+				<div class="aside"><span class="q-n">02</span></div>
+				<div class="main wide">
+					<p class="q-text" id="w2">How long have you got?</p>
+					<div class="cells cells-3">
+						<label class="cell"><input type="radio" name="time" value="1" /><span class="cell-label">A minute</span></label>
+						<label class="cell"><input type="radio" name="time" value="5" /><span class="cell-label">Five minutes</span></label>
+						<label class="cell"><input type="radio" name="time" value="12" /><span class="cell-label">Twelve minutes</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row q" role="group" aria-labelledby="w3">
+				<div class="aside"><span class="q-n">03</span></div>
+				<div class="main wide">
+					<p class="q-text" id="w3">Do you want a comparison with other people?</p>
+					<div class="cells cells-3">
+						<label class="cell"><input type="radio" name="norms" value="yes" /><span class="cell-label">Yes, percentiles</span></label>
+						<label class="cell"><input type="radio" name="norms" value="no" /><span class="cell-label">Not needed</span></label>
+						<label class="cell"><input type="radio" name="norms" value="any" /><span class="cell-label">Either</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row plate-foot">
+				<div class="aside"><p>Your test</p></div>
+				<div class="main wide">
+					<p class="status" role="status" data-router-answer>Answer the three questions.</p>
+					<p data-router-link hidden><a class="btn" href="/tests/">Go to the test</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Or choose from the list</h2></div>
+			<div class="main"><p><a href="/tests/">All tests, grouped by what you want to know</a>.</p></div>
+		</div>
+	</section>
+	<section class="section faq">
+		<div class="wrap row">
+			<div class="aside"><h2>Questions people ask</h2></div>
+			<div class="main">{faqs.map((f) => <Fragment><h3>{f.q}</h3><p>{f.a}</p></Fragment>)}</div>
+		</div>
+	</section>
+	<script>
+		const root = document.querySelector('[data-router]');
+		if (root) {
+			const answer = root.querySelector<HTMLElement>('[data-router-answer]')!;
+			const linkWrap = root.querySelector<HTMLElement>('[data-router-link]')!;
+			const link = linkWrap.querySelector<HTMLAnchorElement>('a')!;
+			const get = (name: string) => (root.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`) ?? null)?.value;
+			function route() {
+				const want = get('want'), time = get('time'), norms = get('norms');
+				if (!want || !time || !norms) { answer.textContent = 'Answer the three questions.'; linkWrap.hidden = true; return; }
+				let href = '/tests/big-five/', label = 'The Big Five, with the facets: 120 items, percentiles, thirty facets.';
+				if (want === 'work') { href = '/tests/career-interests/'; label = 'The career interests test: sixty activities, your three-letter code, UK jobs.'; }
+				else if (want === 'one') { href = '/tests/'; label = 'A single-trait test: pick the trait from the list, two or three minutes each.'; }
+				else if (time === '1') { href = '/tests/quick/'; label = 'The quick test: ten items, one minute, a rough position on all five traits.'; }
+				else if (time === '5') { href = '/tests/big-five/short/'; label = 'The Big Five in five minutes: fifty items with percentiles.'; }
+				if (want === 'self' && norms === 'yes' && time === '1') { href = '/tests/big-five/short/'; label = 'The Big Five in five minutes: the quick test has no percentiles, so the fifty-item test is the shortest with a comparison.'; }
+				answer.textContent = label;
+				link.href = href;
+				linkWrap.hidden = false;
+			}
+			root.addEventListener('change', route);
+		}
+	</script>
+</Page>
+
+<style is:global>
+	.cells-3 { grid-template-columns: repeat(3, 1fr); }
+	.cells-3 .cell { min-height: 3.25rem; justify-content: center; }
+	.cells-3 .cell-label { position: static; width: auto; height: auto; clip: auto; overflow: visible; color: inherit; font-size: var(--body); }
+</style>

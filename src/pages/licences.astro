@@ -1,0 +1,54 @@
+---
+// One entry per instrument with the licence text, the link to the owner's
+// page and the credit line used on the site. Also the audit trail for the
+// exclusion rules: what is not used, and why.
+import LongForm from '../layouts/LongForm.astro';
+import { INSTRUMENTS } from '../lib/instruments';
+
+const sections = [
+	{ id: 'rules', title: 'The rules' },
+	{ id: 'instruments', title: 'Every instrument and its licence' },
+	{ id: 'excluded', title: 'What is not used' },
+	{ id: 'site', title: 'This site' },
+];
+---
+
+<LongForm title="Licences: every instrument, its licence and its credit line" description="One entry per instrument with the licence text, the link to the owner's page and the credit line the site uses, plus the rules that keep anything else out." heading="Licences" subtitle="Every instrument, its licence and the credit it carries" sections={sections}>
+	<section id="rules">
+		<h2>The rules</h2>
+		<ul>
+			<li>Only instruments whose licence allows any use, including commercial use, with no permission to ask for: at present the International Personality Item Pool, the Ten-Item Personality Inventory, the Rosenberg Self-Esteem Scale and the O*NET Interest Profiler.</li>
+			<li>Items are reproduced exactly as published and the instrument is named as its authors name it. Trademarked names of other tests appear only in comparison articles.</li>
+			<li>If a licence has to be argued, the instrument is out.</li>
+		</ul>
+	</section>
+
+	<section id="instruments">
+		<h2>Every instrument and its licence</h2>
+		{INSTRUMENTS.map(({ instrument }) => (
+			<Fragment>
+				<h3>{instrument.name}</h3>
+				<p>{instrument.source.paper}.{instrument.source.doi && <Fragment> <a href={`https://doi.org/${instrument.source.doi}`} rel="noopener">doi:{instrument.source.doi}</a></Fragment>}</p>
+				<p>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a></p>
+				{instrument.licence.credit && <p>Credit line used on the site: {instrument.licence.credit}</p>}
+				<p class="small quiet">Key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>, checked {instrument.source.accessed}.</p>
+			</Fragment>
+		))}
+	</section>
+
+	<section id="excluded">
+		<h2>What is not used</h2>
+		<ul>
+			<li>Any questionnaire about a state or a condition rather than a trait, including the IPIP scales of that kind. The IPIP single-construct index lists such scales; none is used.</li>
+			<li>Any instrument whose licence is research-only, non-commercial or unclear.</li>
+			<li>Any sixteen-type or Myers-Briggs style test.</li>
+			<li>Anything that would help an employer screen candidates.</li>
+			<li>Held back from the first release by the owner's decision, though licensed: the IPIP-HEXACO, the Mini-IPIP6 and the IPIP 16PF.</li>
+		</ul>
+	</section>
+
+	<section id="site">
+		<h2>This site</h2>
+		<p>The site's own text and code are the owner's. The engine that loads, scores and draws the instruments is in the repository alongside the data files, so a reader can check any figure on any page against its source.</p>
+	</section>
+</LongForm>

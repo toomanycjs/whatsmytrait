@@ -19,6 +19,9 @@ const TESTS = [
 	{ path: '/tests/courage/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/trust/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/emotional-stability/', items: 20, domains: 1, facets: 0 },
+	{ path: '/tests/emotional-intelligence/', items: 68, domains: 7, facets: 0 },
+	{ path: '/tests/interpersonal-style/', items: 32, domains: 8, facets: 0 },
+	{ path: '/tests/character-strengths/', items: 96, domains: 24, facets: 0 },
 ];
 
 async function answerScreen(page: Page, count: number, key: string) {

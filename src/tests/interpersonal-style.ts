@@ -1,0 +1,52 @@
+import type { TestContent } from './content';
+
+const o = (name: string, low: string, mid: string, high: string, highText: string, lowText: string) => ({ name, means: { low, mid, high }, high: highText, low: lowText });
+
+export const interpersonalStyle: TestContent = {
+	instrument: 'ipip-ipc',
+	path: '/tests/interpersonal-style/',
+	title: 'Interpersonal style test: 32 items, free, 3 minutes',
+	description: 'How do you come across to other people? The 32-item IPIP interpersonal circumplex, scored on your device in three minutes, with eight styles on strips.',
+	question: 'What is my interpersonal style?',
+	subtitle: 'IPIP Interpersonal Circumplex, 32 items, 3 minutes',
+	breadcrumb: 'Interpersonal style',
+	scales: {
+		PA: o('Assured-dominant', 'You rarely demand attention or do most of the talking.', 'You take the floor about as often as most people.', 'You tend to take the floor and demand to be noticed.',
+			'People who score high say they demand attention, do most of the talking and speak loudly. In daily life that shows as leading conversations and expecting to be heard. On the circumplex this is the top: pure dominance, neither warm nor cold.',
+			'People who score low leave the floor to others and do not demand to be the centre of interest. On the circumplex a low score here goes with the submissive side; it describes how much space you take in a room, not how much you have to say.'),
+		BC: o('Arrogant-calculating', 'You rarely contradict or snap at people.', 'You contradict and snap at people about as often as most.', 'You tend to contradict people and have a sharp tongue.',
+			'People who score high say they cut others to pieces, contradict others, snap at people and have a sharp tongue. In daily life that shows as winning arguments and being feared a little. This is the dominant, cold octant; its strengths are directness and not being pushed around.',
+			'People who score low do not contradict or snap, and keep their tongue in check. A low score sits towards the warm, submissive side of the circle; it says nothing about honesty or courage, only about how much edge there is in how you deal with people.'),
+		DE: o('Cold-hearted', 'You tend to be drawn into other people\'s problems.', 'You keep a middling distance from other people\'s troubles.', 'You tend to think people should fend for themselves.',
+			'People who score high say they believe people should fend for themselves, do not fall for sob stories and are not interested in other people\'s problems. In daily life that shows as a firm line around their own affairs and an immunity to being guilt-tripped. It is the cold side of the circle, not a lack of loyalty to their own.',
+			'People who score low are moved by other people\'s troubles and find it hard not to get involved. A low score sits on the warm side of the circle; its cost is being imposed on, and its benefit is being the person others turn to.'),
+		FG: o('Aloof-introverted', 'You are rarely quiet or private around people.', 'You are about as quiet and private as most people.', 'You tend to be quiet, private and sparing with words.',
+			'People who score high say they are quiet around strangers, very private, do not talk a lot and have little to say. In daily life that shows as listening more than speaking and keeping their own counsel. This is the cold, submissive octant: the opposite of gregarious, not of kind.',
+			'People who score low are talkative and open about themselves. A low score sits towards the warm, dominant side of the circle, where conversation comes easily. It describes how much you give away in company, not whether you enjoy it.'),
+		HI: o('Unassured-submissive', 'You rarely hold back or speak softly.', 'You hold back about as much as most people.', 'You tend to speak softly, let others finish and avoid the centre of attention.',
+			'People who score high say they speak softly, let others finish what they are saying, seldom toot their own horn and dislike being the centre of attention. In daily life that shows as patience in conversation and a reluctance to self-promote. This is the bottom of the circle: pure submissiveness, neither warm nor cold.',
+			'People who score low interrupt, speak up and do not mind attention. A low score sits towards the dominant side of the circle. The scale measures how much you yield in conversation, not confidence or competence.'),
+		JK: o('Unassuming-ingenuous', 'You rarely put others first or tolerate much from them.', 'You put others first about as much as most people.', 'You tend to tolerate a lot, think of others first and tell the truth plainly.',
+			'People who score high say they tolerate a lot from others, take things as they come, think of others first and seldom stretch the truth. In daily life that shows as an easy-going, trusting manner that others may take advantage of. This is the warm, submissive octant.',
+			'People who score low put themselves first more readily and give less benefit of the doubt. A low score sits towards the cold, dominant side of the circle; it is about how much you yield to others, not about honesty.'),
+		LM: o('Warm-agreeable', 'You rarely reassure or inquire after people.', 'You reassure and ask after people about as much as most.', 'You tend to be interested in people, reassure them and get along with everyone.',
+			'People who score high say they are interested in people, reassure others, inquire about others\' wellbeing and get along well with others. In daily life that shows as being easy to be with and remembered for kindness. This is the warm side of the circle: pure warmth, neither dominant nor submissive.',
+			'People who score low are less inclined to ask after people or to reassure them. A low score sits on the cold side of the circle; it describes warmth of manner, and many people with a cool manner are loyal and fair.'),
+		NO: o('Gregarious-extraverted', 'You rarely seek out conversation or large gatherings.', 'You seek company about as much as most people.', 'You tend to start conversations and love large parties.',
+			'People who score high say they feel comfortable around people, start conversations, talk to a lot of different people at parties and love large parties. In daily life that shows as being the social glue of a group. This is the warm, dominant octant: extraversion in its most sociable form.',
+			'People who score low are less drawn to parties and conversation with strangers. A low score sits towards the cold, submissive side of the circle, next to aloof-introverted; it is a preference about company, not a judgement of social skill.'),
+	},
+	testRetest: 'The IPIP key page gives no reliability figures for the IPIP-IPC; Markey and Markey (2009) report them in the source paper. The circumplex arranges the eight styles in a circle of two axes, dominance and warmth, so adjacent styles correlate and opposite styles do not.',
+	related: [
+		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'The circle is made from extraversion and agreeableness.' },
+		{ href: '/tests/emotional-intelligence/', title: 'How do I handle emotions?', note: 'Seven components of emotional style.' },
+		{ href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },
+	],
+	faqs: [
+		{ q: 'What is the interpersonal circumplex?', a: 'A model that arranges styles of dealing with people around a circle with two axes: dominance (top to bottom) and warmth (right to left). The eight octants are the eight scales here. Your highest scores show the part of the circle you live in; most people are high on two or three adjacent octants.' },
+		{ q: 'How does it relate to the Big Five?', a: 'The two axes of the circle are rotations of extraversion and agreeableness. A warm, dominant person is high on both; a cold, submissive person is low on both. The circumplex adds the diagonal styles the Big Five does not name.' },
+		{ q: 'Is one style better?', a: 'No. Each octant describes a way of coming across that works in some situations and not others, and the site never colours scores as good or bad. The eight names are the authors\' technical labels, some of which read harshly.' },
+		{ q: 'Why no percentiles?', a: 'No norm sample is published for these scales and the site never estimates one. Your markers are drawn against the possible range of 4 to 20.' },
+		{ q: 'Where do my answers go?', a: 'Nowhere. The test is scored in your browser and the result is kept only on this device.' },
+	],
+};

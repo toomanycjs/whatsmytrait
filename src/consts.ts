@@ -24,5 +24,10 @@ export const NAV: { path: string; label: string }[] = [
 	{ path: '/careers/', label: 'Careers' },
 ];
 
-/** Footer links. Empty until the trust pages exist. */
-export const FOOTER_NAV: { path: string; label: string }[] = [];
+/** Footer links: the trust pages. */
+export const FOOTER_NAV: { path: string; label: string }[] = [
+	{ path: '/methodology/', label: 'Methodology' },
+	{ path: '/licences/', label: 'Licences' },
+	{ path: '/about/', label: 'About' },
+	{ path: '/privacy/', label: 'Privacy' },
+];

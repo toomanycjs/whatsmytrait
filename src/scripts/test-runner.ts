@@ -176,7 +176,8 @@ export function mountTest() {
 	document.addEventListener('keydown', (e) => {
 		if (testEl.hidden || e.ctrlKey || e.metaKey || e.altKey) return;
 		const active = document.activeElement as HTMLElement | null;
-		if (active && (active.tagName === 'TEXTAREA' || (active.tagName === 'INPUT' && (active as HTMLInputElement).type !== 'radio'))) return;
+		const inputType = active?.tagName === 'INPUT' ? (active as HTMLInputElement).type : '';
+		if (active && (active.tagName === 'TEXTAREA' || (inputType && inputType !== 'radio' && inputType !== 'checkbox'))) return;
 		const points = instrument.response.points;
 		const n = Number(e.key);
 		if (Number.isInteger(n) && n >= 1 && n <= points) {

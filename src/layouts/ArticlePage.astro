@@ -1,0 +1,117 @@
+---
+// The guide and compare template: the question as the H1, the answer in the
+// first two sentences of the body, the evidence with citations, an optional
+// population strip with the reader's marker, the test button, three
+// hand-picked links, the sources box, and Article structured data.
+import type { CollectionEntry } from 'astro:content';
+import { loadInstrument, loadNorms, scaleRange, strip } from '@site/instruments';
+import { SITE_URL } from '../consts';
+import { articleNode } from '../lib/schema';
+import JsonLd from '../components/JsonLd.astro';
+import Page from './Page.astro';
+import ipip120 from '@site/instruments/data/ipip-neo-120.json';
+import ipip120Norms from '@site/instruments/data/norms/ipip-neo-120.json';
+import ipip50 from '@site/instruments/data/ipip-50.json';
+import ipip50Norms from '@site/instruments/data/norms/ipip-50.json';
+
+interface Props {
+	entry: CollectionEntry<'guides'> | CollectionEntry<'compare'>;
+	section: 'guides' | 'compare';
+	sectionLabel: string;
+}
+
+const { entry, section, sectionLabel } = Astro.props;
+const d = entry.data;
+const url = new URL(`/${section}/${entry.id}/`, SITE_URL).href;
+const article = articleNode({ title: d.title, description: d.description, pubDate: d.pubDate, modified: d.updatedDate, url, image: new URL(`/og/${section}/${entry.id}.png`, SITE_URL).href });
+
+const DATA: Record<string, { instrument: unknown; norms: unknown }> = {
+	'ipip-neo-120': { instrument: ipip120, norms: ipip120Norms },
+	'ipip-50': { instrument: ipip50, norms: ipip50Norms },
+};
+let stripHtml: string | null = null;
+let stripClient: unknown = null;
+if (d.strip && DATA[d.strip.instrument]) {
+	const instrument = loadInstrument(DATA[d.strip.instrument].instrument);
+	const norms = loadNorms(DATA[d.strip.instrument].norms, instrument);
+	const scale = instrument.scales.find((s) => s.id === d.strip!.scale);
+	if (!scale) throw new Error(`${entry.id}: no scale ${d.strip.scale} in ${d.strip.instrument}`);
+	const { min, max } = scaleRange(instrument, scale.id);
+	stripHtml = strip({ name: scale.name, min, max, norms, scale: scale.id, group: 'all' });
+	stripClient = { strips: [{ instrument: instrument.id, scale: scale.id, group: 'all', min, max, name: scale.name }], norms: { [instrument.id]: norms } };
+}
+const { Content } = await entry.render();
+---
+
+<Page title={d.title} description={d.description} breadcrumb={d.question ?? d.title} ogType="article">
+	<JsonLd slot="head" nodes={[article]} />
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name"><a href={`/${section}/`}>{sectionLabel}</a></p><p>{d.updatedDate ? `Updated ${d.updatedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` : d.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p></div>
+			<div class="main">
+				<h1>{d.question ?? d.title}</h1>
+			</div>
+		</div>
+	</section>
+	<div class="wrap row article-body">
+		<div class="aside"></div>
+		<div class="main prose">
+			<Content />
+		</div>
+	</div>
+	{stripHtml && d.strip && (
+		<section class="plate" data-trait-strips>
+			<div class="wrap">
+				<div class="row result" data-strip-index="0">
+					<div class="aside"><p class="scale-name">{d.strip.label}</p><p>Where people fall</p></div>
+					<div class="main wide">
+						<div data-strip-plot><Fragment set:html={stripHtml} /></div>
+						<p class="status" data-strip-note></p>
+						<p class="small"><a href={d.strip.testHref}>Take this test</a></p>
+					</div>
+				</div>
+			</div>
+			<script type="application/json" data-trait-data set:html={JSON.stringify(stripClient).replace(/</g, '\\u003c')} />
+			<script>
+				import { mountTraitMarkers } from '../scripts/trait-markers';
+				mountTraitMarkers();
+			</script>
+		</section>
+	)}
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"></div>
+			<div class="main">
+				<div class="actions"><a class="btn" href={d.test.href}>{d.test.label}</a></div>
+				<p class="under-button">No sign-up, scored on your device, nothing stored online.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>Read next</h2></div>
+			<div class="main">
+				<ul>{d.related.map((r) => <li><a href={r.href}>{r.title}</a>{r.note && <span class="quiet"> {r.note}</span>}</li>)}</ul>
+			</div>
+		</div>
+	</section>
+	{d.sources.length > 0 && (
+		<section class="section sources" data-sources-box>
+			<div class="wrap row">
+				<div class="aside"><h2>Sources</h2></div>
+				<div class="main">
+					{d.sources.map((s) => <p>{s.reference}{s.doi && <Fragment> <a href={`https://doi.org/${s.doi}`} rel="noopener">doi:{s.doi}</a></Fragment>}{s.url && !s.doi && <Fragment> <a href={s.url} rel="noopener">{s.url}</a></Fragment>}</p>)}
+				</div>
+			</div>
+		</section>
+	)}
+</Page>
+
+<style is:global>
+	.article-body { padding: 0 0 var(--s4); }
+	.article-body .prose > p:first-child { font-size: 1.15em; }
+	.prose h2 { margin: var(--s5) 0 var(--s3); }
+	.prose h3 { margin: var(--s4) 0 var(--s2); }
+	.prose table { margin: var(--s3) 0 var(--s4); font-size: var(--small); }
+	.prose blockquote { margin: var(--s3) 0; padding-left: var(--s3); border-left: 2px solid var(--hair); color: var(--quiet); }
+</style>

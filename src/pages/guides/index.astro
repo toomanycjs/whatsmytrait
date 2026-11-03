@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+
+const entries = (await getCollection('guides', (e) => !e.data.draft)).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Page title="Guides: the questions people ask about personality tests" description="Plain answers, with the evidence cited, to the questions people ask before and after a personality or interests test." breadcrumb="Guides">
+	<section class="page-head">
+		<div class="wrap row">
+			<div class="aside"><p class="section-name">Guides</p></div>
+			<div class="main">
+				<h1>Guides</h1>
+				<p class="subtitle">The questions people ask, written as answers</p>
+				<p>Each guide takes one question, answers it in its first two sentences, then shows the evidence with the papers cited and says what it means for someone reading their own results. No guide gives life advice.</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<div class="wrap row">
+			<div class="aside"><h2>All guides</h2></div>
+			<div class="main">
+				<ul>{entries.map((e) => <li><a href={`/guides/${e.id}/`}>{e.data.question ?? e.data.title}</a><span class="quiet"> {e.data.description}</span></li>)}</ul>
+			</div>
+		</div>
+	</section>
+</Page>

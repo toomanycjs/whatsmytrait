@@ -30,7 +30,7 @@ export const selfEsteem: TestContent = {
 		{ q: 'What does a Rosenberg score mean?', a: 'Scored one to four per item, the scale runs from 10 to 40; the scale\'s owner also describes scoring from 0 to 30, which is the same minus ten. Higher means higher self-esteem. The owner publishes no percentile norms and says that norms for a sample like yours have to be found in the research literature, so the site draws your score against the possible range and does not invent a comparison.' },
 		{ q: 'Is self-esteem the same as confidence?', a: 'No. Confidence is about what you can do; self-esteem is about what you are worth. People can be confident in their work and low in self-esteem, or the reverse.' },
 		{ q: 'Does self-esteem change over a lifetime?', a: 'Yes. It moves with mood and events in the short term, and on average rises from adolescence through middle age before declining in old age. Retaking the scale after six months shows your own trend.' },
-		{ q: 'Is this a clinical test?', a: 'No. It is a research measure of how people see themselves, used across whole populations, and a score is not a diagnosis of anything.' },
+		{ q: 'Does a low score mean something is wrong?', a: 'No. It is a research measure of how people see themselves, used across whole populations, and a score is not a diagnosis of anything.' },
 		{ q: 'Where do my answers go?', a: 'Nowhere. The test is scored in your browser and the result is kept only on this device. If you choose to share a link, your scores are inside the link itself and nothing is sent to this site.' },
 	],
 };
