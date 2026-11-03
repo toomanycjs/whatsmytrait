@@ -29,7 +29,7 @@ const sections = [
 			<Fragment>
 				<h3>{instrument.name}</h3>
 				<p>{instrument.source.paper}.{instrument.source.doi && <Fragment> <a href={`https://doi.org/${instrument.source.doi}`} rel="noopener">doi:{instrument.source.doi}</a></Fragment>}</p>
-				<p>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a></p>
+				<p data-licence-line>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a></p>
 				{instrument.licence.credit && <p>Credit line used on the site: {instrument.licence.credit}</p>}
 				<p class="small quiet">Key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>, checked {instrument.source.accessed}.</p>
 			</Fragment>

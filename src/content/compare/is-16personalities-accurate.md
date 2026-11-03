@@ -1,5 +1,5 @@
 ---
-title: "Is 16Personalities accurate? What it measures and what it does not"
+title: "Is 16Personalities accurate? A plain verdict"
 description: "Partly. 16Personalities measures five continuous traits much like the Big Five, then reports them as one of sixteen four-letter types, which throws away the measurement and makes the result unstable for anyone near the middle."
 question: "Is 16Personalities accurate?"
 pubDate: 2026-11-03

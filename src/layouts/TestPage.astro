@@ -46,6 +46,11 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 ---
 
 <Page title={content.title} description={content.description} breadcrumb={content.breadcrumb} faqs={content.faqs}>
+	<Fragment slot="head">
+		<!-- Before first paint: if results will render on load (a share link or a saved result), reserve the plate's space so filling it later shifts nothing. -->
+		<script is:inline set:html={`try{var h=location.hash.indexOf('#r=')===0;var s=localStorage.getItem('tests:results:v1');var has=h||(s&&s.indexOf('"tool":"${instrument.id}"')>-1);if(has)document.documentElement.classList.add('results-pending');}catch(e){}`} />
+		<style set:html={`.results-pending [data-results][hidden]{display:block;visibility:hidden;min-height:${Math.min(2400, 420 + domains.length * 170 + instrument.scales.filter((s) => s.parent).length * 44)}px}`} />
+	</Fragment>
 	<section class="page-head">
 		<div class="wrap row">
 			<div class="aside">

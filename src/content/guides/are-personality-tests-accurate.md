@@ -1,5 +1,5 @@
 ---
-title: "Are personality tests accurate? Reliability, validity and faking"
+title: "Are personality tests accurate? The evidence"
 description: "Good ones are, within limits: Big Five scales are reliable over months, predict real outcomes with small to moderate effects, and measure how you see yourself, which you can fake."
 question: "Are personality tests accurate?"
 pubDate: 2026-11-03
@@ -13,8 +13,8 @@ related:
   - href: /methodology/
     title: Methodology
     note: Reliability per scale, for every test here.
-  - href: /guides/what-a-percentile-means/
-    title: What a percentile means
+  - href: /compare/big-five-vs-hexaco/
+    title: Big Five vs HEXACO
 sources:
   - reference: "Roberts, B. W., Kuncel, N. R., Shiner, R., Caspi, A., & Goldberg, L. R. (2007). The power of personality: The comparative validity of personality traits, socioeconomic status, and cognitive ability for predicting important life outcomes. Perspectives on Psychological Science, 2(4), 313-345."
     doi: 10.1111/j.1745-6916.2007.00047.x

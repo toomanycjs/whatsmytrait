@@ -32,7 +32,7 @@ export const artistic: CareerTypeContent = {
 	],
 	combines: [
 		{ ...T.I, line: 'making that needs understanding, such as architecture and games design.' },
-		{ ...T.S, line: 'making for and with people, such as arts teaching and drama therapy.' },
+		{ ...T.S, line: 'making for and with people, such as arts teaching and community theatre.' },
 		{ ...T.E, line: 'making that sells, such as advertising, marketing and producing.' },
 	],
 };

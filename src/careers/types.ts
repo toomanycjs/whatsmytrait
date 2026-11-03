@@ -16,7 +16,7 @@ const T = {
 
 export const realistic: CareerTypeContent = {
 	code: 'R', path: T.R.path,
-	title: 'Realistic careers: hands-on jobs in the UK for the practical type',
+	title: 'Realistic careers: hands-on UK jobs',
 	description: 'What the realistic interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
 	name: 'Realistic', subtitle: 'The doers: tools, machines, plants, animals and physical work', breadcrumb: 'Realistic',
 	summary: 'Realistic interests are for work with things you can touch: building, repairing, operating, growing and moving. People high on this type like practical problems with visible results, prefer doing to discussing, and are usually happiest outdoors or in a workshop rather than at a desk. It is the type most men score highest on, and the one with the widest range of routes in without a degree.',
@@ -52,11 +52,11 @@ export const realistic: CareerTypeContent = {
 
 export const investigative: CareerTypeContent = {
 	code: 'I', path: T.I.path,
-	title: 'Investigative careers: UK jobs for people who like finding out',
+	title: 'Investigative careers: UK jobs for the curious',
 	description: 'What the investigative interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
 	name: 'Investigative', subtitle: 'The thinkers: research, analysis and working out how things work', breadcrumb: 'Investigative',
-	summary: 'Investigative interests are for work that involves observing, measuring, analysing and solving problems: science, medicine, data and software. People high on this type like understanding why, prefer ideas and evidence to persuasion, and are patient with detail when it leads somewhere. Most routes in run through further study, though not all.',
-	activities: ['Running experiments and tests', 'Analysing data and finding patterns', 'Diagnosing what is wrong and why', 'Studying the natural world', 'Writing software and modelling', 'Reading and keeping up with research'],
+	summary: 'Investigative interests are for work that involves observing, measuring, analysing and solving problems: science, medicine, data and software. People high on this type like understanding why, prefer ideas and evidence to persuasion, and are careful with detail when it leads somewhere. Most routes in run through further study, though not all.',
+	activities: ['Running experiments and tests', 'Analysing data and finding patterns', 'Working out what is wrong and why', 'Studying the natural world', 'Writing software and modelling', 'Reading and keeping up with research'],
 	jobs: [
 		{ title: 'GP', ncs: 'gp', onet: 'Family Medicine Physicians' },
 		{ title: 'Hospital doctor', ncs: 'hospital-doctor', onet: 'Physicians, All Other' },
@@ -88,7 +88,7 @@ export const investigative: CareerTypeContent = {
 
 export const social: CareerTypeContent = {
 	code: 'S', path: T.S.path,
-	title: 'Social careers: UK jobs for people who like helping and teaching',
+	title: 'Social careers: UK jobs in helping and teaching',
 	description: 'What the social interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
 	name: 'Social', subtitle: 'The helpers: teaching, caring, guiding and treating', breadcrumb: 'Social',
 	summary: 'Social interests are for work whose point is other people\'s learning, health or wellbeing: teaching, nursing, care, counselling, coaching. People high on this type like working with others towards something that matters to them, and tend to find a day of pure analysis or pure selling flat. It is the type most women score highest on, and it covers the largest share of UK jobs.',
@@ -124,7 +124,7 @@ export const social: CareerTypeContent = {
 
 export const conventional: CareerTypeContent = {
 	code: 'C', path: T.C.path,
-	title: 'Conventional careers: UK jobs for people who like order and accuracy',
+	title: 'Conventional careers: UK jobs for the organised type',
 	description: 'What the conventional interest type is, the activities it describes, and twenty UK jobs mapped from O*NET occupations, each linked to its National Careers Service profile.',
 	name: 'Conventional', subtitle: 'The organisers: records, procedures, numbers and getting details right', breadcrumb: 'Conventional',
 	summary: 'Conventional interests are for work with clear procedures and standards: keeping records, handling money, organising information, making systems run. People high on this type like knowing what good looks like, prefer order to improvisation, and take satisfaction in accuracy. The name is Holland\'s and says nothing about the person; the type runs through finance, administration, law and logistics.',

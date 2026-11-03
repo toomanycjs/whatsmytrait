@@ -94,6 +94,12 @@ export function mountTest() {
 			responses[Number(inp.name.slice(1))] = Number(inp.value);
 		}
 	}
+	/** Mirror each input's checked state onto its label as a class; CSS reads the class, which is far cheaper than :has(). */
+	function syncSelected(scope: ParentNode = form) {
+		for (const inp of scope.querySelectorAll<HTMLInputElement>('input[type="radio"], input[type="checkbox"]')) {
+			inp.closest('label')?.classList.toggle('selected', inp.checked);
+		}
+	}
 	function writeForm() {
 		form.reset();
 		for (const [n, v] of Object.entries(responses)) {
@@ -102,6 +108,7 @@ export function mountTest() {
 				: form.querySelector<HTMLInputElement>(`input[name="q${n}"][value="${v}"]`);
 			if (inp) inp.checked = isCheck ? v === 2 : true;
 		}
+		syncSelected();
 	}
 	const answeredCount = () => Object.keys(responses).length;
 
@@ -158,6 +165,7 @@ export function mountTest() {
 	form.addEventListener('change', (e) => {
 		const target = e.target as HTMLInputElement;
 		if (target?.type !== 'radio' && target?.type !== 'checkbox') return;
+		syncSelected(target.closest('[data-item]') ?? form);
 		readForm();
 		target.closest('[data-item]')?.classList.remove('missing');
 		updateProgress();
@@ -214,6 +222,7 @@ export function mountTest() {
 	function restart() {
 		for (const key of Object.keys(responses)) delete responses[Number(key)];
 		form.reset();
+		syncSelected();
 		clearAttempt(instrument);
 		beginTest(1);
 	}

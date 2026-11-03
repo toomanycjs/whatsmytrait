@@ -3,7 +3,7 @@ import { CITE, siblingsExcept } from './citations';
 
 export const openness: TraitContent = {
 	path: '/traits/openness/',
-	title: 'Openness to experience explained: what a high or low score means',
+	title: 'Openness to experience explained: high and low scores',
 	description: 'What openness to experience is, what high and low scores look like day to day, its six facets, what the research finds it predicts, and where people fall.',
 	name: 'Openness to experience',
 	subtitle: 'One of the Big Five. Called intellect or imagination in the 50-item markers.',

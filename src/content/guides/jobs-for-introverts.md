@@ -1,5 +1,5 @@
 ---
-title: "Jobs for introverts: what the evidence says, and what it does not"
+title: "Jobs for introverts: what the evidence says"
 description: "Introverts do well in almost every job. The evidence says extraversion predicts who emerges as a leader and who enjoys sales, not who performs well, so the useful question is about work activities, not job titles."
 question: "What jobs suit introverts?"
 pubDate: 2026-11-03
@@ -30,7 +30,7 @@ Barrick and Mount's (1991) meta-analysis found extraversion predicted performanc
 
 ## Two different questions
 
-Which job you would be good at depends on ability, training and conscientiousness far more than on extraversion. Which job you would enjoy depends on your interests, which the six-type model measures, and on how much of the day you want to spend in company, which extraversion measures. A low extraversion score argues for work with fewer unplanned interactions and more time to think, across any interest type: a realistic introvert might like electrical work, an investigative one laboratory science, an artistic one writing, a social one one-to-one therapy rather than classroom teaching, an enterprising one strategy rather than selling, a conventional one accounts rather than reception.
+Which job you would be good at depends on ability, training and conscientiousness far more than on extraversion. Which job you would enjoy depends on your interests, which the six-type model measures, and on how much of the day you want to spend in company, which extraversion measures. A low extraversion score argues for work with fewer unplanned interactions and more time to think, across any interest type: a realistic introvert might like electrical work, an investigative one laboratory science, an artistic one writing, a social one one-to-one counselling rather than classroom teaching, an enterprising one strategy rather than selling, a conventional one accounts rather than reception.
 
 ## What it does not mean
 

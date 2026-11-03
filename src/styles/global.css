@@ -55,8 +55,8 @@ th { font-weight: 600; }
 .table-scroll { overflow-x: auto; }
 input, select, textarea, button { font-family: inherit; font-size: inherit; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-label:has(> input[type="radio"]:focus-visible),
-label:has(> input[type="checkbox"]:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+/* Custom radio and check controls hide the native input; focus shows on the label (focus-within is cheap, :has() is not). */
+label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink); outline-offset: 2px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* The grid: a margin column and a main column. */
@@ -198,17 +198,15 @@ label:has(> input[type="checkbox"]:focus-visible) { outline: 3px solid var(--ink
 .cell-n { font-weight: 600; line-height: 1; }
 .cell-label { font-size: var(--small); line-height: 1.25; color: var(--quiet); }
 .cell:hover { background: var(--page); }
-.cell:has(input:checked) { background: var(--ink); color: var(--page); }
-.cell:has(input:checked) .cell-label { color: var(--page); }
-.cell:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: -3px; }
-label.cell:has(> input[type="radio"]:focus-visible) { outline-offset: -3px; }
+.cell.selected { background: var(--ink); color: var(--page); }
+.cell.selected .cell-label { color: var(--page); }
+label.cell:focus-within { outline-offset: -3px; }
 .ends { display: none; justify-content: space-between; font-size: var(--small); color: var(--quiet); margin-top: var(--s1); }
 /* A check box per item, for instruments published as a tick list. */
 .check { display: grid; grid-template-columns: 1.5rem 1fr; column-gap: var(--s3); align-items: start; cursor: pointer; min-height: 2.75rem; }
 .check input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
 .check-box { display: block; width: 1.5rem; height: 1.5rem; border: 1.5px solid var(--ink); background: var(--page); margin-top: 0.1em; }
-.check:has(input:checked) .check-box { background: var(--ink); box-shadow: inset 0 0 0 3px var(--page); }
-.check:has(input:focus-visible) .check-box { outline: 3px solid var(--ink); outline-offset: 2px; }
+.check.selected .check-box { background: var(--ink); box-shadow: inset 0 0 0 3px var(--page); }
 .check .q-text { margin: 0; }
 .q .check + .cells { display: none; }
 .screen-foot { padding-top: var(--s4); border-top: 1px solid var(--hair); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3); }

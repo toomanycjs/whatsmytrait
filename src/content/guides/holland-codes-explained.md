@@ -24,7 +24,7 @@ A Holland code is your three highest vocational interest types, out of six, writ
 
 ## The six types
 
-Realistic (R) is work with things: tools, machines, plants, animals and physical tasks. Investigative (I) is work with ideas and evidence: science, analysis, diagnosis. Artistic (A) is work that expresses: writing, design, music, performance. Social (S) is work for people: teaching, caring, helping. Enterprising (E) is work that persuades and leads: selling, managing, running things. Conventional (C) is work with order: records, procedures, numbers. The names are Holland's and say nothing about the person; conventional people are not conventional, they like organised work.
+Realistic (R) is work with things: tools, machines, plants, animals and physical tasks. Investigative (I) is work with ideas and evidence: science, analysis, working out causes. Artistic (A) is work that expresses: writing, design, music, performance. Social (S) is work for people: teaching, caring, helping. Enterprising (E) is work that persuades and leads: selling, managing, running things. Conventional (C) is work with order: records, procedures, numbers. The names are Holland's and say nothing about the person; conventional people are not conventional, they like organised work.
 
 ## The hexagon
 

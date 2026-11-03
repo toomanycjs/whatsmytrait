@@ -14,6 +14,9 @@ const SITE_URL = 'https://personality-tests.example';
 // https://astro.build/config
 export default defineConfig({
 	site: SITE_URL,
+	// One stylesheet, inlined: no render-blocking request on a page that is
+	// otherwise a single HTML file.
+	build: { inlineStylesheets: 'always' },
 	integrations: [
 		mdx(),
 		sitemap({

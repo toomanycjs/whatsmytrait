@@ -1,0 +1,48 @@
+---
+// Printable versions of each instrument with its scoring key, in the form
+// the licences allow (HTML only, by owner decision 0001), and a note on
+// citing the site.
+import LongForm from '../layouts/LongForm.astro';
+import { SITE_TITLE, SITE_URL } from '../consts';
+import { INSTRUMENTS, TEST_PATHS } from '../lib/instruments';
+
+const sections = [
+	{ id: 'use', title: 'Using the instruments' },
+	{ id: 'cite', title: 'Citing this site' },
+	...INSTRUMENTS.map(({ instrument }) => ({ id: instrument.id, title: instrument.name })),
+];
+const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+---
+
+<LongForm title="For teachers and researchers: printable instruments and keys" description="Every instrument on the site in printable form with its scoring key and licence, for classes and studies, plus how to cite the site." heading="For teachers and researchers" subtitle="Printable instruments, scoring keys and the licence for each" sections={sections}>
+	<section id="use">
+		<h2>Using the instruments</h2>
+		<p>Every instrument below may be printed and used in a class or a study under the licence shown with it: the IPIP scales are public domain, the TIPI is free for any use, the Rosenberg scale is public domain, and the O*NET Interest Profiler Short Form may be copied without modification with its credit line. The keys show each item's scale and whether it is reverse scored; the scoring rules are on the <a href="/methodology/">methodology page</a>. Print this page from your browser; the controls and navigation are hidden in print.</p>
+	</section>
+	<section id="cite">
+		<h2>Citing this site</h2>
+		<p>Cite the instrument's own paper for the instrument, and this site for the norm tables, the engine or the pages: {SITE_TITLE} ({new Date().getFullYear()}). <em>Title of the page</em>. {SITE_URL}. The norm tables, their generating scripts and the engine are in the public repository, so a method section can name the script and the input hash shown on the methodology page.</p>
+	</section>
+	{INSTRUMENTS.map(({ instrument }) => (
+		<section id={instrument.id} class="printable">
+			<h2>{instrument.name}</h2>
+			<p>{instrument.source.paper}.{instrument.source.doi && <Fragment> <a href={`https://doi.org/${instrument.source.doi}`} rel="noopener">doi:{instrument.source.doi}</a></Fragment>} Key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>.{TEST_PATHS[instrument.id] && <Fragment> Online version: <a href={TEST_PATHS[instrument.id]}>{TEST_PATHS[instrument.id]}</a>.</Fragment>}</p>
+			{instrument.instructions && <p><em>{instrument.instructions}</em></p>}
+			<p class="small quiet">Response options: {instrument.response.labels.map(sentence).join(', ')}{instrument.response.highFirst ? ' (the first option scores highest)' : ''}. Scoring: {instrument.scoring.method === 'mean' ? 'mean' : 'sum'} of the items in each scale; items marked R are reverse scored.</p>
+			<div class="table-scroll"><table>
+				<thead><tr><th class="n">No.</th><th>Item</th><th>Scale</th><th>Key</th></tr></thead>
+				<tbody>
+					{instrument.items.map((it) => <tr><td class="n">{it.n}</td><td>{it.text}</td><td>{instrument.scales.find((s) => s.id === it.scale)?.name}</td><td>{it.key === -1 ? 'R' : ''}</td></tr>)}
+				</tbody>
+			</table></div>
+			<p class="small quiet" data-licence-line>Licence: {instrument.licence.text} <a href={instrument.licence.url} rel="noopener">{instrument.licence.url}</a>{instrument.licence.credit && <Fragment> Credit: {instrument.licence.credit}.</Fragment>}</p>
+		</section>
+	))}
+</LongForm>
+
+<style is:global>
+	@media print {
+		.printable { break-before: page; }
+		.toc { display: none; }
+	}
+</style>
