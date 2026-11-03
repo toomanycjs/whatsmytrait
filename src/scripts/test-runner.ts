@@ -400,7 +400,10 @@ export function mountTest() {
 		resultsEl.scrollIntoView({ block: 'start' });
 	} else if (latest) {
 		current = latest;
-		renderResults(latest);
+		// The change view: the previous attempt on the same strips as an outline marker.
+		const previous = saved.length >= 2 ? saved[saved.length - 2] : null;
+		renderResults(latest, previous ? { entry: previous, label: formatDate(previous.date) } : undefined);
+		if (previous) noteEl.textContent = `Filled markers are your latest attempt; outline markers are your attempt from ${formatDate(previous.date)}. ${noteEl.textContent}`;
 		q('[data-start]')!.textContent = 'Take the test again';
 	}
 }
