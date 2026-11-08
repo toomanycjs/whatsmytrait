@@ -12,6 +12,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they have a vivid imagination, enjoy wild flights of fantasy, love to daydream and like to get lost in thought. In daily life that shows as a rich inner life, stories and scenarios running during a dull meeting, a taste for fiction and invented worlds, and the occasional missed stop on the bus.',
 		low: 'People low on this facet say they rarely daydream and keep their attention on what is real and present. In daily life that shows as practicality, a preference for facts over fiction, and a mind that stays with the task. Others sometimes wish they would speculate more.',
+		items: [
+			'whether pictures and stories form easily in your mind.',
+			'whether you like letting your mind drift into imagined scenarios.',
+			'whether drifting off into your own thoughts is a pleasure.',
+			'whether you happily lose track of your surroundings while thinking.',
+		],
 		predicts: [
 			{ text: 'Imagination, artistic interests and emotionality form the openness aspect, which is about aesthetic and sensory engagement, as distinct from the intellect aspect about ideas.', cite: CITE.deyoung2007 },
 			{ text: 'The openness aspect, which includes imagination, predicts creative achievement in the arts, while the intellect aspect predicts it in the sciences.', cite: CITE.kaufman2016 },
@@ -27,6 +33,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they believe in the importance of art, see beauty in things others might not notice, and enjoy poetry and art museums. In daily life that shows as time spent in galleries and at concerts, an eye for light and colour on an ordinary street, and strong reactions to music that others find hard to explain.',
 		low: 'People low on this facet say they do not like poetry and do not enjoy going to art museums. In daily life that shows as indifference to decoration, a preference for things that work over things that are beautiful, and some puzzlement at the fuss made over art. Many low scorers respond strongly to the natural world or to craft without calling it art.',
+		items: [
+			'whether art seems to you to matter, not just to decorate.',
+			'whether ordinary things strike you as beautiful.',
+			'whether poetry leaves you cold.',
+			'whether galleries are places you would rather skip.',
+		],
 		predicts: [
 			{ text: 'Aesthetic openness, which this facet measures, predicts creative achievement in the arts, where intellect predicts it in the sciences.', cite: CITE.kaufman2016 },
 			{ text: 'Artistic interests belong to the openness aspect, with imagination and emotionality.', cite: CITE.deyoung2007 },
@@ -42,6 +54,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they experience their emotions intensely and feel others\' emotions. In daily life that shows as being moved by music and news, knowing how a room feels on entering it, crying at films, and being affected by other people\'s moods whether they want to be or not.',
 		low: 'People low on this facet say they rarely notice their emotional reactions and do not understand people who get emotional. In daily life that shows as an even keel, decisions made on facts, and a certain bafflement at displays of feeling. Others sometimes read this as detachment.',
+		items: [
+			'how strongly your feelings run.',
+			'whether other people\'s moods reach you.',
+			'whether your own feelings pass without your attending to them.',
+			'whether strong feeling in other people puzzles you.',
+		],
 		predicts: [
 			{ text: 'Emotionality belongs to the openness aspect, with imagination and artistic interests, rather than to the intellect aspect.', cite: CITE.deyoung2007 },
 			{ text: 'In the development sample for the IPIP-NEO-120 this facet has one of the lower reliabilities of the thirty, so its score moves more between attempts than most.', cite: CITE.johnson2014 },
@@ -57,6 +75,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they prefer variety to routine and are not attached to conventional ways. In daily life that shows as ordering the dish they have never tried, moving house and job more often than others, restlessness with sameness, and a willingness to do things differently just to see what happens.',
 		low: 'People low on this facet say they prefer to stick with things they know and dislike changes. In daily life that shows as the same holiday every year, a favourite order at a favourite restaurant, loyalty to tried methods, and discomfort when a routine is disturbed. Low scorers are often the steadiest people in a changing organisation.',
+		items: [
+			'whether a change is more welcome than the familiar.',
+			'whether the known option is the one you reach for.',
+			'whether change in itself is unwelcome.',
+			'whether the usual way of doing things suits you.',
+		],
 		predicts: [
 			{ text: 'Sensation seeking relates to openness as well as to extraversion, and this facet is where the two traits meet.', cite: CITE.aluja2003 },
 			{ text: 'Openness rises in young adulthood and falls a little in old age, on average.', cite: CITE.roberts2006 },
@@ -72,6 +96,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they love to read challenging material and enjoy philosophical and theoretical discussions. In daily life that shows as arguments for the fun of it, a shelf of difficult books, curiosity about how things work in principle, and restlessness with talk that stays practical.',
 		low: 'People low on this facet say they avoid philosophical discussions and are not interested in theoretical ones. In daily life that shows as a preference for the concrete, questions about what works rather than why, and a tolerance for not knowing the theory behind a thing that works. Many low scorers are expert practitioners.',
+		items: [
+			'whether difficult reading is a pleasure rather than a chore.',
+			'whether abstract questions are ones you steer away from.',
+			'whether an idea with no concrete example is hard to hold.',
+			'whether talk of theory leaves you bored.',
+		],
 		predicts: [
 			{ text: 'Intellect is one of the two aspects of openness, distinct from the aesthetic and imaginative aspect, and the one more related to measured ability.', cite: CITE.deyoung2007 },
 			{ text: 'The intellect aspect predicts creative achievement in the sciences, where the openness aspect predicts it in the arts.', cite: CITE.kaufman2016 },
@@ -87,6 +117,12 @@ export const FACETS_O: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they tend to vote for liberal candidates and doubt that there is an absolute right and wrong. In daily life that shows as questioning rules and the people who make them, sympathy for the unconventional, and a readiness to change a long-held view when the argument is good.',
 		low: 'People low on this facet say they tend to vote for conservative candidates, believe in absolute right and wrong and think society should be tough on crime. In daily life that shows as respect for institutions and established ways, a liking for clear moral lines, and scepticism of change for its own sake.',
+		items: [
+			'which way your vote usually goes, with liberal in its American sense.',
+			'whether you see right and wrong as depending on the case.',
+			'whether your vote usually goes to the conservative side.',
+			'whether firm punishment seems to you the right answer to crime.',
+		],
 		predicts: [
 			{ text: 'Openness relates to liberal attitudes and conscientiousness to conservative ones, on economic and social issues alike, in large American samples.', cite: CITE.gerber2010 },
 			{ text: 'This facet has the lowest reliability of the thirty in the development sample, so a single score is a rougher reading than most.', cite: CITE.johnson2014 },

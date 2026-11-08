@@ -29,7 +29,17 @@ export interface FacetSpec {
 	low: string;
 	/** What it does not mean. A line about the scale's length is added to every facet. */
 	notMean: string[];
+	/** What each of the four items is getting at, one plain line per item in the data file's order. */
+	items: string[];
 	predicts: { text: string; cite: Citation }[];
+}
+
+/** An item as the instrument data file lists it. */
+export interface FacetItem {
+	n: number;
+	text: string;
+	scale: string;
+	key: number;
 }
 
 /** URL slug from the facet's name: "Self-consciousness" to "self-consciousness". */
@@ -38,11 +48,14 @@ export const facetPath = (name: string) => `/traits/${facetSlug(name)}/`;
 
 const SHORT_SCALE = 'Four items make a short scale. A facet score moves more between attempts than the 24-item domain score, and it describes a tendency in ordinary life as the person reports it, not a diagnosis of anything.';
 
-export function facet(spec: FacetSpec, all: FacetSpec[]): TraitContent {
+export function facet(spec: FacetSpec, all: FacetSpec[], instrumentItems: FacetItem[]): TraitContent {
 	const domain = DOMAINS[spec.domain];
 	const lower = spec.name.toLowerCase();
 	const domainLower = domain.name.toLowerCase();
 	const siblings = all.filter((f) => f.domain === spec.domain && f.id !== spec.id).map((f) => ({ href: facetPath(f.name), title: f.name }));
+	const scaleItems = instrumentItems.filter((it) => it.scale === spec.id).sort((a, b) => a.n - b.n);
+	if (scaleItems.length !== spec.items.length) throw new Error(`facet ${spec.id}: ${spec.items.length} item lines for ${scaleItems.length} items`);
+	const items = scaleItems.map((it, i) => ({ text: it.text.replace(/\.$/, ''), line: spec.items[i], reversed: it.key < 0 }));
 	return {
 		path: facetPath(spec.name),
 		title: `${spec.name}: what a high or low score means`,
@@ -56,6 +69,7 @@ export function facet(spec: FacetSpec, all: FacetSpec[]): TraitContent {
 		low: spec.low,
 		facetsHeading: 'Parent domain',
 		facets: [{ name: domain.name, line: `the broad trait this facet belongs to, with five sibling facets.`, href: domain.href }],
+		items,
 		predicts: spec.predicts,
 		strips: [{ instrument: 'ipip-neo-120', scale: spec.id, group: 'all', label: `IPIP-NEO-120, ${lower}, 4 items`, testHref: '/tests/big-five/', name: spec.name }],
 		test: { href: '/tests/big-five/', label: 'Take the Big Five test' },

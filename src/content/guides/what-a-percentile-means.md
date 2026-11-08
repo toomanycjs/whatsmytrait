@@ -1,6 +1,6 @@
 ---
 title: "What a percentile means on a personality test"
-description: "A percentile is the share of a comparison sample who scored below you, which is why a 50th percentile is average and a 95th is rare."
+description: "The 72nd percentile means 72 in every 100 people in the comparison sample scored below you. What the common percentiles mean, and why the site uses them."
 question: "What does a percentile mean on a personality test?"
 pubDate: 2026-11-03
 test:
@@ -24,7 +24,20 @@ strip:
   testHref: /tests/big-five/short/
 ---
 
-A percentile is the share of the comparison sample who scored below you. The 72nd percentile for extraversion means that 72 out of every 100 people in the sample scored lower than you did, 28 scored higher, and nothing more than that.
+The 72nd percentile means that 72 in every 100 people in the comparison sample scored below you, and 28 scored higher. A percentile is only that: the share of the sample who scored lower than you did, and nothing more.
+
+## The common percentiles
+
+| Percentile | Scored below you | Scored above you | Where that sits |
+| :-- | :-- | :-- | :-- |
+| 25th | 25 in 100 | 75 in 100 | the edge of the middle half |
+| 50th | 50 in 100 | 50 in 100 | the exact middle |
+| 72nd | 72 in 100 | 28 in 100 | the upper part of the range, above the middle half |
+| 75th | 75 in 100 | 25 in 100 | the other edge of the middle half |
+| 90th | 90 in 100 | 10 in 100 | the top tenth |
+| 95th | 95 in 100 | 5 in 100 | the top twentieth |
+
+The middle half, from the 25th to the 75th, is where half of everyone falls, and it is the darker band on every strip on this site. A 72nd percentile sits just above that band: higher than most, and not rare.
 
 ## Why the site uses percentiles rather than raw scores
 

@@ -40,6 +40,8 @@ export interface TraitContent {
 	facets: { name: string; line: string; href?: string }[];
 	/** Heading over the facets list; "Facets" unless set. */
 	facetsHeading?: string;
+	/** The scale's items (facet pages): the statement as the instrument words it, a plain line on what it is getting at, and whether agreeing lowers the score. */
+	items?: { text: string; line: string; reversed: boolean }[];
 	/** What the research says it predicts, each with its citation. */
 	predicts: { text: string; cite: Citation }[];
 	/** What it does not mean. Written before what it does. */

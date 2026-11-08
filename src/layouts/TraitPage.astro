@@ -73,6 +73,20 @@ const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.
 		</div>
 	</section>
 
+	{content.items && content.items.length > 0 && (
+		<section class="section">
+			<div class="wrap row">
+				<div class="aside"><h2>The {content.items.length === 4 ? 'four' : content.items.length} statements</h2></div>
+				<div class="main">
+					<p>The score is the sum of these statements, each rated from very inaccurate to very accurate as a description of yourself. After each is a plain line on what it is getting at. Where a statement runs the other way, agreeing with it lowers the score.</p>
+					<ul>
+						{content.items.map((it) => <li><em>{it.text}</em>: {it.line}{it.reversed && <span class="quiet"> Agreeing lowers the score.</span>}</li>)}
+					</ul>
+				</div>
+			</div>
+		</section>
+	)}
+
 	{content.facets.length > 0 && (
 		<section class="section">
 			<div class="wrap row">

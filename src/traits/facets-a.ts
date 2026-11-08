@@ -12,6 +12,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they trust others, believe that others have good intentions and trust what people say. In daily life that shows as lending without a second thought, taking a story as told, assuming the late reply was an accident, and being surprised when let down.',
 		low: 'People low on this facet say they distrust people and doubt what they are told. In daily life that shows as checking the small print, waiting to see what someone does before believing what they say, and keeping a little back until people have proved themselves. Low scorers are rarely conned.',
+		items: [
+			'whether your starting assumption about people is good faith.',
+			'whether you read what people do as well meant.',
+			'whether you take people at their word.',
+			'whether suspicion comes first.',
+		],
 		predicts: [
 			{ text: 'A survey measure of the propensity to trust predicted how much people actually handed to a stranger in a trust game, and trust and trustworthiness proved to be distinct.', cite: CITE.evans2008 },
 			{ text: 'Agreeableness rises on average through adulthood, especially after fifty.', cite: CITE.roberts2006 },
@@ -26,6 +32,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they do not use others for their own ends, do not cheat to get ahead and do not take advantage of people. In daily life that shows as straight dealing in negotiation, declining an edge that would cost someone else, and discomfort with flattery and manoeuvring even when they work.',
 		low: 'People low on this facet admit, more than most, to using others, cutting corners and getting in people\'s way when it suits them. In daily life that shows as a strategic view of other people, comfort with hard bargaining, and a belief that everyone is playing the same game. Many low scorers are candid about it, which is its own kind of honesty.',
+		items: [
+			'whether people are a means to what you want.',
+			'whether you would bend the rules for an advantage.',
+			'whether you take an opening someone else has left.',
+			'whether you get in other people\'s way.',
+		],
 		predicts: [
 			{ text: 'Of the Big Five facets, straightforwardness and modesty are the two that most closely track the honesty-humility factor of the six-factor HEXACO model.', cite: CITE.ashtonLee2005 },
 			{ text: 'Straightforwardness, cooperation and modesty form the politeness aspect of agreeableness, as distinct from the compassion aspect made of sympathy and altruism.', cite: CITE.deyoung2007 },
@@ -40,6 +52,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they love to help others and are concerned about them. In daily life that shows as being the first to offer, noticing who needs a hand, volunteering, and a diary filled with other people\'s errands. Others rely on them, sometimes too much.',
 		low: 'People low on this facet say they are indifferent to the feelings of others and take no time for them. In daily life that shows as a clear boundary between their business and other people\'s, help given when asked rather than offered, and an efficiency that warmer people find cold.',
+		items: [
+			'whether helping is something you enjoy, not just do.',
+			'whether other people\'s welfare is on your mind.',
+			'whether how others feel makes little difference to you.',
+			'whether other people\'s needs get any of your time.',
+		],
 		predicts: [
 			{ text: 'Agreeableness predicts helping, and the link runs through empathic concern: agreeable people feel for others in need and act on it, in both reported and observed behaviour.', cite: CITE.habashi2016 },
 			{ text: 'Agreeable people were more willing to help, particularly where no role or relationship required it, in studies that paired personality with real opportunities to help.', cite: CITE.graziano2007 },
@@ -55,6 +73,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they do not love a good fight, do not yell at or insult people, and do not get back at others. In daily life that shows as giving way to keep the peace, finding a middle path, letting a slight go, and discomfort when others argue. The cost is conflicts that needed having and did not happen.',
 		low: 'People low on this facet say they love a good fight, yell at people and get back at others. In daily life that shows as enjoying an argument, bluntness that others find bracing or bruising, holding grudges, and no fear of a difficult conversation. Low scorers often make good advocates.',
+		items: [
+			'whether an argument is something you relish.',
+			'whether disagreement turns into raised voices.',
+			'whether you say wounding things when crossed.',
+			'whether a slight gets repaid.',
+		],
 		predicts: [
 			{ text: 'Agreeable people handle conflict differently: in studies of adolescents and adults they chose constructive tactics, such as negotiation and giving way, over destructive ones, and reported less conflict overall.', cite: CITE.jensenCampbell2001 },
 			{ text: 'Anger relates to low agreeableness as well as to high neuroticism; a person low on this facet and high on the anger facet is the most likely to express it.', cite: CITE.pease2015 },
@@ -70,6 +94,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they do not believe they are better than others and do not boast about their virtues. In daily life that shows as deflecting praise, crediting the team, discomfort with self-promotion, and a tendency to be underestimated by people who mistake modesty for a lack of ability.',
 		low: 'People low on this facet say they think highly of themselves, have a high opinion of themselves and believe they are better than others. In daily life that shows as confidence in interviews and negotiations, easy talk about their achievements, and a readiness to take the lead on merit, which others find either inspiring or hard to take.',
+		items: [
+			'whether you rank yourself above the people around you.',
+			'how high your opinion of yourself runs.',
+			'the same question, put a second way.',
+			'whether you talk up your own good points.',
+		],
 		predicts: [
 			{ text: 'Modesty and straightforwardness are the two Big Five facets that most closely track the honesty-humility factor of the HEXACO model.', cite: CITE.ashtonLee2005 },
 			{ text: 'Modesty belongs to the politeness aspect of agreeableness, with straightforwardness and cooperation.', cite: CITE.deyoung2007 },
@@ -84,6 +114,12 @@ export const FACETS_A: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they sympathise with the homeless and feel for those worse off than themselves. In daily life that shows as being affected by news of suffering, giving to appeals, taking the side of the underdog in an argument, and finding it hard to walk past someone in trouble.',
 		low: 'People low on this facet say they are not interested in other people\'s problems and try not to think about the needy. In daily life that shows as a brisk, practical attitude to misfortune, a belief in self-reliance, and a firm line between their concerns and the world\'s. Others sometimes find this hard-headedness refreshing.',
+		items: [
+			'whether people sleeping rough draw your sympathy.',
+			'whether hardship in others moves you.',
+			'whether other people\'s troubles hold your attention.',
+			'whether you look away from people in need.',
+		],
 		predicts: [
 			{ text: 'Empathic concern, the feeling this facet measures, is the route by which agreeableness leads to helping, in both reported and observed behaviour.', cite: CITE.habashi2016 },
 			{ text: 'Sympathy and altruism form the compassion aspect of agreeableness, as distinct from the politeness aspect.', cite: CITE.deyoung2007 },

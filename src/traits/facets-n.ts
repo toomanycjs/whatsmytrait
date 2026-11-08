@@ -12,6 +12,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they worry about things, fear for the worst, are afraid of many things and get stressed out easily. In daily life that shows as rehearsing what might go wrong, checking and re-checking, finding deadlines and uncertainty draining, and a mind that is hard to switch off at night.',
 		low: 'People low on this facet say they seldom worry, do not expect the worst and take pressure in their stride. In daily life that shows as calm before an exam or an interview, little need for reassurance, and a habit of dealing with problems when they arrive rather than in advance. Others sometimes read this as not taking things seriously enough.',
+		items: [
+			'whether your mind goes to what might go wrong, even when nothing has yet.',
+			'whether you expect the bad outcome rather than the likely one.',
+			'how wide the range of things that frighten you is.',
+			'how much pressure it takes before you feel it.',
+		],
 		predicts: [
 			{ text: 'In a meta-analysis of personality and well-being, every neuroticism facet related to lower life satisfaction and happiness, with this facet among the stronger of the six.', cite: CITE.anglim2020 },
 			{ text: 'This facet groups with self-consciousness, vulnerability and the low-mood facet into the aspect of neuroticism called withdrawal, as distinct from the anger and immoderation side called volatility.', cite: CITE.deyoung2007 },
@@ -27,6 +33,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they get angry easily, get irritated easily and lose their temper. In daily life that shows as flashes of frustration in traffic and queues, sharp words regretted later, and a low threshold for other people\'s slowness or carelessness. The patience test on this site measures the mirror image.',
 		low: 'People low on this facet say they are not easily annoyed and rarely lose their temper. In daily life that shows as calm when things go wrong, arguments that do not escalate, and a tolerance of other people\'s mistakes that can look like indifference but usually is not.',
+		items: [
+			'how low the threshold is before annoyance becomes anger.',
+			'whether small things, delays and noise get under your skin.',
+			'whether anger shows, rather than staying inside.',
+			'whether it takes a lot to bother you.',
+		],
 		predicts: [
 			{ text: 'Anger relates to high neuroticism and to low agreeableness, and the two combine: people high on one and low on the other report the most anger.', cite: CITE.pease2015 },
 			{ text: 'This facet and immoderation form the volatility aspect of neuroticism, which behaves differently from the withdrawal aspect made of worry, low mood and self-consciousness.', cite: CITE.deyoung2007 },
@@ -42,6 +54,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they often feel blue, are often down in the dumps and are not comfortable with themselves. In daily life that shows as a harsh inner critic, a tendency to read setbacks as evidence about oneself, and moods that take time to lift. Many high scorers are also the most reflective and self-aware people in a room.',
 		low: 'People low on this facet say they feel comfortable with themselves and rarely feel blue. In daily life that shows as taking criticism as information rather than as a verdict, bouncing back from a bad week, and a settled sense of being all right as they are.',
+		items: [
+			'how often a low mood arrives without a clear reason.',
+			'how harsh your view of yourself is.',
+			'how much of the time you spend feeling flat or discouraged.',
+			'whether you are at ease with who you are.',
+		],
 		predicts: [
 			{ text: 'Of all thirty facets, this one is the strongest single correlate of lower life satisfaction and happiness, and cheerfulness, its counterpart in extraversion, the strongest correlate of higher.', cite: CITE.anglim2020 },
 			{ text: 'Self-esteem and this side of neuroticism are so closely related that one large study treats them, with self-efficacy and locus of control, as indicators of a single core self-evaluation.', cite: CITE.judgeErez2002 },
@@ -57,6 +75,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they find it difficult to approach others, are afraid to draw attention to themselves and only feel comfortable with friends. In daily life that shows as rehearsing a phone call before making it, avoiding the front of a room, blushing easily, and relief when a social event is cancelled.',
 		low: 'People low on this facet say they are not bothered by difficult social situations and are comfortable approaching strangers. In daily life that shows as speaking first, taking criticism in public without visible discomfort, and not minding being watched. It is sometimes mistaken for extraversion, which is a different thing.',
+		items: [
+			'whether starting a conversation with someone new costs you an effort.',
+			'whether being noticed is something you avoid.',
+			'whether ease depends on knowing the people you are with.',
+			'whether an awkward room leaves you unruffled.',
+		],
 		predicts: [
 			{ text: 'Shyness and sociability are separate dimensions: a person can be shy and want company, or unsociable and at ease. The classic demonstration found the two only modestly correlated.', cite: CITE.cheek1981 },
 			{ text: 'This facet belongs to the withdrawal aspect of neuroticism, with worry, low mood and vulnerability, rather than to the volatility aspect of anger and immoderation.', cite: CITE.deyoung2007 },
@@ -72,6 +96,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they go on binges, find it hard to resist temptations and struggle to control their cravings. In daily life that shows as a second helping, an open tab at midnight, a purchase that was not planned, and a resolution that lasts until the thing is in reach. Many high scorers are also the most generous and spontaneous people they know.',
 		low: 'People low on this facet say they rarely overindulge, easily resist temptations and can control their cravings. In daily life that shows as leaving half a dessert, buying only what was on the list, and stopping at one. Others sometimes find this restraint a little joyless.',
+		items: [
+			'whether enjoyment tends to run on past the point you meant to stop.',
+			'whether you usually stop when you have had enough.',
+			'whether something you want, in front of you, is easy to leave.',
+			'whether an urge stays a wish rather than becoming an action.',
+		],
 		predicts: [
 			{ text: 'In the model of impulsivity built on the Big Five, this facet marks urgency, the tendency to act rashly when feelings run high, which is distinct from the sensation seeking of excitement-seeking and the lack of planning of low cautiousness.', cite: CITE.whiteside2001 },
 			{ text: 'This facet and anger form the volatility aspect of neuroticism, which varies separately from the withdrawal aspect.', cite: CITE.deyoung2007 },
@@ -86,6 +116,12 @@ export const FACETS_N: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they panic easily, become overwhelmed by events and feel unable to deal with things. In daily life that shows as freezing when several things go wrong at once, needing someone else to take charge in a crisis, and dread of being the one responsible when it matters.',
 		low: 'People low on this facet say they remain calm under pressure and feel able to deal with whatever comes. In daily life that shows as being the steady one when a plan falls apart, thinking clearly in an emergency, and a reputation for being unflappable, which can hide how much is going on underneath.',
+		items: [
+			'whether a sudden problem sets off alarm before thought.',
+			'whether several things going wrong at once feels like too much.',
+			'whether you doubt you can cope when it matters.',
+			'whether you keep a clear head when the stakes rise.',
+		],
 		predicts: [
 			{ text: 'The sense of being able to deal with things, which this facet measures from the negative side, is close to what the self-efficacy facet of conscientiousness measures from the positive side; one large study treats neuroticism, self-esteem and self-efficacy as indicators of a single core self-evaluation.', cite: CITE.judgeErez2002 },
 			{ text: 'It belongs to the withdrawal aspect of neuroticism and relates to lower life satisfaction and happiness, with a moderate effect.', cite: CITE.anglim2020 },

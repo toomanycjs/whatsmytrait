@@ -12,6 +12,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they complete tasks successfully, excel in what they do and know how to get things done. In daily life that shows as taking on new work without fuss, expecting to cope, learning from a failure rather than being stopped by it, and being the person others ask when something must be done.',
 		low: 'People low on this facet say they do not feel they handle tasks smoothly or excel. In daily life that shows as hesitation before a new job, over-preparation, a habit of crediting luck for success and themselves for failure, and a reluctance to volunteer that hides real competence.',
+		items: [
+			'whether what you start tends to come out right.',
+			'whether you rate your own work above most people\'s.',
+			'whether jobs go without a struggle in your hands.',
+			'whether you feel you have the method, not just the will.',
+		],
 		predicts: [
 			{ text: 'Generalised self-efficacy, self-esteem, low neuroticism and an internal locus of control are so closely related that one large study treats them as indicators of a single core self-evaluation.', cite: CITE.judgeErez2002 },
 			{ text: 'Self-efficacy groups with achievement-striving and self-discipline into the industriousness aspect of conscientiousness, as distinct from the orderliness aspect.', cite: CITE.deyoung2007 },
@@ -27,6 +33,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they like to tidy up and put things back in their proper place. In daily life that shows as a clear desk, labelled folders, a kitchen where everything has a home, and irritation at other people\'s clutter. The cost is time spent arranging that others spend doing.',
 		low: 'People low on this facet say they leave a mess, leave their belongings around and forget to put things back. In daily life that shows as piles that only they can navigate, a search for keys most mornings, and a tolerance for clutter that orderly people find hard to be around. Many low scorers know exactly where everything is.',
+		items: [
+			'whether putting things straight is a pleasure.',
+			'whether things end up where they were last used.',
+			'what your own space looks like when no one is coming round.',
+			'whether your things spread through the house.',
+		],
 		predicts: [
 			{ text: 'In a meta-analysis of conscientiousness and job performance, the order facet added little beyond the broad trait, while achievement and dependability added most.', cite: CITE.dudley2006 },
 			{ text: 'Orderliness is one of the two aspects of conscientiousness, distinct from industriousness, and the two can be high or low independently.', cite: CITE.deyoung2007 },
@@ -42,6 +54,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they keep their promises, tell the truth and do not break rules. In daily life that shows as being where they said they would be, doing the paperwork properly, returning the extra change, and discomfort when others cut corners. They are the people organisations run on.',
 		low: 'People low on this facet say they break rules and sometimes their promises. In daily life that shows as a flexible attitude to deadlines and procedures, a readiness to make exceptions, and little love of form-filling. Low scorers are often the ones who get things done when the rules would have stopped them.',
+		items: [
+			'whether what you said you would do, you do.',
+			'whether honesty holds even when a lie would be easier.',
+			'whether a rule binds you when no one is checking.',
+			'the promise item, put the other way round.',
+		],
 		predicts: [
 			{ text: 'In a meta-analysis of job performance, dependability, the narrow trait this facet measures, predicted performance and in particular the avoidance of counterproductive behaviour at work.', cite: CITE.dudley2006 },
 			{ text: 'Across seven major questionnaires, a facet about honesty and rule-following emerged separately from facets about industry and order.', cite: CITE.roberts2005 },
@@ -57,6 +75,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they work hard and do more than is expected of them. In daily life that shows as first in and last out, a drive to be the best at whatever they take up, a dislike of coasting, and difficulty with holidays. Others experience them as driven, and sometimes as hard to keep up with.',
 		low: 'People low on this facet say they do just enough to get by and put little time and effort into their work. In daily life that shows as a clear line between work and life, effort spent where it matters to them, and a relaxed attitude to ambition that strivers find baffling and sometimes envy.',
+		items: [
+			'how much effort you put in as a matter of course.',
+			'whether you go past the brief.',
+			'whether the minimum is your usual target.',
+			'whether work gets a small share of you.',
+		],
 		predicts: [
 			{ text: 'In a meta-analysis of conscientiousness and job performance, the achievement facet predicted performance across jobs and added to the prediction beyond the broad trait.', cite: CITE.dudley2006 },
 			{ text: 'Facets of the Big Five predict job performance beyond their domains, and the conscientiousness facets are where the gain is largest.', cite: CITE.judge2013 },
@@ -72,6 +96,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they are always prepared, carry out their plans and do not waste their time. In daily life that shows as starting the task before the deadline looms, finishing the course, the book and the project, and a steady pace that outlasts other people\'s bursts. The cost is difficulty letting a plan go when it has stopped making sense.',
 		low: 'People low on this facet say they waste their time and have difficulty starting tasks. In daily life that shows as deadlines that do the starting for them, a trail of half-finished projects, excellent work done in a final rush, and a lot of time spent on things that were not the thing. Many low scorers are highly capable and know it.',
+		items: [
+			'whether you arrive ready.',
+			'whether a plan made is a plan done.',
+			'how much of your time slips away on nothing in particular.',
+			'whether getting going is the hard part.',
+		],
 		predicts: [
 			{ text: 'In the model of impulsivity built on the Big Five, low self-discipline marks lack of perseverance, which is distinct from acting rashly under strong feeling, from sensation seeking and from failing to plan.', cite: CITE.whiteside2001 },
 			{ text: 'Self-discipline belongs to the industriousness aspect of conscientiousness, with self-efficacy and achievement-striving.', cite: CITE.deyoung2007 },
@@ -87,6 +117,12 @@ export const FACETS_C: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they do not jump into things, do not make rash decisions and think before acting. In daily life that shows as sleeping on it, reading the reviews, weighing options that others would not have noticed, and sometimes missing a chance that did not wait.',
 		low: 'People low on this facet say they jump into things without thinking, make rash decisions and rush in. In daily life that shows as fast decisions, a willingness to act on half the information, regret about some purchases and relationships, and a capacity for seizing the moment that cautious people lack.',
+		items: [
+			'whether you act before weighing it up.',
+			'whether choices get made in a hurry you later regret.',
+			'whether speed wins over care at the start of something.',
+			'whether thought comes after the deed.',
+		],
 		predicts: [
 			{ text: 'In the model of impulsivity built on the Big Five, low cautiousness marks lack of premeditation, which is distinct from acting rashly under strong feeling, from sensation seeking and from failing to persevere.', cite: CITE.whiteside2001 },
 			{ text: 'Impulse control, the trait family that includes cautiousness, has the strongest links among the conscientiousness traits to lower drug use, risky driving and other behaviours that shorten life.', cite: CITE.bogg2004 },

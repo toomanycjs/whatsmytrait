@@ -12,6 +12,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they make friends easily and feel comfortable around people. In daily life that shows as first-name terms within minutes, a wide circle of friends from every stage of life, and warmth towards people they have only just met. Others experience them as easy to be with.',
 		low: 'People low on this facet say they avoid contacts with others and keep people at a distance. In daily life that shows as a small circle of long-standing friends, reserve with new people, and a preference for being approached rather than approaching. Warmth, when it comes, is slow and lasting.',
+		items: [
+			'whether acquaintances turn into friends without much effort.',
+			'whether company puts you at ease rather than on guard.',
+			'whether you steer clear of people when you can.',
+			'whether you hold back from letting people get close.',
+		],
 		predicts: [
 			{ text: 'Friendliness, gregariousness and cheerfulness form the enthusiasm aspect of extraversion, which is about sociability and positive feeling, as distinct from the assertiveness aspect about taking charge.', cite: CITE.deyoung2007 },
 			{ text: 'Across 39 nations the core of extraversion was found to be sensitivity to reward and the pleasant feelings that come with it, with sociability following from that rather than defining it.', cite: CITE.lucas2000 },
@@ -27,6 +33,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they love large parties, talk to a lot of different people at parties and seek out crowds. In daily life that shows as a full calendar, a liking for busy restaurants and open-plan offices, boredom with a quiet weekend, and energy that rises as the room fills.',
 		low: 'People low on this facet say they prefer to be alone and avoid crowds. In daily life that shows as leaving a party early and happily, choosing a walk over a festival, deep conversations with one person at a time, and a need for time alone to recover from a day of people.',
+		items: [
+			'whether a crowded room is a pleasure or an ordeal.',
+			'whether you move around a room rather than stay with one group.',
+			'whether your own company is the company you would choose.',
+			'whether busy places are something you keep away from.',
+		],
 		predicts: [
 			{ text: 'The central feature running through the facets of extraversion appears to be enjoying social attention, the experience of being noticed and engaged with by others, which gregariousness measures most directly.', cite: CITE.ashton2002 },
 			{ text: 'Gregariousness belongs to the enthusiasm aspect of extraversion, with friendliness and cheerfulness.', cite: CITE.deyoung2007 },
@@ -42,6 +54,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they take charge, try to lead others and take control of things. In daily life that shows as speaking first in a meeting, volunteering to chair, pushing for a decision when others are circling, and finding it hard to sit in a badly led group without stepping in.',
 		low: 'People low on this facet say they wait for others to lead the way and hold back from taking control. In daily life that shows as letting others set the agenda, contributing when asked, and a preference for a clear brief over an open field. Low scorers are often the ones who make a leader\'s plan work.',
+		items: [
+			'whether you step forward when a group needs someone to decide.',
+			'whether you want to be the one setting the direction.',
+			'whether you would rather run a situation than let it run.',
+			'whether you hang back until someone else goes first.',
+		],
 		predicts: [
 			{ text: 'Extraversion is the Big Five trait most strongly linked to emerging as a leader and to being rated an effective one, and its assertive side carries much of that link.', cite: CITE.judge2002 },
 			{ text: 'The assertive side of extraversion, which Roberts and colleagues call social dominance, rises steadily through young adulthood and middle age, unlike the sociable side.', cite: CITE.roberts2006 },
@@ -57,6 +75,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they are always busy, always on the go and do a lot in their spare time. In daily life that shows as walking fast, talking fast, a diary with no gaps, several projects at once, and restlessness on a quiet afternoon. Others find them energising or exhausting, depending on the day.',
 		low: 'People low on this facet say they like to take it easy and do not need to fill every hour. In daily life that shows as an unhurried pace, one thing at a time, long evenings doing nothing in particular, and an unforced calm that busier people envy.',
+		items: [
+			'whether your days are full by choice.',
+			'whether you keep moving rather than sitting still.',
+			'whether free time fills up with things to do.',
+			'whether an unhurried pace is the one you prefer.',
+		],
 		predicts: [
 			{ text: 'Activity level and excitement-seeking are the two facets of extraversion that fall most clearly with age, in a longitudinal study of adults.', cite: CITE.terracciano2005 },
 			{ text: 'Activity level groups with assertiveness into the agentic aspect of extraversion, rather than with warmth and sociability.', cite: CITE.deyoung2007 },
@@ -72,6 +96,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they love excitement, seek adventure, enjoy being reckless and act wild and crazy. In daily life that shows as fast driving, loud music, last-minute travel, a taste for the edge in sport and nightlife, and boredom with routine that others find restful.',
 		low: 'People low on this facet say they do not seek adventure or excitement and have no wish to be reckless. In daily life that shows as a preference for the familiar, holidays that are restful rather than thrilling, and a quiet satisfaction that others sometimes mistake for dullness.',
+		items: [
+			'whether a thrill is something you look for.',
+			'whether you go after new and risky experiences.',
+			'whether throwing caution aside is fun in itself.',
+			'whether you let go in ways other people might not.',
+		],
 		predicts: [
 			{ text: 'In the model of impulsivity built on the Big Five, this facet is the marker of sensation seeking, which is distinct from acting rashly under strong feeling and from failing to plan.', cite: CITE.whiteside2001 },
 			{ text: 'Sensation seeking relates to both extraversion and openness to experience, which is why this facet sits near adventurousness in openness without being the same thing.', cite: CITE.aluja2003 },
@@ -87,6 +117,12 @@ export const FACETS_E: FacetSpec[] = [
 		],
 		high: 'People high on this facet say they radiate joy, have a lot of fun, love life and look at the bright side. In daily life that shows as laughter that others catch, enthusiasm for small things, a quick recovery of good spirits, and being the person others want at a party or a bedside.',
 		low: 'People low on this facet say they do not radiate joy and are not often described as fun. In daily life that shows as an even temper, pleasure that is felt more than shown, and a reserve that others may read as seriousness. Many low scorers are deeply content.',
+		items: [
+			'whether your good mood is visible to the people around you.',
+			'how much of your time is spent enjoying yourself.',
+			'whether you feel glad to be alive, most days.',
+			'whether your attention goes to what is going well.',
+		],
 		predicts: [
 			{ text: 'Of all thirty facets, positive emotions, which this facet measures, is the strongest single correlate of life satisfaction and happiness.', cite: CITE.anglim2020 },
 			{ text: 'Extraverts respond with more positive feeling to pleasant and rewarding situations, a difference in emotional reactivity that this facet captures.', cite: CITE.smillie2012 },
