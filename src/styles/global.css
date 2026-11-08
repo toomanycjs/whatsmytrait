@@ -67,6 +67,8 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 .main { max-width: var(--measure); min-width: 0; }
 .main.wide { max-width: none; }
 @media (max-width: 760px) {
+	/* A wider gutter on phones: 16px sits too close to the edge of the glass. */
+	.wrap { padding: 0 max(var(--s4), env(safe-area-inset-right)) 0 max(var(--s4), env(safe-area-inset-left)); }
 	.row { grid-template-columns: 1fr; row-gap: var(--s2); }
 }
 

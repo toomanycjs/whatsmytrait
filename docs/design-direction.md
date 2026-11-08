@@ -59,7 +59,7 @@ The page is composed on a reference-work grid, not stacked in one column. A cont
 
 The results and the test sit on a plate: a full-bleed band of Panel across the viewport, with the grid continuing inside it. Structure is shown with space and one hairline rule weight, not boxes: rows on a plate are separated by hairlines across the full grid width; options are cells in one ruled row, not boxes. Nothing has a radius except the marker. Sections are not numbered unless they are a sequence. Links are underlined, not arrowed.
 
-Spacing scale, in rem: 0.25, 0.5, 1, 1.5, 2, 3, 4.5. Rows on a plate are 1.5 apart; sections are 3 apart; a page's top padding is 4.5 on desktop, 2 on phones. The page has a 16 px side gutter at phone width and no horizontal scroll.
+Spacing scale, in rem: 0.25, 0.5, 1, 1.5, 2, 3, 4.5. Rows on a plate are 1.5 apart; sections are 3 apart; a page's top padding is 4.5 on desktop, 2 on phones. The page has a 24 px side gutter at phone width (16 px above 760px, where the margin column gives the text its own room), widened by the phone's safe-area inset where there is one, and no horizontal scroll.
 
 Masthead: the site name in the margin column, the five section links in the main column, one hairline under spanning the whole container. Nothing sticky. On phones the links stay on one row at Small size; there is no hamburger.
 

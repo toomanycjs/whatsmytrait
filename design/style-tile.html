@@ -48,6 +48,7 @@ nav.main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-w
 nav.main-nav a { text-decoration: none; color: var(--quiet); }
 nav.main-nav a:hover, nav.main-nav a[aria-current] { color: var(--ink); text-decoration: underline; }
 @media (max-width: 760px) {
+	.wrap { padding: 0 max(var(--s4), env(safe-area-inset-right)) 0 max(var(--s4), env(safe-area-inset-left)); }
 	.mast .row { grid-template-columns: 1fr; row-gap: var(--s2); }
 	nav.main-nav ul { gap: var(--s2) var(--s3); font-size: var(--small); }
 }
