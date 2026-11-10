@@ -244,3 +244,33 @@ describe('ipip-hexaco', () => {
 	});
 });
 
+// Test release T9: the IPIP 16-factor scales, against the key page and the
+// comparison table, 10 November 2026.
+describe('ipip-16-factor', () => {
+	const inst = load('ipip-16-factor');
+	const KEYS: Record<string, [number, number]> = {
+		A: [7, 3], B: [8, 5], C: [5, 5], E: [6, 4], F: [6, 4], G: [5, 5], H: [5, 5], I: [6, 4],
+		L: [6, 4], M: [7, 3], N: [5, 5], O: [7, 3], Q1: [5, 5], Q2: [7, 3], Q3: [5, 5], Q4: [7, 3],
+	};
+
+	it('has 163 items, keyed as the IPIP table counts them', () => {
+		expect(inst.items).toHaveLength(163);
+		for (const [id, [plus, minus]] of Object.entries(KEYS)) {
+			const its = inst.items.filter((i) => i.scale === id);
+			expect([id, its.filter((i) => i.key > 0).length, its.filter((i) => i.key < 0).length]).toEqual([id, plus, minus]);
+		}
+	});
+
+	it('gives the table alphas, .73 to .86', () => {
+		const a = Object.values(inst.reliability ?? {});
+		expect(Math.min(...a)).toBe(0.73);
+		expect(Math.max(...a)).toBe(0.86);
+		expect(inst.reliability?.B).toBe(0.76);
+	});
+
+	it('scores the 13-item intellect scale from 13 to 65', () => {
+		const r = score(inst, {}).scales.B;
+		expect([r.min, r.max]).toEqual([13, 65]);
+	});
+});
+

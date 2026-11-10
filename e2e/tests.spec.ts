@@ -10,6 +10,7 @@ const TESTS = [
 	{ path: '/tests/big-five-aspects/', items: 100, domains: 5, facets: 10 },
 	{ path: '/tests/big-five-aspects/', items: 100, domains: 5, facets: 10, phone: true },
 	{ path: '/tests/hexaco/', items: 240, domains: 6, facets: 24 },
+	{ path: '/tests/16-factor/', items: 163, domains: 16, facets: 0 },
 	{ path: '/tests/quick/', items: 10, domains: 5, facets: 0 },
 	{ path: '/tests/self-esteem/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/introvert-or-extrovert/', items: 20, domains: 1, facets: 0 },

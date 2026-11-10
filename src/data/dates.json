@@ -52,6 +52,10 @@
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
 	},
+	"/tests/16-factor/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
+	},
 	"/tests/assertiveness/": {
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
@@ -166,7 +170,7 @@
 	},
 	"/tests/which/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/achievement-striving/": {
 		"published": "2026-11-03",

@@ -47,6 +47,8 @@ export interface TestContent {
 	 * from the instrument file.
 	 */
 	statements?: Record<number, string>;
+	/** A two-column table shown after Understanding your scores, such as how the scales map onto another model. */
+	comparison?: { heading: string; intro: string; headers: [string, string]; rows: [string, string][] };
 	/** What the narrower scales under each domain are called: "facet" unless set. */
 	subscaleWord?: string;
 	/** Sentences with one link each, shown under the opening paragraph. */

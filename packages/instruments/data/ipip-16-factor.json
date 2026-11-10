@@ -1,0 +1,1117 @@
+{
+	"id": "ipip-16-factor",
+	"version": 1,
+	"name": "IPIP 16-factor scales",
+	"shortName": "IPIP 16PF",
+	"items_note": "Items read row by row from https://ipip.ori.org/new16PFKey.htm, 10 November 2026 (saved in docs/sources/ipip/), by scripts/instruments/build-16-factor.py, which checks each scale's count of +keyed and -keyed items against the IPIP comparison table. The key page gives no administration order; the items here are interleaved across the sixteen scales in round-robin order, +keyed items of each scale first. The scale published under the name of an apprehension-type trait (Factor O) is shown as Worry, following docs/decisions/0003; published names are kept in publishedName.",
+	"source": {
+		"paper": "IPIP scales measuring constructs similar to those in Cattell's 16 Personality Factor Questionnaire (Conn & Rieke, 1994), International Personality Item Pool",
+		"keyUrl": "https://ipip.ori.org/new16PFKey.htm",
+		"itemsUrl": "https://ipip.ori.org/new16PFTable.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-10"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "A",
+			"name": "Warmth",
+			"publishedName": "WARMTH (Factor Warmth (A))"
+		},
+		{
+			"id": "B",
+			"name": "Intellect",
+			"publishedName": "INTELLECT (Factor Reasoning (B))"
+		},
+		{
+			"id": "C",
+			"name": "Emotional stability",
+			"publishedName": "EMOTIONAL STABILITY (Factor Emotional Stability (C))"
+		},
+		{
+			"id": "E",
+			"name": "Assertiveness",
+			"publishedName": "ASSERTIVENESS (Factor Dominance (E))"
+		},
+		{
+			"id": "F",
+			"name": "Gregariousness",
+			"publishedName": "GREGARIOUSNESS (Factor Liveliness (F))"
+		},
+		{
+			"id": "G",
+			"name": "Dutifulness",
+			"publishedName": "DUTIFULNESS (Factor Rule-Consciousness (G))"
+		},
+		{
+			"id": "H",
+			"name": "Friendliness",
+			"publishedName": "FRIENDLINESS (Factor Social Boldness (H))"
+		},
+		{
+			"id": "I",
+			"name": "Sensitivity",
+			"publishedName": "SENSITIVITY (Factor Sensitivity (I))"
+		},
+		{
+			"id": "L",
+			"name": "Distrust",
+			"publishedName": "DISTRUST (Factor Vigilance (L))"
+		},
+		{
+			"id": "M",
+			"name": "Imagination",
+			"publishedName": "IMAGINATION (Factor Abstractedness (M))"
+		},
+		{
+			"id": "N",
+			"name": "Reserve",
+			"publishedName": "RESERVE (Factor Privateness (N))"
+		},
+		{
+			"id": "O",
+			"name": "Worry",
+			"publishedName": "ANXIETY (Factor Apprehension (O))"
+		},
+		{
+			"id": "Q1",
+			"name": "Complexity",
+			"publishedName": "COMPLEXITY (Factor Openness to Change (Q1))"
+		},
+		{
+			"id": "Q2",
+			"name": "Introversion",
+			"publishedName": "INTROVERSION (Factor Self-Reliance (Q2))"
+		},
+		{
+			"id": "Q3",
+			"name": "Orderliness",
+			"publishedName": "ORDERLINESS (Factor Perfectionism (Q3))"
+		},
+		{
+			"id": "Q4",
+			"name": "Emotionality",
+			"publishedName": "EMOTIONALITY (Factor Tension (Q4))"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Know how to comfort others.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Make insightful remarks.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Seldom feel blue.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Take charge.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Am the life of the party.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Believe laws should be strictly enforced.",
+			"scale": "G",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Feel comfortable around people.",
+			"scale": "H",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Like to read.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Find it hard to forgive others.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Do things that others find strange.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Reveal little about myself.",
+			"scale": "N",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Am afraid that I will do the wrong thing.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Believe in the importance of art.",
+			"scale": "Q1",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Want to be left alone.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Want everything to be \"just right.\"",
+			"scale": "Q3",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Get irritated easily.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Enjoy bringing people together.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Know the answers to many questions.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Feel comfortable with myself.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Want to be in charge.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Love large parties.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Try to follow the rules.",
+			"scale": "G",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Talk to a lot of different people at parties.",
+			"scale": "H",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Enjoy discussing movies and books with others.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Suspect hidden motives in others.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Like to get lost in thought.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Am hard to get to know.",
+			"scale": "N",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Feel threatened easily.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Love to think up new ways of doing things.",
+			"scale": "Q1",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Prefer to do things by myself.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Get chores done right away.",
+			"scale": "Q3",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Get angry easily.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Feel others' emotions.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Tend to analyze things.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Readily overcome setbacks.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Say what I think.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Joke around a lot.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "Believe in one true religion.",
+			"scale": "G",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Don't mind being the center of attention.",
+			"scale": "H",
+			"key": 1
+		},
+		{
+			"n": 40,
+			"text": "Read a lot.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 41,
+			"text": "Am wary of others.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Enjoy wild flights of fantasy.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Don't talk a lot.",
+			"scale": "N",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Am easily hurt.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 45,
+			"text": "Enjoy hearing new ideas.",
+			"scale": "Q1",
+			"key": 1
+		},
+		{
+			"n": 46,
+			"text": "Enjoy spending time by myself.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Like order.",
+			"scale": "Q3",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Am quick to judge others.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 49,
+			"text": "Take an interest in other people's lives.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 50,
+			"text": "Use my brain.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 51,
+			"text": "Am relaxed most of the time.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 52,
+			"text": "Am not afraid of providing criticism.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 53,
+			"text": "Enjoy being part of a loud crowd.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 54,
+			"text": "Respect authority.",
+			"scale": "G",
+			"key": 1
+		},
+		{
+			"n": 55,
+			"text": "Make friends easily.",
+			"scale": "H",
+			"key": 1
+		},
+		{
+			"n": 56,
+			"text": "Don't like action movies.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 57,
+			"text": "Distrust people.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 58,
+			"text": "Love to daydream.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 59,
+			"text": "Bottle up my feelings.",
+			"scale": "N",
+			"key": 1
+		},
+		{
+			"n": 60,
+			"text": "Worry about things.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 61,
+			"text": "Carry the conversation to a higher level.",
+			"scale": "Q1",
+			"key": 1
+		},
+		{
+			"n": 62,
+			"text": "Seek quiet.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 63,
+			"text": "Continue until everything is perfect.",
+			"scale": "Q3",
+			"key": 1
+		},
+		{
+			"n": 64,
+			"text": "Am annoyed by others' mistakes.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 65,
+			"text": "Cheer people up.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 66,
+			"text": "Learn quickly.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 67,
+			"text": "Am not easily frustrated.",
+			"scale": "C",
+			"key": 1
+		},
+		{
+			"n": 68,
+			"text": "Take control of things.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 69,
+			"text": "Amuse my friends.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 70,
+			"text": "Like to stand during the national anthem.",
+			"scale": "G",
+			"key": 1
+		},
+		{
+			"n": 71,
+			"text": "Start conversations.",
+			"scale": "H",
+			"key": 1
+		},
+		{
+			"n": 72,
+			"text": "Cry during movies.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 73,
+			"text": "Believe that people seldom tell you the whole truth.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 74,
+			"text": "Swim against the current.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 75,
+			"text": "Keep my thoughts to myself.",
+			"scale": "N",
+			"key": 1
+		},
+		{
+			"n": 76,
+			"text": "Spend time thinking about past mistakes.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 77,
+			"text": "Prefer variety to routine.",
+			"scale": "Q1",
+			"key": 1
+		},
+		{
+			"n": 78,
+			"text": "Don't mind eating alone.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 79,
+			"text": "Am exacting in my work.",
+			"scale": "Q3",
+			"key": 1
+		},
+		{
+			"n": 80,
+			"text": "Am easily put out.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 81,
+			"text": "Make people feel at ease.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 82,
+			"text": "Counter others' arguments.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 83,
+			"text": "Have frequent mood swings.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 84,
+			"text": "Can take strong measures.",
+			"scale": "E",
+			"key": 1
+		},
+		{
+			"n": 85,
+			"text": "Act wild and crazy.",
+			"scale": "F",
+			"key": 1
+		},
+		{
+			"n": 86,
+			"text": "Resist authority.",
+			"scale": "G",
+			"key": -1
+		},
+		{
+			"n": 87,
+			"text": "Find it difficult to approach others.",
+			"scale": "H",
+			"key": -1
+		},
+		{
+			"n": 88,
+			"text": "Love flowers.",
+			"scale": "I",
+			"key": 1
+		},
+		{
+			"n": 89,
+			"text": "Believe that people are essentially evil.",
+			"scale": "L",
+			"key": 1
+		},
+		{
+			"n": 90,
+			"text": "Take deviant positions.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 91,
+			"text": "Am open about myself to others.",
+			"scale": "N",
+			"key": -1
+		},
+		{
+			"n": 92,
+			"text": "Feel guilty when I say \"no.\"",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 93,
+			"text": "Avoid philosophical discussions.",
+			"scale": "Q1",
+			"key": -1
+		},
+		{
+			"n": 94,
+			"text": "Enjoy silence.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 95,
+			"text": "Am not bothered by messy people.",
+			"scale": "Q3",
+			"key": -1
+		},
+		{
+			"n": 96,
+			"text": "Can't stand being contradicted.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 97,
+			"text": "Take time out for others.",
+			"scale": "A",
+			"key": 1
+		},
+		{
+			"n": 98,
+			"text": "Reflect on things before acting.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 99,
+			"text": "Often feel blue.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 100,
+			"text": "Wait for others to lead the way.",
+			"scale": "E",
+			"key": -1
+		},
+		{
+			"n": 101,
+			"text": "Seldom joke around.",
+			"scale": "F",
+			"key": -1
+		},
+		{
+			"n": 102,
+			"text": "Break rules.",
+			"scale": "G",
+			"key": -1
+		},
+		{
+			"n": 103,
+			"text": "Often feel uncomfortable around others.",
+			"scale": "H",
+			"key": -1
+		},
+		{
+			"n": 104,
+			"text": "Do not enjoy watching dance performances.",
+			"scale": "I",
+			"key": -1
+		},
+		{
+			"n": 105,
+			"text": "Trust what people say.",
+			"scale": "L",
+			"key": -1
+		},
+		{
+			"n": 106,
+			"text": "Do unexpected things.",
+			"scale": "M",
+			"key": 1
+		},
+		{
+			"n": 107,
+			"text": "Am open about my feelings.",
+			"scale": "N",
+			"key": -1
+		},
+		{
+			"n": 108,
+			"text": "Feel crushed by setbacks.",
+			"scale": "O",
+			"key": 1
+		},
+		{
+			"n": 109,
+			"text": "Rarely look for a deeper meaning in things.",
+			"scale": "Q1",
+			"key": -1
+		},
+		{
+			"n": 110,
+			"text": "Enjoy my privacy.",
+			"scale": "Q2",
+			"key": 1
+		},
+		{
+			"n": 111,
+			"text": "Am not bothered by disorder.",
+			"scale": "Q3",
+			"key": -1
+		},
+		{
+			"n": 112,
+			"text": "Judge people by their appearance.",
+			"scale": "Q4",
+			"key": 1
+		},
+		{
+			"n": 113,
+			"text": "Don't like to get involved in other people's problems.",
+			"scale": "A",
+			"key": -1
+		},
+		{
+			"n": 114,
+			"text": "Weigh the pros against the cons.",
+			"scale": "B",
+			"key": 1
+		},
+		{
+			"n": 115,
+			"text": "Dislike myself.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 116,
+			"text": "Never challenge things.",
+			"scale": "E",
+			"key": -1
+		},
+		{
+			"n": 117,
+			"text": "Don't like crowded events.",
+			"scale": "F",
+			"key": -1
+		},
+		{
+			"n": 118,
+			"text": "Use swear words.",
+			"scale": "G",
+			"key": -1
+		},
+		{
+			"n": 119,
+			"text": "Have little to say.",
+			"scale": "H",
+			"key": -1
+		},
+		{
+			"n": 120,
+			"text": "Do not like poetry.",
+			"scale": "I",
+			"key": -1
+		},
+		{
+			"n": 121,
+			"text": "Trust others.",
+			"scale": "L",
+			"key": -1
+		},
+		{
+			"n": 122,
+			"text": "Do things by the book.",
+			"scale": "M",
+			"key": -1
+		},
+		{
+			"n": 123,
+			"text": "Disclose my intimate thoughts.",
+			"scale": "N",
+			"key": -1
+		},
+		{
+			"n": 124,
+			"text": "Don't worry about things that have already happened.",
+			"scale": "O",
+			"key": -1
+		},
+		{
+			"n": 125,
+			"text": "Am not interested in theoretical discussions.",
+			"scale": "Q1",
+			"key": -1
+		},
+		{
+			"n": 126,
+			"text": "Enjoy being part of a group.",
+			"scale": "Q2",
+			"key": -1
+		},
+		{
+			"n": 127,
+			"text": "Leave a mess in my room.",
+			"scale": "Q3",
+			"key": -1
+		},
+		{
+			"n": 128,
+			"text": "Am not easily annoyed.",
+			"scale": "Q4",
+			"key": -1
+		},
+		{
+			"n": 129,
+			"text": "Am not really interested in others.",
+			"scale": "A",
+			"key": -1
+		},
+		{
+			"n": 130,
+			"text": "Consider myself an average person.",
+			"scale": "B",
+			"key": -1
+		},
+		{
+			"n": 131,
+			"text": "Feel desperate.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 132,
+			"text": "Let others make the decisions.",
+			"scale": "E",
+			"key": -1
+		},
+		{
+			"n": 133,
+			"text": "Am the last to laugh at a joke.",
+			"scale": "F",
+			"key": -1
+		},
+		{
+			"n": 134,
+			"text": "Oppose authority.",
+			"scale": "G",
+			"key": -1
+		},
+		{
+			"n": 135,
+			"text": "Am quiet around strangers.",
+			"scale": "H",
+			"key": -1
+		},
+		{
+			"n": 136,
+			"text": "Dislike works of fiction.",
+			"scale": "I",
+			"key": -1
+		},
+		{
+			"n": 137,
+			"text": "Believe that others have good intentions.",
+			"scale": "L",
+			"key": -1
+		},
+		{
+			"n": 138,
+			"text": "Seldom daydream.",
+			"scale": "M",
+			"key": -1
+		},
+		{
+			"n": 139,
+			"text": "Show my feelings.",
+			"scale": "N",
+			"key": -1
+		},
+		{
+			"n": 140,
+			"text": "Am not easily bothered by things.",
+			"scale": "O",
+			"key": -1
+		},
+		{
+			"n": 141,
+			"text": "Am not interested in abstract ideas.",
+			"scale": "Q1",
+			"key": -1
+		},
+		{
+			"n": 142,
+			"text": "Enjoy teamwork.",
+			"scale": "Q2",
+			"key": -1
+		},
+		{
+			"n": 143,
+			"text": "Leave my belongings around.",
+			"scale": "Q3",
+			"key": -1
+		},
+		{
+			"n": 144,
+			"text": "Try to forgive and forget.",
+			"scale": "Q4",
+			"key": -1
+		},
+		{
+			"n": 145,
+			"text": "Try not to think about the needy.",
+			"scale": "A",
+			"key": -1
+		},
+		{
+			"n": 146,
+			"text": "Get confused easily.",
+			"scale": "B",
+			"key": -1
+		},
+		{
+			"n": 147,
+			"text": "Am easily discouraged.",
+			"scale": "C",
+			"key": -1
+		},
+		{
+			"n": 148,
+			"text": "Let myself be pushed around.",
+			"scale": "E",
+			"key": -1
+		},
+		{
+			"n": 149,
+			"text": "Dislike loud music.",
+			"scale": "F",
+			"key": -1
+		},
+		{
+			"n": 150,
+			"text": "Know how to get around the rules.",
+			"scale": "G",
+			"key": -1
+		},
+		{
+			"n": 151,
+			"text": "Keep in the background.",
+			"scale": "H",
+			"key": -1
+		},
+		{
+			"n": 152,
+			"text": "Rarely notice my emotional reactions.",
+			"scale": "I",
+			"key": -1
+		},
+		{
+			"n": 153,
+			"text": "Believe that people are basically moral.",
+			"scale": "L",
+			"key": -1
+		},
+		{
+			"n": 154,
+			"text": "Seldom get lost in thought.",
+			"scale": "M",
+			"key": -1
+		},
+		{
+			"n": 155,
+			"text": "Am willing to talk about myself.",
+			"scale": "N",
+			"key": -1
+		},
+		{
+			"n": 156,
+			"text": "Don't let others discourage me.",
+			"scale": "O",
+			"key": -1
+		},
+		{
+			"n": 157,
+			"text": "Try to avoid complex people.",
+			"scale": "Q1",
+			"key": -1
+		},
+		{
+			"n": 158,
+			"text": "Can't do without the company of others.",
+			"scale": "Q2",
+			"key": -1
+		},
+		{
+			"n": 159,
+			"text": "Put off unpleasant tasks.",
+			"scale": "Q3",
+			"key": -1
+		},
+		{
+			"n": 160,
+			"text": "Have a good word for everyone.",
+			"scale": "Q4",
+			"key": -1
+		},
+		{
+			"n": 161,
+			"text": "Know that I am not a special person.",
+			"scale": "B",
+			"key": -1
+		},
+		{
+			"n": 162,
+			"text": "Have a poor vocabulary.",
+			"scale": "B",
+			"key": -1
+		},
+		{
+			"n": 163,
+			"text": "Skip difficult words while reading.",
+			"scale": "B",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"A": 0.8,
+		"B": 0.76,
+		"C": 0.85,
+		"E": 0.81,
+		"F": 0.78,
+		"G": 0.84,
+		"H": 0.8,
+		"I": 0.73,
+		"L": 0.8,
+		"M": 0.8,
+		"N": 0.86,
+		"O": 0.8,
+		"Q1": 0.82,
+		"Q2": 0.73,
+		"Q3": 0.81,
+		"Q4": 0.76
+	},
+	"reliabilitySource": "Coefficient alpha of each IPIP scale from the IPIP comparison table, https://ipip.ori.org/new16PFTable.htm, accessed 10 November 2026: 501 adults in the Eugene-Springfield Community Sample. The key page gives the same figures."
+}

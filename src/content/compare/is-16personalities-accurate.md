@@ -3,6 +3,7 @@ title: "Is 16Personalities accurate? A plain verdict"
 description: "Partly. 16Personalities measures five continuous traits much like the Big Five, then reports them as one of sixteen four-letter types, which throws away the measurement and makes the result unstable for anyone near the middle."
 question: "Is 16Personalities accurate?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/big-five/
   label: Take the Big Five test
@@ -43,4 +44,4 @@ A type is a cut. Someone at the 48th percentile of extraversion and someone at t
 
 ## Which to take for which purpose
 
-For a label to share and a description to enjoy, 16Personalities is free and harmless, and its five scales are closer to the science than the letters suggest. For a measurement you can check, compare and track, take a Big Five test with published items, norms and reliability, read the percentiles rather than any label, and expect no gap between introvert and extrovert because there is none.
+For a label to share and a description to enjoy, 16Personalities is free and harmless, and its five scales are closer to the science than the letters suggest. For a measurement you can check, compare and track, take a Big Five test with published items, norms and reliability, read the percentiles rather than any label, and expect no gap between introvert and extrovert because there is none. If it is sixteen of something you are after, the [16-factor test](/tests/16-factor/) gives a score on each of sixteen scales built to match Cattell's factors, not a type.

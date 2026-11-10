@@ -53,6 +53,7 @@ export const TEST_GROUPS: TestGroup[] = [
 		tests: [
 			entry({ title: 'The Big Five aspects test', href: '/tests/big-five-aspects/', why: 'Ten aspects, two under each trait, a hundred statements.' }),
 			entry({ title: 'The HEXACO personality test', href: '/tests/hexaco/', why: 'Six traits, including honesty-humility, and 24 facets.' }),
+			entry({ title: 'The 16-factor personality test', href: '/tests/16-factor/', why: "Sixteen scales built to match Cattell's factors." }),
 		],
 	},
 	{

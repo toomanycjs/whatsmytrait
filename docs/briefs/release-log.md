@@ -56,3 +56,12 @@ Added: /tests/hexaco/ (IPIP-HEXACO, Ashton, Lee and Goldberg, 2007: 240 items, s
 Changed: /compare/big-five-vs-hexaco/ and /guides/honesty-humility-explained/ now point to the test instead of saying the site has none; /tests/patience/ and /tests/perfectionism/ each gain a sentence linking to it; /licences/ no longer lists the IPIP-HEXACO as held back; /tests/ lists it under "Go deeper than the Big Five".
 
 Searches targeted: HEXACO test, HEXACO personality test, free HEXACO test, honesty-humility test, HEXACO 24 facets.
+
+
+## 10 November 2026: test release T9, the 16-factor personality test
+
+Added: /tests/16-factor/ (sixteen IPIP scales measuring constructs similar to Cattell's factors: 163 items, alphas .73 to .86 in 501 adults of the Eugene-Springfield Community Sample; raw scores, no norms), with a table pairing each IPIP scale with the factor it was built to match. The scale the IPIP names after apprehension-type feeling is shown as Worry.
+
+Changed: /tests/which/ gains a sentence pointing to the aspects, HEXACO and 16-factor tests for more detail than the Big Five; /compare/is-16personalities-accurate/ gains a sentence linking to the test; /licences/ no longer lists the 16-factor scales as held back.
+
+Searches targeted: 16 personality factors test, 16PF test free, Cattell 16 factors test, sixteen personality factors, 16 factor personality test.

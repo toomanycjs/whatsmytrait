@@ -27,6 +27,7 @@ export const TEST_PATHS: Record<string, string> = {
 	'ipip-50': '/tests/big-five/short/',
 	'ipip-bfas': '/tests/big-five-aspects/',
 	'ipip-hexaco': '/tests/hexaco/',
+	'ipip-16-factor': '/tests/16-factor/',
 	tipi: '/tests/quick/',
 	rosenberg: '/tests/self-esteem/',
 	'onet-ip-short': '/tests/career-interests/',

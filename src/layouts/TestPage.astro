@@ -216,6 +216,21 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 		</div>
 	</section>
 
+	{content.comparison && (
+		<section class="section" id="comparison">
+			<div class="wrap row">
+				<div class="aside"><h2>{content.comparison.heading}</h2></div>
+				<div class="main">
+					<p>{content.comparison.intro}</p>
+					<div class="table-scroll"><table>
+						<thead><tr><th>{content.comparison.headers[0]}</th><th>{content.comparison.headers[1]}</th></tr></thead>
+						<tbody>{content.comparison.rows.map(([a, b]) => <tr><td>{a}</td><td>{b}</td></tr>)}</tbody>
+					</table></div>
+				</div>
+			</div>
+		</section>
+	)}
+
 	{content.statements && (
 		<section class="section" id="statements">
 			<div class="wrap row">

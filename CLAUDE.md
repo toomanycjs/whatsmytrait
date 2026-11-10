@@ -44,5 +44,5 @@ Results are scored and stored on the person's device. No sign-up, no email captu
 Recorded in docs/decisions/. In force at the time of writing:
 - Site name What's My Trait, domain https://www.whatsmytrait.com (src/consts.ts, astro.config.mjs).
 - Light mode only at launch.
-- HEXACO was added on 10 November 2026 (full test only; the IPIP has no 10-item domain scales for a short version). The 16-factor test is to follow (docs/briefs/new-tests.md).
+- HEXACO was added on 10 November 2026 (full test only; the IPIP has no 10-item domain scales for a short version). The 16-factor test was added the same day.
 - The for-teachers-and-researchers page is printable HTML only, no generated PDFs.
