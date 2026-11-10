@@ -31,3 +31,11 @@ Added: /tests/shyness/ (IPIP social discomfort scale similar to the TCI, HA3, 10
 Changed: /guides/introversion-is-not-shyness/ and /tests/introvert-or-extrovert/ each gain a sentence linking to the test.
 
 Searches targeted: am I shy, shyness test, how shy am I, shy or introvert, shyness quiz.
+
+## 10 November 2026: test release T7, locus of control
+
+Added: /tests/locus-of-control/ (IPIP Total Locus of Control scale keyed to Levenson, 1981: internality minus powerful others and chance, 20 items, alpha .86 in the Eugene-Springfield Community Sample; a higher score means more internal). The owner chose the total over the three subscales.
+
+Changed: /traits/self-efficacy/ and /tests/need-for-cognition/ each gain a sentence linking to the test; listed under "For coursework" on /tests/.
+
+Searches targeted: locus of control test, internal or external locus of control, locus of control quiz, Levenson locus of control scale.

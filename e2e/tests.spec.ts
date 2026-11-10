@@ -22,6 +22,8 @@ const TESTS = [
 	{ path: '/tests/leadership/', items: 7, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/optimism/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/optimism/', items: 10, domains: 1, facets: 0, phone: true },
+	{ path: '/tests/locus-of-control/', items: 20, domains: 1, facets: 0 },
+	{ path: '/tests/locus-of-control/', items: 20, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/need-for-cognition/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/need-for-cognition/', items: 10, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/self-monitoring/', items: 10, domains: 1, facets: 0 },

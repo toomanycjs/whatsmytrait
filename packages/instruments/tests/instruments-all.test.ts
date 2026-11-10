@@ -40,6 +40,7 @@ const COUNTS: Record<string, [string, number, number][]> = {
 	'ipip-need-for-cognition': [['T', 6, 4]],
 	'ipip-self-monitoring': [['T', 7, 3]],
 	'ipip-shyness': [['T', 5, 5]],
+	'ipip-locus-of-control': [['T', 10, 10]],
 	'ipip-curiosity': [['T', 7, 3]],
 	'ipip-perseverance': [['T', 5, 3]],
 	'ipip-creativity': [['T', 5, 3]],
@@ -146,6 +147,7 @@ describe.each([
 	{ id: 'ipip-need-for-cognition', reversed: [7, 8, 9, 10], alpha: 0.84, first: 'Like to solve complex problems.' },
 	{ id: 'ipip-self-monitoring', reversed: [8, 9, 10], alpha: 0.82, first: 'Would make a good actor.' },
 	{ id: 'ipip-shyness', reversed: [6, 7, 8, 9, 10], alpha: 0.86, first: 'Often feel uncomfortable around others.' },
+	{ id: 'ipip-locus-of-control', reversed: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], alpha: 0.86, first: 'Feel comfortable with myself.' },
 ])('$id', ({ id, reversed, alpha, first }) => {
 	const inst = load(id);
 

@@ -5,6 +5,7 @@ import { CITE } from './citations';
 export const FACETS_C: FacetSpec[] = [
 	{
 		id: 'C1', name: 'Self-efficacy', domain: 'C',
+		seeAlso: [{ before: 'A related idea from psychology courses, whether you see outcomes as down to you or to luck and other people, is measured by the ', label: 'locus of control test', href: '/tests/locus-of-control/', after: '.' }],
 		summary: 'The first facet of conscientiousness is confidence in one\'s ability to get things done: feeling competent, expecting to handle tasks smoothly and to do them well. Competence is the older name. It is a self-belief, measured by what people say about themselves, not a measure of ability.',
 		notMean: [
 			'A high score is not ability, and a low score is not incompetence. The items ask whether a person feels capable; some very able people doubt themselves and some less able people do not. Self-report measures the belief.',

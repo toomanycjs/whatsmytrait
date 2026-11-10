@@ -420,3 +420,13 @@ single('ipip-shyness', 'Shyness', 'HA3: Social Discomfort, IPIP scale similar to
        ['Feel comfortable around people.', 'Talk to a lot of different people at parties.', 'Am not bothered by difficult social situations.', 'Act comfortably with others.', 'Am comfortable in unfamiliar situations.'],
        accessed='2026-11-10',
        reliability_source='Coefficient alpha of the IPIP scale from the IPIP comparison table, https://ipip.ori.org/newTCITable.htm, accessed 10 November 2026: 501 adults in the Eugene-Springfield Community Sample. The table pairs it with the inventory scale named shyness with strangers (correlation .81).')
+
+# ── Test release T7, locus of control (10 November 2026): the IPIP Total
+# Locus of Control scale keyed to Levenson (1981), internality minus
+# powerful others and chance, chosen by the owner over the three subscales.
+single('ipip-locus-of-control', 'Locus of control', 'Locus of Control: Total (I - [P + C]), IPIP scale similar to Levenson (1981)', 'IPIP scale measuring a construct similar to the Internality, Powerful Others, and Chance scales (Levenson, H. (1981). Differentiating among internality, powerful others, and chance. In H. M. Lefcourt (Ed.), Research with the locus of control construct, Vol. 1 (pp. 15-63). Academic Press), International Personality Item Pool', SINGLE_KEY, 0.86,
+       ['Feel comfortable with myself.', 'Believe that my success depends on ability rather than luck.', 'Just know that I will be a success.', 'Come up with good solutions.', 'Love life.', 'Act comfortably with others.', 'Feel up to any task.', 'Like to take responsibility for making decisions.', 'Take the initiative.', 'Make a decision and move on.'],
+       ['Believe that unfortunate events occur because of bad luck.', 'Believe that the world is controlled by a few powerful people.', 'Feel that my life lacks direction.', 'See difficulties everywhere.', 'Habitually blow my chances.', 'Believe some people are born lucky.', 'Dislike taking responsibility for making decisions.', 'Am less capable than most people.', 'Dislike myself.', "Feel that I'm unable to deal with things."],
+       note='This is the Total scale; the key page also gives Internality, Powerful Others and Chance subscales that share items, which are not used.',
+       accessed='2026-11-10', doi='10.1016/B978-0-12-443201-7.50006-3',
+       reliability_source=f'Coefficient alpha as given on the single-construct scoring key page, {SINGLE_KEY}, and in the comparison table, {SINGLE_TABLE}, which says the IPIP and original scales were both given to the Eugene-Springfield Community Sample (IPIP alpha .86, original .80, correlation between them .63); accessed 10 November 2026.')

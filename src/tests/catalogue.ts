@@ -76,6 +76,7 @@ export const TEST_GROUPS: TestGroup[] = [
 	{
 		name: 'For coursework',
 		tests: [
+			entry({ title: 'Locus of control test', href: '/tests/locus-of-control/', why: 'Internal or external: how far your life feels in your own hands, from Levenson.' }),
 			entry({ title: 'Need for cognition test', href: '/tests/need-for-cognition/', why: 'How much you enjoy hard thinking, from Cacioppo and Petty.' }),
 			entry({ title: 'Self-monitoring test', href: '/tests/self-monitoring/', why: 'How much you adapt the way you come across, from Snyder.' }),
 		],
