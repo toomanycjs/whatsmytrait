@@ -377,3 +377,37 @@ write({
     'scoring': {'method': 'sum', 'reverse': 'points+1-x'},
     'norms': None,
 })
+
+# ── Test releases T2, T5, T6 and T7 (10 November 2026) ──
+# Items copied from the key pages named, saved in docs/sources/ipip/.
+JPI_PAPER = 'IPIP scales measuring constructs similar to those in the Jackson Personality Inventory, Revised (Jackson, 1994), International Personality Item Pool'
+SINGLE_KEY = 'https://ipip.ori.org/newSingleConstructsKey.htm'
+SINGLE_TABLE = 'https://ipip.ori.org/newSingleConstructs.htm'
+
+single('ipip-empathy', 'Empathy', 'Empathy [Emp], IPIP scale similar to the JPI-R', JPI_PAPER, 'https://ipip.ori.org/newJPI-RKey.htm', 0.80,
+       ["Feel others' emotions.", "Suffer from others' sorrows.", "Am deeply moved by others' misfortunes.", 'Am easily moved to tears.', 'Cry easily.', 'Experience my emotions intensely.', 'Feel spiritually connected to other people.'],
+       ["Don't understand people who get emotional.", "Am not interested in other people's problems.", 'Seldom get emotional.'],
+       note='Spelling corrected: the key page prints item 7 as "Feel spiritally connected to other people."; the site shows "spiritually". No other change.',
+       accessed='2026-11-10',
+       reliability_source='Coefficient alpha of the IPIP scale as given on the key page, https://ipip.ori.org/newJPI-RKey.htm, accessed 10 November 2026. The page gives no sample size.')
+single('ipip-leadership', 'Leadership', 'Leadership [Lea], IPIP-VIA scale', VIA_PAPER, 'https://ipip.ori.org/newVIAKey.htm', 0.78,
+       ['Try to make sure everyone in a group feels included.', 'Am good at helping people work well together.', 'Am told that I am a strong but fair leader.', 'Try to make my group members happy.'],
+       ['Have difficulty getting others to work together.', 'Am not good at taking charge of a group.', 'Am not good at planning group activities.'],
+       note='The key page lists three further items as omitted from the scale; they are not included.',
+       accessed='2026-11-10',
+       reliability_source='Coefficient alpha as given on the key page for the 7-item scale, https://ipip.ori.org/newVIAKey.htm, accessed 10 November 2026. The page gives no sample size.')
+single('ipip-optimism', 'Optimism', 'Optimism, IPIP scale similar to the Life Orientation Test, Revised', 'IPIP scale measuring a construct similar to the Life Orientation Test, Revised (Scheier, Carver, & Bridges, 1994), International Personality Item Pool', SINGLE_KEY, 0.86,
+       ['Just know that I will be a success.', 'Feel comfortable with myself.', 'Seldom feel blue.', 'Look at the bright side of life.'],
+       ['Have a dark outlook on the future.', 'Feel that my life lacks direction.', 'Dislike myself.', 'Often feel blue.', 'See difficulties everywhere.', 'Am often in a bad mood.'],
+       accessed='2026-11-10', doi='10.1037/0022-3514.67.6.1063',
+       reliability_source=f'Coefficient alpha as given on the single-construct scoring key page, {SINGLE_KEY}, accessed 10 November 2026. The page gives no sample size.')
+single('ipip-need-for-cognition', 'Need for cognition', 'Need for Cognition, IPIP scale similar to Cacioppo and Petty (1982)', 'IPIP scale measuring a construct similar to the Need for Cognition Scale (Cacioppo & Petty, 1982), International Personality Item Pool', SINGLE_KEY, 0.84,
+       ['Like to solve complex problems.', 'Need things explained only once.', 'Can handle a lot of information.', 'Love to think up new ways of doing things.', 'Am quick to understand things.', 'Love to read challenging material.'],
+       ['Have difficulty understanding abstract ideas.', 'Try to avoid complex people.', 'Avoid difficult reading material.', 'Avoid philosophical discussions.'],
+       accessed='2026-11-10', doi='10.1037/0022-3514.42.1.116',
+       reliability_source=f'Coefficient alpha as given on the single-construct scoring key page, {SINGLE_KEY}, and in the comparison table, {SINGLE_TABLE}, which says the IPIP and original scales were both given to the Eugene-Springfield Community Sample; accessed 10 November 2026.')
+single('ipip-self-monitoring', 'Self-monitoring', 'Self-Monitoring, IPIP scale similar to Snyder (1974)', 'IPIP scale measuring a construct similar to the Self-Monitoring Scale (Snyder, 1974), International Personality Item Pool', SINGLE_KEY, 0.82,
+       ['Would make a good actor.', 'Put on a show to impress people.', 'Am likely to show off if I get the chance.', 'Am the life of the party.', 'Am good at making impromptu speeches.', 'Like to attract attention.', 'Use flattery to get ahead.'],
+       ['Hate being the center of attention.', 'Would not be a good comedian.', "Don't like to draw attention to myself."],
+       accessed='2026-11-10', doi='10.1037/h0037039',
+       reliability_source=f'Coefficient alpha as given on the single-construct scoring key page, {SINGLE_KEY}, and in the comparison table, {SINGLE_TABLE}, which says the IPIP and original scales were both given to the Eugene-Springfield Community Sample; accessed 10 November 2026.')

@@ -25,7 +25,9 @@ export interface SingleTraitSpec {
 	guide?: { href: string; title: string; note?: string };
 	/** What each statement asks, keyed by item number (see TestContent.statements). */
 	statements?: Record<number, string>;
-	/** Overrides the template's second related link (the parent trait page). */
+	/** Sentences with one link each, shown under the opening paragraph. */
+	seeAlso?: { before: string; label: string; href: string; after: string }[];
+	/** Overrides the template's related links. */
 	related?: { href: string; title: string; note?: string }[];
 }
 
@@ -41,6 +43,7 @@ export function singleTrait(spec: SingleTraitSpec): TestContent {
 		breadcrumb: spec.breadcrumb,
 		scales: { T: { ...spec.scale, traitPath: spec.traitPath } },
 		statements: spec.statements,
+		seeAlso: spec.seeAlso,
 		testRetest: spec.testRetest,
 		related: spec.related ?? [
 			{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'The wider picture: five traits and thirty facets.' },

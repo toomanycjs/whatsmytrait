@@ -89,6 +89,7 @@ export const FACETS_O: FacetSpec[] = [
 	},
 	{
 		id: 'O5', name: 'Intellect', domain: 'O',
+		seeAlso: [{ before: 'Enjoying hard thinking for its own sake has a classic scale of its own, the ', label: 'need for cognition test', href: '/tests/need-for-cognition/', after: '.' }],
 		summary: 'The fifth facet of openness is enjoyment of ideas: liking challenging reading, abstract and theoretical discussion, and thinking for its own sake. It is the facet of openness most often confused with intelligence, which it is not.',
 		notMean: [
 			'It is not intelligence. The items ask what a person enjoys and how they see themselves, not how well they reason; the overlap with measured ability is real but modest, and plenty of able people have no taste for theory. A low score says nothing about how clever someone is.',

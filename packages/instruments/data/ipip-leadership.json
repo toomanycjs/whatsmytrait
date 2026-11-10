@@ -1,0 +1,89 @@
+{
+	"id": "ipip-leadership",
+	"version": 1,
+	"name": "Leadership",
+	"items_note": "Items copied from https://ipip.ori.org/newVIAKey.htm, 10 November 2026, +keyed items first as the key page lists them. The key page lists three further items as omitted from the scale; they are not included.",
+	"source": {
+		"paper": "IPIP scales measuring constructs similar to those in the Values in Action Inventory of Strengths (Peterson & Seligman, 2004), International Personality Item Pool",
+		"keyUrl": "https://ipip.ori.org/newVIAKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-10"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "T",
+			"name": "Leadership",
+			"publishedName": "Leadership [Lea], IPIP-VIA scale"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Try to make sure everyone in a group feels included.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Am good at helping people work well together.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Am told that I am a strong but fair leader.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Try to make my group members happy.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Have difficulty getting others to work together.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 6,
+			"text": "Am not good at taking charge of a group.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 7,
+			"text": "Am not good at planning group activities.",
+			"scale": "T",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"T": 0.78
+	},
+	"reliabilitySource": "Coefficient alpha as given on the key page for the 7-item scale, https://ipip.ori.org/newVIAKey.htm, accessed 10 November 2026. The page gives no sample size."
+}

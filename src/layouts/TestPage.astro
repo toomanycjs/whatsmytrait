@@ -77,6 +77,7 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 				<h1>{content.question}</h1>
 				<p class="subtitle">{content.subtitle}</p>
 				<slot name="intro" />
+				{content.seeAlso?.map((x) => <p>{x.before}<a href={x.href}>{x.label}</a>{x.after}</p>)}
 				<div class="actions" data-start-actions>
 					<button type="button" class="btn" data-start>Start the test</button>
 				</div>

@@ -33,7 +33,7 @@ export interface FacetSpec {
 	items: string[];
 	predicts: { text: string; cite: Citation }[];
 	/** One sentence with one link, shown under the summary. */
-	seeAlso?: { before: string; label: string; href: string; after: string };
+	seeAlso?: { before: string; label: string; href: string; after: string }[];
 }
 
 /** An item as the instrument data file lists it. */

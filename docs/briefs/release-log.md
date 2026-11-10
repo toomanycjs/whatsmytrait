@@ -15,3 +15,11 @@ Added: /tests/perfectionism/ (IPIP-HEXACO perfectionism facet, 10 items, alpha .
 Changed: /guides/orderliness-and-perfectionism/ (a sentence linking to the test); /traits/orderliness/ (a sentence linking to the test); /tests/ (listed under "How do I compare on one trait"); /tests/patience/ and /guides/patience-as-a-trait/ (alpha corrected from .88 to .80, the IPIP scale's own figure); /licences/, /methodology/ and /for-teachers-and-researchers/ list the new instrument.
 
 Searches targeted: am I a perfectionist, perfectionism test, perfectionist test, am I a perfectionist quiz, perfectionism personality trait, perfectionism vs orderliness.
+
+## 10 November 2026: test releases T2, T5, T6 and part of T7
+
+Added: /tests/empathy/ (IPIP empathy scale similar to the JPI-R, 10 items, alpha .80); /tests/leadership/ (IPIP-VIA leadership, 7 items, alpha .78); /tests/optimism/ (IPIP optimism scale similar to Scheier, Carver and Bridges, 10 items, alpha .86); /tests/need-for-cognition/ (10 items, alpha .84); /tests/self-monitoring/ (10 items, alpha .82). Locus of control, the third T7 test, waits for the owner's decision on its scales.
+
+Changed: a sentence linking to the new tests on /traits/sympathy/, /traits/assertiveness/, /traits/cheerfulness/, /traits/intellect/, /traits/extraversion/, /tests/emotional-intelligence/ and /tests/character-strengths/; /tests/ gains a "For coursework" group.
+
+Searches targeted: empathy test, how empathetic am I, emotional empathy test; am I a leader, leadership test, leadership quiz; optimism test, am I an optimist or a pessimist; need for cognition test, need for cognition scale; self-monitoring test, self-monitoring scale Snyder.

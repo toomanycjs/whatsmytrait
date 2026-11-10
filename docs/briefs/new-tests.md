@@ -396,3 +396,8 @@ The content brief's release checks apply in full. These are the extra ones for t
 - "Guides that cover this" now also lists guides that link to a page in their text.
 - Minutes: the engine's estimate rounds 10 items to 1 minute; the single-trait tests state 2, as their titles do. T1 follows them.
 - The Lighthouse floor for performance is 80, not 95 (Google Analytics; `docs/decisions/0004-analytics.md`).
+- T2, T5, T6 and the need for cognition and self-monitoring tests of T7 were built on 10 November. The IPIP single-construct keys page (`newSingleConstructsKey.htm`) fetched without trouble and is saved in `docs/sources/ipip/`, with the JPI-R, VIA and TCI keys.
+- The leadership scale (IPIP-VIA) has 7 items, not about 10: the key page lists three more as omitted. Alpha .78.
+- The optimism scale's ten items include mood and self-regard (Dislike myself, Often feel blue, Am often in a bad mood); its page says the score reflects recent mood as well as outlook.
+- Locus of control (T7) is not built: the IPIP gives Levenson-keyed Internality (.71), Powerful Others (.81) and Chance (.72) scales that share items, some keyed in opposite directions, plus a 20-item Total (I minus P plus C, .86) and a 5-item Rational scale (.61). The engine scores each item on one scale, so the three-part version needs an engine change; the Total works as it is. Owner to choose.
+- Shyness (T4): the TCI-keyed Social Discomfort scale (HA3) has 10 items, alpha .86, all about unease with people and unfamiliar situations, so it meets the brief's test. Waiting for the owner's go-ahead, as the brief asks.

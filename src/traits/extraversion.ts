@@ -8,6 +8,7 @@ export const extraversion: TraitContent = {
 	name: 'Extraversion',
 	subtitle: 'One of the Big Five. Low scores are what people mean by introversion.',
 	breadcrumb: 'Extraversion',
+	seeAlso: [{ before: 'How much people adjust the way they come across to suit the room is a related idea from social psychology, measured by the ', label: 'self-monitoring test', href: '/tests/self-monitoring/', after: '.' }],
 	summary: 'Extraversion is the tendency to seek company, stimulation and positive excitement: to be sociable, talkative, assertive, active and cheerful. Introversion is simply the low end of the same scale, not a separate type. Most people are somewhere in the middle, which is why the word ambivert gets used.',
 	notMean: [
 		'Introversion is not shyness. Shyness is discomfort or fear around people; introversion is a preference for less stimulation and smaller company. Many introverts are socially confident and many extraverts are anxious in groups.',

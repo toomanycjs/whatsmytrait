@@ -61,12 +61,22 @@ export const TEST_GROUPS: TestGroup[] = [
 			entry({ title: 'How patient am I?', href: '/tests/patience/', why: 'How much it takes to make you angry.' }),
 			entry({ title: 'How curious am I?', href: '/tests/curiosity/', why: 'Finding the world interesting.' }),
 			entry({ title: 'Do I finish what I start?', href: '/tests/perseverance/', why: 'Perseverance, inside conscientiousness.' }),
+			entry({ title: 'Empathy test', href: '/tests/empathy/', why: 'How strongly other people\'s feelings move you.' }),
+			entry({ title: 'Am I a leader?', href: '/tests/leadership/', why: 'Bringing a group together and leading it fairly.' }),
+			entry({ title: 'Optimism test', href: '/tests/optimism/', why: 'How much you expect things to turn out well.' }),
 			entry({ title: 'Am I a perfectionist?', href: '/tests/perfectionism/', why: 'Attention to detail and wanting work exactly right, a facet of conscientiousness.' }),
 			entry({ title: 'How orderly am I?', href: '/tests/orderliness/', why: 'Tidiness and plans, the surroundings side of perfectionism.' }),
 			entry({ title: 'How creative am I?', href: '/tests/creativity/', why: 'Seeing yourself as an original thinker.' }),
 			entry({ title: 'How courageous am I?', href: '/tests/courage/', why: 'Taking a stand and facing discomfort.' }),
 			entry({ title: 'How trusting am I?', href: '/tests/trust/', why: 'Assuming people mean well, a facet of agreeableness.' }),
 			entry({ title: 'How emotionally stable am I?', href: '/tests/emotional-stability/', why: 'How steady your moods are, the other side of neuroticism.' }),
+		],
+	},
+	{
+		name: 'For coursework',
+		tests: [
+			entry({ title: 'Need for cognition test', href: '/tests/need-for-cognition/', why: 'How much you enjoy hard thinking, from Cacioppo and Petty.' }),
+			entry({ title: 'Self-monitoring test', href: '/tests/self-monitoring/', why: 'How much you adapt the way you come across, from Snyder.' }),
 		],
 	},
 ];

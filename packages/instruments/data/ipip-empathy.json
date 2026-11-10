@@ -1,0 +1,107 @@
+{
+	"id": "ipip-empathy",
+	"version": 1,
+	"name": "Empathy",
+	"items_note": "Items copied from https://ipip.ori.org/newJPI-RKey.htm, 10 November 2026, +keyed items first as the key page lists them. Spelling corrected: the key page prints item 7 as \"Feel spiritally connected to other people.\"; the site shows \"spiritually\". No other change.",
+	"source": {
+		"paper": "IPIP scales measuring constructs similar to those in the Jackson Personality Inventory, Revised (Jackson, 1994), International Personality Item Pool",
+		"keyUrl": "https://ipip.ori.org/newJPI-RKey.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-10"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "T",
+			"name": "Empathy",
+			"publishedName": "Empathy [Emp], IPIP scale similar to the JPI-R"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Feel others' emotions.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Suffer from others' sorrows.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Am deeply moved by others' misfortunes.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Am easily moved to tears.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Cry easily.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Experience my emotions intensely.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Feel spiritually connected to other people.",
+			"scale": "T",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Don't understand people who get emotional.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 9,
+			"text": "Am not interested in other people's problems.",
+			"scale": "T",
+			"key": -1
+		},
+		{
+			"n": 10,
+			"text": "Seldom get emotional.",
+			"scale": "T",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"T": 0.8
+	},
+	"reliabilitySource": "Coefficient alpha of the IPIP scale as given on the key page, https://ipip.ori.org/newJPI-RKey.htm, accessed 10 November 2026. The page gives no sample size."
+}

@@ -41,6 +41,10 @@ export const characterStrengths: TestContent = {
 		VAL: s('Bravery', 'You do not stand up for your beliefs when it might cost you.', 'You speak up about as readily as most people.', 'You take stands and express unpopular opinions.', 'You have taken frequent stands in the face of strong opposition and do not hesitate to express an unpopular opinion.', 'You do not stand up for your beliefs and do not speak your mind when there might be negative results.'),
 		ZES: s('Zest', 'You lack energy and are described as grumpy.', 'You have about as much zest as most people.', 'You wake excited by the day and look forward to each one.', 'You awaken with a sense of excitement about the day\'s possibilities and look forward to each new day.', 'You are described as grumpy and do not have much energy.'),
 	},
+	seeAlso: [
+		{ before: 'Leadership has a longer scale of its own, with seven statements, in the ', label: 'leadership test', href: '/tests/leadership/', after: '.' },
+		{ before: 'Hope, the expectation that things will turn out well, has its own scale in the ', label: 'optimism test', href: '/tests/optimism/', after: '.' },
+	],
 	testRetest: 'The IPIP key page gives, per strength, two-to-three-week test-retest reliabilities between .55 and .82 for UK and German samples, with McDonald\'s omega and alpha. The authors say alpha understates the reliability of these balanced four-item scales and recommend omega. Four items per strength is short, so individual strengths move between attempts; the order of your top five is more stable than any single score.',
 	related: [
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Most strengths map onto one or two Big Five traits.' },

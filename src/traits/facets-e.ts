@@ -47,6 +47,7 @@ export const FACETS_E: FacetSpec[] = [
 	},
 	{
 		id: 'E3', name: 'Assertiveness', domain: 'E',
+		seeAlso: [{ before: 'Bringing a group together and leading it fairly, rather than simply taking charge, is measured by the ', label: 'leadership test', href: '/tests/leadership/', after: '.' }],
 		summary: 'The third facet of extraversion is taking charge and speaking up: the readiness to lead, to take control of a situation and to try to influence what happens, rather than waiting for others to lead the way. It is the facet of extraversion that matters most at work, and the one the site also measures on its own with ten items.',
 		notMean: [
 			'A high score is not competence, and it is not aggression. Assertive people put themselves forward; whether they are right, or fair, is a separate matter. Aggression is pushing at others\' expense and sits closer to low agreeableness.',
@@ -110,6 +111,7 @@ export const FACETS_E: FacetSpec[] = [
 	},
 	{
 		id: 'E6', name: 'Cheerfulness', domain: 'E',
+		seeAlso: [{ before: 'Cheerfulness is about mood now; expecting things to turn out well is measured separately by the ', label: 'optimism test', href: '/tests/optimism/', after: '.' }],
 		summary: 'The sixth facet of extraversion is how readily joy and enthusiasm arise: whether a person tends to feel cheerful, to have fun, to love life and to see the bright side. It is the positive-emotion heart of extraversion, and the facet with the strongest link to happiness of any of the thirty.',
 		notMean: [
 			'A low score is not sadness, which belongs to neuroticism. Low scorers are not unhappy; they are even, and they feel joy as a quiet thing rather than a loud one. The two facets vary independently: people can be low on both, high on both, or one of each.',

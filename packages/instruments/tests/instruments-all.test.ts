@@ -34,6 +34,11 @@ const COUNTS: Record<string, [string, number, number][]> = {
 	'ipip-trust': [['T', 6, 4]],
 	'ipip-patience': [['T', 5, 5]],
 	'ipip-perfectionism': [['T', 8, 2]],
+	'ipip-empathy': [['T', 7, 3]],
+	'ipip-leadership': [['T', 4, 3]],
+	'ipip-optimism': [['T', 4, 6]],
+	'ipip-need-for-cognition': [['T', 6, 4]],
+	'ipip-self-monitoring': [['T', 7, 3]],
 	'ipip-curiosity': [['T', 7, 3]],
 	'ipip-perseverance': [['T', 5, 3]],
 	'ipip-creativity': [['T', 5, 3]],
@@ -129,5 +134,37 @@ describe('ipip-perfectionism', () => {
 		expect(inst.items.some((i) => texts.has(i.text))).toBe(false);
 		expect(patience.reliability?.T).toBe(0.8);
 	});
+});
+
+// Test releases T2, T5, T6 and T7, checked against their key pages on
+// 10 November 2026: reversed items, alpha, and one worked score each.
+describe.each([
+	{ id: 'ipip-empathy', reversed: [8, 9, 10], alpha: 0.8, first: "Feel others' emotions." },
+	{ id: 'ipip-leadership', reversed: [5, 6, 7], alpha: 0.78, first: 'Try to make sure everyone in a group feels included.' },
+	{ id: 'ipip-optimism', reversed: [5, 6, 7, 8, 9, 10], alpha: 0.86, first: 'Just know that I will be a success.' },
+	{ id: 'ipip-need-for-cognition', reversed: [7, 8, 9, 10], alpha: 0.84, first: 'Like to solve complex problems.' },
+	{ id: 'ipip-self-monitoring', reversed: [8, 9, 10], alpha: 0.82, first: 'Would make a good actor.' },
+])('$id', ({ id, reversed, alpha, first }) => {
+	const inst = load(id);
+
+	it('has the key page items, reversed items and alpha', () => {
+		expect(inst.items.filter((i) => i.key < 0).map((i) => i.n)).toEqual(reversed);
+		expect(inst.items[0].text).toBe(first);
+		expect(inst.reliability?.T).toBe(alpha);
+	});
+
+	it('scores every item answered 4 as 4 per scored-up item and 2 per reversed item', () => {
+		const responses: Responses = Object.fromEntries(inst.items.map((i) => [i.n, 4]));
+		const r = score(inst, responses).scales.T;
+		expect(r.raw).toBe(4 * (inst.items.length - reversed.length) + 2 * reversed.length);
+		expect(r.min).toBe(inst.items.length);
+		expect(r.max).toBe(inst.items.length * 5);
+	});
+});
+
+it('records the one spelling correction in the empathy scale', () => {
+	const inst = load('ipip-empathy');
+	expect(inst.items[6].text).toBe('Feel spiritually connected to other people.');
+	expect(JSON.parse(readFileSync(join(dir, 'ipip-empathy.json'), 'utf8')).items_note).toContain('spiritally');
 });
 

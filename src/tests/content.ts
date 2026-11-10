@@ -47,6 +47,8 @@ export interface TestContent {
 	 * from the instrument file.
 	 */
 	statements?: Record<number, string>;
+	/** Sentences with one link each, shown under the opening paragraph. */
+	seeAlso?: { before: string; label: string; href: string; after: string }[];
 	/** A short note on test-retest reliability, or that none is published. */
 	testRetest: string;
 	/** Three hand-picked links. */

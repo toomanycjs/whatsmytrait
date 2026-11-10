@@ -107,6 +107,7 @@ export const FACETS_A: FacetSpec[] = [
 	},
 	{
 		id: 'A6', name: 'Sympathy', domain: 'A',
+		seeAlso: [{ before: 'Being moved by other people\'s feelings, rather than wanting to help, is measured on its own by the ', label: 'empathy test', href: '/tests/empathy/', after: '.' }],
 		summary: 'The sixth facet of agreeableness is feeling for people who are worse off: sympathy for the homeless and the needy, and interest in other people\'s problems. It is the tender-minded, compassionate side of agreeableness, where altruism is the helping side.',
 		notMean: [
 			'A low score is not cruelty. Low scorers often believe that people should look after themselves and that sympathy does not solve much; that is a view about responsibility, not an absence of feeling for those close to them.',

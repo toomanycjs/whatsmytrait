@@ -34,6 +34,7 @@ export const emotionalIntelligence: TestContent = {
 			'People who score high say they are concerned about others, feel sympathy for those worse off than themselves, sympathise with the homeless and believe the poor deserve sympathy. In daily life that shows as giving, volunteering and taking the side of the underdog. It overlaps with agreeableness in the Big Five.',
 			'People who score low say they feel little concern for others, have little sympathy for the unemployed, look down on weakness and do not like getting involved in other people\'s problems. In daily life that shows as a firm line between their affairs and others\'. It is a stance about responsibility, not a measure of kindness to those close to them.'),
 	},
+	seeAlso: [{ before: 'Feeling other people\'s emotions strongly is a narrower thing than handling emotions well; the ', label: 'empathy test', href: '/tests/empathy/', after: ' measures it on its own.' }],
 	testRetest: 'The IPIP key page gives coefficient alpha per scale for women and men separately (from .59 to .83) and no test-retest figure. These scales measure trait emotional intelligence, how people describe their own emotional style; they do not measure emotional ability, which needs performance tasks.',
 	related: [
 		{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'Several components overlap with agreeableness and neuroticism.' },

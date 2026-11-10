@@ -70,7 +70,7 @@
 	},
 	"/tests/character-strengths/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/tests/courage/": {
 		"published": "2026-11-03",
@@ -86,11 +86,15 @@
 	},
 	"/tests/emotional-intelligence/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/tests/emotional-stability/": {
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
+	},
+	"/tests/empathy/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
 	},
 	"/tests/interpersonal-style/": {
 		"published": "2026-11-03",
@@ -99,6 +103,18 @@
 	"/tests/introvert-or-extrovert/": {
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
+	},
+	"/tests/leadership/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
+	},
+	"/tests/need-for-cognition/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
+	},
+	"/tests/optimism/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
 	},
 	"/tests/orderliness/": {
 		"published": "2026-11-03",
@@ -123,6 +139,10 @@
 	"/tests/self-esteem/": {
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
+	},
+	"/tests/self-monitoring/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
 	},
 	"/tests/trust/": {
 		"published": "2026-11-03",
@@ -162,7 +182,7 @@
 	},
 	"/traits/assertiveness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-08"
+		"updated": "2026-11-10"
 	},
 	"/traits/cautiousness/": {
 		"published": "2026-11-03",
@@ -170,7 +190,7 @@
 	},
 	"/traits/cheerfulness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-08"
+		"updated": "2026-11-10"
 	},
 	"/traits/conscientiousness/": {
 		"published": "2026-11-03",
@@ -194,7 +214,7 @@
 	},
 	"/traits/extraversion/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/friendliness/": {
 		"published": "2026-11-03",
@@ -214,7 +234,7 @@
 	},
 	"/traits/intellect/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-08"
+		"updated": "2026-11-10"
 	},
 	"/traits/liberalism/": {
 		"published": "2026-11-03",
@@ -258,7 +278,7 @@
 	},
 	"/traits/sympathy/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-08"
+		"updated": "2026-11-10"
 	},
 	"/traits/trust/": {
 		"published": "2026-11-03",
