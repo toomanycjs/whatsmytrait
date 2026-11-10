@@ -1,0 +1,1724 @@
+{
+	"id": "ipip-hexaco",
+	"version": 1,
+	"name": "IPIP-HEXACO",
+	"shortName": "IPIP-HEXACO",
+	"items_note": "Items read row by row from https://ipip.ori.org/newHEXACO_PI_key.htm, 10 November 2026 (saved in docs/sources/ipip/), by scripts/instruments/build-hexaco.py, which checks that every facet has ten items. The key page gives no administration order; the items here are interleaved across the 24 facets in round-robin order, +keyed items of each facet first. Site names: Worry for the second emotionality facet (docs/decisions/0003) and British spelling for Organisation; the published names are kept in publishedName.",
+	"source": {
+		"paper": "Ashton, M. C., Lee, K., & Goldberg, L. R. (2007). The IPIP-HEXACO scales: An alternative, public-domain measure of the personality constructs in the HEXACO model. Personality and Individual Differences, 42(8), 1515-1526",
+		"doi": "10.1016/j.paid.2006.10.027",
+		"keyUrl": "https://ipip.ori.org/newHEXACO_PI_key.htm",
+		"itemsUrl": "https://ipip.ori.org/newHEXACO_PI_table.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-10"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "HH",
+			"name": "Honesty-humility",
+			"publishedName": "Honesty-Humility",
+			"facets": [
+				"HH1",
+				"HH2",
+				"HH3",
+				"HH4"
+			]
+		},
+		{
+			"id": "EM",
+			"name": "Emotionality",
+			"publishedName": "Emotionality",
+			"facets": [
+				"EM1",
+				"EM2",
+				"EM3",
+				"EM4"
+			]
+		},
+		{
+			"id": "EX",
+			"name": "Extraversion",
+			"publishedName": "Extraversion",
+			"facets": [
+				"EX1",
+				"EX2",
+				"EX3",
+				"EX4"
+			]
+		},
+		{
+			"id": "AG",
+			"name": "Agreeableness",
+			"publishedName": "Agreeableness",
+			"facets": [
+				"AG1",
+				"AG2",
+				"AG3",
+				"AG4"
+			]
+		},
+		{
+			"id": "CO",
+			"name": "Conscientiousness",
+			"publishedName": "Conscientiousness",
+			"facets": [
+				"CO1",
+				"CO2",
+				"CO3",
+				"CO4"
+			]
+		},
+		{
+			"id": "OP",
+			"name": "Openness to experience",
+			"publishedName": "Openness to Experience",
+			"facets": [
+				"OP1",
+				"OP2",
+				"OP3",
+				"OP4"
+			]
+		},
+		{
+			"id": "HH1",
+			"name": "Sincerity",
+			"publishedName": "Sincerity (H:Sinc)",
+			"parent": "HH"
+		},
+		{
+			"id": "HH2",
+			"name": "Fairness",
+			"publishedName": "Fairness (H:Fair)",
+			"parent": "HH"
+		},
+		{
+			"id": "HH3",
+			"name": "Greed avoidance",
+			"publishedName": "Greed Avoidance (H:Gree)",
+			"parent": "HH"
+		},
+		{
+			"id": "HH4",
+			"name": "Modesty",
+			"publishedName": "Modesty (H:Mode)",
+			"parent": "HH"
+		},
+		{
+			"id": "EM1",
+			"name": "Fearfulness",
+			"publishedName": "Fearfulness (E:Fear)",
+			"parent": "EM"
+		},
+		{
+			"id": "EM2",
+			"name": "Worry",
+			"publishedName": "Anxiety (E:Anxi)",
+			"parent": "EM"
+		},
+		{
+			"id": "EM3",
+			"name": "Dependence",
+			"publishedName": "Dependence (E:Depe)",
+			"parent": "EM"
+		},
+		{
+			"id": "EM4",
+			"name": "Sentimentality",
+			"publishedName": "Sentimentality (E:Sent)",
+			"parent": "EM"
+		},
+		{
+			"id": "EX1",
+			"name": "Expressiveness",
+			"publishedName": "Expressiveness (X:Expr)",
+			"parent": "EX"
+		},
+		{
+			"id": "EX2",
+			"name": "Social boldness",
+			"publishedName": "Social Boldness (X:SocB)",
+			"parent": "EX"
+		},
+		{
+			"id": "EX3",
+			"name": "Sociability",
+			"publishedName": "Sociability (X:Soci)",
+			"parent": "EX"
+		},
+		{
+			"id": "EX4",
+			"name": "Liveliness",
+			"publishedName": "Liveliness (X:Live)",
+			"parent": "EX"
+		},
+		{
+			"id": "AG1",
+			"name": "Forgiveness",
+			"publishedName": "Forgiveness (A:Forg)",
+			"parent": "AG"
+		},
+		{
+			"id": "AG2",
+			"name": "Gentleness",
+			"publishedName": "Gentleness (A:Gent)",
+			"parent": "AG"
+		},
+		{
+			"id": "AG3",
+			"name": "Flexibility",
+			"publishedName": "Flexibility (A:Flex)",
+			"parent": "AG"
+		},
+		{
+			"id": "AG4",
+			"name": "Patience",
+			"publishedName": "Patience (A:Pati)",
+			"parent": "AG"
+		},
+		{
+			"id": "CO1",
+			"name": "Organisation",
+			"publishedName": "Organization (C:Orga)",
+			"parent": "CO"
+		},
+		{
+			"id": "CO2",
+			"name": "Diligence",
+			"publishedName": "Diligence (C:Dili)",
+			"parent": "CO"
+		},
+		{
+			"id": "CO3",
+			"name": "Perfectionism",
+			"publishedName": "Perfectionism (C:Perf)",
+			"parent": "CO"
+		},
+		{
+			"id": "CO4",
+			"name": "Prudence",
+			"publishedName": "Prudence (C:Prud)",
+			"parent": "CO"
+		},
+		{
+			"id": "OP1",
+			"name": "Aesthetic appreciation",
+			"publishedName": "Aesthetic Appreciation (O:AesA)",
+			"parent": "OP"
+		},
+		{
+			"id": "OP2",
+			"name": "Inquisitiveness",
+			"publishedName": "Inquisitiveness (O:Inqu)",
+			"parent": "OP"
+		},
+		{
+			"id": "OP3",
+			"name": "Creativity",
+			"publishedName": "Creativity (O:Crea)",
+			"parent": "OP"
+		},
+		{
+			"id": "OP4",
+			"name": "Unconventionality",
+			"publishedName": "Unconventionality (O:Unco)",
+			"parent": "OP"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Don't pretend to be more than I am.",
+			"scale": "HH1",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Would never take things that aren't mine.",
+			"scale": "HH2",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Would not enjoy being a famous celebrity.",
+			"scale": "HH3",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Don't think that I'm better than other people.",
+			"scale": "HH4",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Am a physical coward.",
+			"scale": "EM1",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Often worry about things that turn out to be unimportant.",
+			"scale": "EM2",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Need reassurance.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Feel others' emotions.",
+			"scale": "EM4",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Talk a lot.",
+			"scale": "EX1",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Am good at making impromptu speeches.",
+			"scale": "EX2",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Usually like to spend my free time with people.",
+			"scale": "EX3",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Maintain high energy throughout the day.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Love my enemies.",
+			"scale": "AG1",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Rarely complain.",
+			"scale": "AG2",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Adjust easily.",
+			"scale": "AG3",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Find that it takes a lot to make me feel angry at someone.",
+			"scale": "AG4",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Keep things tidy.",
+			"scale": "CO1",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Push myself very hard to succeed.",
+			"scale": "CO2",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Pay attention to details.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Avoid mistakes.",
+			"scale": "CO4",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Believe in the importance of art.",
+			"scale": "OP1",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Am interested in science.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Have a vivid imagination.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Am considered to be kind of eccentric.",
+			"scale": "OP4",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Use flattery to get ahead.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 26,
+			"text": "Would never cheat on my taxes.",
+			"scale": "HH2",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Don't strive for elegance in my appearance.",
+			"scale": "HH3",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "See myself as an average person.",
+			"scale": "HH4",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Begin to panic when there is danger.",
+			"scale": "EM1",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Worry about things.",
+			"scale": "EM2",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Let myself be influenced by others.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Immediately feel sad when hearing of an unhappy event.",
+			"scale": "EM4",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Am never at a loss for words.",
+			"scale": "EX1",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Don't mind being the center of attention.",
+			"scale": "EX2",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Talk to a lot of different people at parties.",
+			"scale": "EX3",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Have great stamina.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Try to forgive and forget.",
+			"scale": "AG1",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "Take things as they come.",
+			"scale": "AG2",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Am good at taking advice.",
+			"scale": "AG3",
+			"key": 1
+		},
+		{
+			"n": 40,
+			"text": "Rarely feel angry with people.",
+			"scale": "AG4",
+			"key": 1
+		},
+		{
+			"n": 41,
+			"text": "Get chores done right away.",
+			"scale": "CO1",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Get started quickly on doing a job.",
+			"scale": "CO2",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Continue until everything is perfect.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Make plans and stick to them.",
+			"scale": "CO4",
+			"key": 1
+		},
+		{
+			"n": 45,
+			"text": "Get deeply immersed in music.",
+			"scale": "OP1",
+			"key": 1
+		},
+		{
+			"n": 46,
+			"text": "Would love to explore strange places.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Come up with something new.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Know that my ideas sometimes surprise people.",
+			"scale": "OP4",
+			"key": 1
+		},
+		{
+			"n": 49,
+			"text": "Tell other people what they want to hear so that they will do what I want them to do.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 50,
+			"text": "Return extra change when a cashier makes a mistake.",
+			"scale": "HH2",
+			"key": 1
+		},
+		{
+			"n": 51,
+			"text": "Love luxury.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 52,
+			"text": "Am just an ordinary person.",
+			"scale": "HH4",
+			"key": 1
+		},
+		{
+			"n": 53,
+			"text": "Would fear walking in a high-crime part of a city.",
+			"scale": "EM1",
+			"key": 1
+		},
+		{
+			"n": 54,
+			"text": "Get stressed out easily.",
+			"scale": "EM2",
+			"key": 1
+		},
+		{
+			"n": 55,
+			"text": "Need the approval of others.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 56,
+			"text": "Cry during movies.",
+			"scale": "EM4",
+			"key": 1
+		},
+		{
+			"n": 57,
+			"text": "Am the life of the party.",
+			"scale": "EX1",
+			"key": 1
+		},
+		{
+			"n": 58,
+			"text": "Feel comfortable around people.",
+			"scale": "EX2",
+			"key": 1
+		},
+		{
+			"n": 59,
+			"text": "Love to chat.",
+			"scale": "EX3",
+			"key": 1
+		},
+		{
+			"n": 60,
+			"text": "Am usually active and full of energy.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 61,
+			"text": "Am inclined to forgive others.",
+			"scale": "AG1",
+			"key": 1
+		},
+		{
+			"n": 62,
+			"text": "Accept people as they are.",
+			"scale": "AG2",
+			"key": 1
+		},
+		{
+			"n": 63,
+			"text": "When interacting with a group of people, am often bothered by at least one of them.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 64,
+			"text": "Am usually a patient person.",
+			"scale": "AG4",
+			"key": 1
+		},
+		{
+			"n": 65,
+			"text": "Like order.",
+			"scale": "CO1",
+			"key": 1
+		},
+		{
+			"n": 66,
+			"text": "Am exacting in my work.",
+			"scale": "CO2",
+			"key": 1
+		},
+		{
+			"n": 67,
+			"text": "Have an eye for detail.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 68,
+			"text": "Do things according to a plan.",
+			"scale": "CO4",
+			"key": 1
+		},
+		{
+			"n": 69,
+			"text": "See beauty in things that others might not notice.",
+			"scale": "OP1",
+			"key": 1
+		},
+		{
+			"n": 70,
+			"text": "Enjoy intellectual games.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 71,
+			"text": "Carry the conversation to a higher level.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 72,
+			"text": "Do things that others find strange.",
+			"scale": "OP4",
+			"key": 1
+		},
+		{
+			"n": 73,
+			"text": "Put on a show to impress people.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 74,
+			"text": "Would feel very badly for a long time if I were to steal from someone.",
+			"scale": "HH2",
+			"key": 1
+		},
+		{
+			"n": 75,
+			"text": "Have a strong need for power.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 76,
+			"text": "Consider myself an average person.",
+			"scale": "HH4",
+			"key": 1
+		},
+		{
+			"n": 77,
+			"text": "Tremble in dangerous situations.",
+			"scale": "EM1",
+			"key": 1
+		},
+		{
+			"n": 78,
+			"text": "Get upset by unpleasant thoughts that come into my mind.",
+			"scale": "EM2",
+			"key": 1
+		},
+		{
+			"n": 79,
+			"text": "Need protection.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 80,
+			"text": "Am sensitive to the needs of others.",
+			"scale": "EM4",
+			"key": 1
+		},
+		{
+			"n": 81,
+			"text": "Tell people about it when I'm irritated.",
+			"scale": "EX1",
+			"key": 1
+		},
+		{
+			"n": 82,
+			"text": "Have leadership abilities.",
+			"scale": "EX2",
+			"key": 1
+		},
+		{
+			"n": 83,
+			"text": "Make friends easily.",
+			"scale": "EX3",
+			"key": 1
+		},
+		{
+			"n": 84,
+			"text": "Smile a lot.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 85,
+			"text": "Am nice to people I should be angry at.",
+			"scale": "AG1",
+			"key": 1
+		},
+		{
+			"n": 86,
+			"text": "Have a good word for everyone.",
+			"scale": "AG2",
+			"key": 1
+		},
+		{
+			"n": 87,
+			"text": "React strongly to criticism.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 88,
+			"text": "Rarely get irritated.",
+			"scale": "AG4",
+			"key": 1
+		},
+		{
+			"n": 89,
+			"text": "Like to tidy up.",
+			"scale": "CO1",
+			"key": 1
+		},
+		{
+			"n": 90,
+			"text": "Work hard.",
+			"scale": "CO2",
+			"key": 1
+		},
+		{
+			"n": 91,
+			"text": "Want every detail taken care of.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 92,
+			"text": "Jump into things without thinking.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 93,
+			"text": "Enjoy feeling \"close to the earth.\"",
+			"scale": "OP1",
+			"key": 1
+		},
+		{
+			"n": 94,
+			"text": "Love to read challenging material.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 95,
+			"text": "Am full of ideas.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 96,
+			"text": "Rebel against authority.",
+			"scale": "OP4",
+			"key": 1
+		},
+		{
+			"n": 97,
+			"text": "Switch my loyalties when I feel like it.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 98,
+			"text": "Try to follow the rules.",
+			"scale": "HH2",
+			"key": 1
+		},
+		{
+			"n": 99,
+			"text": "Seek status.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 100,
+			"text": "Would like to have more power than other people.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 101,
+			"text": "Would never go riding down a stretch of rapids in a canoe.",
+			"scale": "EM1",
+			"key": 1
+		},
+		{
+			"n": 102,
+			"text": "Panic easily.",
+			"scale": "EM2",
+			"key": 1
+		},
+		{
+			"n": 103,
+			"text": "Often need help.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 104,
+			"text": "Am deeply moved by others' misfortunes.",
+			"scale": "EM4",
+			"key": 1
+		},
+		{
+			"n": 105,
+			"text": "Have an intense, boisterous laugh.",
+			"scale": "EX1",
+			"key": 1
+		},
+		{
+			"n": 106,
+			"text": "Have a strong personality.",
+			"scale": "EX2",
+			"key": 1
+		},
+		{
+			"n": 107,
+			"text": "Enjoy being part of a group.",
+			"scale": "EX3",
+			"key": 1
+		},
+		{
+			"n": 108,
+			"text": "Feel healthy and vibrant most of the time.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 109,
+			"text": "Find it hard to forgive others.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 110,
+			"text": "Become frustrated and angry with people when they don't live up to my expectations.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 111,
+			"text": "Get upset if others change the way that I have arranged things.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 112,
+			"text": "Seldom get mad.",
+			"scale": "AG4",
+			"key": 1
+		},
+		{
+			"n": 113,
+			"text": "Want everything to be \"just right.\"",
+			"scale": "CO1",
+			"key": 1
+		},
+		{
+			"n": 114,
+			"text": "Complete tasks successfully.",
+			"scale": "CO2",
+			"key": 1
+		},
+		{
+			"n": 115,
+			"text": "Dislike imperfect work.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 116,
+			"text": "Do things without thinking of the consequences.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 117,
+			"text": "Have read the great literary classics.",
+			"scale": "OP1",
+			"key": 1
+		},
+		{
+			"n": 118,
+			"text": "Find political discussions interesting.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 119,
+			"text": "Love to think up new ways of doing things.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 120,
+			"text": "Swim against the current.",
+			"scale": "OP4",
+			"key": 1
+		},
+		{
+			"n": 121,
+			"text": "Play a role in order to impress people.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 122,
+			"text": "Admire a really clever scam.",
+			"scale": "HH2",
+			"key": -1
+		},
+		{
+			"n": 123,
+			"text": "Am mainly interested in money.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 124,
+			"text": "Believe that I am better than others.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 125,
+			"text": "Like to do frightening things.",
+			"scale": "EM1",
+			"key": -1
+		},
+		{
+			"n": 126,
+			"text": "Rarely worry.",
+			"scale": "EM2",
+			"key": -1
+		},
+		{
+			"n": 127,
+			"text": "Show my sadness.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 128,
+			"text": "Rarely cry during sad movies.",
+			"scale": "EM4",
+			"key": -1
+		},
+		{
+			"n": 129,
+			"text": "Don't talk a lot.",
+			"scale": "EX1",
+			"key": -1
+		},
+		{
+			"n": 130,
+			"text": "Would be afraid to give a speech in public.",
+			"scale": "EX2",
+			"key": -1
+		},
+		{
+			"n": 131,
+			"text": "Seem to derive less enjoyment from interacting with people than others do.",
+			"scale": "EX3",
+			"key": -1
+		},
+		{
+			"n": 132,
+			"text": "Laugh a lot.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 133,
+			"text": "Hold a grudge.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 134,
+			"text": "Am quick to judge others.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 135,
+			"text": "Am hard to convince.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 136,
+			"text": "Am easily annoyed.",
+			"scale": "AG4",
+			"key": -1
+		},
+		{
+			"n": 137,
+			"text": "Leave a mess in my room.",
+			"scale": "CO1",
+			"key": -1
+		},
+		{
+			"n": 138,
+			"text": "Do just enough work to get by.",
+			"scale": "CO2",
+			"key": -1
+		},
+		{
+			"n": 139,
+			"text": "Want everything to add up perfectly.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 140,
+			"text": "Make rash decisions.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 141,
+			"text": "Do not like art.",
+			"scale": "OP1",
+			"key": -1
+		},
+		{
+			"n": 142,
+			"text": "Have a rich vocabulary.",
+			"scale": "OP2",
+			"key": 1
+		},
+		{
+			"n": 143,
+			"text": "Have excellent ideas.",
+			"scale": "OP3",
+			"key": 1
+		},
+		{
+			"n": 144,
+			"text": "Would hate to be considered odd or strange.",
+			"scale": "OP4",
+			"key": -1
+		},
+		{
+			"n": 145,
+			"text": "Pretend to be concerned for others.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 146,
+			"text": "Cheat to get ahead.",
+			"scale": "HH2",
+			"key": -1
+		},
+		{
+			"n": 147,
+			"text": "Wish to stay young forever.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 148,
+			"text": "Like to attract attention.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 149,
+			"text": "Face danger confidently.",
+			"scale": "EM1",
+			"key": -1
+		},
+		{
+			"n": 150,
+			"text": "Rarely feel depressed.",
+			"scale": "EM2",
+			"key": -1
+		},
+		{
+			"n": 151,
+			"text": "Suspect that my facial expressions give me away when I feel sad.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 152,
+			"text": "Seldom feel weepy while reading the sad part of a story.",
+			"scale": "EM4",
+			"key": -1
+		},
+		{
+			"n": 153,
+			"text": "Don't like to draw attention to myself.",
+			"scale": "EX1",
+			"key": -1
+		},
+		{
+			"n": 154,
+			"text": "Keep in the background.",
+			"scale": "EX2",
+			"key": -1
+		},
+		{
+			"n": 155,
+			"text": "Rarely enjoy being with people.",
+			"scale": "EX3",
+			"key": -1
+		},
+		{
+			"n": 156,
+			"text": "Feel that I have a lot of inner strength.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 157,
+			"text": "Get back at people who insult me.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 158,
+			"text": "Find fault with everything.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 159,
+			"text": "Am annoyed by others' mistakes.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 160,
+			"text": "Get angry easily.",
+			"scale": "AG4",
+			"key": -1
+		},
+		{
+			"n": 161,
+			"text": "Leave my belongings around.",
+			"scale": "CO1",
+			"key": -1
+		},
+		{
+			"n": 162,
+			"text": "Stop when work becomes too difficult.",
+			"scale": "CO2",
+			"key": -1
+		},
+		{
+			"n": 163,
+			"text": "Detect mistakes.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 164,
+			"text": "Act impulsively when something is bothering me.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 165,
+			"text": "Seldom notice the emotional aspects of paintings and pictures.",
+			"scale": "OP1",
+			"key": -1
+		},
+		{
+			"n": 166,
+			"text": "Don't know much about history.",
+			"scale": "OP2",
+			"key": -1
+		},
+		{
+			"n": 167,
+			"text": "Do not have a good imagination.",
+			"scale": "OP3",
+			"key": -1
+		},
+		{
+			"n": 168,
+			"text": "Enjoy being thought of as a normal \"mainstream\" person.",
+			"scale": "OP4",
+			"key": -1
+		},
+		{
+			"n": 169,
+			"text": "Act like different people in different situations.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 170,
+			"text": "Steal things.",
+			"scale": "HH2",
+			"key": -1
+		},
+		{
+			"n": 171,
+			"text": "Try to impress others.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 172,
+			"text": "Am more capable than most others.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 173,
+			"text": "Love dangerous situations.",
+			"scale": "EM1",
+			"key": -1
+		},
+		{
+			"n": 174,
+			"text": "Am not easily disturbed by events.",
+			"scale": "EM2",
+			"key": -1
+		},
+		{
+			"n": 175,
+			"text": "Seek support.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 176,
+			"text": "Am seldom bothered by the apparent suffering of strangers.",
+			"scale": "EM4",
+			"key": -1
+		},
+		{
+			"n": 177,
+			"text": "Say little.",
+			"scale": "EX1",
+			"key": -1
+		},
+		{
+			"n": 178,
+			"text": "Find it difficult to approach others.",
+			"scale": "EX2",
+			"key": -1
+		},
+		{
+			"n": 179,
+			"text": "Would not enjoy a job that involves a lot of social interaction.",
+			"scale": "EX3",
+			"key": -1
+		},
+		{
+			"n": 180,
+			"text": "Have a lot of fun.",
+			"scale": "EX4",
+			"key": 1
+		},
+		{
+			"n": 181,
+			"text": "Get even with others.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 182,
+			"text": "Speak ill of others.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 183,
+			"text": "Can't stand being contradicted.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 184,
+			"text": "Get irritated easily.",
+			"scale": "AG4",
+			"key": -1
+		},
+		{
+			"n": 185,
+			"text": "Don't finish the things that I start.",
+			"scale": "CO1",
+			"key": -1
+		},
+		{
+			"n": 186,
+			"text": "Do too little work.",
+			"scale": "CO2",
+			"key": -1
+		},
+		{
+			"n": 187,
+			"text": "Demand quality.",
+			"scale": "CO3",
+			"key": 1
+		},
+		{
+			"n": 188,
+			"text": "Make careless mistakes.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 189,
+			"text": "Do not like poetry.",
+			"scale": "OP1",
+			"key": -1
+		},
+		{
+			"n": 190,
+			"text": "Avoid difficult reading material.",
+			"scale": "OP2",
+			"key": -1
+		},
+		{
+			"n": 191,
+			"text": "Have difficulty imagining things.",
+			"scale": "OP3",
+			"key": -1
+		},
+		{
+			"n": 192,
+			"text": "Like to be viewed as proper and conventional.",
+			"scale": "OP4",
+			"key": -1
+		},
+		{
+			"n": 193,
+			"text": "Find it necessary to please the people who have power.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 194,
+			"text": "Cheat on people who have trusted me.",
+			"scale": "HH2",
+			"key": -1
+		},
+		{
+			"n": 195,
+			"text": "Prefer to eat at expensive restaurants.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 196,
+			"text": "Am likely to show off if I get the chance.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 197,
+			"text": "Would be good at rescuing people from a burning building.",
+			"scale": "EM1",
+			"key": -1
+		},
+		{
+			"n": 198,
+			"text": "Remain calm under pressure.",
+			"scale": "EM2",
+			"key": -1
+		},
+		{
+			"n": 199,
+			"text": "Can't do without the company of others.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 200,
+			"text": "Don't understand people who get emotional.",
+			"scale": "EM4",
+			"key": -1
+		},
+		{
+			"n": 201,
+			"text": "Bottle up my feelings.",
+			"scale": "EX1",
+			"key": -1
+		},
+		{
+			"n": 202,
+			"text": "Hate being the center of attention.",
+			"scale": "EX2",
+			"key": -1
+		},
+		{
+			"n": 203,
+			"text": "Am hard to get to know.",
+			"scale": "EX3",
+			"key": -1
+		},
+		{
+			"n": 204,
+			"text": "Tire out quickly.",
+			"scale": "EX4",
+			"key": -1
+		},
+		{
+			"n": 205,
+			"text": "Distrust people.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 206,
+			"text": "Have a sharp tongue.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 207,
+			"text": "Am hard to satisfy.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 208,
+			"text": "Lose my temper.",
+			"scale": "AG4",
+			"key": -1
+		},
+		{
+			"n": 209,
+			"text": "Often forget to put things back in their proper place.",
+			"scale": "CO1",
+			"key": -1
+		},
+		{
+			"n": 210,
+			"text": "Hang around doing nothing.",
+			"scale": "CO2",
+			"key": -1
+		},
+		{
+			"n": 211,
+			"text": "Pay too little attention to details.",
+			"scale": "CO3",
+			"key": -1
+		},
+		{
+			"n": 212,
+			"text": "Don't know why I do some of the things I do.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 213,
+			"text": "Do not like concerts.",
+			"scale": "OP1",
+			"key": -1
+		},
+		{
+			"n": 214,
+			"text": "Don't bother worrying about political and social problems.",
+			"scale": "OP2",
+			"key": -1
+		},
+		{
+			"n": 215,
+			"text": "Have trouble guessing how others will react.",
+			"scale": "OP3",
+			"key": -1
+		},
+		{
+			"n": 216,
+			"text": "Like to be thought of as a normal kind of person.",
+			"scale": "OP4",
+			"key": -1
+		},
+		{
+			"n": 217,
+			"text": "Let people push me around to help them feel important.",
+			"scale": "HH1",
+			"key": -1
+		},
+		{
+			"n": 218,
+			"text": "Would not regret my behavior if I were to take advantage of someone impulsively.",
+			"scale": "HH2",
+			"key": -1
+		},
+		{
+			"n": 219,
+			"text": "Am out for my own personal gain.",
+			"scale": "HH3",
+			"key": -1
+		},
+		{
+			"n": 220,
+			"text": "Boast about my virtues.",
+			"scale": "HH4",
+			"key": -1
+		},
+		{
+			"n": 221,
+			"text": "Am willing to take risks.",
+			"scale": "EM1",
+			"key": -1
+		},
+		{
+			"n": 222,
+			"text": "Don't worry about things that have already happened.",
+			"scale": "EM2",
+			"key": -1
+		},
+		{
+			"n": 223,
+			"text": "Want to be liked.",
+			"scale": "EM3",
+			"key": 1
+		},
+		{
+			"n": 224,
+			"text": "Seldom get emotional.",
+			"scale": "EM4",
+			"key": -1
+		},
+		{
+			"n": 225,
+			"text": "Speak softly.",
+			"scale": "EX1",
+			"key": -1
+		},
+		{
+			"n": 226,
+			"text": "Have little to say.",
+			"scale": "EX2",
+			"key": -1
+		},
+		{
+			"n": 227,
+			"text": "Keep others at a distance.",
+			"scale": "EX3",
+			"key": -1
+		},
+		{
+			"n": 228,
+			"text": "Often feel blue.",
+			"scale": "EX4",
+			"key": -1
+		},
+		{
+			"n": 229,
+			"text": "Feel that most people can't be trusted.",
+			"scale": "AG1",
+			"key": -1
+		},
+		{
+			"n": 230,
+			"text": "Criticize others' shortcomings.",
+			"scale": "AG2",
+			"key": -1
+		},
+		{
+			"n": 231,
+			"text": "Am hard to reason with.",
+			"scale": "AG3",
+			"key": -1
+		},
+		{
+			"n": 232,
+			"text": "Get upset easily.",
+			"scale": "AG4",
+			"key": -1
+		},
+		{
+			"n": 233,
+			"text": "Am not bothered by disorder.",
+			"scale": "CO1",
+			"key": -1
+		},
+		{
+			"n": 234,
+			"text": "Quickly lose interest in the tasks I start.",
+			"scale": "CO2",
+			"key": -1
+		},
+		{
+			"n": 235,
+			"text": "Prefer to just let things happen.",
+			"scale": "CO3",
+			"key": -1
+		},
+		{
+			"n": 236,
+			"text": "Make a fool of myself.",
+			"scale": "CO4",
+			"key": -1
+		},
+		{
+			"n": 237,
+			"text": "Do not enjoy watching dance performances.",
+			"scale": "OP1",
+			"key": -1
+		},
+		{
+			"n": 238,
+			"text": "Will not probe deeply into a subject.",
+			"scale": "OP2",
+			"key": -1
+		},
+		{
+			"n": 239,
+			"text": "Seldom experience sudden intuitive insights.",
+			"scale": "OP3",
+			"key": -1
+		},
+		{
+			"n": 240,
+			"text": "Try to avoid complex people.",
+			"scale": "OP4",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"HH": 0.9,
+		"EM": 0.87,
+		"EX": 0.91,
+		"AG": 0.89,
+		"CO": 0.88,
+		"OP": 0.9,
+		"HH1": 0.76,
+		"HH2": 0.79,
+		"HH3": 0.79,
+		"HH4": 0.81,
+		"EM1": 0.78,
+		"EM2": 0.8,
+		"EM3": 0.77,
+		"EM4": 0.8,
+		"EX1": 0.84,
+		"EX2": 0.85,
+		"EX3": 0.79,
+		"EX4": 0.79,
+		"AG1": 0.82,
+		"AG2": 0.78,
+		"AG3": 0.67,
+		"AG4": 0.8,
+		"CO1": 0.88,
+		"CO2": 0.79,
+		"CO3": 0.72,
+		"CO4": 0.77,
+		"OP1": 0.8,
+		"OP2": 0.78,
+		"OP3": 0.8,
+		"OP4": 0.79
+	},
+	"reliabilitySource": "Coefficient alpha of each IPIP scale from the IPIP comparison table for the IPIP-HEXACO scales, https://ipip.ori.org/newHEXACO_PI_table.htm, accessed 10 November 2026. Domain figures are for each domain scored from its four facets (40 items). The table gives no sample size. The bracketed alpha beside each facet on the scoring key page belongs to the published inventory, not to these items."
+}

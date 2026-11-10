@@ -26,6 +26,7 @@ export const TEST_PATHS: Record<string, string> = {
 	'ipip-neo-120': '/tests/big-five/',
 	'ipip-50': '/tests/big-five/short/',
 	'ipip-bfas': '/tests/big-five-aspects/',
+	'ipip-hexaco': '/tests/hexaco/',
 	tipi: '/tests/quick/',
 	rosenberg: '/tests/self-esteem/',
 	'onet-ip-short': '/tests/career-interests/',

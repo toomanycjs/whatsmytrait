@@ -52,6 +52,7 @@ export const TEST_GROUPS: TestGroup[] = [
 		name: 'Go deeper than the Big Five',
 		tests: [
 			entry({ title: 'The Big Five aspects test', href: '/tests/big-five-aspects/', why: 'Ten aspects, two under each trait, a hundred statements.' }),
+			entry({ title: 'The HEXACO personality test', href: '/tests/hexaco/', why: 'Six traits, including honesty-humility, and 24 facets.' }),
 		],
 	},
 	{

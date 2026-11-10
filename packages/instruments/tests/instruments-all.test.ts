@@ -206,3 +206,41 @@ describe('ipip-bfas', () => {
 	});
 });
 
+// Test release T8: the IPIP-HEXACO, against the key page and comparison
+// table, 10 November 2026.
+describe('ipip-hexaco', () => {
+	const inst = load('ipip-hexaco');
+	const facetItems = (id: string) => inst.items.filter((i) => i.scale === id);
+
+	it('has 240 items, ten per facet, four facets per domain', () => {
+		expect(inst.items).toHaveLength(240);
+		for (const s of inst.scales.filter((x) => x.parent)) expect([s.id, facetItems(s.id).length]).toEqual([s.id, 10]);
+		for (const s of inst.scales.filter((x) => !x.parent)) expect(s.facets).toHaveLength(4);
+	});
+
+	it('shares items and keying with the patience and perfectionism tests', () => {
+		const same = (facet: string, id: string) => {
+			const a = facetItems(facet).map((i) => [i.text, i.key]).sort();
+			const b = load(id).items.map((i) => [i.text, i.key]).sort();
+			expect(a).toEqual(b);
+		};
+		same('AG4', 'ipip-patience');
+		same('CO3', 'ipip-perfectionism');
+	});
+
+	it('uses the IPIP scales\' own alphas from the comparison table', () => {
+		expect(inst.reliability?.AG3).toBe(0.67);
+		expect(inst.reliability?.CO3).toBe(0.72);
+		expect(inst.reliability?.AG4).toBe(0.8);
+		expect(inst.reliability?.EX).toBe(0.91);
+	});
+
+	it('scores a domain from its four facets', () => {
+		const responses: Responses = Object.fromEntries(inst.items.map((i) => [i.n, 3]));
+		const r = score(inst, responses).scales;
+		expect(r.HH.raw).toBe(120);
+		expect(r.HH.min).toBe(40);
+		expect(r.HH.max).toBe(200);
+	});
+});
+

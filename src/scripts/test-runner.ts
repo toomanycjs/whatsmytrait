@@ -296,6 +296,8 @@ export function mountTest() {
 		E: 'var(--hue-extraversion)',
 		A: 'var(--hue-agreeableness)',
 		N: 'var(--hue-stability)', S: 'var(--hue-stability)',
+		// HEXACO domains
+		EX: 'var(--hue-extraversion)', AG: 'var(--hue-agreeableness)', CO: 'var(--hue-conscientiousness)', OP: 'var(--hue-openness)', EM: 'var(--hue-stability)',
 	};
 
 	type Compare = { entry: ResultEntry; label: string };

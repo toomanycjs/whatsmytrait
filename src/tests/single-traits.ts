@@ -89,6 +89,7 @@ export const patience = singleTrait({
 		high: 'People who score high say it takes a lot to make them angry, they rarely feel angry with people, rarely get irritated and seldom get mad. In daily life that shows as calm in queues and traffic, tolerance of other people\'s mistakes, and arguments that do not escalate. It is the slow-to-anger sense of patience, measured as a facet of agreeableness in the HEXACO model; it says nothing about how well you wait for results.',
 		low: 'People who score low say they are easily annoyed, get angry and irritated easily, lose their temper and get upset easily. In daily life that shows as quick flashes of frustration, sharp words that are regretted later, and a low threshold for other people\'s slowness. It is not the same as being unkind, and many quick-tempered people are also quick to make up; the scale measures how readily anger arises, not what is done with it.',
 	},
+	seeAlso: [{ before: 'These ten statements are also the patience facet of the ', label: 'HEXACO personality test', href: '/tests/hexaco/', after: ', which measures six traits and 24 facets.' }],
 	testRetest: hexacoAlpha('.80'),
 	faqs: [
 		{ q: 'Is this patience as in waiting, or as in temper?', a: 'Temper. The scale measures how much it takes to make you angry or irritated. Patience in the sense of persisting and waiting for results is closer to perseverance, which has its own test.' },
@@ -338,6 +339,7 @@ export const perfectionism = singleTrait({
 		{ href: '/tests/orderliness/', title: 'How orderly am I?', note: 'Tidiness, routines and plans, the other side of conscientiousness.' },
 		{ href: '/traits/orderliness/', title: 'Orderliness', note: 'The facet of conscientiousness, with where people fall.' },
 	],
+	seeAlso: [{ before: 'These ten statements are also the perfectionism facet of the ', label: 'HEXACO personality test', href: '/tests/hexaco/', after: ', which measures six traits and 24 facets.' }],
 	faqs: [
 		{ q: 'Is perfectionism good or bad?', a: 'Neither, as this scale measures it. Research on perfectionism separates two parts: striving for high standards and wanting work exactly right, which goes with conscientiousness and with better outcomes, and worrying about mistakes and doubting your work, which goes with neuroticism and with worse ones (Stoeber and Otto, 2006). Nine of these ten statements are about the first part: noticing details, checking work and wanting it right.' },
 		{ q: 'How is perfectionism different from orderliness?', a: 'Orderliness is about tidiness, routines and plans for your surroundings; perfectionism here is about the quality and detail of the work itself. In the HEXACO model both sit under conscientiousness and they tend to go together, but a person can keep a messy desk and still check every figure in a report. The orderliness test measures the first.' },

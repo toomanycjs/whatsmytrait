@@ -3,6 +3,7 @@ title: "Big Five vs HEXACO: five traits or six?"
 description: "Both are sound trait models and they overlap heavily. HEXACO adds an honesty-humility factor and reshuffles agreeableness and emotionality; the Big Five has far more norms, research and free instruments."
 question: "Big Five vs HEXACO: which should I take?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/big-five/
   label: Take the Big Five test
@@ -12,9 +13,9 @@ related:
   - href: /traits/agreeableness/
     title: Agreeableness explained
     note: The trait HEXACO splits differently.
-  - href: /licences/
-    title: Licences
-    note: Why the HEXACO test is held back for now.
+  - href: /tests/hexaco/
+    title: The HEXACO personality test
+    note: Six traits and 24 facets, 240 statements.
 sources:
   - reference: "Ashton, M. C., & Lee, K. (2007). Empirical, theoretical, and practical advantages of the HEXACO model of personality structure. Personality and Social Psychology Review, 11(2), 150-166."
     doi: 10.1177/1088868306294907
@@ -41,4 +42,4 @@ Ashton and Lee's argument is that lexical studies in languages other than Englis
 
 ## Which to take for which purpose
 
-For comparing yourself with a large published sample, with facets and percentiles: the Big Five, which is what this site measures today. For a measure of honesty-humility as a trait of its own: a HEXACO instrument, which the IPIP publishes free; the owner has held it back from this site's first release, and the licences page records that. Taking both is reasonable, since each describes the same person from a slightly different angle.
+For comparing yourself with a large published sample, with facets and percentiles: the Big Five, which is what this site measures today. For a measure of honesty-humility as a trait of its own: the [HEXACO personality test](/tests/hexaco/), the free IPIP-HEXACO with six traits and 24 facets, which has no published norms the site can use and so shows raw scores rather than percentiles. Taking both is reasonable, since each describes the same person from a slightly different angle.

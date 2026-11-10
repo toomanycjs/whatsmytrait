@@ -47,3 +47,12 @@ Added: /tests/big-five-aspects/ (Big Five Aspect Scales, DeYoung, Quilty and Pet
 Changed: each of the five trait pages gains a sentence naming its two aspects and linking to the test; /tests/ gains a "Go deeper than the Big Five" group.
 
 Searches targeted: Big Five aspects test, Big Five aspect scales, BFAS test, 10 aspects of the Big Five, volatility and withdrawal, compassion and politeness, industriousness and orderliness, enthusiasm and assertiveness, intellect and openness.
+
+
+## 10 November 2026: test release T8, the HEXACO personality test (full)
+
+Added: /tests/hexaco/ (IPIP-HEXACO, Ashton, Lee and Goldberg, 2007: 240 items, six traits and 24 facets; IPIP alphas from the comparison table, facets .67 to .88, traits .87 to .91; raw scores, no norms). The short 60-item version is not built: the IPIP publishes no 10-item domain scales.
+
+Changed: /compare/big-five-vs-hexaco/ and /guides/honesty-humility-explained/ now point to the test instead of saying the site has none; /tests/patience/ and /tests/perfectionism/ each gain a sentence linking to it; /licences/ no longer lists the IPIP-HEXACO as held back; /tests/ lists it under "Go deeper than the Big Five".
+
+Searches targeted: HEXACO test, HEXACO personality test, free HEXACO test, honesty-humility test, HEXACO 24 facets.

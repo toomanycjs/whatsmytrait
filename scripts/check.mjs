@@ -33,7 +33,7 @@ const ALLOWED_PHRASES = ['not a diagnosis', 'never diagnose', 'does not diagnose
 // Anxiety and Depression; they are trait facets of Neuroticism, kept as the
 // authors name them (docs/decisions/0003-published-facet-names.md). Only the
 // exact name line in a data file is allowed; the words stay banned in copy.
-const ALLOWED_DATA_LINES = ['"name": "anxiety"', '"name": "depression"'];
+const ALLOWED_DATA_LINES = ['"name": "anxiety"', '"name": "depression"', '"publishedname": "anxiety (', '"publishedname": "depression ('];
 const TRADEMARKS = ['MBTI', 'Myers-Briggs', '16Personalities', 'NEO PI', 'VIA Survey'];
 
 function walk(dir, test = (name) => EXTENSIONS.test(name)) {

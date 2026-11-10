@@ -3,6 +3,7 @@ title: "Honesty-humility explained: the sixth factor"
 description: "Honesty-humility is the HEXACO model's sixth trait: sincerity, fairness, greed avoidance and modesty. The Big Five has no factor for it and folds most of it into agreeableness."
 question: "What is honesty-humility?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/big-five/
   label: Take the Big Five test
@@ -38,6 +39,6 @@ A high honesty-humility score is not moral superiority; it is what a person says
 
 ## What it means for your results
 
-This site measures the Big Five and does not yet have a HEXACO test, so there is no honesty-humility percentile here. The Big Five test gives you the morality and modesty facets of agreeableness, which are the closest Big Five reading of the factor, and the comparison article sets the two models side by side. If your question is about sincerity, fairness or greed, those two facets are the ones to read.
+The [HEXACO personality test](/tests/hexaco/) measures honesty-humility and its four facets directly, though without percentiles, since no norms can be used with its statements. The Big Five test gives you the morality and modesty facets of agreeableness, which are the closest Big Five reading of the factor, with percentiles, and the comparison article sets the two models side by side. If your question is about sincerity, fairness or greed, those two facets are the ones to read.
 
 The Big Five test takes about twelve minutes and scores all six facets of agreeableness, with percentiles against 410,376 people.
