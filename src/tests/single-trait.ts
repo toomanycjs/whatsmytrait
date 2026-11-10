@@ -23,6 +23,10 @@ export interface SingleTraitSpec {
 	faqs: FaqPair[];
 	/** The guide written for this test. */
 	guide?: { href: string; title: string; note?: string };
+	/** What each statement asks, keyed by item number (see TestContent.statements). */
+	statements?: Record<number, string>;
+	/** Overrides the template's second related link (the parent trait page). */
+	related?: { href: string; title: string; note?: string }[];
 }
 
 export function singleTrait(spec: SingleTraitSpec): TestContent {
@@ -36,8 +40,9 @@ export function singleTrait(spec: SingleTraitSpec): TestContent {
 		minutes: spec.minutes,
 		breadcrumb: spec.breadcrumb,
 		scales: { T: { ...spec.scale, traitPath: spec.traitPath } },
+		statements: spec.statements,
 		testRetest: spec.testRetest,
-		related: [
+		related: spec.related ?? [
 			{ href: '/tests/big-five/', title: 'The Big Five, with the facets', note: 'The wider picture: five traits and thirty facets.' },
 			{ href: spec.traitPath, title: spec.traitTitle, note: 'What the parent trait is and what the research finds.' },
 			spec.guide ?? { href: '/tests/', title: 'All tests', note: 'Grouped by what you want to know.' },

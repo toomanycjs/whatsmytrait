@@ -31,6 +31,7 @@ export const TEST_PATHS: Record<string, string> = {
 	'ipip-extraversion-20': '/tests/introvert-or-extrovert/',
 	'ipip-assertiveness': '/tests/assertiveness/',
 	'ipip-patience': '/tests/patience/',
+	'ipip-perfectionism': '/tests/perfectionism/',
 	'ipip-curiosity': '/tests/curiosity/',
 	'ipip-perseverance': '/tests/perseverance/',
 	'ipip-orderliness': '/tests/orderliness/',

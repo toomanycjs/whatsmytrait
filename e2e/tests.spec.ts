@@ -12,6 +12,8 @@ const TESTS = [
 	{ path: '/tests/introvert-or-extrovert/', items: 20, domains: 1, facets: 0 },
 	{ path: '/tests/assertiveness/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/patience/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/perfectionism/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/perfectionism/', items: 10, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/curiosity/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/perseverance/', items: 8, domains: 1, facets: 0 },
 	{ path: '/tests/orderliness/', items: 10, domains: 1, facets: 0 },
@@ -28,8 +30,9 @@ async function answerScreen(page: Page, count: number, key: string) {
 	for (let i = 0; i < count; i++) await page.keyboard.press(key);
 }
 
-for (const t of TESTS) {
-	test(`full run of ${t.path}`, async ({ page }) => {
+for (const t of TESTS as { path: string; items: number; domains: number; facets: number; phone?: boolean }[]) {
+	test(`full run of ${t.path}${t.phone ? ' at phone width' : ''}`, async ({ page }) => {
+		if (t.phone) await page.setViewportSize({ width: 375, height: 812 });
 		await page.goto(t.path);
 		await expect(page.locator('h1')).toBeVisible();
 		await page.getByRole('button', { name: 'Start the test' }).click();

@@ -40,6 +40,13 @@ export interface TestContent {
 	scaleNames?: Record<string, string>;
 	/** Scales shown on the results page, in order. Facets are drawn under their domain automatically. */
 	scales: Record<string, ScaleCopy>;
+	/**
+	 * "The statements, explained": one plain line per item, keyed by item
+	 * number, on what the statement asks (15 to 25 words, not what agreeing
+	 * says about the person). The statement and its scoring direction come
+	 * from the instrument file.
+	 */
+	statements?: Record<number, string>;
 	/** A short note on test-retest reliability, or that none is published. */
 	testRetest: string;
 	/** Three hand-picked links. */

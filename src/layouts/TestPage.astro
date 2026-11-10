@@ -208,6 +208,26 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 		</div>
 	</section>
 
+	{content.statements && (
+		<section class="section" id="statements">
+			<div class="wrap row">
+				<div class="aside"><h2>The statements, explained</h2></div>
+				<div class="main">
+					<p>Each statement is rated from very inaccurate to very accurate as a description of yourself, and the score is their sum. Under each statement is which way it scores and a plain line on what it asks.</p>
+					<ul class="statements">
+						{instrument.items.filter((it) => content.statements![it.n]).map((it) => (
+							<li>
+								<em>{it.text}</em>
+								<span class="quiet">Agreeing {it.key > 0 ? 'raises' : 'lowers'} your {names[it.scale].toLowerCase()} score.</span>
+								<span>{content.statements![it.n]}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</section>
+	)}
+
 	<section class="section" id="reliability">
 		<div class="wrap row">
 			<div class="aside"><h2>How reliable is this test</h2></div>

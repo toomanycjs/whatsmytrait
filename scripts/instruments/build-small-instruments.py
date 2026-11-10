@@ -262,14 +262,14 @@ write({
 })
 
 # ── Single-trait tests ──
-def single(id_, name, published, paper, key_url, alpha, plus, minus, note='', items_source=None, licence=IPIP_LICENCE, doi=None):
+def single(id_, name, published, paper, key_url, alpha, plus, minus, note='', items_source=None, licence=IPIP_LICENCE, doi=None, accessed=ACCESSED, reliability_source=None):
     items = [{'n': i + 1, 'text': t, 'scale': 'T', 'key': k} for i, (t, k) in enumerate(plus_minus(plus, minus))]
     inst = {
         'id': id_,
         'version': 1,
         'name': name,
-        'items_note': f'Items copied from {key_url}, 3 November 2026, +keyed items first as the key page lists them. {note}'.strip(),
-        'source': {'paper': paper, 'keyUrl': key_url, 'scoringUrl': 'https://ipip.ori.org/newScoringInstructions.htm', 'accessed': ACCESSED, **({'doi': doi} if doi else {})},
+        'items_note': f'Items copied from {key_url}, {LONG_DATE[accessed]}, +keyed items first as the key page lists them. {note}'.strip(),
+        'source': {'paper': paper, 'keyUrl': key_url, 'scoringUrl': 'https://ipip.ori.org/newScoringInstructions.htm', 'accessed': accessed, **({'doi': doi} if doi else {})},
         'licence': licence,
         'instructions': IPIP_INSTRUCTIONS,
         'response': {'type': 'likert', 'points': 5, 'labels': IPIP_LABELS},
@@ -278,9 +278,11 @@ def single(id_, name, published, paper, key_url, alpha, plus, minus, note='', it
         'scoring': {'method': 'sum', 'reverse': 'points+1-x'},
         'norms': None,
         'reliability': {'T': alpha},
-        'reliabilitySource': f'Coefficient alpha as given on the key page, {key_url}, accessed 3 November 2026.',
+        'reliabilitySource': reliability_source or f'Coefficient alpha as given on the key page, {key_url}, accessed 3 November 2026.',
     }
     write(inst)
+
+LONG_DATE = {'2026-11-03': '3 November 2026', '2026-11-10': '10 November 2026'}
 
 NEO_PAPER = 'Goldberg, L. R. (1999). A broad-bandwidth, public-domain, personality inventory measuring the lower-level facets of several five-factor models. In I. Mervielde, I. Deary, F. De Fruyt, & F. Ostendorf (Eds.), Personality psychology in Europe, Vol. 7 (pp. 7-28). Tilburg University Press'
 VIA_PAPER = 'IPIP scales measuring constructs similar to those in the Values in Action Inventory of Strengths (Peterson & Seligman, 2004), International Personality Item Pool'
@@ -296,9 +298,21 @@ single('ipip-orderliness', 'Orderliness', 'C2: Orderliness (IPIP-NEO facet)', NE
 single('ipip-trust', 'Trust', 'A1: Trust (IPIP-NEO facet)', NEO_PAPER, 'https://ipip.ori.org/newNEOKey.htm', 0.82,
        ['Trust others.', 'Believe that others have good intentions.', 'Trust what people say.', 'Believe that people are basically moral.', 'Believe in human goodness.', 'Think that all will be well.'],
        ['Distrust people.', 'Suspect hidden motives in others.', 'Am wary of others.', 'Believe that people are essentially evil.'])
-single('ipip-patience', 'Patience', 'Patience (A:Pati), IPIP-HEXACO facet', HEXACO_PAPER, 'https://ipip.ori.org/newHEXACO_PI_key.htm', 0.88,
+# IPIP-HEXACO alphas: the bracketed alpha beside each facet on the key page is
+# the HEXACO-PI facet's, not the IPIP scale's. The IPIP scales' own alphas are
+# in the comparison table (checked 10 November 2026). Patience: HEXACO-PI .88,
+# IPIP .80; perfectionism: HEXACO-PI .80, IPIP .72.
+HEXACO_TABLE = 'https://ipip.ori.org/newHEXACO_PI_table.htm'
+HEXACO_REL = lambda: f'Coefficient alpha of the IPIP scale from the IPIP comparison table for the IPIP-HEXACO scales, {HEXACO_TABLE}, accessed 10 November 2026. The table gives no sample size. The bracketed alpha beside the facet on the scoring key page belongs to the corresponding HEXACO-PI scale, not to these items.'
+
+single('ipip-patience', 'Patience', 'Patience (A:Pati), IPIP-HEXACO facet', HEXACO_PAPER, 'https://ipip.ori.org/newHEXACO_PI_key.htm', 0.80,
        ['Find that it takes a lot to make me feel angry at someone.', 'Rarely feel angry with people.', 'Am usually a patient person.', 'Rarely get irritated.', 'Seldom get mad.'],
-       ['Am easily annoyed.', 'Get angry easily.', 'Get irritated easily.', 'Lose my temper.', 'Get upset easily.'])
+       ['Am easily annoyed.', 'Get angry easily.', 'Get irritated easily.', 'Lose my temper.', 'Get upset easily.'],
+       reliability_source=HEXACO_REL())
+single('ipip-perfectionism', 'Perfectionism', 'Perfectionism (C:Perf), IPIP-HEXACO facet', 'Ashton, M. C., Lee, K., & Goldberg, L. R. (2007). The IPIP-HEXACO scales: An alternative, public-domain measure of the personality constructs in the HEXACO model. Personality and Individual Differences, 42(8), 1515-1526', 'https://ipip.ori.org/newHEXACO_PI_key.htm', 0.72,
+       ['Pay attention to details.', 'Continue until everything is perfect.', 'Have an eye for detail.', 'Want every detail taken care of.', 'Dislike imperfect work.', 'Want everything to add up perfectly.', 'Detect mistakes.', 'Demand quality.'],
+       ['Pay too little attention to details.', 'Prefer to just let things happen.'],
+       doi='10.1016/j.paid.2006.10.027', accessed='2026-11-10', reliability_source=HEXACO_REL())
 single('ipip-curiosity', 'Curiosity', 'Curiosity [Cur], IPIP-VIA scale', VIA_PAPER, 'https://ipip.ori.org/newVIAKey.htm', 0.78,
        ['Find the world a very interesting place.', 'Am never bored.', 'Am always busy with something interesting.', 'Am excited by many different activities.', 'Can find something of interest in any situation.', 'Think that my life is extremely interesting.', 'Love to hear about other countries and cultures.'],
        ['Am not all that curious about the world.', 'Find it difficult to entertain myself.', 'Have few interests.'])

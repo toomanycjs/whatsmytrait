@@ -3,6 +3,7 @@ title: "Is orderliness the same as perfectionism?"
 description: "No. Orderliness is the liking for tidiness, plans and routine, one facet of conscientiousness. Perfectionism adds the drive to get work exactly right and the worry about getting it wrong, which belong to other traits."
 question: "Is orderliness the same as perfectionism?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/orderliness/
   label: Take the orderliness test
@@ -33,7 +34,7 @@ The ten statements are the orderliness facet of the IPIP-NEO, such as *Like orde
 
 ## What the research finds
 
-Stoeber and Otto (2006) reviewed the research on perfectionism and separated two parts. Perfectionistic strivings are high standards and wanting things exactly right; perfectionistic concerns are fear of mistakes, doubts about one's work and the sense that others expect perfection. Strivings go with conscientiousness and with better outcomes; concerns go with neuroticism and with worse ones. The statement *Want everything to be "just right."* is the one point where the orderliness scale touches strivings. The rest is tidiness and routine.
+Stoeber and Otto (2006) reviewed the research on perfectionism and separated two parts. Perfectionistic strivings are high standards and wanting things exactly right; perfectionistic concerns are fear of mistakes, doubts about one's work and the sense that others expect perfection. Strivings go with conscientiousness and with better outcomes; concerns go with neuroticism and with worse ones. The statement *Want everything to be "just right."* is the one point where the orderliness scale touches strivings. The rest is tidiness and routine. The striving side has its own scale: the [perfectionism test](/tests/perfectionism/) asks about attention to detail, checking work and wanting it exactly right.
 
 Roberts and colleagues (2005) found order to be one of six distinct parts of conscientiousness, separate from industriousness and self-control. Dudley and colleagues (2006) found that among the narrow conscientiousness traits, achievement and dependability predicted job performance best, with order adding less. A tidy desk and a high standard of work are different things, and the research keeps them apart.
 

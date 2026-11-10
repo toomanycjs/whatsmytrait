@@ -52,6 +52,7 @@ const citations = content.predicts.map((p) => p.cite).filter((c, i, all) => all.
 				<h1>{content.name}</h1>
 				<p class="subtitle">{content.subtitle}</p>
 				<p>{content.summary}</p>
+				{content.seeAlso && <p>{content.seeAlso.before}<a href={content.seeAlso.href}>{content.seeAlso.label}</a>{content.seeAlso.after}</p>}
 			</div>
 		</div>
 	</section>

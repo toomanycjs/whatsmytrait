@@ -3,6 +3,7 @@ title: "Is patience a personality trait?"
 description: "Patience in the slow-to-anger sense is a trait: it is stable, it can be measured, and it sits inside agreeableness in one model of personality and inside neuroticism in another."
 question: "Is patience a personality trait?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/patience/
   label: Take the patience test
@@ -31,7 +32,7 @@ Yes, in the sense the test measures. Patience as slowness to anger is a stable t
 
 ## Two meanings of patience
 
-The word covers two things. One is temper: how much it takes to make you angry, and how readily irritation arises. The other is waiting: staying with a slow task or a delayed reward. The ten statements are the IPIP version of the HEXACO patience facet, and every one of them is about temper, such as *Find that it takes a lot to make me feel angry at someone* and *Rarely get irritated*, with reversed statements such as *Lose my temper*. You rate each on five points, the reversed ones are flipped, and the ten are added, so a score runs from 10 to 50. The IPIP key page gives coefficient alpha of .88 for the scale, and no norms have been published for it on its own. The waiting kind of patience is closer to perseverance, which has its own test and [its own guide](/guides/perseverance-and-conscientiousness/).
+The word covers two things. One is temper: how much it takes to make you angry, and how readily irritation arises. The other is waiting: staying with a slow task or a delayed reward. The ten statements are the IPIP version of the HEXACO patience facet, and every one of them is about temper, such as *Find that it takes a lot to make me feel angry at someone* and *Rarely get irritated*, with reversed statements such as *Lose my temper*. You rate each on five points, the reversed ones are flipped, and the ten are added, so a score runs from 10 to 50. The IPIP comparison table for the IPIP-HEXACO scales gives coefficient alpha of .80 for the scale, and no norms have been published for it on its own. The waiting kind of patience is closer to perseverance, which has its own test and [its own guide](/guides/perseverance-and-conscientiousness/).
 
 ## What the research finds
 

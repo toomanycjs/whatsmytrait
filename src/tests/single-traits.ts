@@ -3,6 +3,9 @@
 import { singleTrait } from './single-trait';
 
 const ipipAlpha = (a: string) => `The IPIP key page gives coefficient alpha of ${a} for this scale and no test-retest figure. Personality scores are fairly stable over weeks; a change of a few points between attempts is usual.`;
+// IPIP-HEXACO facets: the scale's own alpha is in the IPIP comparison table;
+// the figure beside the facet on the key page is the published inventory's.
+const hexacoAlpha = (a: string) => `The IPIP comparison table for the IPIP-HEXACO scales gives coefficient alpha of ${a} for this scale, with no sample size and no test-retest figure. (The figure printed beside the facet on the scoring key page is the alpha of the published inventory's own scale, not of these ten statements.) Personality scores are fairly stable over weeks; a change of a few points between attempts is usual.`;
 
 export const introvertOrExtrovert = singleTrait({
 	instrument: 'ipip-extraversion-20',
@@ -85,7 +88,7 @@ export const patience = singleTrait({
 		high: 'People who score high say it takes a lot to make them angry, they rarely feel angry with people, rarely get irritated and seldom get mad. In daily life that shows as calm in queues and traffic, tolerance of other people\'s mistakes, and arguments that do not escalate. It is the slow-to-anger sense of patience, measured as a facet of agreeableness in the HEXACO model; it says nothing about how well you wait for results.',
 		low: 'People who score low say they are easily annoyed, get angry and irritated easily, lose their temper and get upset easily. In daily life that shows as quick flashes of frustration, sharp words that are regretted later, and a low threshold for other people\'s slowness. It is not the same as being unkind, and many quick-tempered people are also quick to make up; the scale measures how readily anger arises, not what is done with it.',
 	},
-	testRetest: ipipAlpha('.88'),
+	testRetest: hexacoAlpha('.80'),
 	faqs: [
 		{ q: 'Is this patience as in waiting, or as in temper?', a: 'Temper. The scale measures how much it takes to make you angry or irritated. Patience in the sense of persisting and waiting for results is closer to perseverance, which has its own test.' },
 		{ q: 'Why is patience listed under agreeableness?', a: 'In the HEXACO model of personality, patience is one of the four facets of agreeableness, alongside forgiveness, gentleness and flexibility. The item pool here is the public-domain IPIP version of that facet.' },
@@ -292,5 +295,50 @@ export const emotionalStability = singleTrait({
 	faqs: [
 		{ q: 'Is this the same as neuroticism?', a: 'Yes, scored the other way up. A high emotional stability score is a low neuroticism score. The Big Five tests on this site report neuroticism (120 items, with six facets) or emotional stability (50 items), and the trait page explains both.' },
 		{ q: 'Can emotional stability change?', a: 'On average people become more emotionally stable from their twenties onward, and scores also move a little with circumstances. Retaking the test after six months shows whether anything has moved for you.' },
+	],
+});
+
+export const perfectionism = singleTrait({
+	instrument: 'ipip-perfectionism',
+	slug: 'perfectionism',
+	minutes: 2,
+	title: 'Am I a perfectionist? A free 10-item test, 2 minutes',
+	description: 'Ten public-domain statements on how carefully you check details and how much mistakes bother you. Scored on your device in two minutes.',
+	question: 'Am I a perfectionist?',
+	subtitle: 'IPIP-HEXACO perfectionism facet, 10 items, 2 minutes',
+	breadcrumb: 'Perfectionism',
+	traitPath: '/guides/orderliness-and-perfectionism/',
+	traitTitle: 'Is orderliness the same as perfectionism?',
+	scale: {
+		name: 'Perfectionism',
+		means: {
+			low: 'You tend to let small details pass and move on once a thing is good enough.',
+			mid: 'You attend closely to detail in some things and let it go in others.',
+			high: 'You tend to notice details, check your work and want it exactly right.',
+		},
+		high: 'People who score high say they pay attention to details, have an eye for detail, spot mistakes and want every detail taken care of. They dislike imperfect work, demand quality and keep going until everything is right. In daily life that shows as checking a document twice before sending it, noticing the typo or the figure that does not add up, and finding it hard to hand over work they think could still be better. The same habit can make a task take longer than it needs to.',
+		low: 'People who score low say small details tend to slip past them and that they would rather let things happen than check every part. In daily life that shows as working quickly, being content once something does its job, and caring more about the overall result than the finish. It is not carelessness about what matters to them: many low scorers are thorough about the few things they care about and relaxed about the rest. The scale measures how far the urge to get details right reaches, not effort or ability.',
+	},
+	statements: {
+		1: 'Whether you naturally notice and look after the small particulars of a task, rather than only its broad outline.',
+		2: 'Whether you keep working on something until no flaw is left, rather than stopping once it is good enough.',
+		3: 'Whether small details catch your attention, such as a typo, a crooked picture or a figure that does not add up.',
+		4: 'Whether it matters to you that nothing in a piece of work is left loose or unfinished, down to the smallest part.',
+		5: "Whether work with flaws in it, your own or other people's, bothers you rather than leaving you indifferent.",
+		6: 'Whether you want things such as figures, plans and arguments to fit together exactly, with no loose ends.',
+		7: 'Whether you tend to be the person who spots the errors in a piece of work that other people missed.',
+		8: 'Whether you expect a high standard from the work you do and from the work others give you.',
+		9: 'Whether the small particulars of a task tend to slip past you while you concentrate on the bigger picture.',
+		10: 'Whether you would rather let a task take its course than check and steer every part of it yourself.',
+	},
+	testRetest: hexacoAlpha('.72') + ' An alpha of .72 is acceptable but lower than most scales on this site, so treat the score as a rough guide.',
+	related: [
+		{ href: '/guides/orderliness-and-perfectionism/', title: 'Is orderliness the same as perfectionism?', note: 'How the two differ, with the research.' },
+		{ href: '/tests/orderliness/', title: 'How orderly am I?', note: 'Tidiness, routines and plans, the other side of conscientiousness.' },
+		{ href: '/traits/orderliness/', title: 'Orderliness', note: 'The facet of conscientiousness, with where people fall.' },
+	],
+	faqs: [
+		{ q: 'Is perfectionism good or bad?', a: 'Neither, as this scale measures it. Research on perfectionism separates two parts: striving for high standards and wanting work exactly right, which goes with conscientiousness and with better outcomes, and worrying about mistakes and doubting your work, which goes with neuroticism and with worse ones (Stoeber and Otto, 2006). Nine of these ten statements are about the first part: noticing details, checking work and wanting it right.' },
+		{ q: 'How is perfectionism different from orderliness?', a: 'Orderliness is about tidiness, routines and plans for your surroundings; perfectionism here is about the quality and detail of the work itself. In the HEXACO model both sit under conscientiousness and they tend to go together, but a person can keep a messy desk and still check every figure in a report. The orderliness test measures the first.' },
 	],
 });

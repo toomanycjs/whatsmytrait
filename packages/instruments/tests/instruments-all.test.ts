@@ -33,6 +33,7 @@ const COUNTS: Record<string, [string, number, number][]> = {
 	'ipip-orderliness': [['T', 5, 5]],
 	'ipip-trust': [['T', 6, 4]],
 	'ipip-patience': [['T', 5, 5]],
+	'ipip-perfectionism': [['T', 8, 2]],
 	'ipip-curiosity': [['T', 7, 3]],
 	'ipip-perseverance': [['T', 5, 3]],
 	'ipip-creativity': [['T', 5, 3]],
@@ -93,3 +94,40 @@ describe('worked scoring examples', () => {
 		expect(r.complete).toBe(true);
 	});
 });
+
+// The perfectionism test (test release T1), checked against the IPIP-HEXACO
+// scoring key, https://ipip.ori.org/newHEXACO_PI_key.htm, 10 November 2026.
+describe('ipip-perfectionism', () => {
+	const inst = load('ipip-perfectionism');
+
+	it('has the ten items of the key page, with items 9 and 10 reverse keyed', () => {
+		expect(inst.items).toHaveLength(10);
+		expect(inst.items.filter((i) => i.key < 0).map((i) => i.n)).toEqual([9, 10]);
+		expect(inst.items[0].text).toBe('Pay attention to details.');
+		expect(inst.items[9].text).toBe('Prefer to just let things happen.');
+	});
+
+	it("states the IPIP scale's own alpha from the comparison table, not the HEXACO-PI figure", () => {
+		expect(inst.reliability?.T).toBe(0.72);
+		expect(inst.reliabilitySource).toContain('newHEXACO_PI_table.htm');
+	});
+
+	it('scores a worked response set: reversed items count 6 minus the answer', () => {
+		// Items 1 to 8 answered 4, 3, 5, 4, 2, 3, 4, 5 (sum 30); items 9 and 10
+		// answered 2 and 4, which reverse to 4 and 2. Total 36 of a possible 10 to 50.
+		const answers = [4, 3, 5, 4, 2, 3, 4, 5, 2, 4];
+		const responses: Responses = Object.fromEntries(answers.map((a, i) => [i + 1, a]));
+		const r = score(inst, responses).scales.T;
+		expect(r.raw).toBe(36);
+		expect(r.min).toBe(10);
+		expect(r.max).toBe(50);
+	});
+
+	it('shares no statement with the patience facet, which comes from the same key page', () => {
+		const patience = load('ipip-patience');
+		const texts = new Set(patience.items.map((i) => i.text));
+		expect(inst.items.some((i) => texts.has(i.text))).toBe(false);
+		expect(patience.reliability?.T).toBe(0.8);
+	});
+});
+

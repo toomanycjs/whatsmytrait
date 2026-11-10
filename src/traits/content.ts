@@ -44,6 +44,8 @@ export interface TraitContent {
 	items?: { text: string; line: string; reversed: boolean }[];
 	/** What the research says it predicts, each with its citation. */
 	predicts: { text: string; cite: Citation }[];
+	/** One sentence with one link, shown under the summary: { before, label, href, after }. */
+	seeAlso?: { before: string; label: string; href: string; after: string };
 	/** What it does not mean. Written before what it does. */
 	notMean: string[];
 	/** Population strips, usually the 120-item domain and the 50-item scale. */

@@ -101,7 +101,7 @@
 	},
 	"norms": null,
 	"reliability": {
-		"T": 0.88
+		"T": 0.8
 	},
-	"reliabilitySource": "Coefficient alpha as given on the key page, https://ipip.ori.org/newHEXACO_PI_key.htm, accessed 3 November 2026."
+	"reliabilitySource": "Coefficient alpha of the IPIP scale from the IPIP comparison table for the IPIP-HEXACO scales, https://ipip.ori.org/newHEXACO_PI_table.htm, accessed 10 November 2026. The table gives no sample size. The bracketed alpha beside the facet on the scoring key page belongs to the corresponding HEXACO-PI scale, not to these items."
 }

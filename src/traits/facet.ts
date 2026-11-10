@@ -32,6 +32,8 @@ export interface FacetSpec {
 	/** What each of the four items is getting at, one plain line per item in the data file's order. */
 	items: string[];
 	predicts: { text: string; cite: Citation }[];
+	/** One sentence with one link, shown under the summary. */
+	seeAlso?: { before: string; label: string; href: string; after: string };
 }
 
 /** An item as the instrument data file lists it. */
@@ -64,6 +66,7 @@ export function facet(spec: FacetSpec, all: FacetSpec[], instrumentItems: FacetI
 		subtitle: spec.publishedName ? `A facet of ${domainLower}, published as ${spec.publishedName}. Four items in the IPIP-NEO-120.` : `A facet of ${domainLower}. Four items in the IPIP-NEO-120.`,
 		breadcrumb: spec.name,
 		summary: spec.summary,
+		seeAlso: spec.seeAlso,
 		notMean: [...spec.notMean, SHORT_SCALE],
 		high: spec.high,
 		low: spec.low,

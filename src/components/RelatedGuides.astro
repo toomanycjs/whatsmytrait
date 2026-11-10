@@ -1,6 +1,7 @@
 ---
 // Every guide and comparison that points at this page: the one its test
-// button goes to, one of its three related links, or the strip's test. Built
+// button goes to, one of its three related links, the strip's test, or a
+// link in its text. Built
 // from the articles' own frontmatter, so a new guide links back from the
 // pages it cites without anyone editing them.
 import { getCollection } from 'astro:content';
@@ -17,7 +18,7 @@ const entries = [
 	...(await getCollection('compare', (e) => !e.data.draft)),
 ];
 const hits = entries
-	.filter((e) => e.data.test.href === href || e.data.strip?.testHref === href || e.data.related.some((r) => r.href === href))
+	.filter((e) => e.data.test.href === href || e.data.strip?.testHref === href || e.data.related.some((r) => r.href === href) || (e.body ?? '').includes(`](${href})`))
 	.map((e) => ({ href: `/${e.collection}/${e.id}/`, title: e.data.question ?? e.data.title }))
 	.sort((a, b) => a.title.localeCompare(b.title));
 ---

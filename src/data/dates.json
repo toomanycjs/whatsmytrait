@@ -106,7 +106,11 @@
 	},
 	"/tests/patience/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
+	},
+	"/tests/perfectionism/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
 	},
 	"/tests/perseverance/": {
 		"published": "2026-11-03",
@@ -238,7 +242,7 @@
 	},
 	"/traits/orderliness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-08"
+		"updated": "2026-11-10"
 	},
 	"/traits/self-consciousness/": {
 		"published": "2026-11-03",

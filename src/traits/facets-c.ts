@@ -26,6 +26,7 @@ export const FACETS_C: FacetSpec[] = [
 	},
 	{
 		id: 'C2', name: 'Orderliness', domain: 'C',
+		seeAlso: { before: 'Wanting the work itself exactly right, down to the last detail, is a separate habit; the ', label: 'perfectionism test', href: '/tests/perfectionism/', after: ' measures it.' },
 		summary: 'The second facet of conscientiousness is liking for tidiness and things in their place: putting things back, keeping a room clear, and taking pleasure in order. The site also measures it on its own with ten items. It is the surroundings side of conscientiousness, and the one people usually mean by perfectionism about their environment.',
 		notMean: [
 			'A low score is not laziness, and it is not a sign of poor work. Many untidy people are productive, punctual and reliable; the facet is about the state of their desk, not the state of their output. Order and industriousness are different sides of conscientiousness and vary separately.',
