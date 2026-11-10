@@ -13,7 +13,7 @@
 //
 // Usage: node scripts/lighthouse.mjs
 
-import { spawn } from 'node:child_process';
+import { serve } from './lib/serve.mjs';
 import { chromium } from '@playwright/test';
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse';
@@ -35,18 +35,10 @@ const PAGES = [
 	{ label: 'trait page', url: '/traits/extraversion/' },
 ];
 
-const server = spawn('npx', ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'], { shell: true, stdio: 'ignore' });
-async function waitForServer() {
-	for (let i = 0; i < 60; i++) {
-		try { const r = await fetch(`${BASE}/`); if (r.ok) return; } catch { /* not yet */ }
-		await new Promise((r) => setTimeout(r, 500));
-	}
-	throw new Error('preview server did not start');
-}
 
 let failed = false;
+const { stop } = await serve(PORT);
 try {
-	await waitForServer();
 	const chrome = await launch({ chromeFlags: ['--headless=new', '--no-sandbox'], chromePath: chromium.executablePath() });
 	const settings = {
 		port: chrome.port,
@@ -79,6 +71,6 @@ try {
 	}
 	await chrome.kill();
 } finally {
-	server.kill();
+	stop();
 }
 process.exit(failed ? 1 : 0);

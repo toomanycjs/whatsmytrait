@@ -6,7 +6,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { spawn } from 'node:child_process';
+import { serve } from './lib/serve.mjs';
 import { chromium } from '@playwright/test';
 
 const PORT = 4325;
@@ -22,18 +22,9 @@ function pages(dir = 'dist', out = []) {
 	return out;
 }
 
-const server = spawn('npx', ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'], { shell: true, stdio: 'ignore' });
-async function waitForServer() {
-	for (let i = 0; i < 60; i++) {
-		try { const r = await fetch(`${BASE}/`); if (r.ok) return; } catch { /* not yet */ }
-		await new Promise((r) => setTimeout(r, 500));
-	}
-	throw new Error('preview server did not start');
-}
-
 let total = 0;
+const { stop } = await serve(PORT);
 try {
-	await waitForServer();
 	const browser = await chromium.launch();
 	const page = await browser.newPage();
 	for (const path of pages()) {
@@ -50,6 +41,6 @@ try {
 	}
 	await browser.close();
 } finally {
-	server.kill();
+	stop();
 }
 process.exit(total ? 1 : 0);

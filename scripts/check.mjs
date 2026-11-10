@@ -11,6 +11,8 @@
 //      with sources, and the trust pages that carry one;
 //    - a licence line wherever an instrument is reproduced;
 //    - title tags under 60 characters;
+//    - a published date on every content and trust page (src/data/dates.json
+//      or the article's frontmatter), and no link text "Take this test";
 //    - trademarked test names only on /compare/ pages.
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -99,6 +101,9 @@ if (!existsSync('dist')) {
 		if ((isTest || path === '/licences/' || path === '/for-teachers-and-researchers/' || path.startsWith('/careers/')) && !html.includes('data-licence-line')) {
 			problems.push(`licence: ${path} has no licence line`);
 		}
+		const dated = content || ['/methodology/', '/licences/', '/about/', '/privacy/', '/for-teachers-and-researchers/', '/strengths/'].includes(path);
+		if (dated && !path.startsWith('/tests/which/') && !html.includes('data-published=')) problems.push(`dates: ${path} shows no published date (add it to src/data/dates.json or the frontmatter)`);
+		if (/>Take this test</.test(html)) problems.push(`link text: ${path} has a link reading "Take this test"; name the test`);
 		const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
 		if (title.length > 60) problems.push(`title: ${path} title is ${title.length} characters: ${title}`);
 		if (!path.startsWith('/compare/')) {

@@ -35,6 +35,10 @@ Results are scored and stored on the person's device. No sign-up, no email captu
   npm run typecheck, npm run check (wordlist, and on dist: orphans, sources boxes, licence lines, titles, trademarks),
   npm run lighthouse (mobile, four pages, performance 80 or above, the rest 95), npm run a11y (axe on every page). Build before check, lighthouse and a11y.
 - This repository uses npm workspaces, not pnpm.
+- Dates: articles take `pubDate` and `updatedDate` from their frontmatter; every other page takes
+  `published` and `updated` from `src/data/dates.json`. Both are edited by hand when a page changes in a
+  way a reader would notice, never at build. A new page needs an entry, or `npm run check` fails.
+- Bylines: `AUTHOR` in `src/consts.ts` ("the What's My Trait team", linking to /about/). The owner chose no personal name.
 
 ## Owner decisions
 Recorded in docs/decisions/. In force at the time of writing:

@@ -1,0 +1,271 @@
+{
+	"_note": "Published and updated dates for every page that is not a markdown article (articles use pubDate and updatedDate in their frontmatter). Edited by hand when a page changes in a way a reader would notice; never written by the build. The sitemap lastmod and each page's dates come from here.",
+	"/about/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-10"
+	},
+	"/careers/artistic/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/codes/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/conventional/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/enterprising/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/investigative/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/realistic/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/careers/social/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/for-teachers-and-researchers/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/licences/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-10"
+	},
+	"/methodology/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-10"
+	},
+	"/privacy/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/strengths/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/assertiveness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/big-five/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/big-five/short/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/career-interests/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/character-strengths/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/courage/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/creativity/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/curiosity/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/emotional-intelligence/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/emotional-stability/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/interpersonal-style/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/introvert-or-extrovert/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/orderliness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/patience/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/perseverance/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/quick/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/self-esteem/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/trust/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/tests/which/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/achievement-striving/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/activity-level/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/adventurousness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/agreeableness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/altruism/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/anger/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/artistic-interests/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/assertiveness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/cautiousness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/cheerfulness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/conscientiousness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/cooperation/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/dutifulness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/emotionality/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/excitement-seeking/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/extraversion/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/friendliness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/gregariousness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/imagination/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/immoderation/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/intellect/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/liberalism/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/low-mood/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/modesty/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/morality/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/neuroticism/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/openness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-03"
+	},
+	"/traits/orderliness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/self-consciousness/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/self-discipline/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/self-efficacy/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/sympathy/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/trust/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/vulnerability/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	},
+	"/traits/worry/": {
+		"published": "2026-11-03",
+		"updated": "2026-11-08"
+	}
+}

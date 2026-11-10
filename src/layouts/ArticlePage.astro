@@ -8,6 +8,8 @@ import { loadInstrument, loadNorms, scaleRange, strip } from '@site/instruments'
 import { SITE_URL } from '../consts';
 import { articleNode } from '../lib/schema';
 import JsonLd from '../components/JsonLd.astro';
+import PageMeta from '../components/PageMeta.astro';
+import { stripLinkText } from '../lib/strip-links';
 import Page from './Page.astro';
 import ipip120 from '@site/instruments/data/ipip-neo-120.json';
 import ipip120Norms from '@site/instruments/data/norms/ipip-neo-120.json';
@@ -47,7 +49,7 @@ const { Content } = await render(entry);
 	<JsonLd slot="head" nodes={[article]} />
 	<section class="page-head">
 		<div class="wrap row">
-			<div class="aside"><p class="section-name"><a href={`/${section}/`}>{sectionLabel}</a></p><p>{d.updatedDate ? `Updated ${d.updatedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}` : d.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p></div>
+			<div class="aside"><p class="section-name"><a href={`/${section}/`}>{sectionLabel}</a></p><PageMeta path={`/${section}/${entry.id}/`} /></div>
 			<div class="main">
 				<h1>{d.question ?? d.title}</h1>
 			</div>
@@ -67,7 +69,7 @@ const { Content } = await render(entry);
 					<div class="main wide">
 						<div data-strip-plot><Fragment set:html={stripHtml} /></div>
 						<p class="status" data-strip-note></p>
-						<p class="small"><a href={d.strip.testHref}>Take this test</a></p>
+						<p class="small"><a href={d.strip.testHref}>{stripLinkText(d.strip.testHref)}</a></p>
 					</div>
 				</div>
 			</div>

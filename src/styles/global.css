@@ -104,6 +104,9 @@ label.cell:focus-within, label.check:focus-within { outline: 3px solid var(--ink
 	.page-head .facts { margin-top: var(--s4); max-width: 24rem; }
 }
 .section-name { margin: 0 0 var(--s4); }
+.page-meta { font-size: var(--small); color: var(--quiet); }
+.page-meta p { margin: 0 0 var(--s1); }
+.page-meta a { color: inherit; }
 .section-name a { color: var(--quiet); text-decoration: none; }
 .section-name a:hover { text-decoration: underline; }
 .subtitle { font-size: var(--body); color: var(--quiet); margin: var(--s2) 0 var(--s4); }

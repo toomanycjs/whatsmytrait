@@ -3,6 +3,7 @@ title: "What a percentile means on a personality test"
 description: "The 72nd percentile means 72 in every 100 people in the comparison sample scored below you. What the common percentiles mean, and why the site uses them."
 question: "What does a percentile mean on a personality test?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-08
 test:
   href: /tests/big-five/short/
   label: Take the Big Five test

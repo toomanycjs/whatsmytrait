@@ -1,0 +1,28 @@
+---
+// The byline and dates in a content page's margin column: who wrote it
+// (AUTHOR in src/consts.ts) and when it was published
+// and last updated. Dates come from src/lib/lastmod.mjs, which reads the
+// article frontmatter or src/data/dates.json; nothing is dated at build.
+import { AUTHOR } from '../consts';
+import { datesFor } from '../lib/lastmod.mjs';
+
+interface Props {
+	/** The page's own path, with slashes. */
+	path: string;
+	/** Label for the updated date; the methodology uses "Last reviewed". */
+	updatedLabel?: string;
+}
+
+const { path, updatedLabel = 'Updated' } = Astro.props;
+const dates = datesFor(path) as { published: string; updated: string } | undefined;
+const longDate = (iso: string) => {
+	const [y, m, d] = iso.split('-').map(Number);
+	return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+};
+---
+
+<div class="page-meta">
+	{AUTHOR && <p class="byline">By <a href="/about/" rel="author">{AUTHOR.byline}</a></p>}
+	{dates && <p data-published={dates.published}>Published {longDate(dates.published)}</p>}
+	{dates && dates.updated !== dates.published && <p data-updated={dates.updated}>{updatedLabel} {longDate(dates.updated)}</p>}
+</div>

@@ -8,7 +8,7 @@ import { loadInstrument, loadNorms, minutes, screens, type Instrument, type Norm
 import Page from './Page.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import ReliabilityTable from '../components/ReliabilityTable.astro';
-import { lastmodByPath } from '../lib/lastmod.mjs';
+import PageMeta from '../components/PageMeta.astro';
 import type { TestContent } from '../tests/content';
 
 interface Props {
@@ -23,8 +23,6 @@ const norms: NormTable | null = normsData ? loadNorms(normsData, instrument) : n
 const group = content.normsGroup ?? 'all';
 const normGroup = norms ? norms.groups[group] : null;
 const mins = content.minutes ?? minutes(instrument);
-const updated = lastmodByPath().get(content.path) as string | undefined;
-const longDate = (iso: string) => { const [y, m, d] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); };
 const screenList = screens(instrument);
 const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 const labels = instrument.response.labels.map(sentence);
@@ -73,7 +71,7 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 		<div class="wrap row">
 			<div class="aside">
 				<p class="section-name"><a href="/tests/">Tests</a></p>
-				{updated && <p>Updated {longDate(updated)}</p>}
+				<PageMeta path={content.path} />
 			</div>
 			<div class="main">
 				<h1>{content.question}</h1>

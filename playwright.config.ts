@@ -12,7 +12,10 @@ export default defineConfig({
 		...devices['Desktop Chrome'],
 	},
 	webServer: {
-		command: 'npx astro preview --port 4323 --host 127.0.0.1',
+		// Astro's own entry point rather than `npx astro`: on Windows the npx
+		// wrapper leaves the server running when Playwright shuts it down, and
+		// the run never exits after the last test.
+		command: 'node node_modules/astro/bin/astro.mjs preview --port 4323 --host 127.0.0.1',
 		url: 'http://127.0.0.1:4323/',
 		reuseExistingServer: true,
 		timeout: 60_000,

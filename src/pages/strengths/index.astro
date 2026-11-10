@@ -5,6 +5,7 @@
 // high and low look like. Copy for high and low is the test page's, so the
 // two never drift; the items are the public-domain IPIP-VIA-R items.
 import Page from '../../layouts/Page.astro';
+import PageMeta from '../../components/PageMeta.astro';
 import { loadInstrument } from '@site/instruments';
 import viaData from '@site/instruments/data/ipip-via-r.json';
 import { characterStrengths } from '../../tests/character-strengths';
@@ -32,7 +33,7 @@ const slug = (id: string) => copy[id].name!.toLowerCase().replace(/[^a-z]+/g, '-
 <Page title="The 24 character strengths, one entry each" description="Each of the twenty-four character strengths the free 96-item test measures: its published name, the virtue it sits under, its four items, and what high and low look like." breadcrumb="Strengths">
 	<section class="page-head">
 		<div class="wrap row">
-			<div class="aside"><p class="section-name">Strengths</p></div>
+			<div class="aside"><p class="section-name">Strengths</p><PageMeta path="/strengths/" /></div>
 			<div class="main">
 				<h1>The 24 character strengths</h1>
 				<p class="subtitle">Six virtues, twenty-four strengths, four items each</p>

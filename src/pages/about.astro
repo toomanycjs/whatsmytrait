@@ -2,7 +2,10 @@
 // The owner's own words, set on 3 November 2026.
 import LongForm from '../layouts/LongForm.astro';
 
-const sections = [{ id: 'about', title: 'About' }];
+const sections = [
+	{ id: 'about', title: 'About' },
+	{ id: 'made', title: 'How this site is made' },
+];
 ---
 
 <LongForm title="About What's My Trait" description="What's My Trait shows you the best validated surveys around the world: free, interactive, scored on your own device, with the original work behind each one signposted." heading="About" subtitle="Why this site exists" sections={sections}>
@@ -11,5 +14,9 @@ const sections = [{ id: 'about', title: 'About' }];
 		<p>What's My Trait shows you the best validated surveys around the world. We got bored of personality quizzes that end with email forms, or endless amounts of data and faff, or clinical sites that leave you with a 20 page PDF.</p>
 		<p>Every test here is free to use and can be completed interactively at home on your phone or desktop. Any data inputted is only stored on your local device. It isn't stored by me or anybody else.</p>
 		<p>You'll get your results, some simple support to interpret them, and signposted to the original work behind the survey. Hope you enjoy.</p>
+	</section>
+	<section id="made">
+		<h2>How this site is made</h2>
+		<p>I build and run this site myself. I'm not a psychologist; I've spent the last few years building tools that score validated health questionnaires at <a href="https://www.postviralrecovery.com/" rel="noopener">postviralrecovery.com</a>, and this site applies the same approach to personality. I use AI tools to help write code and draft text. Every test is copied from its published scoring key and checked by automated tests, and I check every figure in the guides against the paper it cites before publishing.</p>
 	</section>
 </LongForm>

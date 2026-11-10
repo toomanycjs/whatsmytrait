@@ -3,7 +3,7 @@
 // any FAQ, and the WebSite node on the homepage; article pages add the Article
 // node. Each page outputs one @graph. No AggregateRating, no review markup.
 
-import { SECTIONS, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+import { SECTIONS, SITE_DESCRIPTION, SITE_TITLE, SITE_URL, AUTHOR } from '../consts';
 
 type Node = Record<string, unknown>;
 
@@ -81,7 +81,7 @@ export function articleNode(a: ArticleInput): Node {
 		dateModified: (a.modified ?? a.pubDate).toISOString(),
 		image: a.image,
 		mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
-		author: publisher,
+		author: AUTHOR ? { '@type': 'Organization', name: AUTHOR.name, url: `${SITE_URL}/about/` } : publisher,
 		publisher,
 	};
 }

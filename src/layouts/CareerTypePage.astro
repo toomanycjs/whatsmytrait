@@ -4,6 +4,7 @@
 // National Careers Service profile; which other types combine with it; the
 // test button; the O*NET credit line.
 import Page from './Page.astro';
+import PageMeta from '../components/PageMeta.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 import { NCS, ONET_CREDIT, type CareerTypeContent } from '../careers/content';
 
@@ -17,7 +18,7 @@ const { content } = Astro.props;
 <Page title={content.title} description={content.description} breadcrumb={content.breadcrumb}>
 	<section class="page-head">
 		<div class="wrap row">
-			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p></div>
+			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p><PageMeta path={content.path} /></div>
 			<div class="main">
 				<h1>{content.name}</h1>
 				<p class="subtitle">{content.subtitle}</p>

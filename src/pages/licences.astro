@@ -8,6 +8,7 @@ import { INSTRUMENTS } from '../lib/instruments';
 const sections = [
 	{ id: 'rules', title: 'The rules' },
 	{ id: 'instruments', title: 'Every instrument and its licence' },
+	{ id: 'datasets', title: 'The norm datasets' },
 	{ id: 'excluded', title: 'What is not used' },
 	{ id: 'site', title: 'This site' },
 ];
@@ -34,6 +35,16 @@ const sections = [
 				<p class="small quiet">Key: <a href={instrument.source.keyUrl} rel="noopener">{instrument.source.keyUrl}</a>, checked {instrument.source.accessed}.</p>
 			</Fragment>
 		))}
+	</section>
+
+	<section id="datasets">
+		<h2>The norm datasets</h2>
+		<p>The percentiles come from two public datasets of anonymous responses. The site publishes only counts made from them: how many people in each group gave each total score. No response is reproduced. Neither dataset states a licence, checked on 10 November 2026, so this page says what each source does state.</p>
+		<h3>IPIP-NEO-120 responses (Johnson)</h3>
+		<p>The data from Johnson (2014), published by the author on the Open Science Framework, where the project and the data component record no licence. Used for the 120-item Big Five, its facets, and the trait and facet pages. <a href="https://osf.io/wxvth/" rel="noopener">osf.io/wxvth</a>.</p>
+		<h3>IPIP Big-Five Factor Markers responses (Open-Source Psychometrics Project)</h3>
+		<p>The project's raw data page states no licence. It says the data from its tests are posted there for "general public edification", and that people were told at the start of the test that their answers would be used for research. Used for the 50-item Big Five and the second strip on the five trait pages. <a href="https://openpsychometrics.org/_rawdata/" rel="noopener">openpsychometrics.org/_rawdata</a>.</p>
+		<p>How each table was built, with the size of every group and the checksum of the file it came from, is on the <a href="/methodology/">methodology page</a>.</p>
 	</section>
 
 	<section id="excluded">

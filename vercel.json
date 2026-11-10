@@ -5,12 +5,12 @@
     {
       "source": "/traits/anxiety/",
       "destination": "/traits/worry/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/traits/depression/",
       "destination": "/traits/low-mood/",
-      "permanent": true
+      "statusCode": 301
     }
   ]
 }

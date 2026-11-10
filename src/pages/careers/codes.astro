@@ -4,6 +4,7 @@
 // linking to National Careers Service profiles. The selection method is in
 // src/careers/codes.ts.
 import Page from '../../layouts/Page.astro';
+import PageMeta from '../../components/PageMeta.astro';
 import { HOLLAND_CODES, ONET_BROWSE } from '../../careers/codes';
 import { NCS, ONET_CREDIT } from '../../careers/content';
 import { CAREER_TYPES } from '../../careers/registry';
@@ -15,7 +16,7 @@ const spell = (code: string) => code.split('').map((c) => typeName[c].toLowerCas
 <Page title="Holland codes: twenty three-letter codes and UK jobs" description="Twenty three-letter interest codes from the O*NET Interest Profiler, what each combination means, and up to five UK jobs for each, linked to National Careers Service profiles." breadcrumb="Codes">
 	<section class="page-head">
 		<div class="wrap row">
-			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p></div>
+			<div class="aside"><p class="section-name"><a href="/careers/">Careers</a></p><PageMeta path="/careers/codes/" /></div>
 			<div class="main">
 				<h1>Twenty Holland codes and UK jobs</h1>
 				<p class="subtitle">Your three highest interest areas, in order</p>

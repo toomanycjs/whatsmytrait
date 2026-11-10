@@ -14,10 +14,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lastmod": "node scripts/lastmod.mjs",
     "test": "vitest run",
     "typecheck": "astro check",
-    "e2e": "playwright test",
+    "e2e": "node scripts/e2e.mjs",
     "check": "node scripts/check.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
     "a11y": "node scripts/a11y.mjs"

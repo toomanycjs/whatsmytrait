@@ -1,21 +1,20 @@
-// Last-modified dates for every page, keyed by URL path, for the sitemap's
-// <lastmod> and the article JSON-LD's dateModified. Plain JS so that
-// astro.config.mjs and scripts/lastmod.mjs can import it as well as pages.
+// Published and updated dates for every page, keyed by URL path, for the
+// dates shown on each page, the article JSON-LD and the sitemap's <lastmod>.
+// Plain JS so that astro.config.mjs and scripts can import it as well as pages.
 //
-// For each page the first of these that exists wins:
-//   1. updatedDate in an article's frontmatter
-//   2. the lastReviewed constant in a page's frontmatter
-//   3. the git date in src/data/lastmod.json (run `npm run lastmod`)
-//   4. an article's pubDate
-// Index pages (the homepage, /tests/, /guides/ ...) then take the newest
-// date of anything beneath them.
+// Every date is a field someone edits by hand; nothing is written at build:
+//   - markdown articles (guides, compare): pubDate and updatedDate in the
+//     frontmatter;
+//   - every other page: src/data/dates.json, { published, updated } per path.
+// Index pages (the homepage, /tests/, /guides/ ...) take the newest updated
+// date of anything beneath them and show no date of their own.
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 const CONTENT = 'src/content';
-const PAGES = 'src/pages';
-const JSON_FILE = 'src/data/lastmod.json';
+const DATES_FILE = 'src/data/dates.json';
+const INDEXES = ['/', '/tests/', '/traits/', '/careers/', '/guides/', '/compare/'];
 
 function walk(dir) {
 	if (!existsSync(dir)) return [];
@@ -43,63 +42,52 @@ const isoDay = (value) => {
 	return Number.isNaN(d.valueOf()) ? undefined : d.toISOString().slice(0, 10);
 };
 
-/** Every page that has its own source file: { path, file, date? } */
-export function sourcePages() {
-	const pages = [];
+let cache;
+
+/** URL path to { published, updated } (YYYY-MM-DD) for every page that has dates. */
+export function datesByPath() {
+	if (cache) return cache;
+	const dates = new Map();
 
 	for (const section of existsSync(CONTENT) ? readdirSync(CONTENT) : []) {
 		for (const file of walk(join(CONTENT, section)).filter((f) => /\.mdx?$/.test(f))) {
 			const fm = frontmatter(readFileSync(file, 'utf8'));
 			if (fm.draft === 'true') continue;
 			const slug = posix(relative(join(CONTENT, section), file)).replace(/\.mdx?$/, '');
-			pages.push({
-				path: `/${section}/${slug}/`,
-				file: posix(file),
-				date: isoDay(fm.updatedDate ?? ''),
-				fallback: isoDay(fm.pubDate ?? ''),
-			});
+			const published = isoDay(fm.pubDate ?? '');
+			if (!published) continue;
+			dates.set(`/${section}/${slug}/`, { published, updated: isoDay(fm.updatedDate ?? '') ?? published });
 		}
 	}
 
-	for (const file of walk(PAGES).filter((f) => f.endsWith('.astro'))) {
-		const rel = posix(relative(PAGES, file)).replace(/\.astro$/, '');
-		if (rel.includes('[') || rel === '404') continue;
-		const reviewed = readFileSync(file, 'utf8').match(/const lastReviewed = '(\d{4}-\d{2}-\d{2})'/);
-		const path = rel === 'index' ? '/' : `/${rel.replace(/(^|\/)index$/, '')}/`.replace(/\/+/g, '/');
-		pages.push({ path, file: posix(file), date: reviewed?.[1] });
+	const table = existsSync(DATES_FILE) ? JSON.parse(readFileSync(DATES_FILE, 'utf8')) : {};
+	for (const [path, d] of Object.entries(table)) {
+		if (path.startsWith('_')) continue;
+		dates.set(path, { published: d.published, updated: d.updated ?? d.published });
 	}
 
-	// Test pages come from content files under src/tests, built by one dynamic
-	// route: each file's `path: '/tests/.../'` or `slug: '...'` names its page.
-	for (const file of walk('src/tests').filter((f) => f.endsWith('.ts'))) {
-		const text = readFileSync(file, 'utf8');
-		const paths = new Set();
-		for (const m of text.matchAll(/path: '(\/tests\/[^']+\/)'/g)) paths.add(m[1]);
-		for (const m of text.matchAll(/slug: '([^']+)'/g)) paths.add(`/tests/${m[1]}/`);
-		for (const path of paths) pages.push({ path, file: posix(file) });
-	}
-
-	return pages;
-}
-
-let cache;
-
-/** URL path to YYYY-MM-DD for every page. */
-export function lastmodByPath() {
-	if (cache) return cache;
-	const git = existsSync(JSON_FILE) ? JSON.parse(readFileSync(JSON_FILE, 'utf8')) : {};
-	const dates = new Map();
-	for (const p of sourcePages()) {
-		const date = p.date ?? git[p.path] ?? p.fallback;
-		if (date) dates.set(p.path, date);
-	}
 	// Index pages are as fresh as the newest page beneath them.
-	for (const [path] of [...dates]) {
-		if (!path.endsWith('/')) continue;
-		for (const [other, date] of dates) {
-			if (other.startsWith(path) && date > dates.get(path)) dates.set(path, date);
+	for (const index of INDEXES) {
+		let newest;
+		let first;
+		for (const [path, d] of dates) {
+			if (path === index || !path.startsWith(index)) continue;
+			if (!newest || d.updated > newest) newest = d.updated;
+			if (!first || d.published < first) first = d.published;
 		}
+		if (newest) dates.set(index, { published: first, updated: newest, index: true });
 	}
+
 	cache = dates;
 	return dates;
+}
+
+/** URL path to the updated date, for the sitemap. */
+export function lastmodByPath() {
+	return new Map([...datesByPath()].map(([path, d]) => [path, d.updated]));
+}
+
+/** The dates for one page, or undefined. */
+export function datesFor(path) {
+	return datesByPath().get(path);
 }

@@ -6,6 +6,12 @@ export const SITE_TITLE = "What's My Trait";
 export const SITE_URL = 'https://www.whatsmytrait.com';
 /** Google Analytics 4 measurement id, loaded in consent mode with storage denied (docs/decisions/0004-analytics.md). */
 export const GA_MEASUREMENT_ID = 'G-HCF4G9DD98';
+/**
+ * Who the byline credits, linking to /about/. The owner chose not to give a
+ * personal name (10 November 2026), so pages are by the team and the Article
+ * schema's author is an Organization with its url at /about/.
+ */
+export const AUTHOR: { name: string; byline: string } | null = { name: "What's My Trait team", byline: "the What's My Trait team" };
 export const SITE_DESCRIPTION =
 	'Free personality and interest tests from published, openly licensed instruments. Scored on your device, shown against real norms, with the reliability stated.';
 

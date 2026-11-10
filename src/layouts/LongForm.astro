@@ -4,6 +4,7 @@
 // reader, and sections of prose. Pass `sections` for the contents; each
 // section is a <section id="..."> in the slot with an h2.
 import Page from './Page.astro';
+import PageMeta from '../components/PageMeta.astro';
 
 interface Props {
 	title: string;
@@ -13,15 +14,17 @@ interface Props {
 	breadcrumb?: string;
 	sections: { id: string; title: string }[];
 	sectionName?: string;
+	/** Label for the updated date; the methodology uses "Last reviewed". */
+	updatedLabel?: string;
 }
 
-const { title, description, heading, subtitle, breadcrumb, sections, sectionName } = Astro.props;
+const { title, description, heading, subtitle, breadcrumb, sections, sectionName, updatedLabel } = Astro.props;
 ---
 
 <Page title={title} description={description} breadcrumb={breadcrumb ?? heading}>
 	<section class="page-head">
 		<div class="wrap row">
-			<div class="aside"><p class="section-name">{sectionName ?? 'About the site'}</p></div>
+			<div class="aside"><p class="section-name">{sectionName ?? 'About the site'}</p><PageMeta path={Astro.url.pathname} updatedLabel={updatedLabel} /></div>
 			<div class="main">
 				<h1>{heading}</h1>
 				{subtitle && <p class="subtitle">{subtitle}</p>}
