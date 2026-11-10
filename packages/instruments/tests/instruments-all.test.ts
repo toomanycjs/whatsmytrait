@@ -172,3 +172,37 @@ it('records the one spelling correction in the empathy scale', () => {
 	expect(JSON.parse(readFileSync(join(dir, 'ipip-empathy.json'), 'utf8')).items_note).toContain('spiritally');
 });
 
+// Test release T3: the Big Five Aspect Scales, against the IPIP key page and
+// table, 10 November 2026.
+describe('ipip-bfas', () => {
+	const inst = load('ipip-bfas');
+	const KEYS: Record<string, [number, number]> = {
+		NV: [6, 4], NW: [6, 4], AC: [5, 5], AP: [4, 6], CI: [4, 6], CO: [6, 4], EE: [5, 5], EA: [6, 4], OI: [6, 4], OO: [6, 4],
+	};
+
+	it('has 100 items, ten per aspect, keyed as the IPIP table counts them', () => {
+		expect(inst.items).toHaveLength(100);
+		for (const [id, [plus, minus]] of Object.entries(KEYS)) {
+			const its = inst.items.filter((i) => i.scale === id);
+			expect([id, its.filter((i) => i.key > 0).length, its.filter((i) => i.key < 0).length]).toEqual([id, plus, minus]);
+		}
+	});
+
+	it('scores each trait from its two aspects\' twenty items', () => {
+		const responses: Responses = Object.fromEntries(inst.items.map((i) => [i.n, 5]));
+		const r = score(inst, responses).scales;
+		// Every item answered 5: +keyed items score 5, -keyed items score 1.
+		expect(r.NV.raw).toBe(6 * 5 + 4 * 1);
+		expect(r.N.raw).toBe(r.NV.raw + r.NW.raw);
+		expect(r.A.raw).toBe(r.AC.raw + r.AP.raw);
+		expect(r.N.min).toBe(20);
+		expect(r.N.max).toBe(100);
+	});
+
+	it('gives the IPIP table alphas', () => {
+		expect(inst.reliability?.AP).toBe(0.75);
+		expect(inst.reliability?.N).toBe(0.89);
+		expect(inst.reliability?.OO).toBe(0.78);
+	});
+});
+

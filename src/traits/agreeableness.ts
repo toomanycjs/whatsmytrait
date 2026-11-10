@@ -8,6 +8,7 @@ export const agreeableness: TraitContent = {
 	name: 'Agreeableness',
 	subtitle: 'One of the Big Five.',
 	breadcrumb: 'Agreeableness',
+	seeAlso: [{ before: 'Between the trait and its six facets sit two broader aspects, compassion and politeness, measured in the ', label: 'Big Five aspects test', href: '/tests/big-five-aspects/', after: '.' }],
 	summary: 'Agreeableness is the tendency to put other people\'s interests and feelings on a level with your own: to trust, to help, to cooperate, to be modest and to sympathise. People high on it are warm and accommodating; people low on it are sceptical, competitive and blunt. It is the trait that most shapes how someone handles disagreement.',
 	notMean: [
 		'A low score does not mean being unkind, and it is not what the word disagreeable means in conversation. Low scorers are often loyal, fair and honest; they simply give less weight to other people\'s feelings when deciding what to say or do.',

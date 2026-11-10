@@ -1,0 +1,748 @@
+{
+	"id": "ipip-bfas",
+	"version": 1,
+	"name": "Big Five Aspect Scales",
+	"shortName": "BFAS",
+	"items_note": "Items copied character for character from https://ipip.ori.org/BFASKeys.htm, 10 November 2026, including its curly apostrophes and quotation marks and \"other’s\" in \"Can’t be bothered with other’s needs.\" Footnote letters a to d on the key page, which mark four items not given to the Eugene-Springfield sample, are not part of the items. The key page lists items by aspect without an administration order; the items here are interleaved across the ten aspects in round-robin order, +keyed items of each aspect first.",
+	"source": {
+		"paper": "DeYoung, C. G., Quilty, L. C., & Peterson, J. B. (2007). Between facets and domains: 10 aspects of the Big Five. Journal of Personality and Social Psychology, 93(5), 880-896",
+		"doi": "10.1037/0022-3514.93.5.880",
+		"keyUrl": "https://ipip.ori.org/BFASKeys.htm",
+		"scoringUrl": "https://ipip.ori.org/newScoringInstructions.htm",
+		"accessed": "2026-11-10"
+	},
+	"licence": {
+		"text": "Public domain (IPIP). Permission is granted automatically for any person to use IPIP items for any purpose, commercial or non-commercial.",
+		"url": "https://ipip.ori.org/newPermission.htm",
+		"credit": "International Personality Item Pool, https://ipip.ori.org/"
+	},
+	"instructions": "Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+	"response": {
+		"type": "likert",
+		"points": 5,
+		"labels": [
+			"Very Inaccurate",
+			"Moderately Inaccurate",
+			"Neither Accurate Nor Inaccurate",
+			"Moderately Accurate",
+			"Very Accurate"
+		]
+	},
+	"scales": [
+		{
+			"id": "N",
+			"name": "Neuroticism",
+			"facets": [
+				"NV",
+				"NW"
+			]
+		},
+		{
+			"id": "A",
+			"name": "Agreeableness",
+			"facets": [
+				"AC",
+				"AP"
+			]
+		},
+		{
+			"id": "C",
+			"name": "Conscientiousness",
+			"facets": [
+				"CI",
+				"CO"
+			]
+		},
+		{
+			"id": "E",
+			"name": "Extraversion",
+			"facets": [
+				"EE",
+				"EA"
+			]
+		},
+		{
+			"id": "O",
+			"name": "Openness/Intellect",
+			"facets": [
+				"OI",
+				"OO"
+			]
+		},
+		{
+			"id": "NV",
+			"name": "Volatility",
+			"parent": "N"
+		},
+		{
+			"id": "NW",
+			"name": "Withdrawal",
+			"parent": "N"
+		},
+		{
+			"id": "AC",
+			"name": "Compassion",
+			"parent": "A"
+		},
+		{
+			"id": "AP",
+			"name": "Politeness",
+			"parent": "A"
+		},
+		{
+			"id": "CI",
+			"name": "Industriousness",
+			"parent": "C"
+		},
+		{
+			"id": "CO",
+			"name": "Orderliness",
+			"parent": "C"
+		},
+		{
+			"id": "EE",
+			"name": "Enthusiasm",
+			"parent": "E"
+		},
+		{
+			"id": "EA",
+			"name": "Assertiveness",
+			"parent": "E"
+		},
+		{
+			"id": "OI",
+			"name": "Intellect",
+			"parent": "O"
+		},
+		{
+			"id": "OO",
+			"name": "Openness",
+			"parent": "O"
+		}
+	],
+	"items": [
+		{
+			"n": 1,
+			"text": "Get angry easily.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 2,
+			"text": "Am filled with doubts about things.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 3,
+			"text": "Feel others’ emotions.",
+			"scale": "AC",
+			"key": 1
+		},
+		{
+			"n": 4,
+			"text": "Respect authority.",
+			"scale": "AP",
+			"key": 1
+		},
+		{
+			"n": 5,
+			"text": "Carry out my plans.",
+			"scale": "CI",
+			"key": 1
+		},
+		{
+			"n": 6,
+			"text": "Like order.",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 7,
+			"text": "Make friends easily.",
+			"scale": "EE",
+			"key": 1
+		},
+		{
+			"n": 8,
+			"text": "Take charge.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 9,
+			"text": "Am quick to understand things.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 10,
+			"text": "Enjoy the beauty of nature.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 11,
+			"text": "Get upset easily.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 12,
+			"text": "Feel threatened easily.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 13,
+			"text": "Inquire about others’ well-being.",
+			"scale": "AC",
+			"key": 1
+		},
+		{
+			"n": 14,
+			"text": "Hate to seem pushy.",
+			"scale": "AP",
+			"key": 1
+		},
+		{
+			"n": 15,
+			"text": "Finish what I start.",
+			"scale": "CI",
+			"key": 1
+		},
+		{
+			"n": 16,
+			"text": "Keep things tidy.",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 17,
+			"text": "Warm up quickly to others.",
+			"scale": "EE",
+			"key": 1
+		},
+		{
+			"n": 18,
+			"text": "Have a strong personality.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 19,
+			"text": "Can handle a lot of information.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 20,
+			"text": "Believe in the importance of art.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 21,
+			"text": "Change my mood a lot.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 22,
+			"text": "Worry about things.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 23,
+			"text": "Sympathize with others’ feelings.",
+			"scale": "AC",
+			"key": 1
+		},
+		{
+			"n": 24,
+			"text": "Avoid imposing my will on others.",
+			"scale": "AP",
+			"key": 1
+		},
+		{
+			"n": 25,
+			"text": "Get things done quickly.",
+			"scale": "CI",
+			"key": 1
+		},
+		{
+			"n": 26,
+			"text": "Follow a schedule.",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 27,
+			"text": "Show my feelings when I’m happy.",
+			"scale": "EE",
+			"key": 1
+		},
+		{
+			"n": 28,
+			"text": "Know how to captivate people.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 29,
+			"text": "Like to solve complex problems.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 30,
+			"text": "Love to reflect on things.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 31,
+			"text": "Am a person whose moods go up and down easily.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 32,
+			"text": "Am easily discouraged.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 33,
+			"text": "Take an interest in other people’s lives.",
+			"scale": "AC",
+			"key": 1
+		},
+		{
+			"n": 34,
+			"text": "Rarely put people under pressure.",
+			"scale": "AP",
+			"key": 1
+		},
+		{
+			"n": 35,
+			"text": "Always know what I am doing.",
+			"scale": "CI",
+			"key": 1
+		},
+		{
+			"n": 36,
+			"text": "Want everything to be “just right.”",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 37,
+			"text": "Have a lot of fun.",
+			"scale": "EE",
+			"key": 1
+		},
+		{
+			"n": 38,
+			"text": "See myself as a good leader.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 39,
+			"text": "Have a rich vocabulary.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 40,
+			"text": "Get deeply immersed in music.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 41,
+			"text": "Get easily agitated.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 42,
+			"text": "Become overwhelmed by events.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 43,
+			"text": "Like to do things for others.",
+			"scale": "AC",
+			"key": 1
+		},
+		{
+			"n": 44,
+			"text": "Insult people.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 45,
+			"text": "Waste my time.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 46,
+			"text": "See that rules are observed.",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 47,
+			"text": "Laugh a lot.",
+			"scale": "EE",
+			"key": 1
+		},
+		{
+			"n": 48,
+			"text": "Can talk others into doing things.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 49,
+			"text": "Think quickly.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 50,
+			"text": "See beauty in things that others might not notice.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 51,
+			"text": "Can be stirred up easily.",
+			"scale": "NV",
+			"key": 1
+		},
+		{
+			"n": 52,
+			"text": "Am afraid of many things.",
+			"scale": "NW",
+			"key": 1
+		},
+		{
+			"n": 53,
+			"text": "Am not interested in other people’s problems.",
+			"scale": "AC",
+			"key": -1
+		},
+		{
+			"n": 54,
+			"text": "Believe that I am better than others.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 55,
+			"text": "Find it difficult to get down to work.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 56,
+			"text": "Want every detail taken care of.",
+			"scale": "CO",
+			"key": 1
+		},
+		{
+			"n": 57,
+			"text": "Am hard to get to know.",
+			"scale": "EE",
+			"key": -1
+		},
+		{
+			"n": 58,
+			"text": "Am the first to act.",
+			"scale": "EA",
+			"key": 1
+		},
+		{
+			"n": 59,
+			"text": "Formulate ideas clearly.",
+			"scale": "OI",
+			"key": 1
+		},
+		{
+			"n": 60,
+			"text": "Need a creative outlet.",
+			"scale": "OO",
+			"key": 1
+		},
+		{
+			"n": 61,
+			"text": "Rarely get irritated.",
+			"scale": "NV",
+			"key": -1
+		},
+		{
+			"n": 62,
+			"text": "Seldom feel blue.",
+			"scale": "NW",
+			"key": -1
+		},
+		{
+			"n": 63,
+			"text": "Can’t be bothered with other’s needs.",
+			"scale": "AC",
+			"key": -1
+		},
+		{
+			"n": 64,
+			"text": "Take advantage of others.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 65,
+			"text": "Mess things up.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 66,
+			"text": "Leave my belongings around.",
+			"scale": "CO",
+			"key": -1
+		},
+		{
+			"n": 67,
+			"text": "Keep others at a distance.",
+			"scale": "EE",
+			"key": -1
+		},
+		{
+			"n": 68,
+			"text": "Do not have an assertive personality.",
+			"scale": "EA",
+			"key": -1
+		},
+		{
+			"n": 69,
+			"text": "Have difficulty understanding abstract ideas.",
+			"scale": "OI",
+			"key": -1
+		},
+		{
+			"n": 70,
+			"text": "Do not like poetry.",
+			"scale": "OO",
+			"key": -1
+		},
+		{
+			"n": 71,
+			"text": "Keep my emotions under control.",
+			"scale": "NV",
+			"key": -1
+		},
+		{
+			"n": 72,
+			"text": "Feel comfortable with myself.",
+			"scale": "NW",
+			"key": -1
+		},
+		{
+			"n": 73,
+			"text": "Am indifferent to the feelings of others.",
+			"scale": "AC",
+			"key": -1
+		},
+		{
+			"n": 74,
+			"text": "Seek conflict.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 75,
+			"text": "Don’t put my mind on the task at hand.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 76,
+			"text": "Am not bothered by messy people.",
+			"scale": "CO",
+			"key": -1
+		},
+		{
+			"n": 77,
+			"text": "Reveal little about myself.",
+			"scale": "EE",
+			"key": -1
+		},
+		{
+			"n": 78,
+			"text": "Lack the talent for influencing people.",
+			"scale": "EA",
+			"key": -1
+		},
+		{
+			"n": 79,
+			"text": "Avoid philosophical discussions.",
+			"scale": "OI",
+			"key": -1
+		},
+		{
+			"n": 80,
+			"text": "Seldom get lost in thought.",
+			"scale": "OO",
+			"key": -1
+		},
+		{
+			"n": 81,
+			"text": "Rarely lose my composure.",
+			"scale": "NV",
+			"key": -1
+		},
+		{
+			"n": 82,
+			"text": "Rarely feel depressed.",
+			"scale": "NW",
+			"key": -1
+		},
+		{
+			"n": 83,
+			"text": "Take no time for others.",
+			"scale": "AC",
+			"key": -1
+		},
+		{
+			"n": 84,
+			"text": "Love a good fight.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 85,
+			"text": "Postpone decisions.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 86,
+			"text": "Am not bothered by disorder.",
+			"scale": "CO",
+			"key": -1
+		},
+		{
+			"n": 87,
+			"text": "Rarely get caught up in the excitement.",
+			"scale": "EE",
+			"key": -1
+		},
+		{
+			"n": 88,
+			"text": "Wait for others to lead the way.",
+			"scale": "EA",
+			"key": -1
+		},
+		{
+			"n": 89,
+			"text": "Avoid difficult reading material.",
+			"scale": "OI",
+			"key": -1
+		},
+		{
+			"n": 90,
+			"text": "Seldom daydream.",
+			"scale": "OO",
+			"key": -1
+		},
+		{
+			"n": 91,
+			"text": "Am not easily annoyed.",
+			"scale": "NV",
+			"key": -1
+		},
+		{
+			"n": 92,
+			"text": "Am not embarrassed easily.",
+			"scale": "NW",
+			"key": -1
+		},
+		{
+			"n": 93,
+			"text": "Don’t have a soft side.",
+			"scale": "AC",
+			"key": -1
+		},
+		{
+			"n": 94,
+			"text": "Am out for my own personal gain.",
+			"scale": "AP",
+			"key": -1
+		},
+		{
+			"n": 95,
+			"text": "Am easily distracted.",
+			"scale": "CI",
+			"key": -1
+		},
+		{
+			"n": 96,
+			"text": "Dislike routine.",
+			"scale": "CO",
+			"key": -1
+		},
+		{
+			"n": 97,
+			"text": "Am not a very enthusiastic person.",
+			"scale": "EE",
+			"key": -1
+		},
+		{
+			"n": 98,
+			"text": "Hold back my opinions.",
+			"scale": "EA",
+			"key": -1
+		},
+		{
+			"n": 99,
+			"text": "Learn things slowly.",
+			"scale": "OI",
+			"key": -1
+		},
+		{
+			"n": 100,
+			"text": "Seldom notice the emotional aspects of paintings and pictures.",
+			"scale": "OO",
+			"key": -1
+		}
+	],
+	"scoring": {
+		"method": "sum",
+		"reverse": "points+1-x"
+	},
+	"norms": null,
+	"reliability": {
+		"N": 0.89,
+		"A": 0.84,
+		"C": 0.84,
+		"E": 0.85,
+		"O": 0.85,
+		"NV": 0.85,
+		"NW": 0.84,
+		"AC": 0.84,
+		"AP": 0.75,
+		"CI": 0.81,
+		"CO": 0.8,
+		"EE": 0.81,
+		"EA": 0.85,
+		"OI": 0.84,
+		"OO": 0.78
+	},
+	"reliabilitySource": "Coefficient alpha for each 10-item aspect scale and each combined 20-item domain scale from the IPIP table for the Big Five Aspect Scales, https://ipip.ori.org/BFASTable.htm, accessed 10 November 2026. The table gives no sample size; the key page notes that four items (two politeness, one enthusiasm, one assertiveness) were not given to the Eugene-Springfield sample."
+}

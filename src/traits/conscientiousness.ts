@@ -8,6 +8,7 @@ export const conscientiousness: TraitContent = {
 	name: 'Conscientiousness',
 	subtitle: 'One of the Big Five.',
 	breadcrumb: 'Conscientiousness',
+	seeAlso: [{ before: 'Between the trait and its six facets sit two broader aspects, industriousness and orderliness, measured in the ', label: 'Big Five aspects test', href: '/tests/big-five-aspects/', after: '.' }],
 	summary: 'Conscientiousness is the tendency to be organised, persistent, careful and dutiful: to plan, to finish, to keep things in order and to think before acting. It is the Big Five trait with the broadest record of predicting how people do at work and how long they live, and the one most people wish they had more of.',
 	notMean: [
 		'A high score is not a verdict on talent, and a low score is not laziness. The scale measures how people organise their effort, not how much they have or how good the result is. Many low scorers do excellent work when it interests them, in bursts, late.',

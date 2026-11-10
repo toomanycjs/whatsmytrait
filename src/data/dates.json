@@ -56,6 +56,10 @@
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
 	},
+	"/tests/big-five-aspects/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
+	},
 	"/tests/big-five/": {
 		"published": "2026-11-03",
 		"updated": "2026-11-03"
@@ -174,7 +178,7 @@
 	},
 	"/traits/agreeableness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/altruism/": {
 		"published": "2026-11-03",
@@ -202,7 +206,7 @@
 	},
 	"/traits/conscientiousness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/cooperation/": {
 		"published": "2026-11-03",
@@ -262,11 +266,11 @@
 	},
 	"/traits/neuroticism/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/openness/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/traits/orderliness/": {
 		"published": "2026-11-03",

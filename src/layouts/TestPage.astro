@@ -31,6 +31,13 @@ const copyFor = (id: string) => content.scales[id];
 // Names shown for every scale: the content's copy name, else the content's
 // override for facets, else the data file's name.
 const names: Record<string, string> = Object.fromEntries(instrument.scales.map((s) => [s.id, copyFor(s.id)?.name ?? content.scaleNames?.[s.id] ?? s.name]));
+// The statements, explained: one list per scale that has items, in the
+// instrument's scale order, so a many-scale test reads aspect by aspect.
+const statementGroups = content.statements
+	? instrument.scales
+			.map((s) => ({ name: names[s.id], items: instrument.items.filter((it) => it.scale === s.id && content.statements![it.n]) }))
+			.filter((g) => g.items.length > 0)
+	: [];
 const published = Object.entries(instrument.reliability ?? {});
 const alphaRange = published.length
 	? (() => { const v = published.map(([, a]) => a); const lo = Math.min(...v).toFixed(2); const hi = Math.max(...v).toFixed(2); return lo === hi ? lo : `${lo} to ${hi}`; })()
@@ -215,15 +222,20 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 				<div class="aside"><h2>The statements, explained</h2></div>
 				<div class="main">
 					<p>Each statement is rated from very inaccurate to very accurate as a description of yourself, and the score is their sum. Under each statement is which way it scores and a plain line on what it asks.</p>
-					<ul class="statements">
-						{instrument.items.filter((it) => content.statements![it.n]).map((it) => (
-							<li>
-								<em>{it.text}</em>
-								<span class="quiet">Agreeing {it.key > 0 ? 'raises' : 'lowers'} your {names[it.scale].toLowerCase()} score.</span>
-								<span>{content.statements![it.n]}</span>
-							</li>
-						))}
-					</ul>
+					{statementGroups.map((g) => (
+						<Fragment>
+							{statementGroups.length > 1 && <h3>{g.name}</h3>}
+							<ul class="statements">
+								{g.items.map((it) => (
+									<li>
+										<em>{it.text}</em>
+										<span class="quiet">Agreeing {it.key > 0 ? 'raises' : 'lowers'} your {names[it.scale].toLowerCase()} score.</span>
+										<span>{content.statements![it.n]}</span>
+									</li>
+								))}
+							</ul>
+						</Fragment>
+					))}
 				</div>
 			</div>
 		</section>
@@ -239,7 +251,7 @@ const clientJson = JSON.stringify(clientData).replace(/</g, '\\u003c');
 						{domainRows.length > 0 && <ReliabilityTable rows={domainRows} hasPublished={hasPublished} hasComputed={hasComputed} />}
 						{facetRows.length > 0 && (
 							<details>
-								<summary>{facetRows.length} facet scales</summary>
+								<summary>{facetRows.length} {content.subscaleWord ?? 'facet'} scales</summary>
 								<ReliabilityTable rows={facetRows} hasPublished={hasPublished} hasComputed={hasComputed} />
 							</details>
 						)}

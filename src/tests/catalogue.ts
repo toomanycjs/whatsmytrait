@@ -49,6 +49,12 @@ export const TEST_GROUPS: TestGroup[] = [
 		],
 	},
 	{
+		name: 'Go deeper than the Big Five',
+		tests: [
+			entry({ title: 'The Big Five aspects test', href: '/tests/big-five-aspects/', why: 'Ten aspects, two under each trait, a hundred statements.' }),
+		],
+	},
+	{
 		name: 'What suits me',
 		tests: [
 			entry({ title: 'What kind of work would I enjoy?', href: '/tests/career-interests/', why: 'Six interest areas and your three-letter code, mapped to UK jobs.' }),

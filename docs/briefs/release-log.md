@@ -39,3 +39,11 @@ Added: /tests/locus-of-control/ (IPIP Total Locus of Control scale keyed to Leve
 Changed: /traits/self-efficacy/ and /tests/need-for-cognition/ each gain a sentence linking to the test; listed under "For coursework" on /tests/.
 
 Searches targeted: locus of control test, internal or external locus of control, locus of control quiz, Levenson locus of control scale.
+
+## 10 November 2026: test release T3, the Big Five aspects test
+
+Added: /tests/big-five-aspects/ (Big Five Aspect Scales, DeYoung, Quilty and Peterson, 2007: 100 items, ten aspects under five traits; alphas from the IPIP table, aspects .75 to .85, traits .84 to .89; raw scores, no norms). The statements are interleaved across the aspects (the key page gives no order) and "The statements, explained" is grouped by aspect.
+
+Changed: each of the five trait pages gains a sentence naming its two aspects and linking to the test; /tests/ gains a "Go deeper than the Big Five" group.
+
+Searches targeted: Big Five aspects test, Big Five aspect scales, BFAS test, 10 aspects of the Big Five, volatility and withdrawal, compassion and politeness, industriousness and orderliness, enthusiasm and assertiveness, intellect and openness.

@@ -7,6 +7,8 @@ import { expect, test, type Page } from '@playwright/test';
 const TESTS = [
 	{ path: '/tests/big-five/short/', items: 50, domains: 5, facets: 0 },
 	{ path: '/tests/big-five/', items: 120, domains: 5, facets: 30 },
+	{ path: '/tests/big-five-aspects/', items: 100, domains: 5, facets: 10 },
+	{ path: '/tests/big-five-aspects/', items: 100, domains: 5, facets: 10, phone: true },
 	{ path: '/tests/quick/', items: 10, domains: 5, facets: 0 },
 	{ path: '/tests/self-esteem/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/introvert-or-extrovert/', items: 20, domains: 1, facets: 0 },
@@ -62,8 +64,8 @@ for (const t of TESTS as { path: string; items: number; domains: number; facets:
 		await expect(results).toBeVisible();
 		await expect(results.locator('.result .strip-domain')).toHaveCount(t.domains);
 		await expect(results.locator('.result .strip-facet')).toHaveCount(t.facets);
-		if (t.path.startsWith('/tests/big-five')) await expect(results.locator('.strip-domain .pct').first()).toHaveText(/^\d+(st|nd|rd|th)$/);
-		else await expect(results.locator('.strip-no-norms')).toHaveCount(t.domains);
+		if (t.path === '/tests/big-five/' || t.path === '/tests/big-five/short/') await expect(results.locator('.strip-domain .pct').first()).toHaveText(/^\d+(st|nd|rd|th)$/);
+		else await expect(results.locator('.strip-no-norms')).toHaveCount(t.domains + t.facets);
 		await expect(results.locator('.means em')).toHaveCount(t.domains);
 
 		// The result is restored from this device on reload.

@@ -8,6 +8,7 @@ export const openness: TraitContent = {
 	name: 'Openness to experience',
 	subtitle: 'One of the Big Five. Called intellect or imagination in the 50-item markers.',
 	breadcrumb: 'Openness',
+	seeAlso: [{ before: 'Between the trait and its six facets sit two broader aspects, intellect and openness, measured in the ', label: 'Big Five aspects test', href: '/tests/big-five-aspects/', after: '.' }],
 	summary: 'Openness to experience is the breadth of a person\'s appetite for ideas, art, feelings, novelty and variety. People high on it are curious and imaginative and like the unfamiliar; people low on it prefer the practical, the proven and the plain. It is the trait that most reliably separates people who seek out the new from people who are content with what works.',
 	notMean: [
 		'It is not intelligence. The scale asks what people enjoy and how they see themselves, not how well they think, and the overlap with measured ability is modest. Nor is a low score a lack of imagination in any useful sense: practical people solve problems every day, they just do not describe themselves as dreamers.',

@@ -8,6 +8,7 @@ export const neuroticism: TraitContent = {
 	name: 'Neuroticism',
 	subtitle: 'One of the Big Five. The 50-item markers score the same trait the other way up, as emotional stability.',
 	breadcrumb: 'Neuroticism',
+	seeAlso: [{ before: 'Between the trait and its six facets sit two broader aspects, volatility and withdrawal, measured in the ', label: 'Big Five aspects test', href: '/tests/big-five-aspects/', after: '.' }],
 	summary: 'Neuroticism is how readily negative feelings arise and how long they last: worry, irritation, low mood, self-consciousness and the sense of being overwhelmed. Emotional stability is the same scale read from the other end. High scorers feel setbacks keenly and take longer to settle; low scorers stay calm and recover quickly. It is a tendency everyone has to some degree, and the average person sits in the middle.',
 	notMean: [
 		'A high score is not a diagnosis of anything, and the scale does not test for any condition. It describes how often and how strongly feelings arise in ordinary life, measured by self-report, across a whole population. Most people with high scores live ordinary lives, and sensitivity brings its own strengths: noticing problems early, taking care, feeling for others.',
