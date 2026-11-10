@@ -10,6 +10,7 @@ const hexacoAlpha = (a: string) => `The IPIP comparison table for the IPIP-HEXAC
 export const introvertOrExtrovert = singleTrait({
 	instrument: 'ipip-extraversion-20',
 	slug: 'introvert-or-extrovert',
+	seeAlso: [{ before: 'Introversion is not shyness: feeling uneasy with people you do not know is a separate tendency, measured by the ', label: 'shyness test', href: '/tests/shyness/', after: '.' }],
 	minutes: 2,
 	guide: { href: '/guides/introversion-is-not-shyness/', title: 'Is introversion the same as shyness?', note: 'The guide written for this test.' },
 	title: 'Introvert or extrovert? A free 20-item test, 2 minutes',

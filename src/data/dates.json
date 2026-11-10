@@ -102,7 +102,7 @@
 	},
 	"/tests/introvert-or-extrovert/": {
 		"published": "2026-11-03",
-		"updated": "2026-11-03"
+		"updated": "2026-11-10"
 	},
 	"/tests/leadership/": {
 		"published": "2026-11-10",
@@ -141,6 +141,10 @@
 		"updated": "2026-11-03"
 	},
 	"/tests/self-monitoring/": {
+		"published": "2026-11-10",
+		"updated": "2026-11-10"
+	},
+	"/tests/shyness/": {
 		"published": "2026-11-10",
 		"updated": "2026-11-10"
 	},

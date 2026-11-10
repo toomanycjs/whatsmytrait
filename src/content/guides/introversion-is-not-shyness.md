@@ -3,6 +3,7 @@ title: "Is introversion the same as shyness?"
 description: "No. Introversion is a preference for less stimulation and smaller company; shyness is discomfort around people. The two are only modestly related and many people have one without the other."
 question: "Is introversion the same as shyness?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-10
 test:
   href: /tests/introvert-or-extrovert/
   label: Take the introvert or extrovert test
@@ -38,6 +39,6 @@ A low extraversion score does not mean fear of people, and it does not mean poor
 
 ## What it means for your results
 
-If your extraversion score is low and company does not make you tense, the score is describing a preference. If company makes you tense and you still want it, that is the shy and sociable pattern Cheek and Buss described, and an extraversion score alone will not show it; the self-consciousness facet under neuroticism in the 120-item test is the closer measure. Read the score as how much company you seek, not how you feel once you are in it.
+If your extraversion score is low and company does not make you tense, the score is describing a preference. If company makes you tense and you still want it, that is the shy and sociable pattern Cheek and Buss described, and an extraversion score alone will not show it. The [shyness test](/tests/shyness/) measures that unease with strangers directly, and the self-consciousness facet under neuroticism in the 120-item test is close to it. Read the score as how much company you seek, not how you feel once you are in it.
 
 The introvert or extrovert test takes three minutes and places you on the single scale. The Big Five test adds the six facets of extraversion and the self-consciousness facet beside them.

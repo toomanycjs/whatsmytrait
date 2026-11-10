@@ -411,3 +411,12 @@ single('ipip-self-monitoring', 'Self-monitoring', 'Self-Monitoring, IPIP scale s
        ['Hate being the center of attention.', 'Would not be a good comedian.', "Don't like to draw attention to myself."],
        accessed='2026-11-10', doi='10.1037/h0037039',
        reliability_source=f'Coefficient alpha as given on the single-construct scoring key page, {SINGLE_KEY}, and in the comparison table, {SINGLE_TABLE}, which says the IPIP and original scales were both given to the Eugene-Springfield Community Sample; accessed 10 November 2026.')
+
+# ── Test release T4 (10 November 2026): shyness, the TCI-keyed Social
+# Discomfort scale (HA3), chosen by the owner. Alpha and sample from the
+# comparison table, newTCITable.htm, saved in docs/sources/ipip/.
+single('ipip-shyness', 'Shyness', 'HA3: Social Discomfort, IPIP scale similar to the TCI', "IPIP scales measuring constructs similar to those in Cloninger's Temperament and Character Inventory (Cloninger, Przybeck, Svrakic, & Wetzel, 1994), International Personality Item Pool", 'https://ipip.ori.org/newTCIKey.htm', 0.86,
+       ['Often feel uncomfortable around others.', 'Find it difficult to approach others.', 'Only feel comfortable with friends.', 'Am quiet around strangers.', 'Am apprehensive about new encounters.'],
+       ['Feel comfortable around people.', 'Talk to a lot of different people at parties.', 'Am not bothered by difficult social situations.', 'Act comfortably with others.', 'Am comfortable in unfamiliar situations.'],
+       accessed='2026-11-10',
+       reliability_source='Coefficient alpha of the IPIP scale from the IPIP comparison table, https://ipip.ori.org/newTCITable.htm, accessed 10 November 2026: 501 adults in the Eugene-Springfield Community Sample. The table pairs it with the inventory scale named shyness with strangers (correlation .81).')

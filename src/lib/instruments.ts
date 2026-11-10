@@ -33,6 +33,7 @@ export const TEST_PATHS: Record<string, string> = {
 	'ipip-patience': '/tests/patience/',
 	'ipip-perfectionism': '/tests/perfectionism/',
 	'ipip-empathy': '/tests/empathy/',
+	'ipip-shyness': '/tests/shyness/',
 	'ipip-leadership': '/tests/leadership/',
 	'ipip-optimism': '/tests/optimism/',
 	'ipip-need-for-cognition': '/tests/need-for-cognition/',

@@ -14,6 +14,8 @@ const TESTS = [
 	{ path: '/tests/patience/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/perfectionism/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/perfectionism/', items: 10, domains: 1, facets: 0, phone: true },
+	{ path: '/tests/shyness/', items: 10, domains: 1, facets: 0 },
+	{ path: '/tests/shyness/', items: 10, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/empathy/', items: 10, domains: 1, facets: 0 },
 	{ path: '/tests/empathy/', items: 10, domains: 1, facets: 0, phone: true },
 	{ path: '/tests/leadership/', items: 7, domains: 1, facets: 0 },

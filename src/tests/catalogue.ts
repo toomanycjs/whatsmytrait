@@ -61,6 +61,7 @@ export const TEST_GROUPS: TestGroup[] = [
 			entry({ title: 'How patient am I?', href: '/tests/patience/', why: 'How much it takes to make you angry.' }),
 			entry({ title: 'How curious am I?', href: '/tests/curiosity/', why: 'Finding the world interesting.' }),
 			entry({ title: 'Do I finish what I start?', href: '/tests/perseverance/', why: 'Perseverance, inside conscientiousness.' }),
+			entry({ title: 'Am I shy?', href: '/tests/shyness/', why: 'How at ease you feel with people you do not know.' }),
 			entry({ title: 'Empathy test', href: '/tests/empathy/', why: 'How strongly other people\'s feelings move you.' }),
 			entry({ title: 'Am I a leader?', href: '/tests/leadership/', why: 'Bringing a group together and leading it fairly.' }),
 			entry({ title: 'Optimism test', href: '/tests/optimism/', why: 'How much you expect things to turn out well.' }),

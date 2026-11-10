@@ -237,3 +237,48 @@ export const selfMonitoring = singleTrait({
 		COURSEWORK('Snyder, M. (1974). Self-monitoring of expressive behavior. Journal of Personality and Social Psychology, 30(4), 526-537'),
 	],
 });
+
+export const shyness = singleTrait({
+	instrument: 'ipip-shyness',
+	slug: 'shyness',
+	minutes: 2,
+	title: 'Am I shy? A free shyness test, scored on your device',
+	description: 'Public-domain statements on how comfortable you feel with people you do not know. A free shyness test that takes about two minutes.',
+	question: 'Am I shy?',
+	subtitle: 'IPIP social discomfort scale, 10 items, 2 minutes',
+	breadcrumb: 'Shyness',
+	traitPath: '/guides/introversion-is-not-shyness/',
+	traitTitle: 'Is introversion the same as shyness?',
+	scale: {
+		name: 'Shyness',
+		means: {
+			low: 'You tend to feel at ease with people, including people you do not know.',
+			mid: 'You are at ease with people in some settings and wary in others.',
+			high: 'You tend to feel wary and ill at ease with people you do not know well.',
+		},
+		high: 'People who score high say they often feel uncomfortable around others, find it difficult to approach people, are quiet around strangers and only feel comfortable with friends. In daily life that shows as hanging back at a party, rehearsing a phone call before making it, and taking a while to warm up in a new group. Shyness is wariness with unfamiliar people, not a dislike of them: many shy people enjoy company once they feel at home in it.',
+		low: 'People who score low say they feel comfortable around people, talk to many different people at parties and are at ease in unfamiliar situations. In daily life that shows as starting conversations with strangers, settling quickly into a new job or group, and taking awkward moments in their stride. It is not the same as being outgoing: a person can be at ease with strangers and still prefer a quiet evening alone.',
+	},
+	statements: {
+		1: 'Whether being with other people, especially in company, often leaves you feeling ill at ease rather than relaxed.',
+		2: 'Whether starting a conversation or going up to someone you do not know feels hard for you.',
+		3: 'Whether you relax only with people you already know well, and feel guarded with everyone else.',
+		4: 'Whether you tend to say little when you are with people you have not met before.',
+		5: 'Whether meeting new people is something you approach with some unease beforehand.',
+		6: "Whether you are generally at ease in other people's company, including people you know less well.",
+		7: 'Whether at a social gathering you move around and chat with many people, rather than staying with a few.',
+		8: 'Whether awkward moments with people, such as a tense conversation or an uncomfortable silence, leave you unruffled.',
+		9: 'Whether you behave naturally and easily with other people, without feeling stiff or watched.',
+		10: 'Whether new places, events and groups of people leave you feeling at ease rather than on edge.',
+	},
+	testRetest: 'The IPIP comparison table gives coefficient alpha of .86 for this scale, from 501 adults in the Eugene-Springfield Community Sample, and a correlation of .81 with the published inventory scale it was built to match, shyness with strangers. There is no test-retest figure. Scores are fairly stable over weeks; a change of a few points between attempts is usual.',
+	related: [
+		{ href: '/guides/introversion-is-not-shyness/', title: 'Is introversion the same as shyness?', note: 'Why the two are different.' },
+		{ href: '/tests/introvert-or-extrovert/', title: 'Introvert or extrovert?', note: 'Twenty statements on the one scale everyone asks about.' },
+		{ href: '/traits/self-consciousness/', title: 'Self-consciousness', note: 'The neuroticism facet about feeling awkward and watched.' },
+	],
+	faqs: [
+		{ q: 'Is shyness the same as introversion?', a: 'No. Shyness is wariness or discomfort with people you do not know. Introversion is a preference for less stimulation and more time alone, and many introverts are perfectly at ease with strangers. The two are related, so shy people are more often introverted, but they are measured separately (Cheek and Buss, 1981).' },
+		{ q: 'Can you be shy and outgoing?', a: 'Yes. Some people enjoy company and seek it out but feel nervous with strangers until they warm up. Researchers call this combination shy and sociable, and it is common. This test measures the discomfort with unfamiliar people, not how much you like company.' },
+	],
+});

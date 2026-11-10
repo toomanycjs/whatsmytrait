@@ -23,3 +23,11 @@ Added: /tests/empathy/ (IPIP empathy scale similar to the JPI-R, 10 items, alpha
 Changed: a sentence linking to the new tests on /traits/sympathy/, /traits/assertiveness/, /traits/cheerfulness/, /traits/intellect/, /traits/extraversion/, /tests/emotional-intelligence/ and /tests/character-strengths/; /tests/ gains a "For coursework" group.
 
 Searches targeted: empathy test, how empathetic am I, emotional empathy test; am I a leader, leadership test, leadership quiz; optimism test, am I an optimist or a pessimist; need for cognition test, need for cognition scale; self-monitoring test, self-monitoring scale Snyder.
+
+## 10 November 2026: test release T4, Am I shy?
+
+Added: /tests/shyness/ (IPIP social discomfort scale similar to the TCI, HA3, 10 items, alpha .86 in 501 adults of the Eugene-Springfield Community Sample; a higher score means shyer). Chosen by the owner.
+
+Changed: /guides/introversion-is-not-shyness/ and /tests/introvert-or-extrovert/ each gain a sentence linking to the test.
+
+Searches targeted: am I shy, shyness test, how shy am I, shy or introvert, shyness quiz.
