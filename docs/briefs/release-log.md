@@ -65,3 +65,11 @@ Added: /tests/16-factor/ (sixteen IPIP scales measuring constructs similar to Ca
 Changed: /tests/which/ gains a sentence pointing to the aspects, HEXACO and 16-factor tests for more detail than the Big Five; /compare/is-16personalities-accurate/ gains a sentence linking to the test; /licences/ no longer lists the 16-factor scales as held back.
 
 Searches targeted: 16 personality factors test, 16PF test free, Cattell 16 factors test, sixteen personality factors, 16 factor personality test.
+
+## 12 November 2026: content release 1, Dog people vs cat people
+
+Added: /guides/dog-people-vs-cat-people/ (Gosling, Sandy and Potter, 2010; draft from the owner's Claude Doc, figures checked against the paper). The facet statements and the percentile guide's quick answer, the rest of release 1, went live on 8 November.
+
+Changed: /guides/what-the-big-five-measures/ and /traits/extraversion/ each gain a sentence linking to the guide.
+
+Searches targeted: dog people vs cat people personality, are dog people more extroverted, cat people personality traits, dog person or cat person study.

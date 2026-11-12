@@ -3,6 +3,7 @@ title: "What the Big Five measures, and where it came from"
 description: "The Big Five are the five broad traits that keep appearing when people describe themselves and each other: openness, conscientiousness, extraversion, agreeableness and neuroticism. They are descriptive, continuous and found across languages."
 question: "What does the Big Five measure?"
 pubDate: 2026-11-03
+updatedDate: 2026-11-12
 test:
   href: /tests/big-five/
   label: Take the Big Five test
@@ -29,7 +30,7 @@ The approach is lexical: if a trait matters, a language will have words for it, 
 
 ## What each measures
 
-Openness is appetite for ideas, art, feelings and novelty. Conscientiousness is organisation, persistence and care. Extraversion is the pull towards company, activity and excitement. Agreeableness is the weight given to other people's feelings and interests. Neuroticism is how readily negative feelings arise and how long they last; its other end is emotional stability. Each is a bundle of narrower facets, and two people with the same domain score can differ a lot on the facets, which is why the 120-item test scores thirty of them.
+Openness is appetite for ideas, art, feelings and novelty. Conscientiousness is organisation, persistence and care. Extraversion is the pull towards company, activity and excitement. Agreeableness is the weight given to other people's feelings and interests. Neuroticism is how readily negative feelings arise and how long they last; its other end is emotional stability. Each is a bundle of narrower facets, and two people with the same domain score can differ a lot on the facets, which is why the 120-item test scores thirty of them. Even everyday preferences line up with the traits a little: in one large study, people who called themselves [dog people rather than cat people](/guides/dog-people-vs-cat-people/) scored somewhat higher on extraversion, agreeableness and conscientiousness.
 
 ## What it does not measure
 
